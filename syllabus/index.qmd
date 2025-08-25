@@ -45,33 +45,32 @@ necessity, the meeting before yours may run late.
 
 ### Course Description
 
-An introduction to creation of effective documents and documentation using
-industry-standard approaches to creating and treating “documentation as code.”
-Participating in project-based and hands-on activities, students create
-purpose-driven digital writing with special attention to forms, formats, and
-conventions expected of contemporary technical communication. Students also gain
-experience with creating collaborative and ethically-consistent content working
-in a team-based setting. During a weekly laboratory session students employ
-contemporary software tools to complete technical documentation projects,
-reporting on their results through both written reflections and oral
-presentations. Students are invited to use their own departmentally approved
-laptop in this course; a limited number of laptops are available for use during
-class and lab sessions. 
+A study of theoretical computer science concepts that addresses both the
+fundamental nature and limitations of computation and the ways in which to
+practically apply these insights. While using a machine-centered abstraction of
+computation implemented in a general-purpose programming language, students
+investigate what is computable and explore the categories and complexity of
+computational problems. Participating in hands-on activities that often require
+teamwork, students gain experience in the use of a programming language to
+characterize a problem solving strategy. During a weekly laboratory session,
+students use industry-grade technology to complete projects, reporting on their
+results through both written documents and oral presentations. Students are
+invited to use their own departmentally approved laptop in this course; a
+limited number of laptops are available for use during class and lab sessions.
 
-- **Prerequisite**: None
-- **Distribution Requirements**: HE, SP
+- **Prerequisite**: CMPSC 102 or permission of instructor
+- **Distribution Requirements**: QR, SP
 
 ::: {.callout-note appearance="minimal" title="Explaining the Distribution Requirements" collapse="false"}
 
-- **Quantitative Reasoning (HE)**: The study of Human Experience explores human
-physical, mental, emotional, and/or spiritual experiences as conveyed in texts
-broadly defined. Through engagement with such texts, students develop an
-appreciation for human experiences and their representations.
+- **Quantitative Reasoning (QR)**: Quantitative Reasoning is the ability to
+understand, investigate, communicate, and contextualize numerical, symbolic, and
+graphical information towards the exploration of natural, physical, behavioral,
+or social phenomena.
 
 - **Learning Outcome**: Students who successfully complete this requirement will
-demonstrate an understanding of how to interpret human experiences as conveyed
-in texts (including works of visual and performance art, rituals, cultural
-artifacts and traditions, and/or the written and spoken word).
+demonstrate an understanding of how to interpret numeric data and/or their
+graphical or symbolic representations.
 
 - **Scientific Process and Knowledge (SP)**: Courses involving Scientific
 Process and Knowledge aim to convey an understanding of what is known or can be
