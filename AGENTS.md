@@ -2,7 +2,7 @@
 
 This document provides instructions for GPT 4.1, Claude Sonnet 4, or another
 large language model (LLM) when working on the Quarto-based website project for
-www.prosegrammers.com through agent platforms like OpenCode (https://opencode.ai/).
+www.proofgrammers.com through agent platforms like OpenCode (https://opencode.ai/).
 
 ## General Principles
 
@@ -92,17 +92,20 @@ mathematical concepts as Python programs. These are the course's goals:
 - The official title of this course is "Theoretical Machines". The official
 title of this course's website is "Proofgrammers". The term "Proofgrammers" is a
 "play on words" that combines the word "prose" with the word "programmers":
-    - *Prose*: This is the written word, like an article or a blog post.
+    - *Proof*: A precise explanation of the truth of a mathematical or
+    computational statement.
     - *Programmers*: This is a term that refers to people who write software.
     - *Proofgrammers*: This is a term that refers to people who write software
     and documentation and use software to create, manipulate, and analyze
-    documents.
+    proofs in the field of theoretical computer science. The proofgrammers in
+    this class will write and run Python programs that support their proofs and
+    their exploration of the field of theoretical computer science.
     - The domain name for the website is
-    [www.prosegrammers.com](https://www.prosegrammers.com/).
+    [www.proofgrammers.com](https://www.proofgrammers.com/).
     - The domain name for the course is intentionally plural to indicate that
     it is a hub for multiple learners coming together to work in a team, in
     a collaborative fashion, to explore the field of theory of computation.
-    - A prosegrammer should be adept at attaining all the course objectives that
+    - A proofgrammer should be adept at attaining all the course objectives that
     are listed above in the prior list of bullet points.
 
 ## Editing and Creating Content
