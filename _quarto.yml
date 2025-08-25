@@ -45,7 +45,7 @@ website:
       - text: "{{< iconify fa github-square size=18px >}}"
         href: https://github.com/proofgrammers/www.proofgrammers.com/
       - text: "{{< iconify bi discord size=19px >}}"
-        href: https://discord.gg/5HdxuqjUvK
+        href: https://discord.gg/Mw9mybGK7u
 
 format:
   html:
