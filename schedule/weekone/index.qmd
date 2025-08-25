@@ -1,0 +1,36 @@
+---
+title: Equipping Proofgrammers
+description: "Ensure Success in Theorectical Machines"
+date: 2025-08-25
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Activities
+
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - No class due to the fact that the semester has not started yet
+- {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
+  - Prepare for document engineering presentations and evaluations by teams
+  - As outlined in the [syllabus](../../syllabus/index.qmd), teams give two
+  types of presentations:
+     - Document Engineering Concept Overviews (DECO)
+     - Document Engineering Project Critiques (DEPC)
+- {{< iconify fa6-solid gears size=18px >}} **Wednesday Laboratory**:
+  - Installation of required software tools for document engineering
+  - Release the schedule for the two types of presentations in this module:
+     - Document Engineering Concept Overviews (DECO)
+     - Document Engineering Project Critiques (DEPC)
+  - Teams meet to confirm contact information and plan their presentations
+- {{< iconify fa6-solid gears size=18px >}} **Friday**:
+  - Students demonstrate setup for GitHub, VS Code, and Python through `uv`
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekone/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week One:
+Introduction to Theoretical Machines](../../slides/weekone/)
