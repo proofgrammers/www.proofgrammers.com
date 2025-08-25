@@ -297,14 +297,15 @@ executable examination and one grade being for the final executable examination
 administered during the final examination period.
 
 - **Proofgrammer Presentations**: Students will work in teams for three weeks in
-a row to give presentations during a laboratory session. A grade is reported
-one-week after the completion of the presentation for both the presenting team
-and the evaluation team. For their proofgrammer presentation work in every
-module, each student will receive **three** assessments for presentations and
-**three** assessments for their evaluations, meaning that they receive **nine**
-assessments for these two categories of work. Students will additionally receive
-**two** assessments for their respective presentations and evaluations for their
-retrospective presentations.
+a row to give and evaluate presentations during a laboratory session. A grade is
+reported one-week after the completion of the presentation for both the
+presenting team and the evaluating team. For their proofgrammer presentation
+work in every module, each student will receive **three** assessments for
+presentations and **three** assessments for their evaluations, meaning that they
+receive **nine** assessments for each of these two categories of work. Students
+will additionally receive **two** assessments for their respective presentations
+and evaluations for their retrospective presentations. Overall, students will
+receive **twenty** assessments for this category of their work.
 
 :::
 
