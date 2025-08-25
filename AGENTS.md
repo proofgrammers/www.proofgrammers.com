@@ -30,7 +30,7 @@ mathematical concepts as Python programs. These are the course's goals:
         - We would like to understand what can be computed:
             - In principle (i.e., undecidability/uncomputability: computability theory)
             - Efficiently/in practice (i.e., complexity theory)
-    - It addresses thee question "why study the theory of computation?"
+    - It addresses the question "why study the theory of computation?"
         - It is useful:
             - When using computers to solve problems, it’s often important to
             understand whether a given problem is computable and/or tractable.
