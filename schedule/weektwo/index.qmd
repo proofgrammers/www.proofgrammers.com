@@ -1,0 +1,36 @@
+---
+title: Introduction to Theoretical Machines
+description: "Exploring the Limits of Computation"
+date: "2025-09-01"
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Activities
+
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - No class due to the fact that it is Labor Day
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - [DECO1 presentation](/slides/index.qmd) completed through the
+  use of [Quarto](https://quarto.org/), [RevealJS](https://revealjs.com/),
+  [Markdown](https://www.markdownguide.org/), [Git](https://git-scm.com/),
+  [GitHub](https://github.com/), and the [GitHub Flow
+  model](https://docs.github.com/en/get-started/quickstart/github-flow)
+  - Presentation available, in final form, as a pull request in the [GitHub
+  repository for the course web
+  site](https://github.com/proofgrammers/www.proofgrammers.com), no later than
+  11:59 PM
+  - Each DECO1 team member must use Git and their own GitHub account to commit
+  their work to the [pull
+  request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+  for their team's slides
+- {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
+  - Team-based delivery of [DECO1
+  presentation](/slides/index.qmd)
+- {{< iconify fa6-solid gears size=18px >}} **Wednesday Laboratory**:
+  - Instructor-led document engineering deep-dive on Python programming
+  - Release of the first document engineering tool-building project
+  - Students meet with instructors and student technical leaders
+- {{< iconify fa6-solid gears size=18px >}} **Friday**:
+  - Use installed software tools for document engineering skill-check one
