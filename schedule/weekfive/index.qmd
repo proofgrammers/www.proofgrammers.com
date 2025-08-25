@@ -1,5 +1,5 @@
 ---
-title: "Exploring Turning Machines"
+title: "Exploring Turing Machines"
 description: "Create and Use Simple Computers"
 date: 2025-09-22
 layout: full
