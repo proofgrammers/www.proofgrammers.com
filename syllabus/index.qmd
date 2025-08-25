@@ -178,9 +178,46 @@ communicate their situation to the course instructor in a timely fashion. A
 student's weekly class participation grade will be reduced if they are
 frequently observed, during either class or laboratory sessions, undertaking
 non-course-related activities like viewing email, browsing social media, or
-other looking at any other content not about document engineering.
+looking at any other content not about the theory of computation.
 
-- **Final Executable Examination**: The final examination is an online,
+- **Proofgrammers Skill-Checks**: Completed during a Tuesday laboratory session,
+these skill-checks are online, cumulative assessments covering all prior
+technical material from the prior course sessions, as outlined on the [course
+schedule](../schedule/index.qmd). Unless prior arrangements are made with the
+instructor, all students should use their computer to take these skill-checks on
+the scheduled date and to complete it in the stated location while taking no
+more than the required amount of time. Designed to prepare learners for the
+three executable examinations, each skill-check is an executable assessment that
+students complete through the use of GitHub, a text editor like VS Code, and the
+Python programming tools on their laptops. During the completion of a
+skill-check, students may use external sources, including artificial
+intelligence coding assistants, provided that they cite these sources and
+explain how they used them to complete the skill-check.
+
+- **Proofgrammers Knowledge-Checks**: Completed individually during a Thursday
+laboratory session, these knowledge-checks are in-person, cumulative assessments
+covering all prior material from the prior course sessions, as
+outlined on the [course schedule](../schedule/index.qmd). All students should
+be prepared to answer questions  about the conceptual knowledge and technical
+skills in the field of theoretical machines, with a focus on both the material
+presented and discussed during instructor presentations and investigated as a
+part of the team-based proofgrammer presentations. Students may not use any
+external sources (e.g., artificial intelligence assistants, online sources, or
+written notes) or devices (e.g., laptop, tablet, or mobile phone) during an
+in-person knowledge check.
+
+- **Proofgrammers Charettes**: Completed in the second half of a Thursday
+classroom session, these discussion workshops invite students to collaboratively
+pose and answer questions in the field of theoretical machines. During a
+charette session, students will first pose questions about the technical and
+mathematical course content that was presented during the prior laboratory
+sessions. After posing a series of new questions and revising past questions
+that have not yet been answered, students will work in teams to answers chosen
+questions. Once the answer for a question is approved by the class, the team
+members who correctly answered the question will record their contact
+information and a brief answer in the charette tracking system.
+
+- **Executable Examinations**: The final examination is an online,
 executable, cumulative assessment covering all of the material during all of the
 course sessions, as outlined on the [course schedule](../schedule/index.qmd).
 Unless prior arrangements are made with the instructor, all students should use
@@ -193,36 +230,12 @@ examination, students may use external sources, including artificial
 intelligence coding assistants, provided that they cite these sources and
 explain how they used them to complete the final examination.
 
-- **Document Engineering Skill-Checks**: Completed during a Friday classroom
-session, these skill-checks are online, cumulative assessments covering all
-prior technical material from the prior course sessions, as outlined on the
-[course schedule](../schedule/index.qmd). Unless prior arrangements are made
-with the instructor, all students should use their computer to take these
-skill-checks on the scheduled date and to complete it in the stated location
-while taking no more than the required amount of time. Designed to prepare
-learners for the final executable examination, each skill-check is an executable
-assessment that students complete through the use of GitHub, a text editor like
-VS Code, and the Python programming tools on their laptops. During the
-completion of a skill-check, students may use external sources, including
-artificial intelligence coding assistants, provided that they cite these sources
-and explain how they used them to complete the examination.
 
-- **Document Engineering Knowledge-Checks**: Completed during a Friday classroom
-session, these knowledge-checks are in-person, cumulative assessments covering
-all prior technical material from the prior course sessions, as outlined on the
-[course schedule](../schedule/index.qmd). All students should be prepared to
-answer questions  about the conceptual knowledge and technical skills in the
-field of document engineering, with a focus on both the material presented and
-discussed during class and investigated as a part of the document engineering
-tool building projects. Students may not use any external sources (e.g.,
-artificial intelligence assistants, online sources, or written notes) or devices
-(e.g., laptop, tablet, or mobile phone) during an in-person knowledge check.
-
-- **Document Engineering Presentations**: Completed by assigned teams of
+- **theoretical machines Presentations**: Completed by assigned teams of
 students during a Wednesday classroom session, these in-person presentations are
-either Document Engineering Concept Overviews (DECO) or Document Engineering
+either theoretical machines Concept Overviews (DECO) or theoretical machines
 Project Critiques (DEPC). During a DECO presentation, a team of students will
-teach the entire class on a specific document engineering concept like Diataxis
+teach the entire class on a specific theoretical machines concept like Diataxis
 or README-driven development. During a DEPC presentation, a team of students
 will use all prior course material to critique the documentation of an assigned
 open-source software project. For each team assigned to give either a DECO or a
@@ -234,7 +247,7 @@ the presentation and examination teams may use external sources, including
 artificial coding assistants, during the completion of their materials, they
 must cite their sources. Except for the slides published on the course website,
 the presenters may not use any external sources during either the presentation
-or the evaluation phases. All document engineering presentations must be
+or the evaluation phases. All theoretical machines presentations must be
 completed through the use of [Quarto](https://quarto.org/),
 [RevealJS](https://revealjs.com/),
 [Markdown](https://www.markdownguide.org/), [Git](https://git-scm.com/),
@@ -252,9 +265,9 @@ presentation itself, every student on a presentation team must make a
 contribution to the presentation slides in the form of commits to the pull
 request.
 
-- **Document Engineering Tool-Building Projects**: Completed individually in
+- **theoretical machines Tool-Building Projects**: Completed individually in
 three stages that span the entire academic semester, these projects enable
-students to build and evaluate a complete document engineering pipeline in the
+students to build and evaluate a complete theoretical machines pipeline in the
 Python programming language. At the start of each of the three course modules, a
 student will receive a project description for one phase of the document
 engineering pipeline. During the remainder of the module, a student will
@@ -274,29 +287,29 @@ collapse="false"}
 - **Final Executable Examination**: Grade automatically reported at end
 of **one** examination period.
 
-- **Document Engineering Skill-Checks**: Grade automatically reported at end of
+- **theoretical machines Skill-Checks**: Grade automatically reported at end of
 a Friday classroom session. Since there are two skill-check assessments for each
 of the three course modules, a student will receive a total of **six**
 assessment reports for their skill-checks.
 
-- **Document Engineering Knowledge-Checks**: Grade reported at conclusion of a
+- **theoretical machines Knowledge-Checks**: Grade reported at conclusion of a
 course module. Since there is one in-person knowledge-check assessment for each of
 the three course modules, a student will receive a total of **three**
 assessments for their knowledge-checks.
 
-- **Document Engineering Presentations**: There are two types of these
-team-based presentations: Document Engineering Concept Overviews (DECO) and
-Document Engineering Project Critiques (DEPC). A grade is reported one-week
+- **theoretical machines Presentations**: There are two types of these
+team-based presentations: theoretical machines Concept Overviews (DECO) and
+theoretical machines Project Critiques (DEPC). A grade is reported one-week
 after the completion of the presentation for both the presenting team and the
 evaluation team. For their DECO and DEPC work, each student will receive
 **three** assessments for presentations and **three** assessments for their
 evaluations.
 
-- **Document Engineering Tool-Building Projects**: There are two types of grades
+- **theoretical machines Tool-Building Projects**: There are two types of grades
 reported for these projects: demonstration grades and module-level project
 grades. A grade is reported one-week after the completion of a demonstration or
 the final submission of their project at the end of a course module. For their
-work on the document engineering tools, a student will receive a total of
+work on the theoretical machines tools, a student will receive a total of
 **twelve** demonstration assessments and **three** detailed, module-level
 project assessments.
 
@@ -307,7 +320,7 @@ project assessments.
 ### Module Overview
 
 - **Module One**: 
-  - **Topic**: Document Engineering Foundations
+  - **Topic**: theoretical machines Foundations
   - **Weeks**: One through six
   - **Subjects for Critique**: [uv](https://docs.astral.sh/uv/) and
   [Quarto](https://quarto.org/)
@@ -315,7 +328,7 @@ project assessments.
     - **Documentation**: [Diataxis](https://diataxis.fr/), [README-driven development](https://tom.preston-werner.com/2010/08/23/readme-driven-development)
     - **Engineering**: Python fundamentals, Version control, Quarto
 - **Module Two**:
-  - **Topic**: Document Engineering Building Blocks
+  - **Topic**: theoretical machines Building Blocks
   - **Weeks**: Seven through eleven
   - **Subjects for Critique**: [ruff](https://astral.sh/ruff) and
   [Quarto](https://quarto.org/)
@@ -323,7 +336,7 @@ project assessments.
     - **Documentation**: [Literate programming](https://guides.nyu.edu/datascience/literate-prog), [Localization](https://developer.mozilla.org/en-US/docs/Glossary/Localization)
     - **Engineering**: Intermediate Python programming, AI coding agents, Quarto
 - **Module Three**:
-  - **Topic**: Advanced Document Engineering
+  - **Topic**: Advanced theoretical machines
   - **Subjects for Critique**: [ty](https://astral.sh/ruff) or
   [Pyrefly](https://pyrefly.org/) and [Quarto](https://quarto.org/)
   - **Weeks**: Twelve through sixteen
@@ -343,14 +356,14 @@ project assessments.
   - **Thanksgiving Break**: Week Fourteen
   - **End Semester**: Week Sixteen
   - **Final Examination**: Week Sixteen
-- **Document Engineering Skill-Checks**:
+- **theoretical machines Skill-Checks**:
   - **Skill-Check One**: Week Two
   - **Skill-Check Two**: Week Three
   - **Skill-Check Three**: Week Seven
   - **Skill-Check Four**: Week Eight
   - **Skill-Check Five**: Week Twelve
   - **Skill-Check Six**: Week Thirteen
-- **Document Engineering Knowledge-Checks**:
+- **theoretical machines Knowledge-Checks**:
   - **Knowledge-Check One**:
     - *First Half of Class*: Week Four
     - *Second Half of Class*: Week Five
@@ -372,7 +385,7 @@ project assessments.
 ### Weekly Cadence
 
 - {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
-  - Document engineering deep-dive presentations by the course instructor
+  - theoretical machines deep-dive presentations by the course instructor
   - Technical and engineering knowledge and skills in the field of document
   engineering
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
@@ -382,22 +395,22 @@ project assessments.
   - Excepting documented, extenuating circumstances, no content allowed after
   deadline
 - {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
-  - Document engineering presentations and evaluations by student teams
+  - theoretical machines presentations and evaluations by student teams
   - As outlined on the course schedule, teams give two types of presentations:
-     - Document Engineering Concept Overviews (DECO)
-     - Document Engineering Project Critiques (DEPC)
+     - theoretical machines Concept Overviews (DECO)
+     - theoretical machines Project Critiques (DEPC)
   - Teams and presentation topics assigned at the start of a course module
 - {{< iconify fa6-solid gears size=18px >}} **Wednesday Laboratory**:
-  - Across five weeks, complete tasks for document engineering tool-building
+  - Across five weeks, complete tasks for theoretical machines tool-building
   projects
   - Individual project completion, with instructor and student technical leader
   support
   - Give demonstrations to and receive feedback from the course instructor
   - Demonstration order is randomly generated and announced incrementally
 - {{< iconify fa6-solid gears size=18px >}} **Friday**:
-  - Use GitHub, VS Code, and Python to complete document engineering
+  - Use GitHub, VS Code, and Python to complete theoretical machines
   skill-checks
-  - Complete in-person document engineering knowledge-checks in instructor's
+  - Complete in-person theoretical machines knowledge-checks in instructor's
   office
 
 #### Assessment Policies
@@ -408,7 +421,7 @@ assessment policies:
 ##### Assignment Submission
 
 All assignments will have a stated due date shared through GitHub, GitHub
-Classroom, and/or the [Document Engineering Discord](https://discord.gg/5HdxuqjUvK).
+Classroom, and/or the [theoretical machines Discord](https://discord.gg/5HdxuqjUvK).
 No credit will be awarded for any course work that you submit to the incorrect
 GitHub repository or website. Unless special advance arrangements are made with
 the instructor to address extenuating circumstances or a student pays a document
@@ -417,20 +430,20 @@ engineering token, no work will be accepted after the deadline.
 ##### Assignment Evaluation
 
 Using a report that the instructor shares with you through your GitHub
-repositories devoted to work in the field of document engineering, you will
+repositories devoted to work in the field of theoretical machines, you will
 privately receive a grade for and feedback on your projects. Your grade will be
 a function of whether or not you (a) completed work that fulfills the project's
 specification and (b) submitted it by the deadline to the stated platform.
 
-##### Document Engineering Tokens
+##### theoretical machines Tokens
 
 Students may "spend" up to four "tokens" that they may use to retake certain
 assessments. After using a provided GitHub repository to request their use of a
 token, ensuring that they follow all guidelines, students may use a token to
-re-take either a document engineering skill-check or knowledge-check. Students
+re-take either a theoretical machines skill-check or knowledge-check. Students
 cannot use a token for the final executable examination, a DECO presentation or
 evaluation, a DEPC presentation or evaluation, or any part of any phase of a
-document engineering tool-building project. Outside of using these four tokens
+theoretical machines tool-building project. Outside of using these four tokens
 --- or severe, extenuating, and unexpected circumstances that are well
 documented --- the instructor will not grant any requests for extensions or
 assignment re-reassessments.
@@ -458,7 +471,7 @@ course absence.
 
 In order to minimize confusion and maximize learning, students must invest time
 to prepare for the class sessions that focus on the concepts, tasks, and tools
-of document engineering. Although the course instructor and the student
+of theoretical machines. Although the course instructor and the student
 technical leaders will always be available to serve as guide for individual
 students, teams of students, and the entire class, it is expected that students
 will volunteer to lead and actively contribute to all class sessions. Only those
@@ -473,10 +486,10 @@ suggestions, and other important information about the course.
 #### Seeking Assistance
 
 Students who are struggling to understand the knowledge and skills developed in
-this course's exploration of document engineering are encouraged to seek
+this course's exploration of theoretical machines are encouraged to seek
 assistance from the instructor and/or the student technical leaders. Students
 should, within the bounds of the Honor Code, ask and answer questions on the
-[Document Engineering Discord Server](https://discord.gg/5HdxuqjUvK); please
+[theoretical machines Discord Server](https://discord.gg/5HdxuqjUvK); please
 request assistance from the instructor and student technical leaders first
 through public Discord channels before sending an email or a direct message.
 Students who need more assistance are invited to schedule a meeting through the
@@ -493,9 +506,9 @@ Server](https://discord.gg/CS2h9kXzX6).
 This course will primarily use GitHub and Discord for all course communication.
 We will use GitHub for the sharing of both source code and documentation for
 course projects and for reporting issues in those materials. We will use two
-distinct Discord servers for all course discussions. The [Document Engineering
+distinct Discord servers for all course discussions. The [theoretical machines
 Discord Server](https://discord.gg/5HdxuqjUvK) provides a way for members of the
-document engineering community to use text and video to chat with each other and
+theoretical machines community to use text and video to chat with each other and
 will be the main forum for discussing the professional and technical content in
 the field of this course. The [Allegheny College Computer Science Discord
 Server](https://discord.gg/CS2h9kXzX6) will be the main forum for Department of
@@ -506,7 +519,7 @@ GitHub Classroom-affiliated link.
 
 #### Using Email
 
-Although we will primarily use the [Document Engineering Discord
+Although we will primarily use the [theoretical machines Discord
 Server](https://discord.gg/5HdxuqjUvK) for class communication, the course
 instructor will sometimes use email to send announcements about important
 matters such as changes in the schedule. It is your responsibility to check your
@@ -530,7 +543,7 @@ matriculates at the College acknowledges this Honor Code pledge:
 > defined in the Honor Code, and to maintain the integrity of both
 > myself and the College community as a whole.
 
-#### Effective Document Engineering
+#### Effective theoretical machines
 
 Students who create the source code and documentation for their document
 engineering projects should ensure the implementation of a high-quality final
@@ -556,7 +569,7 @@ oral assessment. Moreover, all students in the class are responsible for all of
 the source code and documentation submitted to the GitHub repository that hosts
 the course projects, including any tool-generated software artifacts. This means
 that every student should be able to answer questions, during either an
-in-person or online discussion, about any document engineering content,
+in-person or online discussion, about any theoretical machines content,
 including that which was automatically generated by a software tool.
 
 Students who are effective documentation engineers also pledge to always abide
@@ -593,13 +606,13 @@ engineering!
 
 ::: {.callout-note appearance="minimal" title="External Learners"}
 
-This syllabus is for learners who enrolled in a for-credit Document Engineering
+This syllabus is for learners who enrolled in a for-credit theoretical machines
 course in the [Department of Computer and information
 Science](https://www.cis.allegheny.edu/) at [Allegheny
 College](https://www.allegheny.edu/). Even though external learners are not
 bound by this syllabus, they can rely on the
 [Prosegrammers](https://github.com/prosegrammers/www.prosegrammers.com) team
-and the members of the [Document Engineering Discord
+and the members of the [theoretical machines Discord
 Server](https://discord.gg/5HdxuqjUvK)
 
 :::
