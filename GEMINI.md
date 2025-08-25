@@ -11,7 +11,7 @@ working on this Quarto-based website project.
 
 ## Course Objectives
 
-- This is a course about Document Engineering. These are the course's goals:
+- This is a course about Theoretical Machines. These are the course's goals:
     - Teach students how to program in the Python programming language.
     - Teach students how to use Python to create, manipulate, and analyze
     documents.
@@ -33,9 +33,9 @@ working on this Quarto-based website project.
     manage their project's source code and its documentation. Students should be
     able to use GitHub is both an individual and team-based fashion.
     - The course is designed to be accessible to students with varying levels of
-    Python programming experience and knowledge of document engineering.
+    Python programming experience and knowledge of theoretical machines.
 
-- The official title of this course is "Document Engineering". The official
+- The official title of this course is "Theoretical Machines". The official
 title of this course's website is "Prosegrammers". The term "Prosegrammers" is a
 "play on words" that combines the word "prose" with the word "programmers":
     - *Prose*: This is the written word, like an article or a blog post.
@@ -47,7 +47,7 @@ title of this course's website is "Prosegrammers". The term "Prosegrammers" is a
     [www.prosegrammers.com](https://www.prosegrammers.com/).
     - The domain name for the course is intentionally plural to indicate that
     it is a hub for multiple learners coming together to work in a team, in
-    a collaborative fashion, to explore the field of document engineering.
+    a collaborative fashion, to explore the field of theoretical machines.
     - A prosegrammer should be adept at attaining all the course objectives that
     are listed above in the prior list of bullet points.
 
@@ -84,8 +84,8 @@ Slides for this project are created using Quarto and reveal.js.
 
 ```yaml
 ---
-title: "Introduction to Document Engineering"
-description: "Exploring tools for document engineering with Python"
+title: "Introduction to Theoretical Machines"
+description: "Exploring tools for theoretical machines with Python"
 date: "2025-08-18"
 date-format: long
 author: Gregory M. Kapfhammer
