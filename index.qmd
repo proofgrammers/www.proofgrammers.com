@@ -1,0 +1,168 @@
+---
+pagetitle: "Proofgrammers"
+layout: full
+toc: false
+---
+
+![](images/Proofgrammers-Logo.svg){fig-align="center" width="125%"}
+
+## Become a Prosegrammer
+
+Welcome to the world of **Prosegrammers** --- where prose meets programming!
+The term "Prosegrammer" is a delightful combination of "prose" (i.e., the
+written word) and "programmer" (i.e., the people who write software). As a
+prosegrammer, you'll master the art of using Python to create, manipulate, and
+analyze documents while also learning to craft clear, compelling documentation
+for your software projects. This course focuses on document engineering, a
+field that bridges the gap between technical writing and software development.
+Whether you're generating reports from data, building interactive documentation
+systems, or creating tools that transform text, prosegrammers use code to make
+written communication more powerful and accessible. Join us as we explore how
+to be both eloquent writers and skilled programmers in the fascinating world of
+document engineering!
+
+## Course Overview
+
+With the goal of cultivating skilled prosegrammers, this web site features a
+[sixteen-week schedule](schedule/index.qmd) filled with activities that
+support the development of your professional and technical capacities in the
+field of document engineering. Although this site is best used by an on-campus
+learner in the [Department of Computer and Information
+Science](https://www.cis.allegheny.edu/) at [Allegheny
+College](https://www.allegheny.edu/), the resources and projects are all
+publicly available. This course teaches you to harness Python's power for
+creating and manipulating documents, from simple text processing to building
+sophisticated documentation systems. You'll learn to use tools like [Jupyter
+Notebooks](https://jupyter.org/) and [Quarto](https://quarto.org/) to create
+interactive documents that blend code, text, and visualizations. Throughout the
+course, you'll also develop skills in reading and critiquing documentation for
+popular open-source projects, ensuring you can both create and consume
+high-quality technical writing. In addition to learning more about version
+control, [Git](https://git-scm.com/), and [GitHub](https://github.com/),
+emerging prosegrammers will also learn how to use artificial intelligence (AI)
+assistants [GitHub Copilot](https://github.com/features/copilot), [Google
+Gemini CLI](https://github.com/google-gemini/gemini-cli), and
+[OpenCode](https://opencode.ai/) to create, revise, and extend both
+documentation and source code. Check out the [schedule](schedule/index.qmd)
+and [slides](slides/index.qmd) to begin your journey as a prosegrammer!
+
+## Python for Document Engineering
+
+As you explore the technical resources on this site, you'll discover how Python
+can transform the way that prosegrammers work with documents. For instance,
+here's a simple example of a Python implementation of a `word_frequency`
+function that analyzes text to count how often each word appears --- a
+fundamental task in document engineering! This function takes a string of text,
+converts it to lowercase, removes punctuation, and creates a dictionary showing
+word frequencies. Pretty neat how Python makes document analysis so accessible!
+And, notice that the website itself includes the output from running this
+function with an input!
+
+```{python}
+from typing import Dict
+import string
+
+def word_frequency(text: str) -> Dict[str, int]:
+    """Analyze text and return a dictionary of word frequencies."""
+    cleaned_text = text.lower().translate(str.maketrans('', '', string.punctuation))
+    words = cleaned_text.split()
+    frequency_dict = {}
+    for word in words:
+        frequency_dict[word] = frequency_dict.get(word, 0) + 1
+    return frequency_dict
+
+# example text about document engineering
+sample_text = "Document engineering combines programming with writing. Writing clear documents requires skill. Programming helps automate document creation."
+
+# analyze the text and display results
+word_counts = word_frequency(sample_text)
+print("Word Frequencies:")
+for word, count in sorted(word_counts.items()):
+    print(f"'{word}': {count}")
+```
+
+Building on the previous source code example, let's explore how prosegrammers
+can create more sophisticated document analysis tools! The following code
+demonstrates a `document_summary` function that provides key insights about any
+text document. This function calculates statistics like word count, sentence
+count, and average words per sentence, all of which are essential metrics for
+document engineers who need to analyze and improve written content. Watch how
+Python makes complex document analysis tasks straightforward and accessible.
+And, notice how the website displays the output from running this function with
+an input!
+
+```{python}
+import re
+from typing import Dict, Any
+
+def document_summary(text: str) -> Dict[str, Any]:
+    """Generate a comprehensive summary of document statistics."""
+    # count words (excluding punctuation-only tokens)
+    words = [word for word in text.split() if any(char.isalnum() for char in word)]
+    word_count = len(words)
+    # count sentences (simple approach using sentence-ending punctuation)
+    sentences = re.split(r'[.!?]+', text)
+    sentence_count = len([s for s in sentences if s.strip()])
+    # count paragraphs (assuming double newlines separate paragraphs)
+    paragraphs = [p for p in text.split('\n\n') if p.strip()]
+    paragraph_count = len(paragraphs)
+    # calculate averages for words and paragraphs
+    avg_words_per_sentence = word_count / sentence_count if sentence_count > 0 else 0
+    avg_sentences_per_paragraph = sentence_count / paragraph_count if paragraph_count > 0 else 0
+    return {
+        'word_count': word_count,
+        'sentence_count': sentence_count,
+        'paragraph_count': paragraph_count,
+        'avg_words_per_sentence': round(avg_words_per_sentence, 1),
+        'avg_sentences_per_paragraph': round(avg_sentences_per_paragraph, 1)
+    }
+
+# define an example document about prosegrammers
+sample_document = """
+Prosegrammers are skilled professionals who combine programming expertise with writing abilities. They create tools that help generate, analyze, and improve documents.
+
+Document engineering is an exciting field that leverages technology to enhance written communication. Python provides excellent libraries for text processing, making it an ideal language for prosegrammers.
+
+By mastering both code and prose, prosegrammers can automate repetitive writing tasks, analyze large collections of documents, and create dynamic content that adapts to different audiences.
+"""
+
+# analyze the document using the defined summary function
+summary = document_summary(sample_document.strip())
+print("Document Analysis Summary:")
+# display the results in a simple format
+for metric, value in summary.items():
+    print(f"{metric.replace('_', ' ').title()}: {value}")
+```
+
+## Document Engineering Resources
+
+Ready to embark on your journey as a prosegrammer? Start exploring here:
+
+- The [sixteen-week course schedule](./schedule/index.qmd) provides detailed
+insights into each step that learners should take to emerge as skilled
+prosegrammers, including assignments focused on document engineering tools,
+critiques of documentation sites, and projects that combine programming with
+writing.
+
+- The [course syllabus](./syllabus/index.qmd) introduces the course and its
+learning objectives, explaining how on-campus learners will develop both their
+programming skills and their ability to use tools to create and maintain
+exceptional documentation.
+
+- The [course slides](./slides/index.qmd) offers links to the slides created
+by both the instructor and the prosegrammers who are learning more about
+document engineering.
+
+::: {.callout-note appearance="minimal" title="Prosegrammers Community Resources"}
+
+Interested in connecting with other aspiring prosegrammers? Please join the
+[Prosegrammers Discord Server](https://discord.gg/5HdxuqjUvK) and join the
+conversation about document engineering, Python programming, and technical
+writing! If you are an on-campus learner at Allegheny College, you may also join
+the [Allegheny College Computer Science Discord
+Server](https://discord.gg/CS2h9kXzX6). Finally, if you are an on-campus
+learner, you can schedule an office hours appointment by visiting the [Course
+Instructor's Appointment
+Scheduler](https://www.gregorykapfhammer.com/schedule/).
+
+:::
