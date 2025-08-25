@@ -266,19 +266,6 @@ presentation itself, every student on a presentation team must make a
 contribution to the presentation slides in the form of commits to the pull
 request.
 
-- **theoretical machines Tool-Building Projects**: Completed individually in
-three stages that span the entire academic semester, these projects enable
-students to build and evaluate a complete theoretical machines pipeline in the
-Python programming language. At the start of each of the three course modules, a
-student will receive a project description for one phase of the document
-engineering pipeline. During the remainder of the module, a student will
-complete four demonstrations during the laboratory sessions and then submit a
-complete, working, well-documented project and a final project report at the end
-of the module. During the completion of a tool-building project, students may
-use external sources, including artificial intelligence coding assistants,
-provided that they cite these sources and explain how they used them to complete
-the project.
-
 ::: {.callout-note appearance="minimal" title="Additional Assessment Details"
 collapse="false"}
 
@@ -305,14 +292,6 @@ after the completion of the presentation for both the presenting team and the
 evaluation team. For their DECO and DEPC work, each student will receive
 **three** assessments for presentations and **three** assessments for their
 evaluations.
-
-- **theoretical machines Tool-Building Projects**: There are two types of grades
-reported for these projects: demonstration grades and module-level project
-grades. A grade is reported one-week after the completion of a demonstration or
-the final submission of their project at the end of a course module. For their
-work on the theoretical machines tools, a student will receive a total of
-**twelve** demonstration assessments and **three** detailed, module-level
-project assessments.
 
 :::
 
