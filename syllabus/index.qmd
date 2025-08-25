@@ -89,6 +89,14 @@ at Allegheny College.
 
 :::
 
+### Course Textbook
+
+- [What Can be Computed? A Practical Guide to the Theory of
+Computation](https://whatcanbecomputed.com/) by John MacCormick. The description
+of this textbook is: "An accessible and rigorous textbook for introducing
+undergraduates to computer science theory." Please see the textbook's web site
+for more details, including an outline, course slides, and source code examples.
+
 ### Learning Objectives
 
 Allegheny College’s educational program is designed so that its graduates are able to:
