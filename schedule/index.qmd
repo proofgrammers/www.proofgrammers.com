@@ -1,0 +1,24 @@
+---
+title: Schedule
+layout: full
+toc: false
+listing:
+  - id: featured-weeks
+    type: default
+    sort-ui: true
+    filter-ui: true
+    fields: [date,title,description]
+    field-display-names:
+      description: "Objective"
+    contents:
+      - "week*/**/*.qmd"
+    sort:
+      - "date"
+      - "title"
+      - "description"
+---
+
+## Weekly Schedule
+
+:::{#featured-weeks}
+:::
