@@ -1,0 +1,66 @@
+# Basic configuration for a Quarto website
+# --> Render any Quarto markdown files
+# --> Do not render any markdown
+# files that are in the repository
+# as a configuration file for an agent
+# (e.g., the GEMINI.md file)
+project:
+  type: website
+  preview:
+    port: 5558
+    browser: false
+    watch-inputs: true
+    navigate: false
+  render:
+    - "*.qmd"
+    - "!AGENTS.qmd"
+    - "!GEMINI.qmd"
+    - "!PLAN.qmd"
+
+# Define all parameters for the website
+website:
+  title: ""
+  search:
+    location: navbar
+  reader-mode: false
+  back-to-top-navigation: true
+  page-navigation: true
+  favicon: "icons/proofgrammers.png"
+  open-graph: true
+  site-url: https://www.proofgrammers.com/
+  repo-url: https://github.com/prooofgrammers/proofgrammers
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - syllabus/index.qmd
+      - schedule/index.qmd
+      - slides/index.qmd
+
+  page-footer:
+    left: '<a href="https://github.com/proofgrammers/www.proofgrammers.com/graphs/contributors" aria-label="Prosegrammers Maintainers">{{< iconify fa copyright >}} Proofgrammers</a>'
+    right:
+      - text: "{{< iconify fa github size=18px >}}"
+        href: https://github.com/proofgrammers/
+      - text: "{{< iconify fa github-square size=18px >}}"
+        href: https://github.com/proofgrammers/www.proofgrammers.com/
+      - text: "{{< iconify bi discord size=19px >}}"
+        href: https://discord.gg/5HdxuqjUvK
+
+format:
+  html:
+    # Note that the fonts must also be loaded inside of the
+    # css/styles.css file and then declared correctly, at
+    # least for the monospace font to work on all platforms
+    mainfont: Inter
+    monofont: Ubuntu Mono
+    fontsize: 1.25em
+    theme: zephyr
+    highlight-style: github
+    css: css/styles.css
+    include-in-header:
+      # include in the header preconnect and theme-color
+      - file: _include/html/header-include.html
+
+execute:
+  freeze: auto
