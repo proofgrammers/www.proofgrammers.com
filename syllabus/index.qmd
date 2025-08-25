@@ -230,14 +230,14 @@ tracking system.
 cumulative assessment covering all of the material during all of the course
 sessions, as outlined on the [course schedule](../schedule/index.qmd). Unless
 prior arrangements are made with the instructor, all students should use their
-computer to take the final examination on the scheduled date and to complete it
-in the stated location while taking no more than the required amount of time.
-Each cumulative executable examination will complete by a student through the
-use of GitHub, a text editor like VS Code, and the Python programming tools
-installed on their laptops. During the completion of the final examination,
-students may use external sources, including artificial intelligence coding
-assistants, provided that they cite these sources and explain how they used them
-to complete the final examination.
+computer to take each executable examination on the scheduled date and to
+complete it in the stated location while taking no more than the required amount
+of time. Each cumulative executable examination will complete by a student
+through the use of GitHub, a text editor like VS Code, and the Python
+programming tools installed on their laptops. During the completion of the final
+examination, students may use external sources, including artificial
+intelligence coding assistants, provided that they cite these sources and
+explain how they used them to complete the final examination.
 
 - **Proofgrammer Presentations**: Completed by assigned teams of students during
 a Thursday laboratory session, these in-person presentations are on technical
