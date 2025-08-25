@@ -84,21 +84,34 @@ ultimately responsible for wielding them correctly and ethically.
 
 ### Rewriting Content in Several Files
 
-#### Cross-Platform Tool Installation
+#### Index Page Revision for Theory of Computation
 
-- Installation instructions for UV, Python, and Quarto are designed to work
-across Windows, macOS, and Linux systems, following each tool's official
-documentation and installation guides
-- Command-line verification methods (`--version` flags) provide standard
-approaches for confirming successful installations across operating systems
-- Documentation links provided (UV docs, Quarto docs, VS Code docs) offer
-official troubleshooting resources maintained by tool creators
+**Proofgrammer Concept Definition**: 
 
-#### AI Tool Responsibility
+- The term "Proofgrammer" combines "proof" (mathematical/computational statement
+verification) with "programmer" (software development), reflecting the course's
+focus on expressing theoretical concepts as executable Python code
+- This definition aligns with the course objectives from AGENTS.md, specifically
+teaching students to "create, manipulate, and analyze proofs of theoretical
+concepts" using Python programming
 
-- Responsible use of AI coding assistants is emphasized in academic literature
-on AI ethics and educational guidelines from institutions implementing AI tools
-in curricula
-- The principle that users remain responsible for AI-generated content aligns
-with emerging best practices in AI-assisted writing and coding, as outlined by
-organizations like the ACM and IEEE
+**Computable vs Non-Computable Examples**:
+
+- **Computable example**: Line counting in source code demonstrates a decidable
+problem with a clear algorithmic solution, representing the class of problems
+that can always be solved computationally
+- **Non-computable example**: The Halting Problem illustration shows why certain
+fundamental questions cannot be answered by any algorithm, based on Alan
+Turing's foundational proof of undecidability through logical contradiction
+- These examples directly support the course objective of understanding "what
+can be computed in principle" from the AGENTS.md file
+
+**Course Focus Alignment**:
+
+- Revised content removes document engineering references and centers on
+theoretical computer science concepts including automata theory, formal
+languages, computational complexity, and decidability
+- Links to Discord server updated to match _quarto.yml configuration
+(https://discord.gg/Mw9mybGK7u)
+- Educational tools mentioned (Jupyter Notebooks, Quarto, GitHub, AI assistants)
+remain relevant for implementing and documenting theoretical proofs in Python
