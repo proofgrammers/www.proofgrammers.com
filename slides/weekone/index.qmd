@@ -1,0 +1,505 @@
+---
+title: "Introduction to Document Engineering"
+description: "Exploring document engineering with Python"
+date: "2025-08-25"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Prosegrammers"
+---
+
+# Document engineering
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is document engineering?**
+    - Creating documents using code
+    - Manipulating and analyzing text data
+    - Building documentation systems
+    - "Prosegrammers" combine *prose* and *programming*
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Why is it important?**
+    - Documentation quality affects software success
+        - Poor docs cause user confusion
+        - Clear docs increase adoption
+        - Automated docs reduce maintenance cost
+
+:::
+
+## Becoming a prosegrammer
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Master Python programming**
+  - Text processing and analysis
+  - Document creation and manipulation
+  - Automation tools for writing
+- {{< iconify fa6-solid gear >}} **Create compelling documentation**
+  - Clear and professional writing
+  - Interactive documents with code
+  - Version control for documents
+- {{< iconify fa6-solid lightbulb >}} **Use science and engineering to analyze and improve documents!**
+
+:::
+
+## What does a prosegrammer do?
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- **Prose** (written word) meets **Programming** (software development)
+- Generate reports from data automatically
+- Build interactive documentation systems  
+- Create tools that transform and analyze text
+- Automate repetitive writing tasks
+- Analyze large collections of documents
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} How do we *create* better documents using
+code? *...* How do we *analyze* text data to gain insights? *...* How do we
+*automate* documentation workflows? *...*
+
+:::
+
+## Analyzing text with Python
+
+```{python}
+from typing import Dict
+import string
+
+def word_frequency(text: str) -> Dict[str, int]:
+    """Analyze text and return a dictionary of word frequencies."""
+    cleaned_text = text.lower().translate(str.maketrans('', '', string.punctuation))
+    words = cleaned_text.split()
+    frequency_dict = {}
+    for word in words:
+        frequency_dict[word] = frequency_dict.get(word, 0) + 1
+    return frequency_dict
+
+# example text about document engineering
+sample_text = "Document engineering combines programming with writing. Writing clear documents requires skill."
+
+# analyze the text and display results
+word_counts = word_frequency(sample_text)
+print("Word Frequencies:")
+for word, count in sorted(word_counts.items()):
+    print(f"'{word}': {count}")
+```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+
+- **Text analysis**: fundamental skill for prosegrammers
+- **Word frequency**: helps understand document content patterns
+
+:::
+
+## Try the `word_frequency` function
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+from typing import Dict
+import string
+
+def word_frequency(text: str) -> Dict[str, int]:
+    """Analyze text and return a dictionary of word frequencies."""
+    cleaned_text = text.lower().translate(str.maketrans('', '', string.punctuation))
+    words = cleaned_text.split()
+    frequency_dict = {}
+    for word in words:
+        frequency_dict[word] = frequency_dict.get(word, 0) + 1
+    return frequency_dict
+
+# test with sample text
+sample_text = "Document engineering combines programming with writing."
+word_counts = word_frequency(sample_text)
+for word, count in sorted(word_counts.items()):
+    print(f"'{word}': {count}")
+```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+
+- **Important question**: what patterns do you notice in the word frequencies?
+
+:::
+
+## Document analysis function
+
+```{python}
+import re
+from typing import Dict, Any
+
+def document_summary(text: str) -> Dict[str, Any]:
+    """Generate a comprehensive summary of document statistics."""
+    # count words (excluding punctuation-only tokens)
+    words = [word for word in text.split() if any(char.isalnum() for char in word)]
+    word_count = len(words)
+    # count sentences (simple approach using sentence-ending punctuation)
+    sentences = re.split(r'[.!?]+', text)
+    sentence_count = len([s for s in sentences if s.strip()])
+    # count paragraphs (assuming double newlines separate paragraphs)
+    paragraphs = [p for p in text.split('\n\n') if p.strip()]
+    paragraph_count = len(paragraphs)
+    # calculate averages
+    avg_words_per_sentence = word_count / sentence_count if sentence_count > 0 else 0
+    avg_sentences_per_paragraph = sentence_count / paragraph_count if paragraph_count > 0 else 0
+    return {
+        'word_count': word_count, 'sentence_count': sentence_count,
+        'paragraph_count': paragraph_count,
+        'avg_words_per_sentence': round(avg_words_per_sentence, 1),
+        'avg_sentences_per_paragraph': round(avg_sentences_per_paragraph, 1)
+    }
+```
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.80em;"}
+
+- `document_summary`: analyzes text structure and readability
+- Uses `re` for sentence detection and provides essential quality metrics
+
+:::
+
+## Testing document analysis
+
+```{python}
+#| freeze: auto
+# define an example document about prosegrammers
+sample_document = """
+Prosegrammers are skilled professionals who combine programming expertise with writing abilities. They create tools that help generate, analyze, and improve documents.
+
+Document engineering is an exciting field that leverages technology to enhance written communication. Python provides excellent libraries for text processing.
+
+By mastering both code and prose, prosegrammers can automate repetitive writing tasks, analyze large collections of documents, and create dynamic content.
+"""
+
+# analyze the document using the defined summary function
+summary = document_summary(sample_document.strip())
+print("Document Analysis Summary:")
+for metric, value in summary.items():
+    print(f"{metric.replace('_', ' ').title()}: {value}")
+```
+
+## Discuss analysis results
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- {{< iconify game-icons team-idea >}} **Discuss in your teams:**
+    - What insights do these metrics provide about document readability?
+    - How could prosegrammers use these tools in real projects?
+    - What other document analysis features would be useful?
+
+:::
+
+## Essential tools
+
+- Text editor like VS Code or Vim for writing
+- Version control like Git for tracking document changes  
+- Documentation generator like Quarto or Sphinx
+- Static site generator like Hugo or Jekyll
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} How do we *characterize* effective document
+tools? *...* How do we *compare* their features for different projects? *...*
+How do we *integrate* them into efficient workflows? *...*
+
+:::
+
+## Real-world engineering challenges
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Characterize documents and their creation process?**
+  - How are documents currently written and maintained?
+  - What tools and workflows are being used?
+  - What are the pain points in the current process?
+- {{< iconify fa6-solid gear >}} **Compare and improve document workflows?**
+  - What metrics matter for document quality and efficiency?
+  - How to measure the effectiveness of documentation?
+  - What tools will improve the writing and publishing process?
+  - How to optimize workflows to reduce manual effort?
+
+:::
+
+## Why is documentation challenging?
+
+::: {.fragment}
+
+- Different audiences need different formats
+- Documents must stay synchronized with code
+- Collaboration on documents is often difficult  
+- Maintaining consistency across large projects
+- Balancing automation with human creativity
+- Ensuring accessibility and usability
+
+:::
+
+## Document engineering environment
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- Text editor with syntax highlighting and extensions
+- Version control system (e.g., Git with GitHub)
+- Document format (e.g., Markdown, reStructuredText, LaTeX)
+- Static site generator (e.g., Quarto, Hugo, Jekyll)
+- Automation tools (e.g., GitHub Actions, pre-commit hooks)
+- Collaboration platforms and review workflows
+- Deployment targets (e.g., GitHub Pages, Netlify)
+- Package managers for dependencies
+
+:::
+
+## Learn more about document engineering
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+{{< iconify fa6-solid book-open >}} Explore the [Quarto documentation](https://quarto.org/docs/) and [Python documentation](https://docs.python.org/)
+
+:::
+
+::: {.column width="50%"}
+
+{{< iconify fa6-brands github >}} Review exemplary projects like [Django docs](https://github.com/django/django) and [FastAPI docs](https://github.com/tiangolo/fastapi)
+
+:::
+
+::::
+
+::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- Document engineering requires both technical and writing skills
+- Key areas of focus:
+  - Python programming and text processing
+  - Markdown and markup languages  
+  - Version control for documents
+  - Automation and workflow optimization
+- Analysis of document quality and user experience
+
+:::
+
+## Document engineering with AI
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- AI tools like GitHub Copilot, Google Gemini CLI, or Claude generate content:
+  - Is the generated text accurate and well-written?
+  - Can the generated content be improved and personalized?
+  - Is the generated text clear, accessible, and appropriate?
+  - Can you integrate AI-generated content into your workflow?
+  - Can you maintain quality standards while using AI assistance?
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.1em; font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} Prosegrammers who use AI writing and coding
+tools are responsible for ensuring quality, accuracy, and ethical standards!
+
+:::
+
+## Development environment setup
+
+- *Installing* essential tools for prosegrammers
+- *Configuring* development environment for document work
+
+## Essential tools for prosegrammers
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+
+```{.text  code-line-numbers="false"}
+Tools for Document Engineering
+Terminal: Command-line interface for running tools and scripts
+Git: Version control for tracking document changes
+GitHub: Cloud platform for collaboration and hosting
+VS Code: Text editor with extensions for writing and coding
+```
+
+:::
+
+::: {.fragment .fade-up style="font-size: 0.9em;"}
+
+- **Terminal**: Essential for running command-line tools, executing scripts,
+and automating document workflows. Available on all operating systems (Windows
+Terminal, macOS Terminal, or Linux terminal emulators).
+- **Git and GitHub**: Industry-standard version control and collaboration
+platform for tracking changes in documents and code, enabling team-based
+writing and review workflows.
+- **Testing**: Run `git --version` and create a test repository on GitHub
+
+:::
+
+## Installing UV and Python
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **UV: Modern Python package and project manager**
+  - Install from [astral-sh.github.io/uv](https://astral-sh.github.io/uv/)
+  - Cross-platform: `curl -LsSf https://astral.sh/uv/install.sh | sh` (Unix)
+  - Windows: `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`
+- {{< iconify fa6-solid gear >}} **Python 3.12+ via UV (recommended approach)**
+  - Use `uv python install 3.12` to install Python
+  - Create virtual environments with `uv venv`
+  - Install packages with `uv add package-name`
+- {{< iconify fa6-solid lightbulb >}} **Why UV for prosegrammers?** Fast, reliable dependency management and virtual environment handling!
+
+:::
+
+## Setting up VS Code for documents
+
+```python
+# Example VS Code extensions for prosegrammers
+extensions = [
+    "ms-python.python",           # Python development
+    "quarto.quarto",             # Quarto documents
+    "yzhang.markdown-all-in-one", # Markdown editing
+    "ms-vscode.vscode-json",     # JSON configuration
+    "github.vscode-github-actions", # GitHub workflow editing
+]
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- Install VS Code from [code.visualstudio.com](https://code.visualstudio.com/)
+- Use built-in extension marketplace to install prosegrammer tools
+- **Testing**: Create a `.qmd` file and verify syntax highlighting works
+
+:::
+
+## Installing Quarto for documents
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Quarto: Scientific and technical publishing**
+  - Download from [quarto.org](https://quarto.org/docs/get-started/)
+  - Cross-platform installer available for Windows, macOS, Linux
+  - Combines code, text, and visualizations in documents
+- {{< iconify fa6-solid gear >}} **VS Code Quarto extension**
+  - Install the official Quarto extension in VS Code
+  - Enables live preview and code execution in `.qmd` files
+  - Provides syntax highlighting and auto-completion
+- {{< iconify fa6-solid lightbulb >}} **Why Quarto for prosegrammers?** Create reproducible, interactive documents that blend prose and programming!
+
+:::
+
+## Node.js tools for prosegrammers
+
+```bash
+# Install Node.js and npm from nodejs.org
+# Then use npx to run tools without permanent installation
+npx @google/generative-ai-cli --version  # Google Gemini CLI
+npx opencode --version                   # OpenCode AI assistant
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- **Node.js**: JavaScript runtime enabling web-based documentation tools
+- **NPX**: Run packages without installing globally, keeps system clean
+- **Testing**: Run `node --version` and `npm --version` to verify installation
+
+:::
+
+## GitHub Student Benefits and Copilot
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **GitHub Student Developer Pack**
+  - Free access to premium developer tools and services
+  - Apply at [education.github.com](https://education.github.com/pack)
+  - Requires verification with .edu email or student ID
+- {{< iconify fa6-solid gear >}} **GitHub Copilot Pro for Students**
+  - AI-powered code completion and generation
+  - Free for verified students and educators
+  - Integrates with VS Code and other editors
+- {{< iconify fa6-solid lightbulb >}} **Why GitHub tools for prosegrammers?** Essential for collaborative document development and AI-assisted writing!
+
+:::
+
+## Testing your prosegrammer setup
+
+```bash
+# Essential verification commands
+git --version                    # Check Git installation
+python --version                 # Check Python (via UV)
+quarto --version                # Check Quarto installation
+code --version                  # Check VS Code installation
+uv --version                    # Check UV package manager
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- **Test each tool individually** before starting projects
+- **Create a test document** with code and text to verify integration
+- **Consult documentation** links when troubleshooting: [UV docs](https://docs.astral.sh/uv/), [Quarto docs](https://quarto.org/docs/), [VS Code docs](https://code.visualstudio.com/docs)
+
+:::
+
+## Prosegrammer tools and workflows
+
+::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
+
+- **Document Engineering Projects**
+  - Latest version of Python via UV package manager
+  - Use UV to manage virtual environments and dependencies
+  - Use Git with instructor-provided document repositories
+  - Create, edit, and preview documents with Quarto and VS Code
+
+:::
+
+::: {.fragment .fade style="margin-top: -0.45em; font-size: 0.875em;"}
+
+- **Collaborative Document Projects**
+  - Use the same tools as in individual projects
+  - Use Git and GitHub flow for collaborative writing workflows
+  - Use Quarto to render previews of shared documentation
+  - Use VS Code extensions to run and test code segments in documents
+
+:::
+
+## Setup requirements for prosegrammers
+
+::: {.fragment .callout-note icon=true title="Tips for effective document engineering setup"}
+
+- Devote time outside class to installing and configuring tools
+- Confirm that all tools work during the first lab session
+- Create and render test documents with the provided examples
+- Complete the first document engineering project on time
+- Contribute to collaborative documentation projects
+- Prepare for technical skill demonstrations
+
+{{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into document engineering!**
+
+:::
+
+## Goals of document engineering
+
+::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
+
+- **Document Creation**:
+  - Design and implement document generation workflows
+  - Test all aspects of documents to ensure quality and accuracy
+  - Create frameworks for automated document production
+- **Document Analysis**:
+  - Design experiments to answer questions about document effectiveness
+  - Collect and analyze data about document usage and quality
+  - Visualize insights to improve documentation strategies
+- **Communicate** results and best practices for document engineering
+- **Check syllabus for details about the Document Engineering course!**
+
+:::
