@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Theoretical Machines"
-description: "Exploring document engineering with Python"
+description: "Exploring theory of computation with Python"
 date: "2025-08-25"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -15,268 +15,291 @@ format:
     scrollable: true
     transition: slide
     highlight-style: github
-    footer: "Prosegrammers"
+    footer: "Proofgrammers"
 ---
 
-# Document engineering
+# Theory of computation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is document engineering?**
-    - Creating documents using code
-    - Manipulating and analyzing text data
-    - Building documentation systems
-    - "Prosegrammers" combine *prose* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
 
 :::
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Why is it important?**
-    - Documentation quality affects software success
-        - Poor docs cause user confusion
-        - Clear docs increase adoption
-        - Automated docs reduce maintenance cost
+    - Foundation of computer science
+        - Helps determine if problems are solvable
+        - Guides algorithm design choices
+        - Reveals fundamental computational limits
+        - Powers modern cryptography and security
 
 :::
 
-## Becoming a prosegrammer
+## Becoming a proofgrammer
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
 - {{< iconify fa6-solid gear >}} **Master Python programming**
-  - Text processing and analysis
-  - Document creation and manipulation
-  - Automation tools for writing
-- {{< iconify fa6-solid gear >}} **Create compelling documentation**
-  - Clear and professional writing
-  - Interactive documents with code
-  - Version control for documents
-- {{< iconify fa6-solid lightbulb >}} **Use science and engineering to analyze and improve documents!**
+  - Implement theoretical concepts as code
+  - Express mathematical proofs as programs
+  - Analyze algorithmic complexity
+- {{< iconify fa6-solid gear >}} **Understand computational theory**
+  - Automata and formal languages
+  - Decidability and undecidability
+  - Complexity classes and reductions
+- {{< iconify fa6-solid lightbulb >}} **Use programming to explore what can be computed!**
 
 :::
 
-## What does a prosegrammer do?
+## What does a proofgrammer do?
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
 
-- **Prose** (written word) meets **Programming** (software development)
-- Generate reports from data automatically
-- Build interactive documentation systems  
-- Create tools that transform and analyze text
-- Automate repetitive writing tasks
-- Analyze large collections of documents
+- **Proof** (mathematical verification) meets **Programming** (code implementation)
+- Implement Turing machines and automata
+- Prove undecidability results with code
+- Analyze algorithmic complexity experimentally
+- Create computational models of theoretical concepts
+- Verify theoretical results through programming
 
 :::
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid microscope >}} How do we *create* better documents using
-code? *...* How do we *analyze* text data to gain insights? *...* How do we
-*automate* documentation workflows? *...*
+{{< iconify fa6-solid microscope >}} How do we *prove* computational limits
+using code? *...* How do we *implement* theoretical machines? *...* How do we
+*verify* complexity results? *...*
 
 :::
 
-## Analyzing text with Python
+## Computable problems with Python
 
 ```{python}
-from typing import Dict
-import string
+from typing import List
+from pathlib import Path
 
-def word_frequency(text: str) -> Dict[str, int]:
-    """Analyze text and return a dictionary of word frequencies."""
-    cleaned_text = text.lower().translate(str.maketrans('', '', string.punctuation))
-    words = cleaned_text.split()
-    frequency_dict = {}
-    for word in words:
-        frequency_dict[word] = frequency_dict.get(word, 0) + 1
-    return frequency_dict
+def count_lines(file_content: str) -> int:
+    """Count the number of lines in the provided text content."""
+    if not file_content:
+        return 0
+    lines = file_content.split('\n')
+    return len(lines)
 
-# example text about document engineering
-sample_text = "Document engineering combines programming with writing. Writing clear documents requires skill."
+# example source code content
+sample_code = """def hello_world():
+    print("Hello, Proofgrammers!")
+    return True
 
-# analyze the text and display results
-word_counts = word_frequency(sample_text)
-print("Word Frequencies:")
-for word, count in sorted(word_counts.items()):
-    print(f"'{word}': {count}")
+def main():
+    result = hello_world()
+    print(f"Function executed: {result}")
+
+if __name__ == "__main__":
+    main()"""
+
+# count lines in the sample code
+line_count = count_lines(sample_code)
+print(f"Number of lines in the sample code: {line_count}")
+print(f"This is a computable problem - we can always determine the line count!")
 ```
 
 ::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
 
-- **Text analysis**: fundamental skill for prosegrammers
-- **Word frequency**: helps understand document content patterns
+- **Computable problems**: have clear, algorithmic solutions
+- **Line counting**: decidable and tractable for any finite input
 
 :::
 
-## Try the `word_frequency` function
+## Try the `count_lines` function
 
 ```{pyodide}
 #| autorun: true
 #| max-lines: 10
-from typing import Dict
-import string
+def count_lines(file_content: str) -> int:
+    """Count the number of lines in the provided text content."""
+    if not file_content:
+        return 0
+    lines = file_content.split('\n')
+    return len(lines)
 
-def word_frequency(text: str) -> Dict[str, int]:
-    """Analyze text and return a dictionary of word frequencies."""
-    cleaned_text = text.lower().translate(str.maketrans('', '', string.punctuation))
-    words = cleaned_text.split()
-    frequency_dict = {}
-    for word in words:
-        frequency_dict[word] = frequency_dict.get(word, 0) + 1
-    return frequency_dict
+# test with sample code
+test_code = """def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
 
-# test with sample text
-sample_text = "Document engineering combines programming with writing."
-word_counts = word_frequency(sample_text)
-for word, count in sorted(word_counts.items()):
-    print(f"'{word}': {count}")
+print(fibonacci(5))"""
+
+line_count = count_lines(test_code)
+print(f"Lines in Fibonacci code: {line_count}")
+print("Try changing the code above to see the count change!")
 ```
 
 ::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
 
-- **Important question**: what patterns do you notice in the word frequencies?
+- **Important question**: what makes this problem computable?
 
 :::
 
-## Document analysis function
+## Universal computation with Python
 
 ```{python}
-import re
-from typing import Dict, Any
+def universal(prog_string: str, input_string: str) -> str:
+    """Execute a program given as a string on the provided input."""
+    # Create a local namespace for the program execution
+    local_namespace = {}
+    # Execute the program definition to make the function available
+    exec(prog_string, {}, local_namespace)
+    # Extract the main function from the executed program
+    main_function = None
+    for name, obj in local_namespace.items():
+        if callable(obj) and not name.startswith('_'):
+            main_function = obj
+            break
+    # Execute the program with the given input
+    if main_function:
+        return main_function(input_string)
+    else:
+        return "No function found"
 
-def document_summary(text: str) -> Dict[str, Any]:
-    """Generate a comprehensive summary of document statistics."""
-    # count words (excluding punctuation-only tokens)
-    words = [word for word in text.split() if any(char.isalnum() for char in word)]
-    word_count = len(words)
-    # count sentences (simple approach using sentence-ending punctuation)
-    sentences = re.split(r'[.!?]+', text)
-    sentence_count = len([s for s in sentences if s.strip()])
-    # count paragraphs (assuming double newlines separate paragraphs)
-    paragraphs = [p for p in text.split('\n\n') if p.strip()]
-    paragraph_count = len(paragraphs)
-    # calculate averages
-    avg_words_per_sentence = word_count / sentence_count if sentence_count > 0 else 0
-    avg_sentences_per_paragraph = sentence_count / paragraph_count if paragraph_count > 0 else 0
-    return {
-        'word_count': word_count, 'sentence_count': sentence_count,
-        'paragraph_count': paragraph_count,
-        'avg_words_per_sentence': round(avg_words_per_sentence, 1),
-        'avg_sentences_per_paragraph': round(avg_sentences_per_paragraph, 1)
-    }
+# Example program that checks if a string contains "GAGA"
+contains_gaga_program = '''
+def contains_gaga(input_str):
+    """Check if the input string contains GAGA."""
+    if "GAGA" in input_str:
+        return "yes"
+    else:
+        return "no"
+'''
 ```
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.80em;"}
 
-- `document_summary`: analyzes text structure and readability
-- Uses `re` for sentence detection and provides essential quality metrics
+- `universal`: demonstrates one program executing another program
+- Foundation of **universal computation** and general-purpose computers
 
 :::
 
-## Testing document analysis
+## Testing universal computation
 
 ```{python}
 #| freeze: auto
-# define an example document about prosegrammers
-sample_document = """
-Prosegrammers are skilled professionals who combine programming expertise with writing abilities. They create tools that help generate, analyze, and improve documents.
+# Demonstrate universal computation
+test_string1 = "HELLO GAGA WORLD"
+test_string2 = "programming"
 
-Document engineering is an exciting field that leverages technology to enhance written communication. Python provides excellent libraries for text processing.
+# Example program that counts vowels
+count_vowels_program = '''
+def count_vowels(input_str):
+    """Count the number of vowels in the input string."""
+    vowels = "aeiouAEIOU"
+    count = sum(1 for char in input_str if char in vowels)
+    return str(count)
+'''
 
-By mastering both code and prose, prosegrammers can automate repetitive writing tasks, analyze large collections of documents, and create dynamic content.
-"""
+print("Universal Computation in Action:")
+print("================================")
+print(f"Testing contains_gaga with '{test_string1}':")
+result1 = universal(contains_gaga_program, test_string1)
+print(f"Result: {result1}")
 
-# analyze the document using the defined summary function
-summary = document_summary(sample_document.strip())
-print("Document Analysis Summary:")
-for metric, value in summary.items():
-    print(f"{metric.replace('_', ' ').title()}: {value}")
+print(f"\nTesting count_vowels with '{test_string2}':")
+result2 = universal(count_vowels_program, test_string2)
+print(f"Result: {result2}")
+
+print(f"\nThis demonstrates universal computation - one program simulating others!")
 ```
 
-## Discuss analysis results
+## Discuss computation results
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
 - {{< iconify game-icons team-idea >}} **Discuss in your teams:**
-    - What insights do these metrics provide about document readability?
-    - How could prosegrammers use these tools in real projects?
-    - What other document analysis features would be useful?
+    - What makes the line counting problem computable?
+    - How does universal computation relate to general-purpose computers?
+    - What are the theoretical implications of programs executing programs?
 
 :::
 
 ## Essential tools
 
-- Text editor like VS Code or Vim for writing
-- Version control like Git for tracking document changes  
-- Documentation generator like Quarto or Sphinx
-- Static site generator like Hugo or Jekyll
+- Terminal window for command-line operations
+- Git and GitHub for version control and collaboration
+- VS Code for writing and testing Python code
+- UV for Python package and dependency management
+- Quarto for creating interactive documents with code
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid microscope >}} How do we *characterize* effective document
-tools? *...* How do we *compare* their features for different projects? *...*
-How do we *integrate* them into efficient workflows? *...*
+{{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts
+in code? *...* How do we *verify* computational results? *...* How do we
+*document* our proofs effectively? *...*
 
 :::
 
-## Real-world engineering challenges
+## Real-world computational challenges
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
-- {{< iconify fa6-solid gear >}} **Characterize documents and their creation process?**
-  - How are documents currently written and maintained?
-  - What tools and workflows are being used?
-  - What are the pain points in the current process?
-- {{< iconify fa6-solid gear >}} **Compare and improve document workflows?**
-  - What metrics matter for document quality and efficiency?
-  - How to measure the effectiveness of documentation?
-  - What tools will improve the writing and publishing process?
-  - How to optimize workflows to reduce manual effort?
+- {{< iconify fa6-solid gear >}} **Characterize computational problems?**
+  - What makes a problem computable or non-computable?
+  - How do we measure algorithmic complexity?
+  - What are the fundamental limits of computation?
+- {{< iconify fa6-solid gear >}} **Compare and analyze algorithms?**
+  - Which approach is more efficient for large inputs?
+  - How do we prove correctness of our implementations?
+  - What tools help us understand computational behavior?
+  - How do we verify theoretical results experimentally?
 
 :::
 
-## Why is documentation challenging?
+## Why is theory of computation challenging?
 
 ::: {.fragment}
 
-- Different audiences need different formats
-- Documents must stay synchronized with code
-- Collaboration on documents is often difficult  
-- Maintaining consistency across large projects
-- Balancing automation with human creativity
-- Ensuring accessibility and usability
+- Abstract concepts require concrete implementations
+- Proofs must be both rigorous and programmable
+- Complexity analysis involves both theory and experimentation
+- Undecidability results challenge intuition
+- Connecting mathematical theory to practical programming
+- Understanding fundamental computational limits
 
 :::
 
-## Document engineering environment
+## Proofgrammer development environment
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
 
-- Text editor with syntax highlighting and extensions
-- Version control system (e.g., Git with GitHub)
-- Document format (e.g., Markdown, reStructuredText, LaTeX)
-- Static site generator (e.g., Quarto, Hugo, Jekyll)
-- Automation tools (e.g., GitHub Actions, pre-commit hooks)
-- Collaboration platforms and review workflows
-- Deployment targets (e.g., GitHub Pages, Netlify)
-- Package managers for dependencies
+- Terminal with command-line access for tool execution
+- Version control system (Git with GitHub)
+- Python development environment (UV + Python 3.12+)
+- Code editor with syntax highlighting (VS Code + extensions)
+- Documentation system (Quarto for interactive code/text)
+- AI coding assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
+- Testing and verification tools for computational proofs
+- Mathematical notation support for theoretical concepts
 
 :::
 
-## Learn more about document engineering
+## Learn more about theory of computation
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-{{< iconify fa6-solid book-open >}} Explore the [Quarto documentation](https://quarto.org/docs/) and [Python documentation](https://docs.python.org/)
+{{< iconify fa6-solid book-open >}} Explore the ["What Can be Computed" textbook](https://whatcanbecomputed.com/) and [Python documentation](https://docs.python.org/)
 
 :::
 
 ::: {.column width="50%"}
 
-{{< iconify fa6-brands github >}} Review exemplary projects like [Django docs](https://github.com/django/django) and [FastAPI docs](https://github.com/tiangolo/fastapi)
+{{< iconify fa6-brands github >}} Review computational examples like [WCBC code](https://github.com/johnmaccormick/wcbc-programs) and [theory implementations](https://github.com/topics/theory-of-computation)
 
 :::
 
@@ -284,63 +307,63 @@ How do we *integrate* them into efficient workflows? *...*
 
 ::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.9em;"}
 
-- Document engineering requires both technical and writing skills
+- Theory of computation requires both mathematical and programming skills
 - Key areas of focus:
-  - Python programming and text processing
-  - Markdown and markup languages  
-  - Version control for documents
-  - Automation and workflow optimization
-- Analysis of document quality and user experience
+  - Python programming for theoretical concepts
+  - Automata theory and formal languages  
+  - Computational complexity and analysis
+  - Decidability and undecidability proofs
+- Experimental verification of theoretical results
 
 :::
 
-## Document engineering with AI
+## Theory of computation with AI
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
 
-- AI tools like GitHub Copilot, Google Gemini CLI, or Claude generate content:
-  - Is the generated text accurate and well-written?
-  - Can the generated content be improved and personalized?
-  - Is the generated text clear, accessible, and appropriate?
-  - Can you integrate AI-generated content into your workflow?
-  - Can you maintain quality standards while using AI assistance?
+- AI tools like GitHub Copilot, Google Gemini CLI, or OpenCode assist with code:
+  - Is the generated code theoretically correct and well-implemented?
+  - Can the generated code help verify mathematical proofs?
+  - Does the generated code follow computational complexity best practices?
+  - Can you integrate AI-generated code into your proof workflows?
+  - Can you maintain theoretical rigor while using AI assistance?
 
 :::
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.1em; font-size: 0.8em;"}
 
-{{< iconify fa6-solid lightbulb >}} Prosegrammers who use AI writing and coding
-tools are responsible for ensuring quality, accuracy, and ethical standards!
+{{< iconify fa6-solid lightbulb >}} Proofgrammers who use AI coding tools are
+responsible for ensuring correctness, theoretical accuracy, and ethical use!
 
 :::
 
 ## Development environment setup
 
-- *Installing* essential tools for prosegrammers
-- *Configuring* development environment for document work
+- *Installing* essential tools for proofgrammers
+- *Configuring* development environment for theoretical computation
 
-## Essential tools for prosegrammers
+## Essential tools for proofgrammers
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
 ```{.text  code-line-numbers="false"}
-Tools for Document Engineering
-Terminal: Command-line interface for running tools and scripts
-Git: Version control for tracking document changes
-GitHub: Cloud platform for collaboration and hosting
-VS Code: Text editor with extensions for writing and coding
+Tools for Theory of Computation
+Terminal: Command-line interface for running computational tools
+Git: Version control for tracking code and proof development
+GitHub: Cloud platform for collaboration and project hosting
+VS Code: Code editor with extensions for Python and theory work
 ```
 
 :::
 
 ::: {.fragment .fade-up style="font-size: 0.9em;"}
 
-- **Terminal**: Essential for running command-line tools, executing scripts,
-and automating document workflows. Available on all operating systems (Windows
-Terminal, macOS Terminal, or Linux terminal emulators).
+- **Terminal**: Essential for running computational tools, executing Python
+scripts, and automating proof verification. Available on all operating systems
+(Windows Terminal, macOS Terminal, or Linux terminal emulators).
 - **Git and GitHub**: Industry-standard version control and collaboration
-platform for tracking changes in documents and code, enabling team-based
-writing and review workflows.
+platform for tracking changes in code implementations of theoretical concepts
+and enabling team-based proof development.
 - **Testing**: Run `git --version` and create a test repository on GitHub
 
 :::
@@ -357,14 +380,14 @@ writing and review workflows.
   - Use `uv python install 3.12` to install Python
   - Create virtual environments with `uv venv`
   - Install packages with `uv add package-name`
-- {{< iconify fa6-solid lightbulb >}} **Why UV for prosegrammers?** Fast, reliable dependency management and virtual environment handling!
+- {{< iconify fa6-solid lightbulb >}} **Why UV for proofgrammers?** Fast, reliable dependency management for computational theory projects!
 
 :::
 
-## Setting up VS Code for documents
+## Setting up VS Code for computation
 
 ```python
-# Example VS Code extensions for prosegrammers
+# Example VS Code extensions for proofgrammers
 extensions = [
     "ms-python.python",           # Python development
     "quarto.quarto",             # Quarto documents
@@ -377,28 +400,28 @@ extensions = [
 ::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
 - Install VS Code from [code.visualstudio.com](https://code.visualstudio.com/)
-- Use built-in extension marketplace to install prosegrammer tools
-- **Testing**: Create a `.qmd` file and verify syntax highlighting works
+- Use built-in extension marketplace to install proofgrammer tools
+- **Testing**: Create a `.py` file and verify syntax highlighting works
 
 :::
 
-## Installing Quarto for documents
+## Installing Quarto for computation
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
 - {{< iconify fa6-solid gear >}} **Quarto: Scientific and technical publishing**
   - Download from [quarto.org](https://quarto.org/docs/get-started/)
   - Cross-platform installer available for Windows, macOS, Linux
-  - Combines code, text, and visualizations in documents
+  - Combines code, text, and mathematical notation in documents
 - {{< iconify fa6-solid gear >}} **VS Code Quarto extension**
   - Install the official Quarto extension in VS Code
   - Enables live preview and code execution in `.qmd` files
   - Provides syntax highlighting and auto-completion
-- {{< iconify fa6-solid lightbulb >}} **Why Quarto for prosegrammers?** Create reproducible, interactive documents that blend prose and programming!
+- {{< iconify fa6-solid lightbulb >}} **Why Quarto for proofgrammers?** Create reproducible documents that blend mathematical proofs with Python implementations!
 
 :::
 
-## Node.js tools for prosegrammers
+## Node.js tools for proofgrammers
 
 ```bash
 # Install Node.js and npm from nodejs.org
@@ -409,7 +432,7 @@ npx opencode --version                   # OpenCode AI assistant
 
 ::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
-- **Node.js**: JavaScript runtime enabling web-based documentation tools
+- **Node.js**: JavaScript runtime enabling AI-powered coding assistants
 - **NPX**: Run packages without installing globally, keeps system clean
 - **Testing**: Run `node --version` and `npm --version` to verify installation
 
@@ -427,11 +450,11 @@ npx opencode --version                   # OpenCode AI assistant
   - AI-powered code completion and generation
   - Free for verified students and educators
   - Integrates with VS Code and other editors
-- {{< iconify fa6-solid lightbulb >}} **Why GitHub tools for prosegrammers?** Essential for collaborative document development and AI-assisted writing!
+- {{< iconify fa6-solid lightbulb >}} **Why GitHub tools for proofgrammers?** Essential for collaborative proof development and AI-assisted coding!
 
 :::
 
-## Testing your prosegrammer setup
+## Testing your proofgrammer setup
 
 ```bash
 # Essential verification commands
@@ -444,62 +467,62 @@ uv --version                    # Check UV package manager
 
 ::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
-- **Test each tool individually** before starting projects
-- **Create a test document** with code and text to verify integration
+- **Test each tool individually** before starting computational projects
+- **Create a test document** with code and mathematical notation to verify integration
 - **Consult documentation** links when troubleshooting: [UV docs](https://docs.astral.sh/uv/), [Quarto docs](https://quarto.org/docs/), [VS Code docs](https://code.visualstudio.com/docs)
 
 :::
 
-## Prosegrammer tools and workflows
+## Proofgrammer tools and workflows
 
 ::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
 
-- **Document Engineering Projects**
+- **Theory of Computation Projects**
   - Latest version of Python via UV package manager
   - Use UV to manage virtual environments and dependencies
-  - Use Git with instructor-provided document repositories
+  - Use Git with instructor-provided computational repositories
   - Create, edit, and preview documents with Quarto and VS Code
 
 :::
 
 ::: {.fragment .fade style="margin-top: -0.45em; font-size: 0.875em;"}
 
-- **Collaborative Document Projects**
+- **Collaborative Proof Projects**
   - Use the same tools as in individual projects
-  - Use Git and GitHub flow for collaborative writing workflows
-  - Use Quarto to render previews of shared documentation
-  - Use VS Code extensions to run and test code segments in documents
+  - Use Git and GitHub flow for collaborative proof development workflows
+  - Use Quarto to render previews of mathematical and computational content
+  - Use VS Code extensions to run and test theoretical implementations
 
 :::
 
-## Setup requirements for prosegrammers
+## Setup requirements for proofgrammers
 
-::: {.fragment .callout-note icon=true title="Tips for effective document engineering setup"}
+::: {.fragment .callout-note icon=true title="Tips for effective computational theory setup"}
 
 - Devote time outside class to installing and configuring tools
 - Confirm that all tools work during the first lab session
 - Create and render test documents with the provided examples
-- Complete the first document engineering project on time
-- Contribute to collaborative documentation projects
-- Prepare for technical skill demonstrations
+- Complete the first theory of computation project on time
+- Contribute to collaborative proof development projects
+- Prepare for computational skill demonstrations
 
-{{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into document engineering!**
+{{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
 
 :::
 
-## Goals of document engineering
+## Goals of theory of computation
 
 ::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
 
-- **Document Creation**:
-  - Design and implement document generation workflows
-  - Test all aspects of documents to ensure quality and accuracy
-  - Create frameworks for automated document production
-- **Document Analysis**:
-  - Design experiments to answer questions about document effectiveness
-  - Collect and analyze data about document usage and quality
-  - Visualize insights to improve documentation strategies
-- **Communicate** results and best practices for document engineering
-- **Check syllabus for details about the Document Engineering course!**
+- **Computational Implementation**:
+  - Design and implement theoretical concepts as Python programs
+  - Test all aspects of implementations to ensure correctness
+  - Create frameworks for automated proof verification
+- **Theoretical Analysis**:
+  - Design experiments to answer questions about computational complexity
+  - Collect and analyze data about algorithm performance
+  - Visualize insights to understand computational behavior
+- **Communicate** results and theoretical insights through code and documentation
+- **Check syllabus for details about the Theory of Computation course!**
 
 :::
