@@ -72,9 +72,7 @@ format:
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid microscope >}} How do we *prove* computational limits
-using code? *...* How do we *implement* theoretical machines? *...* How do we
-*verify* complexity results? *...*
+{{< iconify fa6-solid microscope >}} How do we *prove* computational limits using code? How do we *implement* theoretical machines? How do we *verify* complexity results?
 
 :::
 
@@ -152,17 +150,13 @@ print("Try changing the code above to see the count change!")
 ```{python}
 def universal(prog_string: str, input_string: str) -> str:
     """Execute a program given as a string on the provided input."""
-    # Create a local namespace for the program execution
     local_namespace = {}
-    # Execute the program definition to make the function available
     exec(prog_string, {}, local_namespace)
-    # Extract the main function from the executed program
     main_function = None
     for name, obj in local_namespace.items():
         if callable(obj) and not name.startswith('_'):
             main_function = obj
             break
-    # Execute the program with the given input
     if main_function:
         return main_function(input_string)
     else:
@@ -172,10 +166,7 @@ def universal(prog_string: str, input_string: str) -> str:
 contains_gaga_program = '''
 def contains_gaga(input_str):
     """Check if the input string contains GAGA."""
-    if "GAGA" in input_str:
-        return "yes"
-    else:
-        return "no"
+    return "yes" if "GAGA" in input_str else "no"
 '''
 ```
 
@@ -212,8 +203,6 @@ print(f"Result: {result1}")
 print(f"\nTesting count_vowels with '{test_string2}':")
 result2 = universal(count_vowels_program, test_string2)
 print(f"Result: {result2}")
-
-print(f"\nThis demonstrates universal computation - one program simulating others!")
 ```
 
 ## Discuss computation results
@@ -237,42 +226,38 @@ print(f"\nThis demonstrates universal computation - one program simulating other
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts
-in code? *...* How do we *verify* computational results? *...* How do we
-*document* our proofs effectively? *...*
+{{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts in code? How do we *verify* computational results? How do we *document* our proofs effectively?
 
 :::
 
-## Real-world computational challenges
+## Computational challenges
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
-- {{< iconify fa6-solid gear >}} **Characterize computational problems?**
+- {{< iconify fa6-solid gear >}} **Characterize computational problems**
   - What makes a problem computable or non-computable?
   - How do we measure algorithmic complexity?
   - What are the fundamental limits of computation?
-- {{< iconify fa6-solid gear >}} **Compare and analyze algorithms?**
+- {{< iconify fa6-solid gear >}} **Compare and analyze algorithms**
   - Which approach is more efficient for large inputs?
   - How do we prove correctness of our implementations?
   - What tools help us understand computational behavior?
-  - How do we verify theoretical results experimentally?
 
 :::
 
-## Why is theory of computation challenging?
+## Theory of computation challenges
 
 ::: {.fragment}
 
 - Abstract concepts require concrete implementations
 - Proofs must be both rigorous and programmable
-- Complexity analysis involves both theory and experimentation
+- Complexity analysis involves theory and experimentation
 - Undecidability results challenge intuition
 - Connecting mathematical theory to practical programming
-- Understanding fundamental computational limits
 
 :::
 
-## Proofgrammer development environment
+## Development environment
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
 
@@ -282,12 +267,10 @@ in code? *...* How do we *verify* computational results? *...* How do we
 - Code editor with syntax highlighting (VS Code + extensions)
 - Documentation system (Quarto for interactive code/text)
 - AI coding assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
-- Testing and verification tools for computational proofs
-- Mathematical notation support for theoretical concepts
 
 :::
 
-## Learn more about theory of computation
+## Learn about theory of computation
 
 :::: {.columns}
 
@@ -307,17 +290,15 @@ in code? *...* How do we *verify* computational results? *...* How do we
 
 ::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.9em;"}
 
-- Theory of computation requires both mathematical and programming skills
 - Key areas of focus:
   - Python programming for theoretical concepts
   - Automata theory and formal languages  
   - Computational complexity and analysis
   - Decidability and undecidability proofs
-- Experimental verification of theoretical results
 
 :::
 
-## Theory of computation with AI
+## AI-assisted theory work
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
 
@@ -326,7 +307,6 @@ in code? *...* How do we *verify* computational results? *...* How do we
   - Can the generated code help verify mathematical proofs?
   - Does the generated code follow computational complexity best practices?
   - Can you integrate AI-generated code into your proof workflows?
-  - Can you maintain theoretical rigor while using AI assistance?
 
 :::
 
@@ -384,16 +364,15 @@ and enabling team-based proof development.
 
 :::
 
-## Setting up VS Code for computation
+## Setting up VS Code
 
 ```python
-# Example VS Code extensions for proofgrammers
+# Essential VS Code extensions for proofgrammers
 extensions = [
     "ms-python.python",           # Python development
     "quarto.quarto",             # Quarto documents
     "yzhang.markdown-all-in-one", # Markdown editing
     "ms-vscode.vscode-json",     # JSON configuration
-    "github.vscode-github-actions", # GitHub workflow editing
 ]
 ```
 
@@ -405,7 +384,7 @@ extensions = [
 
 :::
 
-## Installing Quarto for computation
+## Installing Quarto
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
@@ -417,11 +396,11 @@ extensions = [
   - Install the official Quarto extension in VS Code
   - Enables live preview and code execution in `.qmd` files
   - Provides syntax highlighting and auto-completion
-- {{< iconify fa6-solid lightbulb >}} **Why Quarto for proofgrammers?** Create reproducible documents that blend mathematical proofs with Python implementations!
+- {{< iconify fa6-solid lightbulb >}} **Why Quarto for proofgrammers?** Create reproducible documents with mathematical proofs and Python implementations!
 
 :::
 
-## Node.js tools for proofgrammers
+## Node.js tools
 
 ```bash
 # Install Node.js and npm from nodejs.org
@@ -438,7 +417,7 @@ npx opencode --version                   # OpenCode AI assistant
 
 :::
 
-## GitHub Student Benefits and Copilot
+## GitHub Student Benefits
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
@@ -454,7 +433,7 @@ npx opencode --version                   # OpenCode AI assistant
 
 :::
 
-## Testing your proofgrammer setup
+## Testing your setup
 
 ```bash
 # Essential verification commands
@@ -469,11 +448,11 @@ uv --version                    # Check UV package manager
 
 - **Test each tool individually** before starting computational projects
 - **Create a test document** with code and mathematical notation to verify integration
-- **Consult documentation** links when troubleshooting: [UV docs](https://docs.astral.sh/uv/), [Quarto docs](https://quarto.org/docs/), [VS Code docs](https://code.visualstudio.com/docs)
+- **Consult documentation** links when troubleshooting
 
 :::
 
-## Proofgrammer tools and workflows
+## Tools and workflows
 
 ::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
 
@@ -495,7 +474,7 @@ uv --version                    # Check UV package manager
 
 :::
 
-## Setup requirements for proofgrammers
+## Setup requirements
 
 ::: {.fragment .callout-note icon=true title="Tips for effective computational theory setup"}
 
@@ -504,7 +483,6 @@ uv --version                    # Check UV package manager
 - Create and render test documents with the provided examples
 - Complete the first theory of computation project on time
 - Contribute to collaborative proof development projects
-- Prepare for computational skill demonstrations
 
 {{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
 
@@ -523,6 +501,5 @@ uv --version                    # Check UV package manager
   - Collect and analyze data about algorithm performance
   - Visualize insights to understand computational behavior
 - **Communicate** results and theoretical insights through code and documentation
-- **Check syllabus for details about the Theory of Computation course!**
 
 :::
