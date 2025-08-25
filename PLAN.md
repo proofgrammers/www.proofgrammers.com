@@ -130,3 +130,53 @@ programs as data, which is essential for understanding undecidability proofs
 modify, making abstract theoretical concepts concrete and accessible
 - This concept bridges the gap between theoretical understanding and practical
 programming skills that proofgrammers need to develop
+
+### Week One Slides for Theory of Computation
+
+**Slide Content Transformation**:
+
+- All document engineering content replaced with theory of computation concepts
+- YAML header updated with "Exploring theory of computation with Python"
+description and "Proofgrammers" footer
+- Introduction slides now focus on what theory of computation is and why it's
+important for understanding computational limits
+- Proofgrammer concept clearly defined as combining mathematical proofs with
+programming implementations
+
+**Python Code Examples from Index.qmd**:
+
+- **Computable problem**: Line counting demonstrates decidable, tractable
+computation with clear algorithmic solution
+- **Universal computation**: Based on actual `universal.py` code from "What Can
+be Computed" textbook, showing how one program can execute another
+- Interactive `pyodide` blocks allow students to modify and test code examples
+in real-time
+- All examples directly support course objectives of expressing theoretical
+concepts as executable Python programs
+
+**Tool Installation Instructions**:
+
+- Cross-platform installation guidance for Terminal, Git, GitHub, VS Code, UV,
+Python 3.12+, Quarto, Node.js, and AI tools
+- Verification commands provided for each tool (`--version` flags) to confirm
+successful setup
+- Emphasis on UV package manager following course preference for modern Python
+dependency management
+- GitHub Student Developer Pack and Copilot Pro registration instructions
+included
+
+**AI Responsibility Content**:
+
+- Clear guidelines about responsible use of AI coding assistants (GitHub
+Copilot, Google Gemini CLI, OpenCode)
+- Emphasis that proofgrammers remain responsible for ensuring theoretical
+correctness and accuracy
+- Integration guidance for AI tools within computational theory workflow
+- Alignment with academic integrity and ethical AI use principles
+
+**Slides Verification**:
+
+- All slides render correctly in Quarto with live-revealjs format
+- Python code blocks execute properly and display expected output
+- Fragment animations and boxed content display appropriately
+- Slide titles fit presentation standards and content flows logically
