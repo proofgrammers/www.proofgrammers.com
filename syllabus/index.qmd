@@ -103,36 +103,42 @@ and to analyze and solve problems.
 
 Computer Science 204 is a course taken by all Software Engineering majors and
 often taken by many students who major or minor in Computer Science, Data
-Science, or Informatics. Graduates with the Software Engineering major --- who
-all take the Computer Science 204 course --- must demonstrate their attainment
-of these learning objectives:
+Science, or Informatics. Graduates with the Computer Science major --- who all
+take the Computer Science 204 course --- must demonstrate their attainment of
+these learning objectives:
 
-- **SE-1**: While working in a team, can effectively design, implement,
-evaluate, improve, and document a solution to a problem delivered as a
-maintainable software system.
-- **SE-2**: Demonstrates competency in the theories, models, and practices of
-project domains that require the engineering of software.
-- **SE-3**: Can effectively manage and predict the cost, scope, and deadline of
-a software engineering project.
-- **SE-4**: Uses effective oral and written communication methods to explain
-both the technical and product-use details of a software artifact.
+- **CS-1**: Demonstrate and be able to communicate the knowledge of data types,
+algorithms, and mathematical principles behind discrete objects.
+- **CS-2**: Use scientific and theoretical methods to design, implement,
+evaluate, deploy, improve, maintain, and document software and hardware systems.
+- **CS-3**: Apply and articulate key concepts from a specialization area where
+the interconnection between software and hardware is important and evident.
+- **CS-4**: Able to communicate technical details of the produced software and
+hardware artifacts both in writing and orally.
+
+All five of the Computer Science major's learning objectives support the **QR**
+and **SP** distribution requirements and the College's learning objectives.
 
 The specific learning objectives for Computer Science 204 are as follows:
 
-- **CS-204-1**: Describe and explain processes such as software installation or
-design for a variety of technical and non-technical audiences ranging from
-inexperienced to expert.
-- **CS-204-2**: Use professional-grade integrated development environments (IDEs),
-command-line tools, and version control systems to compose, edit, and deploy
-well-structured, web-ready documents and industry-standard documentation tools.
-- **CS-204-3**: Build automated publishing pipelines to format, check, and ensure both the
-uniformity and quality of digital documents.
-- **CS-204-4**: Identify and apply appropriate conventions of a variety of technical
-communities, tools, and computer languages to produce industry-consistent
-diagrams, summaries, and descriptions of technical topics or processes.
+- **CS-204-1**: Use both intuitive analysis and theoretical proof techniques to
+correctly distinguish between problems that are tractable, intractable, and
+uncomputable.
+- **CS-204-2**: Correctly use one or more variants of the Turing machine (TM)
+abstraction to both describe and analyze the solution to a computational
+problem.
+- **CS-204-3**: Correctly use one or more variants of the finite statement
+machine (FSM) abstraction to describe and analyze the solution to a
+computational problem.
+- **CS-204-4**: Use a formal proof technique to correctly classify a problem
+according to whether or not it is in the P, NP, NP-Hard, and/or NP-Complete
+complexity class(es).
+- **CS-204-5**: Apply insights from theoretical proofs concerning the limits of
+either program feasibility or complexity to the implementation of both correct
+and efficient real-world Python programs.
 
 The learning objectives for Computer Science 204 enable the attainment of both
-the Software Engineering program learning objectives that in turn support the
+the Computer Science program learning objectives that in turn support the
 attainment of the College's learning objectives. Throughout this course, the
 instructor will reference these learning objectives, connect them to the course
 activities, and invite students to reflect on their attainment of them. In
