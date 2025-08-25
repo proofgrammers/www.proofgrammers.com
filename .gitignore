@@ -142,3 +142,6 @@ _optimize
 ### Python Tools ###
 .mutmut-cache
 /.mutmut-cache/
+
+### Book Reference ###
+What-Can-Be-Computed.pdf
