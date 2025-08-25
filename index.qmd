@@ -6,20 +6,20 @@ toc: false
 
 ![](images/Proofgrammers-Logo.svg){fig-align="center" width="125%"}
 
-## Become a Prosegrammer
+## Become a Proofgrammer
 
-Welcome to the world of **Prosegrammers** --- where prose meets programming!
-The term "Prosegrammer" is a delightful combination of "prose" (i.e., the
-written word) and "programmer" (i.e., the people who write software). As a
-prosegrammer, you'll master the art of using Python to create, manipulate, and
-analyze documents while also learning to craft clear, compelling documentation
-for your software projects. This course focuses on document engineering, a
-field that bridges the gap between technical writing and software development.
-Whether you're generating reports from data, building interactive documentation
-systems, or creating tools that transform text, prosegrammers use code to make
-written communication more powerful and accessible. Join us as we explore how
-to be both eloquent writers and skilled programmers in the fascinating world of
-document engineering!
+Welcome to the world of **Prosegrammers** --- where proofs meet Python
+programming! The term "Prosegrammer" is a delightful combination of "prose"
+(i.e., the written word) and "programmer" (i.e., the people who write
+software). As a prosegrammer, you'll master the art of using Python to create,
+manipulate, and analyze documents while also learning to craft clear,
+compelling documentation for your software projects. This course focuses on
+document engineering, a field that bridges the gap between technical writing
+and software development. Whether you're generating reports from data, building
+interactive documentation systems, or creating tools that transform text,
+prosegrammers use code to make written communication more powerful and
+accessible. Join us as we explore how to be both eloquent writers and skilled
+programmers in the fascinating world of document engineering!
 
 ## Course Overview
 
