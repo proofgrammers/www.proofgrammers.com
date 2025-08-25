@@ -101,7 +101,7 @@ experiences of others.
 - **AC-4**: Apply their knowledge and learning to engage in informed debate,
 and to analyze and solve problems.
 
-Computer Science 204 is a course taken by all Software Engineering majors and
+Computer Science 204 is a course taken by all Computer Science majors and
 often taken by many students who major or minor in Computer Science, Data
 Science, or Informatics. Graduates with the Computer Science major --- who all
 take the Computer Science 204 course --- must demonstrate their attainment of
@@ -210,52 +210,53 @@ in-person knowledge check.
 classroom session, these discussion workshops invite students to collaboratively
 pose and answer questions in the field of theoretical machines. During a
 charette session, students will first pose questions about the technical and
-mathematical course content that was presented during the prior laboratory
-sessions. After posing a series of new questions and revising past questions
-that have not yet been answered, students will work in teams to answers chosen
-questions. Once the answer for a question is approved by the class, the team
-members who correctly answered the question will record their contact
-information and a brief answer in the charette tracking system.
+mathematical course less-well-understood content that was presented during the
+prior laboratory sessions. After posing a series of new questions and revising
+past questions that have not yet been answered, students will work in teams to
+answers chosen questions. Once the class members approve the answer for a
+question, the team members who correctly answered the question will record their
+contact information and a brief answer in the charette tracking system.
 
-- **Executable Examinations**: The final examination is an online,
-executable, cumulative assessment covering all of the material during all of the
-course sessions, as outlined on the [course schedule](../schedule/index.qmd).
-Unless prior arrangements are made with the instructor, all students should use
-their computer to take the final examination on the scheduled date and to
-complete it in the stated location while taking no more than the required amount
-of time. The cumulative final is an executable examination that a student will
-complete through the use of GitHub, a text editor like VS Code, and the Python
-programming tools installed on their laptops. During the completion of the final
-examination, students may use external sources, including artificial
-intelligence coding assistants, provided that they cite these sources and
-explain how they used them to complete the final examination.
+- **Executable Examinations**: The final examination is an online, executable,
+cumulative assessment covering all of the material during all of the course
+sessions, as outlined on the [course schedule](../schedule/index.qmd). Unless
+prior arrangements are made with the instructor, all students should use their
+computer to take the final examination on the scheduled date and to complete it
+in the stated location while taking no more than the required amount of time.
+Each cumulative executable examination will complete by a student through the
+use of GitHub, a text editor like VS Code, and the Python programming tools
+installed on their laptops. During the completion of the final examination,
+students may use external sources, including artificial intelligence coding
+assistants, provided that they cite these sources and explain how they used them
+to complete the final examination.
 
-
-- **theoretical machines Presentations**: Completed by assigned teams of
-students during a Wednesday classroom session, these in-person presentations are
-either theoretical machines Concept Overviews (DECO) or theoretical machines
-Project Critiques (DEPC). During a DECO presentation, a team of students will
-teach the entire class on a specific theoretical machines concept like Diataxis
-or README-driven development. During a DEPC presentation, a team of students
-will use all prior course material to critique the documentation of an assigned
-open-source software project. For each team assigned to give either a DECO or a
-DEPC presentation, there will be another assigned team of students that is
+- **Proofgrammer Presentations**: Completed by assigned teams of students during
+a Thursday laboratory session, these in-person presentations are on technical
+topics assigned by the course instructor. Students will use all the tools setup
+on their laptops to implement a Python program that solves the stated problem
+and/or completes the required proof, ensuring that it is built as a stand-alone
+script with its dependencies and virtual environments managed by
+[`uv`](https://docs.astral.sh/uv/). Along with the three proofgrammer
+presentations given per module, assigned teams of students will also complete
+two retrospective presentations that review the content covered during the first
+two modules of the course. For each team assigned to give a proofgrammer
+presentation, there will be another assigned team of students that is
 responsible for posing questions to the presenting team and evaluating the
-presentation. For both DECO and DEPC presentations, both the presentation and
+presentation. For all proofgrammer presentations, both the presentation and
 evaluation teams will receive a grade for their submitted work. Although both
 the presentation and examination teams may use external sources, including
 artificial coding assistants, during the completion of their materials, they
 must cite their sources. Except for the slides published on the course website,
 the presenters may not use any external sources during either the presentation
-or the evaluation phases. All theoretical machines presentations must be
-completed through the use of [Quarto](https://quarto.org/),
+or the evaluation phases. All proofgrammer presentations must be completed
+through the use of [Quarto](https://quarto.org/),
 [RevealJS](https://revealjs.com/),
 [Markdown](https://www.markdownguide.org/), [Git](https://git-scm.com/),
 [GitHub](https://github.com/), and the [GitHub Flow
 model](https://docs.github.com/en/get-started/quickstart/github-flow). All work
 for a presentation must be available, in final form, as a pull request in the
 [GitHub repository for the course web
-site](https://github.com/prosegrammers/www.prosegrammers.com), no later than
+site](https://github.com/proofgrammers/www.proofgrammers.com), no later than
 11:59 PM on the day before the team is scheduled to present. Each student member
 of a presentation team must use Git and their own GitHub account to commit their
 work through to the [pull
