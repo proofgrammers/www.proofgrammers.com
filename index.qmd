@@ -4,7 +4,7 @@ layout: full
 toc: false
 ---
 
-![](images/Proofgrammers-Logo.svg){fig-align="center" width="125%"}
+![](images/Proofgrammers-Logo.png){fig-align="center" width="125%"}
 
 ## Become a Proofgrammer
 
