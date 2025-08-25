@@ -188,7 +188,7 @@ frequently observed, during either class or laboratory sessions, undertaking
 non-course-related activities like viewing email, browsing social media, or
 looking at any other content not about the theory of computation.
 
-- **Proofgrammers Skill-Checks**: Completed during a Tuesday laboratory session,
+- **Proofgrammer Skill-Checks**: Completed during a Tuesday laboratory session,
 these skill-checks are online, cumulative assessments covering all prior
 technical material from the prior course sessions, as outlined on the [course
 schedule](../schedule/index.qmd). Unless prior arrangements are made with the
@@ -202,7 +202,7 @@ skill-check, students may use external sources, including artificial
 intelligence coding assistants, provided that they cite these sources and
 explain how they used them to complete the skill-check.
 
-- **Proofgrammers Knowledge-Checks**: Completed individually during a Thursday
+- **Proofgrammer Knowledge-Checks**: Completed individually during a Thursday
 laboratory session, these knowledge-checks are in-person, cumulative assessments
 covering all prior material from the prior course sessions, as
 outlined on the [course schedule](../schedule/index.qmd). All students should
@@ -214,7 +214,7 @@ external sources (e.g., artificial intelligence assistants, online sources, or
 written notes) or devices (e.g., laptop, tablet, or mobile phone) during an
 in-person knowledge check.
 
-- **Proofgrammers Charettes**: Completed in the second half of a Thursday
+- **Proofgrammer Charettes**: Completed in the second half of a Thursday
 classroom session, these discussion workshops invite students to collaboratively
 pose and answer questions in the field of theoretical machines. During a
 charette session, students will first pose questions about the
@@ -281,26 +281,30 @@ collapse="false"}
 - **Class Participation**: One grade reported at the conclusion of each of the
 **three** course modules.
 
-- **Final Executable Examination**: Grade automatically reported at end
-of **one** examination period.
-
-- **theoretical machines Skill-Checks**: Grade automatically reported at end of
-a Friday classroom session. Since there are two skill-check assessments for each
-of the three course modules, a student will receive a total of **six**
+- **Proofgrammer Skill-Checks**: Grade automatically reported at end of a
+Tuesday laboratory session. Since there is one skill-check assessment for each
+of the three course modules, a student will receive a total of **three**
 assessment reports for their skill-checks.
 
-- **theoretical machines Knowledge-Checks**: Grade reported at conclusion of a
-course module. Since there is one in-person knowledge-check assessment for each of
-the three course modules, a student will receive a total of **three**
-assessments for their knowledge-checks.
+- **Proofgrammer Knowledge-Checks**: Grade reported at conclusion of a course
+module. Since there is one in-person knowledge-check assessment for each of the
+three course modules, a student will receive a total of **three** assessments
+for their knowledge-checks.
 
-- **theoretical machines Presentations**: There are two types of these
-team-based presentations: theoretical machines Concept Overviews (DECO) and
-theoretical machines Project Critiques (DEPC). A grade is reported one-week
-after the completion of the presentation for both the presenting team and the
-evaluation team. For their DECO and DEPC work, each student will receive
-**three** assessments for presentations and **three** assessments for their
-evaluations.
+- **Executable Examinations**: Grade automatically reported at end
+of each of the **three** course modules, with two grades being for the interim
+executable examination and one grade being for the final executable examination
+administered during the final examination period.
+
+- **Proofgrammer Presentations**: Students will work in teams for three weeks in
+a row to give presentations during a laboratory session. A grade is reported
+one-week after the completion of the presentation for both the presenting team
+and the evaluation team. For their proofgrammer presentation work in every
+module, each student will receive **three** assessments for presentations and
+**three** assessments for their evaluations, meaning that they receive **nine**
+assessments for these two categories of work. Students will additionally receive
+**two** assessments for their respective presentations and evaluations for their
+retrospective presentations.
 
 :::
 
@@ -366,8 +370,8 @@ evaluations.
 #### Important Dates
 
 - **Final Executable Examination**
-    - **Examination Code**: G
-    - **Date**: Wednesday, December 10, 2025
+    - **Examination Code**: C
+    - **Date**: Monday, December 8, 2025
     - **Time**: 9:00 AM -- 12:00 Noon
     - **Location**: Alden 109
 
