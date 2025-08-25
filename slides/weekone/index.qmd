@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Document Engineering"
+title: "Introduction to Theoretical Machines"
 description: "Exploring document engineering with Python"
 date: "2025-08-25"
 date-format: long
