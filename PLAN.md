@@ -95,16 +95,20 @@ focus on expressing theoretical concepts as executable Python code
 teaching students to "create, manipulate, and analyze proofs of theoretical
 concepts" using Python programming
 
-**Computable vs Non-Computable Examples**:
+**Computable vs Universal Computation Examples**:
 
 - **Computable example**: Line counting in source code demonstrates a decidable
 problem with a clear algorithmic solution, representing the class of problems
 that can always be solved computationally
-- **Non-computable example**: The Halting Problem illustration shows why certain
-fundamental questions cannot be answered by any algorithm, based on Alan
-Turing's foundational proof of undecidability through logical contradiction
-- These examples directly support the course objective of understanding "what
-can be computed in principle" from the AGENTS.md file
+- **Universal computation example**: The `universal.py`-inspired code demonstrates
+how one program can execute any other program, illustrating the foundational
+concept of universal computation from Alan Turing's work on universal Turing
+machines
+- The universal computation example is based on actual code from the "What Can be
+Computed" textbook, making it pedagogically sound and theoretically rigorous
+- This example shows how programs can be treated as data and executed by other
+programs, which is fundamental to understanding computational limits and
+possibilities
 
 **Course Focus Alignment**:
 
@@ -115,3 +119,14 @@ languages, computational complexity, and decidability
 (https://discord.gg/Mw9mybGK7u)
 - Educational tools mentioned (Jupyter Notebooks, Quarto, GitHub, AI assistants)
 remain relevant for implementing and documenting theoretical proofs in Python
+
+**Universal Computation Support**:
+
+- Universal computation is a cornerstone concept in theoretical computer science,
+directly related to the Church-Turing thesis and computational equivalence
+- The example demonstrates meta-computation where programs operate on other
+programs as data, which is essential for understanding undecidability proofs
+- The Python implementation shows executable code that students can run and
+modify, making abstract theoretical concepts concrete and accessible
+- This concept bridges the gap between theoretical understanding and practical
+programming skills that proofgrammers need to develop
