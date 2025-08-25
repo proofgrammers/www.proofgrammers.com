@@ -156,13 +156,13 @@ presents itself, the course instructor may, for instance, change the assigned
 percentages during the academic semester.
 
 
-| Category                                 | Percentage |
-|-------------------------------------------|------------|
-| Class Participation                       |    10%     |
-| Executable Examinations                   |    20%     |
+| Category                          | Percentage |
+|-----------------------------------|:----------:|
+| Class Participation               |    10%     |
 | Proofgrammer Skill-Checks         |    10%     |
 | Proofgrammer Knowledge-Checks     |    10%     |
 | Proofgrammer Charettes            |    10%     |
+| Executable Examinations           |    20%     |
 | Proofgrammer Presentations        |    40%     |
 
 
