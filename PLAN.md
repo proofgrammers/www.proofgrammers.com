@@ -180,3 +180,125 @@ correctness and accuracy
 - Python code blocks execute properly and display expected output
 - Fragment animations and boxed content display appropriately
 - Slide titles fit presentation standards and content flows logically
+
+## Analysis: Slide Layout Verification Problem
+
+### Current Approach Limitations
+
+**What I've Been Doing Wrong**:
+- **Text-based analysis only**: I've been examining slide content in `.qmd` files without actually seeing the rendered output
+- **No visual verification**: Made assumptions about layout based on text content rather than actual visual appearance
+- **Manual rendering insufficient**: Simply running `quarto render` and `quarto preview` doesn't give me visual feedback about layout issues
+- **No automated layout checking**: Relying on subjective assessment rather than measurable criteria
+
+**Why This Approach Fails**:
+- Slide layout issues only become apparent when viewing the actual rendered slides in a browser
+- Font sizes, spacing, content overflow, and text wrapping cannot be determined from source code alone
+- Different screen resolutions and browser settings affect slide presentation
+- Fragment animations and incremental reveals may cause unexpected layout problems
+
+### Better Tool-Based Strategies
+
+#### Strategy 1: Automated Screenshot Analysis
+**Tools Available**:
+- **Playwright**: Browser automation that can take screenshots and analyze DOM elements
+- **Chromium/Chrome Headless**: Can capture screenshots at specific resolutions
+- **Python image analysis**: Use libraries like PIL or OpenCV to analyze screenshot content
+
+**Implementation Approach**:
+```bash
+# Take screenshots of each slide at presentation resolution
+chromium-browser --headless --disable-gpu --window-size=1920,1080 \
+  --screenshot=slide-{n}.png "http://localhost:8081/slides/weekone/index.html#/{n}"
+```
+
+**Analysis Capabilities**:
+- Measure text overflow beyond slide boundaries
+- Check for appropriate white space distribution
+- Verify that titles fit on intended lines
+- Detect code blocks that extend beyond visible area
+- Analyze font size readability at presentation distance
+
+#### Strategy 2: MCP Server with Playwright
+**Advantages**:
+- Can interact with live slide presentation
+- Navigate through slides programmatically
+- Check responsive behavior at different screen sizes
+- Verify fragment animations don't cause layout issues
+- Extract computed CSS styles and DOM measurements
+
+**Implementation Plan**:
+- Use MCP Playwright server to automate browser interactions
+- Take screenshots of each slide in sequence
+- Measure element positions and sizes programmatically
+- Check for common layout issues (text overflow, poor spacing, etc.)
+
+#### Strategy 3: DOM Analysis with Browser DevTools
+**Approach**:
+- Use headless browser to load slides
+- Extract computed styles and element dimensions
+- Check for CSS layout issues (overflow, positioning problems)
+- Verify responsive design at presentation resolutions
+
+**Measurable Criteria**:
+- Slide content should not exceed 90% of viewport height
+- Titles should not wrap beyond 2 lines
+- Code blocks should not require horizontal scrolling
+- Minimum font sizes for readability (e.g., 24px minimum for body text)
+- Proper margin and padding ratios
+
+### Recommended Implementation Strategy
+
+#### Phase 1: Automated Screenshot Capture
+1. **Setup headless browser automation**:
+   - Use Chromium with standardized presentation resolution (1920x1080)
+   - Capture screenshots of each slide individually
+   - Store screenshots for manual review and automated analysis
+
+2. **Implement screenshot analysis**:
+   - Check for content that extends beyond slide boundaries
+   - Measure white space distribution
+   - Detect text that appears cut off or compressed
+
+#### Phase 2: Enhanced Browser Automation
+1. **Integrate Playwright or similar tool**:
+   - Navigate through slides programmatically
+   - Extract DOM measurements and CSS properties
+   - Check responsive behavior at different screen sizes
+
+2. **Define measurable layout criteria**:
+   - Maximum content height per slide
+   - Minimum font sizes for different content types
+   - Required margins and spacing ratios
+   - Title length and line break standards
+
+#### Phase 3: Continuous Layout Verification
+1. **Create automated slide layout testing pipeline**:
+   - Run layout checks after each content modification
+   - Generate reports highlighting layout issues
+   - Provide specific recommendations for fixes
+
+2. **Integration with development workflow**:
+   - Add layout verification to `quarto check` process
+   - Create pre-commit hooks for slide layout validation
+   - Generate layout quality reports
+
+### Immediate Next Steps
+
+1. **Install and configure Playwright or similar tool** for automated browser testing
+2. **Create screenshot capture automation** to visually inspect all slides
+3. **Develop layout analysis scripts** to identify common presentation issues
+4. **Establish measurable criteria** for slide layout quality
+5. **Test the approach** on current Week One slides to identify actual problems
+6. **Document the verification process** in AGENTS.md for future use
+
+### Success Metrics
+
+- All slides display properly at 1920x1080 presentation resolution
+- No content overflow beyond slide boundaries
+- Titles fit appropriately (1-2 lines maximum)
+- Code blocks remain fully visible without scrolling
+- Consistent spacing and typography throughout presentation
+- Fragment animations work correctly without layout disruption
+
+This tool-based approach will provide objective, measurable feedback about slide layout quality rather than relying on subjective text-based analysis.
