@@ -91,52 +91,69 @@ print(f"Number of lines in the sample code: {line_count}")
 print(f"This is a computable problem - we can always determine the line count!")
 ```
 
-Now let's explore the fascinating world of **non-computable** problems! The
-following example demonstrates the famous **Halting Problem**, which asks:
-"Given a program and an input, will the program halt or run forever?" This is
-one of the most important results in theoretical computer science because Alan
-Turing proved that no algorithm can solve this problem for all possible
-programs. While we can't actually solve the halting problem in general, we can
-create a Python function that illustrates why it's undecidable by showing the
-logical contradiction that arises when we try to solve it.
+Now let's explore the fascinating world of **universal computation**! The
+following example demonstrates one of the most profound concepts in theoretical
+computer science: a **universal program**. This Python function can execute any
+other Python program, showing how one program can simulate any computation.
+This concept is fundamental to understanding the limits and possibilities of
+computation, and it's directly related to Alan Turing's work on universal
+Turing machines. Universal computation is what makes general-purpose computers
+possible and is essential to proving many results about what can and cannot be
+computed.
 
 ```{python}
-from typing import Callable, Any
+def universal(prog_string: str, input_string: str) -> str:
+    """Execute a program given as a string on the provided input."""
+    # Create a local namespace for the program execution
+    local_namespace = {}
+    # Execute the program definition to make the function available
+    exec(prog_string, {}, local_namespace)
+    # Extract the main function from the executed program
+    main_function = None
+    for name, obj in local_namespace.items():
+        if callable(obj) and not name.startswith('_'):
+            main_function = obj
+            break
+    # Execute the program with the given input
+    if main_function:
+        return main_function(input_string)
+    else:
+        return "No function found"
 
-def halting_oracle_contradiction() -> str:
-    """Demonstrate why the Halting Problem is undecidable through contradiction."""
-    # we cannot actually implement a true halting oracle,
-    # but we can show the logical contradiction that would arise
-    def hypothetical_halts(program: Callable, input_data: Any) -> bool:
-        # this function cannot actually exist for all programs!
-        # if it did exist, we could create the following contradiction:
-        return True  # placeholder - this is impossible to implement correctly
-    
-    def problematic_program(x: Any) -> None:
-        """A program that creates a contradiction if halting_oracle exists."""
-        # if halting_oracle says this program halts on input x,
-        # then we make it loop forever (don't halt)
-        # if halting_oracle says this program doesn't halt on input x,
-        # then we make it halt immediately
-        if hypothetical_halts(problematic_program, x):
-            while True:  # loop forever - contradiction!
-                pass
-        else:
-            return  # halt immediately - contradiction!
-    
-    return """
-The Halting Problem is undecidable because:
-1. Assume we have a function that can determine if any program halts
-2. We can construct a program that does the opposite of what the oracle predicts
-3. This creates a logical contradiction - the oracle cannot exist!
-4. Therefore, the Halting Problem is non-computable.
-"""
+# Example program that checks if a string contains "GAGA"
+contains_gaga_program = '''
+def contains_gaga(input_str):
+    """Check if the input string contains GAGA."""
+    if "GAGA" in input_str:
+        return "yes"
+    else:
+        return "no"
+'''
 
-# demonstrate the theoretical concept
-explanation = halting_oracle_contradiction()
-print("Understanding Non-Computability:")
-print(explanation)
-print("This is why some problems cannot be solved by any algorithm!")
+# Example program that counts vowels in a string
+count_vowels_program = '''
+def count_vowels(input_str):
+    """Count the number of vowels in the input string."""
+    vowels = "aeiouAEIOU"
+    count = sum(1 for char in input_str if char in vowels)
+    return str(count)
+'''
+
+# Demonstrate universal computation
+test_string1 = "HELLO GAGA WORLD"
+test_string2 = "programming"
+
+print("Universal Computation in Action:")
+print("================================")
+print(f"Testing contains_gaga with '{test_string1}':")
+result1 = universal(contains_gaga_program, test_string1)
+print(f"Result: {result1}")
+
+print(f"\nTesting count_vowels with '{test_string2}':")
+result2 = universal(count_vowels_program, test_string2)
+print(f"Result: {result2}")
+
+print(f"\nThis demonstrates universal computation - one program simulating others!")
 ```
 
 ## Theory of Computation Resources
