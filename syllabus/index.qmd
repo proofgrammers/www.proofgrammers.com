@@ -101,10 +101,10 @@ experiences of others.
 - **AC-4**: Apply their knowledge and learning to engage in informed debate,
 and to analyze and solve problems.
 
-Computer Science 104 is a course taken by all Software Engineering majors and
+Computer Science 204 is a course taken by all Software Engineering majors and
 often taken by many students who major or minor in Computer Science, Data
 Science, or Informatics. Graduates with the Software Engineering major --- who
-all take the Computer Science 104 course --- must demonstrate their attainment
+all take the Computer Science 204 course --- must demonstrate their attainment
 of these learning objectives:
 
 - **SE-1**: While working in a team, can effectively design, implement,
@@ -117,21 +117,21 @@ a software engineering project.
 - **SE-4**: Uses effective oral and written communication methods to explain
 both the technical and product-use details of a software artifact.
 
-The specific learning objectives for Computer Science 104 are as follows:
+The specific learning objectives for Computer Science 204 are as follows:
 
-- **CS-104-1**: Describe and explain processes such as software installation or
+- **CS-204-1**: Describe and explain processes such as software installation or
 design for a variety of technical and non-technical audiences ranging from
 inexperienced to expert.
-- **CS-104-2**: Use professional-grade integrated development environments (IDEs),
+- **CS-204-2**: Use professional-grade integrated development environments (IDEs),
 command-line tools, and version control systems to compose, edit, and deploy
 well-structured, web-ready documents and industry-standard documentation tools.
-- **CS-104-3**: Build automated publishing pipelines to format, check, and ensure both the
+- **CS-204-3**: Build automated publishing pipelines to format, check, and ensure both the
 uniformity and quality of digital documents.
-- **CS-104-4**: Identify and apply appropriate conventions of a variety of technical
+- **CS-204-4**: Identify and apply appropriate conventions of a variety of technical
 communities, tools, and computer languages to produce industry-consistent
 diagrams, summaries, and descriptions of technical topics or processes.
 
-The learning objectives for Computer Science 104 enable the attainment of both
+The learning objectives for Computer Science 204 enable the attainment of both
 the Software Engineering program learning objectives that in turn support the
 attainment of the College's learning objectives. Throughout this course, the
 instructor will reference these learning objectives, connect them to the course
