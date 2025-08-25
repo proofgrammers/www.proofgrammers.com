@@ -26,6 +26,8 @@ possible, this example program should illustrate the concepts:
 the focus of a course on the theory of computation.
 - [ ] Give the correct link to the discord server, which is specified in
 the `_quarto.yml` file.
+- [ ] Make sure that all of your work is correct, ensuring that it has
+acceptable layout and formatting and that the quarto project runs correctly.
 
 ### Create Slides for Week One in `slides/weekone/index.qmd`
 
