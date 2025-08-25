@@ -159,11 +159,11 @@ percentages during the academic semester.
 | Category                                 | Percentage |
 |-------------------------------------------|------------|
 | Class Participation                       |    10%     |
-| Final Executable Examination              |    10%     |
-| Document Engineering Skill-Checks         |    10%     |
-| Document Engineering Knowledge-Checks     |    10%     |
-| Document Engineering Presentations        |    30%     |
-| Document Engineering Tool-Building Projects|    30%     |
+| Executable Examinations                   |    20%     |
+| Proofgrammer Skill-Checks         |    10%     |
+| Proofgrammer Knowledge-Checks     |    10%     |
+| Proofgrammer Charettes            |    10%     |
+| Proofgrammer Presentations        |    40%     |
 
 
 These assessment categories have the following definitions:
