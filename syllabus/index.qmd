@@ -217,13 +217,14 @@ in-person knowledge check.
 - **Proofgrammers Charettes**: Completed in the second half of a Thursday
 classroom session, these discussion workshops invite students to collaboratively
 pose and answer questions in the field of theoretical machines. During a
-charette session, students will first pose questions about the technical and
-mathematical course less-well-understood content that was presented during the
-prior laboratory sessions. After posing a series of new questions and revising
-past questions that have not yet been answered, students will work in teams to
-answers chosen questions. Once the class members approve the answer for a
-question, the team members who correctly answered the question will record their
-contact information and a brief answer in the charette tracking system.
+charette session, students will first pose questions about the
+less-well-understood technical and mathematical course content that was
+presented during the prior laboratory sessions. After posing a series of new
+questions and revising past questions that have not yet been answered, students
+will work in teams to answers chosen questions. Once the class members approve
+the answer for a question, the team members who correctly answered the question
+will record their contact information and a brief answer in the charette
+tracking system.
 
 - **Executable Examinations**: The final examination is an online, executable,
 cumulative assessment covering all of the material during all of the course
