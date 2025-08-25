@@ -1,0 +1,25 @@
+---
+title: Module One Retrospective
+description: "First Proofgrammer Jam"
+date: 2025-09-29
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Activities
+
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - Instructor-led deep-dive on software testing for Python programs
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - No material due since it is the last week of the module
+- {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
+  - Release the schedule for the two types of presentations in the next module:
+     - Document Engineering Concept Overviews (DECO)
+     - Document Engineering Project Critiques (DEPC)
+- {{< iconify fa6-solid gears size=18px >}} **Wednesday Laboratory**:
+  - Finish working on first document engineering tool-building project
+  - Students meet with the student technical leaders
+  - Students give final in-person demonstration to course instructor
+- {{< iconify fa6-solid gears size=18px >}} **Friday**:
+  - Submit completed first document engineering tool-building project 
