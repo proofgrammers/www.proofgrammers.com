@@ -302,3 +302,171 @@ chromium-browser --headless --disable-gpu --window-size=1920,1080 \
 - Fragment animations work correctly without layout disruption
 
 This tool-based approach will provide objective, measurable feedback about slide layout quality rather than relying on subjective text-based analysis.
+
+## Computational Theory Examples for Proofgrammers
+
+### Solvable Variant of the Halting Problem: Bounded Loop Halting
+
+The halting problem is algorithmically unsolvable in general, but we can create
+variants that **are** solvable by restricting the computational model.
+
+#### The "Bounded Loop Halting Problem"
+
+**Problem**: Given a Python program that contains only `for` loops with explicit
+numeric ranges (no `while` loops, no recursion, no user input), determine if it
+will halt.
+
+This is solvable because we can statically analyze the maximum number of iterations.
+
+```python
+import ast
+from typing import Union
+
+def analyze_bounded_halting(code: str) -> bool:
+    """
+    Determine if a Python program with only bounded for-loops will halt.
+    Returns True if the program will definitely halt, False if it contains
+    constructs that make halting undecidable.
+    """
+    try:
+        tree = ast.parse(code)
+        analyzer = BoundedHaltingAnalyzer()
+        analyzer.visit(tree)
+        return analyzer.will_halt
+    except SyntaxError:
+        return False
+
+class BoundedHaltingAnalyzer(ast.NodeVisitor):
+    """AST visitor that checks if a program has only bounded loops."""
+    
+    def __init__(self):
+        self.will_halt = True
+        self.has_while_loops = False
+        self.has_recursion = False
+        self.has_infinite_constructs = False
+    
+    def visit_While(self, node):
+        """While loops make halting undecidable in general."""
+        self.has_while_loops = True
+        self.will_halt = False
+        self.generic_visit(node)
+    
+    def visit_For(self, node):
+        """For loops are okay if they iterate over bounded ranges."""
+        if isinstance(node.iter, ast.Call):
+            if (isinstance(node.iter.func, ast.Name) and 
+                node.iter.func.id == 'range'):
+                # This is a range() call - bounded and will terminate
+                pass
+            else:
+                # Other function calls might not terminate
+                self.will_halt = False
+        elif isinstance(node.iter, (ast.List, ast.Tuple, ast.Set)):
+            # Iterating over literal collections - bounded
+            pass
+        else:
+            # Other iterables might be infinite
+            self.will_halt = False
+        
+        self.generic_visit(node)
+    
+    def visit_FunctionDef(self, node):
+        """Check for potential recursion."""
+        func_name = node.name
+        
+        class RecursionChecker(ast.NodeVisitor):
+            def __init__(self, func_name):
+                self.func_name = func_name
+                self.is_recursive = False
+            
+            def visit_Call(self, node):
+                if (isinstance(node.func, ast.Name) and 
+                    node.func.id == self.func_name):
+                    self.is_recursive = True
+                self.generic_visit(node)
+        
+        checker = RecursionChecker(func_name)
+        checker.visit(node)
+        
+        if checker.is_recursive:
+            self.has_recursion = True
+            self.will_halt = False
+        
+        self.generic_visit(node)
+
+# Test cases demonstrating the bounded halting problem solver
+
+def test_bounded_halting():
+    """Test the bounded halting problem solver with various programs."""
+    
+    # Program 1: Simple bounded loop - WILL HALT
+    program1 = """
+def count_to_ten():
+    for i in range(10):
+        print(i)
+    return "done"
+
+count_to_ten()
+"""
+    
+    # Program 2: Nested bounded loops - WILL HALT  
+    program2 = """
+def nested_loops():
+    for i in range(5):
+        for j in range(3):
+            print(f"{i}, {j}")
+
+nested_loops()
+"""
+    
+    # Program 3: While loop - UNDECIDABLE (returns False)
+    program3 = """
+def while_loop():
+    x = 10
+    while x > 0:
+        x -= 1
+    return x
+
+while_loop()
+"""
+    
+    # Program 4: Potential recursion - UNDECIDABLE (returns False)
+    program4 = """
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+
+factorial(5)
+"""
+    
+    # Program 5: List iteration - WILL HALT
+    program5 = """
+def iterate_list():
+    items = [1, 2, 3, 4, 5]
+    for item in items:
+        print(item * 2)
+
+iterate_list()
+"""
+    
+    programs = [
+        ("Simple bounded loop", program1),
+        ("Nested bounded loops", program2), 
+        ("While loop", program3),
+        ("Recursive function", program4),
+        ("List iteration", program5)
+    ]
+    
+    print("Bounded Halting Problem Solver Results:")
+    print("=" * 50)
+    
+    for name, program in programs:
+        will_halt = analyze_bounded_halting(program)
+        status = "WILL HALT" if will_halt else "UNDECIDABLE"
+        print(f"{name}: {status}")
+        print(f"Program:\n{program.strip()}")
+        print("-" * 30)
+
+# Run the test
+test_bounded_halting()
