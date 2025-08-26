@@ -4,17 +4,17 @@
 
 ### Revise the Index for the Entire Site
 
-- [ ] Review the content in the `GEMINI.md` file (or the `AGENTS.md` file) that
+- [X] Review the content in the `GEMINI.md` file (or the `AGENTS.md` file) that
 explains the theme of the course on the theory of computation, called
 "Theoretical Machines" at Allegheny College in the Department of Computer
 and Information Science.
-- [ ] Rewrite each of the introductory paragraphs so that they focus on the
+- [X] Rewrite each of the introductory paragraphs so that they focus on the
 concept of a "Proofgrammer". 
-- [ ] Rewrite the course overview so that it connects to the concept
+- [X] Rewrite the course overview so that it connects to the concept
 of a "Proofgrammer" and a course on the theory of computation, as 
 explored through the implementation of proofs in the Python programming
 language.
-- [ ] Create new Python source code examples that connect to the
+- [X] Create new Python source code examples that connect to the
 topic of the theory of computation and does not require any dependencies. If
 possible, this example program should illustrate the concepts:
     - An example of a computation that is computable (i.e., counting the number
@@ -22,11 +22,11 @@ possible, this example program should illustrate the concepts:
     - An example of a computation that is not computation (i.e., detecting
     whether or not the output of a program P on an input contains the letter "Z"
     or whether or not a program will halt on any input)
-- [ ] Delete any content related to document engineering, as this is not
+- [X] Delete any content related to document engineering, as this is not
 the focus of a course on the theory of computation.
-- [ ] Give the correct link to the discord server, which is specified in
+- [X] Give the correct link to the discord server, which is specified in
 the `_quarto.yml` file.
-- [ ] Make sure that all of your work is correct, ensuring that it has
+- [X] Make sure that all of your work is correct, ensuring that it has
 acceptable layout and formatting and that the quarto project runs correctly.
 
 ### Create Slides for Week One in `slides/weekone/index.qmd`
