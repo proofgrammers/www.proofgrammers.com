@@ -226,7 +226,7 @@ the answer for a question, the team members who correctly answered the question
 will record their contact information and a brief answer in the charette
 tracking system.
 
-- **Executable Examinations**: The final examination is an online, executable,
+- **Executable Examinations**: An executable examination is an online,
 cumulative assessment covering all of the material during all of the course
 sessions, as outlined on the [course schedule](../schedule/index.qmd). Unless
 prior arrangements are made with the instructor, all students should use their
@@ -240,7 +240,7 @@ intelligence coding assistants, provided that they cite these sources and
 explain how they used them to complete the final examination.
 
 - **Proofgrammer Presentations**: Completed by assigned teams of students during
-a Thursday laboratory session, these in-person presentations are on technical
+a Tuesday laboratory session, these in-person presentations are on technical
 topics assigned by the course instructor. Students will use all the tools setup
 on their laptops to implement a Python program that solves the stated problem
 and/or completes the required proof, ensuring that it is built as a stand-alone
@@ -253,7 +253,7 @@ presentation, there will be another assigned team of students that is
 responsible for posing questions to the presenting team and evaluating the
 presentation. For all proofgrammer presentations, both the presentation and
 evaluation teams will receive a grade for their submitted work. Although both
-the presentation and examination teams may use external sources, including
+the presentation and evaluation teams may use external sources, including
 artificial coding assistants, during the completion of their materials, they
 must cite their sources. Except for the slides published on the course website,
 the presenters may not use any external sources during either the presentation
@@ -314,29 +314,31 @@ receive **twenty** assessments for this category of their work.
 ### Module Overview
 
 - **Module One**: 
-  - **Topic**: theoretical machines Foundations
-  - **Weeks**: One through six
-  - **Subjects for Critique**: [uv](https://docs.astral.sh/uv/) and
-  [Quarto](https://quarto.org/)
+  - **Topic**: Introduction to Theoretical Machines
+  - **Weeks**: One through Six
   - **Technical Topics**: 
-    - **Documentation**: [Diataxis](https://diataxis.fr/), [README-driven development](https://tom.preston-werner.com/2010/08/23/readme-driven-development)
-    - **Engineering**: Python fundamentals, Version control, Quarto
-- **Module Two**:
-  - **Topic**: theoretical machines Building Blocks
-  - **Weeks**: Seven through eleven
-  - **Subjects for Critique**: [ruff](https://astral.sh/ruff) and
-  [Quarto](https://quarto.org/)
+    - **Chapter One**: *Introduction to the Theory of Computation*
+    - **Chapter Two**: *What is a Computer Program?*
+    - **Chapter Three**: *Some Impossible Python Programs*
+    - **Chapter Four**: *What is a Computational Problem?*
+    - **Chapter Five**: *Turing Machines: The Simplest Computers*
+- **Module Two**: 
+  - **Topic**: Foundations of Theoretical Machines
+  - **Weeks**: Seven through Eleven
   - **Technical Topics**: 
-    - **Documentation**: [Literate programming](https://guides.nyu.edu/datascience/literate-prog), [Localization](https://developer.mozilla.org/en-US/docs/Glossary/Localization)
-    - **Engineering**: Intermediate Python programming, AI coding agents, Quarto
-- **Module Three**:
-  - **Topic**: Advanced theoretical machines
-  - **Subjects for Critique**: [ty](https://astral.sh/ruff) or
-  [Pyrefly](https://pyrefly.org/) and [Quarto](https://quarto.org/)
-  - **Weeks**: Twelve through sixteen
-  - **Topics**: 
-    - **Documentation**: [Zettelkasten](https://zettelkasten.de/), [Digital gardens](https://github.com/MaggieAppleton/digital-gardeners)
-    - **Engineering**: Advanced Python programming, Context engineering, Quarto
+    - **Chapter Six**: *Universal Computer Programs: Programs that Can Do Anything*
+    - **Chapter Seven**: *Reductions: How to Prove a Problem is Hard*
+    - **Chapter Eight**: *Nondeterminism: Magic or Reality?*
+    - **Chapter Nine**: *Finite Automata: Computing with Limited Resources*
+- **Module Three**: 
+  - **Topic**: Advanced Topics in Theoretical Machines
+  - **Weeks**: Twelve through Sixteen
+  - **Technical Topics**: 
+    - **Chapter Ten**: *Complexity Theory: When Efficiency Does Matter*
+    - **Chapter Eleven**: *Poly and Expo: The Two Most Fundamental Complexity Classes*
+    - **Chapter Twelve**: *PolyCheck and NPoly: Hard Problems that are Easy to Verify*
+    - **Chapter Thirteen**: *Polynomial-time Reductions: Proving X is as Easy as Y*
+    - **Chapter Fourteen**: *NP-Completeness: Most Hard Problems are Equally Hard*
 
 ### Schedule Details
 
@@ -350,23 +352,39 @@ receive **twenty** assessments for this category of their work.
   - **Thanksgiving Break**: Week Fourteen
   - **End Semester**: Week Sixteen
   - **Final Examination**: Week Sixteen
-- **theoretical machines Skill-Checks**:
-  - **Skill-Check One**: Week Two
-  - **Skill-Check Two**: Week Three
-  - **Skill-Check Three**: Week Seven
-  - **Skill-Check Four**: Week Eight
-  - **Skill-Check Five**: Week Twelve
-  - **Skill-Check Six**: Week Thirteen
-- **theoretical machines Knowledge-Checks**:
-  - **Knowledge-Check One**:
-    - *First Half of Class*: Week Four
-    - *Second Half of Class*: Week Five
-  - **Knowledge-Check Two**:
-    - *First Half of Class*: Week Nine
-    - *Second Half of Class*: Week Ten
-  - **Knowledge-Check Three**:
-    - *First Half of Class*: Week Fourteen
-    - *Second Half of Class*: Week Fifteen
+- **Proofgrammer Skill-Checks**:
+  - **Skill-Check One**: Week Five
+  - **Skill-Check Two**: Week Ten
+  - **Skill-Check Three**: Week Fifteen
+- **Proofgrammer Knowledge-Checks**:
+  - **Knowledge-Check One**: Week Five
+  - **Knowledge-Check Two**: Week Ten
+  - **Knowledge-Check Three**: Week Fifteen
+- **Proofgrammer Presentations**:
+  - **Module One Presentations**:
+    - Week Two
+    - Week Three
+    - Week Four
+  - **Module One Retrospective Presentations**:
+    - *Half of Class*: Week Six on Tuesday
+    - *Half of Class*: Week Six on Thursday
+  - **Module Two Presentations**:
+    - Week Seven
+    - Week Eight
+    - Week Nine
+  - **Module Two Retrospective Presentations**:
+    - *Half of Class*: Week Eleven on Tuesday
+    - *Half of Class*: Week Eleven on Thursday
+  - **Module Three Presentations**:
+    - Week Twelve
+    - Week Thirteen
+    - Week Fourteen
+  - **Module Three Retrospective Presentations**:
+    - *Half of Class*: Week Eleven on Tuesday
+    - *Half of Class*: Week Eleven on Thursday
+- **Interim Executable Examinations**:
+  - **Interim Executable Examination One**: Week Six
+  - **Interim Executable Examination Two**: Week Eleven
 
 #### Important Dates
 
