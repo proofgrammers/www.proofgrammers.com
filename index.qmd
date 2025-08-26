@@ -54,19 +54,17 @@ journey as a proofgrammer!
 ## Python for Theory of Computation
 
 As you explore the technical resources on this site, you'll discover how Python
-can transform the way that proofgrammers work with theoretical concepts. For
-instance, here's a simple example of a Python implementation of a `count_lines`
-function that counts the number of lines in a source code file --- this is an
-example of a computable problem! This function takes a file path, opens the
-file, and counts each line, demonstrating how we can algorithmically solve
-problems that have clear, step-by-step solutions. This represents the kind of
-computation that is always decidable and tractable. Notice that the website
-itself includes the output from running this function!
+can transform the way that proofgrammers work with theoretical concepts. Notice
+how proofgramming is practical, challenging, and fun! For instance, here's a
+simple example of a Python implementation of a `count_lines` function that
+counts the number of lines in a source code file; it is an example of a
+computable problem. This function takes a file path, opens the file, and counts
+each line, demonstrating how we can algorithmically solve problems that have
+clear, step-by-step solutions. This represents the kind of computation that is
+always decidable and tractable. Notice that the website itself includes the
+output from running this function!
 
 ```{python}
-from typing import List
-from pathlib import Path
-
 def count_lines(file_content: str) -> int:
     """Count the number of lines in the provided text content."""
     if not file_content:
@@ -89,7 +87,7 @@ if __name__ == "__main__":
 # count lines in the sample code
 line_count = count_lines(sample_code)
 print(f"Number of lines in the sample code: {line_count}")
-print(f"This is a computable problem - we can always determine the line count!")
+print(f"This is a computable problem! we can always determine the line count!")
 ```
 
 Now let's explore the fascinating world of **universal computation**! The
