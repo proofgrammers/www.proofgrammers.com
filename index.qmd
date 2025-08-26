@@ -90,10 +90,10 @@ print(f"Number of lines in the sample code: {line_count}")
 print(f"This is a computable problem! we can always determine the line count!")
 ```
 
-Now let's explore the fascinating world of **universal computation**! The
+Now, let's explore the fascinating world of **universal computation**! The
 following example demonstrates one of the most profound concepts in theoretical
-computer science: a **universal program**. This Python function can execute any
-other Python program, showing how one program can simulate any computation.
+computer science: a **universal program**. This Python function executes
+another Python program, showing how one program can simulate any computation.
 This concept is fundamental to understanding the limits and possibilities of
 computation, and it's directly related to Alan Turing's work on universal
 Turing machines. Universal computation is what makes general-purpose computers
@@ -103,23 +103,23 @@ computed.
 ```{python}
 def universal(prog_string: str, input_string: str) -> str:
     """Execute a program given as a string on the provided input."""
-    # Create a local namespace for the program execution
+    # create a local namespace for the program execution
     local_namespace = {}
-    # Execute the program definition to make the function available
+    # execute the program definition to make the function available
     exec(prog_string, {}, local_namespace)
-    # Extract the main function from the executed program
+    # extract the main function from the executed program
     main_function = None
     for name, obj in local_namespace.items():
         if callable(obj) and not name.startswith('_'):
             main_function = obj
             break
-    # Execute the program with the given input
+    # execute the program with the given input
     if main_function:
         return main_function(input_string)
     else:
         return "No function found"
 
-# Example program that checks if a string contains "GAGA"
+# example program that checks if a string contains "GAGA"
 contains_gaga_program = '''
 def contains_gaga(input_str):
     """Check if the input string contains GAGA."""
@@ -129,7 +129,7 @@ def contains_gaga(input_str):
         return "no"
 '''
 
-# Example program that counts vowels in a string
+# example program that counts vowels in a string
 count_vowels_program = '''
 def count_vowels(input_str):
     """Count the number of vowels in the input string."""
@@ -138,21 +138,17 @@ def count_vowels(input_str):
     return str(count)
 '''
 
-# Demonstrate universal computation
+# demonstrate example of universal computation
 test_string1 = "HELLO GAGA WORLD"
 test_string2 = "programming"
-
 print("Universal Computation in Action:")
-print("================================")
 print(f"Testing contains_gaga with '{test_string1}':")
 result1 = universal(contains_gaga_program, test_string1)
 print(f"Result: {result1}")
-
 print(f"\nTesting count_vowels with '{test_string2}':")
 result2 = universal(count_vowels_program, test_string2)
 print(f"Result: {result2}")
-
-print(f"\nThis demonstrates universal computation - one program simulating others!")
+print(f"\nThis demonstrates universal computation where one program simulates another!")
 ```
 
 ## Theory of Computation Resources
@@ -163,16 +159,16 @@ Ready to embark on your journey as a proofgrammer? Start exploring here:
 insights into each step that learners should take to emerge as skilled
 proofgrammers, including assignments focused on implementing theoretical
 concepts, analyzing computational complexity, and projects that combine
-mathematical proofs with Python programming.
+proofs with programming.
 
 - The [course syllabus](./syllabus/index.qmd) introduces the course and its
 learning objectives, explaining how on-campus learners will develop both their
-theoretical understanding and their ability to use Python to implement and
-verify concepts from the theory of computation.
+theoretical understanding of computational limits and their ability to use
+Python to implement and verify concepts from the theory of computation.
 
 - The [course slides](./slides/index.qmd) offers links to the slides created
 by both the instructor and the proofgrammers who are learning more about
-theoretical computer science and computational theory.
+theoretical computer science.
 
 ::: {.callout-note appearance="minimal" title="Proofgrammers Community Resources"}
 
