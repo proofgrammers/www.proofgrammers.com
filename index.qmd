@@ -19,9 +19,10 @@ programs that can be run, tested, and verified. This course focuses on the
 theory of computation, exploring fundamental questions like "What can be
 computed?" and "What can be computed efficiently?" Whether you're implementing
 Turing machines, analyzing algorithmic complexity, or proving undecidability
-results, proofgrammers use code to make theoretical concepts tangible and
-accessible. Join us as we explore how to be both rigorous mathematical thinkers
-and skilled programmers in the fascinating world of theoretical machines!
+results, proofgrammers use Python code to make theoretical concepts tangible
+and accessible. Want to learn more about the theory of computation? Join us as
+we explore how to be both rigorous mathematical thinkers and skilled
+programmers in the world of proofgramming!
 
 ## Course Overview
 
