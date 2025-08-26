@@ -379,9 +379,7 @@ receive **twenty** assessments for this category of their work.
     - Week Twelve
     - Week Thirteen
     - Week Fourteen
-  - **Module Three Retrospective Presentations**:
-    - *Half of Class*: Week Eleven on Tuesday
-    - *Half of Class*: Week Eleven on Thursday
+  - No module three retrospective presentations
 - **Interim Executable Examinations**:
   - **Interim Executable Examination One**: Week Six
   - **Interim Executable Examination Two**: Week Eleven
