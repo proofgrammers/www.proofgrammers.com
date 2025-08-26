@@ -11,20 +11,25 @@ toc-expand: 3
 
 - {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
   - No class due to the fact that the semester has not started yet
-- {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
-  - Prepare for document engineering presentations and evaluations by teams
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - Introductions and course overview for theoretical machines
   - As outlined in the [syllabus](../../syllabus/index.qmd), teams give two
   types of presentations:
-     - Document Engineering Concept Overviews (DECO)
-     - Document Engineering Project Critiques (DEPC)
-- {{< iconify fa6-solid gears size=18px >}} **Wednesday Laboratory**:
-  - Installation of required software tools for document engineering
-  - Release the schedule for the two types of presentations in this module:
-     - Document Engineering Concept Overviews (DECO)
-     - Document Engineering Project Critiques (DEPC)
+     - Proofgrammer presentations during first three weeks of module
+     - Retrospective presentations during the last week of a module
+- {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+  - Installation of required software tools for proofgramming
+  - Release the schedule for next week's team-based presentations
   - Teams meet to confirm contact information and plan their presentations
-- {{< iconify fa6-solid gears size=18px >}} **Friday**:
-  - Students demonstrate setup for GitHub, VS Code, and Python through `uv`
+- {{< iconify fa6-solid gears size=18px >}} **Thursday**:
+  - Continued introduction to topics in theoretical machines
+  - Teams work on their presentations due next week on Monday
+  - Confirm the creation of the following deliverables:
+    - A presentation slide deck using [Quarto](https://quarto.org/) and
+    [RevealJS](https://revealjs.com/)
+    - A stand-alone Python program program fully managed by
+    [uv](https://docs.astral.sh/uv/)
+  - All content available in the designated directory of the course website
 
 ## Slides
 
