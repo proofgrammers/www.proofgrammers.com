@@ -416,12 +416,12 @@ receive **twenty** assessments for this category of their work.
   - On designated weeks, complete proofgrammer skill-checks and knowledge-checks
   - On designated weeks, complete the two interim executable examinations
 - {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
-  - Presentation teams finalize GitHub pull request for presentation by 11:59 PM
+  - Teams finalize GitHub pull request for retrospective presentation by 11:59 PM
   - All content submitted to the pull request must be in its final form
   - All students in a presentation team must contribute to the pull request
   - Excepting documented, extenuating circumstances, no content allowed after
   deadline
-- {{< iconify fa6-solid gears size=18px >}} **Thursday**:
+- {{< iconify fa6-solid lightbulb size=18px >}} **Thursday**:
   - Instructor presentation and activities as a deep-dive into the week's technical topic
   - Proofgrammer charette sessions to collaboratively pose and answer questions
   - Confirm that all technical topics are well-understood by each proofgrammer
@@ -434,8 +434,8 @@ assessment policies:
 ##### Assignment Submission
 
 All assignments will have a stated due date shared through GitHub, GitHub
-Classroom, and/or the [theoretical machines Discord](https://discord.gg/5HdxuqjUvK).
-No credit will be awarded for any course work that you submit to the incorrect
+Classroom, and/or the [Proofgrammers Discord](https://discord.gg/Mw9mybGK7u). No
+credit will be awarded for any course work that you submit to the incorrect
 GitHub repository or website. Unless special advance arrangements are made with
 the instructor to address extenuating circumstances or a student pays a document
 engineering token, no work will be accepted after the deadline.
@@ -448,18 +448,17 @@ privately receive a grade for and feedback on your projects. Your grade will be
 a function of whether or not you (a) completed work that fulfills the project's
 specification and (b) submitted it by the deadline to the stated platform.
 
-##### theoretical machines Tokens
+##### Proofgrammer Tokens
 
-Students may "spend" up to four "tokens" that they may use to retake certain
+Students may "spend" up to three "tokens" that they may use to retake certain
 assessments. After using a provided GitHub repository to request their use of a
 token, ensuring that they follow all guidelines, students may use a token to
-re-take either a theoretical machines skill-check or knowledge-check. Students
-cannot use a token for the final executable examination, a DECO presentation or
-evaluation, a DEPC presentation or evaluation, or any part of any phase of a
-theoretical machines tool-building project. Outside of using these four tokens
---- or severe, extenuating, and unexpected circumstances that are well
-documented --- the instructor will not grant any requests for extensions or
-assignment re-reassessments.
+re-take either a proofgrammer skill-check or knowledge-check. Students cannot
+use a token for any interim or final executable examination or any type of
+presentation or evaluation. Outside of using these three tokens --- or severe,
+extenuating, and unexpected circumstances that are well documented --- the
+instructor will not grant any requests for extensions or assignment
+re-reassessments.
 
 ##### Course Attendance
 
@@ -502,7 +501,7 @@ Students who are struggling to understand the knowledge and skills developed in
 this course's exploration of theoretical machines are encouraged to seek
 assistance from the instructor and/or the student technical leaders. Students
 should, within the bounds of the Honor Code, ask and answer questions on the
-[theoretical machines Discord Server](https://discord.gg/5HdxuqjUvK); please
+[Proofgrammers Discord Server](https://discord.gg/Mw9mybGK7u); please
 request assistance from the instructor and student technical leaders first
 through public Discord channels before sending an email or a direct message.
 Students who need more assistance are invited to schedule a meeting through the
@@ -519,8 +518,8 @@ Server](https://discord.gg/CS2h9kXzX6).
 This course will primarily use GitHub and Discord for all course communication.
 We will use GitHub for the sharing of both source code and documentation for
 course projects and for reporting issues in those materials. We will use two
-distinct Discord servers for all course discussions. The [theoretical machines
-Discord Server](https://discord.gg/5HdxuqjUvK) provides a way for members of the
+distinct Discord servers for all course discussions. The [Proofgrammers
+Discord Server](https://discord.gg/Mw9mybGK7u) provides a way for members of the
 theoretical machines community to use text and video to chat with each other and
 will be the main forum for discussing the professional and technical content in
 the field of this course. The [Allegheny College Computer Science Discord
@@ -532,8 +531,8 @@ GitHub Classroom-affiliated link.
 
 #### Using Email
 
-Although we will primarily use the [theoretical machines Discord
-Server](https://discord.gg/5HdxuqjUvK) for class communication, the course
+Although we will primarily use the [Proofgrammers Discord
+Server](https://discord.gg/Mw9mybGK7u) for class communication, the course
 instructor will sometimes use email to send announcements about important
 matters such as changes in the schedule. It is your responsibility to check your
 email at least once a day and to ensure that you can reliably send and receive
@@ -556,34 +555,33 @@ matriculates at the College acknowledges this Honor Code pledge:
 > defined in the Honor Code, and to maintain the integrity of both
 > myself and the College community as a whole.
 
-#### Effective theoretical machines
+#### Working Effectively as Proofgrammer
 
-Students who create the source code and documentation for their document
-engineering projects should ensure the implementation of a high-quality final
-product. While students are permitted to use a wide variety of document
-engineering tools, such as integrated development environments, testing
-frameworks, automated debuggers, and code generators (e.g., systems that
-leverage large language models through [GitHub
-Copilot](https://github.com/features/copilot)) and documentation sites such as
-[StackOverflow](https://stackoverflow.com/), they must take final
-responsibility for all the source code and documentation that they submit for
-this course, including artifacts that are automatically generated by a tool like
-an AI coding assistant such as
-[Gemini](https://github.com/google-gemini/gemini-cli) or
+Students who create the source code and documentation for their theoretical
+machines projects should ensure the implementation of a high-quality final
+product. While students are permitted to use a wide variety of proofgramming
+tools, such as integrated development environments, testing frameworks,
+automated debuggers, and code generators (e.g., systems that leverage large
+language models through [GitHub Copilot](https://github.com/features/copilot))
+and documentation sites such as [StackOverflow](https://stackoverflow.com/),
+they must take final responsibility for all the source code and documentation
+that they submit for this course (e.g., for the Proofgrammer Presentations),
+including artifacts that are generated by a tool like an AI coding assistant
+such as [Gemini](https://github.com/google-gemini/gemini-cli) or
 [OpenCode](https://opencode.ai/).
 
-This policy means that every student must work as an effective documentation
-engineer by documenting the sources for their work and verifying the
-correctness, maintainability, and long-term reliability of all source code and
-documentation that they submit. As such, students who use software tools to
-create or revise content are responsible for citing their sources and
-demonstrating their understanding of it as a part of any follow-on written or
-oral assessment. Moreover, all students in the class are responsible for all of
-the source code and documentation submitted to the GitHub repository that hosts
-the course projects, including any tool-generated software artifacts. This means
-that every student should be able to answer questions, during either an
-in-person or online discussion, about any theoretical machines content,
-including that which was automatically generated by a software tool.
+This policy means that every student must work as an effective proofgrammer by
+documenting the sources for their work and verifying the correctness,
+maintainability, and long-term reliability of all source code and documentation
+that they submit. As such, students who use software tools to create or revise
+content are responsible for citing their sources and demonstrating their
+understanding of it as a part of any follow-on written or oral assessment.
+Moreover, all students in the class are responsible for all of the source code
+and documentation submitted to the GitHub repository that hosts the course
+projects, including any tool-generated software artifacts. This means that every
+student should be able to answer questions, during either an in-person or online
+discussion, about any theoretical machines content, including that which was
+automatically generated by a software tool.
 
 Students who are effective documentation engineers also pledge to always abide
 by the [ACM Code of Ethics and Professional
@@ -609,13 +607,13 @@ timely fashion.
 
 In reference to software, Frederick P. Brooks, Jr. wrote in chapter one of *The
 Mythical Man Month* that "the magic of myth and legend has come true in our
-time." Software is a pervasive aspect of our society that changes how we think
-and act. High quality and well-documented software also has the potential to
-positively influence the lives of many people. Let's embark on this journey of
-discovery and innovation, as we learn how to become "prosegrammers" who can
-harness the power of software and its top-notch documentation. At the start of
-this class, I invite you to join together in an adventure in document
-engineering!
+time." Even though it has fundamental limitations, software is a pervasive
+aspect of our society that changes how we think and act. Since it is important
+for us to understand the theory of computation, let's embark on this journey of
+discovery and innovation as we learn how to become "proofgrammers" who can
+harness the power of software while recognizing and working around its
+fundamental limits. Please join together in this adventure in theoretical
+machines!
 
 ::: {.callout-note appearance="minimal" title="External Learners"}
 
@@ -624,8 +622,8 @@ course in the [Department of Computer and information
 Science](https://www.cis.allegheny.edu/) at [Allegheny
 College](https://www.allegheny.edu/). Even though external learners are not
 bound by this syllabus, they can rely on the
-[Prosegrammers](https://github.com/prosegrammers/www.prosegrammers.com) team
-and the members of the [theoretical machines Discord
-Server](https://discord.gg/5HdxuqjUvK)
+[Proofgrammers](https://github.com/proofgrammers/www.proofgrammers.com) team and
+the members of the [Proofgrammers Discord
+Server](https://discord.gg/Mw9mybGK7u).
 
 :::
