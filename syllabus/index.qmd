@@ -396,34 +396,37 @@ receive **twenty** assessments for this category of their work.
 
 ### Weekly Cadence
 
-- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
-  - theoretical machines deep-dive presentations by the course instructor
-  - Technical and engineering knowledge and skills in the field of document
-  engineering
-- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+- {{< iconify fa6-solid people-line size=18px >}} **Monday**:
+  - Presentation teams finalize GitHub pull request for presentation by 11:59 PM
+  - All Python programs must run as a stand-alone script managed by `uv`
+  - All presentation slides must be built with Quarto and RevealJS
+  - All content submitted to the pull request must be in its final form
+  - All students in a presentation team must contribute to the pull request
+  - Excepting documented, extenuating circumstances, no content allowed after
+  deadline
+  - Evaluation teams submit the evaluation questions for their assigned team to
+    GitHub
+- {{< iconify fa6-solid lightbulb size=18px >}} **Tuesday**:
+  - Instructor presentation and activities as a deep-dive into the week's technical topic
+  - Technical and engineering knowledge and skills in the field of theoretical
+  machines
+  - Teams complete their final practice steps for their proofgrammer
+  presentations
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday Laboratory Session**:
+  - Proofgrammer presentations and evaluations by all student teams
+  - Teams and presentation topics assigned at the start of each week 
+  - On designated weeks, complete proofgrammer skill-checks and knowledge-checks
+  - On designated weeks, complete the two interim executable examinations
+- {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
   - Presentation teams finalize GitHub pull request for presentation by 11:59 PM
   - All content submitted to the pull request must be in its final form
   - All students in a presentation team must contribute to the pull request
   - Excepting documented, extenuating circumstances, no content allowed after
   deadline
-- {{< iconify fa6-solid people-line size=18px >}} **Wednesday**:
-  - theoretical machines presentations and evaluations by student teams
-  - As outlined on the course schedule, teams give two types of presentations:
-     - theoretical machines Concept Overviews (DECO)
-     - theoretical machines Project Critiques (DEPC)
-  - Teams and presentation topics assigned at the start of a course module
-- {{< iconify fa6-solid gears size=18px >}} **Wednesday Laboratory**:
-  - Across five weeks, complete tasks for theoretical machines tool-building
-  projects
-  - Individual project completion, with instructor and student technical leader
-  support
-  - Give demonstrations to and receive feedback from the course instructor
-  - Demonstration order is randomly generated and announced incrementally
-- {{< iconify fa6-solid gears size=18px >}} **Friday**:
-  - Use GitHub, VS Code, and Python to complete theoretical machines
-  skill-checks
-  - Complete in-person theoretical machines knowledge-checks in instructor's
-  office
+- {{< iconify fa6-solid gears size=18px >}} **Thursday**:
+  - Instructor presentation and activities as a deep-dive into the week's technical topic
+  - Proofgrammer charette sessions to collaboratively pose and answer questions
+  - Confirm that all technical topics are well-understood by each proofgrammer
 
 #### Assessment Policies
 
