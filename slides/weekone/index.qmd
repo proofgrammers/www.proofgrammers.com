@@ -72,19 +72,31 @@ format:
 
 :::
 
-## Computable problems with Python
+## Define the `count_lines` function
 
 ```{python}
-from typing import List
-from pathlib import Path
-
 def count_lines(file_content: str) -> int:
     """Count the number of lines in the provided text content."""
     if not file_content:
         return 0
     lines = file_content.split('\n')
     return len(lines)
+```
 
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Computable problems**: have clear, algorithmic solutions
+- **Line counting**: decidable and tractable for any finite input
+- **Function input**: various types of input strings possible
+- **Important question**: what makes this problem computable?
+- **Translate to uncomputable**: can you make this more difficult?
+- {{< iconify fa6-solid lightbulb >}} **Differences in tractable, intractable, and uncomputable?**
+
+:::
+
+## Computable problems with Python
+
+```{python}
 # example source code content
 sample_code = """def hello_world():
     print("Hello, Proofgrammers!")
@@ -103,12 +115,6 @@ print(f"Number of lines in the sample code: {line_count}")
 print(f"This is a computable problem - we can always determine the line count!")
 ```
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
-
-- **Computable problems**: have clear, algorithmic solutions
-- **Line counting**: decidable and tractable for any finite input
-
-:::
 
 ## Try the `count_lines` function
 
@@ -135,15 +141,18 @@ print(f"Lines in Fibonacci code: {line_count}")
 print("Try changing the code above to see the count change!")
 ```
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
 
-- **Important question**: what makes this problem computable?
+- This function accepts the source code of a program as input
+- It processes the source code *without* running it directly
 
 :::
 
 ## Universal computation with Python
 
-```{python}
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
 def universal(prog_string: str, input_string: str) -> str:
     """Execute a program given as a string on the provided input."""
     local_namespace = {}
@@ -158,26 +167,14 @@ def universal(prog_string: str, input_string: str) -> str:
     else:
         return "No function found"
 
-# Example program that checks if a string contains "GAGA"
+# example program that checks if a string contains "GAGA"
 contains_gaga_program = '''
 def contains_gaga(input_str):
     """Check if the input string contains GAGA."""
     return "yes" if "GAGA" in input_str else "no"
 '''
-```
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.80em;"}
-
-- `universal`: demonstrates one program executing another program
-- Foundation of **universal computation** and general-purpose computers
-
-:::
-
-## Testing universal computation
-
-```{python}
-#| freeze: auto
-# Demonstrate universal computation
+# demonstrate universal computation
 test_string1 = "HELLO GAGA WORLD"
 test_string2 = "programming"
 
@@ -201,28 +198,24 @@ result2 = universal(count_vowels_program, test_string2)
 print(f"Result: {result2}")
 ```
 
-## Discuss computation results
+## Let's discuss these examples!
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- {{< iconify game-icons team-idea >}} **Key insights from these code examples:**
+  - `universal`: demonstrates one program executing another program
+  - **Universal computation** is central to general-purpose computers
+  - Simple example to illustrate a powerful theoretical concept
+
+:::
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
 - {{< iconify game-icons team-idea >}} **Discuss in your teams:**
     - What makes the line counting problem computable?
-    - How does universal computation relate to general-purpose computers?
-    - What are the theoretical implications of programs executing programs?
-
-:::
-
-## Essential tools
-
-- Terminal window for command-line operations
-- Git and GitHub for version control and collaboration
-- VS Code for writing and testing Python code
-- UV for Python package and dependency management
-- Quarto for creating interactive documents with code
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts in code? How do we *verify* computational results? How do we *document* our proofs effectively?
+    - Universal computation's relation to general-purpose computers?
+    - What are the implications of programs executing programs?
+    - What are the limits to implementing computer programs?
 
 :::
 
@@ -252,7 +245,6 @@ print(f"Result: {result2}")
 - Connecting mathematical theory to practical programming
 
 :::
-
 
 ## Learn about theory of computation
 
@@ -285,6 +277,24 @@ implementations](https://github.com/topics/theory-of-computation)
   - Decidability and undecidability proofs
 
 :::
+
+
+## Essential tools
+
+- Terminal window for command-line operations
+- Git and GitHub for version control and collaboration
+- VS Code for writing and testing Python code
+- UV for Python package and dependency management
+- Quarto for creating interactive documents with code
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts
+in code? How do we *verify* computational results? How do we *document* our
+proofs effectively?
+
+:::
+
 
 ## AI-assisted theory work
 
