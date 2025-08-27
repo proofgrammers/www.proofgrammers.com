@@ -20,7 +20,7 @@ format:
 
 # Theory of computation
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"} 
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
@@ -30,14 +30,13 @@ format:
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"}
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Why is it important?**
-    - Foundation of computer science
-        - Helps determine if problems are solvable
-        - Guides algorithm design choices
-        - Reveals fundamental computational limits
-        - Powers modern cryptography and security
+    - Helps determine if problems are solvable
+    - Reveals fundamental computational limits
+    - Guides key algorithm design choices
+    - Powers modern cryptography and security
 
 :::
 
