@@ -58,20 +58,17 @@ format:
 
 ## What does a proofgrammer do?
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
 
-- **Proof** (mathematical verification) meets **Programming** (code implementation)
+- **Proofgrammer** =
+  - **Proof** (mathematical verification) +
+  - **Programming** (code implementation)
 - Implement Turing machines and automata
-- Prove undecidability results with code
+- Prove undecidability results with Python code
 - Analyze algorithmic complexity experimentally
 - Create computational models of theoretical concepts
 - Verify theoretical results through programming
-
-:::
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} How do we *prove* computational limits using code? How do we *implement* theoretical machines? How do we *verify* complexity results?
+- **Welcome to the proofgrammer team!**
 
 :::
 
