@@ -257,18 +257,6 @@ print(f"Result: {result2}")
 
 :::
 
-## Development environment
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
-
-- Terminal with command-line access for tool execution
-- Version control system (Git with GitHub)
-- Python development environment (UV + Python 3.12+)
-- Code editor with syntax highlighting (VS Code + extensions)
-- Documentation system (Quarto for interactive code/text)
-- AI coding assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
-
-:::
 
 ## Learn about theory of computation
 
@@ -276,13 +264,17 @@ print(f"Result: {result2}")
 
 ::: {.column width="50%"}
 
-{{< iconify fa6-solid book-open >}} Explore the ["What Can be Computed" textbook](https://whatcanbecomputed.com/) and [Python documentation](https://docs.python.org/)
+{{< iconify fa6-solid book-open >}} Explore the ["What Can be Computed"
+textbook](https://whatcanbecomputed.com/) and [Python
+documentation](https://docs.python.org/)
 
 :::
 
 ::: {.column width="50%"}
 
-{{< iconify fa6-brands github >}} Review computational examples like [WCBC code](https://github.com/johnmaccormick/wcbc-programs) and [theory implementations](https://github.com/topics/theory-of-computation)
+{{< iconify fa6-brands github >}} Review computational examples like [WCBC
+code](https://github.com/johnmaccormick/wcbc-programs) and [theory
+implementations](https://github.com/topics/theory-of-computation)
 
 :::
 
@@ -316,6 +308,142 @@ print(f"Result: {result2}")
 responsible for ensuring correctness, theoretical accuracy, and ethical use!
 
 :::
+
+## Development environment
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- Terminal with command-line access for tool execution
+- Version control system (Git with GitHub)
+- Python development environment (UV + Python 3.12+)
+- Code editor with syntax highlighting (VS Code + extensions)
+- Documentation system (Quarto for interactive code/text)
+- AI coding assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
+
+:::
+
+# Let's set up your proofgramming environment!
+
+- Classroom session on Tuesday
+- Laboratory session on Tuesday
+- Classroom session on Thursday
+
+## Essential tools for proofgrammers
+
+- Text editor like VS Code, Zed, or Neovim for writing
+- Version control like Git for tracking document changes  
+- Documentation generator like Quarto or Sphinx
+- Generative AI tools like GitHub Copilot or Google Gemini CLI
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} How do we *characterize* effective document
+tools? *...* How do we *compare* their features for different projects? *...*
+How do we *integrate* them into efficient workflows? *...* How do we *configure*
+these tools for our needs? *...* How do we use them for *teamwork*?
+
+:::
+
+## Development environment setup
+
+- **Installing** essential tools for prosegrammers
+- **Configuring** development environment for document work
+  - Complete these tasks during the first and second weeks
+  - A skill-check during second week tests your setup
+  - Please attend the **SOS Week** events to learn more
+  - Work with instructor and student technical leaders
+  - Don't hesitate to regularly ask questions in Discord
+  - Keep working and don't give up with setup tasks
+
+## Essential tools for prosegrammers
+
+::: {.fragment .callout-note icon=true title="Tips for effective document engineering setup"}
+
+- [Git](https://git-scm.com/), [GitHub](https://github.com/), [GitHub
+Education](https://github.com/education), and [GitHub Student Developer
+Pack](https://education.github.com/pack)
+- [GitHub SSH
+Keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+and [GitHub CLI](https://cli.github.com/) command-line program for interaction
+with GitHub
+- Free GitHub Pro Subscription for [GitHub
+Copilot](https://github.com/features/copilot)
+- [VS Code](https://code.visualstudio.com/) or another suitable text editor
+(e.g., [Zed](https://zed.dev/) or [Neovim](https://neovim.io/))
+- [Quarto](https://quarto.org/) CLI and the Quarto plugin for your text editor
+- [Uv](https://docs.astral.sh/uv/) for [Python](https://www.python.org/)
+installation, virtual environment and dependency management
+- Make sure that Uv has installed [Python](https://www.python.org/) 3.12 or
+Python 3.13
+- The suite of tools from the [Node Package Manager](https://www.npmjs.com/),
+include [npm](https://www.npmjs.com/) and [npx](https://www.npmjs.com/)
+- [OpenCode](https://opencode.ai/) and [Google Gemini
+CLI](https://github.com/google-gemini/gemini-cli) for AI Coding Agents, runnable
+with npx
+- Terminal window (e.g., [Warp](https://www.warp.dev/)) for running all of the
+aforementioned programs
+
+:::
+
+## GitHub Student Benefits and Copilot
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **GitHub Student Developer Pack**
+  - Free access to premium developer tools and services
+  - Apply at [education.github.com](https://education.github.com/pack)
+  - Requires verification with .edu email or student ID
+- {{< iconify fa6-solid gear >}} **GitHub Copilot Pro for Students**
+  - AI-powered code completion and generation
+  - Free for verified students and educators
+  - Integrates with VS Code and other editors
+- {{< iconify fa6-solid lightbulb >}} **Why GitHub tools?** Essential for
+collaboration!
+
+:::
+
+## Testing your prosegrammer setup
+
+```bash
+# Run these commands in your terminal window
+git --version                   # Check Git installation
+python --version                # Check Python (via UV)
+quarto --version                # Check Quarto installation
+code --version                  # Check VS Code installation
+uv --version                    # Check UV package manager
+```
+
+::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
+
+- **Test each tool individually** before starting projects
+- **Create a test document** with code and text to verify integration
+- **Consult documentation** links when troubleshooting
+- **Schedule office hours** with the course instructor
+- **Visit office hours** with the student technical leaders
+- {{< iconify fa6-solid rocket >}} **Have these setup by second
+Friday of the semester**!
+
+:::
+
+# Can you clone the course website to your laptop and run `quarto preview`? Output?
+
+## Overall document engineering setup
+
+::: {.fragment .callout-note icon=true title="Tips for effective document engineering setup"}
+
+- Devote time outside class to installing and configuring tools
+- Confirm that most tools work during the first lab session
+- Successfully get all tools to work during the first lab session
+- Create and render test documents with the provided examples
+- Complete the first document engineering project on time
+- Contribute to collaborative documentation projects
+- Prepare for first document engineering skill check
+
+- {{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into document engineering!**
+- {{< iconify fa6-solid lightbulb >}} **If you are having trouble, publicly ask for help on Discord!**
+
+:::
+
 
 ## Development environment setup
 
