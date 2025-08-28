@@ -348,15 +348,15 @@ effectively setup and use all of these tools!**
 ## Development environment setup
 
 - **Installing** essential tools for prosegrammers
-- **Configuring** development environment for proofgramming work
+- **Configuring** development environment for proofgramming
   - Complete these tasks during the first and second weeks
-  - A skill-check during second week tests your setup
+  - All skill-check and examinations assume working setup
   - Please attend the **SOS Week** events to learn more
   - Work with instructor and student technical leaders
   - Don't hesitate to regularly ask questions in Discord
   - Keep working and don't give up with setup tasks
 
-## Essential tools for prosegrammers
+## Essential tools for proofgrammers
 
 ::: {.fragment .callout-note icon=true title="Tips for effective theoretical machines setup"}
 
@@ -403,7 +403,7 @@ collaboration!
 
 :::
 
-## Testing your prosegrammer setup
+## Testing your proofgrammer setup
 
 ```bash
 # Run these commands in your terminal window
