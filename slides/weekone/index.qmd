@@ -421,12 +421,19 @@ uv --version                    # Check UV package manager
 - **Consult documentation** links when troubleshooting
 - **Schedule office hours** with the course instructor
 - **Visit office hours** with the student technical leaders
-- {{< iconify fa6-solid rocket >}} **Have these setup by second
-Friday of the semester**!
+- {{< iconify fa6-solid rocket >}} **Have these setup by the end of this week**!
 
 :::
 
 # Can you clone the course website to your laptop and run `quarto preview`? Output?
+
+::: {.fragment .fade style="margin-top: 0em; font-size: 0.9em;"}
+
+- Fork the website's repository for your team
+- Commit your presentation materials
+- Create a PR request and ask for its review
+
+:::
 
 ## Overall document engineering setup
 
