@@ -12,3 +12,16 @@ toc-expand: 3
 - {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
   - Chapters one and two of [What Can be Computed? A Practical Guide to the
   Theory of Computation](https://whatcanbecomputed.com/)
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - Submit completed version of team's presentation slides by 11:59 PM
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - Instructor's presentation on this week's assigned topics
+- {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+   - As outlined in the [syllabus](../../syllabus/index.qmd), teams give two
+  types of presentations:
+     - Proofgrammer presentations during first three weeks of module
+     - Retrospective presentations during the last week of a module
+     - Teams give a **ten minutes** talk with a **five minute** evaluation session
+- {{< iconify fa6-solid gears size=18px >}} **Thursday**:
+  - Course instructor
+  - Charette session
