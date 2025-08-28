@@ -20,7 +20,7 @@ format:
 
 # Theory of computation
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"} 
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
@@ -30,14 +30,13 @@ format:
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.80em;"}
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Why is it important?**
-    - Foundation of computer science
-        - Helps determine if problems are solvable
-        - Guides algorithm design choices
-        - Reveals fundamental computational limits
-        - Powers modern cryptography and security
+    - Helps determine if problems are solvable
+    - Reveals fundamental computational limits
+    - Guides key algorithm design choices
+    - Undergirds modern cryptography and security
 
 :::
 
@@ -59,36 +58,45 @@ format:
 
 ## What does a proofgrammer do?
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
 
-- **Proof** (mathematical verification) meets **Programming** (code implementation)
+- **Proofgrammer** =
+  - **Proof** (mathematical verification) +
+  - **Programming** (code implementation)
 - Implement Turing machines and automata
-- Prove undecidability results with code
+- Prove undecidability results with Python code
 - Analyze algorithmic complexity experimentally
 - Create computational models of theoretical concepts
 - Verify theoretical results through programming
+- **Welcome to the proofgrammer team! How exciting!**
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} How do we *prove* computational limits using code? How do we *implement* theoretical machines? How do we *verify* complexity results?
-
-:::
-
-## Computable problems with Python
+## Define the `count_lines` function
 
 ```{python}
-from typing import List
-from pathlib import Path
-
 def count_lines(file_content: str) -> int:
     """Count the number of lines in the provided text content."""
     if not file_content:
         return 0
     lines = file_content.split('\n')
     return len(lines)
+```
 
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Computable problems**: have clear, algorithmic solutions
+- **Line counting**: decidable and tractable for any finite input
+- **Function input**: various types of input strings possible
+- **Important question**: what makes this problem computable?
+- **Translate to uncomputable**: can you make this more difficult?
+- {{< iconify fa6-solid lightbulb >}} **Differences in tractable, intractable, and uncomputable?**
+
+:::
+
+## Computable problems with Python
+
+```{python}
 # example source code content
 sample_code = """def hello_world():
     print("Hello, Proofgrammers!")
@@ -107,12 +115,6 @@ print(f"Number of lines in the sample code: {line_count}")
 print(f"This is a computable problem - we can always determine the line count!")
 ```
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
-
-- **Computable problems**: have clear, algorithmic solutions
-- **Line counting**: decidable and tractable for any finite input
-
-:::
 
 ## Try the `count_lines` function
 
@@ -139,15 +141,18 @@ print(f"Lines in Fibonacci code: {line_count}")
 print("Try changing the code above to see the count change!")
 ```
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.80em;"}
+::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
 
-- **Important question**: what makes this problem computable?
+- This function accepts the source code of a program as input
+- It processes the source code *without* running it directly
 
 :::
 
 ## Universal computation with Python
 
-```{python}
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
 def universal(prog_string: str, input_string: str) -> str:
     """Execute a program given as a string on the provided input."""
     local_namespace = {}
@@ -162,26 +167,14 @@ def universal(prog_string: str, input_string: str) -> str:
     else:
         return "No function found"
 
-# Example program that checks if a string contains "GAGA"
+# example program that checks if a string contains "GAGA"
 contains_gaga_program = '''
 def contains_gaga(input_str):
     """Check if the input string contains GAGA."""
     return "yes" if "GAGA" in input_str else "no"
 '''
-```
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.80em;"}
-
-- `universal`: demonstrates one program executing another program
-- Foundation of **universal computation** and general-purpose computers
-
-:::
-
-## Testing universal computation
-
-```{python}
-#| freeze: auto
-# Demonstrate universal computation
+# demonstrate universal computation
 test_string1 = "HELLO GAGA WORLD"
 test_string2 = "programming"
 
@@ -205,30 +198,28 @@ result2 = universal(count_vowels_program, test_string2)
 print(f"Result: {result2}")
 ```
 
-## Discuss computation results
+## Let's discuss these examples!
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- {{< iconify game-icons team-idea >}} **Key insights from these code examples:**
+  - `universal`: demonstrates one program executing another program
+  - **Universal computation** is central to general-purpose computers
+  - Simple example to illustrate a powerful theoretical concept
+
+:::
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
 - {{< iconify game-icons team-idea >}} **Discuss in your teams:**
     - What makes the line counting problem computable?
-    - How does universal computation relate to general-purpose computers?
-    - What are the theoretical implications of programs executing programs?
+    - Universal computation's relation to general-purpose computers?
+    - What are the implications of programs executing programs?
+    - What are the limits to implementing computer programs?
 
 :::
 
-## Essential tools
-
-- Terminal window for command-line operations
-- Git and GitHub for version control and collaboration
-- VS Code for writing and testing Python code
-- UV for Python package and dependency management
-- Quarto for creating interactive documents with code
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts in code? How do we *verify* computational results? How do we *document* our proofs effectively?
-
-:::
+# Don't assume it is possible to implement every Python program! Start to think like a proofgrammer!
 
 ## Computational challenges
 
@@ -247,26 +238,16 @@ print(f"Result: {result2}")
 
 ## Theory of computation challenges
 
-::: {.fragment}
+::: {.incremental}
 
 - Abstract concepts require concrete implementations
 - Proofs must be both rigorous and programmable
 - Complexity analysis involves theory and experimentation
-- Undecidability results challenge intuition
+- Undecidability results challenge often intuition
+- Think you finished a proof that is actually incorrect
 - Connecting mathematical theory to practical programming
-
-:::
-
-## Development environment
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
-
-- Terminal with command-line access for tool execution
-- Version control system (Git with GitHub)
-- Python development environment (UV + Python 3.12+)
-- Code editor with syntax highlighting (VS Code + extensions)
-- Documentation system (Quarto for interactive code/text)
-- AI coding assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
+- **Make sure to regularly ask questions in Discord!**
+- **Frequently schedule office hours with the instructor!**
 
 :::
 
@@ -276,36 +257,58 @@ print(f"Result: {result2}")
 
 ::: {.column width="50%"}
 
-{{< iconify fa6-solid book-open >}} Explore the ["What Can be Computed" textbook](https://whatcanbecomputed.com/) and [Python documentation](https://docs.python.org/)
+{{< iconify fa6-solid book-open >}} Explore the ["What Can be Computed"
+textbook](https://whatcanbecomputed.com/) and [Python
+documentation](https://docs.python.org/)
 
 :::
 
 ::: {.column width="50%"}
 
-{{< iconify fa6-brands github >}} Review computational examples like [WCBC code](https://github.com/johnmaccormick/wcbc-programs) and [theory implementations](https://github.com/topics/theory-of-computation)
+{{< iconify fa6-brands github >}} Review computational examples like [WCBC
+book](https://whatcanbecomputed.com/)'s code segments and slides
 
 :::
 
 ::::
 
-::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.9em;"}
+::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.95em;"}
 
-- Key areas of focus:
+- {{< iconify fa6-solid lightbulb >}} **Key areas of focus**:
   - Python programming for theoretical concepts
   - Automata theory and formal languages  
   - Computational complexity and analysis
   - Decidability and undecidability proofs
+  - Practical applications of theoretical machines
 
 :::
 
-## AI-assisted theory work
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+## Essential tools
 
-- AI tools like GitHub Copilot, Google Gemini CLI, or OpenCode assist with code:
-  - Is the generated code theoretically correct and well-implemented?
+- Terminal window for command-line operations
+- Git and GitHub for version control and collaboration
+- VS Code for writing and testing Python code
+- Uv for Python package and dependency management
+- Quarto for creating interactive documents with code
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts
+in code? How do we *verify* computational results? How do we *document* our
+proofs effectively? How do we *apply* these insights to real-world problems?
+
+:::
+
+
+## Using AI in theoretical machines
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- GitHub Copilot, Google Gemini CLI, or OpenCode assist with code:
+  - Generated code theoretically correct and well-implemented?
   - Can the generated code help verify mathematical proofs?
-  - Does the generated code follow computational complexity best practices?
+  - Does the generated code follow programming best practices?
   - Can you integrate AI-generated code into your proof workflows?
 
 :::
@@ -313,94 +316,116 @@ print(f"Result: {result2}")
 ::: {.fragment .fade .boxed-content style="margin-top: -0.1em; font-size: 0.8em;"}
 
 {{< iconify fa6-solid lightbulb >}} Proofgrammers who use AI coding tools are
-responsible for ensuring correctness, theoretical accuracy, and ethical use!
+responsible for ensuring correctness, theoretical accuracy, and ethical use. Do
+not assume that the explanation or a proof of a theoretical concept is correct.
+**Although these tools can be helpful, you must use them with skepticism and
+care.**
+
+:::
+
+# Let's set up your proofgramming environment!
+
+- Classroom session on Tuesday
+- Laboratory session on Tuesday
+- Classroom session on Thursday
+
+## Proofgramming environment
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- Terminal with command-line access for tool execution
+- Version control system (Git with GitHub)
+- Python development environment (UV + Python 3.12+)
+- Code editor with syntax highlighting (VS Code + extensions)
+- Documentation system (Quarto for interactive code/text)
+- Assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
+- **Make sure that every member of your team for the first presentation can
+effectively setup and use all of these tools!**
+- **Schedule office hours with the course instructor for help!**
 
 :::
 
 ## Development environment setup
 
-- *Installing* essential tools for proofgrammers
-- *Configuring* development environment for theoretical computation
+- **Installing** essential tools for prosegrammers
+- **Configuring** development environment for proofgramming
+  - Complete these tasks during the first and second weeks
+  - All skill-check and examinations assume working setup
+  - Please attend the **SOS Week** events to learn more
+  - Work with instructor and student technical leaders
+  - Don't hesitate to regularly ask questions in Discord
+  - Keep working and don't give up with setup tasks
 
 ## Essential tools for proofgrammers
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .callout-note icon=true title="Tips for effective theoretical machines setup"}
 
-```{.text  code-line-numbers="false"}
-Tools for Theory of Computation
-Terminal: Command-line interface for running computational tools
-Git: Version control for tracking code and proof development
-GitHub: Cloud platform for collaboration and project hosting
-VS Code: Code editor with extensions for Python and theory work
-```
+- [Git](https://git-scm.com/), [GitHub](https://github.com/), [GitHub
+Education](https://github.com/education), and [GitHub Student Developer
+Pack](https://education.github.com/pack)
+- [GitHub SSH
+Keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+and [GitHub CLI](https://cli.github.com/) command-line program for interaction
+with GitHub
+- Free GitHub Pro Subscription for [GitHub
+Copilot](https://github.com/features/copilot)
+- [VS Code](https://code.visualstudio.com/) or another suitable text editor
+(e.g., [Zed](https://zed.dev/) or [Neovim](https://neovim.io/))
+- [Quarto](https://quarto.org/) CLI and the Quarto plugin for your text editor
+- [Uv](https://docs.astral.sh/uv/) for [Python](https://www.python.org/)
+installation, virtual environment and dependency management
+- Make sure that Uv has installed [Python](https://www.python.org/) 3.12 or
+Python 3.13
+- The suite of tools from the [Node Package Manager](https://www.npmjs.com/),
+include [npm](https://www.npmjs.com/) and [npx](https://www.npmjs.com/)
+- [OpenCode](https://opencode.ai/) and [Google Gemini
+CLI](https://github.com/google-gemini/gemini-cli) for AI Coding Agents, runnable
+with npx
+- Terminal window (e.g., [Warp](https://www.warp.dev/)) for running all of the
+aforementioned programs
 
 :::
 
-::: {.fragment .fade-up style="font-size: 0.9em;"}
-
-- **Terminal**: Essential for running computational tools, executing Python
-scripts, and automating proof verification. Available on all operating systems
-(Windows Terminal, macOS Terminal, or Linux terminal emulators).
-- **Git and GitHub**: Industry-standard version control and collaboration
-platform for tracking changes in code implementations of theoretical concepts
-and enabling team-based proof development.
-- **Testing**: Run `git --version` and create a test repository on GitHub
-
-:::
-
-## Installing UV and Python
+## GitHub student benefits and copilot
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
-- {{< iconify fa6-solid gear >}} **UV: Modern Python package and project manager**
-  - Install from [astral-sh.github.io/uv](https://astral-sh.github.io/uv/)
-  - Cross-platform: `curl -LsSf https://astral.sh/uv/install.sh | sh` (Unix)
-  - Windows: `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`
-- {{< iconify fa6-solid gear >}} **Python 3.12+ via UV (recommended approach)**
-  - Use `uv python install 3.12` to install Python
-  - Create virtual environments with `uv venv`
-  - Install packages with `uv add package-name`
-- {{< iconify fa6-solid lightbulb >}} **Why UV for proofgrammers?** Fast, reliable dependency management for computational theory projects!
+- {{< iconify fa6-solid gear >}} **GitHub Student Developer Pack**
+  - Free access to premium developer tools and services
+  - Apply at [education.github.com](https://education.github.com/pack)
+  - Requires verification with .edu email or student ID
+- {{< iconify fa6-solid gear >}} **GitHub Copilot Pro for Students**
+  - AI-powered code completion and generation
+  - Free for verified students and educators
+  - Integrates with VS Code and other editors
+- {{< iconify fa6-solid lightbulb >}} **Why GitHub tools?** Essential for
+collaboration!
 
 :::
 
-## Setting up VS Code
+## Checking your proofgrammer setup
 
-```python
-# Essential VS Code extensions for proofgrammers
-extensions = [
-    "ms-python.python",           # Python development
-    "quarto.quarto",             # Quarto documents
-    "yzhang.markdown-all-in-one", # Markdown editing
-    "ms-vscode.vscode-json",     # JSON configuration
-]
+```bash
+# Run these commands in your terminal window
+git --version                   # Check Git installation
+python --version                # Check Python (via UV)
+quarto --version                # Check Quarto installation
+code --version                  # Check VS Code installation
+uv --version                    # Check UV package manager
 ```
 
 ::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
-- Install VS Code from [code.visualstudio.com](https://code.visualstudio.com/)
-- Use built-in extension marketplace to install proofgrammer tools
-- **Testing**: Create a `.py` file and verify syntax highlighting works
+- **Test each tool individually** before starting projects
+- **Create a test document** with code and text to verify integration
+- **Consult documentation** links when troubleshooting
+- **Schedule office hours** with the course instructor
+- **Visit office hours** with the student technical leaders
+- {{< iconify fa6-solid rocket >}} **Have these setup by the end of this week**!
 
 :::
 
-## Installing Quarto
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid gear >}} **Quarto: Scientific and technical publishing**
-  - Download from [quarto.org](https://quarto.org/docs/get-started/)
-  - Cross-platform installer available for Windows, macOS, Linux
-  - Combines code, text, and mathematical notation in documents
-- {{< iconify fa6-solid gear >}} **VS Code Quarto extension**
-  - Install the official Quarto extension in VS Code
-  - Enables live preview and code execution in `.qmd` files
-  - Provides syntax highlighting and auto-completion
-- {{< iconify fa6-solid lightbulb >}} **Why Quarto for proofgrammers?** Create reproducible documents with mathematical proofs and Python implementations!
-
-:::
-
-## Node.js tools
+## Coding Agents Use Node.js tools
 
 ```bash
 # Install Node.js and npm from nodejs.org
@@ -413,93 +438,54 @@ npx opencode --version                   # OpenCode AI assistant
 
 - **Node.js**: JavaScript runtime enabling AI-powered coding assistants
 - **NPX**: Run packages without installing globally, keeps system clean
-- **Testing**: Run `node --version` and `npm --version` to verify installation
+- **Runtime**: Use Node for delivery, may be built in another language
+- **Testing**: Authentication with GitHub or Google and work with the coding
+agent to determine whether or not a problem is tractable or intractable. Ask
+the agent to explain one of the code segments from the book, without stating
+whether or not the code is a correct.
 
 :::
 
-## GitHub Student Benefits
+# Can you clone the course website to your laptop and run `quarto preview`? Output?
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.fragment .fade style="margin-top: 0em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid gear >}} **GitHub Student Developer Pack**
-  - Free access to premium developer tools and services
-  - Apply at [education.github.com](https://education.github.com/pack)
-  - Requires verification with .edu email or student ID
-- {{< iconify fa6-solid gear >}} **GitHub Copilot Pro for Students**
-  - AI-powered code completion and generation
-  - Free for verified students and educators
-  - Integrates with VS Code and other editors
-- {{< iconify fa6-solid lightbulb >}} **Why GitHub tools for proofgrammers?** Essential for collaborative proof development and AI-assisted coding!
+- Fork the website's repository for your team
+- Commit your presentation materials
+- Create a PR request and ask for its review
 
 :::
 
-## Testing your setup
+## Overall proofgramming setup
 
-```bash
-# Essential verification commands
-git --version                    # Check Git installation
-python --version                 # Check Python (via UV)
-quarto --version                # Check Quarto installation
-code --version                  # Check VS Code installation
-uv --version                    # Check UV package manager
-```
-
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
-
-- **Test each tool individually** before starting computational projects
-- **Create a test document** with code and mathematical notation to verify integration
-- **Consult documentation** links when troubleshooting
-
-:::
-
-## Tools and workflows
-
-::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
-
-- **Theory of Computation Projects**
-  - Latest version of Python via UV package manager
-  - Use UV to manage virtual environments and dependencies
-  - Use Git with instructor-provided computational repositories
-  - Create, edit, and preview documents with Quarto and VS Code
-
-:::
-
-::: {.fragment .fade style="margin-top: -0.45em; font-size: 0.875em;"}
-
-- **Collaborative Proof Projects**
-  - Use the same tools as in individual projects
-  - Use Git and GitHub flow for collaborative proof development workflows
-  - Use Quarto to render previews of mathematical and computational content
-  - Use VS Code extensions to run and test theoretical implementations
-
-:::
-
-## Setup requirements
-
-::: {.fragment .callout-note icon=true title="Tips for effective computational theory setup"}
+::: {.fragment .callout-note icon=true title="Tips for effective theoretical machines setup"}
 
 - Devote time outside class to installing and configuring tools
-- Confirm that all tools work during the first lab session
+- Confirm that most tools work during the first lab session
+- Successfully get all tools to work during the first lab session
 - Create and render test documents with the provided examples
-- Complete the first theory of computation project on time
-- Contribute to collaborative proof development projects
+- Complete the first proofgrammer presentation on time
+- Contribute to collaborative presentation projects
+- Prepare for first proofgrammer charette session
 
-{{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
+- {{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
+- {{< iconify fa6-solid lightbulb >}} **If you are having trouble, publicly ask for help on Discord!**
 
 :::
 
-## Goals of theory of computation
+## Course goals
 
-::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
+::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - **Computational Implementation**:
   - Design and implement theoretical concepts as Python programs
+  - Create frameworks for running proofs as Python programs
   - Test all aspects of implementations to ensure correctness
-  - Create frameworks for automated proof verification
-- **Theoretical Analysis**:
-  - Design experiments to answer questions about computational complexity
-  - Collect and analyze data about algorithm performance
-  - Visualize insights to understand computational behavior
-- **Communicate** results and theoretical insights through code and documentation
+- **Communicate** theoretical insights through **code** and **documentation**
+- **Explain** and **evaluate** insights during **presentation sessions**
+- Participate in **charette sessions** to discuss and learn from each other
+- **Key next steps**:
+  - Review the [course schedule](../../schedule/index.qmd)
+  - Study the [course syllabus](../../syllabus/index.qmd)
 
 :::
