@@ -219,6 +219,8 @@ print(f"Result: {result2}")
 
 :::
 
+# Don't assume it is possible to implement every Python program! Start to think like a proofgrammer!
+
 ## Computational challenges
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
@@ -236,13 +238,16 @@ print(f"Result: {result2}")
 
 ## Theory of computation challenges
 
-::: {.fragment}
+::: {.incremental}
 
 - Abstract concepts require concrete implementations
 - Proofs must be both rigorous and programmable
 - Complexity analysis involves theory and experimentation
-- Undecidability results challenge intuition
+- Undecidability results challenge often intuition
+- Think you finished a proof that is actually incorrect
 - Connecting mathematical theory to practical programming
+- **Make sure to regularly ask questions in Discord!**
+- **Frequently schedule office hours with the instructor!**
 
 :::
 
@@ -261,20 +266,20 @@ documentation](https://docs.python.org/)
 ::: {.column width="50%"}
 
 {{< iconify fa6-brands github >}} Review computational examples like [WCBC
-code](https://github.com/johnmaccormick/wcbc-programs) and [theory
-implementations](https://github.com/topics/theory-of-computation)
+book](https://whatcanbecomputed.com/)'s code segments and slides
 
 :::
 
 ::::
 
-::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.9em;"}
+::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.95em;"}
 
-- Key areas of focus:
+- {{< iconify fa6-solid lightbulb >}} **Key areas of focus**:
   - Python programming for theoretical concepts
   - Automata theory and formal languages  
   - Computational complexity and analysis
   - Decidability and undecidability proofs
+  - Practical applications of theoretical machines
 
 :::
 
@@ -284,26 +289,26 @@ implementations](https://github.com/topics/theory-of-computation)
 - Terminal window for command-line operations
 - Git and GitHub for version control and collaboration
 - VS Code for writing and testing Python code
-- UV for Python package and dependency management
+- Uv for Python package and dependency management
 - Quarto for creating interactive documents with code
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
 {{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts
 in code? How do we *verify* computational results? How do we *document* our
-proofs effectively?
+proofs effectively? How do we *apply* these insights to real-world problems?
 
 :::
 
 
-## AI-assisted theory work
+## Using AI in theoretical machines
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
-- AI tools like GitHub Copilot, Google Gemini CLI, or OpenCode assist with code:
-  - Is the generated code theoretically correct and well-implemented?
+- GitHub Copilot, Google Gemini CLI, or OpenCode assist with code:
+  - Generated code theoretically correct and well-implemented?
   - Can the generated code help verify mathematical proofs?
-  - Does the generated code follow computational complexity best practices?
+  - Does the generated code follow programming best practices?
   - Can you integrate AI-generated code into your proof workflows?
 
 :::
@@ -311,20 +316,10 @@ proofs effectively?
 ::: {.fragment .fade .boxed-content style="margin-top: -0.1em; font-size: 0.8em;"}
 
 {{< iconify fa6-solid lightbulb >}} Proofgrammers who use AI coding tools are
-responsible for ensuring correctness, theoretical accuracy, and ethical use!
-
-:::
-
-## Development environment
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
-
-- Terminal with command-line access for tool execution
-- Version control system (Git with GitHub)
-- Python development environment (UV + Python 3.12+)
-- Code editor with syntax highlighting (VS Code + extensions)
-- Documentation system (Quarto for interactive code/text)
-- AI coding assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
+responsible for ensuring correctness, theoretical accuracy, and ethical use. Do
+not assume that the explanation or a proof of a theoretical concept is correct.
+**Although these tools can be helpful, you must use them with skepticism and
+care.**
 
 :::
 
@@ -334,26 +329,26 @@ responsible for ensuring correctness, theoretical accuracy, and ethical use!
 - Laboratory session on Tuesday
 - Classroom session on Thursday
 
-## Essential tools for proofgrammers
+## Proofgramming environment
 
-- Text editor like VS Code, Zed, or Neovim for writing
-- Version control like Git for tracking document changes  
-- Documentation generator like Quarto or Sphinx
-- Generative AI tools like GitHub Copilot or Google Gemini CLI
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} How do we *characterize* effective document
-tools? *...* How do we *compare* their features for different projects? *...*
-How do we *integrate* them into efficient workflows? *...* How do we *configure*
-these tools for our needs? *...* How do we use them for *teamwork*?
+- Terminal with command-line access for tool execution
+- Version control system (Git with GitHub)
+- Python development environment (UV + Python 3.12+)
+- Code editor with syntax highlighting (VS Code + extensions)
+- Documentation system (Quarto for interactive code/text)
+- Assistants (GitHub Copilot, Google Gemini CLI, OpenCode)
+- **Make sure that every member of your team for the first presentation can
+effectively setup and use all of these tools!**
+- **Schedule office hours with the course instructor for help!**
 
 :::
 
 ## Development environment setup
 
 - **Installing** essential tools for prosegrammers
-- **Configuring** development environment for document work
+- **Configuring** development environment for proofgramming work
   - Complete these tasks during the first and second weeks
   - A skill-check during second week tests your setup
   - Please attend the **SOS Week** events to learn more
@@ -363,7 +358,7 @@ these tools for our needs? *...* How do we use them for *teamwork*?
 
 ## Essential tools for prosegrammers
 
-::: {.fragment .callout-note icon=true title="Tips for effective document engineering setup"}
+::: {.fragment .callout-note icon=true title="Tips for effective theoretical machines setup"}
 
 - [Git](https://git-scm.com/), [GitHub](https://github.com/), [GitHub
 Education](https://github.com/education), and [GitHub Student Developer
