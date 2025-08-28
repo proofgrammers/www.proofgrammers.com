@@ -386,7 +386,7 @@ aforementioned programs
 
 :::
 
-## GitHub Student Benefits and Copilot
+## GitHub student benefits and copilot
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
@@ -403,7 +403,7 @@ collaboration!
 
 :::
 
-## Testing your proofgrammer setup
+## Checking your proofgrammer setup
 
 ```bash
 # Run these commands in your terminal window
@@ -425,118 +425,7 @@ uv --version                    # Check UV package manager
 
 :::
 
-# Can you clone the course website to your laptop and run `quarto preview`? Output?
-
-::: {.fragment .fade style="margin-top: 0em; font-size: 0.9em;"}
-
-- Fork the website's repository for your team
-- Commit your presentation materials
-- Create a PR request and ask for its review
-
-:::
-
-## Overall document engineering setup
-
-::: {.fragment .callout-note icon=true title="Tips for effective document engineering setup"}
-
-- Devote time outside class to installing and configuring tools
-- Confirm that most tools work during the first lab session
-- Successfully get all tools to work during the first lab session
-- Create and render test documents with the provided examples
-- Complete the first document engineering project on time
-- Contribute to collaborative documentation projects
-- Prepare for first document engineering skill check
-
-- {{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into document engineering!**
-- {{< iconify fa6-solid lightbulb >}} **If you are having trouble, publicly ask for help on Discord!**
-
-:::
-
-
-## Development environment setup
-
-- *Installing* essential tools for proofgrammers
-- *Configuring* development environment for theoretical computation
-
-## Essential tools for proofgrammers
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-```{.text  code-line-numbers="false"}
-Tools for Theory of Computation
-Terminal: Command-line interface for running computational tools
-Git: Version control for tracking code and proof development
-GitHub: Cloud platform for collaboration and project hosting
-VS Code: Code editor with extensions for Python and theory work
-```
-
-:::
-
-::: {.fragment .fade-up style="font-size: 0.9em;"}
-
-- **Terminal**: Essential for running computational tools, executing Python
-scripts, and automating proof verification. Available on all operating systems
-(Windows Terminal, macOS Terminal, or Linux terminal emulators).
-- **Git and GitHub**: Industry-standard version control and collaboration
-platform for tracking changes in code implementations of theoretical concepts
-and enabling team-based proof development.
-- **Testing**: Run `git --version` and create a test repository on GitHub
-
-:::
-
-## Installing UV and Python
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid gear >}} **UV: Modern Python package and project manager**
-  - Install from [astral-sh.github.io/uv](https://astral-sh.github.io/uv/)
-  - Cross-platform: `curl -LsSf https://astral.sh/uv/install.sh | sh` (Unix)
-  - Windows: `powershell -c "irm https://astral.sh/uv/install.ps1 | iex"`
-- {{< iconify fa6-solid gear >}} **Python 3.12+ via UV (recommended approach)**
-  - Use `uv python install 3.12` to install Python
-  - Create virtual environments with `uv venv`
-  - Install packages with `uv add package-name`
-- {{< iconify fa6-solid lightbulb >}} **Why UV for proofgrammers?** Fast, reliable dependency management for computational theory projects!
-
-:::
-
-## Setting up VS Code
-
-```python
-# Essential VS Code extensions for proofgrammers
-extensions = [
-    "ms-python.python",           # Python development
-    "quarto.quarto",             # Quarto documents
-    "yzhang.markdown-all-in-one", # Markdown editing
-    "ms-vscode.vscode-json",     # JSON configuration
-]
-```
-
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
-
-- Install VS Code from [code.visualstudio.com](https://code.visualstudio.com/)
-- Use built-in extension marketplace to install proofgrammer tools
-- **Testing**: Create a `.py` file and verify syntax highlighting works
-
-:::
-
-## Installing Quarto
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid gear >}} **Quarto: Scientific and technical publishing**
-  - Download from [quarto.org](https://quarto.org/docs/get-started/)
-  - Cross-platform installer available for Windows, macOS, Linux
-  - Combines code, text, and mathematical notation in documents
-- {{< iconify fa6-solid gear >}} **VS Code Quarto extension**
-  - Install the official Quarto extension in VS Code
-  - Enables live preview and code execution in `.qmd` files
-  - Provides syntax highlighting and auto-completion
-- {{< iconify fa6-solid lightbulb >}} **Why Quarto for proofgrammers?** Create reproducible documents with mathematical proofs and Python implementations!
-
-:::
-
-## Node.js tools
+## Coding Agents Use Node.js tools
 
 ```bash
 # Install Node.js and npm from nodejs.org
@@ -553,74 +442,30 @@ npx opencode --version                   # OpenCode AI assistant
 
 :::
 
-## GitHub Student Benefits
+# Can you clone the course website to your laptop and run `quarto preview`? Output?
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.fragment .fade style="margin-top: 0em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid gear >}} **GitHub Student Developer Pack**
-  - Free access to premium developer tools and services
-  - Apply at [education.github.com](https://education.github.com/pack)
-  - Requires verification with .edu email or student ID
-- {{< iconify fa6-solid gear >}} **GitHub Copilot Pro for Students**
-  - AI-powered code completion and generation
-  - Free for verified students and educators
-  - Integrates with VS Code and other editors
-- {{< iconify fa6-solid lightbulb >}} **Why GitHub tools for proofgrammers?** Essential for collaborative proof development and AI-assisted coding!
+- Fork the website's repository for your team
+- Commit your presentation materials
+- Create a PR request and ask for its review
 
 :::
 
-## Testing your setup
+## Overall proofgramming setup
 
-```bash
-# Essential verification commands
-git --version                    # Check Git installation
-python --version                 # Check Python (via UV)
-quarto --version                # Check Quarto installation
-code --version                  # Check VS Code installation
-uv --version                    # Check UV package manager
-```
-
-::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
-
-- **Test each tool individually** before starting computational projects
-- **Create a test document** with code and mathematical notation to verify integration
-- **Consult documentation** links when troubleshooting
-
-:::
-
-## Tools and workflows
-
-::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
-
-- **Theory of Computation Projects**
-  - Latest version of Python via UV package manager
-  - Use UV to manage virtual environments and dependencies
-  - Use Git with instructor-provided computational repositories
-  - Create, edit, and preview documents with Quarto and VS Code
-
-:::
-
-::: {.fragment .fade style="margin-top: -0.45em; font-size: 0.875em;"}
-
-- **Collaborative Proof Projects**
-  - Use the same tools as in individual projects
-  - Use Git and GitHub flow for collaborative proof development workflows
-  - Use Quarto to render previews of mathematical and computational content
-  - Use VS Code extensions to run and test theoretical implementations
-
-:::
-
-## Setup requirements
-
-::: {.fragment .callout-note icon=true title="Tips for effective computational theory setup"}
+::: {.fragment .callout-note icon=true title="Tips for effective theoretical machines setup"}
 
 - Devote time outside class to installing and configuring tools
-- Confirm that all tools work during the first lab session
+- Confirm that most tools work during the first lab session
+- Successfully get all tools to work during the first lab session
 - Create and render test documents with the provided examples
-- Complete the first theory of computation project on time
-- Contribute to collaborative proof development projects
+- Complete the first document engineering project on time
+- Contribute to collaborative documentation projects
+- Prepare for first document engineering skill check
 
-{{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
+- {{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
+- {{< iconify fa6-solid lightbulb >}} **If you are having trouble, publicly ask for help on Discord!**
 
 :::
 
