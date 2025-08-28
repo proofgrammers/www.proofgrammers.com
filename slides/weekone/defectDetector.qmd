@@ -1,0 +1,60 @@
+---
+title: "Uncomputablility and Defect Detectors"
+description: "Creating a limited defect detector and Why a full Implementation is not possible"
+date: "2025-08-27"
+date-format: long
+author: Preston Smith, Bendik Kaibas, Duru Akbas & Miguel Orti Vila
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+## Demo
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 25
+
+import ast
+
+def check_syntax(text: str):
+    try:
+        ast.parse(text)
+        print("No syntax errors found.")
+    except SyntaxError as e:
+        print(f"Syntax error: {e}")
+        
+
+def run_scanner(source_code: str):
+    check_syntax(source_code)
+
+test_source_code = """def fibonacci(n):
+    if n <= 1
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(5))"""
+
+run_scanner(test_source_code)
+
+
+```
+
+## PlaceHolder
+
+## PlaceHolder
+
+## PlaceHolder
+
+## PlaceHolder
+
+## PlaceHolder
