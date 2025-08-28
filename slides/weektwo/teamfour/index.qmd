@@ -3,7 +3,7 @@ title: "Text Error Correction System"
 description: "Explore tractability of error correction"
 date: "2025-09-01"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Aidan Dyga, Ainslee Plesko, Grant Anderson, Issei 
 execute:
   echo: true
 format:
@@ -29,3 +29,5 @@ format:
     - "Proofgrammers" combine *proofs* and *programming*
 
 :::
+
+# add additional slides here
