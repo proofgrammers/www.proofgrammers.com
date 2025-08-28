@@ -473,7 +473,7 @@ whether or not the code is a correct.
 
 :::
 
-## Goals of theory of computation course
+## Course goals
 
 ::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.85em;"}
 
