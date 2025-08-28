@@ -51,7 +51,6 @@ for input in inputs:
 ```{pyodide}
 #| autorun: true
 #| max-lines: 10
-
 import ast
 
 def check_syntax(text: str):
@@ -72,9 +71,7 @@ test_source_code = """def fibonacci(n):
 
 print(fibonacci(5))"""
 
-crash_on_input(test_source_code)
-
-
+run_scanner(test_source_code)
 ```
 
 
