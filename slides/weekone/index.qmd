@@ -36,7 +36,7 @@ format:
     - Helps determine if problems are solvable
     - Reveals fundamental computational limits
     - Guides key algorithm design choices
-    - Powers modern cryptography and security
+    - Undergirds modern cryptography and security
 
 :::
 
@@ -68,7 +68,7 @@ format:
 - Analyze algorithmic complexity experimentally
 - Create computational models of theoretical concepts
 - Verify theoretical results through programming
-- **Welcome to the proofgrammer team!**
+- **Welcome to the proofgrammer team! How exciting!**
 
 :::
 
@@ -438,7 +438,11 @@ npx opencode --version                   # OpenCode AI assistant
 
 - **Node.js**: JavaScript runtime enabling AI-powered coding assistants
 - **NPX**: Run packages without installing globally, keeps system clean
-- **Testing**: Run `node --version` and `npm --version` to verify installation
+- **Runtime**: Use Node for delivery, may be built in another language
+- **Testing**: Authentication with GitHub or Google and work with the coding
+agent to determine whether or not a problem is tractable or intractable. Ask
+the agent to explain one of the code segments from the book, without stating
+whether or not the code is a correct.
 
 :::
 
@@ -460,27 +464,28 @@ npx opencode --version                   # OpenCode AI assistant
 - Confirm that most tools work during the first lab session
 - Successfully get all tools to work during the first lab session
 - Create and render test documents with the provided examples
-- Complete the first document engineering project on time
-- Contribute to collaborative documentation projects
-- Prepare for first document engineering skill check
+- Complete the first proofgrammer presentation on time
+- Contribute to collaborative presentation projects
+- Prepare for first proofgrammer charette session
 
 - {{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
 - {{< iconify fa6-solid lightbulb >}} **If you are having trouble, publicly ask for help on Discord!**
 
 :::
 
-## Goals of theory of computation
+## Goals of theory of computation course
 
-::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.875em;"}
+::: {.fragment .fade style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - **Computational Implementation**:
   - Design and implement theoretical concepts as Python programs
+  - Create frameworks for running proofs as Python programs
   - Test all aspects of implementations to ensure correctness
-  - Create frameworks for automated proof verification
-- **Theoretical Analysis**:
-  - Design experiments to answer questions about computational complexity
-  - Collect and analyze data about algorithm performance
-  - Visualize insights to understand computational behavior
-- **Communicate** results and theoretical insights through code and documentation
+- **Communicate** theoretical insights through **code** and **documentation**
+- **Explain** and **evaluate** insights during **presentation sessions**
+- Participate in **charette sessions** to discuss and learn from each other
+- **Key next steps**:
+  - Review the [course schedule](../../schedule/index.qmd)
+  - Study the [course syllabus](../../syllabus/index.qmd)
 
 :::
