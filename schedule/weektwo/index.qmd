@@ -17,11 +17,9 @@ toc-expand: 3
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
   - Instructor's presentation on this week's assigned topics
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
-   - As outlined in the [syllabus](../../syllabus/index.qmd), teams give two
-  types of presentations:
-     - Proofgrammer presentations during first three weeks of module
-     - Retrospective presentations during the last week of a module
-     - Teams give a **ten minutes** talk with a **five minute** evaluation session
-- {{< iconify fa6-solid gears size=18px >}} **Thursday**:
-  - Course instructor
-  - Charette session
+   - Teams give a **ten minutes** talk with a **five minute** evaluation session
+   - Presentation order randomly assigned at the start of laboratory session
+   - Make new team assignment's for next week's proofgrammer presentations
+- {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
+  - Instructor's presentation on this week's assigned topics
+  - Charette session where students collaboratively ask and answer questions
