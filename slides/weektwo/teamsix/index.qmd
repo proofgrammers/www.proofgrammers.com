@@ -1,6 +1,6 @@
 ---
-title: "Multiple Sequence Alignment"
-description: "Explain intractability of DNA fragment alignment"
+title: "Build a Bug Detection System"
+description: "Explore why bug detection is uncomputable"
 date: "2025-09-01"
 date-format: long
 author: Gregory M. Kapfhammer
