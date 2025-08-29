@@ -18,16 +18,92 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+## Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
-
+::: {.fragment}
+- **Goal:** Build a Text Error Correction System
+- **Input:** Original (un-mutated) text file
+- **Output:** Encoded text that can detect errors after mutation/transmission
+- **Motivation:** Ensure data integrity over unreliable channels
 :::
 
-# add additional slides here
+## Problem
+
+::: {.fragment}
+- **Problem Statement:**
+  - Data can be corrupted during transmission/storage
+  - Need a way to detect (and possibly correct) errors in text
+- **Challenges:**
+  - Random mutations (bit flips, character changes)
+  - Efficient encoding/decoding
+:::
+
+## Example Solution
+
+x
+
+## Python Implementation
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 13
+"""A simple text error correction system using checksums."""
+
+# Helper hashing function
+def simple_checksum(s):
+    """Return a simple numeric checksum for a string."""
+    return str(abs(hash(s)) % (10**8))
+
+# 1: Encode each line with a checksum
+def encode_text(text):
+    """Encode each line of text with a duplicate and checksum."""
+    encoded = []
+    for line in text.splitlines():
+        checksum = simple_checksum(line)
+        # Store the original line, its duplicate, and the checksum together
+        encoded.append(f"{line}|||{line}|||{checksum}")
+    return encoded
+
+# 2: Decode, verify, and correct if needed
+def decode_text(encoded_lines):
+    """Verify and attempt to correct encoded lines using checksums."""
+    for line in encoded_lines:
+        line = line.strip()
+        original, duplicate, checksum = line.split("|||")
+        if simple_checksum(original) == checksum:
+            print(f"OK: {original}")
+        elif simple_checksum(duplicate) == checksum:
+            print(f"Corrupted line: {original}")
+            print(f"Corrected line: {duplicate}")
+
+# Example usage
+text = "Professor Kapfhammer is the best professor!"
+encoded_lines = encode_text(text)
+for l in encoded_lines:
+    print(f"Encoded line: {l}")
+
+corrupted_lines = encoded_lines.copy()
+if corrupted_lines:
+    original, duplicate, checksum = corrupted_lines[0].split("|||")
+    corrupted = "X" + original[1:]
+    corrupted_lines[0] = f"{corrupted}|||{duplicate}|||{checksum}"
+
+decode_text(corrupted_lines)
+```
+
+## Why is this a Tractable Problem?
+
+x
+
+## Limitations
+
+x
+
+## Conclusion
+
+::: {.fragment}
+- Text error correction is essential for reliable communication
+- Simple codes can efficiently detect errors
+- Tractable due to low computational complexity
+- More advanced codes can also correct errors, not just detect
+:::
