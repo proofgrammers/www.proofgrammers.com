@@ -3,7 +3,7 @@ title: "Multiple Sequence Alignment"
 description: "Explain intractability of DNA fragment alignment"
 date: "2025-09-01"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Will B,  Coltin Colucci, Hemani Alaparthi 
 execute:
   echo: true
 format:
