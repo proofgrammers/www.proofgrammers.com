@@ -1,9 +1,9 @@
 ---
-title: "Multiple Sequence Alignment"
-description: "Explain intractability of DNA fragment alignment"
+title: "Build a Bug Detection System"
+description: "Explore why bug detection is uncomputable"
 date: "2025-09-01"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Preston Smith, Benedik Kaibas, Duru Akbas and Miguel Orti Vila
 execute:
   echo: true
 format:
@@ -18,14 +18,67 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+## Bug Detector
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+```{pyodide}
+#| autorun: true
+#| max-lines: 7
+def crash_on_input(source_code: str, input: str = ""):
+    """Run a program with input and check if it crashes."""
+    try:
+        env = {"input": input}
+        exec(source_code, env)
+        return f"Program ran successfully on input|{input}|"
+    except Exception as e:
+        return f"Program crashed on input|{input}| with error: {e}"
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
 
-:::
+test_source_code = """def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+fibonacci(int(input))"""
+
+inputs = [x for x in range(10)]
+inputs.append("a")
+for input in inputs:
+    print(f"{crash_on_input(test_source_code, input)}")
+```
+
+
+## Syntax Checker
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+import ast
+
+def check_syntax(text: str):
+    try:
+        ast.parse(text)
+        print("No syntax errors found.")
+    except SyntaxError as e:
+        print(f"Syntax error: {e}")
+        
+
+def run_scanner(source_code: str):
+    check_syntax(source_code)
+
+test_source_code = """def fibonacci(n):
+    if n <= 1
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(5))"""
+
+run_scanner(test_source_code)
+```
+
+
+## PlaceHolder
+
+## PlaceHolder
+
+## PlaceHolder
+
+## PlaceHolder
