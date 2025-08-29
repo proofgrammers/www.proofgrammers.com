@@ -3,7 +3,7 @@ title: "Multiple Sequence Alignment"
 description: "Explain intractability of DNA fragment alignment"
 date: "2025-09-01"
 date-format: long
-author: Will B,  Coltin Colucci, Hemani Alaparthi 
+author: Hemani Alaparthi, Will Bennett, Coltin Colucci
 execute:
   echo: true
 format:
@@ -18,14 +18,113 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+Will's Part
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+# Code Implementation
 
+## Hemani's Implementation
+
+```{python}
+def align_dna_sequences(sequences):
+    """
+    Simple DNA sequence alignment function.
+    Takes a list of DNA sequences and returns them aligned.
+    """
+
+    if len(sequences) < 2:
+        return sequences
+
+    # start with the first sequence
+    aligned = [sequences[0]]
+
+    # add each other sequence one by one
+    for new_seq in sequences[1:]:
+        best_alignment = None
+        best_score = -999
+
+        # try placing the new sequence at different positions
+        for offset in range(-len(new_seq), len(aligned[0]) + 1):
+            # Create test alignment
+            test_aligned = []
+
+            # copy existing sequences
+            for seq in aligned:
+                if offset < 0:
+                    # need to add gaps to the left of existing sequences
+                    test_aligned.append('-' * abs(offset) + seq)
+                else:
+                    test_aligned.append(seq)
+
+            # add new sequence with gaps
+            if offset >= 0:
+                new_with_gaps = '-' * offset + new_seq
+            else:
+                new_with_gaps = new_seq
+
+            # make all sequences the same length
+            max_len = max(len(s) for s in test_aligned + [new_with_gaps])
+            test_aligned = [s + '-' * (max_len - len(s)) for s in test_aligned]
+            new_with_gaps = new_with_gaps + '-' * (max_len - len(new_with_gaps))
+            test_aligned.append(new_with_gaps)
+
+            # score this alignment (count matches)
+            score = 0
+            for pos in range(max_len):
+                column = [seq[pos] for seq in test_aligned]
+                # count how many characters match the most common one
+                for char in 'ACGT':
+                    count = column.count(char)
+                    if count > 1:
+                        score += count * 2  # bonus for matches
+
+                score -= column.count('-')  # penalty for gaps
+
+            # keep track of best alignment
+            if score > best_score:
+                best_score = score
+                best_alignment = test_aligned
+
+        aligned = best_alignment
+
+    return aligned
+
+# example DNA sequences
+sequences = [
+    "CGGATTA",
+    "CAGGGATA",
+    "CGCTA",
+]
+aligned = align_dna_sequences(sequences)
+print("Aligned DNA Sequences:")
+for seq in aligned:
+    print(seq)
+```
+
+## What's Going On Here?
+
+::: {.callout-note}
+**Code Explanation:**
+
+This function aligns multiple DNA sequences by trying all possible ways to insert gaps and maximize matches. For each new sequence, it tests every possible offset, adds gaps as needed, and scores the alignment based on matching characters and gap penalties. The alignment with the highest score is chosen. This brute-force approach is simple but becomes extremely slow for many or long sequences, illustrating why multiple sequence alignment is computationally intractable.
 :::
+
+This algorithm works, but it takes exponential time which is roughly `O(2^(n×m))`, where `n` = number of sequences and `m` = sequence length.
+
+## Coltin's Implementation
+
+
+# Results
+
+The output of the code above shows the aligned DNA sequences. For small inputs, the algorithm works, but for larger numbers of sequences or longer sequences, it becomes computationally infeasible due to exponential growth in possible alignments.
+
+# Conclusion
+
+**Why It Takes "Super Long"**
+
+- **Time complexity**: For even modest inputs (e.g., 10 sequences of 100 bases each), the algorithm would need to check approximately 2^1000 possible alignments.
+- **Exponential growth**: Adding just one more sequence doubles the problem size.
+
+You guys can add more here (Talk about untractable, uncomputable and etc)
+
