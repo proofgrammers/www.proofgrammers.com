@@ -7,6 +7,8 @@ def uv():
     while iterator != 50:
         print(iterator)
 
+
+
 if __name__ == "__main__":
     uv()
 
