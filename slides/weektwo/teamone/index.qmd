@@ -59,9 +59,18 @@ format:
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+  - According to the book yes
+    - Negative weights and cycles refute the book
+    - can get stuck in a cyle if there are negatives
+
+:::
+
+# Citations
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+    - article https://www.w3schools.com/dsa/dsa_theory_graphs_shortestpath.php
+    - 
+    -
+    - 
 
 :::
