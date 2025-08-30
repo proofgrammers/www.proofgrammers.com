@@ -30,7 +30,7 @@ format:
 
 :::
 
-# Our Solution to the Shortest Path Finder Using the Bellman-Ford
+# Our Solution to the Shortest Path Finder Using the Bellman-Ford Algorithm
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
