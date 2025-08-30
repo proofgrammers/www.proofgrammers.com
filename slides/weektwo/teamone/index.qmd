@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# What are Graph Data Structures?
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
@@ -30,15 +30,7 @@ format:
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
-
-:::
+# Our Solution to the Shortest Path Finder Using the Bellman-Ford
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
@@ -49,6 +41,20 @@ format:
     - "Proofgrammers" combine *proofs* and *programming*
 
 :::
+
+# How Does the Bellman-Ford Algorithm Work? 
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+# The Shortest Path Finder Problem is Tactable
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
