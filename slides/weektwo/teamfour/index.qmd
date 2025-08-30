@@ -40,7 +40,15 @@ format:
 
 ## Example Solution
 
-x
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid barcode >}} **Encode each line**
+  - Every line is duplicated and encoded in a more secure manner to prevent mutation
+- {{< iconify fa6-solid microchip >}} **Message Decoding**
+  - After the transfer each line is decoded for comparison
+- {{< iconify fa6-solid check >}} **Line Verification**
+  - Each line is compared with its encoded variant and corrected where necessary
+:::
 
 ## Python Implementation
 
