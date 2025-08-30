@@ -69,7 +69,7 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
     - article https://www.w3schools.com/dsa/dsa_theory_graphs_shortestpath.php
-    - 
+    - "What Can Be Computed?" Shortest Path Solution python program
     -
     - 
 
