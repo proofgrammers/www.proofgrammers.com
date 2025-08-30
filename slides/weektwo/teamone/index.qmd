@@ -22,7 +22,6 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
     - Analyzing computational complexity
     - Proving limits of computation
@@ -93,7 +92,6 @@ for i, d in enumerate(distances):
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
     - Analyzing computational complexity
     - Proving limits of computation
@@ -105,17 +103,16 @@ for i, d in enumerate(distances):
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
   - According to the book yes
-    - Negative weights and cycles refute the book
-    - can get stuck in a cyle if there are negatives
+  - Negative weights and cycles refute the book
+  - can get stuck in a cycle if there are negatives
 
 :::
 
 # Citations
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-    - article https://www.w3schools.com/dsa/dsa_theory_graphs_shortestpath.php
+    - Shortest Path https://www.w3schools.com/dsa/dsa_theory_graphs_shortestpath.php
     - "What Can Be Computed?" Shortest Path Solution python program
     - Graph Data Structures https://www.w3schools.com/dsa/dsa_theory_graphs.php
     - 
