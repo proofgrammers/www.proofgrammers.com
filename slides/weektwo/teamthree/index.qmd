@@ -3,7 +3,7 @@ title: "Text Mutation System"
 description: "Learn how to randomly mutate text"
 date: "2025-09-01"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Alexander Goddard, Abishek Dhakal, Joesph Oforkansi, Ritesh Ojha
 execute:
   echo: true
 format:
@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Source code & Explanation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
@@ -29,3 +29,44 @@ format:
     - "Proofgrammers" combine *proofs* and *programming*
 
 :::
+
+# Test!
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+
+# Why is it tracktable?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- Mutations are independent per character
+- Complexity grows linearly with text length
+- Each character operation is O(1) → total time O(n)
+- Can scale easily for larger files
+- Demonstrates feasibility of mutation-based computation
+
+:::
+
+
+# Results and Q&A
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+- **Original Text:** "hello world"
+- **Mutated Text:** "hfllo worle"
+- **Processing Time:** 0.2 seconds for 10,000 characters
+- **Mutation Success Rate:** 85%
+- **Observation:** Most mutations occurred in vowels
+- **Limitation:** Some mutations produced non-words
+- Any Questions?? 
+:::
+
+
+
+
