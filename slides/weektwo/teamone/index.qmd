@@ -3,7 +3,7 @@ title: "Shortest Path Solver"
 description: "Explore tractability of shortest path solving"
 date: "2025-09-01"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Hannah Brown, Cullen Doyle, Molly Suppo, Gregory M. Kapfhammer
 execute:
   echo: true
 format:
@@ -19,6 +19,36 @@ format:
 ---
 
 # Theory of computation
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
