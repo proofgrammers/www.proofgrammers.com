@@ -22,11 +22,47 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **What does this script do?**
+    - Reads a text file (`input.txt`)
+    - Mutates characters randomly based on a mutation rate
+    - Saves the mutated text to (`mutated.txt`)
+    - Useful for testing algorithms or simulating text variations
+
+```python
+import random
+import string
+
+# Read the original text
+with open("/home/student/Theoretical_Machines/www.proofgrammers.com/slides/weektwo/teamthree/input.txt", "r") as file:
+    text = file.read()
+print("Original Text:", text)
+
+# Function to randomly mutate text
+def mutate_text(text, mutation_rate=0.1):
+    mutated = ""
+    for char in text:
+        if random.random() < mutation_rate:
+            mutated += random.choice(string.ascii_letters)
+        else:
+            mutated += char
+    return mutated
+
+# Apply mutation with 20% mutation rate
+mutated_text = mutate_text(text, mutation_rate=0.2)
+print("Mutated Text:", mutated_text)
+
+# Save the mutated text to a file
+with open("mutated.txt", "w") as file:
+    file.write(mutated_text)
+
+
+
+
+
+
+
+    
+```
 
 :::
 
