@@ -101,7 +101,19 @@ decode_text(corrupted_lines)
 
 ## Why is this a Tractable Problem?
 
-x
+::: {.fragment}
+- This problem is Tractable because it can be solved efficiently
+  in linear time with respect to the input size.
+- 1. Linear Time Complexity
+  - The system runs in time proportional to the input size (O(n·L)),
+    so it scales efficiently.
+- 2. Local Verification
+  - Errors are detected and corrected per line using checksums and redundancy,
+    avoiding complex global computation.
+- 3. Feasible Error Model
+  - With simple mutation errors (like single-copy corruption),
+    correction is straightforward and does not require intractable algorithms.
+:::
 
 ## Limitations
 
