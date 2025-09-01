@@ -114,6 +114,52 @@ This algorithm works, but it takes exponential time which is roughly `O(2^(n×m)
 
 ## Coltin's Implementation
 
+```{python}
+def align_sequences(sequences):
+    """Aligns a list of sequences and prints them with mismatches highlighted."""
+    ref = sequences[0]      # Use first sequence as reference
+    aligned = [list(ref)]   # Start aligned list with reference sequence
+
+    for seq in sequences[1:]:
+        aligned_seq = []
+        # compare each character in the reference to the current sequence
+        for r, s in zip(ref, seq.ljust(len(ref))):      # add spaces to shorter seq
+            if r == s:
+                aligned_seq.append(s)    # match keep character
+            else:
+                aligned_seq.append(" ")  # mismatch insert space
+        aligned.append(aligned_seq)      # add aligned sequence to list
+
+    # Print results
+    for seq in aligned:
+        print("".join(seq))
+
+
+if __name__ == "__main__":
+    sequences = [
+        "caggatta",
+        "cagggata",
+        "cgcctatt",
+        "cagaatta"
+    ]
+    align_sequences(sequences)
+```
+
+## What's Going On Here?
+
+
+::: {.callout-note}
+**Code Explanation:**
+
+This function aligns a list of sequences by using the first sequence as a reference. For each additional sequence it compares each character to the reference at the same position. If the characters match it keeps the character if not it inserts a space to highlight the mismatch compared to the original reference sequence. Shorter sequences get spaces added to them to match the reference sequences length. The result shows a simple visual alignment that makes mismatches easy to spot compared to the reference sequence. It does not insert gaps or optimize for the best overall alignment. This approach is fast and straightforward but is not very flexible for compared to more advanced alignments.
+
+This algorithm is `O(n * m)` where `n` is the number of sequences and `m` is the length of the reference sequence. This algorithm processes each character in each sequence once making it somewhat scalable. 
+
+# Intractable?
+
+Seeing the above function you might ask yourself why this problem is intractable. The reason for this is that `align_sequences` is a limited version of aligning DNA sequences. it only compares the sequences to one reference sequence position by position without inserting gaps or shifting sequences to find the best possible alignment. 
+
+A full sequence alignment algorithm tries every possible way to insert gaps and shift sequences to maximize matches across all sequences. This requires checking an exponential number of possible alignments making it computationally intractable for longer sequences. `align_sequences` is fast but limited compared to a full DNA sequence aligner. 
 
 # Results
 
