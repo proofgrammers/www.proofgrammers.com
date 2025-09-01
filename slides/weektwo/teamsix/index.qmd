@@ -112,10 +112,33 @@ detect_unused_variables()
 ```
 
 
-## PlaceHolder
+## Detecting Unclosed Print Statements
 
-## PlaceHolder
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+import ast
 
-## PlaceHolder
+def check_syntax(text: str):
+    try:
+        ast.parse(text)
+        print("No syntax errors found.")
+    except SyntaxError as e:
+        print(f"Syntax error: {e}")
 
-## PlaceHolder
+test_source_code = """def calculate_sum(numbers):
+    total = 0
+    for n in numbers:
+        total += n
+    if total > 10:
+        print("Large sum"
+    else:
+        print("Small sum")
+    return total
+
+calculate_sum([1, 2, 3, 7])
+"""
+
+check_syntax(test_source_code)
+
+```
