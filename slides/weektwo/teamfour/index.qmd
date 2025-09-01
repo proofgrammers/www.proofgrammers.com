@@ -3,7 +3,7 @@ title: "Text Error Correction System"
 description: "Explore tractability of error correction"
 date: "2025-09-01"
 date-format: long
-author: Aidan Dyga, Ainslee Plesko, Grant Anderson, Issei Hasewaga
+author: Aidan Dyga, Ainslee Plesko, Grant Anderson, Issei Hasegawa
 execute:
   echo: true
 format:
@@ -117,7 +117,24 @@ decode_text(corrupted_lines)
 
 ## Limitations
 
-x
+::: {fragment}
+- 1. Homophones
+  - The program may not be able to correct words that are spelled correctly but
+  used in the wrong grammatically context.
+  - Because they are spelled correctly, they may not get flagged by the checker.
+  - Ex: 'their' vs 'there'
+- 2. Numerical Errors
+  - Because the corrector is based on textual errors, like spelling, numerical
+  differences may not be caught.
+  - Ex: '1889' vs '1989'
+- 3. Incorrect Proper Nouns
+  - Unless a proper noun is included within the program's dictionary, it migt
+  get flagged as an error.
+  - A mispelled proper noun that spells as another word may also be missed.
+- 4. Structural or Logical Errors
+  - Despite its ability to check at a sentence level, it would not be able to
+  check coherance or flow of an entire paragraph.
+:::
 
 ## Conclusion
 
