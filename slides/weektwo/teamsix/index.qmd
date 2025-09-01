@@ -88,7 +88,12 @@ if __name__ == "__main__":
 
 ```
 
-## Detecting Unused variables
+## Our Methodology to Detect Unused Variables
+
+- Creating an AST
+- Opening the AST and check how many times a given variable occurs in the tree.  
+
+## Detecting Unused Variables
 
 ```{pyodide}
 #| autorun: false
@@ -131,6 +136,35 @@ if __name__ == "__main__":
 read_ast()
 
 ```
+
+## Is it Possible Not To Detect Unused Variables?
+
+- Short answer: Yes!
+- Altough it is easy to detect unused variables!
+- Even in most cases static analyzers detect unused variables in some cases they cannot detect them
+
+## Unreachable Code
+
+```{pyodide}
+def unreachable_code():
+    """This function contains an unreachable code."""
+    unused_var = 100 # simple unused variable
+    user_input = int(input("Enter a number: "))
+
+    if user_input > 10 and user_input < 5:
+        unreachable_var = "This will never be created"
+        print(unreachable_var)  # unreachable code
+
+    return user_input
+
+if __name__ == "__main__":
+    unreachable_code()
+
+```
+
+## Output Using Vulture
+
+![Unreachable Code](unreachable_code.png)
 
 ## Detecting Unclosed Print Statements
 
