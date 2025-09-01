@@ -18,6 +18,25 @@ format:
     footer: "Proofgrammers"
 ---
 
+## What is Uncomputability?
+
+- It isn't possible to algorithmically develop
+- There is no general solution that can compute the answer
+
+## Why is it Uncomputable?
+
+![Book Figure](Screenshot%202025-09-01%20162256.png)
+
+## Other Issues
+
+- Different programs have different criteria for bugs 
+- 
+
+## What problems can you solve?
+
+- You can write programs that detect bugs
+- Can also detect specific kinds of bugs
+
 ## Bug Detecting through Fuzzing
 
 ```{pyodide}
@@ -46,35 +65,6 @@ choices = ["a","b","c","d","e","f","g","h","i",1,2,3,4,5,6,7,8,9]
 inputs = [random.choice(choices) for _ in range(5)]
 for input in inputs:
     print(f"{crash_on_input(test_source_code, input)}")
-```
-
-
-## Detecting Syntactical Errors
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 10
-import ast
-
-def check_syntax(text: str):
-    try:
-        ast.parse(text)
-        print("No syntax errors found.")
-    except SyntaxError as e:
-        print(f"Syntax error: {e}")
-        
-
-def run_scanner(source_code: str):
-    check_syntax(source_code)
-
-test_source_code = """def fibonacci(n):
-    if n <= 1
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
-
-print(fibonacci(5))"""
-
-run_scanner(test_source_code)
 ```
 
 ## Detecting Unused variables
@@ -111,13 +101,7 @@ detect_unused_variables()
 
 ```
 
-## What is Uncomputability?
-
-- It isn't possible to algorithmically develop
-- There is no general solution that can compute the answer
-
 ## Why is a full Bug Detector Uncomputable?
 
-- Different programs have different criteria for what considered a bug
+- Different programs have different criteria 
 - Programs can crash intentionally
-- There is no general purpose algorithm to find every bug for every program
