@@ -18,6 +18,27 @@ format:
     footer: "Proofgrammers"
 ---
 
+## What is Uncomputability?
+
+- It isn't possible to algorithmically solve or do
+- There isn't one program that can complete the task with every input
+
+## Why is it Uncomputable?
+
+![Book Figure](Screenshot%202025-09-01%20162256.png)
+
+## Issues with defining bugs
+
+- What a bug is not universal to every program
+- Different programs can I have different definitions of what constitutes a bug
+ 
+
+## What problems can you solve?
+
+- You can write programs that detect bugs
+- Can also detect specific kinds of bugs
+- Bug detectors for specific programs
+
 ## Bug Detecting through Fuzzing
 
 ```{pyodide}
@@ -48,34 +69,6 @@ for input in inputs:
     print(f"{crash_on_input(test_source_code, input)}")
 ```
 
-
-## Detecting Syntactical Errors
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 10
-import ast
-
-def check_syntax(text: str):
-    try:
-        ast.parse(text)
-        print("No syntax errors found.")
-    except SyntaxError as e:
-        print(f"Syntax error: {e}")
-        
-
-def run_scanner(source_code: str):
-    check_syntax(source_code)
-
-test_source_code = """def fibonacci(n):
-    if n <= 1
-        return n
-    return fibonacci(n-1) + fibonacci(n-2)
-
-print(fibonacci(5))"""
-
-run_scanner(test_source_code)
-```
 ## What are unused variables?
 
 ```{pyodide}
