@@ -31,6 +31,9 @@ format:
 
  - Markdown
  - Search engine
+ - Index
+ - Document
+ - Text
 
 ## Tractable
 - A problem that can be solved in **polynomial time** (efficiently).  
