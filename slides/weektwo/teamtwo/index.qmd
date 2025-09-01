@@ -3,7 +3,7 @@ title: "Markdown Search Engine"
 description: "Explore tractability of search engines"
 date: "2025-09-02"
 date-format: long
-author: Veronica McNeece, Levente Mihaly, Anoop Guragain
+author: Veronica McNeece, Levente Mihaly, Anoop Guragain, Javier Bejarano
 execute:
   echo: true
 format:
@@ -60,6 +60,27 @@ format:
 
 - **Uncomputable examples**  
   - Determining whether an arbitrary program will halt (not related to search).  
+
+---
+
+# Understanding Tractability Beyond Its Definition
+
+- **Simple Search (`search_documents`)**
+  - Scans through each document, one by one
+  - Finds matches with `if query in doc`
+  - Easy to understand, but less efficient as data grows  
+
+- **Improved Search (`Index` class)**
+  - Builds an **inverted index**: maps each word → the documents containing it  
+  - Searches become much faster, especially with many files  
+  - Supports multiple-word queries and snippets  
+
+---
+
+# Why This Matters
+
+> The simple version shows tractability in its most basic form (linear scan).  
+> The improved version shows how indexing makes searching scale much better in practice.
 
 ---
 
