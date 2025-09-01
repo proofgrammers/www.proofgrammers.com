@@ -1,31 +1,85 @@
 ---
 title: "Markdown Search Engine"
 description: "Explore tractability of search engines"
-date: "2025-09-01"
+date: "2025-09-02"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Veronica McNeece, Levente Mihaly, Anoop Guragain
 execute:
   echo: true
 format:
-  live-revealjs:
-    completion: true
+  revealjs:
     theme: default
     css: ../../css/styles.css
-    history: false
-    scrollable: true
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Theory of Computation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
     - Analyzing computational complexity
     - Proving limits of computation
     - "Proofgrammers" combine *proofs* and *programming*
-
 :::
+
+---
+
+# Key Terms
+
+## Tractable
+- A problem that can be solved in **polynomial time** (efficiently).  
+- Example: Searching a list of documents.  
+
+## Intractable
+- A problem that is solvable, but only with **exponential time** algorithms.  
+- Becomes impractical for large inputs.  
+
+## Uncomputable
+- A problem that **cannot** be solved by any algorithm.  
+- Example: The Halting Problem.  
+
+---
+
+# How It Relates to Search Engines
+
+- **Markdown search engine = tractable problem**  
+  - Keyword search can be solved in polynomial time.  
+  - Scales efficiently with number of documents.  
+
+- **Intractable examples**  
+  - Perfectly understanding "meaning" of text or answering open-ended questions.  
+
+- **Uncomputable examples**  
+  - Determining whether an arbitrary program will halt (not related to search).  
+
+---
+
+# Example: Markdown Search Engine
+
+```python
+# markdown_search.py
+
+def search_documents(query, documents):
+    """
+    Return list of documents that contain the query string.
+    """
+    results = []
+    for i, doc in enumerate(documents, start=1):
+        if query.lower() in doc.lower():
+            results.append(f"Document {i}")
+    return results
+
+
+# Example usage
+docs = [
+    "# Title One\nThis is a sample markdown document about computation.",
+    "# Title Two\nThis file talks about search engines and algorithms.",
+    "# Title Three\nComputation theory includes tractable problems."
+]
+
+query = "computation"
+print("Searching for:", query)
+print("Results:", search_documents(query, docs))
