@@ -134,13 +134,13 @@ with open("mutated.txt", "w") as file:
 # Results and Q&A
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- **Demonstrated Efficiency:** Our text engine successfully mutated a **10,000**-character text file in just **0.2** seconds, proving its high-speed performance. 🚀
-- **High Mutation Rate:** The system achieved a mutation rate of over **85%** with the sample text, effectively altering the original content.
+- **Fast & Scalable:** Efficiently processes large texts and dynamically adjusts the mutation rate to control the extent of content transformation.🚀
+- **Effective Mutation:** The system applies random mutations to the text, altering roughly **20%** of characters on average per run. The actual percentage may vary due to randomness, producing different variations each time.
 - **Real-World Application:** While the engine is highly effective, a notable limitation is the production of non-words. This highlights an opportunity to integrate a dictionary or grammar check for more advanced applications.
 
 - Example Mutation:
-    - **Original:** "hello world"
-    - **Mutated:** "hfllo worle"
+    - **Original:** "This is Group three"
+    - **Mutated:** "This is Gorud thoee"
 
 - **Thank You. We're now open to any questions you may have.** 
 :::
