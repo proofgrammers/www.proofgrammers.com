@@ -111,11 +111,13 @@ detect_unused_variables()
 
 ```
 
+## What is Uncomputability?
 
-## PlaceHolder
+- It isn't possible to algorithmically develop
+- There is no general solution that can compute the answer
 
-## PlaceHolder
+## Why is a full Bug Detector Uncomputable?
 
-## PlaceHolder
-
-## PlaceHolder
+- Different programs have different criteria for what considered a bug
+- Programs can crash intentionally
+- There is no general purpose algorithm to find every bug for every program
