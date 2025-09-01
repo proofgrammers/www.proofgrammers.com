@@ -20,22 +20,24 @@ format:
 
 ## What is Uncomputability?
 
-- It isn't possible to algorithmically develop
-- There is no general solution that can compute the answer
+- It isn't possible to algorithmically solve or do
+- There isn't one program that can complete the task with every input
 
 ## Why is it Uncomputable?
 
 ![Book Figure](Screenshot%202025-09-01%20162256.png)
 
-## Other Issues
+## Issues with defining bugs
 
-- Different programs have different criteria for bugs 
-- 
+- What a bug is not universal to every program
+- Different programs can I have different definitions of what constitutes a bug
+ 
 
 ## What problems can you solve?
 
 - You can write programs that detect bugs
 - Can also detect specific kinds of bugs
+- Bug detectors for specific programs
 
 ## Bug Detecting through Fuzzing
 
