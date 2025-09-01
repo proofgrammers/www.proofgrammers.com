@@ -440,7 +440,7 @@ npx opencode-ai@latest                           # opencode ai assistant
 - **node.js**: javascript runtime enabling AI-powered coding assistants
 - **npx**: run packages without installing globally, keeps system clean
 - **Runtime**: use node for delivery, may be built in another language
-- **Testing**: authentication with github or google and work with the coding
+- **Testing**: authentication with GitHub or Google and work with the coding
 agent to determine whether or not a problem is tractable or intractable. Ask
 the agent to explain one of the code segments from the book, without stating
 whether or not the code is a correct.
