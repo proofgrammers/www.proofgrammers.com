@@ -428,25 +428,26 @@ uv --version                    # Check UV package manager
 ## Coding Agents Use Node.js tools
 
 ```bash
-# Install Node.js and npm from nodejs.org
+# Install node.js and npm and npx from nodejs.org
 # Then use npx to run tools without permanent installation
-npx @google/generative-ai-cli --version  # Google Gemini CLI
-npx opencode --version                   # OpenCode AI assistant
+# You can also use npm to install them permanently
+npx https://github.com/google-gemini/gemini-cli  # google gemini cli
+npx opencode-ai@latest                           # opencode ai assistant
 ```
 
 ::: {.fragment .fade style="margin-top: 0.5em; font-size: 0.9em;"}
 
-- **Node.js**: JavaScript runtime enabling AI-powered coding assistants
-- **NPX**: Run packages without installing globally, keeps system clean
-- **Runtime**: Use Node for delivery, may be built in another language
-- **Testing**: Authentication with GitHub or Google and work with the coding
+- **node.js**: javascript runtime enabling AI-powered coding assistants
+- **npx**: run packages without installing globally, keeps system clean
+- **Runtime**: use node for delivery, may be built in another language
+- **Testing**: authentication with github or google and work with the coding
 agent to determine whether or not a problem is tractable or intractable. Ask
 the agent to explain one of the code segments from the book, without stating
 whether or not the code is a correct.
 
 :::
 
-# Can you clone the course website to your laptop and run `quarto preview`? Output?
+# can you clone the course website to your laptop and run `quarto preview`? Output?
 
 ::: {.fragment .fade style="margin-top: 0em; font-size: 0.9em;"}
 
