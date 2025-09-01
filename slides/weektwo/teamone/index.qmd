@@ -30,24 +30,28 @@ format:
 
 # Our Solution to the Shortest Path Finder Using the Bellman-Ford Algorithm
 
-```{python}
+```{pyodide}
 # All code was copied from W3 Schools's Bellman-Ford Algorithm Example
 class Graph:
-  def __init__(self, size):
+  # Defines a graph data type
+  def __init__(self: Graph, size: int) -> None:
     self.adj_matrix = [[0] * size for _ in range(size)]
     self.size = size
     self.vertex_data = [''] * size
 
-  def add_edge(self, u, v, weight):
+  # Adds an edge to the graph
+  def add_edge(self: Graph, u: int, v: int, weight: int) -> None:
     if 0 <= u < self.size and 0 <= v < self.size:
       self.adj_matrix[u][v] = weight
       #self.adj_matrix[v][u] = weight  # For undirected graph
 
-  def add_vertex_data(self, vertex, data):
+  # Adds a vertex to the graph
+  def add_vertex_data(self: Graph, vertex: int, data: str) -> None:
     if 0 <= vertex < self.size:
       self.vertex_data[vertex] = data
 
-  def bellman_ford(self, start_vertex_data):
+  # Runs the Bellman-Ford Algorithm
+  def bellman_ford(self: Graph, start_vertex_data: str) -> arr[int][int]:
     start_vertex = self.vertex_data.index(start_vertex_data)
     distances = [float('inf')] * self.size
     distances[start_vertex] = 0
@@ -62,22 +66,25 @@ class Graph:
 
     return distances
 
+# Defines current graph with a size of 5
 g = Graph(5)
 
+# Adds vertices for the graph (5 vertices here)
 g.add_vertex_data(0, 'A')
 g.add_vertex_data(1, 'B')
 g.add_vertex_data(2, 'C')
 g.add_vertex_data(3, 'D')
 g.add_vertex_data(4, 'E')
 
+# Adds edges for the graph between all vertices
 g.add_edge(3, 0, 4)  # D -> A, weight 4
 g.add_edge(3, 2, 7)  # D -> C, weight 7
 g.add_edge(3, 4, 3)  # D -> E, weight 3
 g.add_edge(0, 2, 4)  # A -> C, weight 4
-g.add_edge(2, 0, -3) # C -> A, weight -3
+g.add_edge(2, 0, 3) # C -> A, weight 3
 g.add_edge(0, 4, 5)  # A -> E, weight 5
 g.add_edge(4, 2, 3)  # E -> C, weight 3
-g.add_edge(1, 2, -4) # B -> C, weight -4
+g.add_edge(1, 2, 4) # B -> C, weight 4
 g.add_edge(4, 1, 2)  # E -> B, weight 2
 
 # Running the Bellman-Ford algorithm from D to all vertices
@@ -91,10 +98,10 @@ for i, d in enumerate(distances):
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+    - Constantly updates the shortest distance between vertices
+    - Distance is the same as the weight variable for each edge
+    - Bellman-Ford is able to utilize negative and positive weights
+    - We used positive weights to mimic the book solution
 
 :::
 
