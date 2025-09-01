@@ -24,7 +24,7 @@ format:
 
     - Non Linear Data Structure
     - Weighted, Connected, and Directed
-    - Adjacency Matrix Graph
+    - Adjacency Matrix
 
 :::
 
