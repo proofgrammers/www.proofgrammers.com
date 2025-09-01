@@ -6,6 +6,7 @@ date-format: long
 author: Alexander Goddard, Abishek Dhakal, Joesph Oforkansi, Ritesh Ojha
 execute:
   echo: true
+  engine: python
 format:
   live-revealjs:
     completion: true
@@ -125,18 +126,24 @@ with open("mutated.txt", "w") as file:
     file.write(mutated_text)
 ```
 
-# Why is it tracktable?
+# Tractable & Why Our Text Mutation Engine is Tractable
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+## What is Tractable?
+- A problem is **tractable** if it can be solved in a **reasonable amount of time**, even as input grows.  
+- Time grows at a **manageable rate** (linear O(n) or polynomial O(n²)).  
+- **Example:** Sorting numbers – doable even for large lists.  
+- **Non-tractable example:** Trying every possible chess game – grows too fast to finish.
 
-- Mutations are independent per character
-- Complexity grows linearly with text length
-- Each character operation is O(1) → total time O(n)
-- Can scale easily for larger files
-- Demonstrates feasibility of mutation-based computation
+## Why Our Text Mutation Engine is Tractable
+- Looks at each character **once**.  
+- Each character: quick check + mutation (insert, delete, substitute, swap) → **O(1)**.  
+- Total work grows **linearly with text size** → O(n).  
+- **Example:**  
+  - 100 characters → ~100 steps  
+  - 1,000,000 characters → ~1,000,000 steps (still fast on a computer)  
+- Efficient and scalable.
 
-:::
-
+::: 
 
 # Results and Q&A
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
