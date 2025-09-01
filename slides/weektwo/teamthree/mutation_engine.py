@@ -2,7 +2,11 @@ import random
 import string
 
 
-with open("/home/student/Theoretical_Machines/www.proofgrammers.com/slides/weektwo/teamthree/input.txt", "r") as file:
+# Path of text file
+path = "input.txt"
+
+# Read the original text
+with open(path, "r") as file:
     text = file.read()
 print("Original Text:", text)
 
