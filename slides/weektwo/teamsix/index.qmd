@@ -27,12 +27,6 @@ format:
 
 ![Book Figure](Screenshot%202025-09-01%20162256.png)
 
-## Issues with defining bugs
-
-- What a bug is not universal to every program
-- Different programs can I have different definitions of what constitutes a bug
- 
-
 ## What problems can you solve?
 
 - You can write programs that detect bugs
