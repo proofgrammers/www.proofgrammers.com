@@ -22,10 +22,9 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+    - Non Linear Data Structure
+    - Weighted, Connected, and Directed
+    - Adjacency Matrix Graph
 
 :::
 
@@ -103,9 +102,9 @@ for i, d in enumerate(distances):
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-  - According to the book yes
+  - According to the book, yes
   - Negative weights and cycles refute the book
-  - can get stuck in a cycle if there are negatives
+  - Can get stuck in a cycle if there are negatives
 
 :::
 
