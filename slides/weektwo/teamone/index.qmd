@@ -28,30 +28,30 @@ format:
 
 :::
 
-# Our Solution to the Shortest Path Finder Using the Bellman-Ford Algorithm
+## Our Solution to the Shortest Path Finder Using the Bellman-Ford Algorithm
 
 ```{pyodide}
 # All code was copied from W3 Schools's Bellman-Ford Algorithm Example
 class Graph:
   # Defines a graph data type
-  def __init__(self: Graph, size: int) -> None:
+  def __init__(self, size: int) -> None:
     self.adj_matrix = [[0] * size for _ in range(size)]
     self.size = size
     self.vertex_data = [''] * size
 
   # Adds an edge to the graph
-  def add_edge(self: Graph, u: int, v: int, weight: int) -> None:
+  def add_edge(self, u: int, v: int, weight: int) -> None:
     if 0 <= u < self.size and 0 <= v < self.size:
       self.adj_matrix[u][v] = weight
       #self.adj_matrix[v][u] = weight  # For undirected graph
 
   # Adds a vertex to the graph
-  def add_vertex_data(self: Graph, vertex: int, data: str) -> None:
+  def add_vertex_data(self, vertex: int, data: str) -> None:
     if 0 <= vertex < self.size:
       self.vertex_data[vertex] = data
 
   # Runs the Bellman-Ford Algorithm
-  def bellman_ford(self: Graph, start_vertex_data: str) -> arr[int][int]:
+  def bellman_ford(self, start_vertex_data: str):
     start_vertex = self.vertex_data.index(start_vertex_data)
     distances = [float('inf')] * self.size
     distances[start_vertex] = 0
@@ -121,6 +121,5 @@ for i, d in enumerate(distances):
     - Shortest Path https://www.w3schools.com/dsa/dsa_theory_graphs_shortestpath.php
     - Shortest Path Solution (Bellman-Ford Algorithm): https://www.w3schools.com/dsa/dsa_algo_graphs_bellmanford.php
     - Graph Data Structures https://www.w3schools.com/dsa/dsa_theory_graphs.php
-    - 
 
 :::
