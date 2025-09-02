@@ -20,13 +20,19 @@ format:
 
 # Introduction
 
+## DNA Sequence Alignment
+
 DNA sequence alignment is one of the most important problems in computational biology. The basic idea is simple: given several DNA fragments, we want to “line them up” so that similar regions match.
 
 - Comparing two sequences is fairly straightforward
-
 - Comparing many sequences, as in Multiple Sequence Alignment, becomes much more complicated
 
-Multiple Sequence Alignment is an example of an intractable problem. On a small scale, it seems manageable, but as the number of sequences grows, the computations quickly become impractical.
+## Multiple Sequence Alignment & Intractability
+
+Multiple Sequence Alignment is an example of an intractable problem.
+
+- On a small scale, it seems manageable
+- As the number of sequences grows, the computations quickly become impractical
 
 # Tractable, Intractable & Uncomputable?
 
