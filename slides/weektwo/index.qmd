@@ -41,7 +41,7 @@ format:
 
 ## Why theory of computation matters
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.2em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Practical utility**
   - Understand whether problems are computable and tractable
@@ -51,7 +51,7 @@ format:
 
 :::
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Intellectual foundation**
   - Beautiful and important theoretical framework
