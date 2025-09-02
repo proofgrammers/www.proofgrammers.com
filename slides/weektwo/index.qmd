@@ -18,18 +18,18 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Course objectives review
+# Review objectives
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"} 
 
 - {{< iconify fa6-solid lightbulb >}} **What can be computed?**
-    - In principle: undecidability and uncomputability
-    - Efficiently in practice: complexity theory
-    - Formal mathematical foundations for computation
+    - **In principle**: undecidability and uncomputability
+    - **Efficiently in practice**: complexity theory
+    - **Formal mathematical foundations for computation**
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Why study computational theory?**
     - Determine if problems are computable and tractable
@@ -39,26 +39,9 @@ format:
 
 :::
 
-## Computational problem classification
-
-| Category | Tractable | Intractable | Uncomputable |
-|:--------:|:---------:|:-----------:|:------------:|
-| **Description** | {.fragment} Can be solved efficiently | {.fragment} Method exists but hopelessly time-consuming | {.fragment} Cannot be solved by any program |
-| **Theory** | {.fragment} ✓ | {.fragment} ✓ | {.fragment} ✗ |
-| **Practice** | {.fragment} ✓ | {.fragment} ✗ | {.fragment} ✗ |
-| **Example** | {.fragment} Shortest route | {.fragment} Decryption | {.fragment} Finding all bugs |
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} Understanding these categories helps
-proofgrammers determine the computational feasibility of problems and select
-appropriate solution strategies.
-
-:::
-
 ## Why theory of computation matters
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
 
 - {{< iconify fa6-solid gear >}} **Practical utility**
   - Understand whether problems are computable and tractable
@@ -68,7 +51,7 @@ appropriate solution strategies.
 
 :::
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
 
 - {{< iconify fa6-solid gear >}} **Intellectual foundation**
   - Beautiful and important theoretical framework
@@ -77,6 +60,31 @@ appropriate solution strategies.
   - Connect abstract concepts to practical programming
 
 :::
+
+## Computational problem classification
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+
+| Category | Tractable | Intractable | Uncomputable |
+|:--------:|:---------:|:-----------:|:------------:|
+| **Description** | Can be solved efficiently | Method exists but hopelessly time-consuming | Cannot be solved by any program |
+| **Theory** |  ✓ |  ✓ |  ✗ |
+| **Practice** | ✓ |  ✗ (?) |  ✗ |
+| **Example** |  Shortest route |  Decryption |  Finding all bugs |
+
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.5em; font-size: 0.8em;"}
+
+{{< iconify fa6-solid microscope >}} Understanding these categories helps
+proofgrammers determine the computational feasibility of problems and select
+appropriate solution strategies. **Proofgrammers understand that not all problems
+are computable, and that some problems are intractable! Be on alert!**
+
+:::
+
 
 ## Essential Python basics for proofgrammers
 
