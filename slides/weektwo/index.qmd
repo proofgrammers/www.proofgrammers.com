@@ -307,9 +307,17 @@ print(vowel_program)
 
 # Programs are data! Start thinking like a proofgrammer about universal computation!
 
-## Next steps in computational theory
+::: {.incremental style="margin-top: -0.25em; font-size: 0.95em;"}
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+- Programs can read other programs as input
+- Programs can execute other programs
+- Programs can analyze other programs
+
+:::
+
+## Next steps in proofgramming
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Deepen theoretical understanding**
   - Explore more complex computational models
@@ -319,7 +327,7 @@ print(vowel_program)
 
 :::
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.35em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Apply programming skills**
   - Implement automata and Turing machines
@@ -329,23 +337,22 @@ print(vowel_program)
 
 :::
 
-## Continue learning computational theory
+## Your proofgramming journey
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
 {{< iconify fa6-solid book-open >}} Study Chapter 1 of ["What Can be
-Computed"](https://whatcanbecomputed.com/) and practice implementing SISO
-programs
+Computed"](https://whatcanbecomputed.com/) and grasp SISO
+programming
 
 :::
 
 ::: {.column width="50%"}
 
 {{< iconify fa6-brands github >}} Experiment with the [WCBC code
-examples](https://whatcanbecomputed.com/) and create your own pattern-matching
-programs
+examples](https://whatcanbecomputed.com/) and create your own SISO programs
 
 :::
 
@@ -362,4 +369,4 @@ programs
 
 :::
 
-# Ready to formally define what it means to compute? Let's implement more SISO programs!
+# Ready to formally define what it means to compute? Let's implement more SISO programs! Hooray!
