@@ -459,3 +459,40 @@ simplicity for theoretical analysis. Note that ASCII strings are a subset of the
 Unicode standard supported by the Python programming language!
 
 :::
+
+## Multiline text processing
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 8
+def countLines(inString: str) -> str:
+    """Count the number of lines in multiline text."""
+    if not inString:
+        return "0"
+    lines = inString.split('\n')
+    return str(len(lines))
+
+def extractWords(inString: str) -> str:
+    """Extract all words from multiline text, return count."""
+    words = []
+    lines = inString.split('\n')
+    for line in lines:
+        line_words = line.split()
+        words.extend(line_words)
+    return str(len(words))
+
+# test with multiline input
+multiline_text = """This is the first line.
+Second line contains more words.
+Third line is the final line."""
+# display the input
+print("Multiline text:")
+print(repr(multiline_text))
+print(f"\nNumber of lines: {countLines(multiline_text)}")
+print(f"Number of words: {extractWords(multiline_text)}")
+# demonstrate newline character
+single_line = "Line one\\nLine two\\nLine three"
+print(f"\nProcessing: {single_line}")
+actual_multiline = single_line.replace('\\n', '\n')
+print(f"Lines: {countLines(actual_multiline)}")
+```
