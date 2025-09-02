@@ -142,3 +142,7 @@ calculate_sum([1, 2, 3, 7])
 check_syntax(test_source_code)
 
 ```
+
+- Using AST to not to execute but to review the code by creating a string 
+- If the code did not have defects in them, it still would not print anything 
+- The unclosed print statements or parantheses will always be caught by ast.parse() method
