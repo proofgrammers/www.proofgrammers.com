@@ -177,7 +177,8 @@ Enter query (blank to exit): keyword
 > The improved version shows how indexing makes searching scale much better in practice.
 
 ---
- # References
+
+# References
 
  - What Can Be Computed? A Practical Guide to the Theory of Computation by John MacCormick
  - [Proofgrammers](https://proofgrammers.com/)
