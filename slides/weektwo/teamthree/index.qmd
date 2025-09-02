@@ -29,6 +29,8 @@ format:
     - Saves the mutated text to (`mutated.txt`)
     - Useful for testing algorithms or simulating text variations
 
+:::
+
 ```python
 import random
 import string
@@ -60,10 +62,13 @@ with open("mutated.txt", "w") as file:
     file.write(mutated_text)   
 ```
 
-:::
-
 # Create an Example Text File
+
+::: incremental
+
 Before we can run our mutation engine we need a text file
+
+:::
 
 ```{pyodide}
 #| max-lines: 10
@@ -82,7 +87,12 @@ print(f"File '{file_name}' created and written successfully.\nFile content: '{co
 ```
 
 # Test the mutation engine!
+
+::: incremental
+
 Now that we have a text file we can test our mutation engine
+
+:::
 
 ```{pyodide}
 #| max-lines: 10
@@ -120,6 +130,9 @@ with open("mutated.txt", "w") as file:
 # Tractable & Why Our Text Mutation Engine is Tractable
 
 ## What is Tractable?
+
+::: incremental
+
 - A problem is **tractable** if a computer can solve it in a practical amount of time, even with a huge amount of data.
 - The time it takes to solve the problem grows predictably, like a straight line on a graph, not an exploding curve. We call this a **linear O(n)** or **polynomial O(n²)** rate.
 - **Example:** Imagine sorting a list of names. It takes a reasonable amount of time whether you have 10 names or 10 million.
@@ -132,6 +145,7 @@ with open("mutated.txt", "w") as file:
 ::: 
 
 # Results and Q&A
+
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - **Fast & Scalable:** Efficiently processes large texts and dynamically adjusts the mutation rate to control the extent of content transformation.🚀
@@ -143,4 +157,5 @@ with open("mutated.txt", "w") as file:
     - **Mutated:** "This is Gorud thoee"
 
 - **Thank You. We're now open to any questions you may have.** 
+
 :::
