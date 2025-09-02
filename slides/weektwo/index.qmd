@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Review objectives
+# Course objectives
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"} 
 
@@ -118,7 +118,7 @@ theory!
 
 :::
 
-## Understanding SISO programs
+## Introducing SISO programs
 
 ::: {.incremental style="margin-top: -0.2em; font-size: 0.85em;"}
 
@@ -130,7 +130,7 @@ theory!
 
 :::
 
-::: {.incremental style="margin-top: -0.35em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.4em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Decision problems**
   - Return "yes" or "no" to answer specific questions
@@ -250,7 +250,6 @@ test_cases = [
     "neither pattern here",
     "GAGA without the funny one"
 ]
-
 print("Testing containsGAGAnotHAHA function:")
 for test in test_cases:
     result = containsGAGAnotHAHA(test)
@@ -261,7 +260,9 @@ for test in test_cases:
 
 ## Reading programs from files
 
-```{python}
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
 # simulate reading a program from a file
 def rf(filename: str) -> str:
     """Simulate reading file content for demonstration."""
@@ -278,98 +279,29 @@ def rf(filename: str) -> str:
 # demonstrate reading program code
 gaga_program = rf("containsGAGA.py")
 vowel_program = rf("countVowels.py")
-
 print("Contents of containsGAGA.py:")
 print(gaga_program)
-print("\nContents of countVowels.py:")
+print("Contents of countVowels.py:")
 print(vowel_program)
 ```
 
 ## Recap these two programs
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
 
-- **Complex conditions**: combining multiple pattern checks
-- **Boolean logic**: using `and` and `not` operators effectively
-- **Pattern exclusion**: ensuring one pattern without another
-
-:::
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **File operations**: reading program source code as data
-- **Program as data**: treating code as input to other programs
-- **Dynamic execution**: foundation for universal computation
+- Recap for the `containsGAGAnotHAHA` function:
+    - **Complex conditions**: combining multiple pattern checks
+    - **Boolean logic**: using `and` and `not` operators effectively
+    - **Pattern exclusion**: ensuring one pattern without another
 
 :::
 
-## Practical exercises and demonstrations
+::: {.fragment style="margin-top: 0.05em; font-size: 0.95em;"}
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid gear >}} **Interactive testing**
-  - Run `containsGAGA.py` with user-typed inputs
-  - Test using input read from data files
-  - Observe behavior with different string patterns
-
-:::
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid gear >}} **Program creation**
-  - Create programs searching for different strings
-  - Implement more sophisticated pattern matching
-  - Build programs with complex conditional logic
-
-:::
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid lightbulb >}} Hands-on programming reinforces theoretical
-concepts and builds intuition about computational processes and decision
-problems.
-
-:::
-
-## Building computational intuition
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
-
-- **Pattern recognition**: identifying computational structures
-- **Algorithm design**: creating step-by-step solution procedures  
-- **Complexity analysis**: understanding resource requirements
-- **Formal verification**: proving program correctness
-- **Problem classification**: determining computational feasibility
-- **Abstract thinking**: connecting concrete code to mathematical theory
-
-:::
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify game-icons team-idea >}} Practice implementing simple SISO programs
-to develop understanding of formal computational models and their mathematical
-properties.
-
-:::
-
-## Let's discuss computational concepts!
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
-
-- {{< iconify game-icons team-idea >}} **Key insights from SISO programs:**
-  - Simple functions demonstrate fundamental computational principles
-  - **Decision problems** form basis of complexity theory
-  - String operations connect to formal language theory
-
-:::
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
-
-- {{< iconify game-icons team-idea >}} **Discuss in your teams:**
-    - What makes the `containsGAGA` problem computable?
-    - How do SISO programs relate to mathematical functions?
-    - What are the limits of string pattern recognition?
-    - How can we analyze the efficiency of these programs?
+- Recap for the `rf` and `countVowels` functions:
+    - **File operations**: reading program source code as data
+    - **Program as data**: treating code as input to other programs
+    - **Dynamic execution**: foundation for universal computation
 
 :::
 
