@@ -35,17 +35,29 @@ format:
  - Document
  - Text
 
+---
+
+### Problem Types in Computer Science
+
+- **Tractable**
+- **Intractable**
+- **Uncomputable**
+
 ## Tractable
-- A problem that can be solved in **polynomial time** (efficiently).  
-- Examples: Searching a list of documents. 
+- Solvable in **polynomial time** (efficiently)
+- Example: Searching a list of documents
+- **Analogy:** Finding a book on a small shelf — quick and easy
 
 ## Intractable
-- A problem that is solvable, but only with **exponential time** algorithms.  
-- Becomes impractical for large inputs.  
+- Solvable, but only with **exponential time** algorithms
+- Becomes impractical for large inputs
+- Example: Traveling Salesman Problem
+- **Analogy:** Searching a huge library without a catalog — takes forever
 
 ## Uncomputable
-- A problem that **cannot** be solved by any algorithm.  
-- Example: The Halting Problem.  
+- **Cannot** be solved by any algorithm
+- Example: The Halting Problem
+- **Analogy:** Asking if a magic book will ever finish writing itself — impossible to know
 
 ---
 
