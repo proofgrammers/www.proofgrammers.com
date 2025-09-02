@@ -37,7 +37,7 @@ format:
 
 ## Tractable
 - A problem that can be solved in **polynomial time** (efficiently).  
-- Example: Searching a list of documents.  
+- Examples: Searching a list of documents. 
 
 ## Intractable
 - A problem that is solvable, but only with **exponential time** algorithms.  
@@ -63,15 +63,15 @@ format:
 
 ---
 
-# Understanding Tractability Beyond Its Definition
+## Understanding Tractability Through Two Approaches
 
 - **Simple Search (`search_documents`)**
   - Scans through each document, one by one
-  - Finds matches with `if query in doc`
-  - Easy to understand, but less efficient as data grows  
+  - Finds matches with `if query.lower() in doc.lower():`
+  - Easy to understand, but slows down as data grows  
 
 - **Improved Search (`Index` class)**
-  - Builds an **inverted index**: maps each word → the documents containing it  
+  - Instead of scanning everything each time, you prepare a map (**inverted index**). 
   - Searches become much faster, especially with many files  
   - Supports multiple-word queries and snippets  
 
