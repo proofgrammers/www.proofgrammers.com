@@ -190,3 +190,29 @@ calculate_sum([1, 2, 3, 7])
 check_syntax(test_source_code)
 
 ```
+
+## Detecting Division by Zero
+
+```{pyodide}
+#| autorun: true
+import ast
+
+class DivisionByZeroDetector(ast.NodeVisitor):
+    def visit_BinOp(self, node):
+        if isinstance(node.op, ast.Div):
+            if isinstance(node.right, ast.Constant) and node.right.value == 0:
+                print(f"Possible division by zero on line {node.lineno}")
+        self.generic_visit(node)
+
+def check_code(source):
+    tree = ast.parse(source)
+    detector = DivisionByZeroDetector()
+    detector.visit(tree)
+
+test_source_code = """def division_by_zero_example(x: int, y: int):
+    division = x / y
+    ans = division / 0
+    return ans"""
+
+check_code(test_source_code)
+```
