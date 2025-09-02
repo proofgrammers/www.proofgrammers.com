@@ -497,6 +497,53 @@ actual_multiline = single_line.replace('\\n', '\n')
 print(f"Lines: {countLines(actual_multiline)}")
 ```
 
+## Examples of invalid SISO programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 8
+# Invalid: Returns integer instead of string
+def invalidReturn1(inString: str) -> int:
+    return len(inString)  # Should return str(len(inString))
+
+# Invalid: Multiple input parameters  
+def invalidParameters(inString: str, otherParam: str) -> str:
+    return inString + otherParam
+
+# Invalid: Potential infinite loop
+def invalidNonTerminating(inString: str) -> str:
+    while True:  # Never terminates
+        pass
+    return "never reached"
+
+# Invalid: Unhandled exception
+def invalidException(inString: str) -> str:
+    return str(1 / 0)  # Division by zero
+
+# Valid SISO program for comparison
+def validSISO(inString: str) -> str:
+    """Count characters and return as string."""
+    try:
+        count = len(inString)
+        return str(count)
+    except Exception:
+        return "error"
+
+# Demonstrate the valid program
+test_input = "example string"
+result = validSISO(test_input)
+print(f"validSISO('{test_input}') = '{result}'")
+print(f"Output type: {type(result)}")
+```
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- Not all valid Python programs are valid SISO programs!
+- We will focus on SISO programs as focus of theoretical analysis
+- Can we formally define what we mean by a program, input, and output?
+
+:::
+
 ## Simple formal notation: $P(I)$
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
