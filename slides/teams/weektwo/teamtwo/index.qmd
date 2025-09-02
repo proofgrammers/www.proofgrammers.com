@@ -1,7 +1,7 @@
 ---
 title: "Markdown Search Engine"
 description: "Explore tractability of search engines"
-date: "2025-09-02"
+date: "2025-09-01"
 date-format: long
 author: Veronica McNeece, Levente Mihaly, Anoop Guragain, Javier Bejarano
 execute:
