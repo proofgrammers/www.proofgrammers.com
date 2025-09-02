@@ -497,7 +497,7 @@ actual_multiline = single_line.replace('\\n', '\n')
 print(f"Lines: {countLines(actual_multiline)}")
 ```
 
-## Formal notation: $P(I)$
+## Simple formal notation: $P(I)$
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
@@ -516,5 +516,54 @@ print(f"Lines: {countLines(actual_multiline)}")
   - $P$ returns a non-ASCII string value
   - $P$ throws an unhandled exception
   - $P$ has syntax or runtime errors
+
+:::
+
+## Program termination analysis
+
+```{python}
+# example of well-defined P(I)
+def terminatingProgram(inString: str) -> str:
+    """A program that always terminates correctly."""
+    count = 0
+    for char in inString:
+        if char.isalpha():
+            count += 1
+    return str(count)
+
+# example of potentially undefined P(I)
+def potentiallyNonTerminating(inString: str) -> str:
+    """This program might not terminate depending on input."""
+    number = int(inString) if inString.isdigit() else 0
+    # this could be an infinite loop if number <= 0
+    while number > 0:
+        number -= 1
+        if number == 100:  # artificial condition
+            number = 50
+    return "done"
+
+# test the well-defined program
+test_string = "Hello123World"
+result = terminatingProgram(test_string)
+print(f"terminatingProgram('{test_string}') = '{result}'")
+```
+
+
+## Exploring non-termination
+
+```{python}
+# The non-terminating example is shown for analysis only
+print("potentiallyNonTerminating analysis:")
+print("- With input '5': would terminate")
+print("- With input '0': would terminate immediately") 
+print("- With input '101': would loop infinitely")
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Termination guarantee**: crucial for $P(I)$ to be "well-defined"
+- **Input validation**: checking input format prevents runtime errors
+- **Computational analysis**: predicting program behavior on inputs
+- **Halting detector**: detects when a program will never terminate
 
 :::
