@@ -289,7 +289,8 @@ print(vowel_program)
 
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
 
-- Recap for the `containsGAGAnotHAHA` function:
+- {{< iconify fa6-solid diagram-project >}} Recap for the `containsGAGAnotHAHA`
+function:
     - **Complex conditions**: combining multiple pattern checks
     - **Boolean logic**: using `and` and `not` operators effectively
     - **Pattern exclusion**: ensuring one pattern without another
@@ -298,7 +299,8 @@ print(vowel_program)
 
 ::: {.fragment style="margin-top: 0.05em; font-size: 0.95em;"}
 
-- Recap for the `rf` and `countVowels` functions:
+- {{< iconify fa6-solid diagram-project >}} Recap for the `rf` and `countVowels`
+functions:
     - **File operations**: reading program source code as data
     - **Program as data**: treating code as input to other programs
     - **Dynamic execution**: foundation for universal computation
@@ -309,9 +311,9 @@ print(vowel_program)
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.95em;"}
 
-- Programs can read other programs as input
-- Programs can execute other programs
-- Programs can analyze other programs
+- Programs can _read_ other programs as input
+- Programs can _execute_ other programs
+- Programs can _analyze_ other programs
 
 :::
 
@@ -437,3 +439,23 @@ print(f"\nFloat input: {float_data}")
 print(f"Average: {computeAverage(float_data)}")
 ```
 
+## ASCII character set in SISO programs
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **ASCII standard**: 128 characters including letters, digits, symbols
+- **Printable characters** include symbols like `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `(`, `)`
+- **Special characters**: newline (`\n`) and space characters
+- **Multiline support**: SISO programs can handle large text blocks
+- **Text processing**: enables complex string manipulation operations
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} ASCII strings provide sufficient
+expressiveness for all computational input/output while maintaining formal
+simplicity for theoretical analysis. Note that ASCII strings are a subset of the
+Unicode standard supported by the Python programming language!
+
+:::
