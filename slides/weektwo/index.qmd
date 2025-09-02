@@ -86,11 +86,11 @@ are computable, and that some problems are intractable! Be on alert!**
 :::
 
 
-## Essential Python basics for proofgrammers
+## Python basics for proofgrammers
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
-- **Utils package**: provided with WCBC online resources
+- **`utils` package**: provided with WCBC online resources
 - **`rf` function**: reads files from disk, used frequently
 - **`def` keyword**: defines functions like procedures in other languages
 - **`in` operator**: works on many data types, tests substring presence
@@ -99,11 +99,12 @@ are computable, and that some problems are intractable! Be on alert!**
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.85em;"}
 
 {{< iconify fa6-solid lightbulb >}} These Python fundamentals enable us to
 implement theoretical concepts as executable programs that demonstrate
-computational principles.
+computational principles. We use Python programs to illuminate computational
+theory!
 
 :::
 
