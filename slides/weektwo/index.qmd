@@ -1,6 +1,6 @@
 ---
 title: "Formally Defining Computation"
-description: "Explaining a SISO Python program"
+description: "Exploring SISO programs and computational theory"
 date: "2025-09-01"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -18,14 +18,387 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Course objectives review
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **What can be computed?**
+    - In principle: undecidability and uncomputability
+    - Efficiently in practice: complexity theory
+    - Formal mathematical foundations for computation
 
 :::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Why study computational theory?**
+    - Determine if problems are computable and tractable
+    - Find suitable variants when problems are intractable
+    - Compare efficiency of proposed solution methods
+    - Apply techniques like reductions and automata theory
+
+:::
+
+## Computational problem classification
+
+| Category | Tractable | Intractable | Uncomputable |
+|:--------:|:---------:|:-----------:|:------------:|
+| **Description** | {.fragment} Can be solved efficiently | {.fragment} Method exists but hopelessly time-consuming | {.fragment} Cannot be solved by any program |
+| **Theory** | {.fragment} ✓ | {.fragment} ✓ | {.fragment} ✗ |
+| **Practice** | {.fragment} ✓ | {.fragment} ✗ | {.fragment} ✗ |
+| **Example** | {.fragment} Shortest route | {.fragment} Decryption | {.fragment} Finding all bugs |
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} Understanding these categories helps
+proofgrammers determine the computational feasibility of problems and select
+appropriate solution strategies.
+
+:::
+
+## Why theory of computation matters
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Practical utility**
+  - Understand whether problems are computable and tractable
+  - Find suitable variants or approximations when needed
+  - Compare efficiency of different solution methods
+  - Apply specific techniques with real applications
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Intellectual foundation**
+  - Beautiful and important theoretical framework
+  - Deeper understanding of computer science discipline
+  - Rigorous mathematical basis for computation
+  - Connect abstract concepts to practical programming
+
+:::
+
+## Essential Python basics for proofgrammers
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **Utils package**: provided with WCBC online resources
+- **`rf` function**: reads files from disk, used frequently
+- **`def` keyword**: defines functions like procedures in other languages
+- **`in` operator**: works on many data types, tests substring presence
+- **String quotes**: use single or double quotes for strings
+- **Code blocks**: defined by indentation, no curly braces needed
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} These Python fundamentals enable us to
+implement theoretical concepts as executable programs that demonstrate
+computational principles.
+
+:::
+
+## Implementing the `containsGAGA` function
+
+```{python}
+def containsGAGA(input_string: str) -> str:
+    """Check if the input string contains the substring GAGA."""
+    if "GAGA" in input_string:
+        return "yes"
+    else:
+        return "no"
+
+# test the function with sample inputs
+test_input1 = "HELLO GAGA WORLD"
+test_input2 = "programming theory"
+test_input3 = "AGAGAGAGA patterns"
+
+print(f"Testing '{test_input1}': {containsGAGA(test_input1)}")
+print(f"Testing '{test_input2}': {containsGAGA(test_input2)}")
+print(f"Testing '{test_input3}': {containsGAGA(test_input3)}")
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **SISO program**: Single Input, Single Output computational model
+- **Decision problem**: returns "yes" or "no" based on input analysis
+- **String analysis**: fundamental operation in formal language theory
+
+:::
+
+## Try the `containsGAGA` function
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def containsGAGA(input_string: str) -> str:
+    """Check if the input string contains the substring GAGA."""
+    if "GAGA" in input_string:
+        return "yes"
+    else:
+        return "no"
+
+# test with various inputs
+test_cases = [
+    "GAGA music",
+    "algorithms and data structures", 
+    "AGAGAGAGA repeated patterns",
+    "computational GAGA theory"
+]
+
+print("Testing containsGAGA function:")
+print("=" * 30)
+for test in test_cases:
+    result = containsGAGA(test)
+    print(f"Input: '{test}'")
+    print(f"Output: {result}")
+    print()
+
+print("Try modifying the test cases above!")
+```
+
+## Creating more sophisticated programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def containsGAGAnotTATA(input_string: str) -> str:
+    """Return yes if input contains GAGA but not TATA."""
+    has_gaga = "GAGA" in input_string
+    has_tata = "TATA" in input_string
+    
+    if has_gaga and not has_tata:
+        return "yes"
+    else:
+        return "no"
+
+# test the enhanced function
+test_cases = [
+    "GAGA music rocks",
+    "TATA motors company", 
+    "GAGA and TATA together",
+    "neither pattern here",
+    "GAGA without the other"
+]
+
+print("Testing containsGAGAnotTATA function:")
+print("=" * 35)
+for test in test_cases:
+    result = containsGAGAnotTATA(test)
+    print(f"'{test}' → {result}")
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Complex conditions**: combining multiple pattern checks
+- **Boolean logic**: using `and` and `not` operators effectively
+- **Pattern exclusion**: ensuring one pattern without another
+
+:::
+
+## Understanding SISO programs
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Single Input, Single Output (SISO)**
+  - Takes exactly one string as input parameter
+  - Returns exactly one string as output result
+  - Foundation for formal computational models
+  - Enables precise mathematical analysis
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Decision problems**
+  - Return "yes" or "no" to answer specific questions
+  - Fundamental building blocks of computational theory
+  - Enable formal proofs about computability
+  - Connect to language recognition problems
+
+:::
+
+## SISO program characteristics
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **Input specification**: single string parameter only
+- **Output format**: single string return value
+- **Function definition**: clear computational procedure
+- **Deterministic behavior**: same input always produces same output
+- **Finite execution**: program must terminate for valid inputs
+- **String processing**: fundamental operation in formal languages
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} SISO programs provide the mathematical
+foundation for analyzing what can be computed and how efficiently we can solve
+different types of problems.
+
+:::
+
+## Reading programs from files
+
+```{python}
+# simulate reading a program from a file
+def rf(filename: str) -> str:
+    """Simulate reading file content for demonstration."""
+    # in practice, this would read from an actual file
+    sample_programs = {
+        "containsGAGA.py": '''def containsGAGA(input_string):
+    return "yes" if "GAGA" in input_string else "no"''',
+        "countVowels.py": '''def countVowels(input_string):
+    vowels = "aeiouAEIOU"
+    return str(sum(1 for char in input_string if char in vowels))'''
+    }
+    return sample_programs.get(filename, "# File not found")
+
+# demonstrate reading program code
+gaga_program = rf("containsGAGA.py")
+vowel_program = rf("countVowels.py")
+
+print("Contents of containsGAGA.py:")
+print(gaga_program)
+print("\nContents of countVowels.py:")
+print(vowel_program)
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **File operations**: reading program source code as data
+- **Program as data**: treating code as input to other programs
+- **Dynamic execution**: foundation for universal computation
+
+:::
+
+## Practical exercises and demonstrations
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Interactive testing**
+  - Run `containsGAGA.py` with user-typed inputs
+  - Test using input read from data files
+  - Observe behavior with different string patterns
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Program creation**
+  - Create programs searching for different strings
+  - Implement more sophisticated pattern matching
+  - Build programs with complex conditional logic
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} Hands-on programming reinforces theoretical
+concepts and builds intuition about computational processes and decision
+problems.
+
+:::
+
+## Building computational intuition
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **Pattern recognition**: identifying computational structures
+- **Algorithm design**: creating step-by-step solution procedures  
+- **Complexity analysis**: understanding resource requirements
+- **Formal verification**: proving program correctness
+- **Problem classification**: determining computational feasibility
+- **Abstract thinking**: connecting concrete code to mathematical theory
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify game-icons team-idea >}} Practice implementing simple SISO programs
+to develop understanding of formal computational models and their mathematical
+properties.
+
+:::
+
+## Let's discuss computational concepts!
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- {{< iconify game-icons team-idea >}} **Key insights from SISO programs:**
+  - Simple functions demonstrate fundamental computational principles
+  - **Decision problems** form basis of complexity theory
+  - String operations connect to formal language theory
+
+:::
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- {{< iconify game-icons team-idea >}} **Discuss in your teams:**
+    - What makes the `containsGAGA` problem computable?
+    - How do SISO programs relate to mathematical functions?
+    - What are the limits of string pattern recognition?
+    - How can we analyze the efficiency of these programs?
+
+:::
+
+# Programs are data! Start thinking like a proofgrammer about universal computation!
+
+## Next steps in computational theory
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Deepen theoretical understanding**
+  - Explore more complex computational models
+  - Study formal language definitions and properties
+  - Investigate decidability and undecidability results
+  - Analyze computational complexity classes
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Apply programming skills**
+  - Implement automata and Turing machines
+  - Create programs that analyze other programs
+  - Build tools for complexity measurement
+  - Develop proofs through computational examples
+
+:::
+
+## Continue learning computational theory
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+{{< iconify fa6-solid book-open >}} Study Chapter 1 of ["What Can be
+Computed"](https://whatcanbecomputed.com/) and practice implementing SISO
+programs
+
+:::
+
+::: {.column width="50%"}
+
+{{< iconify fa6-brands github >}} Experiment with the [WCBC code
+examples](https://whatcanbecomputed.com/) and create your own pattern-matching
+programs
+
+:::
+
+::::
+
+::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Focus areas for week two**:
+  - SISO program implementation and analysis
+  - Decision problems and their computational properties
+  - String processing and pattern recognition algorithms
+  - Connection between programming and mathematical theory
+  - Preparation for more advanced computational models
+
+:::
+
+# Ready to formally define what it means to compute? Let's implement more SISO programs!
