@@ -11,7 +11,7 @@ format:
   live-revealjs:
     completion: true
     theme: default
-    css: ../../css/styles.css
+    css: ../../../css/styles.css
     history: false
     scrollable: true
     transition: slide

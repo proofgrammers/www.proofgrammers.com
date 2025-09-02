@@ -9,7 +9,7 @@ execute:
 format:
   revealjs:
     theme: default
-    css: ../../css/styles.css
+    css: ../../../css/styles.css
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
