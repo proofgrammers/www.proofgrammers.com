@@ -3,7 +3,7 @@ title: "Shortest Path Solver"
 description: "Explore tractability of shortest path solving"
 date: "2025-09-01"
 date-format: long
-author: Hannah Brown, Cullen Doyle, Molly Suppo, Gregory M. Kapfhammer
+author: Hannah Brown, Cullen Doyle, Molly Suppo
 execute:
   echo: true
 format:
@@ -22,9 +22,9 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-    - Non Linear Data Structure
-    - Weighted, Connected, and Directed
-    - Adjacency Matrix
+- Non Linear Data Structure
+- Weighted, Connected, and Directed
+- Adjacency Matrix
 
 :::
 
@@ -98,10 +98,10 @@ for i, d in enumerate(distances):
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-    - Constantly updates the shortest distance between vertices
-    - Distance is the same as the weight variable for each edge
-    - Bellman-Ford is able to utilize negative and positive weights
-    - We used positive weights to mimic the book solution
+- Constantly updates the shortest distance between vertices
+- Distance is the same as the weight variable for each edge
+- Bellman-Ford is able to utilize negative and positive weights
+- We used positive weights to mimic the book solution
 
 :::
 
@@ -109,17 +109,18 @@ for i, d in enumerate(distances):
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-  - According to the book, yes
-  - Negative weights and cycles refute the book
-  - Can get stuck in a cycle if there are negatives
+- According to the book, yes
+- Negative weights and cycles refute the book
+- Can get stuck in a cycle if there are negatives
 
 :::
 
 # Citations
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-    - Shortest Path https://www.w3schools.com/dsa/dsa_theory_graphs_shortestpath.php
-    - Shortest Path Solution (Bellman-Ford Algorithm): https://www.w3schools.com/dsa/dsa_algo_graphs_bellmanford.php
-    - Graph Data Structures https://www.w3schools.com/dsa/dsa_theory_graphs.php
+
+- Shortest Path https://www.w3schools.com/dsa/dsa_theory_graphs_shortestpath.php
+- Shortest Path Solution (Bellman-Ford Algorithm): https://www.w3schools.com/dsa/dsa_algo_graphs_bellmanford.php
+- Graph Data Structures https://www.w3schools.com/dsa/dsa_theory_graphs.php
 
 :::
