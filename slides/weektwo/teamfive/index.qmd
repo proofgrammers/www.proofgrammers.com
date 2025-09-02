@@ -22,10 +22,13 @@ format:
 
 ## DNA Sequence Alignment
 
-DNA sequence alignment is one of the most important problems in computational biology. The basic idea is simple: given several DNA fragments, we want to “line them up” so that similar regions match.
+DNA sequence alignment is one of the most important problems in computational
+biology. The basic idea is simple: given several DNA fragments, we want to “line
+them up” so that similar regions match.
 
 - Comparing two sequences is fairly straightforward
-- Comparing many sequences, as in Multiple Sequence Alignment, becomes much more complicated
+- Comparing many sequences, as in Multiple Sequence Alignment, becomes much more
+complicated
 
 ## Multiple Sequence Alignment & Intractability
 
@@ -38,13 +41,20 @@ Multiple Sequence Alignment is an example of an intractable problem.
 
 ## What are the key differences between these?
 
-When dealing with these sort of problems, you can sort them into three categories. Tractable, intractable, and uncomputable.
+When dealing with these sort of problems, you can sort them into three
+categories. Tractable, intractable, and uncomputable.
 
-- **Tractable problems**: These scale well. As inputs grow larger, the algorithm still finishes in a reasonable amount of time, scaling well and linearly.
+- **Tractable problems**: These scale well. As inputs grow larger, the algorithm
+still finishes in a reasonable amount of time, scaling well and linearly.
 
-- **Intractable problems**:  Look manageable on small scale but explode in complexity as input grows. What seems easy at first becomes impossible to run in practice.
+- **Intractable problems**:  Look manageable on small scale but explode in
+complexity as input grows. What seems easy at first becomes impossible to run in
+practice.
 
-- **Uncomputable problems**: No algorithm can ever solve them, no matter how much time you allow (example: the Halting Problem). Fundamentally unsolvable by computers. Unlike intractable problems, it’s not just slow, it’s fundamentally unsolvable by computers.
+- **Uncomputable problems**: No algorithm can ever solve them, no matter how
+much time you allow (example: the Halting Problem). Fundamentally unsolvable by
+computers. Unlike intractable problems, it’s not just slow, it’s fundamentally
+unsolvable by computers.
 
 
 # Code Implementation
@@ -132,10 +142,16 @@ for seq in aligned:
 ::: {.callout-note}
 **Code Explanation:**
 
-This function aligns multiple DNA sequences by trying all possible ways to insert gaps and maximize matches. For each new sequence, it tests every possible offset, adds gaps as needed, and scores the alignment based on matching characters and gap penalties. The alignment with the highest score is chosen. This brute-force approach is simple but becomes extremely slow for many or long sequences, illustrating why multiple sequence alignment is computationally intractable.
-:::
+This function aligns multiple DNA sequences by trying all possible ways to
+insert gaps and maximize matches. For each new sequence, it tests every possible
+offset, adds gaps as needed, and scores the alignment based on matching
+characters and gap penalties. The alignment with the highest score is chosen.
+This brute-force approach is simple but becomes extremely slow for many or long
+sequences, illustrating why multiple sequence alignment is computationally
+intractable. :::
 
-This algorithm works, but it takes exponential time which is roughly `O(2^(n×m))`, where `n` = number of sequences and `m` = sequence length.
+This algorithm works, but it takes exponential time which is roughly
+`O(2^(n×m))`, where `n` = number of sequences and `m` = sequence length.
 
 ## Coltin's Implementation
 
@@ -175,15 +191,29 @@ if __name__ == "__main__":
 ::: {.callout-note}
 **Code Explanation:**
 
-This function aligns a list of sequences by using the first sequence as a reference. For each additional sequence it compares each character to the reference at the same position. If the characters match it keeps the character if not it inserts a space to highlight the mismatch compared to the original reference sequence. Shorter sequences get spaces added to them to match the reference sequences length. The result shows a simple visual alignment that makes mismatches easy to spot compared to the reference sequence. It does not insert gaps or optimize for the best overall alignment. This approach is fast and straightforward but is not very flexible compared to more advanced alignments.
+This function aligns a list of sequences by using the first sequence as a
+reference. For each additional sequence it compares each character to the
+reference at the same position. If the characters match it keeps the character
+if not it inserts a space to highlight the mismatch compared to the original
+reference sequence. Shorter sequences get spaces added to them to match the
+reference sequences length. The result shows a simple visual alignment that
+makes mismatches easy to spot compared to the reference sequence. It does not
+insert gaps or optimize for the best overall alignment. This approach is fast
+and straightforward but is not very flexible compared to more advanced
+alignments.
 
-This algorithm is `O(n * m)` where `n` is the number of sequences and `m` is the length of the reference sequence. This algorithm processes each character in each sequence once making it somewhat scalable. 
+This algorithm is `O(n * m)` where `n` is the number of sequences and `m` is the
+length of the reference sequence. This algorithm processes each character in
+each sequence once making it somewhat scalable. 
 
 :::
 
 ## Results
 
-The output of the code above shows the aligned DNA sequences. For small inputs, the algorithm works, but for larger numbers of sequences or longer sequences, it becomes computationally infeasible due to exponential growth in possible alignments.
+The output of the code above shows the aligned DNA sequences. For small inputs,
+the algorithm works, but for larger numbers of sequences or longer sequences, it
+becomes computationally infeasible due to exponential growth in possible
+alignments.
 
 # Intractable?
 
@@ -206,7 +236,7 @@ A full sequence alignment algorithm:
 
 **Why MSA is Intractable?**
 
-- **Small inputs deceive us** - 3 sequences work fine
-- **Exponential growth** - Each additional sequence multiplies complexity
-- **No shortcuts** - Must consider all gap possibilities for optimal alignment
-- **Real-world needs** - Biologists need to align hundreds of sequences
+- **Small inputs deceive us**: 3 sequences work fine
+- **Exponential growth**: Each additional sequence multiplies complexity
+- **No shortcuts**: Must consider all gap possibilities for optimal alignment
+- **Real-world needs**: Biologists need to align hundreds of sequences
