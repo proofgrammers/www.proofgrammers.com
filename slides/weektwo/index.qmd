@@ -496,3 +496,25 @@ print(f"\nProcessing: {single_line}")
 actual_multiline = single_line.replace('\\n', '\n')
 print(f"Lines: {countLines(actual_multiline)}")
 ```
+
+## Formal notation: $P(I)$
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **$P(I)$ definition**
+  - $P$ is a Python program (SISO function)
+  - $I$ is an input string
+  - $P(I)$ is the output when $P$ executes on input $I$
+  - The "first function" in $P$ is the "main function"
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **When P(I) is undefined**
+  - $P$ doesn't terminate (infinite loop or recursion)
+  - $P$ returns a non-ASCII string value
+  - $P$ throws an unhandled exception
+  - $P$ has syntax or runtime errors
+
+:::
