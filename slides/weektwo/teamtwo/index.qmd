@@ -1,31 +1,187 @@
 ---
 title: "Markdown Search Engine"
 description: "Explore tractability of search engines"
-date: "2025-09-01"
+date: "2025-09-02"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Veronica McNeece, Levente Mihaly, Anoop Guragain, Javier Bejarano
 execute:
   echo: true
 format:
-  live-revealjs:
-    completion: true
+  revealjs:
     theme: default
     css: ../../css/styles.css
-    history: false
-    scrollable: true
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Theory of Computation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
     - Analyzing computational complexity
     - Proving limits of computation
     - "Proofgrammers" combine *proofs* and *programming*
-
 :::
+
+---
+
+# Introduction
+
+## Implementing a simple markdown search engine that perform keyword search.  
+
+<div style="font-size: 0.75em">
+
+The engine builds an inverted index, mapping each normalized token to the set of document names that contain it by using `defaultdict`. Tokenization extracts lowercase word token using the regex `\b\w+\b` to ensure the word boundary and it also make sure that uppercase and lowercase are treated same during the queries. Then it is added added to raw document text inside self.docs so we can retrieve it later. Then it tokenizes each query using same regex and take intersection of those sets which is also referred as `And semantics`. And last using `get_snippet` it returns a small piece of text around the match.
+
+</div>
+
+---
+
+```python
+ def __init__(self):
+        self.index = defaultdict(set)
+        self.docs = {}
+
+    # helper: return list of words from text (normalized)
+    def tokenize(self, text: str):
+        """Return lowercase word tokens from text."""
+        if not text:
+            return []
+        return re.findall(r"\b\w+\b", text.lower())
+
+    def add_document(self, name: str, content: str):
+        """Adds a document to the index."""
+        self.docs[name] = content
+        for word in self.tokenize(content):
+            self.index[word].add(name)
+
+    def search(self, query: str):
+        """Search for documents that contain all words in the query (AND)."""
+        words = self.tokenize(query)
+        if not words:
+            return set()
+        sets = [self.index.get(w, set()) for w in words]
+        if not sets or any(len(s) == 0 for s in sets):
+            return set()
+        return set.intersection(*sets)
+
+    def get_snippet(self, name: str, query: str, context: int = 40) -> str:
+        """Return a short snippet around the first whole-word match for any query word/phrase."""
+        content = self.docs.get(name, "")
+        if not content:
+            return ""
+        q = query.strip()
+        if not q:
+            return ""
+        # try phrase match first (word boundaries), then any token
+        phrase_pat = re.compile(r"\b" + re.escape(q) + r"\b", flags=re.IGNORECASE)
+        m = phrase_pat.search(content)
+        if not m:
+            parts = self.tokenize(q)
+            if parts:
+                pat = re.compile(r"\b(" + "|".join(re.escape(p) for p in parts) + r")\b", flags=re.IGNORECASE)
+                m = pat.search(content)
+        if not m:
+            # fallback: start of document
+            s = content.strip().replace("\n", " ")
+            return (s[:context] + ("..." if len(s) > context else ""))
+        start = max(0, m.start() - context)
+        end = min(len(content), m.end() + context)
+        snippet = content[start:end].replace("\n", " ")
+        return ("..." if start > 0 else "") + snippet + ("..." if end < len(content) else "")
+```
+---
+
+# Demo 
+
+You can simply run this program with 
+
+```bash
+cd /home/student/Class/cmpsc\ 204/www.proofgrammers.com/slides/weektwo/teamtwo
+python3 markdown.py /path/to/md/folder "keyword query"
+# or run interactively:
+python3 markdown.py
+Enter query (blank to exit): keyword
+```
+---
+
+# Key Terms
+
+ - Markdown
+ - Search engine
+ - Index
+ - Document
+ - Text
+ - Polynomial Time: The class of problems solvable efficiently.
+
+---
+
+### Types of Problems in Computers
+
+- **Tractable**
+- **Intractable**
+- **Uncomputable**
+
+## Tractable
+- Our program is tractable because it uses an algorithm whose running time grows polynomially with the size of the input. 
+- A problem that can be solved in **polynomial time** (efficiently).
+- The Markdown search engine is tractable because it runs in polynomial time: indexing is linear in the size of the corpus, and queries are linear in the length of the query plus the number of results.
+- Example: Searching a list of documents
+- **Analogy:** Finding a book on a small shelf — quick and easy
+
+## Intractable
+- A problem that is solvable, but only with **exponential time** algorithms.
+- Becomes impractical for large inputs
+- Example: Traveling Salesman Problem
+- **Analogy:** Searching a huge library without a catalog — takes forever
+
+## Uncomputable
+- A problem that **cannot** be solved by any algorithm.
+- **Analogy:** Asking if a magic book will ever finish writing itself — impossible to know
+
+---
+
+# How It Relates to Search Engines
+
+- **Markdown search engine = tractable problem**  
+  - Keyword search can be solved in polynomial time.  
+  - Scales efficiently with number of documents.  
+
+- **Intractable examples**  
+  - Perfectly understanding "meaning" of text or answering open-ended questions.  
+
+- **Uncomputable examples**  
+  - Determining whether an arbitrary program will halt (not related to search).  
+
+---
+
+## Understanding Tractability Through Two Approaches
+
+- **Simple Search (`search_documents`)**
+  - Scans through each document, one by one
+  - Finds matches with `if query.lower() in doc.lower():`
+  - Easy to understand, but slows down as data grows  
+
+- **Improved Search (`Index` class)**
+  - Instead of scanning everything each time, you prepare a map (**inverted index**). 
+  - Searches become much faster, especially with many files  
+  - Supports multiple-word queries and snippets  
+
+---
+
+# Why This Matters
+
+> The simple version shows tractability in its most basic form (linear scan).  
+> The improved version shows how indexing makes searching scale much better in practice.
+
+---
+
+# References
+
+ - What Can Be Computed? A Practical Guide to the Theory of Computation by John MacCormick
+ - [Proofgrammers](https://proofgrammers.com/)
+ - Github Copilot : Used for information , fix and optimization of code along with adding functionability such as get_snippet
+ - Chatgpt : used for information
+ - Google Overview : used for information 
