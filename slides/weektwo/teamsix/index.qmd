@@ -216,3 +216,30 @@ check_syntax(test_source_code)
 - Using AST to not to execute but to review the code by creating a string 
 - If the code did not have defects in them, it still would not print anything 
 - The unclosed print statements or parantheses will always be caught by ast.parse() method
+
+## Detecting Division by Zero
+
+```{pyodide}
+#| autorun: true
+import ast
+
+class DivisionByZeroDetector(ast.NodeVisitor):
+    def visit_BinOp(self, node):
+        if isinstance(node.op, ast.Div):
+            if isinstance(node.right, ast.Constant) and node.right.value == 0:
+                print(f"Possible division by zero on line {node.lineno}")
+        self.generic_visit(node)
+
+def check_code(source):
+    tree = ast.parse(source)
+    detector = DivisionByZeroDetector()
+    detector.visit(tree)
+
+test_source_code = """def division_by_zero_example(x: int, y: int):
+    division = x / y
+    ans = division / 0
+    return ans"""
+
+check_code(test_source_code)
+```
+
