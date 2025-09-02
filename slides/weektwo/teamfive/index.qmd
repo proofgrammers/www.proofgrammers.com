@@ -149,7 +149,7 @@ offset, adds gaps as needed, and scores the alignment based on matching
 characters and gap penalties. The alignment with the highest score is chosen.
 This brute-force approach is simple but becomes extremely slow for many or long
 sequences, illustrating why multiple sequence alignment is computationally
-intractable. :::
+intractable.
 
 This algorithm works, but it takes exponential time which is roughly
 `O(2^(n×m))`, where `n` = number of sequences and `m` = sequence length.
@@ -192,6 +192,7 @@ if __name__ == "__main__":
 ## What's Going On Here?
 
 ::: {.callout-note}
+
 **Code Explanation:**
 
 This function aligns a list of sequences by using the first sequence as a
