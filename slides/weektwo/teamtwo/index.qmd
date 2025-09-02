@@ -29,7 +29,7 @@ format:
 
 # Introduction
 
-Implementing a simple markdown search engine that perform keyword search.
+Implementing a simple markdown search engine that perform keyword search.  
 
 The engine builds an inverted index, mapping each normalized token to the set of document names that contain it by using `defaultdict`. Tokenization extracts lowercase word token using the regex `\b\w+\b` to ensure the word boundary and it also make sure that uppercase and lowercase are treated same during the queries. Then it is added added to raw document text inside self.docs so we can retrieve it later. Then it tokenizes each query using same regex and take intersection of those sets which is also referred as `And semantics`. And last using `get_snippet` it returns a small piece of text around the match.
 
@@ -98,10 +98,6 @@ python3 markdown.py /path/to/md/folder "keyword query"
 python3 markdown.py
 Enter query (blank to exit): keyword
 ```
-
-# Result
-
-
 
 # Key Terms
 
@@ -173,3 +169,10 @@ Enter query (blank to exit): keyword
 > The improved version shows how indexing makes searching scale much better in practice.
 
 ---
+ # References
+
+ - What Can Be Computed? A Practical Guide to the Theory of Computation by John MacCormick
+ - [Proofgrammers](https://proofgrammers.com/)
+ - Github Copilot : Used for information , fix and optimization of code along with adding functionability such as get_snippet
+ - Chatgpt : used for information
+ - Google Overview : used for information 
