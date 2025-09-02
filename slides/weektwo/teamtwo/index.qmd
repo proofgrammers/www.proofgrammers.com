@@ -45,6 +45,7 @@ format:
 
 ## Tractable
 - A problem that can be solved in **polynomial time** (efficiently).
+- The Markdown search engine is tractable because it runs in polynomial time: indexing is linear in the size of the corpus, and queries are linear in the length of the query plus the number of results.
 - Example: Searching a list of documents
 - **Analogy:** Finding a book on a small shelf — quick and easy
 
