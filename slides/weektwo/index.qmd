@@ -370,3 +370,35 @@ examples](https://whatcanbecomputed.com/) and create your own SISO programs
 :::
 
 # Ready to formally define what it means to compute? Let's implement more SISO programs! Hooray!
+
+## Numerical inputs in SISO programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 8
+def addNumbers(inString: str) -> str:
+    """Add space-separated numbers in the input string."""
+    # inString example: "54 21 7 43"
+    numbers = inString.split()  # ["54", "21", "7", "43"]
+    # convert string list to integer list
+    numbers = [int(x) for x in numbers]  # [54, 21, 7, 43]
+    # perform the computation
+    total = sum(numbers)  # 125
+    # convert result back to string for SISO compliance
+    return str(total)  # "125"
+
+# test the function
+test_input = "54 21 7 43"
+result = addNumbers(test_input)
+print(f"Input: '{test_input}'")
+print(f"Output: '{result}'")
+print(f"Type of output: {type(result)}")
+```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.8em;"}
+
+- **String-to-number conversion**: `int()` and `float()` functions
+- **Number-to-string conversion**: `str()` function for SISO compliance
+- **Data processing pattern**: split, convert, compute, stringify
+
+:::
