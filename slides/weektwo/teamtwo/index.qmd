@@ -173,5 +173,29 @@ Enter query (blank to exit): keyword
 
 ---
 
-# Reference 
+# Example: Markdown Search Engine
 
+```python
+# markdown_search.py
+
+def search_documents(query, documents):
+    """
+    Return list of documents that contain the query string.
+    """
+    results = []
+    for i, doc in enumerate(documents, start=1):
+        if query.lower() in doc.lower():
+            results.append(f"Document {i}")
+    return results
+
+
+# Example usage
+docs = [
+    "# Title One\nThis is a sample markdown document about computation.",
+    "# Title Two\nThis file talks about search engines and algorithms.",
+    "# Title Three\nComputation theory includes tractable problems."
+]
+
+query = "computation"
+print("Searching for:", query)
+print("Results:", search_documents(query, docs))
