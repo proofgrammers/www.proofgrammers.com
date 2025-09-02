@@ -133,14 +133,23 @@ with open("mutated.txt", "w") as file:
 
 ::: incremental
 
-- A problem is **tractable** if a computer can solve it in a practical amount of time, even with a huge amount of data.
-- The time it takes to solve the problem grows predictably, like a straight line on a graph, not an exploding curve. We call this a **linear O(n)** or **polynomial O(n²)** rate.
-- **Example:** Imagine sorting a list of names. It takes a reasonable amount of time whether you have 10 names or 10 million.
-- **Non-tractable example:** Trying to find the best possible move in every single chess game ever played. The number of possibilities is so vast it would take a supercomputer trillions of years.
+- A problem is **tractable** if a computer can solve it in a practical amount of
+time, even with a huge amount of data.
+- The time it takes to solve the problem grows predictably, like a straight line
+on a graph, not an exploding curve. We call this a **linear O(n)** or
+**polynomial O(n²)** rate.
+- **Example:** Imagine sorting a list of names. It takes a reasonable amount of
+time whether you have 10 names or 10 million.
+- **Non-tractable example:** Trying to find the best possible move in every
+single chess game ever played. The number of possibilities is so vast it would
+take a supercomputer trillions of years.
 
 ## Why Our Text Mutation Engine is Tractable
-- The engine works by checking each **character** one at a time. Each character is processed in a very quick, constant amount of time.
-- The total processing time grows **linearly** with the text **size** (known as **O(n)** complexity), meaning it remains fast even with very large files.
+
+- The engine works by checking each **character** one at a time. Each character
+is processed in a very quick, constant amount of time.
+- The total processing time grows **linearly** with the text **size** (known as
+**O(n)** complexity), meaning it remains fast even with very large files.
 
 ::: 
 
@@ -148,9 +157,14 @@ with open("mutated.txt", "w") as file:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- **Fast & Scalable:** Efficiently processes large texts and dynamically adjusts the mutation rate to control the extent of content transformation.🚀
-- **Effective Mutation:** The system applies random mutations to the text, altering roughly **20%** of characters on average per run. The actual percentage may vary due to randomness, producing different variations each time.
-- **Real-World Application:** While the engine is highly effective, a notable limitation is the production of non-words. This highlights an opportunity to integrate a dictionary or grammar check for more advanced applications.
+- **Fast & Scalable:** Efficiently processes large texts and dynamically adjusts
+the mutation rate to control the extent of content transformation.🚀
+- **Effective Mutation:** The system applies random mutations to the text,
+altering roughly **20%** of characters on average per run. The actual percentage
+may vary due to randomness, producing different variations each time.
+- **Real-World Application:** While the engine is highly effective, a notable
+limitation is the production of non-words. This highlights an opportunity to
+integrate a dictionary or grammar check for more advanced applications.
 
 - Example Mutation:
     - **Original:** "This is Group three"
