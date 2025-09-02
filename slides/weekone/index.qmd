@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Theoretical Machines"
+title: "Introduction to Proofgramming"
 description: "Exploring theory of computation with Python"
 date: "2025-08-25"
 date-format: long
