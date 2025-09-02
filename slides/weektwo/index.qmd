@@ -51,7 +51,7 @@ format:
 
 :::
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.35em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Intellectual foundation**
   - Beautiful and important theoretical framework
@@ -85,6 +85,16 @@ are computable, and that some problems are intractable! Be on alert!**
 
 :::
 
+# Using Python for theoretical machines
+
+::: incremental
+
+- Introduce a restricted form of Python programs
+- Give examples of these restricted programs
+- Formally define the term "Python program"
+- Introduce concept of a decision problem
+
+:::
 
 ## Python basics for proofgrammers
 
@@ -152,6 +162,23 @@ SISO!
 
 :::
 
+## Why is SISO suitable?
+
+::: {.incremental style="margin-top: 0em; font-size: 0.875em;"}
+
+- Wait, real-world programs receive many kinds of input and output!
+- But our theoretical results for SISO programs can be easily generalized to all
+other types of computer programs
+    - All input and output to computers ultimately consists of binary
+    - Binary strings can easily be converted to and from ASCII strings
+- The restriction to Python is convenient for us, but not strictly needed
+- Python programs are equivalent to other standard models of computation,
+including Turing machines and all other "reasonable" programming languages and
+realistic computers
+- **Unless otherwise specified, assume that all programs are SISO!**
+
+:::
+
 ## Create the `containsGAGA` function
 
 ```{python}
@@ -177,7 +204,7 @@ print(f"Testing '{test_input3}': {containsGAGA(test_input3)}")
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 5
 def containsGAGA(input_string: str) -> str:
     """Check if the input string contains the substring GAGA."""
     if "GAGA" in input_string:
@@ -192,15 +219,12 @@ test_cases = [
     "AGAGAGAGA repeated patterns",
     "computational GAGA theory"
 ]
-
 print("Testing containsGAGA function:")
 print("=" * 30)
 for test in test_cases:
     result = containsGAGA(test)
     print(f"Input: '{test}'")
     print(f"Output: {result}")
-    print()
-
 print("Try modifying the test cases above!")
 ```
 
