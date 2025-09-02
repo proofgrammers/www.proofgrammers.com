@@ -12,11 +12,14 @@ listing:
       description: "Question"
     contents:
       - "week*/**/*.qmd"
+      - "!teams"
     sort:
       - "date"
       - "title"
       - "description"
 ---
+
+## Course Presentations
 
 Interesting in learning more about the theory of computation? Checkout
 these slide decks to learn more! Each deck explores topics in Python programming
