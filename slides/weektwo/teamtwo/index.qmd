@@ -34,6 +34,7 @@ format:
  - Index
  - Document
  - Text
+ - Polynomial Time: The class of problems solvable efficiently.
 
 ---
 
