@@ -402,3 +402,38 @@ print(f"Type of output: {type(result)}")
 - **Data processing pattern**: split, convert, compute, stringify
 
 :::
+
+## Try numerical conversion
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+def computeAverage(inString: str) -> str:
+    """Compute average of space-separated numbers."""
+    if not inString.strip():
+        return "0"
+    numbers = inString.split()
+    numbers = [float(x) for x in numbers]
+    average = sum(numbers) / len(numbers)
+    return str(round(average, 2))
+
+def findMaximum(inString: str) -> str:
+    """Find maximum of space-separated numbers."""
+    if not inString.strip():
+        return "0"
+    numbers = inString.split()
+    numbers = [int(x) for x in numbers]
+    maximum = max(numbers)
+    return str(maximum)
+
+# test both functions
+test_data = "10 25 15 30 5"
+print(f"Input: {test_data}")
+print(f"Average: {computeAverage(test_data)}")
+print(f"Maximum: {findMaximum(test_data)}")
+# test with floating point numbers
+float_data = "3.14 2.71 1.41 1.73"
+print(f"\nFloat input: {float_data}")
+print(f"Average: {computeAverage(float_data)}")
+```
+
