@@ -228,17 +228,16 @@ for test in test_cases:
 print("Try modifying the test cases above!")
 ```
 
-## Creating more sophisticated programs
+## More sophisticated programs
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
-def containsGAGAnotTATA(input_string: str) -> str:
-    """Return yes if input contains GAGA but not TATA."""
+#| max-lines: 10
+def containsGAGAnotHAHA(input_string: str) -> str:
+    """Return yes if input contains GAGA but not HAHA."""
     has_gaga = "GAGA" in input_string
-    has_tata = "TATA" in input_string
-    
-    if has_gaga and not has_tata:
+    has_haha = "HAHA" in input_string
+    if has_gaga and not has_haha:
         return "yes"
     else:
         return "no"
@@ -246,26 +245,18 @@ def containsGAGAnotTATA(input_string: str) -> str:
 # test the enhanced function
 test_cases = [
     "GAGA music rocks",
-    "TATA motors company", 
-    "GAGA and TATA together",
+    "HAHA that is funny", 
+    "GAGA and HAHA together",
     "neither pattern here",
-    "GAGA without the other"
+    "GAGA without the funny one"
 ]
 
-print("Testing containsGAGAnotTATA function:")
-print("=" * 35)
+print("Testing containsGAGAnotHAHA function:")
 for test in test_cases:
-    result = containsGAGAnotTATA(test)
+    result = containsGAGAnotHAHA(test)
     print(f"'{test}' → {result}")
 ```
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Complex conditions**: combining multiple pattern checks
-- **Boolean logic**: using `and` and `not` operators effectively
-- **Pattern exclusion**: ensuring one pattern without another
-
-:::
 
 
 ## Reading programs from files
@@ -293,6 +284,16 @@ print(gaga_program)
 print("\nContents of countVowels.py:")
 print(vowel_program)
 ```
+
+## Recap these two programs
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Complex conditions**: combining multiple pattern checks
+- **Boolean logic**: using `and` and `not` operators effectively
+- **Pattern exclusion**: ensuring one pattern without another
+
+:::
 
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
