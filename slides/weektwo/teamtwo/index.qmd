@@ -44,19 +44,18 @@ format:
 - **Uncomputable**
 
 ## Tractable
-- Solvable in **polynomial time** (efficiently)
+- A problem that can be solved in **polynomial time** (efficiently).
 - Example: Searching a list of documents
 - **Analogy:** Finding a book on a small shelf — quick and easy
 
 ## Intractable
-- Solvable, but only with **exponential time** algorithms
+- A problem that is solvable, but only with **exponential time** algorithms.
 - Becomes impractical for large inputs
 - Example: Traveling Salesman Problem
 - **Analogy:** Searching a huge library without a catalog — takes forever
 
 ## Uncomputable
-- **Cannot** be solved by any algorithm
-- Example: The Halting Problem
+- A problem that **cannot** be solved by any algorithm.
 - **Analogy:** Asking if a magic book will ever finish writing itself — impossible to know
 
 ---
