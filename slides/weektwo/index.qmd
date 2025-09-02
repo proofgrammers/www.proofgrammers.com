@@ -1,6 +1,6 @@
 ---
 title: "Formally Defining Computation"
-description: "Exploring SISO programs and computational theory"
+description: "Exploring SISO programs for proofgramming"
 date: "2025-09-01"
 date-format: long
 author: Gregory M. Kapfhammer
