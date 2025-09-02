@@ -108,7 +108,51 @@ theory!
 
 :::
 
-## Implementing the `containsGAGA` function
+## Understanding SISO programs
+
+::: {.incremental style="margin-top: -0.2em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Single Input, Single Output (SISO)**
+  - Takes exactly one string as input parameter
+  - Returns exactly one string as output result
+  - Foundation for formal computational models
+  - Enables precise mathematical analysis
+
+:::
+
+::: {.incremental style="margin-top: -0.35em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Decision problems**
+  - Return "yes" or "no" to answer specific questions
+  - Fundamental building blocks of computational theory
+  - Enable formal proofs about computability
+  - Connect to language recognition problems
+
+:::
+
+## SISO program characteristics
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **Input specification**: single string parameter only
+- **Output format**: single string return value
+- **Function definition**: clear computational procedure
+- **Deterministic behavior**: same input always produces same output
+- **Finite execution**: program must terminate for valid inputs
+- **String processing**: fundamental operation in formal languages
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.85em;"}
+
+{{< iconify fa6-solid microscope >}} SISO programs provide the mathematical
+foundation for analyzing what can be computed and how efficiently we can solve
+different types of problems. They are a powerful syntactic subset of Python! Go
+SISO!
+
+:::
+
+## Create the `containsGAGA` function
 
 ```{python}
 def containsGAGA(input_string: str) -> str:
@@ -128,13 +172,6 @@ print(f"Testing '{test_input2}': {containsGAGA(test_input2)}")
 print(f"Testing '{test_input3}': {containsGAGA(test_input3)}")
 ```
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **SISO program**: Single Input, Single Output computational model
-- **Decision problem**: returns "yes" or "no" based on input analysis
-- **String analysis**: fundamental operation in formal language theory
-
-:::
 
 ## Try the `containsGAGA` function
 
@@ -206,48 +243,6 @@ for test in test_cases:
 
 :::
 
-## Understanding SISO programs
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid gear >}} **Single Input, Single Output (SISO)**
-  - Takes exactly one string as input parameter
-  - Returns exactly one string as output result
-  - Foundation for formal computational models
-  - Enables precise mathematical analysis
-
-:::
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid gear >}} **Decision problems**
-  - Return "yes" or "no" to answer specific questions
-  - Fundamental building blocks of computational theory
-  - Enable formal proofs about computability
-  - Connect to language recognition problems
-
-:::
-
-## SISO program characteristics
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
-
-- **Input specification**: single string parameter only
-- **Output format**: single string return value
-- **Function definition**: clear computational procedure
-- **Deterministic behavior**: same input always produces same output
-- **Finite execution**: program must terminate for valid inputs
-- **String processing**: fundamental operation in formal languages
-
-:::
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} SISO programs provide the mathematical
-foundation for analyzing what can be computed and how efficiently we can solve
-different types of problems.
-
-:::
 
 ## Reading programs from files
 
