@@ -121,7 +121,10 @@ Enter query (blank to exit): keyword
 - **Uncomputable**
 
 ## Tractable
+<<<<<<< HEAD
 - Our program is tractable because it uses an algorithm whose running time grows polynomially with the size of the input. 
+=======
+>>>>>>> 87193882abee75c8e868ba5f0ea6cfac9dcf8704
 - A problem that can be solved in **polynomial time** (efficiently).
 - The Markdown search engine is tractable because it runs in polynomial time: indexing is linear in the size of the corpus, and queries are linear in the length of the query plus the number of results.
 - Example: Searching a list of documents
@@ -164,6 +167,8 @@ Enter query (blank to exit): keyword
   - Instead of scanning everything each time, you prepare a map (**inverted index**). 
   - Searches become much faster, especially with many files  
   - Supports multiple-word queries and snippets  
+<<<<<<< HEAD
+=======
 
 ---
 
@@ -173,3 +178,16 @@ Enter query (blank to exit): keyword
 > The improved version shows how indexing makes searching scale much better in practice.
 
 ---
+>>>>>>> 87193882abee75c8e868ba5f0ea6cfac9dcf8704
+
+---
+
+<<<<<<< HEAD
+# Why This Matters
+
+> The simple version shows tractability in its most basic form (linear scan).  
+> The improved version shows how indexing makes searching scale much better in practice.
+
+---
+=======
+>>>>>>> 87193882abee75c8e868ba5f0ea6cfac9dcf8704
