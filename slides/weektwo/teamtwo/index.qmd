@@ -37,7 +37,7 @@ format:
 
 ---
 
-### Problem Types in Computer Science
+### Types of Problems in Computers
 
 - **Tractable**
 - **Intractable**
