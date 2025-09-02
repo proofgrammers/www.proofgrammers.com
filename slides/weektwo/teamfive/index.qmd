@@ -20,7 +20,9 @@ format:
 
 # Introduction
 
-Will's Part
+DNA sequence alignment is one of the most important problems in computational biology. The basic idea is simple: given several DNA fragments, we want to “line them up” so that similar regions match. For a comparison between two sequences it would be simple enough, but becomes more complicated when comparing many sequences for Multiple Sequence Alignment.
+
+Multiple sequence alignment is an example of an intractable problem due to results it produces on a larger scale providing results that are impractical to run. The following section is a breakdown on diffrent implementations as to why.
 
 # Code Implementation
 
@@ -172,5 +174,10 @@ The output of the code above shows the aligned DNA sequences. For small inputs, 
 - **Time complexity**: For even modest inputs (e.g., 10 sequences of 100 bases each), the algorithm would need to check approximately 2^1000 possible alignments.
 - **Exponential growth**: Adding just one more sequence doubles the problem size.
 
-You guys can add more here (Talk about untractable, uncomputable and etc)
+When dealing with these sort of problems, you can sort them into three categories. The labels being Tractable, Intractable, and Uncomputeable. Taking the following reasons into consideration the problem is intractible. As a reminder for how we classify each category they can be described as such.
 
+- **Tractable problems**: These scale well. As inputs grow larger, the algorithm still finishes in a reasonable amount of time, scaling well and linearly.
+
+- **Intractable problems**: These look manageable on a small scale but explode in complexity as the input grows. Multiple sequence alignment fits here. You can align three or four short DNA fragments quickly, but with ten sequences of 100 bases each, the number of possibilities is astronomical. What seems easy at first becomes impossible to run in practice.
+
+- **Uncomputable problems**: These are problems where no algorithm can ever give an answer, no matter how much time you allow (for example, the Halting Problem). Unlike intractable problems, it’s not just slow, it’s fundamentally unsolvable by computers.
