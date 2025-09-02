@@ -160,6 +160,28 @@ if __name__ == "__main__":
 
 ![Unreachable Code](unreachable_code.png)
 
+## TypeError
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+import ast
+code = '''
+def greet(name: str) -> str:
+    return "Hello, " + name
+x=42; msg=greet(x)
+'''
+t=ast.parse(code)
+class Fix(ast.NodeTransformer):
+    def visit_Call(self,n):
+        if isinstance(n.func,ast.Name) and n.func.id=='greet' and n.args:
+            a=n.args[0]
+            if not (isinstance(a,ast.Constant) and isinstance(a.value,str)) and not (isinstance(a,ast.Call) and isinstance(a.func,ast.Name) and a.func.id=='str'):
+                n.args[0]=ast.Call(func=ast.Name(id='str',ctx=ast.Load()),args=[a],keywords=[])
+        return self.generic_visit(n)
+print(ast.unparse(Fix().visit(t)))
+```
+
 ## Detecting Unclosed Print Statements
 
 ```{pyodide}
@@ -220,3 +242,4 @@ test_source_code = """def division_by_zero_example(x: int, y: int):
 
 check_code(test_source_code)
 ```
+
