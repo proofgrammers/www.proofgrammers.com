@@ -540,3 +540,82 @@ http://localhost:8081/slides/weektwo/index.html
 boxed content, and consistent typography
 - Slide titles meet length requirements and content distribution maintains
 readability at presentation resolution
+
+### Chapter Two Content: index_two.qmd for What is a Computer Program?
+
+**Unique Chapter 2 Content (No Duplication with Existing Slides)**:
+
+- **Formal Program Definition**: P(I) mathematical notation for program P
+executed on input I, establishing rigorous framework for computational analysis
+- **Numeric Input/Output Conversion**: String-to-number (`int()`, `float()`)
+and number-to-string (`str()`) conversion patterns for SISO compliance with
+practical examples like `addNumbers` and `computeAverage`
+- **ASCII Character Set**: Complete 128-character standard including printable
+characters, newline handling, and multiline text processing capabilities
+- **Program Failure Modes**: Comprehensive analysis of when P(I) becomes
+undefined due to non-termination, exceptions, invalid return types, or syntax
+errors
+
+**Advanced Theoretical Concepts**:
+
+- **Decision Program Formalization**: Accept/reject terminology where P(I) =
+"yes" means P accepts I, and P(I) = "no" means P rejects I, connecting to
+formal language theory
+- **Program Equivalence**: Mathematical definition where programs P and Q are
+equivalent if P(I) = Q(I) for all inputs I, enabling optimization and
+refactoring analysis
+- **SISO Requirement Violations**: Systematic categorization of invalid
+programs including multiple parameters, non-string returns, non-deterministic
+behavior, and external dependencies
+- **Termination Analysis**: Computational examination of when programs halt
+successfully versus infinite loops or runtime failures
+
+**Python Implementation Examples**:
+
+- **Multiline Text Processing**: Functions like `countLines` and
+`extractWords` demonstrating ASCII newline character handling and complex
+string manipulation
+- **Decision Program Suite**: Implementation of `isEvenLength`,
+`containsOnlyDigits`, and `isPalindrome` showcasing accept/reject semantics
+with comprehensive test cases
+- **Program Equivalence Demonstration**: Three different implementations of
+`countVowels` (explicit loop, list comprehension, filter function) proving
+behavioral equivalence despite different coding approaches
+- **Input Validation and Error Handling**: Robust SISO programs with
+try/except blocks and proper string conversion to prevent undefined P(I)
+states
+
+**Mathematical Foundation Support**:
+
+- P(I) notation derives from formal computation theory and provides basis for
+proving decidability/undecidability results in theoretical computer science
+- Decision problems with "yes"/"no" outputs form foundation for complexity
+classes (P, NP, PSPACE) and language recognition in automata theory
+- Program equivalence concept enables formal verification methods and compiler
+optimization correctness proofs
+- ASCII string restriction maintains theoretical simplicity while providing
+sufficient expressiveness for universal computation, as proven by
+Church-Turing thesis
+
+**Content Differentiation from Existing Slides**:
+
+- Existing slides cover basic SISO concepts and simple `containsGAGA` examples
+- New content focuses specifically on Chapter 2's formal program analysis,
+numeric conversion patterns, and advanced decision problem implementation
+- No duplication of SISO introduction, basic Python syntax, or simple pattern
+matching already covered in main slides
+- Chapter 2 content prepares for advanced topics like program analysis, formal
+verification, and computational complexity theory
+
+**Quality Assurance and Verification**:
+
+- All slides render successfully with `quarto render
+slides/weektwo/index_two.qmd`
+- Python code blocks execute correctly and demonstrate expected theoretical
+concepts
+- Interactive `pyodide` examples enable hands-on experimentation with formal
+program concepts
+- Content follows established formatting guidelines with appropriate icons,
+fragments, and mathematical notation
+- Material directly supports "What Can be Computed" textbook Chapter 2
+learning objectives
