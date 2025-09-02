@@ -112,8 +112,6 @@ def search_documents(query, documents):
             results.append(f"Document {i}")
     return results
 
-
-# Example usage
 docs = [
     "# Title One\nThis is a sample markdown document about computation.",
     "# Title Two\nThis file talks about search engines and algorithms.",
