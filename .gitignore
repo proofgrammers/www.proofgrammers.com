@@ -148,3 +148,6 @@ What-Can-Be-Computed.pdf
 
 ### Internal Resources ###
 internal
+
+### Generated Files ###
+**/*.quarto_ipynb

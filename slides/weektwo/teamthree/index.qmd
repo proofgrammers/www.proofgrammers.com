@@ -3,9 +3,10 @@ title: "Text Mutation System"
 description: "Learn how to randomly mutate text"
 date: "2025-09-01"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Alexander Goddard, Abishek Dhakal, Joesph Oforkansi, Ritesh Ojha
 execute:
   echo: true
+  engine: python
 format:
   live-revealjs:
     completion: true
@@ -18,14 +19,157 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Source code & Explanation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **What does this script do?**
+    - Reads a text file (`input.txt`)
+    - Mutates characters randomly based on a mutation rate
+    - Saves the mutated text to (`mutated.txt`)
+    - Useful for testing algorithms or simulating text variations
+
+:::
+
+```python
+import random
+import string
+
+# Path of text file
+path = "input.txt"
+
+# Read the original text
+with open(path, "r") as file:
+    text = file.read()
+print("Original Text:", text)
+
+# Function to randomly mutate text
+def mutate_text(text, mutation_rate=0.1):
+    mutated = ""
+    for char in text:
+        if random.random() < mutation_rate:
+            mutated += random.choice(string.ascii_letters)
+        else:
+            mutated += char
+    return mutated
+
+# Apply mutation with 20% mutation rate
+mutated_text = mutate_text(text, mutation_rate=0.2)
+print("Mutated Text:", mutated_text)
+
+# Save the mutated text to a file
+with open("mutated.txt", "w") as file:
+    file.write(mutated_text)   
+```
+
+# Create an Example Text File
+
+::: incremental
+
+Before we can run our mutation engine we need a text file
+
+:::
+
+```{pyodide}
+#| max-lines: 10
+#| autorun: true
+
+# File information
+file_name = "input.txt"
+content = "Hello Everyone! This is Group three, testing some protoype for mutation engine. Please check it out and let us know if it works."
+
+# Open the file in write mode ('w')
+with open(file_name, 'w') as file:
+    # Write the content to the file
+    file.write(content)
+
+print(f"File '{file_name}' created and written successfully.\nFile content: '{content}'")
+```
+
+# Test the mutation engine!
+
+::: incremental
+
+Now that we have a text file we can test our mutation engine
+
+:::
+
+```{pyodide}
+#| max-lines: 10
+import random
+import string
+import os
+
+# Path to text file
+path = "input.txt"
+
+# Read the original text
+with open(path, "r") as file:
+    text = file.read()
+print("Original Text:", text)
+
+# Function to randomly mutate text
+def mutate_text(text, mutation_rate=0.1):
+    mutated = ""
+    for char in text:
+        if random.random() < mutation_rate:
+            mutated += random.choice(string.ascii_letters)
+        else:
+            mutated += char
+    return mutated
+
+# Apply mutation with 20% mutation rate
+mutated_text = mutate_text(text, mutation_rate=0.2)
+print("Mutated Text:", mutated_text)
+
+# Save the mutated text to a file
+with open("mutated.txt", "w") as file:
+    file.write(mutated_text)
+```
+
+# Tractable & Why Our Text Mutation Engine is Tractable
+
+## What is Tractable?
+
+::: incremental
+
+- A problem is **tractable** if a computer can solve it in a practical amount of
+time, even with a huge amount of data.
+- The time it takes to solve the problem grows predictably, like a straight line
+on a graph, not an exploding curve. We call this a **linear O(n)** or
+**polynomial O(n²)** rate.
+- **Example:** Imagine sorting a list of names. It takes a reasonable amount of
+time whether you have 10 names or 10 million.
+- **Non-tractable example:** Trying to find the best possible move in every
+single chess game ever played. The number of possibilities is so vast it would
+take a supercomputer trillions of years.
+
+## Why Our Text Mutation Engine is Tractable
+
+- The engine works by checking each **character** one at a time. Each character
+is processed in a very quick, constant amount of time.
+- The total processing time grows **linearly** with the text **size** (known as
+**O(n)** complexity), meaning it remains fast even with very large files.
+
+::: 
+
+# Results and Q&A
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- **Fast & Scalable:** Efficiently processes large texts and dynamically adjusts
+the mutation rate to control the extent of content transformation.🚀
+- **Effective Mutation:** The system applies random mutations to the text,
+altering roughly **20%** of characters on average per run. The actual percentage
+may vary due to randomness, producing different variations each time.
+- **Real-World Application:** While the engine is highly effective, a notable
+limitation is the production of non-words. This highlights an opportunity to
+integrate a dictionary or grammar check for more advanced applications.
+
+- Example Mutation:
+    - **Original:** "This is Group three"
+    - **Mutated:** "This is Gorud thoee"
+
+- **Thank You. We're now open to any questions you may have.** 
 
 :::
