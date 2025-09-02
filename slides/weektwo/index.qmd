@@ -539,7 +539,7 @@ def potentiallyNonTerminating(inString: str) -> str:
     while number > 0:
         number -= 1
         if number == 100:  # artificial condition
-            number = 50
+            number = 101
     return "done"
 
 # test the well-defined program
@@ -567,3 +567,81 @@ print("- With input '101': would loop infinitely")
 - **Halting detector**: detects when a program will never terminate
 
 :::
+
+## Why `potentiallyNonTerminating`?
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- The function contains a `while number > 0:` loop.
+- Each time through the loop, `number` is decremented by 1.
+- But if `number` ever becomes exactly 100, it is reset to 101.
+- This creates an endless cycle: when `number` reaches 100, it jumps back to
+101, so it never reaches 0.
+- For any input greater than or equal to 100, loop never terminates.
+- **Key point:** The artificial reset prevents the loop variable from ever
+reaching 0, so the function does not halt for some inputs.
+- **Question**: Would it be possible to automatically detect this behavior? Why
+  or why not? Can you justify your answer?
+
+:::
+
+## Decision programs: accept or reject
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gear >}} **Decision program definition**
+  - Always returns exactly "yes" or "no"
+  - If $P(I)$ = "yes", then $P$ accepts $I$
+  - If $P(I)$ = "no", then $P$ rejects $I$
+  - **Foundation for complexity and computability theory**
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gear >}} **Examples of accept/reject**
+  - `containsGAGA("GAGA")` = "yes" → accepts "GAGA"
+  - `containsGAGA("hello")` = "no" → rejects "hello"
+  - **Decision problems form the basis of language recognition**
+
+:::
+
+## Implementing decision programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 7
+def isEvenLength(inString: str) -> str:
+    """Accept strings with even length, reject odd length."""
+    if len(inString) % 2 == 0:
+        return "yes"
+    else:
+        return "no"
+
+def containsOnlyDigits(inString: str) -> str:
+    """Accept strings containing only digit characters."""
+    for char in inString:
+        if not char.isdigit():
+            return "no"
+    return "yes" if inString else "no"  # reject empty string
+
+def isPalindrome(inString: str) -> str:
+    """Accept strings that read the same forwards and backwards."""
+    cleaned = inString.lower().replace(" ", "")
+    if cleaned == cleaned[::-1]:
+        return "yes"
+    else:
+        return "no"
+
+# test decision programs
+test_cases = ["hello", "test", "12345", "123", "racecar", "race car", ""]
+
+print("Decision Program Results:")
+print("=" * 40)
+for test in test_cases:
+    even = isEvenLength(test)
+    digits = containsOnlyDigits(test)
+    palindrome = isPalindrome(test)
+    print(f"'{test}': even={even}, digits={digits}, palindrome={palindrome}")
+```
+
