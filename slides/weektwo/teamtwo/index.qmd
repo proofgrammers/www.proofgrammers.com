@@ -33,6 +33,8 @@ Implementing a simple markdown search engine that perform keyword search.
 
 The engine builds an inverted index, mapping each normalized token to the set of document names that contain it by using `defaultdict`. Tokenization extracts lowercase word token using the regex `\b\w+\b` to ensure the word boundary and it also make sure that uppercase and lowercase are treated same during the queries. Then it is added added to raw document text inside self.docs so we can retrieve it later. Then it tokenizes each query using same regex and take intersection of those sets which is also referred as `And semantics`. And last using `get_snippet` it returns a small piece of text around the match.
 
+---
+
 ```python
  def __init__(self):
         self.index = defaultdict(set)
@@ -86,6 +88,7 @@ The engine builds an inverted index, mapping each normalized token to the set of
         snippet = content[start:end].replace("\n", " ")
         return ("..." if start > 0 else "") + snippet + ("..." if end < len(content) else "")
 ```
+---
 
 # Demo 
 
@@ -98,6 +101,7 @@ python3 markdown.py /path/to/md/folder "keyword query"
 python3 markdown.py
 Enter query (blank to exit): keyword
 ```
+---
 
 # Key Terms
 
