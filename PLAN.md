@@ -470,3 +470,73 @@ iterate_list()
 
 # Run the test
 test_bounded_halting()
+```
+
+### Week Two Slides for Formally Defining Computation
+
+**Slide Content Based on Source Materials**:
+
+- Content derived from `01-intro.qmd` source file containing foundational
+concepts from "What Can be Computed" textbook Chapter 1
+- Course objectives review emphasizes the central questions: what can be
+computed in principle (undecidability) vs. efficiently in practice (complexity
+theory)
+- Computational problem classification table demonstrates tractable,
+intractable, and uncomputable categories with concrete examples aligned with
+theoretical computer science literature
+- SISO (Single Input, Single Output) program concept introduced as fundamental
+computational model for formal analysis
+
+**Python Implementation Examples**:
+
+- **`containsGAGA` function**: Demonstrates decision problem implementation,
+returning "yes"/"no" based on substring pattern recognition - directly from
+WCBC textbook examples
+- **Enhanced pattern matching**: `containsGAGAnotTATA` function shows complex
+conditional logic combining multiple pattern checks with boolean operations
+- **File reading simulation**: `rf` function demonstrates treating programs as
+data, foundational concept for universal computation and meta-computation
+- Interactive `pyodide` blocks enable real-time code modification and execution
+to reinforce theoretical concepts through hands-on programming
+
+**SISO Program Characteristics**:
+
+- Formal definition of Single Input, Single Output computational model as
+foundation for theoretical analysis
+- Connection to decision problems and language recognition in automata theory
+- Emphasis on deterministic behavior and finite execution requirements
+- Bridge between concrete programming implementations and abstract mathematical
+functions in computability theory
+
+**Educational Methodology**:
+
+- Team discussion prompts encourage critical thinking about computational
+limits and efficiency analysis
+- Progressive complexity from simple pattern recognition to sophisticated
+conditional logic
+- Connection between practical string processing and formal language theory
+concepts
+- Preparation for advanced topics like universal computation and program
+analysis
+
+**Theoretical Foundation Support**:
+
+- SISO programs provide rigorous mathematical framework for analyzing
+computational problems and their complexity classes
+- Decision problems (yes/no outputs) form basis for studying decidability and
+undecidability results in theoretical computer science
+- Pattern recognition algorithms demonstrate fundamental operations in formal
+language processing and automata theory
+- Universal computation concepts prepare students for understanding Turing
+machines and computational equivalence proofs
+
+**Verification and Quality Assurance**:
+
+- All slides render correctly with `quarto render` and preview successfully at
+http://localhost:8081/slides/weektwo/index.html
+- Python code blocks execute properly and display expected output
+- Fragment animations and incremental reveals function as intended
+- Content follows established formatting guidelines with appropriate icons,
+boxed content, and consistent typography
+- Slide titles meet length requirements and content distribution maintains
+readability at presentation resolution
