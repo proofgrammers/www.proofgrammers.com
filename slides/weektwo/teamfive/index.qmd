@@ -140,6 +140,7 @@ for seq in aligned:
 ## What's Going On Here?
 
 ::: {.callout-note}
+
 **Code Explanation:**
 
 This function aligns multiple DNA sequences by trying all possible ways to
@@ -152,6 +153,8 @@ intractable. :::
 
 This algorithm works, but it takes exponential time which is roughly
 `O(2^(n×m))`, where `n` = number of sequences and `m` = sequence length.
+
+:::
 
 ## Coltin's Implementation
 
