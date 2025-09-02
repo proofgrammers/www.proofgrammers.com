@@ -27,6 +27,82 @@ format:
 
 ---
 
+# Introduction
+
+Implementing a simple markdown search engine that perform keyword search.
+
+The engine builds an inverted index, mapping each normalized token to the set of document names that contain it by using `defaultdict`. Tokenization extracts lowercase word token using the regex `\b\w+\b` to ensure the word boundary and it also make sure that uppercase and lowercase are treated same during the queries. Then it is added added to raw document text inside self.docs so we can retrieve it later. Then it tokenizes each query using same regex and take intersection of those sets which is also referred as `And semantics`. And last using `get_snippet` it returns a small piece of text around the match.
+
+```python
+ def __init__(self):
+        self.index = defaultdict(set)
+        self.docs = {}
+
+    # helper: return list of words from text (normalized)
+    def tokenize(self, text: str):
+        """Return lowercase word tokens from text."""
+        if not text:
+            return []
+        return re.findall(r"\b\w+\b", text.lower())
+
+    def add_document(self, name: str, content: str):
+        """Adds a document to the index."""
+        self.docs[name] = content
+        for word in self.tokenize(content):
+            self.index[word].add(name)
+
+    def search(self, query: str):
+        """Search for documents that contain all words in the query (AND)."""
+        words = self.tokenize(query)
+        if not words:
+            return set()
+        sets = [self.index.get(w, set()) for w in words]
+        if not sets or any(len(s) == 0 for s in sets):
+            return set()
+        return set.intersection(*sets)
+
+    def get_snippet(self, name: str, query: str, context: int = 40) -> str:
+        """Return a short snippet around the first whole-word match for any query word/phrase."""
+        content = self.docs.get(name, "")
+        if not content:
+            return ""
+        q = query.strip()
+        if not q:
+            return ""
+        # try phrase match first (word boundaries), then any token
+        phrase_pat = re.compile(r"\b" + re.escape(q) + r"\b", flags=re.IGNORECASE)
+        m = phrase_pat.search(content)
+        if not m:
+            parts = self.tokenize(q)
+            if parts:
+                pat = re.compile(r"\b(" + "|".join(re.escape(p) for p in parts) + r")\b", flags=re.IGNORECASE)
+                m = pat.search(content)
+        if not m:
+            # fallback: start of document
+            s = content.strip().replace("\n", " ")
+            return (s[:context] + ("..." if len(s) > context else ""))
+        start = max(0, m.start() - context)
+        end = min(len(content), m.end() + context)
+        snippet = content[start:end].replace("\n", " ")
+        return ("..." if start > 0 else "") + snippet + ("..." if end < len(content) else "")
+```
+
+# Demo 
+
+You can simply run this program with 
+
+```bash
+cd /home/student/Class/cmpsc\ 204/www.proofgrammers.com/slides/weektwo/teamtwo
+python3 markdown.py /path/to/md/folder "keyword query"
+# or run interactively:
+python3 markdown.py
+Enter query (blank to exit): keyword
+```
+
+# Result
+
+
+
 # Key Terms
 
  - Markdown
@@ -97,29 +173,5 @@ format:
 
 ---
 
-# Example: Markdown Search Engine
+# Reference 
 
-```python
-# markdown_search.py
-
-def search_documents(query, documents):
-    """
-    Return list of documents that contain the query string.
-    """
-    results = []
-    for i, doc in enumerate(documents, start=1):
-        if query.lower() in doc.lower():
-            results.append(f"Document {i}")
-    return results
-
-
-# Example usage
-docs = [
-    "# Title One\nThis is a sample markdown document about computation.",
-    "# Title Two\nThis file talks about search engines and algorithms.",
-    "# Title Three\nComputation theory includes tractable problems."
-]
-
-query = "computation"
-print("Searching for:", query)
-print("Results:", search_documents(query, docs))
