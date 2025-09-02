@@ -145,3 +145,5 @@ _optimize
 
 ### Book Reference ###
 What-Can-Be-Computed.pdf
+
+**/*.quarto_ipynb
