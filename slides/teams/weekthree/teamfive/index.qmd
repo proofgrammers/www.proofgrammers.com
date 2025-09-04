@@ -1,0 +1,74 @@
+---
+title: "Detect Infinite Loop Program"
+description: "Explore tractability of error correction"
+date: "2025-09-09"
+date-format: long
+author: Aidan Dyga, Molly Suppo, Javier Bejarano-Jimenez
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+## Introduction
+
+::: {.fragment}
+  - **Goal:** Implement `DetectInfiniteLoop` to flag source code that will never terminate
+  - **Motivation:** Infinite loops waste computational resources
+  - **Examples of loops:**
+    - `while(True)`
+    - `for i in range(10)`
+:::
+
+## What is an Infinite Loop?
+
+::: {.fragment}
+  - **Definition:** Code that repeats forever without reaching a stopping point
+
+  - **Key signs:**
+    - No reachable exit condition
+    - Exit is impossible due to logic
+    - Waiting for an event that never happens
+
+  - **Common causes:**
+    - Loop variable never changes (e.g., `while(i < 10)` but `i` is constant)
+    - Unreachable `break`/`return`
+    - Waiting on an event/resource that never occurs
+:::
+
+## Is this Problem Tractable, Intractable, or Uncomputable?
+
+::: {.fragment}
+  - **Answer:** Uncomputable in the general case
+  - **Halting Problem:** It is mathematically proven that no algorithm can always decide whether an arbitrary program will halt or run forever
+  - **Practice:** We can only detect some infinite loops using patterns and heuristics
+:::
+
+## Example Solution
+
+x
+
+## Python Implementation
+
+x
+
+## Limitations
+
+x
+
+## Conclusion
+
+::: {.fragment}
+  - **Impossible:** Detecting all infinite loops is impossible due to the Halting Problem
+  - **Partial Solution:** Heuristics can still catch many real bugs
+  - **Takeaway:** Use static analysis to flag obvious cases, but undecidable in general
+:::
+
