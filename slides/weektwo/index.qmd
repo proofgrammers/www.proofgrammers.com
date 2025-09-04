@@ -618,18 +618,18 @@ print("- With input '101': would loop infinitely")
 
 ## Why `potentiallyNonTerminating`?
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
 
 - The function contains a `while number > 0:` loop.
 - Each time through the loop, `number` is decremented by 1.
 - But if `number` ever becomes exactly 100, it is reset to 101.
-- This creates an endless cycle: when `number` reaches 100, it jumps back to
-101, so it never reaches 0.
+- This creates an **endless cycle** (also called an **infinite loop**): when
+`number` reaches 100, it jumps back to 101, so it never reaches 0.
 - For any input greater than or equal to 100, loop never terminates.
 - **Key point:** The artificial reset prevents the loop variable from ever
 reaching 0, so the function does not halt for some inputs.
-- **Question**: Would it be possible to automatically detect this behavior? Why
-  or why not? Can you justify your answer?
+- **Important Questions**: Would it be possible to automatically detect this
+behavior? Why or why not? Can you justify your answer?
 
 :::
 
