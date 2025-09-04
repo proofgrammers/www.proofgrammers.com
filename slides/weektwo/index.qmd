@@ -61,6 +61,38 @@ format:
 
 :::
 
+## Your proofgramming journey
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+{{< iconify fa6-solid book-open >}} Study Chapters 1 and of ["What Can be
+Computed"](https://whatcanbecomputed.com/) and grasp SISO
+programming
+
+:::
+
+::: {.column width="50%"}
+
+{{< iconify fa6-brands github >}} Experiment with the [WCBC code
+examples](https://whatcanbecomputed.com/) and create your own SISO programs
+
+:::
+
+::::
+
+::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Focus areas for week two**:
+  - SISO program implementation and analysis
+  - Decision problems and their computational properties
+  - String processing and pattern recognition algorithms
+  - Connection between programming and mathematical theory
+  - Preparation for more advanced computational models
+
+:::
+
 ## Computational problem classification
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
@@ -337,38 +369,6 @@ functions:
   - Create programs that analyze other programs
   - Build tools for complexity measurement
   - Develop proofs through computational examples
-
-:::
-
-## Your proofgramming journey
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-{{< iconify fa6-solid book-open >}} Study Chapter 1 of ["What Can be
-Computed"](https://whatcanbecomputed.com/) and grasp SISO
-programming
-
-:::
-
-::: {.column width="50%"}
-
-{{< iconify fa6-brands github >}} Experiment with the [WCBC code
-examples](https://whatcanbecomputed.com/) and create your own SISO programs
-
-:::
-
-::::
-
-::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid lightbulb >}} **Focus areas for week two**:
-  - SISO program implementation and analysis
-  - Decision problems and their computational properties
-  - String processing and pattern recognition algorithms
-  - Connection between programming and mathematical theory
-  - Preparation for more advanced computational models
 
 :::
 
@@ -712,5 +712,46 @@ P_2(I_1, I_2, \ldots, I_n)$
 - Importantly, this definition of equivalence includes undefined outputs! If
 $P_1$ and $P_2$ are equivalent, then $P_1(I)$ is undefined if and only if
 $P_2(I)$ is undefined, for all ways to be undefined.
+
+:::
+
+## Review course goals
+
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- **Computational Implementation**:
+  - Design and implement theoretical concepts as Python programs
+  - Create frameworks for running proofs as Python programs
+  - Test all aspects of implementations to ensure correctness
+- **Communicate** theoretical insights through **code** and **documentation**
+- **Explain** and **evaluate** insights during **presentation sessions**
+- Participate in **charette sessions** to discuss and learn from each other
+- **Make sure you have completed these steps**:
+  - Review the [course schedule](../../schedule/index.qmd)
+  - Study the [course syllabus](../../syllabus/index.qmd)
+
+:::
+
+## Key takeaways
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid gear >}} **Problem Classification**: Tractable,
+intractable, and uncomputable
+- {{< iconify fa6-solid microscope >}} **SISO Programs**: Single input/output
+model with restricted to strings
+- {{< iconify fa6-solid diagram-project >}} **Python Examples**: Numerical
+conversions, text processing
+- {{< iconify fa6-solid diagram-project >}} **Decision Problems**: SISO programs
+for which output is "yes" or "no"
+- {{< iconify fa6-solid book-open >}} **Formal Notation**: $P(I)$, undefined
+cases, termination, equivalence
+- {{< iconify fa6-solid gears >}} **Insights**: Programs as data, universal
+computation, SISO generality
+- {{< iconify fa6-solid lightbulb >}} **Next Steps**: Advance to automata,
+Turing machines, undecidability
+- {{< iconify fa6-solid rocket >}} **Proofgramming Journey**: Combine proofs and
+programming to explore computation and discern what can be computed
+- **Now, we are ready for the first Proofgramming Charette session!**
 
 :::
