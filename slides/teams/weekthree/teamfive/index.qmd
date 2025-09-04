@@ -54,7 +54,7 @@ format:
 
 ## Example Solution
 
-x
+static analyzer??? demo our own and then demo one of them
 
 ## Python Implementation
 
