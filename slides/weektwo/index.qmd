@@ -544,12 +544,31 @@ print(f"Output type: {type(result)}")
 
 :::
 
+## Program $P$ runs on Computer $C$
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- A reference computer $C$ executes SISO programs
+
+- $C$ has infinite memory and time unless stated otherwise
+
+- We make no assumptions about characteristics of $C$:
+    - Speed of execution
+    - Memory architecture
+    - Instruction set
+    - Input/output formats
+    - Operating system
+
+- $C$ is a theoretical construct to support proofgramming!
+
+:::
+
 ## Simple formal notation: $P(I)$
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **$P(I)$ definition**
-  - $P$ is a Python program (SISO function)
+  - $P$ is a SISO Python program
   - $I$ is an input string
   - $P(I)$ is the output when $P$ executes on input $I$
   - The "first function" in $P$ is the "main function"
