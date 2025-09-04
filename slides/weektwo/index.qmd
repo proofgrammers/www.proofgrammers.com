@@ -112,7 +112,7 @@ examples](https://whatcanbecomputed.com/) and create your own SISO programs
 {{< iconify fa6-solid microscope >}} Understanding these categories helps
 proofgrammers determine the computational feasibility of problems and select
 appropriate solution strategies. **Proofgrammers understand that not all problems
-are computable, and that some problems are intractable! Be on alert!**
+are computable and that some problems are intractable! Be on alert!**
 
 :::
 
