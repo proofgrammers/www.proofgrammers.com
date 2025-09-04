@@ -504,7 +504,7 @@ print(f"Lines: {countLines(actual_multiline)}")
 #| autorun: true
 #| max-lines: 8
 # Invalid: Returns integer instead of string
-def invalidReturn1(inString: str) -> int:
+def invalidReturn(inString: str) -> int:
     return len(inString)  # Should return str(len(inString))
 
 # Invalid: Multiple input parameters  
@@ -540,7 +540,7 @@ print(f"Output type: {type(result)}")
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - Not all valid Python programs are valid SISO programs!
-- We will focus on SISO programs as focus of theoretical analysis
+- We restrict focus to SISO programs for our theoretical analysis
 - Can we formally define what we mean by a program, input, and output?
 
 :::
@@ -559,7 +559,7 @@ print(f"Output type: {type(result)}")
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid gear >}} **When P(I) is undefined**
+- {{< iconify fa6-solid gear >}} **When $P(I)$ is undefined**
   - $P$ doesn't terminate (infinite loop or recursion)
   - $P$ returns a non-ASCII string value
   - $P$ throws an unhandled exception
