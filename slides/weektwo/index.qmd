@@ -694,7 +694,7 @@ for test in test_cases:
 
 ## Equivalent Python programs
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.875em;"}
 
 - We also need a notion of **equivalence** between Python programs
 
