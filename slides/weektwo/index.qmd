@@ -693,3 +693,24 @@ for test in test_cases:
     print(f"'{test}': even={even}, digits={digits}, palindrome={palindrome}")
 ```
 
+## Equivalent Python programs
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- We also need a notion of **equivalence** between Python programs
+
+- Two programs are equivalent if, for any given input, both programs produce the
+same output, including undefined behaviors. 
+
+- SISO Python programs $P_1$ and $P_2$ are equivalent if:
+  - $\forall I \in S$, $P_1(I) = P_2(I)$
+
+- For multi-parameter SISO Python programs, we require:
+  - $\forall I_1, I_2, \ldots, I_n \in S$, $P_1(I_1, I_2, \ldots, I_n) =
+P_2(I_1, I_2, \ldots, I_n)$
+
+- Importantly, this definition of equivalence includes undefined outputs! If
+$P_1$ and $P_2$ are equivalent, then $P_1(I)$ is undefined if and only if
+$P_2(I)$ is undefined, for all ways to be undefined.
+
+:::
