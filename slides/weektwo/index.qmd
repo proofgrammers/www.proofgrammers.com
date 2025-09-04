@@ -142,18 +142,19 @@ theory!
 
 ## SISO program characteristics
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+::: {.fragment style="margin-top: 0.1em; font-size: 0.8em;"}
 
-- **Input specification**: single string parameter only
-- **Output format**: single string return value
-- **Function definition**: clear computational procedure
-- **Deterministic behavior**: same input always produces same output
-- **Finite execution**: program must terminate for valid inputs
-- **String processing**: fundamental operation in formal languages
+- *Required*
+    - **Input specification**: single string parameter only
+    - **Output format**: single string return value
+- *Desirable*
+    - **Function definition**: clear computational procedure
+    - **Deterministic behavior**: same input always produces same output
+    - **Finite execution**: program must terminate for valid inputs
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.85em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.05em; font-size: 0.8em;"}
 
 {{< iconify fa6-solid microscope >}} SISO programs provide the mathematical
 foundation for analyzing what can be computed and how efficiently we can solve
@@ -175,7 +176,7 @@ other types of computer programs
 - Python programs are equivalent to other standard models of computation,
 including Turing machines and all other "reasonable" programming languages and
 realistic computers
-- **Unless otherwise specified, assume that all programs are SISO!**
+- **Unless otherwise specified, we use programs that are SISO!**
 
 :::
 
