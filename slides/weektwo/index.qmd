@@ -67,9 +67,8 @@ format:
 
 ::: {.column width="50%"}
 
-{{< iconify fa6-solid book-open >}} Study Chapters 1 and of ["What Can be
-Computed"](https://whatcanbecomputed.com/) and grasp SISO
-programming
+{{< iconify fa6-solid book-open >}} Study Chapters 1 and 2 of ["What Can be
+Computed"](https://whatcanbecomputed.com/) and grasp SISO programming
 
 :::
 
