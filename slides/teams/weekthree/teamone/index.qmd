@@ -3,7 +3,7 @@ title: "DetermineSISO Decision Problem"
 description: "Explore the detection of SISO programs"
 date: "2025-09-01"
 date-format: long
-author: Add Your Name Here
+author: Add Your Names Here
 execute:
   echo: true
 format:
