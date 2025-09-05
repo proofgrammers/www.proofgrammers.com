@@ -18,129 +18,14 @@ format:
     footer: "Proofgrammers"
 ---
 
-## Introduction
+# Theory of computation
 
-::: {.fragment}
-- **Goal:** Build a Text Error Correction System
-- **Input:** Original (un-mutated) text file
-- **Output:** Encoded text that can detect errors after mutation/transmission
-- **Motivation:** Ensure data integrity over unreliable channels
-:::
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-## Problem
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
 
-::: {.fragment}
-- **Problem Statement:**
-  - Data can be corrupted during transmission/storage
-  - Need a way to detect (and possibly correct) errors in text
-- **Challenges:**
-  - Random mutations (bit flips, character changes)
-  - Efficient encoding/decoding
-:::
-
-## Example Solution
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-
-- {{< iconify fa6-solid barcode >}} **Encode each line**
-  - Every line is duplicated and encoded in a more secure manner to prevent mutation
-- {{< iconify fa6-solid microchip >}} **Message Decoding**
-  - After the transfer each line is decoded for comparison
-- {{< iconify fa6-solid check >}} **Line Verification**
-  - Each line is compared with its encoded variant and corrected where necessary
-:::
-
-## Python Implementation
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 13
-"""A simple text error correction system using checksums."""
-
-# Helper hashing function
-def simple_checksum(s):
-    """Return a simple numeric checksum for a string."""
-    return str(abs(hash(s)) % (10**8))
-
-# 1: Encode each line with a checksum
-def encode_text(text):
-    """Encode each line of text with a duplicate and checksum."""
-    encoded = []
-    for line in text.splitlines():
-        checksum = simple_checksum(line)
-        # Store the original line, its duplicate, and the checksum together
-        encoded.append(f"{line}|||{line}|||{checksum}")
-    return encoded
-
-# 2: Decode, verify, and correct if needed
-def decode_text(encoded_lines):
-    """Verify and attempt to correct encoded lines using checksums."""
-    for line in encoded_lines:
-        line = line.strip()
-        original, duplicate, checksum = line.split("|||")
-        if simple_checksum(original) == checksum:
-            print(f"OK: {original}")
-        elif simple_checksum(duplicate) == checksum:
-            print(f"Corrupted line: {original}")
-            print(f"Corrected line: {duplicate}")
-
-# Example usage
-text = "Professor Kapfhammer is the best professor!"
-encoded_lines = encode_text(text)
-for l in encoded_lines:
-    print(f"Encoded line: {l}")
-
-corrupted_lines = encoded_lines.copy()
-if corrupted_lines:
-    original, duplicate, checksum = corrupted_lines[0].split("|||")
-    corrupted = "X" + original[1:]
-    corrupted_lines[0] = f"{corrupted}|||{duplicate}|||{checksum}"
-
-decode_text(corrupted_lines)
-```
-
-## Why is this a Tractable Problem?
-
-::: {.fragment}
-- This problem is Tractable because it can be solved efficiently
-  in linear time with respect to the input size.
-- 1. Linear Time Complexity
-  - The system runs in time proportional to the input size (O(n·L)),
-    so it scales efficiently.
-- 2. Local Verification
-  - Errors are detected and corrected per line using checksums and redundancy,
-    avoiding complex global computation.
-- 3. Feasible Error Model
-  - With simple mutation errors (like single-copy corruption),
-    correction is straightforward and does not require intractable algorithms.
-:::
-
-## Limitations
-
-::: {fragment}
-- 1. Homophones
-  - The program may not be able to correct words that are spelled correctly but
-  used in the wrong grammatically context.
-  - Because they are spelled correctly, they may not get flagged by the checker.
-  - Ex: 'their' vs 'there'
-- 2. Numerical Errors
-  - Because the corrector is based on textual errors, like spelling, numerical
-  differences may not be caught.
-  - Ex: '1889' vs '1989'
-- 3. Incorrect Proper Nouns
-  - Unless a proper noun is included within the program's dictionary, it migt
-  get flagged as an error.
-  - A mispelled proper noun that spells as another word may also be missed.
-- 4. Structural or Logical Errors
-  - Despite its ability to check at a sentence level, it would not be able to
-  check coherance or flow of an entire paragraph.
-:::
-
-## Conclusion
-
-::: {.fragment}
-- Text error correction is essential for reliable communication
-- Simple codes can efficiently detect errors
-- Tractable due to low computational complexity
-- More advanced codes can also correct errors, not just detect
 :::
