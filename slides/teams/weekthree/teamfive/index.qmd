@@ -21,8 +21,8 @@ format:
 ## Introduction
 
 ::: {.fragment}
-  - **Goal:** Implement `DetectInfiniteLoop` to flag source code that will never terminate
-  - **Motivation:** Infinite loops waste computational resources
+  - **Goal:** Implement `DetectInfiniteLoop` to flag source code that will never terminate.
+  - **Motivation:** Infinite loops waste computational resources.
   - **Examples of loops:**
     - `while(True)`
     - `for i in range(10)`
@@ -31,33 +31,23 @@ format:
 ## What is an Infinite Loop?
 
 ::: {.fragment}
-  - **Definition:** Code that repeats forever without reaching a stopping point
-
-  - **Key signs:**
-    - No reachable exit condition
-    - Exit is impossible due to logic
-    - Waiting for an event that never happens
-
-  - **Common causes:**
-    - Loop variable never changes (e.g., `while(i < 10)` but `i` is constant)
-    - Unreachable `break`/`return`
-    - Waiting on an event/resource that never occurs
+  - **Definition:** Code that repeats forever without reaching a stopping point.
+  - **Key signs:** No reachable exit condition, exit is impossible due to logic, waiting for an event that never happens
+  - **Common causes:** Loop variable never changes, unreachable return statement, waiting for an event that never occurs
 :::
 
 ## Is this Problem Tractable, Intractable, or Uncomputable?
 
 ::: {.fragment}
-  - **Answer:** Uncomputable in the general case
-  - **Halting Problem:** It is mathematically proven that no algorithm can always decide whether an arbitrary program will halt or run forever
-  - **Practice:** We can only detect some infinite loops using patterns and heuristics
+  - **Answer:** Uncomputable in the general case.
+  - **Halting Problem:** It is mathematically proven that no algorithm can always decide whether an arbitrary program will halt or run forever.
+  - **In Practice:** We can only detect some infinite loops using patterns and heuristics.
 :::
 
 ## Solutions
 
 ::: {.fragment}
-  - **Static Analyzer:** A tool that examines source code without running it, searching for bugs, unreachable code, or infinite loops. 
-    - Vulture
-    - Bandit
+  - **Static Analyzer:** A tool that examines source code without running it, searching for bugs, unreachable code, or infinite loops. (ex. Vulture)
   - **How They Work:** Use pattern matching and heuristics to flag suspicious code (e.g., `while True`, loops with constant conditions).
   - **Limitations:** Can only detect obvious cases; cannot guarantee detection for all infinite loops.
   - **Our Approach:** Implement our very own basic static anaylzer.
@@ -159,9 +149,9 @@ x
 ## Conclusion
 
 ::: {.fragment}
-  - **Impossible:** Detecting all infinite loops is impossible due to the Halting Problem
-  - **Partial Solution:** Heuristics can still catch many real bugs
-  - **Takeaway:** Use static analysis to flag obvious cases, but undecidable in general
+  - **Impossible:** Detecting all infinite loops is impossible due to the Halting Problem.
+  - **Partial Solution:** Heuristics can still catch many real bugs.
+  - **Takeaway:** Use static analysis to flag obvious cases, but undecidable in general.
 :::
 
 ## Sources
