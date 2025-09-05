@@ -29,3 +29,14 @@ format:
     - "Proofgrammers" combine *proofs* and *programming*
 
 :::
+
+# What is SISO?
+- Single input single out out
+- Input (str), splits, converts, computes, stringify, output (str)
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} Keep in mind haulting detector. Haulting detector tells if
+a program would stop or run forever.  
+
+:::
