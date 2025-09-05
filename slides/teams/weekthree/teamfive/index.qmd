@@ -49,7 +49,7 @@ format:
 ::: {.fragment}
   - **Static Analyzer:** A tool that examines source code without running it, searching for bugs, unreachable code, or infinite loops. (ex. Vulture)
   - **How They Work:** Use pattern matching and heuristics to flag suspicious code (e.g., `while True`, loops with constant conditions).
-  - **Limitations:** Can only detect obvious cases; cannot guarantee detection for all infinite loops.
+  - **Limitations:** Can only detect obvious cases; cannot guarantee detection for all infinite loops; can result in false positives or negatives.
   - **Our Approach:** Implement our very own basic static anaylzer.
 :::
 
@@ -86,18 +86,24 @@ def has_infinite_loop(source_code: str) -> bool:
             if isinstance(node.iter, ast.Call):
                 func = node.iter.func
                 if isinstance(func, ast.Attribute) and func.attr == "count":
+                  # Check for a break condition in the loop, if there isn't one, likely infinite loop
+                  if not any(isinstance(child, ast.Break) for child in ast.walk(node)):
                     return True
             # Check if the iterable is a call to itertools.cycle()
             # If it is, it is likely an infinite loop
             if isinstance(node.iter, ast.Call):
                 func = node.iter.func
                 if isinstance(func, ast.Attribute) and func.attr == "cycle":
+                  # Check for a break condition in the loop, if there isn't one, likely infinite loop
+                  if not any(isinstance(child, ast.Break) for child in ast.walk(node)):
                     return True
             # Check if the iterable is a call to itertools.repeat()
             # If it is, it is likely an infinite loop
             if isinstance(node.iter, ast.Call):
                 func = node.iter.func
                 if isinstance(func, ast.Attribute) and func.attr == "repeat":
+                  # Check for a break condition in the loop, if there isn't one, likely infinite loop
+                  if not any(isinstance(child, ast.Break) for child in ast.walk(node)):
                     return True
     return False
 
@@ -121,8 +127,12 @@ for i in itertools.count():
 example_code4 = """
 import itertools
 
+count = 0
 for item in itertools.cycle(['A', 'B', 'C']):
-    print(item)
+  print(item)
+  count += 1
+  if count >= 10:
+    break
 """
 example_code5 = """
 import itertools
@@ -159,4 +169,5 @@ x
 ::: {.fragment}
   - Course Textbook
   - GitHub Copilot
+  - Microsoft Copilot
 :::
