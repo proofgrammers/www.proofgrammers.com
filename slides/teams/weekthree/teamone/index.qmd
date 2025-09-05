@@ -1,7 +1,7 @@
 ---
 title: "DetermineSISO Decision Problem"
 description: "Explore the detection of SISO programs"
-date: "2025-09-01"
+date: "2025-09-08"
 date-format: long
 author: Add Your Names Here
 execute:
