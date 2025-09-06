@@ -154,7 +154,26 @@ print("Infinite loop detected!" if result5 else "No infinite loop detected.")
 
 ## Limitations
 
-x
+::: {.fragment}
+
+- **Not complete:** Our program cannot detect every possible infinite loop (Halting Problem).
+
+- **False positives:** Code may look infinite (e.g., while True) but actually breaks out later.
+
+- **False negatives:** Some infinite loops depend on logic that’s too complex to analyze (e.g., recursion, user input, random values).
+  - *Example:*  
+    ```python
+    i = 1
+    while i != 0:
+        i = (i * 2) % 5
+    ```
+    Looks like it will end, but runs forever.  
+    Our program would incorrectly say: *"No infinite loop detected."*
+
+- **No runtime awareness:** The analyzer only looks at code patterns — it does not execute the program.
+
+- **Scope:** Focuses only on simple patterns (while True, infinite iterators) and may miss more subtle cases.
+:::
 
 ## Conclusion
 
