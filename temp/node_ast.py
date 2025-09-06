@@ -1,28 +1,35 @@
 import ast
 
-class VisitNode:
-    def __init__(self, source_path):
-        self.code = None
-        self.tree = None
-        self.source_path = source_path
+def create_ast():
+    """Creating an Abstract Syntax Tree."""
 
-    def load_source(self, path=None):
-        """Load Python source code from a file into self.code."""
-        file_path = path or self.source_path
-        if not file_path:
-            raise ValueError("No source path provided. Pass a path or set self.source_path.")
+    with open("main.py", "r", encoding='utf-8') as fn:
+        read_fn = fn.read()
+        code = ast.parse(read_fn)
 
-        try:
-            with open(file_path, "r", encoding="utf-8") as fn:
-                self.code = fn.read()
-            return self.code
-        except FileNotFoundError:
-            raise FileNotFoundError(f"Source file not found: {file_path}")
+    return code
 
+def walk_tree():
+    """Walking through the created AST."""
+    code = create_ast()
+    functions = []
+    for node in ast.walk(code):
+        if isinstance(node, ast.FunctionDef):
+            #print(f"Detected function definition: {node.name}")
+            functions.append(node.name)
+            return functions
 
-    def create_ast(self):
-        """Creating AST."""
-        self.tree = ast.parse(self.code)
-        return self.tree
+def find_main():
+    """Find main function in nodes created from the AST."""
+    ast_function = walk_tree()
+    main_name = "'main'"
 
-        
+    for name in ast_function:
+        if name == "main":
+            print(f"Main function found: {name}")
+        else:
+            print("The function you have entered as an input contains no main function.")
+
+if __name__ == "__main__":
+    walk_tree()
+    find_main()
