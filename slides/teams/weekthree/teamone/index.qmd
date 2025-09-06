@@ -40,3 +40,32 @@ format:
 a program would stop or run forever.  
 
 :::
+
+## Problem
+
+::: {fragment}
+- 1. Undecidability
+  - There is no method that can always determine, for any program,
+    whether it halts or not (the Halting Problem).
+
+- 2. All-input guarantee
+  - Because the input domain is infinite, no finite amount of testing
+    can prove that a program halts and outputs exactly once for all inputs.
+
+- 3. Implementation trade-off
+  - if we restrict ourselves to a setting where programs always
+    terminate—for example, by forbidding loops and general recursion—then
+    static analysis can decisively verify that there is exactly one output.
+:::
+
+## Conclusion
+
+::: {.fragment}
+- In general, it is impossible to realize DetermineSISO as
+  a verifier that always returns a correct Yes/No.
+- SISO (“halts on all inputs and produces exactly one output”) is
+  a non-trivial semantic property; by the Halting Problem, 
+  there is no algorithm that can decide it fully automatically
+  for arbitrary programs.
+:::
+
