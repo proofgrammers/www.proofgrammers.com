@@ -31,6 +31,8 @@ fn main() {// function calls or logic comes here}
 
 Does every Rust program need to have a `main` function?
 
+## Do we always need a main function in a Python program?
+
 ## Detecting main function using AST
 
 ## How to detect if a Python program does not have a main function?
