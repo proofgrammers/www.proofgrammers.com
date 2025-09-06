@@ -1,6 +1,4 @@
 import ast
-import main
-from temp.create_ast import create_ast_main
 
 class VisitNode:
     def __init__(self, code, tree):
@@ -25,5 +23,5 @@ class VisitNode:
 
 
 if __name__ == "__main__":
-    object = VisitNode
-    object.walkNode
+    return_object = VisitNode
+    return_object.walkNode
