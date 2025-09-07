@@ -160,6 +160,16 @@ analyzer = ASTAnalyzer()
 analyzer.find_main()
 ```
 
-## Cases where we cannot detect main function
+## Ease of Detecting main in Different languages
+
+- Python does not require `main` function
+
+- `main` function is an entry point in some languages: C, C++, Rust, Java
+
+- Funcion `main` behaves like other functions in Python
+
+- Therefore it is harder to detect main function in Python programs
+
+## Case where we cannot detect main function
 
 placeholder
