@@ -20,7 +20,7 @@ format:
 
 # DetectNoMainFunction
 
-## What is the main function in Python?
+# What is the main function in Python?
 
 The main function in Python is declared, like this: `def main(some parameter):`
 
@@ -31,7 +31,7 @@ Direct run: then `__name__` is set to `"__main__"` -> block inside will be run.
 Imported Python File e.g.: `import my_script` then `__name__` is set to `my_script` ->
 no need for `main` function.
 
-## How does the main function look like in other languages?
+# How does the main function look like in other languages?
 
 Let's see some other programming languages:
 
