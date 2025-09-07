@@ -15,7 +15,6 @@ def walk_tree():
     functions = []
     for node in ast.walk(code):
         if isinstance(node, ast.FunctionDef):
-            #print(f"Detected function definition: {node.name}")
             functions.append(node.name)
             return functions
 
