@@ -3,7 +3,7 @@ title: "DetectEquivalentPrograms Decision Problem"
 description: "Explore the detection of equivalent programs"
 date: "2025-09-08"
 date-format: long
-author: Add Your Names Here
+author: Ainslee Plesko, Coltin Colucci, Alexander Goddard, and Preston Smith
 execute:
   echo: true
 format:
@@ -18,9 +18,15 @@ format:
     footer: "Proofgrammers"
 ---
 
+## Introduction
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+- x
+:::
+
 # Theory of computation
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"} 
 
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
@@ -35,7 +41,7 @@ format:
 
 ## How does it work
 
-::: {style="margin-top: -0.15em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - **detect_equivalence(P1: str, P2: str)**: 
   - **get_syntax_tree(program_one, program_two)**
@@ -274,6 +280,20 @@ print(result)
 ```
   
 
+## Tractable vs Intracable vs Uncomputable
 
- 
+::: {.fragment}
+- x
+:::
 
+## Limitations
+
+::: {.fragment}
+- x
+:::
+
+## Conclusion
+
+::: {.fragment}
+- x
+:::
