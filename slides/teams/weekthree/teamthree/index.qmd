@@ -166,10 +166,13 @@ analyzer.find_main()
 
 - `main` function is an entry point in some languages: C, C++, Rust, Java
 
+- **NOTE**: C++ header files are not behaving the same as `import python_code`!
+
 - Funcion `main` behaves like other functions in Python
 
 - Therefore it is harder to detect main function in Python programs
 
 ## Case where we cannot detect main function
 
-placeholder
+There are cases when it's not possible to detect a `main` function in Python.
+
