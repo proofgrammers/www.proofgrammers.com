@@ -1,35 +1,44 @@
 import ast
 
-def create_ast():
-    """Creating an Abstract Syntax Tree."""
+class ASTAnalyzer:
+    def create_ast(self):
+        """Creating an Abstract Syntax Tree."""
+        try:
+            with open("main.py", "r", encoding='utf-8') as fn:
+                read_fn = fn.read()
+                code = ast.parse(read_fn)
+            return code
+        except FileNotFoundError:
+            print("Error: 'main.py' not found.")
+            return None
 
-    with open("main.py", "r", encoding='utf-8') as fn:
-        read_fn = fn.read()
-        code = ast.parse(read_fn)
+    def walk_tree(self):
+        """Walking through the created AST."""
+        code = self.create_ast()
+        if code is None:
+            return None
+        functions = []
+        for node in ast.walk(code):
+            if isinstance(node, ast.FunctionDef):
+                functions.append(node.name)
+                return functions
 
-    return code
+    def find_main(self):
+        """Find main function in nodes created from the AST."""
+        ast_function = self.walk_tree()
+        if not ast_function:
+            return
+        main_name = "'main'"
 
-def walk_tree():
-    """Walking through the created AST."""
-    code = create_ast()
-    functions = []
-    for node in ast.walk(code):
-        if isinstance(node, ast.FunctionDef):
-            #print(f"Detected function definition: {node.name}")
-            functions.append(node.name)
-            return functions
+        for name in ast_function:
+            if name == "main":
+                print(f"Main function found: {name}")
+            else:
+                print("The function you have entered as an input contains no main function.")
 
-def find_main():
-    """Find main function in nodes created from the AST."""
-    ast_function = walk_tree()
-    main_name = "'main'"
-
-    for name in ast_function:
-        if name == "main":
-            print(f"Main function found: {name}")
-        else:
-            print("The function you have entered as an input contains no main function.")
 
 if __name__ == "__main__":
-    walk_tree()
-    find_main()
+    analyzer = ASTAnalyzer()
+    analyzer.walk_tree()
+    analyzer.find_main()
+
