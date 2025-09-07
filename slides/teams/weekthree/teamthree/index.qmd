@@ -18,8 +18,11 @@ format:
     footer: "Proofgrammers"
 ---
 
+<<<<<<< HEAD
 # DetectNoMainFunction
 
+=======
+>>>>>>> eee0d38461d7577b5f11fef886d82720ecb11d2f
 ## What is the main function in Python?
 
 The main function in Python is declared, like this: `def main(some parameter):`
@@ -37,47 +40,31 @@ Let's see some other programming languages:
 
 - C++:
 
-```cpp
+```
 int main(int argc, const* argv[]) {// call of the function} // parameters can be missed
 ```
 
-- Rust:
+## Do we always need a main function in Python?
 
-```rust
-fn main() {// logic or function calls come here}
-```
+In **Python**, you don’t always need a `main()` function like in C, C++, or Java.
 
-# Do we always need a main function in a Python program?
+- Python runs files **top to bottom**.
+- Any **top-level** code runs immediately when the script is executed.
 
-
-In **Python**, you don’t always need a `main()` function like you do in languages such as C, C++, or Java.  
-
-How Python Executes Code ?
-- Python executes files **top to bottom**.  
-- Any code at the top level will run immediately when the script is executed.  
-
-Example Without `main()`:
-
-```python
-print("Hello, World!")
-# This code runs immediately when the script is executed
-```
-
-Example With `main()`:
-
-```python
-def main():
-    print("Hello, World!")  
-    
-if __name__ == "__main__":
-    main()  # This code runs only when the script is executed directly
-```
-
-# Our tool to detect main function in Python programs
+#### Example: without `main()`
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+print("Hello, World!")
+
+# This code runs immediately when the script is executed
+```
+
+## Our tool to detect main function in Python programs
+
+```{pyodide}
+#| autorun: false
+
 import ast
 
 class ASTAnalyzer:
@@ -122,3 +109,8 @@ if __name__ == "__main__":
     analyzer.walk_tree()
     analyzer.find_main()
 ```
+
+## Cases where we cannot detect main function
+
+placeholder
+
