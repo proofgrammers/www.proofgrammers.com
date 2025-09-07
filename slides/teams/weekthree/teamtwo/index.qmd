@@ -1,31 +1,26 @@
 ---
-title: "Multiple Sequence Alignment"
-description: "Explain intractability of DNA fragment alignment"
-date: "2025-09-01"
+title: "DetectSyntaxError Decision Problem"
+description: "Explore the detection of syntactically invalid programs"
+date: "2025-09-08"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Add Your Names Here
 execute:
   echo: true
 format:
-  live-revealjs:
-    completion: true
+  revealjs:
     theme: default
-    css: ../../css/styles.css
-    history: false
-    scrollable: true
+    css: ../../../css/styles.css
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Theory of Computation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
     - Analyzing computational complexity
     - Proving limits of computation
     - "Proofgrammers" combine *proofs* and *programming*
-
 :::

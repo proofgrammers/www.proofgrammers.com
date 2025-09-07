@@ -12,11 +12,27 @@ listing:
       description: "Question"
     contents:
       - "week*/**/*.qmd"
+      - "!teams"
+    sort:
+      - "date"
+      - "title"
+      - "description"
+  - id: teams-presentations
+    type: default
+    sort-ui: true
+    filter-ui: true
+    fields: [date,title,description]
+    field-display-names:
+      description: "Question"
+    contents:
+      - "teams*/**/*.qmd"
     sort:
       - "date"
       - "title"
       - "description"
 ---
+
+## Course Presentations
 
 Interesting in learning more about the theory of computation? Checkout
 these slide decks to learn more! Each deck explores topics in Python programming
@@ -25,4 +41,15 @@ schedule](../schedule/index.qmd) for more details about how these slides connect
 to various course projects.
 
 :::{#featured-presentations}
+:::
+
+## Team Presentations
+
+Interesting in learning more about the theory of computation from the
+perspective of students who are exploring the topic? Checkout these slide decks
+to learn more! While these slides are not guaranteed to be correct, they should
+show the growth of a learner as they develop their knowledge and skills as a
+proofgrammer.
+
+:::{#team-presentations}
 :::

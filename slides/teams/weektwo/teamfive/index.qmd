@@ -1,0 +1,246 @@
+---
+title: "Multiple Sequence Alignment"
+description: "Explain intractability of DNA fragment alignment"
+date: "2025-09-01"
+date-format: long
+author: Hemani Alaparthi, Will Bennett, Coltin Colucci
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Introduction
+
+## DNA Sequence Alignment
+
+DNA sequence alignment is one of the most important problems in computational
+biology. The basic idea is simple: given several DNA fragments, we want to “line
+them up” so that similar regions match.
+
+- Comparing two sequences is fairly straightforward
+- Comparing many sequences, as in Multiple Sequence Alignment, becomes much more
+complicated
+
+## Multiple Sequence Alignment & Intractability
+
+Multiple Sequence Alignment is an example of an intractable problem.
+
+- On a small scale, it seems manageable
+- As the number of sequences grows, the computations quickly become impractical
+
+# Tractable, Intractable & Uncomputable?
+
+## What are the key differences between these?
+
+When dealing with these sort of problems, you can sort them into three
+categories. Tractable, intractable, and uncomputable.
+
+- **Tractable problems**: These scale well. As inputs grow larger, the algorithm
+still finishes in a reasonable amount of time, scaling well and linearly.
+
+- **Intractable problems**:  Look manageable on small scale but explode in
+complexity as input grows. What seems easy at first becomes impossible to run in
+practice.
+
+- **Uncomputable problems**: No algorithm can ever solve them, no matter how
+much time you allow (example: the Halting Problem). Fundamentally unsolvable by
+computers. Unlike intractable problems, it’s not just slow, it’s fundamentally
+unsolvable by computers.
+
+
+# Code Implementation
+
+## Hemani's Implementation
+
+```{python}
+def align_dna_sequences(sequences):
+    """
+    Simple DNA sequence alignment function.
+    Takes a list of DNA sequences and returns them aligned.
+    """
+
+    if len(sequences) < 2:
+        return sequences
+
+    # start with the first sequence
+    aligned = [sequences[0]]
+
+    # add each other sequence one by one
+    for new_seq in sequences[1:]:
+        best_alignment = None
+        best_score = -999
+
+        # try placing the new sequence at different positions
+        for offset in range(-len(new_seq), len(aligned[0]) + 1):
+            # Create test alignment
+            test_aligned = []
+
+            # copy existing sequences
+            for seq in aligned:
+                if offset < 0:
+                    # need to add gaps to the left of existing sequences
+                    test_aligned.append('-' * abs(offset) + seq)
+                else:
+                    test_aligned.append(seq)
+
+            # add new sequence with gaps
+            if offset >= 0:
+                new_with_gaps = '-' * offset + new_seq
+            else:
+                new_with_gaps = new_seq
+
+            # make all sequences the same length
+            max_len = max(len(s) for s in test_aligned + [new_with_gaps])
+            test_aligned = [s + '-' * (max_len - len(s)) for s in test_aligned]
+            new_with_gaps = new_with_gaps + '-' * (max_len - len(new_with_gaps))
+            test_aligned.append(new_with_gaps)
+
+            # score this alignment (count matches)
+            score = 0
+            for pos in range(max_len):
+                column = [seq[pos] for seq in test_aligned]
+                # count how many characters match the most common one
+                for char in 'ACGT':
+                    count = column.count(char)
+                    if count > 1:
+                        score += count * 2  # bonus for matches
+
+                score -= column.count('-')  # penalty for gaps
+
+            # keep track of best alignment
+            if score > best_score:
+                best_score = score
+                best_alignment = test_aligned
+
+        aligned = best_alignment
+
+    return aligned
+
+# example DNA sequences
+sequences = [
+    "CGGATTA",
+    "CAGGGATA",
+    "CGCTA",
+]
+aligned = align_dna_sequences(sequences)
+print("Aligned DNA Sequences:")
+for seq in aligned:
+    print(seq)
+```
+
+## What's Going On Here?
+
+::: {.callout-note}
+
+**Code Explanation:**
+
+This function aligns multiple DNA sequences by trying all possible ways to
+insert gaps and maximize matches. For each new sequence, it tests every possible
+offset, adds gaps as needed, and scores the alignment based on matching
+characters and gap penalties. The alignment with the highest score is chosen.
+This brute-force approach is simple but becomes extremely slow for many or long
+sequences, illustrating why multiple sequence alignment is computationally
+intractable.
+
+This algorithm works, but it takes exponential time which is roughly
+`O(2^(n×m))`, where `n` = number of sequences and `m` = sequence length.
+
+:::
+
+## Coltin's Implementation
+
+```{python}
+def align_sequences(sequences):
+    """Aligns a list of sequences and prints them with mismatches highlighted."""
+    ref = sequences[0]      # Use first sequence as reference
+    aligned = [list(ref)]   # Start aligned list with reference sequence
+
+    for seq in sequences[1:]:
+        aligned_seq = []
+        # compare each character in the reference to the current sequence
+        for r, s in zip(ref, seq.ljust(len(ref))):      # add spaces to shorter seq
+            if r == s:
+                aligned_seq.append(s)    # match keep character
+            else:
+                aligned_seq.append(" ")  # mismatch insert space
+        aligned.append(aligned_seq)      # add aligned sequence to list
+
+    # Print results
+    for seq in aligned:
+        print("".join(seq))
+
+
+if __name__ == "__main__":
+    sequences = [
+        "caggatta",
+        "cagggata",
+        "cgcctatt",
+        "cagaatta"
+    ]
+    align_sequences(sequences)
+```
+
+## What's Going On Here?
+
+::: {.callout-note}
+
+**Code Explanation:**
+
+This function aligns a list of sequences by using the first sequence as a
+reference. For each additional sequence it compares each character to the
+reference at the same position. If the characters match it keeps the character
+if not it inserts a space to highlight the mismatch compared to the original
+reference sequence. Shorter sequences get spaces added to them to match the
+reference sequences length. The result shows a simple visual alignment that
+makes mismatches easy to spot compared to the reference sequence. It does not
+insert gaps or optimize for the best overall alignment. This approach is fast
+and straightforward but is not very flexible compared to more advanced
+alignments.
+
+This algorithm is `O(n * m)` where `n` is the number of sequences and `m` is the
+length of the reference sequence. This algorithm processes each character in
+each sequence once making it somewhat scalable. 
+
+:::
+
+## Results
+
+The output of the code above shows the aligned DNA sequences. For small inputs,
+the algorithm works, but for larger numbers of sequences or longer sequences, it
+becomes computationally infeasible due to exponential growth in possible
+alignments.
+
+# Intractable?
+
+## Seeing the above function you might ask yourself why this problem is intractable.
+
+`align_sequences` is a limited version of aligning DNA sequences:
+
+- It only compares the sequences to one reference sequence, position by position
+- It does not insert gaps or shift sequences to find the best possible alignment
+
+A full sequence alignment algorithm:
+
+- Tries every possible way to insert gaps and shift sequences
+- Maximizes matches across all sequences
+- Requires checking an exponential number of possible alignments, making it computationally intractable for longer sequences
+
+`align_sequences` is fast but limited compared to a full DNA sequence aligner
+
+## Conclusion
+
+**Why MSA is Intractable?**
+
+- **Small inputs deceive us**: 3 sequences work fine
+- **Exponential growth**: Each additional sequence multiplies complexity
+- **No shortcuts**: Must consider all gap possibilities for optimal alignment
+- **Real-world needs**: Biologists need to align hundreds of sequences

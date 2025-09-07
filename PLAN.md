@@ -31,24 +31,24 @@ acceptable layout and formatting and that the quarto project runs correctly.
 
 ### Create Slides for Week One in `slides/weekone/index.qmd`
 
-- [ ] Review the content in the `GEMINI.md` file (or the `AGENTS.md` file) that
+- [X] Review the content in the `GEMINI.md` file (or the `AGENTS.md` file) that
 explains the theme of the course on document engineering.
-- [ ] Review the content in the `index.qmd` file in the root of the repository
+- [X] Review the content in the `index.qmd` file in the root of the repository
 that explains the idea of a "Proofgrammer" and the concept of document
 engineering.
-- [ ] Following the guidelines for creating slides, translate the content in the
+- [X] Following the guidelines for creating slides, translate the content in the
 `index.qmd` in the root of the repository to slides that introduce the course in
 the `slides/weekone/index.qmd` file.
-- [ ] Note that the existing content was from slides that Gregory M. Kapfhammer
+- [X] Note that the existing content was from slides that Gregory M. Kapfhammer
 previously created to introduce a course in the field of document engineering.
 You should revise all the technical content in these slides to fit into a course
 about document engineering. However, you should also use this content in these
 slides as good examples for what your generated slides should look like. Make
 sure to use similar formatting, layout, and content as the provided slides.
-- [ ] The slides that introduce the course should contain Python source code
+- [X] The slides that introduce the course should contain Python source code
 like that which you found in the `index.qmd` file in the root of the repository.
 Make sure that students can run this source code and see the output.
-- [ ] After finishing the slides that introduce the course, create more slides
+- [X] After finishing the slides that introduce the course, create more slides
 that introduce the following technologies and explain how to install them:
     - Terminal window
     - Git, GitHub, and GitHub CLI (i.e., `gh`)
@@ -66,16 +66,16 @@ that introduce the following technologies and explain how to install them:
     - Npm and Node.js and all affiliated tools like `npx`
     - Google Gemini CLI (run through the use of `npx`)
     - OpenCode (run through the use of `npx`)
-- [ ] Ensure that the instructions in the slides from the previous step will
+- [X] Ensure that the instructions in the slides from the previous step will
 work correctly regardless of the operating system (Windows, MacOS, Linux).
-- [ ] Ensure that the instructions for installing each of the aforementioned
+- [X] Ensure that the instructions for installing each of the aforementioned
 tools clearly explain what the tool does, why it is important, and how it can
 help a prosegrammer to create, maintain, and analyze documents.
-- [ ] Ensure that the instructions for installing each of the aforementioned
+- [X] Ensure that the instructions for installing each of the aforementioned
 tools stress the importance of testing the setup to make sure that they are
 working. There should be links to online documentation that a learner can read
 if they have trouble installing or testing any of the tools.
-- [ ] Add content about the responsible use of artificial intelligence (AI)
+- [X] Add content about the responsible use of artificial intelligence (AI)
 coding and writing tools that use large language models (LLMs) like Claude
 Sonnet 4 or GPT-4. Make it clear that the prosegrammer who uses these tools is
 ultimately responsible for wielding them correctly and ethically.
@@ -470,3 +470,152 @@ iterate_list()
 
 # Run the test
 test_bounded_halting()
+```
+
+### Week Two Slides for Formally Defining Computation
+
+**Slide Content Based on Source Materials**:
+
+- Content derived from `01-intro.qmd` source file containing foundational
+concepts from "What Can be Computed" textbook Chapter 1
+- Course objectives review emphasizes the central questions: what can be
+computed in principle (undecidability) vs. efficiently in practice (complexity
+theory)
+- Computational problem classification table demonstrates tractable,
+intractable, and uncomputable categories with concrete examples aligned with
+theoretical computer science literature
+- SISO (Single Input, Single Output) program concept introduced as fundamental
+computational model for formal analysis
+
+**Python Implementation Examples**:
+
+- **`containsGAGA` function**: Demonstrates decision problem implementation,
+returning "yes"/"no" based on substring pattern recognition - directly from
+WCBC textbook examples
+- **Enhanced pattern matching**: `containsGAGAnotTATA` function shows complex
+conditional logic combining multiple pattern checks with boolean operations
+- **File reading simulation**: `rf` function demonstrates treating programs as
+data, foundational concept for universal computation and meta-computation
+- Interactive `pyodide` blocks enable real-time code modification and execution
+to reinforce theoretical concepts through hands-on programming
+
+**SISO Program Characteristics**:
+
+- Formal definition of Single Input, Single Output computational model as
+foundation for theoretical analysis
+- Connection to decision problems and language recognition in automata theory
+- Emphasis on deterministic behavior and finite execution requirements
+- Bridge between concrete programming implementations and abstract mathematical
+functions in computability theory
+
+**Educational Methodology**:
+
+- Team discussion prompts encourage critical thinking about computational
+limits and efficiency analysis
+- Progressive complexity from simple pattern recognition to sophisticated
+conditional logic
+- Connection between practical string processing and formal language theory
+concepts
+- Preparation for advanced topics like universal computation and program
+analysis
+
+**Theoretical Foundation Support**:
+
+- SISO programs provide rigorous mathematical framework for analyzing
+computational problems and their complexity classes
+- Decision problems (yes/no outputs) form basis for studying decidability and
+undecidability results in theoretical computer science
+- Pattern recognition algorithms demonstrate fundamental operations in formal
+language processing and automata theory
+- Universal computation concepts prepare students for understanding Turing
+machines and computational equivalence proofs
+
+**Verification and Quality Assurance**:
+
+- All slides render correctly with `quarto render` and preview successfully at
+http://localhost:8081/slides/weektwo/index.html
+- Python code blocks execute properly and display expected output
+- Fragment animations and incremental reveals function as intended
+- Content follows established formatting guidelines with appropriate icons,
+boxed content, and consistent typography
+- Slide titles meet length requirements and content distribution maintains
+readability at presentation resolution
+
+### Chapter Two Content: index_two.qmd for What is a Computer Program?
+
+**Unique Chapter 2 Content (No Duplication with Existing Slides)**:
+
+- **Formal Program Definition**: P(I) mathematical notation for program P
+executed on input I, establishing rigorous framework for computational analysis
+- **Numeric Input/Output Conversion**: String-to-number (`int()`, `float()`)
+and number-to-string (`str()`) conversion patterns for SISO compliance with
+practical examples like `addNumbers` and `computeAverage`
+- **ASCII Character Set**: Complete 128-character standard including printable
+characters, newline handling, and multiline text processing capabilities
+- **Program Failure Modes**: Comprehensive analysis of when P(I) becomes
+undefined due to non-termination, exceptions, invalid return types, or syntax
+errors
+
+**Advanced Theoretical Concepts**:
+
+- **Decision Program Formalization**: Accept/reject terminology where P(I) =
+"yes" means P accepts I, and P(I) = "no" means P rejects I, connecting to
+formal language theory
+- **Program Equivalence**: Mathematical definition where programs P and Q are
+equivalent if P(I) = Q(I) for all inputs I, enabling optimization and
+refactoring analysis
+- **SISO Requirement Violations**: Systematic categorization of invalid
+programs including multiple parameters, non-string returns, non-deterministic
+behavior, and external dependencies
+- **Termination Analysis**: Computational examination of when programs halt
+successfully versus infinite loops or runtime failures
+
+**Python Implementation Examples**:
+
+- **Multiline Text Processing**: Functions like `countLines` and
+`extractWords` demonstrating ASCII newline character handling and complex
+string manipulation
+- **Decision Program Suite**: Implementation of `isEvenLength`,
+`containsOnlyDigits`, and `isPalindrome` showcasing accept/reject semantics
+with comprehensive test cases
+- **Program Equivalence Demonstration**: Three different implementations of
+`countVowels` (explicit loop, list comprehension, filter function) proving
+behavioral equivalence despite different coding approaches
+- **Input Validation and Error Handling**: Robust SISO programs with
+try/except blocks and proper string conversion to prevent undefined P(I)
+states
+
+**Mathematical Foundation Support**:
+
+- P(I) notation derives from formal computation theory and provides basis for
+proving decidability/undecidability results in theoretical computer science
+- Decision problems with "yes"/"no" outputs form foundation for complexity
+classes (P, NP, PSPACE) and language recognition in automata theory
+- Program equivalence concept enables formal verification methods and compiler
+optimization correctness proofs
+- ASCII string restriction maintains theoretical simplicity while providing
+sufficient expressiveness for universal computation, as proven by
+Church-Turing thesis
+
+**Content Differentiation from Existing Slides**:
+
+- Existing slides cover basic SISO concepts and simple `containsGAGA` examples
+- New content focuses specifically on Chapter 2's formal program analysis,
+numeric conversion patterns, and advanced decision problem implementation
+- No duplication of SISO introduction, basic Python syntax, or simple pattern
+matching already covered in main slides
+- Chapter 2 content prepares for advanced topics like program analysis, formal
+verification, and computational complexity theory
+
+**Quality Assurance and Verification**:
+
+- All slides render successfully with `quarto render
+slides/weektwo/index_two.qmd`
+- Python code blocks execute correctly and demonstrate expected theoretical
+concepts
+- Interactive `pyodide` examples enable hands-on experimentation with formal
+program concepts
+- Content follows established formatting guidelines with appropriate icons,
+fragments, and mathematical notation
+- Material directly supports "What Can be Computed" textbook Chapter 2
+learning objectives

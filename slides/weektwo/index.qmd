@@ -1,6 +1,6 @@
 ---
 title: "Formally Defining Computation"
-description: "Explaining a SISO Python program"
+description: "Exploring SISO programs for proofgramming"
 date: "2025-09-01"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -18,14 +18,758 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Course objectives
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **What can be computed?**
+    - **In principle**: undecidability and uncomputability
+    - **Efficiently in practice**: complexity theory
+    - **Formal mathematical foundations for computation**
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Why study computational theory?**
+    - Determine if problems are computable and tractable
+    - Find suitable variants when problems are intractable
+    - Compare efficiency of proposed solution methods
+    - Apply techniques like reductions and automata theory
+
+:::
+
+## Why theory of computation matters
+
+::: {.incremental style="margin-top: -0.2em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Practical utility**
+  - Understand whether problems are computable and tractable
+  - Find suitable variants or approximations when needed
+  - Compare efficiency of different solution methods
+  - Apply specific techniques with real applications
+
+:::
+
+::: {.incremental style="margin-top: -0.35em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Intellectual foundation**
+  - Beautiful and important theoretical framework
+  - Deeper understanding of computer science discipline
+  - Rigorous mathematical basis for computation
+  - Connect abstract concepts to practical programming
+
+:::
+
+## Your proofgramming journey
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+{{< iconify fa6-solid book-open >}} Study Chapters 1 and 2 of ["What Can be
+Computed"](https://whatcanbecomputed.com/) and grasp SISO programming
+
+:::
+
+::: {.column width="50%"}
+
+{{< iconify fa6-brands github >}} Experiment with the [WCBC code
+examples](https://whatcanbecomputed.com/) and create your own SISO programs
+
+:::
+
+::::
+
+::: {.fragment .fade-down style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Focus areas for week two**:
+  - SISO program implementation and analysis
+  - Decision problems and their computational properties
+  - String processing and pattern recognition algorithms
+  - Connection between programming and mathematical theory
+  - Preparation for more advanced computational models
+
+:::
+
+## Computational problem classification
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+
+| Category | Tractable | Intractable | Uncomputable |
+|:--------:|:---------:|:-----------:|:------------:|
+| **Description** | Can be solved efficiently | Method exists but hopelessly time-consuming | Cannot be solved by any program |
+| **Theory** |  ✓ |  ✓ |  ✗ |
+| **Practice** | ✓ |  ✗ (?) |  ✗ |
+| **Example** |  Shortest route |  Decryption |  Finding all bugs |
+
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.5em; font-size: 0.8em;"}
+
+{{< iconify fa6-solid microscope >}} Understanding these categories helps
+proofgrammers determine the computational feasibility of problems and select
+appropriate solution strategies. **Proofgrammers understand that not all problems
+are computable and that some problems are intractable! Be on alert!**
+
+:::
+
+# Using Python for theoretical machines
+
+::: incremental
+
+- Introduce a restricted form of Python programs
+- Give examples of these restricted programs
+- Formally define the term "Python program"
+- Introduce concept of a decision problem
+
+:::
+
+## Python basics for proofgrammers
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **`utils` package**: provided with WCBC online resources
+- **`rf` function**: reads files from disk, used frequently
+- **`def` keyword**: defines functions like procedures in other languages
+- **`in` operator**: works on many data types, tests substring presence
+- **String quotes**: use single or double quotes for strings
+- **Code blocks**: defined by indentation, no curly braces needed
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.85em;"}
+
+{{< iconify fa6-solid lightbulb >}} These Python fundamentals enable us to
+implement theoretical concepts as executable programs that demonstrate
+computational principles. We use Python programs to illuminate computational
+theory!
+
+:::
+
+## Introducing SISO programs
+
+::: {.incremental style="margin-top: -0.2em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Single Input, Single Output (SISO)**
+  - Takes exactly one string as input parameter
+  - Returns exactly one string as output result
+  - Foundation for formal computational models
+  - Enables precise mathematical analysis
+
+:::
+
+::: {.incremental style="margin-top: -0.4em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Decision problems**
+  - Return "yes" or "no" to answer specific questions
+  - Fundamental building blocks of computational theory
+  - Enable formal proofs about computability
+  - Connect to language recognition problems
+
+:::
+
+## SISO program characteristics
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.8em;"}
+
+- *Required*
+    - **Input specification**: single string parameter only
+    - **Output format**: single string return value
+- *Desirable*
+    - **Function definition**: clear computational procedure
+    - **Deterministic behavior**: same input always produces same output
+    - **Finite execution**: program must terminate for valid inputs
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.05em; font-size: 0.8em;"}
+
+{{< iconify fa6-solid microscope >}} SISO programs provide the mathematical
+foundation for analyzing what can be computed and how efficiently we can solve
+different types of problems. They are a powerful syntactic subset of Python! Go
+SISO!
+
+:::
+
+## Why is SISO suitable?
+
+::: {.incremental style="margin-top: 0em; font-size: 0.875em;"}
+
+- Wait, real-world programs receive many kinds of input and output!
+- But our theoretical results for SISO programs can be easily generalized to all
+other types of computer programs
+    - All input and output to computers ultimately consists of binary
+    - Binary strings can easily be converted to and from ASCII strings
+- The restriction to Python is convenient for us, but not strictly needed
+- Python programs are equivalent to other standard models of computation,
+including Turing machines and all other "reasonable" programming languages and
+realistic computers
+- **Unless otherwise specified, we use programs that are SISO!**
+
+:::
+
+## Create the `containsGAGA` function
+
+```{python}
+def containsGAGA(input_string: str) -> str:
+    """Check if the input string contains the substring GAGA."""
+    if "GAGA" in input_string:
+        return "yes"
+    else:
+        return "no"
+
+# test the function with sample inputs
+test_input1 = "HELLO GAGA WORLD"
+test_input2 = "programming theory"
+test_input3 = "AGAGAGAGA patterns"
+
+print(f"Testing '{test_input1}': {containsGAGA(test_input1)}")
+print(f"Testing '{test_input2}': {containsGAGA(test_input2)}")
+print(f"Testing '{test_input3}': {containsGAGA(test_input3)}")
+```
+
+
+## Try the `containsGAGA` function
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 5
+def containsGAGA(input_string: str) -> str:
+    """Check if the input string contains the substring GAGA."""
+    if "GAGA" in input_string:
+        return "yes"
+    else:
+        return "no"
+
+# test with various inputs
+test_cases = [
+    "GAGA music",
+    "algorithms and data structures", 
+    "AGAGAGAGA repeated patterns",
+    "computational GAGA theory"
+]
+print("Testing containsGAGA function:")
+print("=" * 30)
+for test in test_cases:
+    result = containsGAGA(test)
+    print(f"Input: '{test}'")
+    print(f"Output: {result}")
+print("Try modifying the test cases above!")
+```
+
+## More sophisticated programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+def containsGAGAnotHAHA(input_string: str) -> str:
+    """Return yes if input contains GAGA but not HAHA."""
+    has_gaga = "GAGA" in input_string
+    has_haha = "HAHA" in input_string
+    if has_gaga and not has_haha:
+        return "yes"
+    else:
+        return "no"
+
+# test the enhanced function
+test_cases = [
+    "GAGA music rocks",
+    "HAHA that is funny", 
+    "GAGA and HAHA together",
+    "neither pattern here",
+    "GAGA without the funny one"
+]
+print("Testing containsGAGAnotHAHA function:")
+for test in test_cases:
+    result = containsGAGAnotHAHA(test)
+    print(f"'{test}' → {result}")
+```
+
+
+
+## Reading programs from files
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# simulate reading a program from a file
+def rf(filename: str) -> str:
+    """Simulate reading file content for demonstration."""
+    # in practice, this would read from an actual file
+    sample_programs = {
+        "containsGAGA.py": '''def containsGAGA(input_string):
+    return "yes" if "GAGA" in input_string else "no"''',
+        "countVowels.py": '''def countVowels(input_string):
+    vowels = "aeiouAEIOU"
+    return str(sum(1 for char in input_string if char in vowels))'''
+    }
+    return sample_programs.get(filename, "# File not found")
+
+# demonstrate reading program code
+gaga_program = rf("containsGAGA.py")
+vowel_program = rf("countVowels.py")
+print("Contents of containsGAGA.py:")
+print(gaga_program)
+print("Contents of countVowels.py:")
+print(vowel_program)
+```
+
+## Recap these two programs
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid diagram-project >}} Recap for the `containsGAGAnotHAHA`
+function:
+    - **Complex conditions**: combining multiple pattern checks
+    - **Boolean logic**: using `and` and `not` operators effectively
+    - **Pattern exclusion**: ensuring one pattern without another
+
+:::
+
+::: {.fragment style="margin-top: 0.05em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid diagram-project >}} Recap for the `rf` and `countVowels`
+functions:
+    - **File operations**: reading program source code as data
+    - **Program as data**: treating code as input to other programs
+    - **Dynamic execution**: foundation for universal computation
+
+:::
+
+# Programs are data! Start thinking like a proofgrammer about universal computation!
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.95em;"}
+
+- Programs can _read_ other programs as input
+- Programs can _execute_ other programs
+- Programs can _analyze_ other programs
+
+:::
+
+## Next steps in proofgramming
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Deepen theoretical understanding**
+  - Explore more complex computational models
+  - Study formal language definitions and properties
+  - Investigate decidability and undecidability results
+  - Analyze computational complexity classes
+
+:::
+
+::: {.incremental style="margin-top: -0.35em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Apply programming skills**
+  - Implement automata and Turing machines
+  - Create programs that analyze other programs
+  - Build tools for complexity measurement
+  - Develop proofs through computational examples
+
+:::
+
+# Ready to formally define what it means to compute? Let's implement more SISO programs! Hooray!
+
+## Numerical inputs in SISO programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 8
+def addNumbers(inString: str) -> str:
+    """Add space-separated numbers in the input string."""
+    # inString example: "54 21 7 43"
+    numbers = inString.split()  # ["54", "21", "7", "43"]
+    # convert string list to integer list
+    numbers = [int(x) for x in numbers]  # [54, 21, 7, 43]
+    # perform the computation
+    total = sum(numbers)  # 125
+    # convert result back to string for SISO compliance
+    return str(total)  # "125"
+
+# test the function
+test_input = "54 21 7 43"
+result = addNumbers(test_input)
+print(f"Input: '{test_input}'")
+print(f"Output: '{result}'")
+print(f"Type of output: {type(result)}")
+```
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.8em;"}
+
+- **String-to-number conversion**: `int()` and `float()` functions
+- **Number-to-string conversion**: `str()` function for SISO compliance
+- **Data processing pattern**: split, convert, compute, stringify
+
+:::
+
+## Try numerical conversion
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+def computeAverage(inString: str) -> str:
+    """Compute average of space-separated numbers."""
+    if not inString.strip():
+        return "0"
+    numbers = inString.split()
+    numbers = [float(x) for x in numbers]
+    average = sum(numbers) / len(numbers)
+    return str(round(average, 2))
+
+def findMaximum(inString: str) -> str:
+    """Find maximum of space-separated numbers."""
+    if not inString.strip():
+        return "0"
+    numbers = inString.split()
+    numbers = [int(x) for x in numbers]
+    maximum = max(numbers)
+    return str(maximum)
+
+# test both functions
+test_data = "10 25 15 30 5"
+print(f"Input: {test_data}")
+print(f"Average: {computeAverage(test_data)}")
+print(f"Maximum: {findMaximum(test_data)}")
+# test with floating point numbers
+float_data = "3.14 2.71 1.41 1.73"
+print(f"\nFloat input: {float_data}")
+print(f"Average: {computeAverage(float_data)}")
+```
+
+## ASCII character set in SISO programs
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **ASCII standard**: 128 characters including letters, digits, symbols
+- **Printable characters** include symbols like `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `(`, `)`
+- **Special characters**: newline (`\n`) and space characters
+- **Multiline support**: SISO programs can handle large text blocks
+- **Text processing**: enables complex string manipulation operations
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} ASCII strings provide sufficient
+expressiveness for all computational input/output while maintaining formal
+simplicity for theoretical analysis. Note that ASCII strings are a subset of the
+Unicode standard supported by the Python programming language!
+
+:::
+
+## Multiline text processing
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 8
+def countLines(inString: str) -> str:
+    """Count the number of lines in multiline text."""
+    if not inString:
+        return "0"
+    lines = inString.split('\n')
+    return str(len(lines))
+
+def extractWords(inString: str) -> str:
+    """Extract all words from multiline text, return count."""
+    words = []
+    lines = inString.split('\n')
+    for line in lines:
+        line_words = line.split()
+        words.extend(line_words)
+    return str(len(words))
+
+# test with multiline input
+multiline_text = """This is the first line.
+Second line contains more words.
+Third line is the final line."""
+# display the input
+print("Multiline text:")
+print(repr(multiline_text))
+print(f"\nNumber of lines: {countLines(multiline_text)}")
+print(f"Number of words: {extractWords(multiline_text)}")
+# demonstrate newline character
+single_line = "Line one\\nLine two\\nLine three"
+print(f"\nProcessing: {single_line}")
+actual_multiline = single_line.replace('\\n', '\n')
+print(f"Lines: {countLines(actual_multiline)}")
+```
+
+## Examples of invalid SISO programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 8
+# Invalid: Returns integer instead of string
+def invalidReturn(inString: str) -> int:
+    return len(inString)  # Should return str(len(inString))
+
+# Invalid: Multiple input parameters  
+def invalidParameters(inString: str, otherParam: str) -> str:
+    return inString + otherParam
+
+# Invalid: Potential infinite loop
+def invalidNonTerminating(inString: str) -> str:
+    while True:  # Never terminates
+        pass
+    return "never reached"
+
+# Invalid: Unhandled exception
+def invalidException(inString: str) -> str:
+    return str(1 / 0)  # Division by zero
+
+# Valid SISO program for comparison
+def validSISO(inString: str) -> str:
+    """Count characters and return as string."""
+    try:
+        count = len(inString)
+        return str(count)
+    except Exception:
+        return "error"
+
+# Demonstrate the valid program
+test_input = "example string"
+result = validSISO(test_input)
+print(f"validSISO('{test_input}') = '{result}'")
+print(f"Output type: {type(result)}")
+```
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- Not all valid Python programs are valid SISO programs!
+- We restrict focus to SISO programs for our theoretical analysis
+- Can we formally define what we mean by a program, input, and output?
+
+:::
+
+## Program $P$ runs on Computer $C$
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- A reference computer $C$ executes SISO programs
+
+- $C$ has infinite memory and time unless stated otherwise
+
+- We make no assumptions about characteristics of $C$:
+    - Speed of execution
+    - Memory architecture
+    - Instruction set
+    - Input/output formats
+    - Operating system
+
+- $C$ is a theoretical construct to support proofgramming!
+
+:::
+
+## Simple formal notation: $P(I)$
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **$P(I)$ definition**
+  - $P$ is a SISO Python program
+  - $I$ is an input string
+  - $P(I)$ is the output when $P$ executes on input $I$
+  - The "first function" in $P$ is the "main function"
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **When $P(I)$ is undefined**
+  - $P$ doesn't terminate (infinite loop or recursion)
+  - $P$ returns a non-ASCII string value
+  - $P$ throws an unhandled exception
+  - $P$ has syntax or runtime errors
+
+:::
+
+## Program termination analysis
+
+```{python}
+# example of well-defined P(I)
+def terminatingProgram(inString: str) -> str:
+    """A program that always terminates correctly."""
+    count = 0
+    for char in inString:
+        if char.isalpha():
+            count += 1
+    return str(count)
+
+# example of potentially undefined P(I)
+def potentiallyNonTerminating(inString: str) -> str:
+    """This program might not terminate depending on input."""
+    number = int(inString) if inString.isdigit() else 0
+    # this could be an infinite loop if number <= 0
+    while number > 0:
+        number -= 1
+        if number == 100:  # artificial condition
+            number = 101
+    return "done"
+
+# test the well-defined program
+test_string = "Hello123World"
+result = terminatingProgram(test_string)
+print(f"terminatingProgram('{test_string}') = '{result}'")
+```
+
+
+## Exploring non-termination
+
+```{python}
+# The non-terminating example is shown for analysis only
+print("potentiallyNonTerminating analysis:")
+print("- With input '5': would terminate")
+print("- With input '0': would terminate immediately") 
+print("- With input '101': would loop infinitely")
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Termination guarantee**: crucial for $P(I)$ to be "well-defined"
+- **Input validation**: checking input format prevents runtime errors
+- **Computational analysis**: predicting program behavior on inputs
+- **Halting detector**: detects when a program will never terminate
+
+:::
+
+## Why `potentiallyNonTerminating`?
+
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- The function contains a `while number > 0:` loop.
+- Each time through the loop, `number` is decremented by 1.
+- But if `number` ever becomes exactly 100, it is reset to 101.
+- This creates an **endless cycle** (also called an **infinite loop**): when
+`number` reaches 100, it jumps back to 101, so it never reaches 0.
+- For any input greater than or equal to 100, loop never terminates.
+- **Key point:** The artificial reset prevents the loop variable from ever
+reaching 0, so the function does not halt for some inputs.
+- **Important Questions**: Would it be possible to automatically detect this
+behavior? Why or why not? Can you justify your answer?
+
+:::
+
+## Decision programs: accept or reject
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gear >}} **Decision program definition**
+  - Always returns exactly "yes" or "no"
+  - If $P(I)$ = "yes", then $P$ accepts $I$
+  - If $P(I)$ = "no", then $P$ rejects $I$
+  - **Foundation for complexity and computability theory**
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gear >}} **Examples of accept/reject**
+  - `containsGAGA("GAGA")` = "yes" → accepts "GAGA"
+  - `containsGAGA("hello")` = "no" → rejects "hello"
+  - **Decision problems form the basis of language recognition**
+
+:::
+
+## Implementing decision programs
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 7
+def isEvenLength(inString: str) -> str:
+    """Accept strings with even length, reject odd length."""
+    if len(inString) % 2 == 0:
+        return "yes"
+    else:
+        return "no"
+
+def containsOnlyDigits(inString: str) -> str:
+    """Accept strings containing only digit characters."""
+    for char in inString:
+        if not char.isdigit():
+            return "no"
+    return "yes" if inString else "no"  # reject empty string
+
+def isPalindrome(inString: str) -> str:
+    """Accept strings that read the same forwards and backwards."""
+    cleaned = inString.lower().replace(" ", "")
+    if cleaned == cleaned[::-1]:
+        return "yes"
+    else:
+        return "no"
+
+# test decision programs
+test_cases = ["hello", "test", "12345", "123", "racecar", "race car", ""]
+
+print("Decision Program Results:")
+print("=" * 40)
+for test in test_cases:
+    even = isEvenLength(test)
+    digits = containsOnlyDigits(test)
+    palindrome = isPalindrome(test)
+    print(f"'{test}': even={even}, digits={digits}, palindrome={palindrome}")
+```
+
+## Equivalent Python programs
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.875em;"}
+
+- We also need a notion of **equivalence** between Python programs
+
+- Two programs are equivalent if, for any given input, both programs produce the
+same output, including undefined behaviors. 
+
+- SISO Python programs $P_1$ and $P_2$ are equivalent if:
+  - $\forall I \in S$, $P_1(I) = P_2(I)$
+
+- For multi-parameter SISO Python programs, we require:
+  - $\forall I_1, I_2, \ldots, I_n \in S$, $P_1(I_1, I_2, \ldots, I_n) =
+P_2(I_1, I_2, \ldots, I_n)$
+
+- Importantly, this definition of equivalence includes undefined outputs! If
+$P_1$ and $P_2$ are equivalent, then $P_1(I)$ is undefined if and only if
+$P_2(I)$ is undefined, for all ways to be undefined.
+
+:::
+
+## Review course goals
+
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- **Computational Implementation**:
+  - Design and implement theoretical concepts as Python programs
+  - Create frameworks for running proofs as Python programs
+  - Test all aspects of implementations to ensure correctness
+- **Communicate** theoretical insights through **code** and **documentation**
+- **Explain** and **evaluate** insights during **presentation sessions**
+- Participate in **charette sessions** to discuss and learn from each other
+- **Make sure you have completed these steps**:
+  - Review the [course schedule](../../schedule/index.qmd)
+  - Study the [course syllabus](../../syllabus/index.qmd)
+
+:::
+
+## Key takeaways
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid gear >}} **Problem Classification**: Tractable,
+intractable, and uncomputable
+- {{< iconify fa6-solid microscope >}} **SISO Programs**: Single input/output
+model with restricted to strings
+- {{< iconify fa6-solid diagram-project >}} **Python Examples**: Numerical
+conversions, text processing
+- {{< iconify fa6-solid diagram-project >}} **Decision Problems**: SISO programs
+for which output is "yes" or "no"
+- {{< iconify fa6-solid book-open >}} **Formal Notation**: $P(I)$, undefined
+cases, termination, equivalence
+- {{< iconify fa6-solid gears >}} **Insights**: Programs as data, universal
+computation, SISO generality
+- {{< iconify fa6-solid lightbulb >}} **Next Steps**: Advance to automata,
+Turing machines, undecidability
+- {{< iconify fa6-solid rocket >}} **Proofgramming Journey**: Combine proofs and
+programming to explore computation and discern what can be computed
+- **Now, we are ready for the first Proofgramming Charette session!**
 
 :::

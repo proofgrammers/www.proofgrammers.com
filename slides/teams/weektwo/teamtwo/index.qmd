@@ -1,7 +1,7 @@
 ---
 title: "Markdown Search Engine"
 description: "Explore tractability of search engines"
-date: "2025-09-02"
+date: "2025-09-01"
 date-format: long
 author: Veronica McNeece, Levente Mihaly, Anoop Guragain, Javier Bejarano
 execute:
@@ -9,7 +9,7 @@ execute:
 format:
   revealjs:
     theme: default
-    css: ../../css/styles.css
+    css: ../../../css/styles.css
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
@@ -177,7 +177,8 @@ Enter query (blank to exit): keyword
 > The improved version shows how indexing makes searching scale much better in practice.
 
 ---
- # References
+
+# References
 
  - What Can Be Computed? A Practical Guide to the Theory of Computation by John MacCormick
  - [Proofgrammers](https://proofgrammers.com/)

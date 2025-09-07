@@ -1,16 +1,16 @@
 ---
-title: "Shortest Path Solver"
-description: "Explore tractability of shortest path solving"
-date: "2025-09-01"
+title: "DetermineSISO Decision Problem"
+description: "Explore the detection of SISO programs"
+date: "2025-09-08"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Add Your Names Here
 execute:
   echo: true
 format:
   live-revealjs:
     completion: true
     theme: default
-    css: ../../css/styles.css
+    css: ../../../css/styles.css
     history: false
     scrollable: true
     transition: slide
