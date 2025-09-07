@@ -33,6 +33,30 @@ Does every Rust program need to have a `main` function?
 
 ## Do we always need a main function in a Python program?
 
+
+In **Python**, you don’t always need a `main()` function like you do in languages such as C, C++, or Java.  
+
+How Python Executes Code ?
+- Python executes files **top to bottom**.  
+- Any code at the top level will run immediately when the script is executed.  
+
+Example Without `main()`:
+
+```python
+print("Hello, World!")
+# This code runs immediately when the script is executed
+```
+
+Example With `main()`:
+
+```python
+def main():
+    print("Hello, World!")  
+    
+if __name__ == "__main__":
+    main()  # This code runs only when the script is executed directly
+```
+
 ## Detecting main function using AST
 
 ## How to detect if a Python program does not have a main function?
