@@ -109,14 +109,13 @@ NOT-SISO-LIKELY on tested inputs ❌
 - False positives → Program may fail on untested inputs
 
 
-## Conclusion
+# Conclusion
 
 ::: {.fragment}
-- In general, it is impossible to realize DetermineSISO as
-  a verifier that always returns a correct Yes/No.
-- SISO (“halts on all inputs and produces exactly one output”) is
-  a non-trivial semantic property; by the Halting Problem, 
-  there is no algorithm that can decide it fully automatically
-  for arbitrary programs.
+- In general, it is impossible to realize DetermineSISO as a verifier that always returns a correct Yes/No.
+- SISO is a non-trivial semantic property; due to the Halting Problem, no algorithm can fully decide it automatically for arbitrary programs.
+- DetermineSISO works heuristically, but a perfect verifier is impossible (Halting Problem).
+
 :::
+
 
