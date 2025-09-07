@@ -50,6 +50,15 @@ a program would stop or run forever.
 
 :::
 
+# Theory Insights
+
+::: {fragment}
+- **∀ vs ∃**: To prove SISO we need ∀ inputs → impossible by testing.  
+- **Type hints ≠ guarantees**: Annotations show intent, not behavior.  
+- **Checker reality**: We can detect some violations (NO), but a universal YES is impossible.  
+- **Restrictions help**: In loop-free / recursion-free languages, static analysis *can* decide SISO.  
+:::
+
 
 ## Conclusion
 
