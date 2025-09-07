@@ -31,22 +31,25 @@ a program would stop or run forever.
 
 :::
 
-## Problem
+# Problem
 
 ::: {fragment}
-- 1. Undecidability
-  - There is no method that can always determine, for any program,
-    whether it halts or not (the Halting Problem).
+- **Undecidability**  
+  No algorithm can always decide whether a program halts (the Halting Problem) → SISO is undecidable.  
 
-- 2. All-input guarantee
-  - Because the input domain is infinite, no finite amount of testing
-    can prove that a program halts and outputs exactly once for all inputs.
+- **All-input guarantee**  
+  The input domain is infinite, so finite testing can’t prove a program halts with exactly one output for *all* inputs.
 
-- 3. Implementation trade-off
-  - if we restrict ourselves to a setting where programs always
-    terminate—for example, by forbidding loops and general recursion—then
-    static analysis can decisively verify that there is exactly one output.
+- **Trade-off**  
+  In restriction (no loops/recursion), we can verify SISO by checking the code (static analysis).  
 :::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} Static analysis is reasoning about a program’s behavior just by looking at its code, not by executing it.
+
+:::
+
 
 ## Conclusion
 
