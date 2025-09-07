@@ -92,7 +92,7 @@ if __name__ == "__main__":
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 7
+#| max-lines: 15
 import ast
 
 class ASTAnalyzer:
