@@ -35,7 +35,7 @@ Let's see some other programming languages:
 
 - C++:
 
-```cpp
+```
 int main(int argc, const* argv[]) {// call of the function} // parameters can be missed
 ```
 
