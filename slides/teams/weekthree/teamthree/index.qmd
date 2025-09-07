@@ -43,19 +43,23 @@ int main(int argc, const* argv[]) {// call of the function} // parameters can be
 
 In **Python**, you don’t always need a `main()` function like in C, C++, or Java.
 
-### How Python executes code
 - Python runs files **top to bottom**.
 - Any **top-level** code runs immediately when the script is executed.
 
 #### Example: without `main()`
-```python
+
+```{pyodide}
+#| autorun: true
 print("Hello, World!")
+
 # This code runs immediately when the script is executed
 ```
 
 ## Our tool to detect main function in Python programs
 
-```
+```{pyodide}
+#| autorun: false
+
 import ast
 
 class ASTAnalyzer:
