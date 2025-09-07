@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-# What is the main function in Python?
+## What is the main function in Python?
 
 The main function in Python is declared, like this: `def main(some parameter):`
 
@@ -29,7 +29,7 @@ Direct run: then `__name__` is set to `"__main__"` -> block inside will be run.
 Imported Python File e.g.: `import my_script` then `__name__` is set to `my_script` ->
 no need for `main` function.
 
-# How does the main function look like in other languages?
+## How does the main function look like in other languages?
 
 Let's see some other programming languages:
 
@@ -45,7 +45,7 @@ int main(int argc, const* argv[]) {// call of the function} // parameters can be
 fn main() {// logic or function calls come here}
 ```
 
-# Do we always need a main function in a Python program?
+## Do we always need a main function in a Python program?
 
 
 In **Python**, you don’t always need a `main()` function like you do in languages such as C, C++, or Java.  
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     main()  # This code runs only when the script is executed directly
 ```
 
-# Our tool to detect main function in Python programs
+## Our tool to detect main function in Python programs
 
 ```{pyodide}
 #| autorun: true
@@ -120,3 +120,8 @@ if __name__ == "__main__":
     analyzer.walk_tree()
     analyzer.find_main()
 ```
+
+## Cases where we cannot detect main function
+
+placeholder
+
