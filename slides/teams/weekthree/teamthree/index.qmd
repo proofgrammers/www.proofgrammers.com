@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-# DetectNoMainFunction
+## DetectNoMainFunction
 
 ## What is the main function in Python?
 
@@ -154,5 +154,4 @@ if __name__ == "__main__":
 
 ## Cases where we cannot detect main function
 
-placeholde
-
+placeholder
