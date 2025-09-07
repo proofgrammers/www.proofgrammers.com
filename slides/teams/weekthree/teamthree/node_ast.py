@@ -7,8 +7,6 @@ class ASTAnalyzer:
             with open("cannot_detect_main.py", "r", encoding='utf-8') as fn:
                 read_fn = fn.read()
                 code = ast.parse(read_fn)
-                code_print = ast.dump(code, indent=4) # delete
-                print(code_print) # delete
             return code
         except FileNotFoundError:
             print("Error: 'main.py' not found.")
@@ -30,7 +28,6 @@ class ASTAnalyzer:
         ast_function = self.walk_tree()
         if not ast_function:
             return
-        main_name = "'main'"
 
         for name in ast_function:
             if name == "main":
@@ -41,7 +38,6 @@ class ASTAnalyzer:
 
 if __name__ == "__main__":
     analyzer = ASTAnalyzer()
-    analyzer.create_ast() # delete
     analyzer.walk_tree()
     analyzer.find_main()
 
