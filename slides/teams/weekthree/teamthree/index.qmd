@@ -7,17 +7,20 @@ author: Benedek Kaibas, Abishek Dhakal, Will Bennett
 execute:
   echo: true
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../../../css/styles.css
     history: false
-    scrollable: true     # enables vertical scrolling within slides
+    scrollable: true
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
 ---
 
-# What is the main function in Python?
+# DetectNoMainFunction
+
+## What is the main function in Python?
 
 The main function in Python is declared, like this: `def main(some parameter):`
 
@@ -28,7 +31,7 @@ Direct run: then `__name__` is set to `"__main__"` -> block inside will be run.
 Imported Python File e.g.: `import my_script` then `__name__` is set to `my_script` ->
 no need for `main` function.
 
-# How does the main function look like in other languages?
+## How does the main function look like in other languages?
 
 Let's see some other programming languages:
 
