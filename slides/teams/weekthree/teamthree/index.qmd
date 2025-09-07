@@ -6,7 +6,6 @@ date-format: long
 author: Benedek Kaibas, Abishek Dhakal, Will Bennett
 execute:
   echo: true
-  engine: python
 format:
   live-revealjs:
     completion: true
