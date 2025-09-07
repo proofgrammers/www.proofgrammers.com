@@ -7,18 +7,15 @@ author: Benedek Kaibas, Abishek Dhakal, Will Bennett
 execute:
   echo: true
 format:
-  live-revealjs:
-    completion: true
+  revealjs:
     theme: default
     css: ../../../css/styles.css
     history: false
-    scrollable: true
+    scrollable: true     # enables vertical scrolling within slides
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
 ---
-
-# DetectNoMainFunction
 
 # What is the main function in Python?
 
