@@ -93,7 +93,7 @@ class ASTAnalyzer:
         for node in ast.walk(code):
             if isinstance(node, ast.FunctionDef):
                 functions.append(node.name)
-                return functions
+        return functions
 
     def find_main(self):
         """Find main function in nodes created from the AST."""
