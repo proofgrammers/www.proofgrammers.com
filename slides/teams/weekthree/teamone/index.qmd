@@ -18,25 +18,15 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- SISO = Single Input, Single Output → input processed → one output
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
-
-:::
-
-# What is SISO?
-- Single input single out out
-- Input (str), splits, converts, computes, stringify, output (str)
+- Why it matters: Predictability, correctness, and links to the Halting Problem
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid microscope >}} Keep in mind haulting detector. Haulting detector tells if
+{{< iconify fa6-solid microscope >}} Keep in mind halting detector. Halting detector tells if
 a program would stop or run forever.  
 
 :::
