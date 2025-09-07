@@ -18,11 +18,8 @@ format:
     footer: "Proofgrammers"
 ---
 
-<<<<<<< HEAD
 # DetectNoMainFunction
 
-=======
->>>>>>> eee0d38461d7577b5f11fef886d82720ecb11d2f
 ## What is the main function in Python?
 
 The main function in Python is declared, like this: `def main(some parameter):`
