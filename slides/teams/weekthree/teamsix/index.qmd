@@ -3,7 +3,7 @@ title: "DetectEquivalentPrograms Decision Problem"
 description: "Explore the detection of equivalent programs"
 date: "2025-09-08"
 date-format: long
-author: Ainslee Plesko, Coltin Colucci, Alexander Goddard, and Preston Smith
+author: Add Your Names Here
 execute:
   echo: true
 format:
@@ -18,18 +18,6 @@ format:
     footer: "Proofgrammers"
 ---
 
-## Introduction
-
-::: {.fragment}
-x
-:::
-
-## What does 'equivalence' mean?
-
-::: {.fragment}
-x
-:::
-
 # Theory of computation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
@@ -40,40 +28,4 @@ x
     - Proving limits of computation
     - "Proofgrammers" combine *proofs* and *programming*
 
-:::
-
-## Example Solution
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-x
-:::
-
-## Example Solution 2 (can delete if not needed)
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
-x
-:::
-
-## Python Implementation
-
-```{pyodide}
-x
-```
-
-## Tractable vs Intractable vs Uncomputable
-
-::: {.fragment}
-x
-:::
-
-## Feasibility in the General Case
-
-::: {.fragment}
-x
-:::
-
-## Conclusion
-
-::: {.fragment}
-x
 :::
