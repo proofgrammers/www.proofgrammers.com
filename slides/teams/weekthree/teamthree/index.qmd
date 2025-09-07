@@ -55,9 +55,7 @@ print("Hello, World!")
 
 ## Our tool to detect main function in Python programs
 
-```{pyodide}
-#| autorun: true
-#| max-lines: 15
+```
 import ast
 
 class ASTAnalyzer:
