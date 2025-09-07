@@ -93,7 +93,7 @@ class ASTAnalyzer:
         for node in ast.walk(code):
             if isinstance(node, ast.FunctionDef):
                 functions.append(node.name)
-                return functions
+        return functions
 
     def find_main(self):
         """Find main function in nodes created from the AST."""
@@ -160,6 +160,19 @@ analyzer = ASTAnalyzer()
 analyzer.find_main()
 ```
 
-## Cases where we cannot detect main function
+## Ease of Detecting main in Different languages
 
-placeholder
+- Python does not require `main` function
+
+- `main` function is an entry point in some languages: C, C++, Rust, Java
+
+- **NOTE**: C++ header files are not behaving the same as `import python_code`!
+
+- Funcion `main` behaves like other functions in Python
+
+- Therefore it is harder to detect main function in Python programs
+
+## Case where we cannot detect main function
+
+There are cases when it's not possible to detect a `main` function in Python.
+

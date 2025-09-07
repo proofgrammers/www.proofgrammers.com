@@ -4,9 +4,11 @@ class ASTAnalyzer:
     def create_ast(self):
         """Creating an Abstract Syntax Tree."""
         try:
-            with open("main.py", "r", encoding='utf-8') as fn:
+            with open("cannot_detect_main.py", "r", encoding='utf-8') as fn:
                 read_fn = fn.read()
                 code = ast.parse(read_fn)
+                code_print = ast.dump(code, indent=4) # delete
+                print(code_print) # delete
             return code
         except FileNotFoundError:
             print("Error: 'main.py' not found.")
@@ -21,7 +23,7 @@ class ASTAnalyzer:
         for node in ast.walk(code):
             if isinstance(node, ast.FunctionDef):
                 functions.append(node.name)
-                return functions
+        return functions
 
     def find_main(self):
         """Find main function in nodes created from the AST."""
@@ -39,6 +41,7 @@ class ASTAnalyzer:
 
 if __name__ == "__main__":
     analyzer = ASTAnalyzer()
+    analyzer.create_ast() # delete
     analyzer.walk_tree()
     analyzer.find_main()
 
