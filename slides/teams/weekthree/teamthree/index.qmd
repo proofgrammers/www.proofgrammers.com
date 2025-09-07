@@ -51,6 +51,7 @@ In **Python**, you don’t always need a `main()` function like in C, C++, or Ja
 ```python
 print("Hello, World!")
 # This code runs immediately when the script is executed
+```
 
 ## Our tool to detect main function in Python programs
 
