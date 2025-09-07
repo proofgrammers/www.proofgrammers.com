@@ -4,7 +4,7 @@ class ASTAnalyzer:
     def create_ast(self):
         """Creating an Abstract Syntax Tree."""
         try:
-            with open("cannot_detect_main.py", "r", encoding='utf-8') as fn:
+            with open("contains_no_main.py", "r", encoding='utf-8') as fn:
                 read_fn = fn.read()
                 code = ast.parse(read_fn)
             return code
@@ -24,16 +24,15 @@ class ASTAnalyzer:
         return functions
 
     def find_main(self):
-        """Find main function in nodes created from the AST."""
-        ast_function = self.walk_tree()
-        if not ast_function:
+        """Report whether a 'main' function exists."""
+        names = self.walk_tree()
+        if names is None:
             return
 
-        for name in ast_function:
-            if name == "main":
-                print(f"Main function found: {name}")
-            else:
-                print("The function you have entered as an input contains no main function.")
+        if "main" in names:
+            print("Main function found: main")
+        else:
+            print("No main function found.")
 
 
 if __name__ == "__main__":
