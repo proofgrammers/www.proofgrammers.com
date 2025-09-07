@@ -39,31 +39,18 @@ Let's see some other programming languages:
 int main(int argc, const* argv[]) {// call of the function} // parameters can be missed
 ```
 
-## Do we always need a main function in a Python program?
+## Do we always need a main function in Python?
 
+In **Python**, you don’t always need a `main()` function like in C, C++, or Java.
 
-In **Python**, you don’t always need a `main()` function like you do in languages such as C, C++, or Java.  
+### How Python executes code
+- Python runs files **top to bottom**.
+- Any **top-level** code runs immediately when the script is executed.
 
-How Python Executes Code ?
-- Python executes files **top to bottom**.  
-- Any code at the top level will run immediately when the script is executed.  
-
-Example Without `main()`:
-
+#### Example: without `main()`
 ```python
 print("Hello, World!")
 # This code runs immediately when the script is executed
-```
-
-Example With `main()`:
-
-```python
-def main():
-    print("Hello, World!")  
-    
-if __name__ == "__main__":
-    main()  # This code runs only when the script is executed directly
-```
 
 ## Our tool to detect main function in Python programs
 
