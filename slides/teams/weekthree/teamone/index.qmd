@@ -59,6 +59,55 @@ a program would stop or run forever.
 - **Restrictions help**: In loop-free / recursion-free languages, static analysis *can* decide SISO.  
 :::
 
+# Python Implementation
+
+## Example Solution
+
+::: {fragment}
+- Built a tool: **DetermineSISO**  
+- Runs a target program on a **finite set of test inputs**  
+- Checks for:  
+  - Halting within a timeout  
+  - Exactly one line of output  
+- Verdicts:  
+  - ✅ SISO-LIKELY  
+  - ❌ NOT-SISO-LIKELY  
+  - ❓ INDETERMINATE  
+:::
+
+## Example Target
+
+✅ Halts with one output
+```python
+def main(s: str) -> str:
+    return "OK"
+```
+
+❌ Infinite loop (non-SISO)
+```python
+def main(s: str) -> str:
+    while True:
+        pass
+```
+Output:
+
+```bash
+$ python determine_siso.py siso_ok.py --autogen-inputs 5
+SISO-LIKELY on tested inputs ✅
+```
+```bash
+$ python determine_siso.py not_siso.py --autogen-inputs 3 --timeout 0.5
+NOT-SISO-LIKELY on tested inputs ❌
+```
+
+# Limitations
+
+- Bounded testing → Only covers finite inputs, not all inputs
+
+- Timeouts → A loop might pass if it halts just within the limit
+
+- False positives → Program may fail on untested inputs
+
 
 ## Conclusion
 
