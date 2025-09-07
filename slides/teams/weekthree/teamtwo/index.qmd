@@ -119,3 +119,9 @@ else:
 
 ## Is this problem feasible in the General Case?
 
+
+## Is this program tracktable and computable?
+
+
+## Results and Q&A?
+
