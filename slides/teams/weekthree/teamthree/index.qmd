@@ -7,11 +7,12 @@ author: Benedek Kaibas, Abishek Dhakal, Will Bennett
 execute:
   echo: true
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../../../css/styles.css
     history: false
-    scrollable: true     # enables vertical scrolling within slides
+    scrollable: true
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
