@@ -2,45 +2,38 @@ import ast
 
 class ASTAnalyzer:
     def create_ast(self):
-        """Creating an Abstract Syntax Tree."""
-       code_with_main = """def main(word: str) -> str:
-
+        """Create an AST from an in-memory Python snippet."""
+        code_with_main = """\
+def main(word: str) -> str:
     text = "gators"
-
     if word in text:
         return "True"
     else:
         return "False"
 
 if __name__ == "__main__":
-    print(main("gators"))"""
+    print(main("gators"))
+"""
+        return ast.parse(code_with_main)
 
     def walk_tree(self):
-        """Walking through the created AST."""
-        code = self.create_ast()
-        if code is None:
-            return None
+        """Return a list of function names in the AST."""
+        tree = self.create_ast()
         functions = []
-        for node in ast.walk(code):
+        for node in ast.walk(tree):
             if isinstance(node, ast.FunctionDef):
                 functions.append(node.name)
-                return functions
+        return functions
 
     def find_main(self):
-        """Find main function in nodes created from the AST."""
-        ast_function = self.walk_tree()
-        if not ast_function:
-            return
-        main_name = "'main'"
-
-        for name in ast_function:
-            if name == "main":
-                print(f"Main function found: {name}")
-            else:
-                print("The function you have entered as an input contains no main function.")
-
+        """Print whether a 'main' function exists."""
+        fn_names = self.walk_tree()
+        if "main" in fn_names:
+            print("Main function found: main")
+        else:
+            print("The function you have entered as an input contains no main function.")
 
 if __name__ == "__main__":
     analyzer = ASTAnalyzer()
-    analyzer.walk_tree()
     analyzer.find_main()
+
