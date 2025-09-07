@@ -39,12 +39,6 @@ Let's see some other programming languages:
 int main(int argc, const* argv[]) {// call of the function} // parameters can be missed
 ```
 
-- Rust:
-
-```rust
-fn main() {// logic or function calls come here}
-```
-
 ## Do we always need a main function in a Python program?
 
 
