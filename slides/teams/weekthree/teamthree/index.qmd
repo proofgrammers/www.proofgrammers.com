@@ -147,9 +147,9 @@ if __name__ == "__main__":
         else:
             print("The function you have entered as an input contains no main function.")
 
-if __name__ == "__main__":
-    analyzer = ASTAnalyzer()
-    analyzer.find_main()
+
+analyzer = ASTAnalyzer()
+analyzer.find_main()
 ```
 
 ## Cases where we cannot detect main function
