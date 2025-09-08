@@ -23,9 +23,9 @@ format:
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}  
   - The Goal: Build a Syntax Error Detector
 
-  - Takes a program as input and checks for syntax errors
+  - Takes a program as an input (string) and checks for syntax errors
 
-  - This is a SISO program
+  - Also, make it SISO
 
 :::
 
@@ -117,7 +117,7 @@ else:
 
 - If the code violates Python syntax like a missing colon, indentation, or wrong keyword, Python gives a SyntaxError.
 
-- This is a SISO(Single Input Single Output) python program where it takes one piece of Python code as input (a string) and For each input, the program produces one clear output either Syntax Error detected Or No syntax error (and optionally prints runtime errors if any occur)
+- This is a SISO(Single Input Single Output) Python program because it takes one piece of Python code as input (a string) and the program produces one clear output, either Syntax Error detected ("yes") or no Syntax Error ("no") (and optionally prints runtime errors if any occur)
 
 
 
