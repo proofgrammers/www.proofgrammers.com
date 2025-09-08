@@ -4,7 +4,7 @@ class ASTAnalyzer:
     def create_ast(self):
         """Creating an Abstract Syntax Tree."""
         try:
-            with open("contains_no_main.py", "r", encoding='utf-8') as fn:
+            with open("cannot_detect_main.py", "r", encoding='utf-8') as fn:
                 read_fn = fn.read()
                 code = ast.parse(read_fn)
             return code

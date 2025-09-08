@@ -16,9 +16,11 @@ def divide(a: int, b: int) -> int:
 
     return 0
 
+if __name__ == "__main__":
+    print(multiply(9, 9))
+    print(divide(100, 10))
+
+
 def main(func1, func2, *args, **kwargs):
     return func1, func2
-
-print(multiply(5, 4))
-print(divide(10, 2))
 
