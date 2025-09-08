@@ -66,7 +66,7 @@ for i in range(5):
 import ast
 
 def detect_syntax_error(code: str) -> bool:
-    """Detect if code has sy ntax errors"""
+    """Detect if code has syntax errors"""
     try:
         ast.parse(code)   # Syntax check
         return "no"
