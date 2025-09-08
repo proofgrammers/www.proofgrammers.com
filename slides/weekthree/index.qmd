@@ -1,6 +1,6 @@
 ---
-title: "Finding impossible programs"
-description: "Discern the limits of computation"
+title: "Impossible Programs"
+description: "Exploring fundamental limits of computation"
 date: "2025-09-08"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -17,3 +17,644 @@ format:
     highlight-style: github
     footer: "Proofgrammers"
 ---
+
+# What programs are impossible?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **The central question of uncomputability**
+    - Some problems cannot be solved by any program
+    - Even infinite time and memory cannot solve them
+    - **This is one of the most profound results in computer science**
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Our exploration strategy**
+    - Start with proof by contradiction
+    - Build programs that analyze other programs  
+    - Demonstrate fundamental impossibility results
+    - Connect to practical software engineering limits
+
+:::
+
+## Proof by contradiction
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Natural human reasoning pattern**
+  - **Statement S**: "I bought the milk on Monday"
+  - **Consequence C**: "I was in town on Monday"  
+  - **Known fact T**: "I was out of town on Monday"
+  - **Conclusion**: Since C contradicts T, statement S must be false
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid gear >}} **Mathematical formulation**
+  - If S implies C, but C is false, then S is false
+  - To prove something is true, assume its opposite and seek contradiction
+  - Essential technique for impossibility proofs in computer science
+
+:::
+
+## Programs analyzing other programs
+
+```{python}
+def countLines(inString: str) -> str:
+    """Count the number of lines in the provided text content."""
+    lines = inString.split('\n')
+    return str(len(lines))
+
+# simulate reading a program file
+def rf(filename: str) -> str:
+    """Simulate reading file content for demonstration."""
+    sample_programs = {
+        "multiply.py": '''def multiply(x, y):
+    return str(int(x) * int(y))
+
+result = multiply("6", "7")
+print(f"Result: {result}")''',
+        "countLines.py": '''def countLines(inString):
+    lines = inString.split('\\n')
+    return str(len(lines))'''
+    }
+    return sample_programs.get(filename, "# File not found")
+
+# demonstrate program analyzing another program
+multiply_program = rf("multiply.py")
+line_count = countLines(multiply_program)
+print(f"The multiply.py program has {line_count} lines")
+
+# demonstrate program analyzing itself
+countlines_program = rf("countLines.py")
+self_count = countLines(countlines_program)
+print(f"The countLines.py program has {self_count} lines")
+```
+
+## Self-reflection in computation
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid diagram-project >}} **Programs can analyze themselves**:
+    - `countLines(rf('countLines.py'))` reports its own line count
+    - **Self-reflection**: programs examining their own structure
+    - Similar to how human brains can think about thinking
+
+:::
+
+::: {.fragment style="margin-top: 0.05em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid diagram-project >}} **Turing's insight (1936)**:
+    - Self-reflection enables powerful computation
+    - But it also creates fundamental limitations
+    - The very capability that makes programs powerful also constrains them
+    - **Key principle**: Some problems become impossible precisely because of self-reflection
+
+:::
+
+# Programs analyzing programs: the foundation of impossibility!
+
+## Decision programs we need
+
+```{pyodide}
+#| autorun: true  
+#| max-lines: 10
+def containsGAGA(inString: str) -> str:
+    """Return yes if input contains GAGA."""
+    if 'GAGA' in inString:
+        return 'yes'
+    else:
+        return 'no'
+
+def yes(inString: str) -> str:
+    """Always return yes, ignoring input."""
+    return 'yes'
+
+def longerThan1K(inString: str) -> str:
+    """Return yes if input is longer than 1000 characters."""
+    if len(inString) > 1000:
+        return 'yes'
+    else:
+        return 'no'
+
+def maybeLoop(inString: str) -> str:
+    """Return yes/no for inputs with 'secret sauce', loop otherwise."""
+    if 'secret sauce' not in inString:
+        # infinite loop simulation - don't actually loop
+        return 'undefined (infinite loop)'
+    else:
+        if len(inString) % 2 == 0:
+            return 'yes'
+        else:
+            return 'no'
+
+# test the decision programs
+test_cases = ['CTGAGAT', 'programming', 'some secret sauce here']
+for test in test_cases:
+    print(f"Input: '{test}'")
+    print(f"  containsGAGA: {containsGAGA(test)}")
+    print(f"  yes: {yes(test)}")
+    print(f"  longerThan1K: {longerThan1K(test)}")
+    print(f"  maybeLoop: {maybeLoop(test)}")
+    print()
+```
+
+## Programs analyzing programs examples
+
+```{python}
+# First define the analysis functions we need
+def containsGAGA(inString: str) -> str:
+    """Return yes if input contains GAGA."""
+    if 'GAGA' in inString:
+        return 'yes'
+    else:
+        return 'no'
+
+def yes(inString: str) -> str:
+    """Always return yes, ignoring input."""
+    return 'yes'
+
+def longerThan1K(inString: str) -> str:
+    """Return yes if input is longer than 1000 characters."""
+    if len(inString) > 1000:
+        return 'yes'
+    else:
+        return 'no'
+
+# simulate program file contents
+programs = {
+    'containsGAGA.py': '''def containsGAGA(inString):
+    if 'GAGA' in inString:
+        return 'yes'
+    else:
+        return 'no' ''',
+    'yes.py': '''def yes(inString):
+    return 'yes' ''',
+    'geneticString.txt': 'CTGAGAATTCGAGA'
+}
+
+def rf(filename: str) -> str:
+    return programs.get(filename, 'File not found')
+
+# demonstrate programs analyzing other programs
+examples = [
+    ("containsGAGA('CTGAGAT')", containsGAGA('CTGAGAT')),
+    ("containsGAGA(rf('geneticString.txt'))", containsGAGA(rf('geneticString.txt'))),
+    ("containsGAGA(rf('yes.py'))", containsGAGA(rf('yes.py'))),
+    ("yes('anything')", yes('anything')),
+    ("yes(rf('containsGAGA.py'))", yes(rf('containsGAGA.py'))),
+    ("longerThan1K('short')", longerThan1K('short')),
+    ("longerThan1K(rf('geneticString.txt'))", longerThan1K(rf('geneticString.txt')))
+]
+
+print("Programs analyzing other programs:")
+print("=" * 40)
+for command, result in examples:
+    print(f"{command} = {result}")
+```
+
+## The hypothetical yesOnString program
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **Definition**: `yesOnString(P, I)` returns:
+  - `"yes"` if P is a valid Python program, P(I) is defined, and P(I) = "yes"
+  - `"no"` otherwise (invalid program, undefined output, or non-"yes" result)
+
+:::
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **Question it answers**: Does program P return "yes" on input string I?
+- **Important note**: We don't provide the source code for `yesOnString`
+- **Reason**: We will prove it's impossible to write such a program!
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} The `yesOnString` program would solve a fundamental question about program behavior. But as we'll see, asking this question leads to logical contradictions that make the program impossible.
+
+:::
+
+## Examples with hypothetical yesOnString
+
+```{python}
+# Hypothetical behavior of yesOnString (we'll prove this can't exist)
+def hypothetical_yesOnString(P: str, I: str) -> str:
+    """HYPOTHETICAL: Check if program P returns 'yes' on input I."""
+    # This is just for illustration - we'll prove this is impossible!
+    
+    # Simulate some example behaviors
+    if P == "containsGAGA.py" and I == "CTGAGAT":
+        return "yes"  # containsGAGA returns "yes" on "CTGAGAT"
+    elif P == "containsGAGA.py" and I == "hello":
+        return "no"   # containsGAGA returns "no" on "hello"
+    elif P == "yes.py":
+        return "yes"  # yes always returns "yes"
+    elif P == "invalid syntax":
+        return "no"   # not a valid Python program
+    else:
+        return "no"   # default case
+        
+# Show what yesOnString would theoretically do
+examples = [
+    ("containsGAGA.py", "CTGAGAT"),
+    ("containsGAGA.py", "hello"),  
+    ("yes.py", "anything"),
+    ("invalid syntax", "test"),
+]
+
+print("Hypothetical yesOnString behavior:")
+print("=" * 35)
+for prog, input_str in examples:
+    result = hypothetical_yesOnString(prog, input_str)
+    print(f"yesOnString('{prog}', '{input_str}') = {result}")
+
+print("\nBut we will prove this program cannot actually exist!")
+```
+
+## The yesOnSelf simplification
+
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- **Definition**: `yesOnSelf(P)` returns:
+  - `"yes"` if P is a valid Python program and P(P) = "yes"
+  - `"no"` otherwise
+
+:::
+
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- **Relationship to yesOnString**: 
+  - `yesOnSelf(P)` = `yesOnString(P, P)`
+  - Asks: "Does program P return 'yes' when given itself as input?"
+  
+:::
+
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- **Why this matters**: 
+  - Simpler to analyze than the two-parameter version
+  - Self-application creates the conditions for contradiction
+  - **Foundation of the impossibility proof**
+
+:::
+
+## Examples with hypothetical yesOnSelf  
+
+```{python}
+# Hypothetical behavior of yesOnSelf
+def hypothetical_yesOnSelf(P: str) -> str:
+    """HYPOTHETICAL: Check if program P returns 'yes' on itself."""
+    
+    # Simulate example behaviors  
+    if P == "yes.py":
+        return "yes"  # yes("yes.py") = "yes"
+    elif P == "containsGAGA.py":
+        # Does containsGAGA.py contain "GAGA"? Let's say yes
+        return "yes"  
+    elif P == "longerThan1K.py":
+        # Is longerThan1K.py longer than 1K characters? Let's say no
+        return "no"
+    else:
+        return "no"   # default case
+
+# Show examples
+test_programs = [
+    "yes.py",
+    "containsGAGA.py", 
+    "longerThan1K.py",
+    "maybeLoop.py"
+]
+
+print("Hypothetical yesOnSelf behavior:")
+print("=" * 32)
+for prog in test_programs:
+    result = hypothetical_yesOnSelf(prog)
+    print(f"yesOnSelf('{prog}') = {result}")
+
+print("\nRemember: We're assuming yesOnSelf exists to derive a contradiction!")
+```
+
+## The devastating notYesOnSelf program
+
+```{python}
+# Here's where the contradiction emerges!
+def notYesOnSelf(P: str) -> str:
+    """Return the opposite of what yesOnSelf would return."""
+    # Assumes yesOnSelf exists (which we'll prove it doesn't!)
+    result = hypothetical_yesOnSelf(P)
+    
+    if result == "yes":
+        return "no"
+    else:  # result == "no"
+        return "yes"
+
+# Test notYesOnSelf on some programs
+test_cases = ["yes.py", "containsGAGA.py", "longerThan1K.py"]
+for prog in test_cases:
+    yes_result = hypothetical_yesOnSelf(prog)
+    not_result = notYesOnSelf(prog) 
+    print(f"yesOnSelf('{prog}') = {yes_result}")
+    print(f"notYesOnSelf('{prog}') = {not_result}")
+    print()
+
+# The critical question: What happens with notYesOnSelf itself?
+print("THE CRITICAL CASE:")
+print("What is notYesOnSelf('notYesOnSelf.py')?")
+print("This is where the contradiction appears!")
+```
+
+## The contradiction revealed
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+**Consider**: `notYesOnSelf("notYesOnSelf.py")`
+
+- **If it returns "yes"**: Then `yesOnSelf("notYesOnSelf.py")` = "no"
+- **But if yesOnSelf returns "no"**: Then notYesOnSelf should return "yes"  
+- **So**: notYesOnSelf returns "yes" when run on itself
+
+:::
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+**But also**:
+
+- **If it returns "no"**: Then `yesOnSelf("notYesOnSelf.py")` = "yes"  
+- **But if yesOnSelf returns "yes"**: Then notYesOnSelf should return "no"
+- **So**: notYesOnSelf returns "no" when run on itself
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid exclamation-triangle >}} **Contradiction**: notYesOnSelf returns "yes" if and only if it returns "no"! No program can have this property, so notYesOnSelf cannot exist.
+
+:::
+
+# If yesOnSelf can't exist, then yesOnString can't exist either!
+
+## The impossibility proof structure
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Step 1: Proof by contradiction**
+  - Assume `yesOnString` exists (our statement S)
+  - This would allow us to create `yesOnSelf` 
+  - And then create `notYesOnSelf`
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Step 2: Derive contradiction**
+  - `notYesOnSelf("notYesOnSelf.py")` creates logical contradiction
+  - Returns "yes" if and only if it returns "no"
+  - No program can have this impossible property
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Step 3: Conclude impossibility**
+  - Since assuming `yesOnString` exists leads to contradiction
+  - `yesOnString` cannot exist
+  - **This is our first major impossibility result!**
+
+:::
+
+## Compact impossibility proof
+
+```{python}
+# A more direct proof using the "weird" program technique
+def weirdYesOnString(P: str) -> str:
+    """The program that creates immediate contradiction."""
+    # Assumes yesOnString exists
+    result = hypothetical_yesOnString(P, P)  # yesOnString(P, P)
+    
+    if result == "yes":
+        return "no"
+    else:
+        return "yes"
+
+print("Direct contradiction approach:")
+print("=" * 30)
+
+# The contradiction emerges immediately when we ask:
+print("What is weirdYesOnString('weirdYesOnString.py')?")
+print("")
+print("If weirdYesOnString('weirdYesOnString.py') = 'yes':")
+print("  Then yesOnString('weirdYesOnString.py', 'weirdYesOnString.py') = 'yes'")
+print("  Which means weirdYesOnString returns 'yes' on itself")
+print("  But by definition, weirdYesOnString should return 'no'!")
+print("")
+print("If weirdYesOnString('weirdYesOnString.py') = 'no':")
+print("  Then yesOnString('weirdYesOnString.py', 'weirdYesOnString.py') = 'no'") 
+print("  Which means weirdYesOnString does NOT return 'yes' on itself")
+print("  But by definition, weirdYesOnString should return 'yes'!")
+print("")
+print("CONTRADICTION: No valid output exists!")
+print("Therefore: yesOnString cannot exist.")
+```
+
+## Crash detection is also impossible
+
+```{python}
+def weirdCrashOnSelf(P: str) -> str:
+    """Hypothetical program that reveals crash detection impossibility."""
+    # Assumes crashOnString exists (it doesn't!)
+    # crashOnString(P, I) would return "yes" if P crashes on input I
+    
+    # Simulate what crashOnString(P, P) might return
+    def hypothetical_crashOnString(prog: str, input_str: str) -> str:
+        # This is just illustration - crashOnString is impossible!
+        return "no"  # Placeholder
+    
+    crash_result = hypothetical_crashOnString(P, P)
+    
+    if crash_result == "yes":
+        # If P crashes on itself, then DON'T crash
+        return "no crash here"
+    else:
+        # If P doesn't crash on itself, then DO crash
+        # In real code, this would cause an actual crash
+        return "simulated crash"
+
+print("Crash detection impossibility:")  
+print("=" * 30)
+print("Consider: weirdCrashOnSelf('weirdCrashOnSelf.py')")
+print("")
+print("Case 1: If weirdCrashOnSelf crashes on itself")
+print("  → crashOnString says 'yes'")  
+print("  → weirdCrashOnSelf executes normally (doesn't crash)")
+print("  → Contradiction!")
+print("")
+print("Case 2: If weirdCrashOnSelf doesn't crash on itself")
+print("  → crashOnString says 'no'")
+print("  → weirdCrashOnSelf forces a crash") 
+print("  → Contradiction!")
+print("")
+print("Conclusion: crashOnString cannot exist!")
+```
+
+## Practical implications 
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gear >}} **No perfect bug finder**
+  - Cannot create a program that finds all bugs in all programs
+  - Static analysis tools work on many cases but not universally
+  - Software companies invest heavily in partial solutions
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gear >}} **No universal crash detector**
+  - Cannot predict crashes for all possible program inputs
+  - Testing and runtime monitoring remain essential
+  - Impossibility doesn't mean "useless" - means "not universal"
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gear >}} **Fundamental computational limits**
+  - Some problems are unsolvable even with infinite resources
+  - **Proofgrammers must understand these boundaries**
+
+:::
+
+## Try self-analysis experiments
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 8
+def analyzeProgram(program_code: str) -> str:
+    """Analyze properties of a program given as a string."""
+    lines = program_code.split('\n')
+    line_count = len(lines)
+    
+    # Count occurrences of different keywords
+    word_count = len(program_code.split())
+    has_loop = 'while' in program_code or 'for' in program_code
+    has_conditional = 'if' in program_code
+    
+    analysis = []
+    analysis.append(f"Lines: {line_count}")
+    analysis.append(f"Words: {word_count}")
+    analysis.append(f"Has loops: {has_loop}")
+    analysis.append(f"Has conditionals: {has_conditional}")
+    
+    return "; ".join(analysis)
+
+# Test the analyzer on itself!
+analyzer_code = '''def analyzeProgram(program_code: str) -> str:
+    lines = program_code.split('\\n')
+    line_count = len(lines)
+    word_count = len(program_code.split())
+    has_loop = 'while' in program_code or 'for' in program_code
+    has_conditional = 'if' in program_code
+    return f"Lines: {line_count}; Words: {word_count}"'''
+
+self_analysis = analyzeProgram(analyzer_code)
+print("Program analyzing itself:")
+print(f"Analysis result: {self_analysis}")
+print("\nNote: This kind of self-analysis is possible!")
+print("But detecting whether ANY program crashes is impossible.")
+```
+
+## Theoretical limits vs practical tools
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **What IS impossible**
+  - Universal bug detection for all programs
+  - Perfect crash prediction for all inputs  
+  - Determining if any arbitrary program halts
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **What IS possible**
+  - Bug detection for many specific program classes
+  - Crash prediction for many common scenarios
+  - Static analysis tools that work on practical codebases
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Proofgrammer perspective**  
+  - Impossibility results guide what tools to build
+  - Focus effort on solvable subproblems
+  - Understand fundamental computational boundaries
+
+:::
+
+# These impossibility results are foundational to computer science!
+
+## Why impossibility matters
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- {{< iconify game-icons team-idea >}} **Scientific understanding:**
+  - Reveals fundamental limits of computation itself
+  - Not about hardware limitations or current technology
+  - Shows logical boundaries that no algorithm can cross
+
+:::
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- {{< iconify game-icons team-idea >}} **Practical guidance:**
+  - Helps avoid impossible engineering goals
+  - Guides research toward productive directions  
+  - Explains why some software problems are persistently difficult
+  - **Informs realistic expectations for automated tools**
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid microscope >}} Understanding impossibility is as important as understanding possibility. It prevents wasted effort on unsolvable problems and focuses innovation on achievable goals.
+
+:::
+
+## Key takeaways
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid gear >}} **Proof by contradiction**: Natural reasoning technique for impossibility results  
+- {{< iconify fa6-solid microscope >}} **Self-reflection paradox**: Programs analyzing themselves creates logical contradictions
+- {{< iconify fa6-solid diagram-project >}} **Universal impossibilities**: `yesOnString`, `crashOnString`, and perfect bug detection
+- {{< iconify fa6-solid diagram-project >}} **Practical implications**: Static analysis tools work on subproblems, not universally  
+- {{< iconify fa6-solid book-open >}} **Theoretical foundation**: Uncomputability theory guides computer science boundaries
+- {{< iconify fa6-solid gears >}} **Proofgrammer insight**: Some problems are fundamentally unsolvable
+- {{< iconify fa6-solid lightbulb >}} **Next exploration**: Turing machines and formal models of computation
+- {{< iconify fa6-solid rocket >}} **Deep understanding**: Computational limits are as important as computational capabilities
+
+:::
+
+## Looking ahead
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- **Chapter 4**: Turing machines as formal computational models  
+- **Chapter 5**: Universal computation and Church-Turing thesis
+- **Chapters 6-7**: More impossibility results and undecidability
+- **Chapters 8+**: Complexity theory and tractable vs intractable problems
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} The impossibility results we've discovered are just the beginning. The landscape of uncomputability reveals profound truths about the nature of computation itself. **Welcome to the deep end of theoretical computer science!**
+
+:::
