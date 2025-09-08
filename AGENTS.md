@@ -1,4 +1,4 @@
-# Claude Sonnet 4 and GPT-series Agent Instructions
+# Coding and Writing Agent Instructions
 
 This document provides instructions for GPT 4.1, Claude Sonnet 4, or another
 large language model (LLM) when working on the Quarto-based website project for
@@ -25,7 +25,10 @@ mathematical concepts as Python programs. These are the course's goals:
     Computation](https://whatcanbecomputed.com/) and in the PDF in the root of
     this GitHub repository (only available locally of the course instructor's
     repository and not in the publicly available GitHub repository) called
-    `What-Can-Be-Computed.pdf`.
+    `What-Can-Be-Computed.pdf` and in `What-Can-Be-Computed.md`.
+    - You will also find access to slides from the book's author that connect
+    to the textbook in a specific file like ` 03-impossible-programs.qmd`
+    that are provided to you on a case-by-case basis for a specific task.
     - These are the main objectives of the course:
         - We would like to understand what can be computed:
             - In principle (i.e., undecidability/uncomputability: computability theory)
@@ -240,6 +243,13 @@ print(not duplicates([1,2,3,4]))
      a lengthy code block, then break up the code block into multiple slides.
 20.  Make sure that any slide with a code block includes enough space to see
      most, if not all of, the output produced by the source code block.
+21.  When a slide contains mathematical notation, like P(I), then you should
+     use LaTeX math notation to express the mathematical notation. Here is
+     an example of how to express P(I) in LaTeX math notation: `$P(I)$`.
+22.  Make sure that the slides that you generate closely follow the specified
+     chapter of the book and the specified content for the author's slides.
+     Do not make up any new content unless it is clearly needed and it is
+     easy to justify the new content and easy for a beginner to understand it.
 
 ## Content Verification
 
