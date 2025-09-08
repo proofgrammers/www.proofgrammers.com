@@ -20,8 +20,13 @@ format:
 
 # Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-  Goal: Build a Syntax Error Detection
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}  
+  - The Goal: Build a Syntax Error Detector
+
+  - Takes a program as input and checks for syntax errors
+
+  - This is a SISO program
+
 :::
 
 ## What is a Syntax Error?
@@ -64,10 +69,10 @@ def detect_syntax_error(code: str) -> bool:
     """Detect if code has sy ntax errors"""
     try:
         ast.parse(code)   # Syntax check
-        return False
+        return "no"
     except SyntaxError as e:
         print(f"Syntax Error: {e}")
-        return True
+        return "yes"
 
 def run_code_safely(code: str):
     """Run code safely and catch runtime errors"""
