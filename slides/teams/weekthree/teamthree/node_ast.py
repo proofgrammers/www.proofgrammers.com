@@ -7,8 +7,6 @@ class ASTAnalyzer:
             with open("cannot_detect_main.py", "r", encoding='utf-8') as fn:
                 read_fn = fn.read()
                 code = ast.parse(read_fn)
-                code_print = ast.dump(code, indent=4) # delete
-                print(code_print) # delete
             return code
         except FileNotFoundError:
             print("Error: 'main.py' not found.")
@@ -26,22 +24,19 @@ class ASTAnalyzer:
         return functions
 
     def find_main(self):
-        """Find main function in nodes created from the AST."""
-        ast_function = self.walk_tree()
-        if not ast_function:
+        """Report whether a 'main' function exists."""
+        names = self.walk_tree()
+        if names is None:
             return
-        main_name = "'main'"
 
-        for name in ast_function:
-            if name == "main":
-                print(f"Main function found: {name}")
-            else:
-                print("The function you have entered as an input contains no main function.")
+        if "main" in names:
+            print("Main function found: main")
+        else:
+            print("No main function found.")
 
 
 if __name__ == "__main__":
     analyzer = ASTAnalyzer()
-    analyzer.create_ast() # delete
     analyzer.walk_tree()
     analyzer.find_main()
 
