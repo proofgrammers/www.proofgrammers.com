@@ -1,0 +1,19 @@
+---
+title: "Finding impossible programs"
+description: "Discern the limits of computation"
+date: "2025-09-08"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
