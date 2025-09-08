@@ -26,44 +26,52 @@ format:
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid microscope >}} Keep in mind halting detector. Halting detector tells if
-a program would stop or run forever.  
+{{< iconify fa6-solid microscope >}} Keep in mind halting detector. Halting
+detector tells if a program would stop or run forever.  
 
 :::
 
-# Problem
+## Problem
+
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Undecidability**  No algorithm can always decide whether a program halts
+(the Halting Problem) → SISO is undecidable.  
+
+- **All-input guarantee**  The input domain is infinite, so finite testing
+can’t prove a program halts with exactly one output for *all* inputs.
+
+- **Trade-off**  In restriction (no loops/recursion), we can verify SISO by
+checking the code (static analysis).  
+
+:::
+
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.8em;"}
+
+{{< iconify fa6-solid microscope >}} Static analysis is reasoning about a
+program’s behavior just by looking at its code, not by executing it.
+
+:::
+
+## Theory Insights
 
 ::: {fragment}
-- **Undecidability**  
-  No algorithm can always decide whether a program halts (the Halting Problem) → SISO is undecidable.  
 
-- **All-input guarantee**  
-  The input domain is infinite, so finite testing can’t prove a program halts with exactly one output for *all* inputs.
-
-- **Trade-off**  
-  In restriction (no loops/recursion), we can verify SISO by checking the code (static analysis).  
-:::
-
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid microscope >}} Static analysis is reasoning about a program’s behavior just by looking at its code, not by executing it.
-
-:::
-
-# Theory Insights
-
-::: {fragment}
 - **∀ vs ∃**: To prove SISO we need ∀ inputs → impossible by testing.  
 - **Type hints ≠ guarantees**: Annotations show intent, not behavior.  
-- **Checker reality**: We can detect some violations (NO), but a universal YES is impossible.  
-- **Restrictions help**: In loop-free / recursion-free languages, static analysis *can* decide SISO.  
+- **Checker reality**: We can detect some violations (NO), but a universal YES
+is impossible.  
+- **Restrictions help**: In loop-free / recursion-free languages, static
+analysis *can* decide SISO.  
+
 :::
 
 # Python Implementation
 
 ## Example Solution
 
-::: {fragment}
+::: {.fragment .fade style="margin-top: 0.25em; font-size: 0.8em;"}
+
 - Built a tool: **DetermineSISO**  
 - Runs a target program on a **finite set of test inputs**  
 - Checks for:  
@@ -73,6 +81,7 @@ a program would stop or run forever.
   - ✅ SISO-LIKELY  
   - ❌ NOT-SISO-LIKELY  
   - ❓ INDETERMINATE  
+
 :::
 
 ## Example Target
@@ -112,10 +121,12 @@ NOT-SISO-LIKELY on tested inputs ❌
 # Conclusion
 
 ::: {.fragment}
-- In general, it is impossible to realize DetermineSISO as a verifier that always returns a correct Yes/No.
-- SISO is a non-trivial semantic property; due to the Halting Problem, no algorithm can fully decide it automatically for arbitrary programs.
-- DetermineSISO works heuristically, but a perfect verifier is impossible (Halting Problem).
+
+- In general, it is impossible to realize DetermineSISO as a verifier that
+always returns a correct Yes/No.
+- SISO is a non-trivial semantic property; due to the Halting Problem, no
+algorithm can fully decide it automatically for arbitrary programs.
+- DetermineSISO works heuristically, but a perfect verifier is impossible
+(Halting Problem).
 
 :::
-
-
