@@ -131,6 +131,107 @@ modify, making abstract theoretical concepts concrete and accessible
 - This concept bridges the gap between theoretical understanding and practical
 programming skills that proofgrammers need to develop
 
+### Week Three Slides for Impossible Programs (Chapter 3)
+
+**Chapter 3 Core Concepts and Theoretical Foundation**:
+
+- **Proof by Contradiction**: Introduced as natural human reasoning pattern with
+everyday example (milk purchase scenario) connecting to mathematical formalism
+where statement S implies consequence C, but C contradicts known truth T,
+therefore S is false
+- **Programs Analyzing Other Programs**: Demonstrates `countLines.py` analyzing
+`multiplyAll.py` and self-analyzing with `countLines(rf('countLines.py'))`,
+establishing foundation for meta-computation and self-reflection in programs
+- **Self-Reflection Paradox**: Turing's 1936 insight that self-reflective
+capability both enables powerful computation and creates fundamental limitations
+- **Decision Programs Suite**: Implementation of `containsGAGA`, `yes`,
+`longerThan1K`, and `maybeLoop` programs with comprehensive examples showing
+program-on-program analysis from WCBC Figure 3.2
+
+**The Impossibility Proof Structure**:
+
+- **Hypothetical yesOnString Program**: Definition where `yesOnString(P, I)`
+returns "yes" if program P returns "yes" on input I, "no" otherwise - essential
+for formal impossibility proof
+- **yesOnSelf Simplification**: `yesOnSelf(P) = yesOnString(P, P)` asking "Does
+program P return 'yes' when given itself as input?" - creates conditions for
+logical contradiction
+- **notYesOnSelf Construction**: Returns opposite of `yesOnSelf` result,
+creating program that returns "yes" if and only if it returns "no" when applied
+to itself - demonstrating logical impossibility
+- **Direct Contradiction**: `notYesOnSelf("notYesOnSelf.py")` creates
+paradoxical situation where program must simultaneously return "yes" and "no"
+
+**Proof by Contradiction Implementation**:
+
+- **Step-by-step logical structure**: Assume yesOnString exists (statement S),
+derive that notYesOnSelf can be created (consequence C), but notYesOnSelf leads
+to logical contradiction (contradicts known impossibility), therefore yesOnString
+cannot exist
+- **Compact weirdYesOnString proof**: More direct approach where
+`weirdYesOnString(P)` immediately creates contradiction when applied to itself,
+eliminating intermediate steps
+- **Crash detection impossibility**: `weirdCrashOnSelf` program demonstrates
+same contradiction pattern applies to crash prediction, showing broader scope of
+uncomputability results
+
+**Python Code Examples and Interactive Learning**:
+
+- **Decision program implementations**: All functions properly implement SISO
+requirements returning only "yes" or "no" strings
+- **Hypothetical program simulations**: Code demonstrates theoretical behavior
+of impossible programs for educational purposes while clearly marking them as
+impossible to implement
+- **Self-analysis experiments**: Interactive `pyodide` block allows students to
+experiment with `analyzeProgram` function performing legal self-analysis to
+contrast with impossible universal analysis
+- **Progressive complexity**: Examples build from simple pattern recognition to
+sophisticated logical contradictions
+
+**Practical Implications and Real-World Connections**:
+
+- **Software Engineering Limits**: No perfect bug finder or universal crash
+detector possible, but partial solutions remain valuable for practical
+development
+- **Static Analysis Tools**: Work effectively on specific program classes and
+common scenarios, guided by impossibility results toward productive applications
+- **Research and Development**: Understanding computational boundaries prevents
+wasted effort on unsolvable problems while focusing innovation on achievable
+goals
+
+**Educational Methodology and Theoretical Support**:
+
+- **Foundation for Advanced Topics**: Prepares students for Turing machines,
+Church-Turing thesis, and formal undecidability results in subsequent chapters
+- **Connection to Literature**: Examples directly correspond to WCBC Chapter 3
+content and standard computability theory textbooks
+- **Interactive Engagement**: Students can modify and experiment with code
+examples to reinforce understanding of theoretical concepts
+- **Critical Thinking Development**: Discussion prompts encourage analysis of
+computational limits and practical tool development strategies
+
+**Verification and Quality Assurance**:
+
+- **Successful Compilation**: All slides render correctly with `quarto render`
+and preview at http://localhost:8081/slides/weekthree/index.html
+- **Code Execution**: Python examples execute properly with expected outputs,
+including complex logical contradiction demonstrations
+- **Layout Standards**: Titles fit single lines, content properly distributed,
+fragment animations function correctly, and icons display appropriately
+- **Theoretical Accuracy**: Content aligns with standard computability theory
+presentations and WCBC textbook Chapter 3 learning objectives
+
+**Content Support References**:
+
+- **Alan Turing (1936)**: "Computing Machinery and Intelligence" - original
+impossibility results through self-reference and logical contradiction
+- **WCBC Chapter 3**: "Some Impossible Python Programs" - direct source for
+examples and proof structure
+- **Computability Theory Literature**: Standard presentations of halting
+problem, universal computation, and undecidability proofs
+- **Software Engineering Research**: Contemporary applications of theoretical
+limits to practical tool development and automated program analysis
+
 ### Week One Slides for Theory of Computation
 
 **Slide Content Transformation**:
