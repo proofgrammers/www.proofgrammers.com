@@ -315,5 +315,8 @@ print(result)
 ## Conclusion
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
-- x
+- `detect_equivalence` works by running both programs on the same input and checking if they both produce the same output or fail in the same way.
+- This approach only works for restricted cases, in the general case determining program equivalence is incomputable.
+- Our implementation works for simple programs where all possible inputs can be tested but it cannot handle complex programs with infinite input spaces.
+- This challenge demonstrates that while tools can help with specific cases, fully determining program equivalence for all programs is incomputable.
 :::
