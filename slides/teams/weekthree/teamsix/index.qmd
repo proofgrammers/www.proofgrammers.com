@@ -300,10 +300,14 @@ print(result)
 ## Tractable vs Intracable vs Uncomputable (Part 2)
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
-- Tractable
+- Tractable (in restricted cases)
     - runs in polynomial time
         - "The complexity class _Poly_ is the set of computational problems can be solved by a Python program with running time in _O(nᵏ)_, for some _k≥0_."
     - ![Complexity Proof](Screenshot%2025-09-08%100559.png)
+- Uncomputable (in the general case)
+    - runs in polynomial time
+        - as the input grows in complexity, so does the program complexity
+        - depending on input (specifically with infinite input spaces), program will become inefficient to run
 :::
 
 ## Limitations
