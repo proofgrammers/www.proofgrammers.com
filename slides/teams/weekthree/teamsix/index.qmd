@@ -286,8 +286,24 @@ print(result)
 ## Tractable vs Intracable vs Uncomputable
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
-- x
-- (https://www.bigocalc.com/)
+- Tractable
+    - "can be solved efficiently"
+    - computable in theory AND in practice
+- Intractable
+    - "method for solving exists, but is hopelessly time consuming"
+    - computable in theory BUT (maybe) not in practice
+- Uncomputable
+    - "cannot be solved by any computer program"
+    - NOT computable in theory or practice
+:::
+
+## Tractable vs Intracable vs Uncomputable (Part 2)
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+- Tractable
+    - runs in polynomial time
+        - "The complexity class _Poly_ is the set of computational problems can be solved by a Python program with running time in _O(nᵏ)_, for some _k≥0_."
+    - ![Complexity Proof](Screenshot%2025-09-08%100559.png)
 :::
 
 ## Limitations
