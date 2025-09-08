@@ -18,10 +18,13 @@ format:
     footer: "Proofgrammers"
 ---
 
-## Introduction
+# Introduction
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
-- x
+- **Goal:** Build a Equivalent Program Detection System
+- **Input:** Program 1 and Program 2
+- **Output:** "Yes" or "No"
+- **Motivation:** Program runtime efficiency
 :::
 
 # Theory of computation
@@ -282,18 +285,19 @@ print(result)
 
 ## Tractable vs Intracable vs Uncomputable
 
-::: {.fragment}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 - x
+- (https://www.bigocalc.com/)
 :::
 
 ## Limitations
 
-::: {.fragment}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 - x
 :::
 
 ## Conclusion
 
-::: {.fragment}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 - x
 :::
