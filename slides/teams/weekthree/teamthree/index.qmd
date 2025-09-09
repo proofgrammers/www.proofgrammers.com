@@ -172,7 +172,7 @@ analyzer.find_main()
 
 - Therefore it is harder to detect main function in Python programs
 
-```
+```cpp
 #include <iostream>
 #include <vector>
 
@@ -399,3 +399,9 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## Conclusion
+
+- It is not always possible to detect the `main` function in Python.
+- The reason for that is Python does not require a `main` function like other languages.
+- Static analyzers in industry are not really focusing on this "issue".
