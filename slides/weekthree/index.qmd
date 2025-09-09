@@ -127,6 +127,16 @@ print(f"The countLines.py program has {self_count} lines")
 
 # Foundation of impossibility
 
+::: incremental
+
+- Programs can analyze themselves
+- Programs can analyze other programs
+- Self-reflection creates contradictions
+- Proof by contradiction reveals impossibility
+- Discover fundamental limits of computation
+
+:::
+
 ## Decision programs we need
 
 ```{pyodide}
