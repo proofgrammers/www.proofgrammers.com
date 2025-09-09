@@ -283,7 +283,7 @@ print(result)
 ```
   
 
-## Tractable vs Intracable vs Uncomputable
+## Tractable vs Intractable vs Uncomputable
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 - Tractable
@@ -317,7 +317,7 @@ print(result)
 - The major limitation of our program is that the programs need to have the same structure 
     - If the two programs have different structures but will produce the same results for all inputs we would have a false negative
 
-- If you change the inequality of program P1 from $toal > 10$ to $10 < toal$ you would now get a negative even though the programs are still equivelent
+- If you change the inequality of program P1 from $toal > 10$ to $10 < toal$ you would now get a negative even though the programs are still equivalent
 
 :::
 
@@ -465,7 +465,7 @@ print(result)
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- There are an infinte number of ways to structure a program that will get the same results so it's unfeasible to make workarounds for structures being differnt but equivelent.
+- There are an infinte number of ways to structure a program that will get the same results so it's unfeasible to make workarounds for structures being different but equivalent.
 - It's not feasible to run every posible input through both programs as it would take an infinte amount of time to get through an infinte amount of inputs.
 - If an input never halted on one of the programs you would never be able to compare the output with the other program.
 
