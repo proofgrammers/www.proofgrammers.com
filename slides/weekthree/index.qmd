@@ -41,7 +41,7 @@ format:
 
 ## Proof by contradiction
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Natural human reasoning pattern**
   - **Statement S**: "I bought the milk on Monday"
@@ -51,12 +51,13 @@ format:
 
 :::
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Mathematical formulation**
-  - If S implies C, but C is false, then S is false
+  - If $S$ implies $C$, but $C$ is false, then $S$ is false
   - To prove something is true, assume its opposite and seek contradiction
   - Essential technique for impossibility proofs in computer science
+  - Note this proof technique does not constructively show what is true
 
 :::
 
