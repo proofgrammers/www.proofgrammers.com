@@ -297,7 +297,7 @@ print(result)
     - NOT computable in theory or practice
 :::
 
-## Tractable vs Intracable vs Uncomputable (Part 2)
+## Tractable vs Intractable vs Uncomputable (Part 2)
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 - Tractable (in restricted cases)
