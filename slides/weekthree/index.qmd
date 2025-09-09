@@ -141,7 +141,7 @@ print(f"The countLines.py program has {self_count} lines")
 
 ```{pyodide}
 #| autorun: true  
-#| max-lines: 10
+#| max-lines: 5
 def containsGAGA(inString: str) -> str:
     """Return yes if input contains GAGA."""
     if 'GAGA' in inString:
@@ -179,7 +179,6 @@ for test in test_cases:
     print(f"  yes: {yes(test)}")
     print(f"  longerThan1K: {longerThan1K(test)}")
     print(f"  maybeLoop: {maybeLoop(test)}")
-    print()
 ```
 
 ## Program analysis examples
