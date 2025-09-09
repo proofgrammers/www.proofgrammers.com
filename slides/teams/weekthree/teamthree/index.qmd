@@ -3,10 +3,9 @@ title: "DetectNoMainFunction Decision Problem"
 description: "Explore the detection of main functions"
 date: "2025-09-08"
 date-format: long
-author: Add Your Names Here
+author: Benedek Kaibas, Abishek Dhakal, Will Bennett
 execute:
   echo: true
-  engine: python
 format:
   live-revealjs:
     completion: true
@@ -19,14 +18,390 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of Computation
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+## What is the main function in Python?
 
-:::
+The main function in Python is declared, like this: `def main(some parameter):`
+
+The `if __name__ == "__main__"` guard checks whether a Python file has a main function.
+
+Direct run: then `__name__` is set to `"__main__"` -> block inside will be run.
+
+Imported Python File e.g.: `import my_script` then `__name__` is set to `my_script` ->
+no need for `main` function.
+
+## How does the main function look like in other languages?
+
+Let's see some other programming languages:
+
+- C++:
+
+```cpp
+int main(int argc, const* argv[]) {// call of the function} // parameters can be missed
+```
+
+- Java:
+
+```java
+public static void main(String[] args) {
+    // Program logic goes here
+}
+```
+
+## Do we always need a main function in Python?
+
+In **Python**, you don’t always need a `main()` function like in C, C++, or Java.
+
+- Python runs files **top to bottom**.
+- Any **top-level** code runs immediately when the script is executed.
+
+#### Example: without `main()`
+
+```{pyodide}
+#| autorun: true
+print("Hello, World!")
+
+# This code runs immediately when the script is executed
+```
+
+## Our tool to detect main function in Python programs
+
+```{pyodide}
+#| autorun: false
+
+import ast
+
+class ASTAnalyzer:
+    def create_ast(self):
+        """Creating an Abstract Syntax Tree."""
+        try:
+            with open("main.py", "r", encoding='utf-8') as fn:
+                read_fn = fn.read()
+                code = ast.parse(read_fn)
+            return code
+        except FileNotFoundError:
+            print("Error: 'main.py' not found.")
+            return None
+
+    def walk_tree(self):
+        """Walking through the created AST."""
+        code = self.create_ast()
+        if code is None:
+            return None
+        functions = []
+        for node in ast.walk(code):
+            if isinstance(node, ast.FunctionDef):
+                functions.append(node.name)
+        return functions
+
+    def find_main(self):
+        """Find main function in nodes created from the AST."""
+        ast_function = self.walk_tree()
+        if not ast_function:
+            return
+        main_name = "'main'"
+
+        for name in ast_function:
+            if name == "main":
+                print(f"Main function found: {name}")
+            else:
+                print("The function you have entered as an input contains no main function.")
+
+
+if __name__ == "__main__":
+    analyzer = ASTAnalyzer()
+    analyzer.walk_tree()
+    analyzer.find_main()
+```
+
+## How does our DetectMainFunction tool work?
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 20
+import ast
+
+class ASTAnalyzer:
+    def create_ast(self):
+        """Create an AST from an in-memory Python snippet."""
+        code_with_main = """\
+def main(word: str) -> str:
+    text = "gators"
+    if word in text:
+        return "True"
+    else:
+        return "False"
+
+if __name__ == "__main__":
+    print(main("gators"))
+"""
+        return ast.parse(code_with_main)
+
+    def walk_tree(self):
+        """Return a list of function names in the AST."""
+        tree = self.create_ast()
+        functions = []
+        for node in ast.walk(tree):
+            if isinstance(node, ast.FunctionDef):
+                functions.append(node.name)
+        return functions
+
+    def find_main(self):
+        """Print whether a 'main' function exists."""
+        fn_names = self.walk_tree()
+        if "main" in fn_names:
+            print("Main function found: main")
+        else:
+            print("The function you have entered as an input contains no main function.")
+
+
+analyzer = ASTAnalyzer()
+analyzer.find_main()
+```
+
+## Ease of Detecting main in Different languages
+
+- Python does not require `main` function
+
+- `main` function is an entry point in some languages: C, C++, Rust, Java
+
+- **NOTE**: C++ header files are not behaving the same as `import python_code`!
+
+- Funcion `main` behaves like other functions in Python
+
+- Therefore it is harder to detect main function in Python programs
+
+```cpp
+#include <iostream>
+#include <vector>
+
+std::vector<int> vec(std::vector<int> vec_int) {
+  if (sizeof(vec_int) == 0) {
+    std::cout << "Vector could not been found!";
+  }
+
+  for(int i: vec_int) {
+    std::cout << i;
+  }
+
+  if(sizeof(vec_int) != 0) {
+    return vec_int;
+  }
+}
+
+std::vector<int> ints = {1,2,3,4,5,6,7,8,9,10};
+vec(ints); // NOTE: Here we get a compiler error!
+
+int main() {
+  std::cout << "Only functions in main get executed in C++ or if they get called in a function that is executed in the main function!";
+}
+```
+
+## Let's see if we can detect the main function in different scenarios 1.
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 30
+import ast
+
+class ASTAnalyzer:
+    def create_ast(self):
+        """Create an AST from an in-memory Python snippet."""
+        code_with_main = """\
+from typing import Tuple
+
+def multiply(a: int, b: int) -> int:
+    return a * b
+
+def divide(a: int, b: int) -> int:
+    try:
+        result = int(a / b)
+        return result
+    except ZeroDivisionError:
+        b_int = int(b)
+        print(f"Cannot divide with {b_int}.")
+
+    return 0
+
+def main(func1, func2, *args, **kwargs):
+    return func1, func2
+
+print(multiply(5, 4))
+print(divide(10, 2))
+"""
+        return ast.parse(code_with_main)
+
+    def walk_tree(self):
+        """Walking through the created AST."""
+        code = self.create_ast()
+        if code is None:
+            return None
+        functions = []
+        for node in ast.walk(code):
+            if isinstance(node, ast.FunctionDef):
+                functions.append(node.name)
+        return functions
+
+    def find_main(self):
+        """Report whether a 'main' function exists."""
+        names = self.walk_tree()
+        if names is None:
+            return
+
+        if "main" in names:
+            print("Main function found: main")
+        else:
+            print("No main function found.")
+
+
+analyzer = ASTAnalyzer()
+analyzer.walk_tree()
+analyzer.find_main()
+```
+
+## Let's see if we can detect the main function in different scnarios 2.
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 30
+import ast
+
+class ASTAnalyzer:
+    def create_ast(self):
+        """Create an AST from an in-memory Python snippet."""
+        code_with_main = """\
+from typing import Tuple
+
+def multiply(a: int, b: int) -> int:
+    return a * b
+
+def divide(a: int, b: int) -> int:
+    try:
+        result = int(a / b)
+        return result
+    except ZeroDivisionError:
+        b_int = int(b)
+        print(f"Cannot divide with {b_int}.")
+
+    return 0
+
+if __name__ == "__main__":
+    print(multiply(9, 9))
+    print(divide(100, 10))
+
+
+def main(func1, func2, *args, **kwargs):
+    return func1, func2
+"""
+        return ast.parse(code_with_main)
+
+    def walk_tree(self):
+        """Walking through the created AST."""
+        code = self.create_ast()
+        if code is None:
+            return None
+        functions = []
+        for node in ast.walk(code):
+            if isinstance(node, ast.FunctionDef):
+                functions.append(node.name)
+        return functions
+
+    def find_main(self):
+        """Report whether a 'main' function exists."""
+        names = self.walk_tree()
+        if names is None:
+            return
+
+        if "main" in names:
+            print("Main function found: main")
+        else:
+            print("No main function found.")
+
+
+analyzer = ASTAnalyzer()
+analyzer.walk_tree()
+analyzer.find_main()
+```
+
+## Is it always possible to detect the main function then?
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 30
+import ast
+
+class ASTAnalyzer:
+    def create_ast(self):
+        """Create an AST from an in-memory Python snippet."""
+        code_with_main = """\
+def merge_lists():
+    list_integers = [1,2,3,4,5,6,7,8,9,10]
+    list_floats = []
+
+    for i in list_integers:
+        float_nums = float(i)
+        list_floats.append(float_nums)
+    return list_floats
+
+print(merge_lists())
+
+# main function storing functions only for internal use
+
+def _main():
+    merge_lists()
+    # other function calls will come here...
+"""
+        return ast.parse(code_with_main)
+
+    def walk_tree(self):
+        """Walking through the created AST."""
+        code = self.create_ast()
+        if code is None:
+            return None
+        functions = []
+        for node in ast.walk(code):
+            if isinstance(node, ast.FunctionDef):
+                functions.append(node.name)
+        return functions
+
+    def find_main(self):
+        """Report whether a 'main' function exists."""
+        names = self.walk_tree()
+        if names is None:
+            return
+
+        if "main" in names:
+            print("Main function found: main")
+        else:
+            print("No main function found.")
+
+
+
+analyzer = ASTAnalyzer()
+analyzer.walk_tree()
+analyzer.find_main()
+```
+
+## Importing Python codes
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 15
+
+import code # This code does not contain a main function
+
+def main():
+    """This is the main function of the file."""
+    print("Hello world!")
+    other_python_code = code.func() # this is where we import the other python file
+
+if __name__ == "__main__":
+    main()
+```
+
+## Conclusion
+
+- It is not always possible to detect the `main` function in Python.
+- The reason for that is Python does not require a `main` function like other languages.
+- Static analyzers in industry are not really focusing on this "issue".
