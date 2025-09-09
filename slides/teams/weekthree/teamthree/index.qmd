@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-## DetectNoMainFunction
+
 
 ## What is the main function in Python?
 
@@ -191,7 +191,7 @@ std::vector<int> vec(std::vector<int> vec_int) {
 }
 
 std::vector<int> ints = {1,2,3,4,5,6,7,8,9,10};
-vec(ints);
+vec(ints); // NOTE: Here we get a compiler error!
 
 int main() {
   std::cout << "Only functions in main get executed in C++ or if they get called in a function that is executed in the main function!";
@@ -381,4 +381,21 @@ def _main():
 analyzer = ASTAnalyzer()
 analyzer.walk_tree()
 analyzer.find_main()
+```
+
+## Importing Python codes
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 15
+
+import code # This code does not contain a main function
+
+def main():
+    """This is the main function of the file."""
+    print("Hello world!")
+    other_python_code = code.func() # this is where we import the other python file
+
+if __name__ == "__main__":
+    main()
 ```
