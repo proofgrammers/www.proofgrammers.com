@@ -225,12 +225,13 @@ for command, result in examples:
 
 :::
 
-::: incremental
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
 - **Are these programs computable**? *Yes*!
 - **Are these programs decidable**? *Yes*!
 - **Are these programs tractable**? *Yes*!
 - But, wait, what about `yesOnString`? *Woah, hold on*!
+- Or, what about `crashOnString`? *Woah, hold on*!
 
 :::
 
@@ -298,7 +299,7 @@ def testyesOnStringApprox():
 
 :::
 
-## The yesOnSelf simplification
+## The `yesOnSelf` simplification
 
 ::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
 
@@ -306,17 +307,9 @@ def testyesOnStringApprox():
   - `"yes"` if P is a valid Python program and P(P) = "yes"
   - `"no"` otherwise
 
-:::
-
-::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
-
-- **Relationship to yesOnString**: 
+- **Relationship to `yesOnString`**: 
   - `yesOnSelf(P)` = `yesOnString(P, P)`
   - Asks: "Does program P return 'yes' when given itself as input?"
-  
-:::
-
-::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
 
 - **Why this matters**: 
   - Simpler to analyze than the two-parameter version
@@ -325,40 +318,47 @@ def testyesOnStringApprox():
 
 :::
 
-## Examples with hypothetical yesOnSelf  
+## Examples with `yesOnSelf`
+
+::: incremental
+
+- `yesOnSelf`("not a program") returns "no"
+
+::: incremental
+
+## Using hypothetical `yesOnSelf`
 
 ```{python}
 # Hypothetical behavior of yesOnSelf
 def hypothetical_yesOnSelf(P: str) -> str:
     """HYPOTHETICAL: Check if program P returns 'yes' on itself."""
     if P == "yes.py":
-        return "yes"  # yes("yes.py") = "yes"
+        return "yes"
     elif P == "containsGAGA.py":
-        return "yes"  # containsGAGA.py contains "GAGA"
+        return "yes"
     else:
-        return "no"   # default case
+        return "no"
 
-# Show examples
+# show examples
 test_programs = ["yes.py", "containsGAGA.py", "longerThan1K.py"]
 
 print("Hypothetical yesOnSelf behavior:")
 for prog in test_programs:
     result = hypothetical_yesOnSelf(prog)
     print(f"yesOnSelf('{prog}') = {result}")
-
 print("\nRemember: We're assuming yesOnSelf exists to derive a contradiction!")
 ```
 
-## The devastating notYesOnSelf program
+## Devastating `notYesOnSelf`
 
 ```{python}
-# Here's where the contradiction emerges!
+# here's where the contradiction emerges!
 def notYesOnSelf(P: str) -> str:
     """Return the opposite of what yesOnSelf would return."""
     result = hypothetical_yesOnSelf(P)
     return "no" if result == "yes" else "yes"
 
-# Test on some programs
+# test on some programs
 test_cases = ["yes.py", "containsGAGA.py"]
 for prog in test_cases:
     yes_result = hypothetical_yesOnSelf(prog)
@@ -367,7 +367,7 @@ for prog in test_cases:
     print(f"notYesOnSelf('{prog}') = {not_result}")
     print()
 
-# The critical question
+# the critical question
 print("THE CRITICAL CASE:")
 print("What is notYesOnSelf('notYesOnSelf.py')?")
 print("This creates the contradiction!")
@@ -377,27 +377,23 @@ print("This creates the contradiction!")
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
-**Consider**: `notYesOnSelf("notYesOnSelf.py")`
+- **Consider**: `notYesOnSelf("notYesOnSelf.py")`
+    - **If it returns "yes"**: Then `yesOnSelf("notYesOnSelf.py")` = "no"
+    - **But if yesOnSelf returns "no"**: Then notYesOnSelf should return "yes"  
+    - **So**: notYesOnSelf returns "yes" when run on itself
 
-- **If it returns "yes"**: Then `yesOnSelf("notYesOnSelf.py")` = "no"
-- **But if yesOnSelf returns "no"**: Then notYesOnSelf should return "yes"  
-- **So**: notYesOnSelf returns "yes" when run on itself
-
-:::
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
-
-**But also**:
-
-- **If it returns "no"**: Then `yesOnSelf("notYesOnSelf.py")` = "yes"  
-- **But if yesOnSelf returns "yes"**: Then notYesOnSelf should return "no"
-- **So**: notYesOnSelf returns "no" when run on itself
+- **But also**:
+    - **If it returns "no"**: Then `yesOnSelf("notYesOnSelf.py")` = "yes"  
+    - **But if yesOnSelf returns "yes"**: Then notYesOnSelf should return "no"
+    - **So**: notYesOnSelf returns "no" when run on itself
 
 :::
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid exclamation-triangle >}} **Contradiction**: notYesOnSelf returns "yes" if and only if it returns "no"! No program can have this property, so notYesOnSelf cannot exist.
+{{< iconify fa6-solid exclamation-triangle >}} **Contradiction**: `notYesOnSelf`
+returns "yes" if and only if it returns "no"! No program can have this
+property, so `notYesOnSelf` cannot exist.
 
 :::
 
