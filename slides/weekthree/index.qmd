@@ -255,35 +255,48 @@ question leads to logical contradictions that make the program impossible!
 
 :::
 
-## Examples with hypothetical yesOnString
+## Approximating `yesOnString`
 
-```{python}
-# Hypothetical behavior (we'll prove this can't exist!)
-def hypothetical_yesOnString(P: str, I: str) -> str:
-    """HYPOTHETICAL: Check if program P returns 'yes' on input I."""
-    if P == "containsGAGA.py" and I == "CTGAGAT":
-        return "yes"  
-    elif P == "containsGAGA.py" and I == "hello":
-        return "no"   
-    elif P == "yes.py":
-        return "yes"  
+```python
+def yesOnStringApprox(progString, inString):   
+    if progString == rf('containsGAGA.py'):
+        return containsGAGA(inString)
+    elif progString == rf('longerThan1K.py'):
+        return longerThan1K(inString)
+    elif progString == rf('yes.py'):
+        return yes(inString)
+    elif progString == rf('maybeLoop.py'):
+        if not 'secret sauce' in inString: 
+            return 'no'
+        else:
+            return maybeLoop(inString)
     else:
-        return "no"   
-        
-# Show theoretical behavior
-examples = [
-    ("containsGAGA.py", "CTGAGAT"),
-    ("containsGAGA.py", "hello"),  
-    ("yes.py", "anything")
-]
+        return 'unknown' 
 
-print("Hypothetical yesOnString behavior:")
-for prog, input_str in examples:
-    result = hypothetical_yesOnString(prog, input_str)
-    print(f"yesOnString('{prog}', '{input_str}') = {result}")
-
-print("\nBut we will prove this program cannot exist!")
+def testyesOnStringApprox():
+    testvals = [
+        ('containsGAGA.py', 'TTTTGAGATT', 'yes'),
+        ('containsGAGA.py', 'TTTTGAGTT', 'no'),
+        ('longerThan1K.py', 1500*'x', 'yes'),
+        ('longerThan1K.py', 'xyz', 'no'),
+        ('yes.py', 'xyz', 'yes'),
+        ('maybeLoop.py', '', 'no'),
+        ('maybeLoop.py', 'asdfhjksd', 'no'),
+        ('maybeLoop.py', 'secret sauce', 'yes'),
+        ('maybeLoop.py', 'xsecret sauce', 'no'),
+        ('maybeLoop.py', 'xsecret saucex', 'yes'),
+    ]
+    for (filename, inString, solution) in testvals:
+        val = yesOnStringApprox(rf(filename), inString)
+        utils.tprint(filename + ":", val)
+        assert val == solution
 ```
+
+::: fragment
+
+- Approximates `yesOnString` for known programs and inputs
+
+:::
 
 ## The yesOnSelf simplification
 
