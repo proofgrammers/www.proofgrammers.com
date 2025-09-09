@@ -1,9 +1,9 @@
 ---
-title: "DetectInfiniteLoop Decision Problem"
-description: "Explore the detection of infinite loops"
+title: "Detect Infinite Loop Program"
+description: "Explore tractability of error correction"
 date: "2025-09-08"
 date-format: long
-author: Add Your Names Here
+author: Aidan Dyga, Molly Suppo, Javier Bejarano-Jimenez
 execute:
   echo: true
 format:
@@ -18,14 +18,174 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+## Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.fragment}
+  - **Goal:** Implement `DetectInfiniteLoop` to flag source code that will never terminate.
+  - **Motivation:** Infinite loops waste computational resources.
+  - **Examples of loops:**
+    - `while(True)`
+    - `for i in range(10)`
+:::
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+## What is an Infinite Loop?
 
+::: {.fragment}
+  - **Definition:** Code that repeats forever without reaching a stopping point.
+  - **Key signs:** No reachable exit condition, exit is impossible due to logic, waiting for an event that never happens
+  - **Common causes:** Loop variable never changes, unreachable return statement, waiting for an event that never occurs
+:::
+
+## Is this Problem Tractable, Intractable, or Uncomputable?
+
+::: {.fragment}
+  - **Answer:** Uncomputable in the general case.
+  - **Halting Problem:** It is mathematically proven that no algorithm can always decide whether an arbitrary program will halt or run forever.
+  - **In Practice:** We can only detect some infinite loops using patterns and heuristics.
+:::
+
+## Solutions
+
+::: {.fragment}
+  - **Static Analyzer:** A tool that examines source code without running it, searching for bugs, unreachable code, or infinite loops. (ex. Vulture)
+  - **How They Work:** Use pattern matching and heuristics to flag suspicious code (e.g., `while True`, loops with constant conditions).
+  - **Our Approach:** Implement our very own basic static anaylzer.
+:::
+
+## Python Implementation
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 13
+"""Detects infinite loops in Python source code."""
+
+import ast
+
+def has_infinite_loop(source_code: str) -> bool:
+    """Checks if the source code contains an obvious infinite loop."""
+    # Parse the source code into an AST (Abstract Syntax Tree)
+    tree = ast.parse(source_code)
+    # Walk through all nodes in the AST
+    for node in ast.walk(tree):
+        # Check for 'while True' loops
+        if isinstance(node, ast.While):
+            if isinstance(node.test, ast.Constant) and node.test.value is True:
+                # Found a 'while True' loop, which is likely infinite
+                return True
+        # Check for 'for' loops with no break or exit condition (very basic)
+        if isinstance(node, ast.For):
+            # If the loop body does not contain a 'break', it may be infinite
+            if not any(isinstance(child, ast.Break) for child in ast.walk(node)):
+                return True
+        # Check for 'for' loops with an infinite iterator in the loop header
+        # Microsoft Copilot was used to assist in creating the code for detecting infinite iterators
+        if isinstance(node, ast.For):
+            # Check if the iterable is a call to itertools.count()
+            # If it is, it is likely an infinite loop
+            if isinstance(node.iter, ast.Call):
+                func = node.iter.func
+                if isinstance(func, ast.Attribute) and func.attr == "count":
+                  # Check for a break condition in the loop, if there isn't one, likely infinite loop
+                  if not any(isinstance(child, ast.Break) for child in ast.walk(node)):
+                    return True
+            # Check if the iterable is a call to itertools.cycle()
+            # If it is, it is likely an infinite loop
+            if isinstance(node.iter, ast.Call):
+                func = node.iter.func
+                if isinstance(func, ast.Attribute) and func.attr == "cycle":
+                  # Check for a break condition in the loop, if there isn't one, likely infinite loop
+                  if not any(isinstance(child, ast.Break) for child in ast.walk(node)):
+                    return True
+            # Check if the iterable is a call to itertools.repeat()
+            # If it is, it is likely an infinite loop
+            if isinstance(node.iter, ast.Call):
+                func = node.iter.func
+                if isinstance(func, ast.Attribute) and func.attr == "repeat":
+                  # Check for a break condition in the loop, if there isn't one, likely infinite loop
+                  if not any(isinstance(child, ast.Break) for child in ast.walk(node)):
+                    return True
+    return False
+
+# Example usage:
+# uv run infinite-loop-detector.py
+example_code1 = """
+while True:
+    pass
+"""
+example_code2 = """
+for i in range(10):
+    print(i)
+    break
+"""
+example_code3 = """
+import itertools
+
+for i in itertools.count():
+    print(i)
+"""
+example_code4 = """
+import itertools
+
+count = 0
+for item in itertools.cycle(['A', 'B', 'C']):
+  print(item)
+  count += 1
+  if count >= 10:
+    break
+"""
+example_code5 = """
+import itertools
+
+for item in itertools.repeat('A'):
+    print(item)
+"""
+result1 = has_infinite_loop(example_code1)
+result2 = has_infinite_loop(example_code2)
+result3 = has_infinite_loop(example_code3)
+result4 = has_infinite_loop(example_code4)
+result5 = has_infinite_loop(example_code5)
+print("Infinite loop detected!" if result1 else "No infinite loop detected.")
+print("Infinite loop detected!" if result2 else "No infinite loop detected.")
+print("Infinite loop detected!" if result3 else "No infinite loop detected.")
+print("Infinite loop detected!" if result4 else "No infinite loop detected.")
+print("Infinite loop detected!" if result5 else "No infinite loop detected.")
+```
+
+## Limitations
+
+::: {.fragment}
+- **Not complete:** Our program cannot detect every possible infinite loop (Halting Problem).
+- **False positives:** Code may look infinite (e.g., while True) but actually breaks out later.
+- **False negatives:** Some infinite loops depend on logic that’s too complex to analyze (e.g., recursion, user input, random values).
+:::
+
+## More Limitations
+
+::: {.fragment}
+- *Example False Negative:*  
+  ```python
+  i = 1
+  while i != 0:
+      i = (i * 2) % 5
+  ```
+  Looks like it will end, but runs forever.  
+  Our program would incorrectly say: *"No infinite loop detected."*
+- **No runtime awareness:** The analyzer only looks at code patterns — it does not execute the program.
+- **Scope:** Focuses only on simple patterns (while True, infinite iterators) and may miss more subtle cases.
+:::
+
+## Conclusion
+
+::: {.fragment}
+  - **Impossible:** Detecting all infinite loops is impossible due to the Halting Problem.
+  - **Partial Solution:** Heuristics can still catch many real bugs.
+  - **Takeaway:** Use static analysis to flag obvious cases, but undecidable in general.
+:::
+
+## Sources
+
+::: {.fragment}
+  - Course Textbook
+  - GitHub Copilot
+  - Microsoft Copilot
 :::
