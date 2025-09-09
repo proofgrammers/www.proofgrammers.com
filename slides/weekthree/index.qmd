@@ -425,8 +425,6 @@ impossibility!
 
 :::
 
-# The complete impossibility proof
-
 ## The impossibility proof structure
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
@@ -446,58 +444,6 @@ impossibility!
   - This means that `yesOnString` cannot logically exist
 
 :::
-
-## Compact impossibility proof
-
-```python
-# Direct proof using the "weird" program technique
-def weirdYesOnString(P: str) -> str:
-    """The program that creates immediate contradiction."""
-    result = hypothetical_yesOnString(P, P)  # yesOnString(P, P)
-    return "no" if result == "yes" else "yes"
-
-print("Direct contradiction approach:")
-print("What is weirdYesOnString('weirdYesOnString.py')?")
-print("")
-print("If result = 'yes':")
-print("  Then yesOnString says weirdYesOnString returns 'yes'")
-print("  But weirdYesOnString should return 'no' - contradiction!")
-print("")
-print("If result = 'no':")
-print("  Then yesOnString says weirdYesOnString doesn't return 'yes'") 
-print("  But weirdYesOnString should return 'yes' - contradiction!")
-print("")
-print("CONCLUSION: yesOnString cannot exist.")
-```
-
-## Crash detection is also impossible
-
-```python
-def weirdCrashOnSelf(P: str) -> str:
-    """Reveals crash detection impossibility."""
-    # Assumes crashOnString exists (it doesn't!)
-    def hypothetical_crashOnString(prog: str, input_str: str) -> str:
-        return "no"  # Placeholder - this is impossible!
-    
-    crash_result = hypothetical_crashOnString(P, P)
-    if crash_result == "yes":
-        return "no crash here"  # Don't crash if P crashes on itself
-    else:
-        return "simulated crash"  # Crash if P doesn't crash on itself
-
-print("Crash detection impossibility:")
-print("Consider: weirdCrashOnSelf('weirdCrashOnSelf.py')")
-print("")
-print("Case 1: If weirdCrashOnSelf crashes on itself")
-print("  → crashOnString says 'yes', so weirdCrashOnSelf doesn't crash")
-print("  → Contradiction!")
-print("")
-print("Case 2: If weirdCrashOnSelf doesn't crash")
-print("  → crashOnString says 'no', so weirdCrashOnSelf crashes") 
-print("  → Contradiction!")
-print("")
-print("Conclusion: crashOnString cannot exist!")
-```
 
 ## Practical implications 
 
