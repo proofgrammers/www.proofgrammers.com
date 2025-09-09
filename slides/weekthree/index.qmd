@@ -184,7 +184,7 @@ for test in test_cases:
 ## Program analysis examples
 
 ```{python}
-# Define analysis functions
+# define analysis functions
 def containsGAGA(inString: str) -> str:
     return 'yes' if 'GAGA' in inString else 'no'
 
@@ -194,7 +194,7 @@ def yes(inString: str) -> str:
 def longerThan1K(inString: str) -> str:
     return 'yes' if len(inString) > 1000 else 'no'
 
-# Simulate program files
+# simulate program files
 programs = {
     'containsGAGA.py': 'def containsGAGA(inString):\n    return "yes" if "GAGA" in inString else "no"',
     'yes.py': 'def yes(inString):\n    return "yes"',
@@ -204,7 +204,7 @@ programs = {
 def rf(filename: str) -> str:
     return programs.get(filename, 'File not found')
 
-# Programs analyzing other programs
+# programs analyzing other programs
 examples = [
     ("containsGAGA('CTGAGAT')", containsGAGA('CTGAGAT')),
     ("containsGAGA(rf('geneticString.txt'))", containsGAGA(rf('geneticString.txt'))),
@@ -215,7 +215,26 @@ for command, result in examples:
     print(f"{command} = {result}")
 ```
 
-## The hypothetical yesOnString program
+## Review for current programs
+
+::: {.fragment .callout-note icon=true title="Summary of simple decision programs"}
+
+- `containsGAGA(inString)`: returns "yes" if input contains "GAGA", else "no"
+- `yes(inString)`: always returns "yes" regardless of input or input characteristics
+- `longerThan1K(inString)`: returns "yes" if input length > 1000, else "no"
+
+:::
+
+::: incremental
+
+- **Are these programs computable**? *Yes*!
+- **Are these programs decidable**? *Yes*!
+- **Are these programs tractable**? *Yes*!
+- But, wait, what about `yesOnString`? *Woah, hold on*!
+
+:::
+
+## Hypothetical `yesOnString`
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
