@@ -3,24 +3,97 @@ title: "DetectSyntaxError Decision Problem"
 description: "Explore the detection of syntactically invalid programs"
 date: "2025-09-08"
 date-format: long
-author: Add Your Names Here
+author: Grant Anderson, Cullen Doyle, Ritesh Ojha, Miguel Orti Vila
 execute:
   echo: true
 format:
-  revealjs:
+  live-revealjs:
+    completion: true
     theme: default
     css: ../../../css/styles.css
+    history: false
+    scrollable: true
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
 ---
 
-# Theory of Computation
+# Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}  
+  - The Goal: Build a Syntax Error Detector
+  - Takes a program as an input (string) and checks for syntax errors
+  - Also, make it SISO
 :::
+
+## What is a Syntax Error?
+
+- Occurs when code violates **Python grammar rules**  
+- Examples:
+```python
+for i in range(5)  # Missing colon
+
+def hello():
+print("hi")  #  No Indentation
+
+for i is range(5):  # should be `in` instead of `is`
+```
+
+- Syntax errors are detected before code runs
+- Different from runtime errors, which happen during execution
+
+## Building a Syntax Error Detector
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+import ast
+
+def detect_syntax_error(code: str) -> str:
+    """Detect if code has syntax errors"""
+    try:
+        ast.parse(code)   # Syntax check
+        return "no"
+    except SyntaxError as e:
+        return "yes"
+
+print("=== Code with Correct syntax ===")
+code1 = "for i in range(5):\n    print(a)"
+print(detect_syntax_error(code1))
+
+print("\n=== Code with Incorrect syntax, missing colon ===")
+code2 = "for i in range(5)\n"
+print(detect_syntax_error(code2))
+
+print("\n=== Code with Incorrect syntax, bad indent ===")
+code3 = "def hello():\nprint('hi')"
+print(detect_syntax_error(code3))
+```
+
+## How does it work?
+
+- Python’s ast module converts code into an Abstract Syntax Tree (AST).
+- ast.parse(code) attempts to parse the code according to Python’s grammar rules.
+- If the code violates Python syntax like a missing colon, indentation, or wrong keyword, Python gives a SyntaxError.
+- This is a SISO(Single Input Single Output) Python program because it takes one piece of Python code as input (a string) and the program produces one clear output, either Syntax Error detected ("yes") or no Syntax Error ("no") (and optionally prints runtime errors if any occur).
+
+## Is this problem feasible in the General Case?
+
+Yes!
+
+- Syntax errors are detectable in the general case
+- Other errors outside of our scope will not be picked up on
+
+## Is this program tractable and computable?
+
+YES, it is both computable AND tractable!
+
+- A parser either accepts or raises SyntaxError
+- It runs roughly linear to the size of the source, so it's tractable
+- Only checks syntax
+- Results will vary on the version of python used
+- An incomplete input can look like an error (unexpected EOF)
+
+Can fix a lot of these by selecting python version, incremental parsing, etc...
+
+## Q&A
