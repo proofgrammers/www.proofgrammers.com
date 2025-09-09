@@ -524,3 +524,14 @@ analyzing themselves creates contradictions
 analysis works on sub-problems, not universally  
 
 :::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Wow, this was really brain breaking! Now, you
+should**:
+    - Read the chapter and hand-write or type out the key results
+    - Explain the key results to a member of this class
+    - Explain the key results to the instructor in office hours
+    - Bring your questions to the proofgrammer charette session
+
+:::
