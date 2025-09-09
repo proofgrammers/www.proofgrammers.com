@@ -3,7 +3,7 @@ title: "DetectEquivalentPrograms Decision Problem"
 description: "Explore the detection of equivalent programs"
 date: "2025-09-08"
 date-format: long
-author: Add Your Names Here
+author: Ainslee Plesko, Coltin Colucci, Alexander Goddard, and Preston Smith
 execute:
   echo: true
 format:
@@ -18,9 +18,18 @@ format:
     footer: "Proofgrammers"
 ---
 
+# Introduction
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+- **Goal:** Build a Equivalent Program Detection System
+- **Input:** Program 1 and Program 2
+- **Output:** "Yes" or "No"
+- **Motivation:** Program runtime efficiency
+:::
+
 # Theory of computation
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"} 
 
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
     - Understanding what can be computed
@@ -28,4 +37,444 @@ format:
     - Proving limits of computation
     - "Proofgrammers" combine *proofs* and *programming*
 
+:::
+
+
+# Equivalence Detector 
+
+## How does it work
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- **detect_equivalence(P1: str, P2: str)**: 
+  - **get_syntax_tree(program_one, program_two)**
+  - **standardize_naming(source: ast)**:
+  - **def same_string(str_one: str, str_two: str)**:
+  - **def same_error(error_one: Exception, error_two: Exception)**:
+
+:::
+
+::: {.boxed-content style="margin-top: 0.25em; font-size: 0.9em;"} 
+
+Takes two programs as strings and returns yes if it finds there equivalent no otherwise
+
+:::
+
+## Standardize Naming Function
+
+```python
+def standardize_naming(source: ast) -> ast.AST:
+    """
+    Standardizes all variable, function, and class names in the AST to numbered placeholders.
+    This helps ignore differences in naming conventions when comparing program structure.
+    """
+    used_name = {}  # Maps original names to standardized numbered names
+    name_id = 1  # Counter for generating new names
+    # Walk through all nodes in the AST
+    for node in ast.walk(source):
+        # Standardize variable names
+        if isinstance(node, ast.Name):
+            if node.id in used_name:
+                node.id = used_name[node.id]
+            else:
+                name_id += 1
+                used_name[node.id] = str(name_id)
+                node.id = str(name_id)
+        # Standardize function and class names
+        if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
+            if node.name in used_name:
+                node.name = used_name[node.name]
+            else:
+                name_id += 1
+                used_name[node.name] = str(name_id)
+                node.name = str(name_id)
+        # Standardize function argument names
+        if isinstance(node, ast.arg):
+            if node.arg in used_name:
+                node.arg = used_name[node.arg]
+            else:
+                name_id += 1
+                used_name[node.arg] = str(name_id)
+                node.arg = str(name_id)
+    return source
+```
+
+## Output of Standardize Naming
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Input** 
+```python
+def calculate_sum(numbers):
+  toal = 0
+  for n in numbers:
+    toal += n
+  if toal > 10:
+    print("Large sum")
+  else:
+    print("Small sum")
+  return toal
+
+calculate_sum([1, 2, 3, 7])
+
+```
+:::
+
+::: {.column width="50%"}
+**Output**
+```bash
+def 2(3):
+    4 = 0
+    for 5 in 3:
+        4 += 5
+    if 4 > 10:
+        6('Large sum')
+    else:
+        6('Small sum')
+    return 4
+2([1, 2, 3, 7])
+```
+:::
+
+:::
+
+
+## Detect Equivalence Program
+
+
+```{pyodide}
+#| max-lines: 15
+
+program_one = """def calculate_sum(numbers):
+    toal = 0
+    for n in numbers:
+        toal += n
+    if toal > 10:
+        print("Large sum")
+    else:
+        print("Small sum")
+    return toal
+
+calculate_sum([1, 2, 3, 7])
+"""
+
+program_two = """def calculate_sum(numbers):
+    total = 0
+    for n in numbers:
+        total += n
+    if total > 10:
+        print("Large sum")
+    else:
+        print("Small sum")
+    return total
+
+calculate_sum([1, 2, 3, 7])
+"""
+
+
+import ast
+from typing import Tuple
+
+
+def standardize_naming(source: ast) -> ast.AST:
+    """
+    Standardizes all variable, function, and class names in the AST to numbered placeholders.
+    This helps ignore differences in naming conventions when comparing program structure.
+    """
+    used_name = {}  # Maps original names to standardized numbered names
+    name_id = 1  # Counter for generating new names
+    # Walk through all nodes in the AST
+    for node in ast.walk(source):
+        # Standardize variable names
+        if isinstance(node, ast.Name):
+            if node.id in used_name:
+                node.id = used_name[node.id]
+            else:
+                name_id += 1
+                used_name[node.id] = str(name_id)
+                node.id = str(name_id)
+        # Standardize function and class names
+        if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
+            if node.name in used_name:
+                node.name = used_name[node.name]
+            else:
+                name_id += 1
+                used_name[node.name] = str(name_id)
+                node.name = str(name_id)
+        # Standardize function argument names
+        if isinstance(node, ast.arg):
+            if node.arg in used_name:
+                node.arg = used_name[node.arg]
+            else:
+                name_id += 1
+                used_name[node.arg] = str(name_id)
+                node.arg = str(name_id)
+    return source
+
+
+def get_syntax_tree(
+    program_one, program_two
+) -> Tuple[ast.AST | Exception, ast.AST | Exception]:
+    """
+    Parses two Python programs and returns their ASTs.
+    If parsing fails, returns the exception instead.
+    """
+    try:
+        parser_one = ast.parse(program_one)
+    except Exception as e:
+        parser_one = e
+
+    try:
+        parser_two = ast.parse(program_two)
+    except Exception as e:
+        parser_two = e
+
+    return parser_one, parser_two
+
+
+def same_string(str_one: str, str_two: str) -> bool:
+    """
+    Checks if two strings are equal, ignoring leading/trailing newlines.
+    """
+    if str_one.strip("\n") == str_two.strip("\n"):
+        return True
+    return False
+
+
+def same_error(error_one: Exception, error_two: Exception) -> bool:
+    """
+    Checks if two exceptions have the same string representation.
+    """
+    if str(error_one) == str(error_two):
+        return True
+
+
+def detect_equivalence(program_one: str, program_two) -> str:
+    """
+    Determines if two Python programs are equivalent by structure and naming.
+    Returns "Yes" if equivalent, otherwise "No".
+    """
+    parsed_str_one, parsed_str_two = get_syntax_tree(program_one, program_two)
+    # If the source code is identical, they are equivalent
+    if same_string(program_one, program_two):
+        return "Yes"
+    # If both programs fail to parse with the same error, consider them equivalent
+    if isinstance(parsed_str_one, Exception) and isinstance(parsed_str_two, Exception):
+        if same_error(parsed_str_one, parsed_str_two):
+            return "Yes"
+    # If only one fails to parse, they are not equivalent
+    elif isinstance(parsed_str_one, Exception) or isinstance(parsed_str_two, Exception):
+        return "No"
+    else:
+        # Standardize naming and compare AST dumps
+        standardized_str_one = standardize_naming(parsed_str_one)
+        standardized_str_two = standardize_naming(parsed_str_two)
+        if same_string(
+            ast.dump(standardized_str_one, indent=True),
+            ast.dump(standardized_str_two, indent=True),
+        ):
+            return "Yes the two programs should be equivalent"
+    return "No, The programs are not equivalent"
+
+# Print whether the two programs are equivalent
+result = detect_equivalence(program_one, program_two)
+print(result)
+```
+  
+
+## Tractable vs Intractable vs Uncomputable
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+- Tractable
+    - "can be solved efficiently"
+    - computable in theory AND in practice
+- Intractable
+    - "method for solving exists, but is hopelessly time consuming"
+    - computable in theory BUT (maybe) not in practice
+- Uncomputable
+    - "cannot be solved by any computer program"
+    - NOT computable in theory or practice
+:::
+
+## Tractable vs Intractable vs Uncomputable (Part 2)
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+- Tractable (in restricted cases)
+    - runs in polynomial time
+        - "The complexity class _Poly_ is the set of computational problems can be solved by a Python program with running time in $O(nᵏ)$, for some $k≥0$."
+- Uncomputable (in the general case)
+    - runs in polynomial time
+        - as the input grows in complexity, so does the program complexity
+        - depending on input (specifically with infinite input spaces), program will become inefficient to run
+:::
+
+## Limitations
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- The major limitation of our program is that the programs need to have the same structure 
+    - If the two programs have different structures but will produce the same results for all inputs we would have a false negative
+
+- If you change the inequality of program P1 from $toal > 10$ to $10 < toal$ you would now get a negative even though the programs are still equivalent
+
+:::
+
+```{pyodide}
+#| max-lines: 10
+
+program_one = """def calculate_sum(numbers):
+    toal = 0
+    for n in numbers:
+        toal += n
+    if  10 < toal:
+        print("Large sum")
+    else:
+        print("Small sum")
+    return toal
+
+calculate_sum([1, 2, 3, 7])
+"""
+
+program_two = """def calculate_sum(numbers):
+    total = 0
+    for n in numbers:
+        total += n
+    if total > 10:
+        print("Large sum")
+    else:
+        print("Small sum")
+    return total
+
+calculate_sum([1, 2, 3, 7])
+"""
+
+
+import ast
+from typing import Tuple
+
+
+def standardize_naming(source: ast) -> ast.AST:
+    """
+    Standardizes all variable, function, and class names in the AST to numbered placeholders.
+    This helps ignore differences in naming conventions when comparing program structure.
+    """
+    used_name = {}  # Maps original names to standardized numbered names
+    name_id = 1  # Counter for generating new names
+    # Walk through all nodes in the AST
+    for node in ast.walk(source):
+        # Standardize variable names
+        if isinstance(node, ast.Name):
+            if node.id in used_name:
+                node.id = used_name[node.id]
+            else:
+                name_id += 1
+                used_name[node.id] = str(name_id)
+                node.id = str(name_id)
+        # Standardize function and class names
+        if isinstance(node, (ast.FunctionDef, ast.ClassDef)):
+            if node.name in used_name:
+                node.name = used_name[node.name]
+            else:
+                name_id += 1
+                used_name[node.name] = str(name_id)
+                node.name = str(name_id)
+        # Standardize function argument names
+        if isinstance(node, ast.arg):
+            if node.arg in used_name:
+                node.arg = used_name[node.arg]
+            else:
+                name_id += 1
+                used_name[node.arg] = str(name_id)
+                node.arg = str(name_id)
+    return source
+
+
+def get_syntax_tree(
+    program_one, program_two
+) -> Tuple[ast.AST | Exception, ast.AST | Exception]:
+    """
+    Parses two Python programs and returns their ASTs.
+    If parsing fails, returns the exception instead.
+    """
+    try:
+        parser_one = ast.parse(program_one)
+    except Exception as e:
+        parser_one = e
+
+    try:
+        parser_two = ast.parse(program_two)
+    except Exception as e:
+        parser_two = e
+
+    return parser_one, parser_two
+
+
+def same_string(str_one: str, str_two: str) -> bool:
+    """
+    Checks if two strings are equal, ignoring leading/trailing newlines.
+    """
+    if str_one.strip("\n") == str_two.strip("\n"):
+        return True
+    return False
+
+
+def same_error(error_one: Exception, error_two: Exception) -> bool:
+    """
+    Checks if two exceptions have the same string representation.
+    """
+    if str(error_one) == str(error_two):
+        return True
+
+
+def detect_equivalence(program_one: str, program_two) -> str:
+    """
+    Determines if two Python programs are equivalent by structure and naming.
+    Returns "Yes" if equivalent, otherwise "No".
+    """
+    parsed_str_one, parsed_str_two = get_syntax_tree(program_one, program_two)
+    # If the source code is identical, they are equivalent
+    if same_string(program_one, program_two):
+        return "Yes"
+    # If both programs fail to parse with the same error, consider them equivalent
+    if isinstance(parsed_str_one, Exception) and isinstance(parsed_str_two, Exception):
+        if same_error(parsed_str_one, parsed_str_two):
+            return "Yes"
+    # If only one fails to parse, they are not equivalent
+    elif isinstance(parsed_str_one, Exception) or isinstance(parsed_str_two, Exception):
+        return "No"
+    else:
+        # Standardize naming and compare AST dumps
+        standardized_str_one = standardize_naming(parsed_str_one)
+        standardized_str_two = standardize_naming(parsed_str_two)
+        if same_string(
+            ast.dump(standardized_str_one, indent=True),
+            ast.dump(standardized_str_two, indent=True),
+        ):
+            return "Yes the two programs should be equivalent"
+    return "No, The programs are not equivalent"
+
+# Print whether the two programs are equivalent
+result = detect_equivalence(program_one, program_two)
+print(result)
+```
+
+
+## Why It's Not Possible in the General Case
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- There are an infinite number of ways to structure a program that will get the same results so it's unfeasible to make workarounds for structures being different but equivalent.
+- It's not feasible to run every possible input through both programs as it would take an infinite amount of time to get through an infinite amount of inputs.
+- If an input never halted on one of the programs you would never be able to compare the output with the other program.
+
+:::
+
+## Conclusion
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+- `detect_equivalence` works by running both programs on the same input and checking if they both produce the same output or fail in the same way.
+- This approach only works for restricted cases, in the general case determining program equivalence is uncomputable.
+- Our implementation works for simple programs where all possible inputs can be tested but it cannot handle complex programs with infinite input spaces.
+- This challenge demonstrates that while tools can help with specific cases, fully determining program equivalence for all programs is uncomputable.
 :::
