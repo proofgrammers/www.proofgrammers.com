@@ -239,13 +239,8 @@ for command, result in examples:
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
 - **Definition**: `yesOnString(P, I)` returns:
-  - `"yes"` if P is a valid Python program, P(I) is defined, and P(I) = "yes"
-  - `"no"` otherwise (invalid program, undefined output, or non-"yes" result)
-
-:::
-
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
-
+  - "yes" if P is a valid Python program, P(I) is defined, and P(I)="yes"
+  - `"no"` otherwise (invalid program, undefined output, or non-"yes")
 - **Question it answers**: Does program P return "yes" on input string I?
 - **Important note**: We don't provide the source code for `yesOnString`
 - **Reason**: We will prove it's impossible to write such a program!
@@ -254,7 +249,9 @@ for command, result in examples:
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid microscope >}} The `yesOnString` program would solve a fundamental question about program behavior. But as we'll see, asking this question leads to logical contradictions that make the program impossible.
+{{< iconify fa6-solid microscope >}} The `yesOnString` program would solve a
+fundamental question about program behavior. Yet, as we'll see, asking this
+question leads to logical contradictions that make the program impossible!
 
 :::
 
