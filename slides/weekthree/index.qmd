@@ -376,24 +376,22 @@ for prog in test_cases:
     not_result = notYesOnSelf(prog) 
     print(f"yesOnSelf('{prog}') = {yes_result}")
     print(f"notYesOnSelf('{prog}') = {not_result}")
-# the critical question
-print("What is notYesOnSelf('notYesOnSelf.py')?")
-print("This creates the contradiction!")
 ```
 
 ## Running `notYesOnSelf`
 
-::: incremental
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
 
 - `notYesOnSelf`("not a program") returns "yes"
 - `notYesOnSelf`("letters and numbers 1431") returns "yes"
+- `notYesOnSelf`("yes.py") returns "no"
 - `notYesOnSelf`("containsGAGA.py") returns "no"
 - `notYesOnSelf`("longerThan1K.py") returns "yes"
 - `notYesOnSelf`("notYesOnSelf.py") returns $...$ what?!
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.05em; font-size: 0.9em;"}
 
 {{< iconify fa6-solid bullhorn >}} **Amazing**: Since no output is correct when
 `notYesOnSelf` is run on itself, we have discovered that `yesOnSelf` cannot
@@ -401,14 +399,15 @@ exist! Let's explore these scenarios in greater detail to build understanding.
 
 :::
 
+
 ## The contradiction revealed
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
+::: {.fragment style="margin-top: 0.1em; font-size: 0.75em;"}
 
 - **Consider**: `notYesOnSelf("notYesOnSelf.py")`
     - **If it returns "yes"**: Then `yesOnSelf("notYesOnSelf.py")` = "no"
-    - **But if yesOnSelf returns "no"**: Then notYesOnSelf should return "yes"  
-    - **So**: notYesOnSelf returns "yes" when run on itself
+    - **But if yesOnSelf returns "no"**: Then `notYesOnSelf` should return "yes"  
+    - **So**: `notYesOnSelf` returns "yes" when run on itself
 
 - **But also**:
     - **If it returns "no"**: Then `yesOnSelf("notYesOnSelf.py")` = "yes"  
@@ -417,11 +416,11 @@ exist! Let's explore these scenarios in greater detail to build understanding.
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.7em;"}
 
 {{< iconify fa6-solid bullhorn >}} **Contradiction**: `notYesOnSelf` returns
 "yes" if and only if it returns "no"! No program can have this property, so
-`notYesOnSelf` cannot exist.
+`notYesOnSelf` cannot exist. This is amazing, right?
 
 :::
 
@@ -429,7 +428,7 @@ exist! Let's explore these scenarios in greater detail to build understanding.
 
 ## The impossibility proof structure
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
 
 - {{< iconify fa6-solid gear >}} **Step 1: Proof by contradiction**
   - Assume `yesOnString` exists (our statement S)
