@@ -486,8 +486,6 @@ impossibility!
 
 :::
 
-# Foundational results
-
 ## Why impossibility matters
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.75em;"}
