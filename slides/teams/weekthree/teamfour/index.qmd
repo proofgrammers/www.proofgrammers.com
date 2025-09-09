@@ -109,7 +109,18 @@ raise ValueError("manual raise")
 result = detect_exceptions(code_to_check)
 print(result)
 
+
+
 ```
+
+> - detect_exceptions function scans for risky patterns
+> - Splits "code" into individual lines
+> - Exception triggers are: division by zero, type conversions, indexing or dictionary access (opening and closing brackets and matches a word), explicit raise statements
+> - Returns the warnings found
+---
+
+---
+
 # Conclusion
 - Our `DetectThrowsException` program is a heuristic demonstration of a decision problem. It cannot prove whether an exception will occur, but it offers a first step by flagging suspicious patterns in source code.
 - This limitation connects to a fundamental idea in theoretical computer science: undecidability. Just as the halting problem shows no program can universally decide if another program will halt, no tool can perfectly predict all possible runtime exceptions
