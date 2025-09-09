@@ -241,7 +241,7 @@ for command, result in examples:
 
 - **Definition**: `yesOnString(P, I)` returns:
   - "yes" if P is a valid Python program, P(I) is defined, and P(I)="yes"
-  - `"no"` otherwise (invalid program, undefined output, or non-"yes")
+  - "no" otherwise (invalid program, undefined output, or non-"yes")
 - **Question it answers**: Does program P return "yes" on input string I?
 - **Important note**: We don't provide the source code for `yesOnString`
 - **Reason**: We will prove it's impossible to write such a program!
@@ -311,10 +311,9 @@ def testyesOnStringApprox():
   - `yesOnSelf(P)` = `yesOnString(P, P)`
   - Asks: "Does program P return 'yes' when given itself as input?"
 
-- **Why this matters**: 
+- **Why this matters for proofgrammers**: 
   - Simpler to analyze than the two-parameter version
   - Self-application creates the conditions for contradiction
-  - **Foundation of the impossibility proof**
 
 :::
 
@@ -323,8 +322,21 @@ def testyesOnStringApprox():
 ::: incremental
 
 - `yesOnSelf`("not a program") returns "no"
+- `yesOnSelf`("letters and numbers 1431") returns "no"
+- `yesOnSelf`("containsGAGA.py") returns "yes"
+- `yesOnSelf`("longerThan1K.py") returns "no"
+- `yesOnSelf`("yesOnSelf.py") returns "yes" or "no" or $...$?
 
-::: incremental
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid bullhorn >}} **Get Ready**: What is the behavior of the
+`yesOnSelf` program when it is run on itself? We are going to introduce a
+"troublemaker" program that will create a contradiction and shed light on this
+issue!
+
+:::
 
 ## Using hypothetical `yesOnSelf`
 
@@ -391,9 +403,9 @@ print("This creates the contradiction!")
 
 ::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid exclamation-triangle >}} **Contradiction**: `notYesOnSelf`
-returns "yes" if and only if it returns "no"! No program can have this
-property, so `notYesOnSelf` cannot exist.
+{{< iconify fa6-solid bullhorn >}} **Contradiction**: `notYesOnSelf` returns
+"yes" if and only if it returns "no"! No program can have this property, so
+`notYesOnSelf` cannot exist.
 
 :::
 
