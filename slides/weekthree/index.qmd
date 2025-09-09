@@ -406,13 +406,13 @@ exist! Let's explore these scenarios in greater detail to build understanding.
 
 - **Consider**: `notYesOnSelf("notYesOnSelf.py")`
     - **If it returns "yes"**: Then `yesOnSelf("notYesOnSelf.py")` = "no"
-    - **But if yesOnSelf returns "no"**: Then `notYesOnSelf` should return "yes"  
+    - **But if `yesOnSelf` returns "no"**: Then `notYesOnSelf` should return "yes"  
     - **So**: `notYesOnSelf` returns "yes" when run on itself
 
 - **But also**:
     - **If it returns "no"**: Then `yesOnSelf("notYesOnSelf.py")` = "yes"  
-    - **But if yesOnSelf returns "yes"**: Then notYesOnSelf should return "no"
-    - **So**: notYesOnSelf returns "no" when run on itself
+    - **But if `yesOnSelf` returns "yes"**: Then `notYesOnSelf` should return "no"
+    - **So**: `notYesOnSelf` returns "no" when run on itself
 
 :::
 
