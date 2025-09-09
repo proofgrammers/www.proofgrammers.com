@@ -3,7 +3,7 @@ title: "DetectThrowsException Decision Problem"
 description: "Explore the detection of exception throwing"
 date: "2025-09-08"
 date-format: long
-author: Add Your Names Here
+author: Anoop Guragain, Duru Akbas, Joseph Oforkansi
 execute:
   echo: true
 format:
@@ -18,14 +18,128 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+## A simple exceptions "detection" program
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- Takes an input that is a string containing source code
+- Search through the source code line by line using regex for certain keys or pattern
+- Add those lines that matches to a list called "warnings" with a message
+- Convert that list into multi-line string and returns it
 
-:::
+---
+
+## To be noted
+
+> - It does not detect, it just kind of predicts if the program is going to throw an exception.
+
+> - It does not run the program or confirms that an exception will or won't occur.
+
+> - It gives false positive and false negative such as it count comments and strings as the part of the source code
+
+---
+
+## Exceptions
+
+- **Divisible by zero**
+
+```python
+ if re.search(r"/\s*0", line):
+    warnings.append(f"Division by zero at line {i}")
+```
+
+- **Value error (int() and float())**
+
+```python
+  if "int(" in line or "float(" in line:
+    warnings.append(f"Possible ValueError in conversion at line {i}")
+```
+
+- **Index error**
+
+```python
+  if re.search(r"\w+\[.*\]", line):
+    warnings.append(f"Possible IndexError/KeyError at line {i}")
+```
+
+- **Raise**
+
+```python
+  if "raise " in line:
+    warnings.append(f"Explicit raise at line {i}")
+```
+
+---
+
+```{pyodide}
+#| max-lines: 15
+#| autorun: true
+
+import re
+
+def detect_exceptions(code: str) -> str:
+    warnings = []
+    lines = code.splitlines()
+
+    for i, line in enumerate(lines, start=1):
+        # Detect division by zero like 5/0 or 5 / 0
+        if re.search(r"/\s*0", line):
+            warnings.append(f"Division by zero at line {i}")
+        # Detect int() and float() conversions
+        if "int(" in line or "float(" in line:
+            warnings.append(f"Possible ValueError in conversion at line {i}")
+        # Detect indexing or dictionary access (possible IndexError/KeyError)
+        if re.search(r"\w+\[.*\]", line):
+            warnings.append(f"Possible IndexError/KeyError at line {i}")
+        # Detect explicit raise statements
+        if "raise " in line:
+            warnings.append(f"Explicit raise at line {i}")
+
+    return "\n".join(warnings) if warnings else "No obvious exception-causing patterns found"
+
+# === Example Python code to analyze ===
+code_to_check = """
+x = 10 / 0
+y = int("abc")
+z = arr[5]
+raise ValueError("manual raise")
+"""
+
+# Run the detector (SiSo style)
+result = detect_exceptions(code_to_check)
+print(result)
+
+
+
+```
+
+
+# Output
+
+  - detect_exceptions function scans for risky patterns
+  - Splits "code" into individual lines
+  - Exception triggers are: division by zero, type conversions, indexing or dictionary access (opening and closing brackets and matches a word), explicit raise statements
+  - Returns the warnings found
+
+# Conclusion
+
+- **Heuristic detection:** 🟢 Our `DetectThrowsException` program is a heuristic demonstration of a decision problem. It cannot prove whether an exception will occur, but it offers a first step by flagging suspicious patterns in source code.
+- **Theoretical limits:** ⚠️ This limitation connects to a fundamental idea in theoretical computer science: undecidability. Just as the halting problem shows no program can universally decide if another program will halt, no tool can perfectly predict all possible runtime exceptions
+- **Practical Value:** 💡 While imperfect, our detector shows how even a simple pattern-matching approach can still provide practical value in software development, helping catch likely errors early without guaranteeing complete correctness. 
+
+---
+
+## What Our Detector Can and Cannot Do  
+
+| <span style="background-color: #d4edda; color: #155724; font-weight:bold; padding:4px;">✅ Can Do</span> | <span style="background-color: #f8d7da; color: #721c24; font-weight:bold; padding:4px;">❌ Cannot Do</span> |
+|--------------------------------------|---------------------------------------|
+| Detect simple patterns with regex (e.g., `/0`, `int("abc")`, `raise`) | Prove with certainty that exceptions will (or won’t) occur |
+| Flag likely sources of runtime errors early | Account for user input, runtime values, or complex program logic |
+| Provide a practical, lightweight heuristic | Solve the general problem (undecidable, like the halting problem) |
+
+**Key takeaway:** A simple heuristic can still make a meaningful impact in software development, despite theoretical limits.
+
+
+# Thank You  
+
+---
