@@ -139,3 +139,7 @@ print(result)
 **Key takeaway:** A simple heuristic can still make a meaningful impact in software development, despite theoretical limits.
 
 ---
+
+# Thank You  
+
+**Q/A**
