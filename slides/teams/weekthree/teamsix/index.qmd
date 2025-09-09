@@ -303,7 +303,6 @@ print(result)
 - Tractable (in restricted cases)
     - runs in polynomial time
         - "The complexity class _Poly_ is the set of computational problems can be solved by a Python program with running time in $O(nᵏ)$, for some $k≥0$."
-    - ![Complexity Proof](Screenshot%2025-09-08%100559.png)
 - Uncomputable (in the general case)
     - runs in polynomial time
         - as the input grows in complexity, so does the program complexity
