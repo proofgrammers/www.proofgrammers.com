@@ -86,7 +86,7 @@ print(detect_syntax_error(code3))
 - Python’s ast module converts code into an Abstract Syntax Tree (AST).
 - ast.parse(code) attempts to parse the code according to Python’s grammar rules.
 - If the code violates Python syntax like a missing colon, indentation, or wrong keyword, Python gives a SyntaxError.
-- This is a SISO(Single Input Single Output) Python program because it takes one piece of Python code as input (a string) and the program produces one clear output, either Syntax Error detected ("yes") or no Syntax Error ("no") (and optionally prints runtime errors if any occur)
+- This is a SISO(Single Input Single Output) Python program because it takes one piece of Python code as input (a string) and the program produces one clear output, either Syntax Error detected ("yes") or no Syntax Error ("no") (and optionally prints runtime errors if any occur).
 
 ## Is this problem feasible in the General Case?
 
@@ -97,7 +97,7 @@ Yes!
 
 ## Is this program tractable and computable?
 
-YES, it is computable and tractable!
+YES, it is both computable AND tractable!
 
 - A parser either accepts or raises SyntaxError
 - It runs roughly linear to the size of the source, so it's tractable
