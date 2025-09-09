@@ -18,8 +18,6 @@ format:
     footer: "Proofgrammers"
 ---
 
-
-
 ## What is the main function in Python?
 
 The main function in Python is declared, like this: `def main(some parameter):`
