@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-# What programs are impossible?
+# Impossible programs?
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
@@ -115,7 +115,7 @@ print(f"The countLines.py program has {self_count} lines")
 
 :::
 
-# Programs analyzing programs: the foundation of impossibility!
+# Foundation of impossibility
 
 ## Decision programs we need
 
@@ -162,56 +162,36 @@ for test in test_cases:
     print()
 ```
 
-## Programs analyzing programs examples
+## Program analysis examples
 
 ```{python}
-# First define the analysis functions we need
+# Define analysis functions
 def containsGAGA(inString: str) -> str:
-    """Return yes if input contains GAGA."""
-    if 'GAGA' in inString:
-        return 'yes'
-    else:
-        return 'no'
+    return 'yes' if 'GAGA' in inString else 'no'
 
 def yes(inString: str) -> str:
-    """Always return yes, ignoring input."""
     return 'yes'
 
 def longerThan1K(inString: str) -> str:
-    """Return yes if input is longer than 1000 characters."""
-    if len(inString) > 1000:
-        return 'yes'
-    else:
-        return 'no'
+    return 'yes' if len(inString) > 1000 else 'no'
 
-# simulate program file contents
+# Simulate program files
 programs = {
-    'containsGAGA.py': '''def containsGAGA(inString):
-    if 'GAGA' in inString:
-        return 'yes'
-    else:
-        return 'no' ''',
-    'yes.py': '''def yes(inString):
-    return 'yes' ''',
+    'containsGAGA.py': 'def containsGAGA(inString):\n    return "yes" if "GAGA" in inString else "no"',
+    'yes.py': 'def yes(inString):\n    return "yes"',
     'geneticString.txt': 'CTGAGAATTCGAGA'
 }
 
 def rf(filename: str) -> str:
     return programs.get(filename, 'File not found')
 
-# demonstrate programs analyzing other programs
+# Programs analyzing other programs
 examples = [
     ("containsGAGA('CTGAGAT')", containsGAGA('CTGAGAT')),
     ("containsGAGA(rf('geneticString.txt'))", containsGAGA(rf('geneticString.txt'))),
-    ("containsGAGA(rf('yes.py'))", containsGAGA(rf('yes.py'))),
-    ("yes('anything')", yes('anything')),
-    ("yes(rf('containsGAGA.py'))", yes(rf('containsGAGA.py'))),
-    ("longerThan1K('short')", longerThan1K('short')),
-    ("longerThan1K(rf('geneticString.txt'))", longerThan1K(rf('geneticString.txt')))
+    ("yes(rf('containsGAGA.py'))", yes(rf('containsGAGA.py')))
 ]
 
-print("Programs analyzing other programs:")
-print("=" * 40)
 for command, result in examples:
     print(f"{command} = {result}")
 ```
@@ -243,38 +223,31 @@ for command, result in examples:
 ## Examples with hypothetical yesOnString
 
 ```{python}
-# Hypothetical behavior of yesOnString (we'll prove this can't exist)
+# Hypothetical behavior (we'll prove this can't exist!)
 def hypothetical_yesOnString(P: str, I: str) -> str:
     """HYPOTHETICAL: Check if program P returns 'yes' on input I."""
-    # This is just for illustration - we'll prove this is impossible!
-    
-    # Simulate some example behaviors
     if P == "containsGAGA.py" and I == "CTGAGAT":
-        return "yes"  # containsGAGA returns "yes" on "CTGAGAT"
+        return "yes"  
     elif P == "containsGAGA.py" and I == "hello":
-        return "no"   # containsGAGA returns "no" on "hello"
+        return "no"   
     elif P == "yes.py":
-        return "yes"  # yes always returns "yes"
-    elif P == "invalid syntax":
-        return "no"   # not a valid Python program
+        return "yes"  
     else:
-        return "no"   # default case
+        return "no"   
         
-# Show what yesOnString would theoretically do
+# Show theoretical behavior
 examples = [
     ("containsGAGA.py", "CTGAGAT"),
     ("containsGAGA.py", "hello"),  
-    ("yes.py", "anything"),
-    ("invalid syntax", "test"),
+    ("yes.py", "anything")
 ]
 
 print("Hypothetical yesOnString behavior:")
-print("=" * 35)
 for prog, input_str in examples:
     result = hypothetical_yesOnString(prog, input_str)
     print(f"yesOnString('{prog}', '{input_str}') = {result}")
 
-print("\nBut we will prove this program cannot actually exist!")
+print("\nBut we will prove this program cannot exist!")
 ```
 
 ## The yesOnSelf simplification
@@ -310,29 +283,17 @@ print("\nBut we will prove this program cannot actually exist!")
 # Hypothetical behavior of yesOnSelf
 def hypothetical_yesOnSelf(P: str) -> str:
     """HYPOTHETICAL: Check if program P returns 'yes' on itself."""
-    
-    # Simulate example behaviors  
     if P == "yes.py":
         return "yes"  # yes("yes.py") = "yes"
     elif P == "containsGAGA.py":
-        # Does containsGAGA.py contain "GAGA"? Let's say yes
-        return "yes"  
-    elif P == "longerThan1K.py":
-        # Is longerThan1K.py longer than 1K characters? Let's say no
-        return "no"
+        return "yes"  # containsGAGA.py contains "GAGA"
     else:
         return "no"   # default case
 
 # Show examples
-test_programs = [
-    "yes.py",
-    "containsGAGA.py", 
-    "longerThan1K.py",
-    "maybeLoop.py"
-]
+test_programs = ["yes.py", "containsGAGA.py", "longerThan1K.py"]
 
 print("Hypothetical yesOnSelf behavior:")
-print("=" * 32)
 for prog in test_programs:
     result = hypothetical_yesOnSelf(prog)
     print(f"yesOnSelf('{prog}') = {result}")
@@ -346,16 +307,11 @@ print("\nRemember: We're assuming yesOnSelf exists to derive a contradiction!")
 # Here's where the contradiction emerges!
 def notYesOnSelf(P: str) -> str:
     """Return the opposite of what yesOnSelf would return."""
-    # Assumes yesOnSelf exists (which we'll prove it doesn't!)
     result = hypothetical_yesOnSelf(P)
-    
-    if result == "yes":
-        return "no"
-    else:  # result == "no"
-        return "yes"
+    return "no" if result == "yes" else "yes"
 
-# Test notYesOnSelf on some programs
-test_cases = ["yes.py", "containsGAGA.py", "longerThan1K.py"]
+# Test on some programs
+test_cases = ["yes.py", "containsGAGA.py"]
 for prog in test_cases:
     yes_result = hypothetical_yesOnSelf(prog)
     not_result = notYesOnSelf(prog) 
@@ -363,10 +319,10 @@ for prog in test_cases:
     print(f"notYesOnSelf('{prog}') = {not_result}")
     print()
 
-# The critical question: What happens with notYesOnSelf itself?
+# The critical question
 print("THE CRITICAL CASE:")
 print("What is notYesOnSelf('notYesOnSelf.py')?")
-print("This is where the contradiction appears!")
+print("This creates the contradiction!")
 ```
 
 ## The contradiction revealed
@@ -397,7 +353,7 @@ print("This is where the contradiction appears!")
 
 :::
 
-# If yesOnSelf can't exist, then yesOnString can't exist either!
+# The complete impossibility proof
 
 ## The impossibility proof structure
 
@@ -431,72 +387,51 @@ print("This is where the contradiction appears!")
 ## Compact impossibility proof
 
 ```{python}
-# A more direct proof using the "weird" program technique
+# Direct proof using the "weird" program technique
 def weirdYesOnString(P: str) -> str:
     """The program that creates immediate contradiction."""
-    # Assumes yesOnString exists
     result = hypothetical_yesOnString(P, P)  # yesOnString(P, P)
-    
-    if result == "yes":
-        return "no"
-    else:
-        return "yes"
+    return "no" if result == "yes" else "yes"
 
 print("Direct contradiction approach:")
-print("=" * 30)
-
-# The contradiction emerges immediately when we ask:
 print("What is weirdYesOnString('weirdYesOnString.py')?")
 print("")
-print("If weirdYesOnString('weirdYesOnString.py') = 'yes':")
-print("  Then yesOnString('weirdYesOnString.py', 'weirdYesOnString.py') = 'yes'")
-print("  Which means weirdYesOnString returns 'yes' on itself")
-print("  But by definition, weirdYesOnString should return 'no'!")
+print("If result = 'yes':")
+print("  Then yesOnString says weirdYesOnString returns 'yes'")
+print("  But weirdYesOnString should return 'no' - contradiction!")
 print("")
-print("If weirdYesOnString('weirdYesOnString.py') = 'no':")
-print("  Then yesOnString('weirdYesOnString.py', 'weirdYesOnString.py') = 'no'") 
-print("  Which means weirdYesOnString does NOT return 'yes' on itself")
-print("  But by definition, weirdYesOnString should return 'yes'!")
+print("If result = 'no':")
+print("  Then yesOnString says weirdYesOnString doesn't return 'yes'") 
+print("  But weirdYesOnString should return 'yes' - contradiction!")
 print("")
-print("CONTRADICTION: No valid output exists!")
-print("Therefore: yesOnString cannot exist.")
+print("CONCLUSION: yesOnString cannot exist.")
 ```
 
 ## Crash detection is also impossible
 
 ```{python}
 def weirdCrashOnSelf(P: str) -> str:
-    """Hypothetical program that reveals crash detection impossibility."""
+    """Reveals crash detection impossibility."""
     # Assumes crashOnString exists (it doesn't!)
-    # crashOnString(P, I) would return "yes" if P crashes on input I
-    
-    # Simulate what crashOnString(P, P) might return
     def hypothetical_crashOnString(prog: str, input_str: str) -> str:
-        # This is just illustration - crashOnString is impossible!
-        return "no"  # Placeholder
+        return "no"  # Placeholder - this is impossible!
     
     crash_result = hypothetical_crashOnString(P, P)
     
     if crash_result == "yes":
-        # If P crashes on itself, then DON'T crash
-        return "no crash here"
+        return "no crash here"  # Don't crash if P crashes on itself
     else:
-        # If P doesn't crash on itself, then DO crash
-        # In real code, this would cause an actual crash
-        return "simulated crash"
+        return "simulated crash"  # Crash if P doesn't crash on itself
 
-print("Crash detection impossibility:")  
-print("=" * 30)
+print("Crash detection impossibility:")
 print("Consider: weirdCrashOnSelf('weirdCrashOnSelf.py')")
 print("")
 print("Case 1: If weirdCrashOnSelf crashes on itself")
-print("  → crashOnString says 'yes'")  
-print("  → weirdCrashOnSelf executes normally (doesn't crash)")
+print("  → crashOnString says 'yes', so weirdCrashOnSelf doesn't crash")
 print("  → Contradiction!")
 print("")
-print("Case 2: If weirdCrashOnSelf doesn't crash on itself")
-print("  → crashOnString says 'no'")
-print("  → weirdCrashOnSelf forces a crash") 
+print("Case 2: If weirdCrashOnSelf doesn't crash")
+print("  → crashOnString says 'no', so weirdCrashOnSelf crashes") 
 print("  → Contradiction!")
 print("")
 print("Conclusion: crashOnString cannot exist!")
@@ -534,39 +469,24 @@ print("Conclusion: crashOnString cannot exist!")
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 8
+#| max-lines: 6
 def analyzeProgram(program_code: str) -> str:
     """Analyze properties of a program given as a string."""
-    lines = program_code.split('\n')
-    line_count = len(lines)
-    
-    # Count occurrences of different keywords
-    word_count = len(program_code.split())
+    lines = len(program_code.split('\n'))
+    words = len(program_code.split())
     has_loop = 'while' in program_code or 'for' in program_code
-    has_conditional = 'if' in program_code
-    
-    analysis = []
-    analysis.append(f"Lines: {line_count}")
-    analysis.append(f"Words: {word_count}")
-    analysis.append(f"Has loops: {has_loop}")
-    analysis.append(f"Has conditionals: {has_conditional}")
-    
-    return "; ".join(analysis)
+    return f"Lines: {lines}; Words: {words}; Has loops: {has_loop}"
 
 # Test the analyzer on itself!
-analyzer_code = '''def analyzeProgram(program_code: str) -> str:
-    lines = program_code.split('\\n')
-    line_count = len(lines)
-    word_count = len(program_code.split())
-    has_loop = 'while' in program_code or 'for' in program_code
-    has_conditional = 'if' in program_code
-    return f"Lines: {line_count}; Words: {word_count}"'''
+analyzer_code = '''def analyzeProgram(code):
+    lines = len(code.split('\\n'))
+    return f"Lines: {lines}"'''
 
 self_analysis = analyzeProgram(analyzer_code)
 print("Program analyzing itself:")
-print(f"Analysis result: {self_analysis}")
-print("\nNote: This kind of self-analysis is possible!")
-print("But detecting whether ANY program crashes is impossible.")
+print(f"Analysis: {self_analysis}")
+print("\nNote: This self-analysis is possible!")
+print("But universal crash detection is impossible.")
 ```
 
 ## Theoretical limits vs practical tools
@@ -598,7 +518,7 @@ print("But detecting whether ANY program crashes is impossible.")
 
 :::
 
-# These impossibility results are foundational to computer science!
+# Foundational results
 
 ## Why impossibility matters
 
@@ -629,16 +549,23 @@ print("But detecting whether ANY program crashes is impossible.")
 
 ## Key takeaways
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid gear >}} **Proof by contradiction**: Natural reasoning technique for impossibility results  
-- {{< iconify fa6-solid microscope >}} **Self-reflection paradox**: Programs analyzing themselves creates logical contradictions
-- {{< iconify fa6-solid diagram-project >}} **Universal impossibilities**: `yesOnString`, `crashOnString`, and perfect bug detection
-- {{< iconify fa6-solid diagram-project >}} **Practical implications**: Static analysis tools work on subproblems, not universally  
-- {{< iconify fa6-solid book-open >}} **Theoretical foundation**: Uncomputability theory guides computer science boundaries
-- {{< iconify fa6-solid gears >}} **Proofgrammer insight**: Some problems are fundamentally unsolvable
-- {{< iconify fa6-solid lightbulb >}} **Next exploration**: Turing machines and formal models of computation
-- {{< iconify fa6-solid rocket >}} **Deep understanding**: Computational limits are as important as computational capabilities
+- {{< iconify fa6-solid gear >}} **Proof by contradiction**: Natural technique for impossibility results  
+- {{< iconify fa6-solid microscope >}} **Self-reflection paradox**: Programs analyzing themselves creates contradictions
+- {{< iconify fa6-solid diagram-project >}} **Universal impossibilities**: `yesOnString` and `crashOnString` cannot exist
+- {{< iconify fa6-solid book-open >}} **Practical implications**: Static analysis works on subproblems, not universally  
+
+:::
+
+## More key insights
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid gears >}} **Theoretical foundation**: Uncomputability theory guides CS boundaries
+- {{< iconify fa6-solid lightbulb >}} **Proofgrammer insight**: Some problems are fundamentally unsolvable
+- {{< iconify fa6-solid rocket >}} **Next exploration**: Turing machines and formal computation models
+- {{< iconify fa6-solid compass >}} **Deep understanding**: Computational limits matter as much as capabilities
 
 :::
 
