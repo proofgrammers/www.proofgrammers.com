@@ -106,22 +106,22 @@ print(f"The countLines.py program has {self_count} lines")
 
 ## Self-reflection in computation
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: 0.25em; font-size: 0.9em;"}
 
 - {{< iconify fa6-solid diagram-project >}} **Programs can analyze themselves**:
-    - `countLines(rf('countLines.py'))` reports its own line count
-    - **Self-reflection**: programs examining their own structure
+    - `countLines(rf('countLines.py'))` reports its line count
     - Similar to how human brains can think about thinking
+    - **Key**: programs can examine their own structure
 
 :::
 
-::: {.fragment style="margin-top: 0.05em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid diagram-project >}} **Turing's insight (1936)**:
+- {{< iconify fa6-solid diagram-project >}} **Self-reflection extends and limits computation**:
     - Self-reflection enables powerful computation
     - But it also creates fundamental limitations
-    - The very capability that makes programs powerful also constrains them
-    - **Key principle**: Some problems become impossible precisely because of self-reflection
+    - Capability that makes programs powerful also constrains them
+    - **Key**: Some problems become impossible due to self-reflection
 
 :::
 
