@@ -122,7 +122,20 @@ print(result)
 ---
 
 # Conclusion
-- Our `DetectThrowsException` program is a heuristic demonstration of a decision problem. It cannot prove whether an exception will occur, but it offers a first step by flagging suspicious patterns in source code.
-- This limitation connects to a fundamental idea in theoretical computer science: undecidability. Just as the halting problem shows no program can universally decide if another program will halt, no tool can perfectly predict all possible runtime exceptions
-- While imperfect, our detector shows how even a simple pattern-matching approach can still provide practical value in software development, helping catch likely errors early without guaranteeing complete correctness. 
+- **Heuristic detection:** 🟢 Our `DetectThrowsException` program is a heuristic demonstration of a decision problem. It cannot prove whether an exception will occur, but it offers a first step by flagging suspicious patterns in source code.
+- **Theoretical limits:** ⚠️ This limitation connects to a fundamental idea in theoretical computer science: undecidability. Just as the halting problem shows no program can universally decide if another program will halt, no tool can perfectly predict all possible runtime exceptions
+- **Practical Value:** 💡 While imperfect, our detector shows how even a simple pattern-matching approach can still provide practical value in software development, helping catch likely errors early without guaranteeing complete correctness. 
+
+---
+
+## What Our Detector Can and Cannot Do  
+
+| <span style="background-color: #d4edda; color: #155724; font-weight:bold; padding:4px;">✅ Can Do</span> | <span style="background-color: #f8d7da; color: #721c24; font-weight:bold; padding:4px;">❌ Cannot Do</span> |
+|--------------------------------------|---------------------------------------|
+| Detect simple patterns with regex (e.g., `/0`, `int("abc")`, `raise`) | Prove with certainty that exceptions will (or won’t) occur |
+| Flag likely sources of runtime errors early | Account for user input, runtime values, or complex program logic |
+| Provide a practical, lightweight heuristic | Solve the general problem (undecidable, like the halting problem) |
+
+**Key takeaway:** A simple heuristic can still make a meaningful impact in software development, despite theoretical limits.
+
 ---
