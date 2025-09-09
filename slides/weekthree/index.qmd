@@ -399,28 +399,29 @@ exist! Let's explore these scenarios in greater detail to build understanding.
 
 :::
 
-
-## The contradiction revealed
+## Revealing the contradiction
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.75em;"}
 
-- **Consider**: `notYesOnSelf("notYesOnSelf.py")`
-    - **If it returns "yes"**: Then `yesOnSelf("notYesOnSelf.py")` = "no"
-    - **But if `yesOnSelf` returns "no"**: Then `notYesOnSelf` should return "yes"  
-    - **So**: `notYesOnSelf` returns "yes" when run on itself
+- **Consider**: What happens when we run `notYesOnSelf("notYesOnSelf.py")`?
 
-- **But also**:
-    - **If it returns "no"**: Then `yesOnSelf("notYesOnSelf.py")` = "yes"  
-    - **But if `yesOnSelf` returns "yes"**: Then `notYesOnSelf` should return "no"
-    - **So**: `notYesOnSelf` returns "no" when run on itself
+- **Case 1**: Suppose it returns `"yes"`
+  - If `notYesOnSelf` returns "yes" on itself, then by definition,
+  `notYesOnSelf` should return "no" (opposite of what it actually returned).
+  **Contradiction!**
+
+- **Case 2**: Suppose it returns `"no"`
+  - If `notYesOnSelf` returns "no" on itself, then by definition, `notYesOnSelf`
+  should return "yes" (opposite of what it actually returned). **Contradiction!**
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.7em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-{{< iconify fa6-solid bullhorn >}} **Contradiction**: `notYesOnSelf` returns
-"yes" if and only if it returns "no"! No program can have this property, so
-`notYesOnSelf` cannot exist. This is amazing, right?
+{{< iconify fa6-solid bullhorn >}} **No output is correct!** Whether
+`notYesOnSelf` returns "yes" or "no" on itself, it contradicts its own
+definition. Therefore, `notYesOnSelf` cannot exist and is a logical
+impossibility!
 
 :::
 
@@ -435,18 +436,10 @@ exist! Let's explore these scenarios in greater detail to build understanding.
   - This would allow us to create `yesOnSelf` 
   - And then create `notYesOnSelf`
 
-:::
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
-
 - {{< iconify fa6-solid gear >}} **Step 2: Derive contradiction**
   - `notYesOnSelf("notYesOnSelf.py")` creates logical contradiction
   - Returns "yes" if and only if it returns "no"
   - No program can have this impossible property
-
-:::
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Step 3: Conclude impossibility**
   - Since assuming `yesOnString` exists leads to contradiction
