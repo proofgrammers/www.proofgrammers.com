@@ -166,7 +166,7 @@ analyzer.find_main()
 
 - **NOTE**: C++ header files are not behaving the same as `import python_code`!
 
-- Funcion `main` behaves like other functions in Python
+- Function `main` behaves like other functions in Python
 
 - Therefore it is harder to detect main function in Python programs
 
@@ -258,7 +258,7 @@ analyzer.walk_tree()
 analyzer.find_main()
 ```
 
-## Let's see if we can detect the main function in different scnarios 2.
+## Let's see if we can detect the main function in different scenario 2.
 
 ```{pyodide}
 #| autorun: false
