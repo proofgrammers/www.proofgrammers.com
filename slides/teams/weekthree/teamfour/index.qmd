@@ -113,12 +113,3 @@ print(result)
 
 ---
 
-# Conclusion
-
-- Our `DetectThrowsException` program is a simple, yet powerful illustration of a decision problem. While it doesn't solve the problem of definitively proving whether an exception will be thrown, it provides a crucial first step. We've seen how a pattern-matching approach using regular expressions can serve as a heuristic a practical, albeit imperfect, method to predict potential issues in source code.
-
-- This project highlights a key challenge in `theoretical` computer science: `halting` problem variants. Just as we can't create a universal program to determine if another program will halt, we also can't create a perfect static analysis tool to predict all `runtime` exceptions. Our program's inability to account for runtime values, user input, or conditional logic shows that this is an undecidable problem in its full generality.
-
-- Ultimately, our 'detector' isn't a flawless oracle; it's a predictive model for a class of problems that are theoretically impossible to solve with 100% certainty. We hope this project demonstrates how even a simple, `heuristic` approach can provide significant value in the real world of software development.
----
-
