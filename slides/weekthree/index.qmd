@@ -63,7 +63,9 @@ format:
 
 ## Programs analyzing other programs
 
-```{python}
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
 def countLines(inString: str) -> str:
     """Count the number of lines in the provided text content."""
     lines = inString.split('\n')
@@ -94,6 +96,13 @@ countlines_program = rf("countLines.py")
 self_count = countLines(countlines_program)
 print(f"The countLines.py program has {self_count} lines")
 ```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- A program can analyze itself or another program
+- Completed at the level of source code text or output
+
+:::
 
 ## Self-reflection in computation
 
