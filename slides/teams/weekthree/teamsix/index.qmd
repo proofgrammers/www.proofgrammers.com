@@ -464,8 +464,8 @@ print(result)
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- There are an infinte number of ways to structure a program that will get the same results so it's unfeasible to make workarounds for structures being different but equivalent.
-- It's not feasible to run every posible input through both programs as it would take an infinte amount of time to get through an infinte amount of inputs.
+- There are an infinite number of ways to structure a program that will get the same results so it's unfeasible to make workarounds for structures being different but equivalent.
+- It's not feasible to run every possible input through both programs as it would take an infinite amount of time to get through an infinite amount of inputs.
 - If an input never halted on one of the programs you would never be able to compare the output with the other program.
 
 :::
@@ -474,7 +474,7 @@ print(result)
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 - `detect_equivalence` works by running both programs on the same input and checking if they both produce the same output or fail in the same way.
-- This approach only works for restricted cases, in the general case determining program equivalence is incomputable.
+- This approach only works for restricted cases, in the general case determining program equivalence is uncomputable.
 - Our implementation works for simple programs where all possible inputs can be tested but it cannot handle complex programs with infinite input spaces.
-- This challenge demonstrates that while tools can help with specific cases, fully determining program equivalence for all programs is incomputable.
+- This challenge demonstrates that while tools can help with specific cases, fully determining program equivalence for all programs is uncomputable.
 :::
