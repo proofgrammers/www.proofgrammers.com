@@ -131,6 +131,24 @@ Yes!
 
 ## Is this program tractable and computable?
 
+YES, it is computable and tractable!
+
+- A parser either accepts or raises SyntaxError
+- It runs roughly linear to the size of the source, so it's tractable
+- Only checks syntax
+- Results will vary on the version of python used
+- An incomplete input can look like an error (unexpected EOF)
+
+Can fix a lot of these by selecting python version, incremental parsing, etc...
 
 ## Results and Q&A?
 
+```{pyodide}
+import ast
+def detect_syntax_error_structured(code: str):
+    try:
+        ast.parse(code)
+        return {"has_error": False}
+    except SyntaxError as e:
+        return {"has_error": True, "message": str(e), "lineno": e.lineno, "offset": e.offset}
+```
