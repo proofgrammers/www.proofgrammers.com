@@ -142,13 +142,3 @@ YES, it is computable and tractable!
 Can fix a lot of these by selecting python version, incremental parsing, etc...
 
 ## Results and Q&A?
-
-```{pyodide}
-import ast
-def detect_syntax_error_structured(code: str):
-    try:
-        ast.parse(code)
-        return {"has_error": False}
-    except SyntaxError as e:
-        return {"has_error": True, "message": str(e), "lineno": e.lineno, "offset": e.offset}
-```
