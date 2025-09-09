@@ -74,16 +74,16 @@ def detect_syntax_error(code: str) -> str:
         return "yes"
 
 # Demo 1: Correct syntax
-print("=== Correct syntax ===")
+print("=== Code with Correct syntax ===")
 code1 = "for i in range(5):\n    print(a)"
 print(detect_syntax_error(code1))
 
-print("\n=== Demo 2: Incorrect syntax, missing colon ===")
+print("\n=== Demo 2: Code with Incorrect syntax, missing colon ===")
 # Demo 2: Incorrect code (missing colon)
 code2 = "for i in range(5)\n"
 print(detect_syntax_error(code2))
 
-print("\n=== Demo 3: Incorrect syntax, bad indent ===")
+print("\n=== Demo 3: Code with Incorrect syntax, bad indent ===")
 # Demo 3: Bad indent
 code3 = "def hello():\nprint('hi')"
 print(detect_syntax_error(code3))
