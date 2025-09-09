@@ -42,17 +42,6 @@ for i is range(5):  # should be `in` instead of `is`
 - Syntax errors are detected before code runs
 - Different from runtime errors, which happen during execution
 
-## Runtime Errors
-
-- Syntax is correct, but execution fails
-
-Example:
-```python
-for i in range(5):
-    print(a)  # 'a' undefined which is a runtime error
-```
-- Python can start executing, but fails at the problem line
-
 ## Building a Syntax Error Detector
 
 ```{pyodide}
