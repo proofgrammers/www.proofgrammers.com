@@ -341,7 +341,7 @@ issue!
 ## Using hypothetical `yesOnSelf`
 
 ```{python}
-# Hypothetical behavior of yesOnSelf
+# hypothetical behavior of yesOnSelf
 def hypothetical_yesOnSelf(P: str) -> str:
     """HYPOTHETICAL: Check if program P returns 'yes' on itself."""
     if P == "yes.py":
@@ -358,7 +358,6 @@ print("Hypothetical yesOnSelf behavior:")
 for prog in test_programs:
     result = hypothetical_yesOnSelf(prog)
     print(f"yesOnSelf('{prog}') = {result}")
-print("\nRemember: We're assuming yesOnSelf exists to derive a contradiction!")
 ```
 
 ## Devastating `notYesOnSelf`
@@ -377,13 +376,30 @@ for prog in test_cases:
     not_result = notYesOnSelf(prog) 
     print(f"yesOnSelf('{prog}') = {yes_result}")
     print(f"notYesOnSelf('{prog}') = {not_result}")
-    print()
-
 # the critical question
-print("THE CRITICAL CASE:")
 print("What is notYesOnSelf('notYesOnSelf.py')?")
 print("This creates the contradiction!")
 ```
+
+## Running `notYesOnSelf`
+
+::: incremental
+
+- `notYesOnSelf`("not a program") returns "yes"
+- `notYesOnSelf`("letters and numbers 1431") returns "yes"
+- `notYesOnSelf`("containsGAGA.py") returns "no"
+- `notYesOnSelf`("longerThan1K.py") returns "yes"
+- `notYesOnSelf`("notYesOnSelf.py") returns $...$ what?!
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid bullhorn >}} **Amazing**: Since no output is correct when
+`notYesOnSelf` is run on itself, we have discovered that `yesOnSelf` cannot
+exist! Let's explore these scenarios in greater detail to build understanding.
+
+:::
 
 ## The contradiction revealed
 
