@@ -203,16 +203,16 @@ intelligence coding assistants, provided that they cite these sources and
 explain how they used them to complete the skill-check.
 
 - **Proofgrammer Knowledge-Checks**: Completed individually during a Thursday
-laboratory session, these knowledge-checks are in-person, cumulative assessments
-covering all prior material from the prior course sessions, as
+laboratory session, these knowledge-checks are in-person, cumulative
+assessments covering all prior material from the prior course sessions, as
 outlined on the [course schedule](../schedule/index.qmd). All students should
 be prepared to answer questions  about the conceptual knowledge and technical
 skills in the field of theoretical machines, with a focus on both the material
 presented and discussed during instructor presentations and investigated as a
-part of the team-based proofgrammer presentations. Students may not use any
-external sources (e.g., artificial intelligence assistants, online sources, or
-written notes) or devices (e.g., laptop, tablet, or mobile phone) during an
-in-person knowledge check.
+part of the team-based proofgrammer presentations and charettes. Students may
+not use any external sources (e.g., artificial intelligence assistants, online
+sources, or written notes) or devices (e.g., laptop, tablet, or mobile phone)
+during an in-person knowledge check.
 
 - **Proofgrammer Charettes**: Completed in the second half of a Thursday
 classroom session, these discussion workshops invite students to collaboratively
@@ -472,7 +472,7 @@ your situation. In the context of this course, "missing class" includes both
 coming to a class or laboratory session after attendance was taken (i.e., "being
 late" for class) or not attending the session. After a student misses more than
 two weeks of class and laboratory sessions (i.e., misses more than a total of
-**six classes** and **two laboratory sessions**), their final grade in the
+**four classes** and **two laboratory sessions**), their final grade in the
 course will be reduced by one letter grade. Students who have any signs of
 illness should not attend any of the in-person course or laboratory sessions.
 With that said, missing class for any reason --- including illness or attendance
