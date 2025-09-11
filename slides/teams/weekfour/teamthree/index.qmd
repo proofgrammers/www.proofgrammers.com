@@ -3,7 +3,7 @@ title: "`definedOnString` is Uncomputable"
 description: "Explore the limits of `definedOnString`"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Ainslee Plesko, Javier Bejarano Jimenez, and Abishek Dhakal
 execute:
   echo: true
 format:
@@ -18,14 +18,39 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+## Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- x
+:::
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+## What is `definedOnString`?
 
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- x
+:::
+
+## Restricted Code Demonstration
+
+```{pyodide}
+x
+```
+  
+
+## Limitations
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- x
+:::
+
+## Why is it uncomputable?
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- x
+:::
+
+## Conclusion
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- x
 :::
