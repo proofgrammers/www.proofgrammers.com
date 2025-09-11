@@ -449,18 +449,30 @@ impossibility!
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
 
 - {{< iconify fa6-solid gear >}} **Step 1: Proof by contradiction**
-  - Assume `yesOnString` exists (our statement S)
+  - Assume `yesOnString` exists (our statement $S$)
   - This would allow us to create `yesOnSelf` 
   - And then create `notYesOnSelf`
 
 - {{< iconify fa6-solid gear >}} **Step 2: Derive contradiction**
   - `notYesOnSelf("notYesOnSelf.py")` creates logical contradiction
-  - Returns "yes" if and only if it returns "no"
-  - No program can have this impossible property
+    - Returns "yes" if and only if it returns "no"
+    - No program can have this impossible property
 
 - {{< iconify fa6-solid gear >}} **Step 3: Conclude impossibility**
   - Since assuming `yesOnString` exists leads to contradiction
   - This means that `yesOnString` cannot logically exist
+
+:::
+
+# Wow, `yesOnString` is actually impossible!
+
+::: incremental
+
+- Other phrases for this result:
+    - `yesOnString` is undecidable
+    - `yesOnString` is uncomputable
+    - `yesOnString` algorithmically unsolvable
+- **Formally proved a fundamental limit of computation!**
 
 :::
 
