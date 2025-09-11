@@ -469,9 +469,9 @@ impossibility!
 ::: incremental
 
 - Other phrases for this result:
-    - `yesOnString` is undecidable
-    - `yesOnString` is uncomputable
-    - `yesOnString` algorithmically unsolvable
+    - "`yesOnString` is undecidable"
+    - "`yesOnString` is uncomputable"
+    - "`yesOnString` is algorithmically unsolvable"
 - **Formally proved a fundamental limit of computation!**
 
 :::
