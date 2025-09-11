@@ -353,7 +353,6 @@ def hypothetical_yesOnSelf(P: str) -> str:
 
 # show examples
 test_programs = ["yes.py", "containsGAGA.py", "longerThan1K.py"]
-
 print("Hypothetical yesOnSelf behavior:")
 for prog in test_programs:
     result = hypothetical_yesOnSelf(prog)
