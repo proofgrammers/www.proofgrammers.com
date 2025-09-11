@@ -1,0 +1,31 @@
+---
+title: "`yesOnSelf` is Uncomputable"
+description: "Explore the limits of `yesOnSelf`"
+date: "2025-09-15"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Theory of computation
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
