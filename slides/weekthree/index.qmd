@@ -235,7 +235,21 @@ for command, result in examples:
 
 :::
 
-## Hypothetical `yesOnString`
+# Uncomputability proof
+
+::: incremental
+
+- Define `yesOnString(P, I)`
+- Assume `yesOnString(P, I)` is computable
+- Create a contradiction to prove otherwise
+    - Define `yesOnSelf(P)` from `yesOnString(P, P)`
+    - Construct `notYesOnSelf(P)` from `yesOnSelf(P)`
+    - Prove `notYesOnSelf(P)` is contradictory
+- Conclude `yesOnString(P, I)` is impossible
+
+:::
+
+## Exploring `yesOnString`
 
 ::: {.fragment style="margin-top: 0.1em; font-size: 0.85em;"}
 
@@ -376,6 +390,12 @@ for prog in test_cases:
     print(f"yesOnSelf('{prog}') = {yes_result}")
     print(f"notYesOnSelf('{prog}') = {not_result}")
 ```
+
+::: {.incremental style="margin-top: 0.1em; font-size: 0.9em;"}
+
+- The actual `notYesOnSelf` always does the opposite of `yesOnSelf`! 
+
+:::
 
 ## Running `notYesOnSelf`
 
