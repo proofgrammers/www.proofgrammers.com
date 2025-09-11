@@ -1,5 +1,5 @@
 ---
-title: "Prove startsWithZ is Uncomputable."
+title: "Prove startsWithZ is Uncomputable"
 description: "Create a proof that shows startsWithZ is uncomputable"
 date: "2025-09-16"
 date-format: long
@@ -21,41 +21,58 @@ format:
 ## Introduction
 
 ::: {.fragment}
-  - **Goal:** x
+  - **Definition:** startsWithZ(P, I) determines if the output of a program starts with "Z".
+  - **Goal:** Prove that startsWithZ(P, I) is uncomputable.
+  - **Motivation:** Understanding the limits of computation.
 :::
 
-## What is an Infinite Loop?
+## What is startsWithZ?
 
 ::: {.fragment}
-  - **Definition:** x
+```text
+startsWithZ(P, I) = {
+    "yes"  if P is a valid program, P(I) is defined, and P(I) starts with "Z"
+    "no"   otherwise
+}
+```
+- **Examples:**
+    - startsWithZ("print('Zebra')", "") → "yes"
+    - startsWithZ("print('Banana')", "") → "no"
+    - startsWithZ("print('Apple')", "") → "no"
 :::
 
-## Is this Problem Tractable, Intractable, or Uncomputable?
+## Building startsWithZ
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# x
+```
 
 ::: {.fragment}
-  - **Answer:** x
+  - **x:** x
 :::
 
-## Solutions
-
-::: {.fragment}
-  - **Static Analyzer:** x
-:::
-
-## Python Implementation
+## Building notStartsWithZ
 
 ```{pyodide}
 #| autorun: true
 #| max-lines: 13
-"""Detects infinite loops in Python source code."""
-
 # x
 ```
 
-## Limitations
+::: {.fragment}
+  - **x:** x
+:::
+
+## Proof By Contradiction
+
+why is this problem uncomputable, proof it by contradiction
+
+## What Can We Still Do
 
 ::: {.fragment}
-- **Not complete:** x
+  - **x:** what options do we realistically have to solve this problem
 :::
 
 ## Conclusion
