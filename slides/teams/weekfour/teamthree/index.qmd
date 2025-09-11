@@ -33,7 +33,7 @@ format:
 ## Restricted Code Demonstration
 
 ```{pyodide}
-x
+# see `definedOnString.py` file for book reference notes
 ```
   
 
