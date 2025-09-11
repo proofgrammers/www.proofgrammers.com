@@ -46,7 +46,8 @@ startsWithZ(P, I) = {
 ```{pyodide}
 #| autorun: true
 #| max-lines: 10
-# x
+def startsWithZ()
+    x
 ```
 
 ::: {.fragment}
@@ -72,13 +73,17 @@ why is this problem uncomputable, proof it by contradiction
 ## What Can We Still Do
 
 ::: {.fragment}
-  - **x:** what options do we realistically have to solve this problem
+  - **Options:** While perfect analysis is impossible, we can still build practical tools to address many cases:
+    - **Static Analysis:** Identifies bugs and unreachable code without running the program.
+    - **Dynamic Analysis:** Identifies bugs and unreachable code by running the program.
 :::
 
 ## Conclusion
 
 ::: {.fragment}
-  - **Impossible:** x
+  - **x:** we proved that its uncomputable 
+  - because of x
+  - but we can still use static or dynamic analysis to solve the problem some of the time
 :::
 
 ## Sources
