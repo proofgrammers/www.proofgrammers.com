@@ -1,6 +1,6 @@
 ---
-title: "`crashOnString` is Uncomputable"
-description: "Explore the limits of `crashOnString`"
+title: "`yesOnString` is Uncomputable"
+description: "Explore the limits of `yesOnString`"
 date: "2025-09-15"
 date-format: long
 author: Gregory M. Kapfhammer
