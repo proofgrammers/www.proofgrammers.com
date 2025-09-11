@@ -1,0 +1,73 @@
+---
+title: "Prove startsWithZ is Uncomputable."
+description: "Create a proof that shows startsWithZ is uncomputable"
+date: "2025-09-16"
+date-format: long
+author: Aidan Dyga, Preston Smith, Joseph Oforkansi
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+## Introduction
+
+::: {.fragment}
+  - **Goal:** x
+:::
+
+## What is an Infinite Loop?
+
+::: {.fragment}
+  - **Definition:** x
+:::
+
+## Is this Problem Tractable, Intractable, or Uncomputable?
+
+::: {.fragment}
+  - **Answer:** x
+:::
+
+## Solutions
+
+::: {.fragment}
+  - **Static Analyzer:** x
+:::
+
+## Python Implementation
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 13
+"""Detects infinite loops in Python source code."""
+
+# x
+```
+
+## Limitations
+
+::: {.fragment}
+- **Not complete:** x
+:::
+
+## Conclusion
+
+::: {.fragment}
+  - **Impossible:** x
+:::
+
+## Sources
+
+::: {.fragment}
+  - Course Textbook
+  - GitHub Copilot
+  - Microsoft Copilot
+:::
