@@ -17,15 +17,11 @@ format:
     highlight-style: github
     footer: "Proofgrammers"
 ---
-
-# Theory of computation
+# Introduction
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+    - countLines.py takes input and outputs the number of input lines
+    - prove that countLines.py is computable
 
 :::
