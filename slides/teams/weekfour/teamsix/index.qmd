@@ -42,8 +42,8 @@ while True:
   else:
     counter += 1"""
 
-exampleCode2 = """def sayYes(inString):
-  return "yes""""
+exampleCode2 = """def add(val1, val2):
+  return val1 + val2"""
 
 exampleCode3 = """def countLines(inString):
   # Splits the code on newlines
