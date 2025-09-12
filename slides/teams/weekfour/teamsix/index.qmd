@@ -25,3 +25,45 @@ format:
     - prove that countLines.py is computable
 
 :::
+
+## Implementing the countLines Function
+
+```{pyodide}
+def countLines(inString):
+  # Splits the code on newlines
+  lines = inString.split('\n')
+  # Returns the number of lines, as a string
+  return str(len(lines))
+
+exampleCode1 = """counter = 0
+while True:
+  if counter == 10:
+    break
+  else:
+    counter += 1"""
+
+exampleCode2 = """def sayYes(inString):
+  return "yes""""
+
+exampleCode3 = """def countLines(inString):
+  # Splits the code on newlines
+  lines = inString.split('\n')
+  # Returns the number of lines, as a string
+  return str(len(lines))"""
+
+print(countLines(exampleCode1))
+print(countLines(exampleCode2))
+print(countLines(exampleCode3))
+```
+
+# Explaining the countLines Function
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+    - Takes as input a string(in this case each string is multiline and represents code)
+    - Splits the code using the newline ASCII character as the indicator for each separate line
+    - Uses the len function to get the number of lines of the string
+    - Casts the result of running the len function as a string and returns it
+    - We used three different examples of code, including the countLines function itself
+
+:::
