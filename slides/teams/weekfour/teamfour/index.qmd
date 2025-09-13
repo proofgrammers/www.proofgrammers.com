@@ -3,7 +3,7 @@ title: "`longerThan10` is Uncomputable"
 description: "Explore the limits of `longerThan10`"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Grant Anderson, Coltin Colucci, Ritesh Ojha
 execute:
   echo: true
 format:
@@ -18,14 +18,14 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Introduction
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
-
+- Goal : Prove that longerThan10 is uncomputable.
+- `true` if P runs for more than 10 steps on input P
+- `false` if P runs for 10 or fewer steps on input P
 :::
+
+## What is Longerthan10 Program?
+
+- The longerThan10 function takes a program as input and    tries to answer: "Will this program run for more than 10 steps when given itself as input?" It should return true if yes, false if no.
