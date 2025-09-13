@@ -1,10 +1,3 @@
-# include any created code here - thanks!
-
-# book references:
-    # Exercise 3.10 (pg 43)
-    # figure 3.9 (pg 38)
-    # claim 3.4 (pg 38)
-    
 # "rf" function: read a program file as a string
 def rf(filename: str) -> str:
     with open(filename, "r") as f:
@@ -27,7 +20,7 @@ def Paradox():
         print("Checker says: does not halt → halting now.")
         return "halted"
 
-# Paradox()
+Paradox()
 
 
 # Case 2
