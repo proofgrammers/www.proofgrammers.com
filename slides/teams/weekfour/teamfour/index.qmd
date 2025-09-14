@@ -29,3 +29,16 @@ format:
 ## What is Longerthan10 Program?
 
 - The longerThan10 function takes a program as input and    tries to answer: "Will this program run for more than 10 steps when given itself as input?" It should return true if yes, false if no.
+  
+## Can we write a program that computes longerThan10?
+
+- The short answer is "NO", we can't! Because it's UNCOMPUTABLE.
+
+## Why is `longerThan10` uncomputable?
+**The Flow Diagram**
+
+![](flow.png)
+
+- If longerThan10 were possible, we could solve the famous Halting Problem and we know its impossible to solve the Halting Problem. So longerThan10 is uncomputable.
+
+
