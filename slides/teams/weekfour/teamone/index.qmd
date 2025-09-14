@@ -18,26 +18,17 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
-
-:::
 
 # What is yesOnString?
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- Decision problem
+  Inputs: A Python program (P), A string input (s)
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - It returns "yes" if a string is returned in the output of a program
+- **Question**: Does program P, when run on input s, return "yes"?
 
-:::
+- When does the program return "no"?
+  Invalid program, undefined output, non-"yes" as a program return
 
 # Code
 
