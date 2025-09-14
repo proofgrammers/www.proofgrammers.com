@@ -18,39 +18,86 @@ format:
     footer: "Proofgrammers"
 ---
 
-## Introduction
+# Introduction
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
-- x
+-   x
 :::
 
 ## What is `definedOnString`?
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
-- x
+-   x
 :::
 
-## Restricted Code Demonstration
+## `definedOnString`: Case 1
 
 ```{pyodide}
-# see `definedOnString.py` file for book reference notes
+# "rf" function: read a program file as a string
+def rf(filename: str) -> str:
+    with open(filename, "r") as f:
+        return f.read()
+
+# Case 1
+def DefinedOnString(program_code : str, inString : str) -> bool:
+    """When given a program and an input string, returns True if the program halts on that input."""
+    return True # Assume it halts for demonstration
+
+def Paradox():
+    """A paradoxical function that uses DefinedOnString to create a contradiction."""
+    my_source = rf(__file__) # read this file as a string
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+
+Paradox()
 ```
-  
+
+## `definedOnString`: Case 2
+
+```{pyodide}
+# "rf" function: read a program file as a string
+def rf(filename: str) -> str:
+    with open(filename, "r") as f:
+        return f.read()
+        
+# Case 2
+def DefinedOnString(program_code : str, inString : str) -> bool:
+    """When given a program and an input string, returns True if the program halts on that input."""
+    return False # Assume it does not halt for demonstration
+
+def Paradox():
+    """A paradoxical function that uses DefinedOnString to create a contradiction."""
+    my_source = rf(__file__) # read this file as a string
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+    
+Paradox()
+```
 
 ## Limitations
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
-- x
+-   x
 :::
 
 ## Why is it uncomputable?
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
-- x
+-   x
 :::
 
 ## Conclusion
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
-- x
+-   x
 :::
