@@ -23,12 +23,12 @@ format:
 # What is yesOnString?
 
 - Decision problem
-  Inputs: A Python program (P), A string input (s)
+  - Inputs: A Python program (P), A string input (s)
 
 - **Question**: Does program P, when run on input s, return "yes"?
 
 - When does the program return "no"?
-  Invalid program, undefined output, non-"yes" as a program return
+  - Invalid program, undefined output, non-"yes" as a program return
 
 # Code
 
