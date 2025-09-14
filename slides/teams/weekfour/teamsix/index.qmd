@@ -9,6 +9,7 @@ execute:
 format:
   live-revealjs:
     completion: true
+    incremental: true
     theme: default
     css: ../../../css/styles.css
     history: false
@@ -29,6 +30,9 @@ format:
 ## Implementing the countLines Function
 
 ```{pyodide}
+#| max-lines: 11
+#| autorun: true
+
 def countLines(inString):
   # Splits the code on newlines
   lines = inString.split('\n')
@@ -70,7 +74,7 @@ print(countLines(exampleCode3))
 
 # WeirdCountlines.py
 
-```{python}
+```python
 from countLines import countLines
 from countLinesPlus1 import countLinesPlus1
 
@@ -83,13 +87,20 @@ def weirdCountLines(inString):
     return countLines(inString)
 ```
 
-- Claims:
-  - If you feed `WeirdCountlines.py` into itself, it should be both equal the number of lines from both `countlines`(n) and `countlinesplus1`(n+1) at the same time which contradictory. Hence, `countlines.py` can't exist.
+# It's Stupid!!
 
-- Flaw:
-  - This is called a liar-paradox.
-  - It just assumes based on the code that is made to misbehave on itself, sort of like trickster program.
-  - It does not create a contradiction for `countlines.py`.
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+  - **Claims**:
+
+    - If you feed `WeirdCountlines.py` into itself, it should be both equal the number of lines from both `countlines`(n) and `countlinesplus1`(n+1) at the same time which contradictory. Hence, `countlines.py` can't exist.
+
+  - **Flaw**:
+    - This is called a liar-paradox.
+    - It just assumes based on the code that is made to misbehave on itself, sort of like trickster program.
+    - It does not create a contradiction for `countlines.py`.
+  
+:::
 
 # `countlines` is computable
 
