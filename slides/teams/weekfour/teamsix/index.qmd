@@ -3,7 +3,7 @@ title: "`countLines` is Computable"
 description: "Explore the limits of proof by contradiction"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Hemani Alaparthi, Hannah Brown, Anupraj Guragain, Molly Suppo
 execute:
   echo: true
 format:
