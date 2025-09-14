@@ -67,3 +67,37 @@ print(countLines(exampleCode3))
     - We used three different examples of code, including the countLines function itself
 
 :::
+
+# WeirdCountlines.py
+
+```{python}
+from countLines import countLines
+from countLinesPlus1 import countLinesPlus1
+
+def weirdCountLines(inString):
+
+  if inString == rf('weirdCountLines.py'):
+    return countLinesPlus1(inString)
+
+  else:
+    return countLines(inString)
+```
+
+- Claims:
+  - If you feed `WeirdCountlines.py` into itself, it should be both equal the number of lines from both `countlines`(n) and `countlinesplus1`(n+1) at the same time which contradictory. Hence, `countlines.py` can't exist.
+
+- Flaw:
+  - This is called a liar-paradox.
+  - It just assumes based on the code that is made to misbehave on itself, sort of like trickster program.
+  - It does not create a contradiction for `countlines.py`.
+
+# `countlines` is computable
+
+- `countlines` is both computable and tractable.
+  - We can build a program which can count lines of other programs.
+  - We can do it effectively and efficiently.
+  - We can do it linear time O(n).
+
+
+
+
