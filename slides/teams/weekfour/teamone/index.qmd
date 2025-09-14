@@ -18,7 +18,79 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Introduction
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+# What is yesOnString?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+# Why Is It Uncomputable?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+# Code
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+# Proof
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+# What is the Halting Program?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+
+:::
+
+# Conclusion
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
