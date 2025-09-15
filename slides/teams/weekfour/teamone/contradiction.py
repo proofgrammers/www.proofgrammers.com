@@ -1,8 +1,5 @@
 """Create a proof by contradiction for the yesOnString problem."""
 
-def troublemaker(some_string: str):
-    return "yes"
-
 def yesOnString(program_input: str, input_string: str):
     """Return yes on a valid P, if input is defined and P(I) is yes."""
     if program_input == 'troublemaker.py' and isinstance(input_string, str):
@@ -15,14 +12,17 @@ def yesOnString(program_input: str, input_string: str):
         return err
 
 
-def decider(program_input: str, input_string: str):
-    """Decide if yesOnString works well."""
-    result = "yes"
-    expected_resut = yesOnString("troublemaker.py", "some_string")
-
-    if expected_resut == result:
-        print("yes")
+def troublemaker(some_string: str):
+    """Flip the answer: say 'no' if yesOnString predicts 'yes', else 'yes'."""
+    prediction = yesOnString("troublemaker.py", "troublemaker.py")
+    if prediction == "yes":
+        return "no"
     else:
-        print("false")
+        return "yes"
 
-decider(program_input="yesOnString.py", input_string="hello")
+def decider():
+    """Show the contradiction when we ask about troublemaker on itself."""
+    result = yesOnString("troublemaker.py", "troublemaker.py")
+    print(f"yesOnString says: {result}")
+
+decider()
