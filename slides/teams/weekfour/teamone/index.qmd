@@ -37,7 +37,7 @@ format:
 
 ```{pyodide}
 #| autorun: false
-#| max-lines: 20
+#| max-lines: 10
 """This file contains a basic yesOnString function."""
 
 def returnYesOnString(some_string: str) -> str:
@@ -66,10 +66,44 @@ print(yesOnString("returnYesOnString.py", 1))
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Assume yesOnString exists 
+```{pyodide}
 
+#| max-lines: 25
+"""Create a proof by contradiction for the yesOnString problem."""
+
+def yesOnString(program_input: str, input_string: str):
+    """Return yes on a valid P, if input is defined and P(I) is yes."""
+    if program_input == 'troublemaker.py' and isinstance(input_string, str):
+        return troublemaker(input_string)
+    if not program_input.endswith(".py"):
+        err = f"{program_input} either does not exist or is not a valid Python program."
+        return err
+    if not isinstance(input_string, str):
+        err = f"{input_string} is not a string!"
+        return err
+
+
+def troublemaker(some_string: str):
+    """Flip the answer: say 'no' if yesOnString predicts 'yes', else 'yes'."""
+    prediction = yesOnString("troublemaker.py", "troublemaker.py")
+    if prediction == "yes":
+        return "no"
+    else:
+        return "yes"
+
+def decider():
+    """Show the contradiction when we ask about troublemaker on itself."""
+    result = yesOnString("troublemaker.py", "troublemaker.py")
+    print(f"yesOnString says: {result}")
+
+decider()
+```
 :::
+
+## Output of the Proof by Contradiction
+
+![Image One](contradiction.png)
+![Image Two](contradiction_result.png)
 
 # Similarity to Halting Program
 
