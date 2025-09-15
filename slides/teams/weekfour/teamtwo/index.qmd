@@ -32,6 +32,54 @@ format:
     
 :::
 
+## Example hypothetical 'crashOnString'{.smaller}
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 7  
+  def crashOnString(progString, inputStr):
+    ouput = ""
+    if progString == "crashOnContainsCrash.py":
+      output = crashOnContainsCrash(inputStr)
+    if progString == "noCrash.py":
+      output = noCrash(inputStr)
+
+    if output == "Crashed":
+      return "Yes"
+    else:
+      return "No"
+
+  def crashOnContainsCrash(inputStr):
+    if "Crash" in inputStr:
+      try:
+        result = 1 / 0
+      except ZeroDivisionError:
+        return "Crashed"
+
+  def noCrash(inputStr):
+    return "No Crash"
+
+  test_programs = [("crashOnContainsCrash.py", "Crash"), ("noCrash.py", "Crash")]
+
+  print("Hypothetical crashOnString behavior:")
+  for (prog, inputStr) in test_programs:
+      result = crashOnString(prog, inputStr)
+      print(f"crashOnString('{prog, inputStr}') = {result}")
+
+```
+
+## Defining `weirdCrashOnSelf` 
+
+```python
+  def weirdCrashOnSelf(progString):
+    val = crashOnSelf(progString)
+    if (val == 'no'):
+      return 'did not crash!'
+    else:
+      # deliberately crash (divide by zero)
+      x = 1 / 0
+```
+
 # Conclusion
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
