@@ -43,7 +43,7 @@ def returnYesOnString(some_string: str) -> str:
     return "yes"
 
 def yesOnString(program_input: str, input_string: str):
-    """Return yes on valid P, if input is defined and P(I) is yes."""
+    """Return yes on valid P, if input is defnied and P(I) is yes."""
     if program_input == 'returnYesOnString.py' and isinstance(input_string, str):
             return returnYesOnString(input_string)
     if not program_input.endswith(".py"):
@@ -63,6 +63,20 @@ print(yesOnString("returnYesOnString.py", 1))
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
+- Assumption:
+     - Suppose yesOnString exists.
+- Self-referential program D:
+     - If yesOnString(x, "x") = Yes -> D outputs nothing.
+     - If yesOnString(x, "x") = No  -> D outputs "x".
+- Self - application (x = "D")
+     - If result = yes -> D does not output "D" -> actually not "Yes"
+     - If result = no  -> D outputs "D" -> actually Yes
+- Conclusion:
+     - The decider’s prediction always contradicts the actual behavior
+
+:::
+
+## Proof By Contradiction with Coding
 ```{pyodide}
 
 #| max-lines: 25
@@ -146,14 +160,13 @@ halting()
 
 :::
 
-## Conclusion
+# Conclusion
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.fragment style="margin-top: -0.3em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- yesOnString seems useful, but leads to self-referential contradiction.
+- Therefore, it is Uncomputable, just like the Halting Problem.
+- This shows the limits of computation: not everything can be decided
+  by an algorithm.
 
 :::
