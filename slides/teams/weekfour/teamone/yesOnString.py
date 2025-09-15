@@ -1,5 +1,9 @@
 """This file contains a basic yesOnString function."""
 
+def returnYesOnString(some_string: str) -> str:
+    """This function always says yes."""
+    return "yes"
+
 def yesOnString(program_input: str, input_string: str):
     """Return yes on valid P, if input is defnied and P(I) is yes."""
     try:
@@ -7,3 +11,7 @@ def yesOnString(program_input: str, input_string: str):
             return returnYesOnString(input_string)
     except FileNotFoundError:
         print(f"{program_input} either does not exist or is not a valid Python program.")
+
+print(yesOnString("returnYesOnString.py", "Go Gators!"))
+print(yesOnString("returnYesOnString.cpp", "Go Gators!"))
+print(yesOnString("returnYesOnString.py", 1))
