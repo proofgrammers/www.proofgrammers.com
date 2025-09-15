@@ -3,7 +3,7 @@ title: "Prove startsWithZ is Uncomputable"
 description: "Create a proof that shows startsWithZ is uncomputable"
 date: "2025-09-16"
 date-format: long
-author: Aidan Dyga, Preston Smith, Joseph Oforkansi
+author: Joseph Oforkansi, Aidan Dyga, Preston Smith
 execute:
   echo: true
 format:
@@ -21,9 +21,11 @@ format:
 ## Introduction
 
 ::: {.fragment}
-  - **Definition:** startsWithZ(P, I) determines if the output of a program starts with "Z".
-  - **Goal:** Prove that startsWithZ(P, I) is uncomputable.
-  - **Motivation:** Understanding the limits of computation.
+  - **Definition:** `startsWithZ(P, I)` determines if the output of a program starts with "Z".
+  - **Goal:** Prove that `startsWithZ(P, I)` is uncomputable.
+  - **Motivation:** Simple-looking questions about program behavior can be as hard as the Halting Problem, showing the limits of computation.
+  - **Real-World Connection:** This reflects why compilers, program analyzers, and AI systems cannot perfectly predict every program’s output.
+  - **Roadmap:** We’ll define the problem, build related functions, and prove uncomputability by contradiction.
 :::
 
 ## What is startsWithZ?
