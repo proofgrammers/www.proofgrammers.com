@@ -72,7 +72,7 @@ def startsWithZ()
 
 ## Proof By Contradiction
 
-why is this problem uncomputable, proof it by contradiction
+why is this problem uncomputable, proof it by contradiction. 
 
 ## What Can We Still Do
 
@@ -85,9 +85,9 @@ why is this problem uncomputable, proof it by contradiction
 ## Conclusion
 
 ::: {.fragment}
-  - **x:** we proved that its uncomputable 
-  - because of x
-  - but we can still use static or dynamic analysis to solve the problem some of the time
+  - **Uncomputable:** This problem is uncomputable once again as it comes down to the halting problem. 
+  - If you where to have **Troublemaker Program (notStartsWithZ)** where it has an output with Z if the program it was giving didn't then you can't say for sure what it will return because if it should start with Z then it wont and vice versa.  
+  - This creates a **Contradiction** both can not be true. If you where to run **startsWithZ** on **notStartsWithZ** if it returns true then **notStartsWithZ** returns false guaranteeing that it will always be incorrect in it's prediction making this an incomputable problem
 :::
 
 ## Sources
