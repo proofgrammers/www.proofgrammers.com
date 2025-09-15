@@ -35,28 +35,11 @@ def notStartsWithZSelf(P):
 
 # Example usage (for demonstration purposes):
 if __name__ == "__main__":
-    # Define a sample program P for testing
-    def sample_program(input):
-        if input == sample_program:
-            return "Zebra"
-        return "Apple"
-    
     # Proof by contradiction demonstration
-    # x
-
-'''
-Proof by Contradiction Demo: startsWithZ Uncomputability
-
-Claim: startsWithZ is uncomputable (impossible to implement perfectly)
-Assumption: Suppose startsWithZ is computable (we can implement it perfectly)
-Trap: If we could implement startsWithZ, then we could also implement:
-    - startsWithZSelf(P): checks if program P outputs a Z-string when given itself as input
-    - notStartsWithZSelf(P):
-        Returns "Apple" (not Z) if P would output a Z-string on itself
-        Returns "Zebra" (starts with Z) if P would NOT output a Z-string on itself
-Contradiction: What happens when we run notStartsWithZSelf on itself?
-    - If notStartsWithZSelf(notStartsWithZSelf) returns "Zebra", then by definition, it should return "Apple"
-    - If notStartsWithZSelf(notStartsWithZSelf) returns "Apple", then by definition, it should return "Zebra"
-This is impossible! The function contradicts itself no matter what it tries to return. (troublemaker program)
-Conclusion: startsWithZ is uncomputable.
-''' 
+    result = notStartsWithZSelf(notStartsWithZSelf)
+    print("notStartsWithZSelf(notStartsWithZSelf):", result)
+    # Explain the contradiction
+    if result == "Zebra":
+        print("By definition, it should have returned 'Apple'. Contradiction!")
+    elif result == "Apple":
+        print("By definition, it should have returned 'Zebra'. Contradiction!")

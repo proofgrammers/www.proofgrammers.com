@@ -93,14 +93,10 @@ def notStartsWithZSelf(P):
 ## Proof By Contradiction Explained
 
 ::: {.fragment}
-- **Contradiction (Troublemaker Program):**
-  - What happens when we run `notStartsWithZSelf` on itself?
+- **Contradiction (Troublemaker Program):** What happens when we run `notStartsWithZSelf` on itself?
     - If `notStartsWithZSelf(notStartsWithZSelf)` returns "Zebra", then by definition, it should return "Apple".
     - If `notStartsWithZSelf(notStartsWithZSelf)` returns "Apple", then by definition, it should return "Zebra".
-  - This is impossible! The function contradicts itself no matter what it tries to return.
-- **Conclusion:**
-  - Since assuming `startsWithZ` is computable leads to an impossible situation, our assumption must be wrong.
-  - Therefore, `startsWithZ` is uncomputable.
+- **Conclusion:** Since assuming `startsWithZ` is computable leads to an impossible situation, our assumption must be wrong and it must be uncomputable.
 :::
 
 ## What Can We Still Do
@@ -115,8 +111,8 @@ def notStartsWithZSelf(P):
 
 ::: {.fragment}
   - **Uncomputable:** This problem is uncomputable once again as it comes down to the halting problem. 
-  - If you where to have **Troublemaker Program (notStartsWithZ)** where it has an output with Z if the program it was giving didn't then you can't say for sure what it will return because if it should start with Z then it wont and vice versa.  
-  - This creates a **Contradiction** both can not be true. If you where to run **startsWithZ** on **notStartsWithZ** if it returns true then **notStartsWithZ** returns false guaranteeing that it will always be incorrect in it's prediction making this an incomputable problem
+  - The **notStartsWithZSelf** program is a paradox: whenever it tries to decide if it itself outputs a string starting with "Z", it is forced to give the wrong answer. No matter what it returns, the opposite should have been true. (Troublemaker Program)
+  - This contradiction means there is no way to build a program that always correctly decides if another program outputs a string starting with "Z".
 :::
 
 ## Sources
