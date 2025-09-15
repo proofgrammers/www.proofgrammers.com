@@ -64,7 +64,7 @@ format:
 from TroubleLongerThan10 
 import TroubleLongerThan10
 
-def Trouble>=10(P)(progString):
+def TroubleLongerThan10(P)(progString):
     val = TroubleLongerThan10(progString)
     if val == 'yes':
         # Return a string with fewer than 10 characters
