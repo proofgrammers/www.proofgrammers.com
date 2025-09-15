@@ -6,11 +6,11 @@ def returnYesOnString(some_string: str) -> str:
 
 def yesOnString(program_input: str, input_string: str):
     """Return yes on valid P, if input is defnied and P(I) is yes."""
-    try:
-        if program_input == 'returnYesOnString.py':
+    if program_input == 'returnYesOnString.py' and input_string is str:
             return returnYesOnString(input_string)
-    except FileNotFoundError:
-        print(f"{program_input} either does not exist or is not a valid Python program.")
+    else:
+        error = (f"{program_input} either does not exist or is not a valid Python program.")
+        return error
 
 print(yesOnString("returnYesOnString.py", "Go Gators!"))
 print(yesOnString("returnYesOnString.cpp", "Go Gators!"))
