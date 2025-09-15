@@ -35,8 +35,27 @@ format:
 ```{pyodide}
 # "rf" function: read a program file as a string
 def rf(filename: str) -> str:
-    with open(filename, "r") as f:
-        return f.read()
+    if filename == "definedOnString.py":
+        return """\
+# full contents of definedOnString.py go here
+def DefinedOnString(program_code: str, inString: str) -> bool:
+    return True
+
+def Paradox():
+    my_source = rf("definedOnString.py")
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+
+Paradox()
+"""
+    else:
+        return ""
+
 
 # Case 1
 def DefinedOnString(program_code : str, inString : str) -> bool:
@@ -45,7 +64,7 @@ def DefinedOnString(program_code : str, inString : str) -> bool:
 
 def Paradox():
     """A paradoxical function that uses DefinedOnString to create a contradiction."""
-    my_source = rf(__file__) # read this file as a string
+    my_source = rf("definedOnString.py") # read this file as a string
     if DefinedOnString(my_source, my_source):
         print("Checker says: halts → looping forever...")
         while True:
@@ -62,9 +81,28 @@ Paradox()
 ```{pyodide}
 # "rf" function: read a program file as a string
 def rf(filename: str) -> str:
-    with open(filename, "r") as f:
-        return f.read()
-        
+    if filename == "definedOnString.py":
+        return """\
+# full contents of definedOnString.py go here
+def DefinedOnString(program_code: str, inString: str) -> bool:
+    return False
+
+def Paradox():
+    my_source = rf("definedOnString.py")
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+
+Paradox()
+"""
+    else:
+        return ""
+
+
 # Case 2
 def DefinedOnString(program_code : str, inString : str) -> bool:
     """When given a program and an input string, returns True if the program halts on that input."""
@@ -72,7 +110,7 @@ def DefinedOnString(program_code : str, inString : str) -> bool:
 
 def Paradox():
     """A paradoxical function that uses DefinedOnString to create a contradiction."""
-    my_source = rf(__file__) # read this file as a string
+    my_source = rf("definedOnString.py") # read this file as a string
     if DefinedOnString(my_source, my_source):
         print("Checker says: halts → looping forever...")
         while True:
