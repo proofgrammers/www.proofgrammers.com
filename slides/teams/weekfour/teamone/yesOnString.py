@@ -18,3 +18,4 @@ def yesOnString(program_input: str, input_string: str):
 print(yesOnString("returnYesOnString.py", "Go Gators!"))
 print(yesOnString("returnYesOnString.cpp", "Go Gators!"))
 print(yesOnString("returnYesOnString.py", 1))
+print(yesOnString("yesOnString.py", "Go Gators!"))
