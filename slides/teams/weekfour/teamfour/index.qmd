@@ -44,28 +44,28 @@ format:
 
 ## Program Name and Behavior
 
-`GreaterThanOrEqualTo10(P,I)`
+`LongerThan10(P,I)`
 - Return "yes", if `P` is greater than or equal to 10 characters on input `I`
 - Return "no" otherwise
 
-`GreaterThanOrEqualTo10OnSelf(P)`
+`LongerThan10OnSelf(P)`
 - Return "yes", if `P` is greater than or equal to 10 characters on input `P`
 - Return "no" otherwise
 
-`TroubleGreaterThanOrEqualTo10(P)`
+`TroubleLongerThan10(P)`
 -  If `P` is at least 10 characters on input `P`, return a string with fewer than 10 characters
 - Otherwise, return a string with at least 10 characters
 
-- This proves that `GreaterThanOrEqualTo10` cannot exist because it produces a contradiction.
+- This proves that `LongerThan10` cannot exist because it produces a contradiction.
 
 ## "Code"
 
 ```Python
-from TroubleGreaterThanOrEqualTo10 
-import TroubleGreaterThanOrEqualTo10
+from TroubleLongerThan10 
+import TroubleLongerThan10
 
 def Trouble>=10(P)(progString):
-    val = TroubleGreaterThanOrEqualTo10(progString)
+    val = TroubleLongerThan10(progString)
     if val == 'yes':
         # Return a string with fewer than 10 characters
         return "short"
@@ -74,4 +74,4 @@ def Trouble>=10(P)(progString):
         return "this_is_long"
 ```
 
-- This is non runnable Python code that shows the logic of the "greater than 10" issue and why it cannot exist. 
+- This is non runnable Python code that shows the logic of the "Longer than 10" issue and why it cannot exist. 
