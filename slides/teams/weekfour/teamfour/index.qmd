@@ -22,14 +22,14 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - Goal : Prove that longerThan10 is uncomputable.
-- `true` if P runs for more than 10 steps on input P
-- `false` if P runs for 10 or fewer steps on input P
+- Returns "yes" if P(I) is a string of more than 10 CHARACTERS
+- Returns "no" otherwise
 :::
 
 ## What is Longerthan10 Program?
 
-- The longerThan10 function takes a program as input and    tries to answer: "Will this program run for more than 10 steps when given itself as input?" It should return true if yes, false if no.
-  
+- This program takes two parameters (P, I). It returns “yes” if P(I) is a string of more than 10 characters,and “no” otherwise.
+
 ## Can we write a program that computes longerThan10?
 
 - The short answer is "NO", we can't! Because it's UNCOMPUTABLE.
@@ -75,3 +75,5 @@ def Trouble>=10(P)(progString):
 ```
 
 - This is non runnable Python code that shows the logic of the "Longer than 10" issue and why it cannot exist. 
+
+# Overview and Q&A
