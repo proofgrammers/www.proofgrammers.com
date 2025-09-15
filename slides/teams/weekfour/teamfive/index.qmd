@@ -18,6 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
+---
 ## Introduction
 
 ::: {.fragment}
@@ -27,6 +28,7 @@ format:
   - **Real-World Connection:** This reflects why compilers, program analyzers, and AI systems cannot perfectly predict every program’s output.
   - **Roadmap:** We’ll define the problem, build related functions, and prove uncomputability by contradiction.
 :::
+---
 
 ## What is startsWithZ?
 
