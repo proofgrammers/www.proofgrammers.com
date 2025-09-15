@@ -23,13 +23,17 @@ format:
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
 - {{< iconify fa6-solid lightbulb >}} **What is crash on string?**
-    
+
 :::
+
+# Program sequence
+
+![Book Figure](program_sequence.png)
 
 # Proof that crash on string is uncomputable
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-    
+
 :::
 
 ## Example hypothetical 'crashOnString'{.smaller}
@@ -83,5 +87,7 @@ format:
 # Conclusion
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-    
+- Proof by contradiction
+- Determined uncomputable (and therefore untractable)
+- 
 :::
