@@ -43,7 +43,7 @@ def returnYesOnString(some_string: str) -> str:
     return "yes"
 
 def yesOnString(program_input: str, input_string: str):
-    """Return yes on valid P, if input is defnied and P(I) is yes."""
+    """Return yes on valid P, if input is defined and P(I) is yes."""
     if program_input == 'returnYesOnString.py' and isinstance(input_string, str):
             return returnYesOnString(input_string)
     if not program_input.endswith(".py"):
