@@ -42,3 +42,19 @@ format:
 - If longerThan10 were possible, we could solve the famous Halting Problem and we know its impossible to solve the Halting Problem. So longerThan10 is uncomputable.
 
 
+## Program Name and Behavior
+
+`>=To10(P,I)`
+- Return "yes", if `P` is greater than or equal to 10 characters on input `I`
+- Return "no" otherwise
+
+`>=To10OnSelf(P)`
+- Return "yes", if `P` is greater than or equal to 10 characters on input `P`
+- Return "no" otherwise
+
+`Trouble>=10(P)`
+-  If `P` is at least 10 characters on input `P`, return a string with fewer than 10 characters
+- Otherwise, return a string with at least 10 characters
+
+This proves that `>=To10` cannot exist because it produces a contradiction.
+
