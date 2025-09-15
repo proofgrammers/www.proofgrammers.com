@@ -20,7 +20,7 @@ format:
 
 
 
-# What is yesOnString?
+## What is yesOnString?
 
 - Decision problem
   - Inputs: A Python program (P), A string input (s)
@@ -30,16 +30,38 @@ format:
 - When does the program return "no"?
   - Invalid program, undefined output, non-"yes" as a program return
 
-# Code
+## Code
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+```{pyodide}
+#| autorun: false
+#| max-lines: 20
+"""This file contains a basic yesOnString function."""
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Give examples of where it works and where it doesn't (similar to halting problem where undefined outputs are issues)
+def returnYesOnString(some_string: str) -> str:
+    """This function always says yes."""
+    return "yes"
+
+def yesOnString(program_input: str, input_string: str):
+    """Return yes on valid P, if input is defnied and P(I) is yes."""
+    if program_input == 'returnYesOnString.py' and isinstance(input_string, str):
+            return returnYesOnString(input_string)
+    if not program_input.endswith(".py"):
+        error = f"{program_input} either does not exist or is not a valid Python program."
+        return error
+    if not isinstance(input_string, str):
+        error = f"{input_string} is not a string!"
+        return error
+
+print(yesOnString("returnYesOnString.py", "Go Gators!"))
+print(yesOnString("returnYesOnString.cpp", "Go Gators!"))
+print(yesOnString("returnYesOnString.py", 1))
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
 :::
 
-# Proof By Contradiction
+## Proof By Contradiction
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
@@ -60,7 +82,7 @@ format:
 
 :::
 
-# Conclusion
+## Conclusion
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
