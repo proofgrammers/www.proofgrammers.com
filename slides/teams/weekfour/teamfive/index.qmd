@@ -18,7 +18,6 @@ format:
     footer: "Proofgrammers"
 ---
 
----
 ## Introduction
 
 ::: {.fragment}
@@ -26,23 +25,6 @@ format:
   - **Goal:** Prove that `startsWithZ(P, I)` is uncomputable.
   - **Motivation:** Simple-looking questions about program behavior can be as hard as the Halting Problem, showing the limits of computation.
   - **Real-World Connection:** This reflects why compilers, program analyzers, and AI systems cannot perfectly predict every program’s output.
-  - **Roadmap:** We’ll define the problem, build related functions, and prove uncomputability by contradiction.
-:::
----
-
-## What is startsWithZ?
-
-::: {.fragment}
-```text
-startsWithZ(P, I) = {
-    "yes"  if P is a valid program, P(I) is defined, and P(I) starts with "Z"
-    "no"   otherwise
-}
-```
-- **Examples:**
-    - startsWithZ("print('Zebra')", "") → "yes"
-    - startsWithZ("print('Banana')", "") → "no"
-    - startsWithZ("print('Apple')", "") → "no"
 :::
 
 ## Building startsWithZ
@@ -50,29 +32,76 @@ startsWithZ(P, I) = {
 ```{pyodide}
 #| autorun: true
 #| max-lines: 10
-def startsWithZ()
-    x
+# startsWithZ(P, I): Returns "yes" if program P outputs a string starting with "Z" on input I
+def startsWithZ(P, I):
+    try:
+        output = P(I)
+        if isinstance(output, str) and output.startswith("Z"):
+            return "yes"
+        else:
+            return "no"
+    except Exception as e:
+        return f"Error: {e}"
 ```
 
 ::: {.fragment}
-  - **x:** x
-:::
-
-## Building notStartsWithZ
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 13
-# x
-```
-
-::: {.fragment}
-  - **x:** x
+  - **Examples:**
+    - startsWithZ("print('Zoo')", "") → "yes"
+    - startsWithZ("print('Banana')", "") → "no"
 :::
 
 ## Proof By Contradiction
 
-why is this problem uncomputable, proof it by contradiction. 
+::: {.fragment}
+- **Assumption:** Suppose `startsWithZ` is computable (always the opposite).
+- **Trap (Logical Construction):**
+  - If we could implement `startsWithZ`, then we could also build:
+    - `startsWithZSelf(P)`: Checks if program `P` outputs a Z-string when given itself as input.
+    - `notStartsWithZSelf(P)`: Checks if program P outputs a NON-Z-string when given itself as input.
+:::
+
+## Building startsWithZSelf
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# startsWithZSelf(P): Returns "yes" if program P outputs a string starting with "Z" when run on itself
+def startsWithZSelf(P):
+    try:
+        return startsWithZ(P, P)
+    except Exception as e:
+        return f"Error: {e}"
+```
+
+## Building notStartsWithZSelf
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# notStartsWithZSelf(P): Returns "Apple" if P starts with Z on itself, otherwise returns "Zebra"
+def notStartsWithZSelf(P):
+    try:
+        result = startsWithZSelf(P)
+        if result == "yes":
+            return "Apple"
+        else:
+            return "Zebra"
+    except Exception as e:
+        return f"Error: {e}"
+```
+
+## Proof By Contradiction Explained
+
+::: {.fragment}
+- **Contradiction (Troublemaker Program):**
+  - What happens when we run `notStartsWithZSelf` on itself?
+    - If `notStartsWithZSelf(notStartsWithZSelf)` returns "Zebra", then by definition, it should return "Apple".
+    - If `notStartsWithZSelf(notStartsWithZSelf)` returns "Apple", then by definition, it should return "Zebra".
+  - This is impossible! The function contradicts itself no matter what it tries to return.
+- **Conclusion:**
+  - Since assuming `startsWithZ` is computable leads to an impossible situation, our assumption must be wrong.
+  - Therefore, `startsWithZ` is uncomputable.
+:::
 
 ## What Can We Still Do
 
