@@ -21,7 +21,7 @@ def easemaker(some_string: str):
 
 def halting():
     program_w = yesOnString("easemaker.py", "easemaker.py")
-    while program_w:
+    while program_w == "yes":
         pass
 
 
@@ -29,4 +29,5 @@ def result():
     output = yesOnString("easemaker.py", "easemaker.py")
     print(f"yesOnString says: {output}")
 
-result()
+#result()
+halting()
