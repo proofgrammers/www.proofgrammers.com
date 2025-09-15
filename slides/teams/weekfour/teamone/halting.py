@@ -1,7 +1,4 @@
 """Similarity to the Halting problem using yesOnString's logic."""
-
-def halting_problem():
-    """Function showcasing the halting problem in a simple way."""
     
 
 def yesOnString(program_input: str, input_string: str):
@@ -21,6 +18,12 @@ def easemaker(some_string: str):
         return "yes"
     else:
         return "no"
+
+def halting():
+    program_w = yesOnString("easemaker.py", "easemaker.py")
+    while program_w:
+        pass
+
 
 def result():
     output = yesOnString("easemaker.py", "easemaker.py")
