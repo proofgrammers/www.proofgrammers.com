@@ -21,18 +21,20 @@ format:
 # Introduction
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- Goal : Prove that longerThan10 is uncomputable.
-- Returns "yes" if P(I) is a string of more than 10 CHARACTERS
-- Returns "no" otherwise
+- Goal : Prove that program longerThan10 is uncomputable in the general case.
 :::
 
 ## What is Longerthan10 Program?
 
-- This program takes two parameters (P, I). It returns “yes” if P(I) is a string of more than 10 characters,and “no” otherwise.
+- This program takes two parameters (P, I). 
+- Returns "yes" if P(I) is a string of more than 10 CHARACTERS
+- Returns "no" otherwise
 
 ## Can we write a program that computes longerThan10?
 
-- The short answer is "NO", we can't! Because it's UNCOMPUTABLE.
+The short answer is "NO", we can't!
+
+It's UNCOMPUTABLE.
 
 ## Why is `longerThan10` uncomputable?
 **The Flow Diagram**
@@ -56,7 +58,7 @@ format:
 -  If `P` is at least 10 characters on input `P`, return a string with fewer than 10 characters
 - Otherwise, return a string with at least 10 characters
 
-- This proves that `LongerThan10` cannot exist because it produces a contradiction.
+*This proves that `LongerThan10` cannot exist because it produces a contradiction.*
 
 ## "Code"
 
