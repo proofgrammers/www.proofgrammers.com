@@ -125,13 +125,46 @@ Paradox()
 ## Limitations
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
--   x
+-   `definedOnString(P, I)` is designed to answer this question:
+  - Return `"yes"` if program `P(I)` halts (is defined).
+  - Return `"no"` otherwise.
+
+-   Works fine for simple examples (like `containsGAGA.py`, `yes.py`, etc.).
+
+-   But when `definedOnString` run on itself or some specific programs (like a program that creates a loop when `definedOnString` return `"no"`), the answer can get mysterious.
+
+-   Self-reference creates situations where no correct answer is possible.
+
+-   This is not a bug or inefficiency, it’s a fundamental limitation of computation, this is exactly the same challenge as the Halting Problem → **no general algorithm can exist**
 :::
 
 ## Why is it uncomputable?
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
--   x
+-   Assume definedOnString(P, I) exists.
+
+- Define a new program:
+
+```python
+from definedOnString import definedOnString
+
+def weirdDefinedOnSelf(P):
+    if definedOnString(P, P) == 'yes':
+        while True:  # deliberately undefined
+            pass
+    else:
+        return 'defined'
+```
+
+-   Run it on itself: `weirdDefinedOnSelf(rf('weirdDefinedOnSelf.py'))`
+
+-   Case 1: Returns `defined` → program is defined → contradiction
+
+-   Case 2: `Infinite loop` → program undefined → **contradiction**
+
+-   Both cases lead to contradiction → initial assumption fails.
+
+-   Conclusion: `definedOnString.py` cannot exist.
 :::
 
 ## Conclusion
