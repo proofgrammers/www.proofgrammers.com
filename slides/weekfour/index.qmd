@@ -44,26 +44,30 @@ format:
 
 ## Programs solve problems
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Classic example: sorting words**
   - **Problem**: Sort a list of words lexicographically
   - **Input**: `"banana grape banana apple"`
   - **Output**: `"apple banana banana grape"`
-  - Multiple correct solutions exist
+- {{< iconify fa6-solid gear >}} **Sorting challenges**
+    - **Correctness**: Does it always produce the right answer?
+    - **Efficiency**: How fast is the sorting program for different inputs?
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-Programs solve problems - but different programs can solve the same problem in 
-fundamentally different ways!
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} Programs solve problems --- but different
+programs can solve the same problem in fundamentally different ways!
+
 :::
 
-## Three sorting implementations
+## Two sorting implementations
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 20
+#| max-lines: 10
 def pythonSort(inString):
     """Efficient sorting using Python's built-in function."""
     words = sorted(inString.split())
@@ -85,17 +89,24 @@ def isSorted(words):
             return False
     return True
 
-# Test both implementations
+# test both implementations
 test_input = "banana grape banana apple"
 print("Python sort:", pythonSort(test_input))
 print("Bubble sort:", bubbleSort(test_input))
 ```
 
+::: {.fragment .fade-up  style="font-size: 0.9em;"}
+
+- Define different sorting functions
+- Each function should produce same result!
+
+:::
+
 ## Broken sorting implementation
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 20
+#| max-lines: 10
 def brokenSort(inString):
     """Buggy sorting - infinite loop on duplicate elements!"""
     words = inString.split()
@@ -122,8 +133,10 @@ print("Broken sort would hang on: 'banana grape banana apple'")
 ```
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-A program doesn't truly solve a problem unless it terminates on *all* inputs 
-and produces correct answers!
+
+A program doesn't truly solve a problem unless it terminates on *all* inputs and
+produces correct answers!
+
 :::
 
 ## Mathematical foundation
