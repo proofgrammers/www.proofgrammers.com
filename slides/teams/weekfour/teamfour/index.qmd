@@ -89,3 +89,14 @@ def TroubleLongerThan10(P)(progString):
 :::
 
 # Overview and Q&A
+
+::: {.fragment style="margin-top: 0.5em; font-size: 1.0em;"}
+- At first glance, `longerThan10` seems like a simple program.  
+- But when we try to construct it in the general case, we end up with the **same contradiction** that arises in the Halting Problem.  
+- This shows how limits of computability apply not just to exotic problems, but also to ones that seem straightforward.  
+
+:::
+
+::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
+Questions?
+:::
