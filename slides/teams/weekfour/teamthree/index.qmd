@@ -1,9 +1,9 @@
 ---
 title: "`definedOnString` is Uncomputable"
 description: "Explore the limits of `definedOnString`"
-date: "2025-09-15"
+date: "2025-09-16"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Ainslee Plesko, Javier Bejarano Jimenez, & Abishek Dhakal
 execute:
   echo: true
 format:
@@ -18,14 +18,157 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+## Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- `definedOnString(P, I)` is designed to answer this question:
+    - Return `"yes"` if program `P(I)` halts (is defined).
+    - Return `"no"` otherwise.
+- Uncomputable in the general case (see **Halting problem**)
+:::
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+## `definedOnString`: Case 1
 
+```{pyodide}
+# "rf" function: read a program file as a string
+def rf(filename: str) -> str:
+    if filename == "definedOnString.py":
+        return """
+# full contents of definedOnString.py go here
+def DefinedOnString(program_code: str, inString: str) -> bool:
+    return True
+
+def Paradox():
+    my_source = rf("definedOnString.py")
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+
+Paradox()
+"""
+
+
+
+# Case 1
+def DefinedOnString(program_code : str, inString : str) -> bool:
+    """When given a program and an input string, returns True if the program halts on that input."""
+    return True # Assume it halts for demonstration
+
+def Paradox():
+    """A paradoxical function that uses DefinedOnString to create a contradiction."""
+    my_source = rf("definedOnString.py") # read this file as a string
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+
+Paradox()
+```
+
+## `definedOnString`: Case 2
+
+```{pyodide}
+# "rf" function: read a program file as a string
+def rf(filename: str) -> str:
+    if filename == "definedOnString.py":
+        return """
+# full contents of definedOnString.py go here
+def DefinedOnString(program_code: str, inString: str) -> bool:
+    return False
+
+def Paradox():
+    my_source = rf("definedOnString.py")
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+
+Paradox()
+"""
+
+
+
+# Case 2
+def DefinedOnString(program_code : str, inString : str) -> bool:
+    """When given a program and an input string, returns True if the program halts on that input."""
+    return False # Assume it does not halt for demonstration
+
+def Paradox():
+    """A paradoxical function that uses DefinedOnString to create a contradiction."""
+    my_source = rf("definedOnString.py") # read this file as a string
+    if DefinedOnString(my_source, my_source):
+        print("Checker says: halts → looping forever...")
+        while True:
+            pass
+    else:
+        print("Checker says: does not halt → halting now.")
+        return "halted"
+    
+Paradox()
+```
+
+## Limitations
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.73em;"}
+- `definedOnString(P, I)` is designed to answer this question:
+    - Return `"yes"` if program `P(I)` halts (is defined).
+    - Return `"no"` otherwise.
+- `definedOnString` won't run its input; will just analyze the code and decide if it **halts** or **runs forever**.
+- Works fine for simple examples (like `containsGAGA.py`, `yes.py`, etc.)
+- But since `definedOnString` is seeing whether the other program will halt or run forever, we already know that this is impossible (**Halting Problem**)
+- The only way to do this program would be running the input with infinite time, to avoid **false positives** (program thinks it will run forever but it ends up breaking later) and **false negatives** (program does not break but thinks it will).
+- This is not a bug or inefficiency, it’s a fundamental limitation of computation, which we found in the Halting Problem.
+:::
+
+## Why is it uncomputable?
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- We already know that this program is uncomputable due to the **Halting Problem**, as this program needs to know if its input (a program) will **halt** or **run forever**.
+- If we try to use this uncomputable program, we get a contradiction:
+    - Assume `definedOnString(P, I)` exists
+    - Define a new program:
+
+```python
+from definedOnString import definedOnString
+
+def weirdDefinedOnSelf(P):
+    if definedOnString(P, P) == 'yes':
+        while True:  # deliberately undefined
+            pass
+    else:
+        return 'defined'
+```
+:::
+
+## (cont.)
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- Run it on itself: `weirdDefinedOnSelf(rf('weirdDefinedOnSelf.py'))`
+- Case 1: Returns `defined` → program actually loops forever → **contradiction**
+- Case 2: `Infinite loop` → program undefined → **contradiction**
+- Both cases lead to contradiction → initial assumption fails
+- Conclusion: `definedOnString.py` cannot exist.
+:::
+
+## Conclusion
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- `definedOnString(P, I)` is uncomputable in the general case
+- proof by contradiction:
+    - we assume `definedOnString(P, I) exists and, therefore, can be created
+    - we assume `weirdDefinedOnSelf` exists
+    - `weirdDefinedOnSelf` acts as a troublemaker program
+    - no program can return both `yes` and `no` -> logical impossibility
+    - `definedOnString(P, I)` cannot exist
 :::
