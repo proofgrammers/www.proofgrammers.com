@@ -3,7 +3,7 @@ title: "`startsWithZ` is Uncomputable"
 description: "Explore the limits of `startsWithZ`"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Joseph Oforkansi, Aidan Dyga, Preston Smith
 execute:
   echo: true
 format:
@@ -18,14 +18,107 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+## Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.fragment}
+  - **Definition:** `startsWithZ(P, I)` determines if the output of a program starts with "Z".
+  - **Goal:** Prove that `startsWithZ(P, I)` is uncomputable.
+  - **Motivation:** Simple-looking questions about program behavior can be as hard as the Halting Problem, showing the limits of computation.
+  - **Real-World Connection:** This reflects why compilers, program analyzers, and AI systems cannot perfectly predict every program’s output.
+:::
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+## Building startsWithZ
 
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# startsWithZ(P, I): Returns "yes" if program P outputs a string starting with "Z" on input I
+def startsWithZ(P, I):
+    try:
+        output = P(I)
+        if isinstance(output, str) and output.startswith("Z"):
+            return "yes"
+        else:
+            return "no"
+    except Exception as e:
+        return f"Error: {e}"
+```
+
+::: {.fragment}
+  - **Examples:**
+    - startsWithZ("print('Zoo')", "") → "yes"
+    - startsWithZ("print('Banana')", "") → "no"
+:::
+
+## Proof By Contradiction
+
+::: {.fragment}
+- **Assumption:** Suppose `startsWithZ` is computable (always the opposite).
+- **Trap (Logical Construction):**
+  - If we could implement `startsWithZ`, then we could also build:
+    - `startsWithZSelf(P)`: Checks if program `P` outputs a Z-string when given itself as input.
+    - `notStartsWithZSelf(P)`: Checks if program P outputs a NON-Z-string when given itself as input.
+:::
+
+## Building startsWithZSelf
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# startsWithZSelf(P): Returns "yes" if program P outputs a string starting with "Z" when run on itself
+def startsWithZSelf(P):
+    try:
+        return startsWithZ(P, P)
+    except Exception as e:
+        return f"Error: {e}"
+```
+
+## Building notStartsWithZSelf
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+# notStartsWithZSelf(P): Returns "Apple" if P starts with Z on itself, otherwise returns "Zebra"
+def notStartsWithZSelf(P):
+    try:
+        result = startsWithZSelf(P)
+        if result == "yes":
+            return "Apple"
+        else:
+            return "Zebra"
+    except Exception as e:
+        return f"Error: {e}"
+```
+
+## Proof By Contradiction Explained
+
+::: {.fragment}
+- **Contradiction (Troublemaker Program):** What happens when we run `notStartsWithZSelf` on itself?
+    - If `notStartsWithZSelf(notStartsWithZSelf)` returns "Zebra", then by definition, it should return "Apple".
+    - If `notStartsWithZSelf(notStartsWithZSelf)` returns "Apple", then by definition, it should return "Zebra".
+- **Conclusion:** Since assuming `startsWithZ` is computable leads to an impossible situation, our assumption must be wrong and it must be uncomputable.
+:::
+
+## What Can We Still Do
+
+::: {.fragment}
+  - **Options:** While perfect analysis is impossible, we can still build practical tools to address many cases:
+    - **Static Analysis:** Identifies bugs and unreachable code without running the program.
+    - **Dynamic Analysis:** Identifies bugs and unreachable code by running the program.
+:::
+
+## Conclusion
+
+::: {.fragment}
+  - **Uncomputable:** This problem is uncomputable once again as it comes down to the halting problem. 
+  - The **notStartsWithZSelf** program is a paradox: whenever it tries to decide if it itself outputs a string starting with "Z", it is forced to give the wrong answer. No matter what it returns, the opposite should have been true. (Troublemaker Program)
+  - This contradiction means there is no way to build a program that always correctly decides if another program outputs a string starting with "Z".
+:::
+
+## Sources
+
+::: {.fragment}
+  - Course Textbook
+  - GitHub Copilot
+  - Microsoft Copilot
 :::
