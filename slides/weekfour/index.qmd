@@ -59,7 +59,7 @@ format:
 ::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
 
 {{< iconify fa6-solid lightbulb >}} Programs solve problems --- but different
-programs can solve the same problem in very different ways! Let's explore further!
+programs can solve the same problem in very different ways! Let's explore this further!
 
 :::
 
@@ -190,90 +190,34 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 :::
 
-## Example: BEGINSWITHA problem
+## Example: BeginsWithA problem
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 13
 def beginsWithA(inString):
     """Find all words that begin with 'a'."""
     words = inString.split()
     solutions = []
-    
     for word in words:
         if word.lower().startswith('a'):
             solutions.append(word)
-    
     if not solutions:
         return ["no"]  # no solutions found
-    
     return solutions
 
-# Test the function
+# test the function
 test_input = "she ate a red apple"
 solutions = beginsWithA(test_input)
 print(f"Input: '{test_input}'")
 print(f"Solution set: {solutions}")
 print(f"Any one solution is valid: '{solutions[0]}'")
+test_input = "cat dog bird"
+solutions = beginsWithA(test_input)
+print(f"There is no valid solution: '{solutions[0]}'")
 ```
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-Multiple solutions exist: `{"a", "ate", "apple"}` - a program can return any one!
-:::
-
-## SHORTESTPATH computational problem
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
-
-- {{< iconify fa6-solid gear >}} **Problem definition**
-  - **Input**: Graph $G$ and two nodes $v$, $w$
-  - **Solution**: Shortest path from $v$ to $w$, or `"no"` if none exists
-  - Format: `"a,b a,c b,d c,d d,e ; a ; e"`
-
-:::
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 20
-def parseGraph(graphStr):
-    """Parse simple graph representation."""
-    edges = []
-    for edge in graphStr.split():
-        if ',' in edge:
-            parts = edge.split(',')
-            if len(parts) == 2:
-                edges.append((parts[0], parts[1]))
-    return edges
-
-def findShortestPath(graphStr, source, dest):
-    """Find shortest path using BFS (simplified)."""
-    edges = parseGraph(graphStr)
-    
-    # Build adjacency list
-    graph = {}
-    for u, v in edges:
-        if u not in graph:
-            graph[u] = []
-        if v not in graph:
-            graph[v] = []
-        graph[u].append(v)
-        graph[v].append(u)  # undirected
-    
-    # Simple BFS to find any path
-    if source not in graph or dest not in graph:
-        return "no"
-    
-    if source == dest:
-        return source
-    
-    return f"{source},{dest}"  # simplified - just show endpoints
-
-# Test
-result = findShortestPath("a,b a,c b,d c,d d,e", "a", "e")
-print(f"Shortest path result: {result}")
-```
-
-## Categories of computational problems
+## Computational problem categories
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
@@ -310,39 +254,7 @@ print(f"Shortest path result: {result}")
 
 :::
 
-```{pyodide}
-#| autorun: true
-#| max-lines: 15
-def hasPath(graphStr, source, dest):
-    """Decision version: does a path exist?"""
-    edges = []
-    for edge in graphStr.split():
-        if ',' in edge:
-            parts = edge.split(',')
-            if len(parts) == 2:
-                edges.append((parts[0], parts[1]))
-    
-    # Build adjacency list
-    graph = {}
-    for u, v in edges:
-        if u not in graph:
-            graph[u] = []
-        if v not in graph:
-            graph[v] = []
-        graph[u].append(v)
-        graph[v].append(u)
-    
-    # Check if path exists (simplified)
-    if source in graph and dest in graph:
-        return "yes"
-    return "no"
-
-# Test
-result = hasPath("a,b a,c b,d c,d d,e", "a", "e")
-print(f"Path exists: {result}")
-```
-
-## What does it mean to "solve" a problem?
+## Meaning of "solving" a problem?
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
@@ -355,8 +267,10 @@ print(f"Path exists: {result}")
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-A program solves a problem if it always terminates and always returns a member 
+
+A program solves a problem if it always terminates and always returns a member
 of the solution set!
+
 :::
 
 ## Positive and negative instances
