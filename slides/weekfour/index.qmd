@@ -59,7 +59,7 @@ format:
 ::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
 
 {{< iconify fa6-solid lightbulb >}} Programs solve problems --- but different
-programs can solve the same problem in fundamentally different ways!
+programs can solve the same problem in very different ways! Let's explore further!
 
 :::
 
@@ -97,8 +97,8 @@ print("Bubble sort:", bubbleSort(test_input))
 
 ::: {.fragment .fade-up  style="font-size: 0.9em;"}
 
-- Define different sorting functions
-- Each function should produce same result!
+- Define two different sorting functions for lists of strings
+- Each function should produce same sorted result!
 
 :::
 
@@ -132,16 +132,16 @@ print("Broken sort (distinct):", brokenSort(test_distinct))
 print("Broken sort would hang on: 'banana grape banana apple'")
 ```
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade-up style="font-size: 0.95em; margin-top: 0.1em;"}
 
-A program doesn't truly solve a problem unless it terminates on *all* inputs and
-produces correct answers!
+{{< iconify fa6-solid lightbulb >}} A program doesn't truly solve a problem
+unless it terminates on *all* inputs and always produces the correct answer!
 
 :::
 
-## Mathematical foundation
+## Mathematical foundations
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Graphs: fundamental building blocks**
   - **Graph**: collection of nodes with edges between them
@@ -149,14 +149,11 @@ produces correct answers!
   - **Cycle**: path that starts and ends at same node
   - **Directed graph**: edges have direction
 
-:::
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
-
 - {{< iconify fa6-solid gear >}} **String representations**
   - Graph: `"a,b a,c b,d c,d d,e"`
   - Path: `"a,b,d,e"`
   - Weighted graph: `"a,b,7 a,c,3 b,d,2"`
+- **Graphs can also be represented visually or with lists or matrices**!
 
 :::
 
@@ -180,7 +177,7 @@ produces correct answers!
 
 :::
 
-## Formal definition of computational problem
+## Formal definition of computational problem: map input strings to solutions
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
