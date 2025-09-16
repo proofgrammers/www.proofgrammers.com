@@ -1,9 +1,9 @@
 ---
-title: "`longerThan10` is Uncomputable"
+title: "Proving that `longerThan10` is Uncomputable"
 description: "Explore the limits of `longerThan10`"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Grant Anderson, Coltin Colucci, Ritesh Ojha
 execute:
   echo: true
 format:
@@ -18,14 +18,85 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Introduction
+
+::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
+- Goal : Prove that program longerThan10 is uncomputable in the general case.
+:::
+
+## What is Longerthan10 Program?  
+
+::: {.fragment style="margin-top: 1.0em; font-size: 1.0em;"} 
+- This program takes two parameters (P, I).
+- Returns "yes" if P(I) is a string of more than 10 CHARACTERS  
+- Returns "no" otherwise
+:::
+
+## Can we write a program that computes longerThan10?
+
+::: {.fragment style="margin-top: 1.5em; font-size: 1.0em;"} 
+The short answer is "NO", we can't!
+
+It's UNCOMPUTABLE.
+:::
+
+## Why is `longerThan10` uncomputable?
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+**The Flow Diagram**
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+![](flow.png)
 
+- If longerThan10 were possible, we could solve the famous Halting Problem and we know its impossible to solve the Halting Problem. So longerThan10 is uncomputable.
+:::
+
+## Program Name and Behavior
+
+::: {.fragment style="margin-top: .75em; font-size: 1.0em;"} 
+`LongerThan10(P,I)`
+- Return "yes", if `P` is greater than or equal to 10 characters on input `I`
+- Return "no" otherwise
+
+`LongerThan10OnSelf(P)`
+- Return "yes", if `P` is greater than or equal to 10 characters on input `P`
+- Return "no" otherwise
+
+`TroubleLongerThan10(P)`
+-  If `P` is at least 10 characters on input `P`, return a string with fewer than 10 characters
+- Otherwise, return a string with at least 10 characters
+
+*This proves that `LongerThan10` cannot exist because it produces a contradiction.*
+:::
+
+## "Code"
+
+::: {.fragment style="margin-top: 0em; font-size: 1.0em;"} 
+```Python
+from TroubleLongerThan10 
+import TroubleLongerThan10
+
+def TroubleLongerThan10(P)(progString):
+    val = TroubleLongerThan10(progString)
+    if val == 'yes':
+        # Return a string with fewer than 10 characters
+        return "short"
+    else:
+        # Return a string with at least 10 characters
+        return "this_is_long"
+```
+
+- This is non runnable Python code that shows the logic of the "Longer than 10" issue and why it cannot exist. 
+:::
+
+# Overview and Q&A
+
+::: {.fragment style="margin-top: 0.5em; font-size: 1.0em;"}
+- At first glance, `longerThan10` seems like a simple program.  
+- But when we try to construct it in the general case, we end up with the **same contradiction** that arises in the Halting Problem.  
+- This shows how limits of computability apply not just to exotic problems, but also to ones that seem straightforward.  
+
+:::
+
+::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
+Questions?
 :::
