@@ -159,21 +159,19 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 ## Alphabets and strings
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid gear >}} **Alphabet $\Sigma$**
   - Finite set of symbols (e.g., ASCII characters)
-  - $\Sigma^*$ = all possible strings over alphabet $\Sigma$
+  - $\Sigma^*$ means all possible strings over alphabet $\Sigma$
   - Empty string $\epsilon$ is always included
-
-:::
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+  - Example: $\Sigma = \{0, 1\} \Rightarrow \Sigma^* = \{\epsilon, 0, 1, 00, 01, 10, 11, 000, ...\}$
+  - Example: $\Sigma = \{a, b\} \Rightarrow \Sigma^* = \{\epsilon, a, b, aa, ab, ba, bb, aaa, ...\}$
 
 - {{< iconify fa6-solid gear >}} **Language**
-  - Any subset of $\Sigma^*$
+  - Any subset of $\Sigma^*$, can be finite or infinite
   - Examples: all palindromes, all valid Python programs
-  - Can be finite or infinite
+- **Alphabets define the basic building blocks for program input and output!**
 
 :::
 
