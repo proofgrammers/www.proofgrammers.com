@@ -178,7 +178,7 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 ## Set operations on languages
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.78em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid gear >}} **Union** ($L_1 \cup L_2$)
   - Contains strings that are in either $L_1$ or $L_2$ (or both)
@@ -190,17 +190,19 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 - {{< iconify fa6-solid gear >}} **Complement** ($\overline{L}$)
   - Contains all strings in $\Sigma^*$ that are not in $L$
-  - **Example**: If $L = \{a, b\}$ over $\{a, b\}$, then $\overline{L} = \{\epsilon, aa, ab, ba, bb, aaa, ...\}$
+  - **Example**: If $L = \{G, G^3, G^5, ...\}$ (odd powers of $G$), then
+  $\overline{L} = \{\epsilon, G^2, G^4, G^6, ...\}$ (even powers including
+  empty string)
 
 :::
 
 ## String operations on languages
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.78em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
 
-- {{< iconify fa6-solid gear >}} **Concatenation** ($L_1 L_2$ or $L_1 \cdot L_2$)
-  - Contains all strings formed by concatenating a string from $L_1$ with a string from $L_2$
-  - **Example**: $\{a, ab\} \cdot \{b, c\} = \{ab, ac, abb, abc\}$
+- {{< iconify fa6-solid gear >}} **Concatenation** ($L_1 L_2$ or $L_1 + L_2$)
+  - All strings formed by joining a string from $L_1$ with a string from $L_2$
+  - **Example**: $\{a, ab\} + \{b, c\} = \{ab, ac, abb, abc\}$
 
 - {{< iconify fa6-solid gear >}} **Repetition** ($L^*$)
   - Contains all strings formed by concatenating zero or more strings from $L$
@@ -210,6 +212,10 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 - {{< iconify fa6-solid lightbulb >}} These operations allow us to build complex
 languages from simpler ones and form the foundation for automata theory!
+
+- {{< iconify fa6-solid lightbulb >}} Automata theory is the study of finite
+state machines and their ability to recognize patterns in strings, which we
+explore later this semester!
 
 :::
 
@@ -379,7 +385,7 @@ that best suits our needs, often focusing on decision problems**
 
 ## Meaning of "solving" a problem?
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.775em;"}
 
 - {{< iconify fa6-solid gear >}} **Formal definition**
   - Program $P$ **solves** a problem $F$ if:
@@ -394,7 +400,6 @@ that best suits our needs, often focusing on decision problems**
     - Infinite loop on some inputs
 
 :::
-
 
 ## Computability and decidability
 
