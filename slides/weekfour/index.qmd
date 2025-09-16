@@ -20,7 +20,7 @@ format:
 
 # Wait, we've not given a formal definition of a computational problem! Can we now?
 
-## What is a computational problems?
+## What is a computational problem?
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
