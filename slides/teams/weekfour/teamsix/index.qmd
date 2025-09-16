@@ -3,12 +3,13 @@ title: "`countLines` is Computable"
 description: "Explore the limits of proof by contradiction"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Hemani Alaparthi, Hannah Brown, Anupraj Guragain, Molly Suppo
 execute:
   echo: true
 format:
   live-revealjs:
     completion: true
+    incremental: true
     theme: default
     css: ../../../css/styles.css
     history: false
@@ -17,15 +18,146 @@ format:
     highlight-style: github
     footer: "Proofgrammers"
 ---
+# Introduction
 
-# Theory of computation
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+{{< iconify fa6-solid microscope >}} Can a program analyze itself? What happens when we create programs designed to contradict their own behavior?
+:::
+
+- Programs can count lines in other programs - even themselves!
+- But what if we intentionally create contradictory behavior?
+- We'll explore a flawed proof that tries to show `countLines` is impossible
+- Spoiler: The proof fails, and `countLines` is definitely computable!
+
+## Implementing the countLines Function
+
+```{pyodide}
+#| max-lines: 11
+#| autorun: true
+
+def countLines(inString):
+  # Splits the code on newlines
+  lines = inString.split('\n')
+  # Returns the number of lines, as a string
+  return str(len(lines))
+
+exampleCode1 = """counter = 0
+while True:
+  if counter == 10:
+    break
+  else:
+    counter += 1"""
+
+exampleCode2 = """def add(val1, val2):
+  return val1 + val2"""
+
+exampleCode3 = """def countLines(inString):
+  # Splits the code on newlines
+  lines = inString.split('\n')
+  # Returns the number of lines, as a string
+  return str(len(lines))"""
+
+print(countLines(exampleCode1))
+print(countLines(exampleCode2))
+print(countLines(exampleCode3))
+```
+
+# Explaining the `countLines` Function
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- Takes as input a string(in this case each string is multiline and represents code)
+- Splits the code using the newline ASCII character as the indicator for each separate line
+- Uses the len function to get the number of lines of the string
+- Casts the result of running the len function as a string and returns it
+- We used three different examples of code, including the countLines function itself
 
+:::
+
+# The "Impossible" Proof Attempt
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+{{< iconify fa6-solid exclamation-triangle >}} Someone claims they can prove countLines is impossible to implement!
+:::
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+**Their Strategy:**
+- Create a program that contradicts itself when counting its own lines
+- Show this creates an impossible situation
+- Conclude that countLines cannot exist
+
+**Let's examine this logic...**
+:::
+::: {.fragment style="margin-top: 0.5em; font-size: 0.8em;"}
+First, they create countLinesPlus1 that returns n+1 instead of n
+:::
+
+# WeirdCountlines.py
+
+```python
+from countLines import countLines
+from countLinesPlus1 import countLinesPlus1
+
+def weirdCountLines(inString):
+
+  if inString == rf('weirdCountLines.py'):
+    return countLinesPlus1(inString)
+
+  else:
+    return countLines(inString)
+```
+
+
+# The "Contradiction"
+
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+**What happens when we run:**
+`weirdCountLines(rf('weirdCountLines.py'))`
+
+- The program has **n** lines
+- But it returns **n+1** when analyzing itself
+- The output doesn't match the actual line count!
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+**Question:** Does this prove `countLines` is impossible?
+:::
+
+
+# Why This "Proof" Fails
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+  - **Claims**:
+    - If you feed `WeirdCountlines.py` into itself, it should be both equal the number of lines from both `countlines`(n) and `countlinesplus1`(n+1) at the same time which contradictory. Hence, `countlines.py` can't exist.
+    - `weirdCountLines` creates a contradiction when analyzing itself
+    - This proves `countLines` cannot exist
+
+  - **Flaw**:
+    - This is called a liar-paradox.
+    - It just assumes based on the code that is made to misbehave on itself, sort of like trickster program.
+    - It does not create a contradiction for `countlines.py`.
+  
+:::
+
+# `countlines` is computable
+
+- `countlines` is both computable and tractable.
+  - We can build a program which can count lines of other programs.
+  - We can do it effectively and efficiently.
+  - We can do it linear time O(n).
+
+# Conclusion
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- `countLines` is provably computable - we can always count lines efficiently
+- The "impossible" proof fails because it relies on a liar paradox, not genuine contradiction
+- Self-referential trickery ≠ mathematical impossibility
+- This builds intuition for understanding real impossibility results ahead
+
+:::
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.8em;"}
+{{< iconify fa6-solid microscope >}} Key Takeaway: Just because we can create programs that lie about themselves doesn't mean the underlying computational task is impossible!
 :::
