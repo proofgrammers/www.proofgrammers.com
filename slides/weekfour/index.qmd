@@ -171,7 +171,7 @@ unless it terminates on *all* inputs and always produces the correct answer!
 - {{< iconify fa6-solid gear >}} **Language**
   - Any subset of $\Sigma^*$, can be finite or infinite
   - Examples: all palindromes, all valid Python programs
-- **Alphabets define the basic building blocks for program input and output!**
+- **Alphabets define the building blocks for program input and output!**
 
 :::
 
