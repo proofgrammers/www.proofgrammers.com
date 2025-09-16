@@ -17,3 +17,411 @@ format:
     highlight-style: github
     footer: "Proofgrammers"
 ---
+
+# What is a computational problem?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **Problems vs programs**
+    - **Computational problem**: describes *what* we want to compute
+    - **Computer program**: describes *how* to compute a solution
+    - One problem can have many different program solutions
+    - Some programs may be correct, others incorrect
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Our exploration strategy**
+    - Examine sorting as a concrete example
+    - Define formal mathematical framework
+    - Understand graphs, strings, and languages
+    - Categorize different types of computational problems
+
+:::
+
+## Programs solve problems
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Classic example: sorting words**
+  - **Problem**: Sort a list of words lexicographically
+  - **Input**: `"banana grape banana apple"`
+  - **Output**: `"apple banana banana grape"`
+  - Multiple correct solutions exist
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+Programs solve problems - but different programs can solve the same problem in 
+fundamentally different ways!
+:::
+
+## Three sorting implementations
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 20
+def pythonSort(inString):
+    """Efficient sorting using Python's built-in function."""
+    words = sorted(inString.split())
+    return ' '.join(words)
+
+def bubbleSort(inString):
+    """Correct but inefficient bubble sort algorithm."""
+    words = inString.split()
+    while not isSorted(words):
+        for i in range(len(words)-1):
+            if words[i+1] < words[i]:
+                words[i], words[i+1] = words[i+1], words[i]
+    return ' '.join(words)
+
+def isSorted(words):
+    """Check if word list is sorted."""
+    for i in range(len(words)-1):
+        if words[i+1] < words[i]:
+            return False
+    return True
+
+# Test both implementations
+test_input = "banana grape banana apple"
+print("Python sort:", pythonSort(test_input))
+print("Bubble sort:", bubbleSort(test_input))
+```
+
+## Broken sorting implementation
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 20
+def brokenSort(inString):
+    """Buggy sorting - infinite loop on duplicate elements!"""
+    words = inString.split()
+    while not isSortedBroken(words):
+        for i in range(len(words)-1):
+            if words[i+1] < words[i]:
+                words[i], words[i+1] = words[i+1], words[i]
+    return ' '.join(words)
+
+def isSortedBroken(words):
+    """Buggy version: uses <= instead of <"""
+    for i in range(len(words)-1):
+        # BUG: should be "<", not "<="
+        if words[i+1] <= words[i]:
+            return False
+    return True
+
+# Test with distinct elements - works fine
+test_distinct = "grape banana apple"
+print("Broken sort (distinct):", brokenSort(test_distinct))
+
+# Test with duplicates would cause infinite loop!
+print("Broken sort would hang on: 'banana grape banana apple'")
+```
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+A program doesn't truly solve a problem unless it terminates on *all* inputs 
+and produces correct answers!
+:::
+
+## Mathematical foundation
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Graphs: fundamental building blocks**
+  - **Graph**: collection of nodes with edges between them
+  - **Path**: sequence of nodes joined by edges
+  - **Cycle**: path that starts and ends at same node
+  - **Directed graph**: edges have direction
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **String representations**
+  - Graph: `"a,b a,c b,d c,d d,e"`
+  - Path: `"a,b,d,e"`
+  - Weighted graph: `"a,b,7 a,c,3 b,d,2"`
+
+:::
+
+## Alphabets and strings
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Alphabet $\Sigma$**
+  - Finite set of symbols (e.g., ASCII characters)
+  - $\Sigma^*$ = all possible strings over alphabet $\Sigma$
+  - Empty string $\epsilon$ is always included
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Language**
+  - Any subset of $\Sigma^*$
+  - Examples: all palindromes, all valid Python programs
+  - Can be finite or infinite
+
+:::
+
+## Formal definition of computational problem
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Mathematical definition**
+  - **Computational problem**: function $F: \Sigma^* \rightarrow P(\Sigma^*)$
+  - Maps strings to *sets* of strings
+  - $F(s)$ is the **solution set** for input string $s$
+  - Each element of $F(s)$ is a valid **solution**
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+A computational problem maps each input string to a set of valid solution strings!
+:::
+
+## Example: BEGINSWITHA problem
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def beginsWithA(inString):
+    """Find all words that begin with 'a'."""
+    words = inString.split()
+    solutions = []
+    
+    for word in words:
+        if word.lower().startswith('a'):
+            solutions.append(word)
+    
+    if not solutions:
+        return ["no"]  # no solutions found
+    
+    return solutions
+
+# Test the function
+test_input = "she ate a red apple"
+solutions = beginsWithA(test_input)
+print(f"Input: '{test_input}'")
+print(f"Solution set: {solutions}")
+print(f"Any one solution is valid: '{solutions[0]}'")
+```
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+Multiple solutions exist: `{"a", "ate", "apple"}` - a program can return any one!
+:::
+
+## SHORTESTPATH computational problem
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Problem definition**
+  - **Input**: Graph $G$ and two nodes $v$, $w$
+  - **Solution**: Shortest path from $v$ to $w$, or `"no"` if none exists
+  - Format: `"a,b a,c b,d c,d d,e ; a ; e"`
+
+:::
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 20
+def parseGraph(graphStr):
+    """Parse simple graph representation."""
+    edges = []
+    for edge in graphStr.split():
+        if ',' in edge:
+            parts = edge.split(',')
+            if len(parts) == 2:
+                edges.append((parts[0], parts[1]))
+    return edges
+
+def findShortestPath(graphStr, source, dest):
+    """Find shortest path using BFS (simplified)."""
+    edges = parseGraph(graphStr)
+    
+    # Build adjacency list
+    graph = {}
+    for u, v in edges:
+        if u not in graph:
+            graph[u] = []
+        if v not in graph:
+            graph[v] = []
+        graph[u].append(v)
+        graph[v].append(u)  # undirected
+    
+    # Simple BFS to find any path
+    if source not in graph or dest not in graph:
+        return "no"
+    
+    if source == dest:
+        return source
+    
+    return f"{source},{dest}"  # simplified - just show endpoints
+
+# Test
+result = findShortestPath("a,b a,c b,d c,d d,e", "a", "e")
+print(f"Shortest path result: {result}")
+```
+
+## Categories of computational problems
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Search problems**
+  - Find any valid solution
+  - Example: Find a path in a graph
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Optimization problems**
+  - Find the *best* solution according to some criteria
+  - Example: Find the *shortest* path in a graph
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Decision problems**
+  - Answer only "yes" or "no"
+  - Example: Does a path exist between two nodes?
+
+:::
+
+## Decision problems and SISO programs
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Decision problem characteristics**
+  - Solution set is always `{"yes"}` or `{"no"}`
+  - Simpler to analyze theoretically
+  - Foundation for complexity classes
+
+:::
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def hasPath(graphStr, source, dest):
+    """Decision version: does a path exist?"""
+    edges = []
+    for edge in graphStr.split():
+        if ',' in edge:
+            parts = edge.split(',')
+            if len(parts) == 2:
+                edges.append((parts[0], parts[1]))
+    
+    # Build adjacency list
+    graph = {}
+    for u, v in edges:
+        if u not in graph:
+            graph[u] = []
+        if v not in graph:
+            graph[v] = []
+        graph[u].append(v)
+        graph[v].append(u)
+    
+    # Check if path exists (simplified)
+    if source in graph and dest in graph:
+        return "yes"
+    return "no"
+
+# Test
+result = hasPath("a,b a,c b,d c,d d,e", "a", "e")
+print(f"Path exists: {result}")
+```
+
+## What does it mean to "solve" a problem?
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Formal definition**
+  - Program $P$ **solves** problem $F$ if:
+  - For all valid inputs $s$: $P(s) \in F(s)$
+  - Program must terminate on all inputs
+  - Program must return a valid solution
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+A program solves a problem if it always terminates and always returns a member 
+of the solution set!
+:::
+
+## Positive and negative instances
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Instance classification**
+  - **Instance**: any particular input to a problem
+  - **Negative instance**: solution set is `{"no"}`
+  - **Positive instance**: solution set contains valid solutions
+
+:::
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+def classifyInstance(problem_result):
+    """Classify an instance as positive or negative."""
+    if problem_result == ["no"] or problem_result == "no":
+        return "negative"
+    else:
+        return "positive"
+
+# Examples for BEGINSWITHA
+print("Instance 'cat dog bird':", classifyInstance(beginsWithA("cat dog bird")))
+print("Instance 'she ate apples':", classifyInstance(beginsWithA("she ate apples")))
+```
+
+## Computability and decidability
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Computable problems**
+  - A problem $F$ is **computable** if there exists a program that solves it
+  - All instances can be solved correctly
+  - Program terminates on all inputs
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid gear >}} **Uncomputable problems**
+  - No program can solve all instances
+  - We've already seen examples (perfect bug finder)
+  - Fundamental limits of computation
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+As proofgrammers, we must understand which problems *can* be computed and 
+which *cannot*!
+:::
+
+## Key insights for proofgrammers
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Problems vs solutions**
+  - Abstract problems have concrete program implementations
+  - Multiple correct approaches may exist
+  - Correctness requires termination + valid solutions
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Mathematical precision**
+  - Formal definitions enable rigorous analysis
+  - String representations make abstract concepts concrete
+  - Sets of solutions capture multiple valid answers
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+Understanding computational problems formally prepares us to prove fundamental 
+limits and explore computational complexity!
+:::
