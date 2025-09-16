@@ -80,6 +80,38 @@ coding and writing tools that use large language models (LLMs) like Claude
 Sonnet 4 or GPT-4. Make it clear that the prosegrammer who uses these tools is
 ultimately responsible for wielding them correctly and ethically.
 
+## Implement New Slides for Chapter Four, "What is a Computational Problem?"
+
+- You have access to the content of the book in the file:
+`What-Can-Be-Computed.pdf` and `What-Can-Be-Computed.md` that is in the root of
+this repository.
+- You have access to the slides of the book in PPTX (which is hard for you to
+read) and a QMD file (which is easier for you to read) in the
+`theoreticalmachines/wcbc-slides/` directory.
+- You have access to the source code connected to this book in the directory
+`theoreticalmachines/wcbc-code/`
+- I have created a template file for the slides in the `slides/weekfour/index.qmd`
+- I would like you to create a starting version of the slides for Chapter Four:
+"What is a Computational Problem?" in the `slides/weekfour/index.qmd` file.
+- One challenge of this chapter is that it contains a lot of images (e.g., a
+picture of a graph with a cycle in it). I don't want you to link directly to any
+images in the slides that you produce --- the content can only be in the
+index.qmd file. If you know how to draw the diagrams using something with a
+standard package in Python, then you can do that. Otherwise, only explain the
+details about the graphs in short words or phrases or with source code.
+- Make sure to only explain concepts that are connected to Chapter Four.
+- Make sure to review all the prior slides that I have created in the `slides/`
+directory and the subdirectories for prior weeks in `weekone/` and `weektwo/`
+and `weekthree/` to ensure that your slides are formatted and laid out just
+like the content that I have already created.
+- Do not make slides if they are not directly connected to the content in the
+book, the content in the slides (i.e., the PPTX or the extracted QMD file) or in
+the source code.
+- Make sure that you connect the slides to the theme of being a "proofgrammer"
+as explained in the course syllabus that is available in `syllabus/index.qmd`.
+- Please follow all the rules and regulations for creating this content and make
+sure that you notify me when you have completed this task.
+
 ## Support for Content
 
 ### Rewriting Content in Several Files
