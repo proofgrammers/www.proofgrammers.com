@@ -220,7 +220,7 @@ print(f"There is no valid solution: '{solutions[0]}'")
 
 ## Computational problem categories
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid gear >}} **Search problems**
   - Find any valid solution
@@ -228,7 +228,7 @@ print(f"There is no valid solution: '{solutions[0]}'")
 
 :::
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid gear >}} **Optimization problems**
   - Find the *best* solution according to some criteria
@@ -236,11 +236,28 @@ print(f"There is no valid solution: '{solutions[0]}'")
 
 :::
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid gear >}} **Decision problems**
   - Answer only "yes" or "no"
   - Example: Does a path exist between two nodes?
+
+:::
+
+## Advantages of different problems
+
+::: incremental
+
+- **Decision problems**:
+  - *Advantage*: elegant for stating and proving results
+  - *Disadvantage*: not used directly in real-world problems
+
+- **General problems**:
+  - *Advantage*: correspond directly to real-world problems
+  - *Disadvantage*: messy for proof and theoretical analysis
+
+- {{< iconify fa6-solid lightbulb >}} **We will often pick the problem formulation
+that best suits our needs, often focusing on decision problems!**
 
 :::
 
@@ -321,8 +338,10 @@ print("Instance 'she ate apples':", classifyInstance(beginsWithA("she ate apples
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+
 As proofgrammers, we must understand which problems *can* be computed and 
 which *cannot*!
+
 :::
 
 ## Key insights for proofgrammers
@@ -346,6 +365,8 @@ which *cannot*!
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+
 Understanding computational problems formally prepares us to prove fundamental 
 limits and explore computational complexity!
+
 :::
