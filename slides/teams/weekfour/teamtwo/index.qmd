@@ -103,7 +103,14 @@ format:
 - This program isn't possible becuase when run on itself it produces a contradiction
 :::
 
-# Proof that `crashOnString` is uncomputable
+## Proof that `crashOnString` is uncomputable
+- `crashOnString` can be proven to be uncomputable through contradiction using `weirdCrashOnSelf`
+- When `weirdCrashOnSelf` takes itself as an input there are only two possiblities
+  - if it crashes then $val = yes$ which means it will return without crashing which isn't possible becuase it cannot both crash and not crash
+  - if it doesn't crash then $val = no$ which means it will go on to crash with a divide-by-zero which once again isn't possible becuase it cannot both crash and not crash
+- Becuase both possibilties lead to a crontradiction we know that `weirdCrashOnSelf` isn't possible
+- If we were to assume `crashOnString` is possible. Then we could use it to write both `crashOnSelf` and `weirdCrashOnSelf`. Although, we know `weirdCrashOnSelf` is impossible therefore our assumption isn't correct and `crashOnString` must also be impossible
+  
 
 # Conclusion
 
