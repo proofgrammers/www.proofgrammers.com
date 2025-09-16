@@ -160,7 +160,7 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 ## Alphabets and strings
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.81em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.80em;"}
 
 - {{< iconify fa6-solid gear >}} **Alphabet $\Sigma$**
   - Finite set of symbols (e.g., ASCII characters)
@@ -349,7 +349,7 @@ that best suits our needs, often focusing on decision problems**
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Decision problem characteristics**
-  - Solution set is always `{"yes"}` or `{"no"}`
+  - Solution set is always `"yes"` or `"no"`
   - Simpler to analyze theoretically
   - Foundation for complexity classes
 
