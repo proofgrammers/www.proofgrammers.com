@@ -30,13 +30,7 @@ format:
 
 ![Book Figure](program_sequence.png)
 
-# Proof that crash on string is uncomputable
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-
-:::
-
-## Example hypothetical 'crashOnString'{.smaller}
+## Example hypothetical 'crashOnString'
 
 ```{pyodide}
 #| autorun: true
@@ -48,22 +42,22 @@ format:
     if progString == "noCrash.py":
       output = noCrash(inputStr)
 
-    if output == "Crashed":
-      return "Yes"
+    if output == "crashed":
+      return "yes"
     else:
-      return "No"
+      return "no"
 
   def crashOnContainsCrash(inputStr):
     if "Crash" in inputStr:
       try:
         result = 1 / 0
       except ZeroDivisionError:
-        return "Crashed"
+        return "crashed"
 
   def noCrash(inputStr):
-    return "No Crash"
+    return "did not crash!"
 
-  test_programs = [("crashOnContainsCrash.py", "Crash"), ("noCrash.py", "Crash")]
+  test_programs = [("crashOnContainsCrash.py", "Crash"), ("noCrash.py", "Crash"), ("crashOnContainsCrash.py", "Hello"), ("noCrash.py", "Hello")]
 
   print("Hypothetical crashOnString behavior:")
   for (prog, inputStr) in test_programs:
@@ -71,18 +65,45 @@ format:
       print(f"crashOnString('{prog, inputStr}') = {result}")
 
 ```
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- `crashOnString` takes as input a program and a string and then deterimes whether or not that program crashes on that string
+- Returns yes if program does crash and no if it doesn't
+:::
+
+## Defining `crashOnSelf` 
+
+```python
+  from crashOnString import crashOnString
+  def crashOnSelf(progString):
+    return crashOnString(progString, progString)
+```
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- `crashOnSelf` takes as input a program and deterimes whether or not that program crashes when  run on itself
+- Returns yes if program does crash and no if it doesn't
+:::
 
 ## Defining `weirdCrashOnSelf` 
 
 ```python
+  from crashOnSelf import crashOnSelf 
   def weirdCrashOnSelf(progString):
     val = crashOnSelf(progString)
-    if (val == 'no'):
+    if (val == 'yes'):
       return 'did not crash!'
     else:
       # deliberately crash (divide by zero)
       x = 1 / 0
 ```
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- `weirdCrashOnSelf` takes an input program and then deterimes whether or not it crashes using crash on self
+- If the program crashes it returns without crashing
+- If the program doesn't crash it will then force itself to crash
+- This program isn't possible becuase when run on itself it produces a contradiction
+:::
+
+# Proof that `crashOnString` is uncomputable
 
 # Conclusion
 
