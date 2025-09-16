@@ -62,15 +62,15 @@ print(countLines(exampleCode2))
 print(countLines(exampleCode3))
 ```
 
-# Explaining the countLines Function
+# Explaining the `countLines` Function
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-    - Takes as input a string(in this case each string is multiline and represents code)
-    - Splits the code using the newline ASCII character as the indicator for each separate line
-    - Uses the len function to get the number of lines of the string
-    - Casts the result of running the len function as a string and returns it
-    - We used three different examples of code, including the countLines function itself
+- Takes as input a string(in this case each string is multiline and represents code)
+- Splits the code using the newline ASCII character as the indicator for each separate line
+- Uses the len function to get the number of lines of the string
+- Casts the result of running the len function as a string and returns it
+- We used three different examples of code, including the countLines function itself
 
 :::
 
