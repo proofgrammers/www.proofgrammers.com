@@ -263,12 +263,20 @@ that best suits our needs, often focusing on decision problems!**
 
 ## Decision problems and SISO programs
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Decision problem characteristics**
   - Solution set is always `{"yes"}` or `{"no"}`
   - Simpler to analyze theoretically
   - Foundation for complexity classes
+
+- {{< iconify fa6-solid gear >}} **SISO programs**
+  - Single Input, Single Output
+  - *Input*: string representing problem instance
+  - *Output*: string "yes" or "no"
+  - *Example*: `startsWithZ` program
+
+- **Remember, not all decision problems are computable!**
 
 :::
 
@@ -282,6 +290,12 @@ that best suits our needs, often focusing on decision problems!**
   - Program must terminate on all inputs
   - Program must return a valid solution
 
+- Exploring the SortWords problem:
+  - Both `pythonSort` and `bubbleSort` solve it
+  - `brokenSort` does *not* solve it
+    - Correct answer when it returns
+    - Infinite loop on some inputs
+
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
@@ -291,16 +305,7 @@ of the solution set!
 
 :::
 
-## Positive and negative instances
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
-
-- {{< iconify fa6-solid gear >}} **Instance classification**
-  - **Instance**: any particular input to a problem
-  - **Negative instance**: solution set is `{"no"}`
-  - **Positive instance**: solution set contains valid solutions
-
-:::
+## Review positive and negative instances
 
 ```{pyodide}
 #| autorun: true
