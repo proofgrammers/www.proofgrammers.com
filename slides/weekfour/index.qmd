@@ -343,13 +343,14 @@ that best suits our needs, often focusing on decision problems**
 
 ## Meaning of "solving" a problem?
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Formal definition**
-  - Program $P$ **solves** problem $F$ if:
+  - Program $P$ **solves** a problem $F$ if:
   - For all valid inputs $s$: $P(s) \in F(s)$
   - Program must terminate on all inputs
   - Program must return a valid solution
+  - $P$ computes $F$ if $P(I)$ is *always* a solution to $F$
 - Exploring the `SortWords` problem:
   - Both `pythonSort` and `bubbleSort` solve it
   - `brokenSort` does *not* solve it
