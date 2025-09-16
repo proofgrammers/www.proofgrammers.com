@@ -129,21 +129,28 @@ Paradox()
   - Return `"yes"` if program `P(I)` halts (is defined).
   - Return `"no"` otherwise.
 
+-   `definedOnString` won't run its input, it will just analyze the code and decide if it **halts** or **runs forever**.
+
 -   Works fine for simple examples (like `containsGAGA.py`, `yes.py`, etc.).
 
--   But when `definedOnString` run on itself or some specific programs (like a program that creates a loop when `definedOnString` return `"no"`), the answer can get mysterious.
+-   But since `definedOnString` is basically trying to see if the other program will halt or run forever, we already know by the **Halting Problem** that this is impossible to do.
 
--   Self-reference creates situations where no correct answer is possible.
+-   The only way to do this program would be running the input with infinite time, to avoid **false positives** (when the program thinks it will run forever but it ends up breaking out later), **false negatives**.
 
--   This is not a bug or inefficiency, it’s a fundamental limitation of computation, this is exactly the same challenge as the Halting Problem → **no general algorithm can exist**
+-   This is not a bug or inefficiency, it’s a fundamental limitation of computation, that we found in the Halting Problem.
 :::
 
 ## Why is it uncomputable?
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
--   Assume definedOnString(P, I) exists.
 
-- Define a new program:
+-   We already know that this program is uncomputable due to the **Halting Problem**, since this program needs to know if its input (a program) will **halt** or **run forever**.
+
+-   If we try to use this uncomputable program we can get to contradiction:
+
+-   Assume `definedOnString(P, I)` exists.
+
+-   Define a new program:
 
 ```python
 from definedOnString import definedOnString
@@ -158,7 +165,7 @@ def weirdDefinedOnSelf(P):
 
 -   Run it on itself: `weirdDefinedOnSelf(rf('weirdDefinedOnSelf.py'))`
 
--   Case 1: Returns `defined` → program is defined → contradiction
+-   Case 1: Returns `defined` → but the program actually loops forever → **contradiction**.
 
 -   Case 2: `Infinite loop` → program undefined → **contradiction**
 
