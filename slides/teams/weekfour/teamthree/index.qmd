@@ -3,7 +3,7 @@ title: "`definedOnString` is Uncomputable"
 description: "Explore the limits of `definedOnString`"
 date: "2025-09-16"
 date-format: long
-author: Ainslee Plesko, Javier Bejarano Jimenez, and Abishek Dhakal
+author: Ainslee Plesko, Javier Bejarano Jimenez, & Abishek Dhakal
 execute:
   echo: true
 format:
