@@ -65,7 +65,7 @@ print(yesOnString("returnYesOnString.py", 1))
 
 ```{pyodide}
 
-#| max-lines: 25
+#| max-lines: 15
 """Create a proof by contradiction for the yesOnString problem."""
 
 def yesOnString(program_input: str, input_string: str):
