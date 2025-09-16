@@ -12,3 +12,16 @@ toc-expand: 3
 - {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
   - Chapter five of [What Can be Computed? A Practical Guide to the
   Theory of Computation](https://whatcanbecomputed.com/)
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - No new presentation slides due for this week
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - Instructor's presentation on this week's assigned topics
+  - Review of the format for skill and knowledge checks
+- {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+   - Skill and knowledge checks completed during laboratory session
+   - Skill-check released at the start of the session and completed by students
+   - Approximately five-minute knowledge-checks completed in random order
+   - Skill-checks in classroom while knowledge-checks in instructor office
+- {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
+  - Instructor's presentation on this week's assigned topics
+  - Charette session where students collaboratively ask and answer questions
