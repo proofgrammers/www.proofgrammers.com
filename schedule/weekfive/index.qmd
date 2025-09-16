@@ -20,7 +20,14 @@ toc-expand: 3
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
    - Skill and knowledge checks completed during laboratory session
    - Skill-check released at the start of the session and completed by students
+   - Skill-check's focus is on the problems that are:
+     - Computable
+     - Tractable
+     - Restricted versions of problems that are:
+       - Undecidable
+       - Intractable
    - Approximately five-minute knowledge-checks completed in random order
+   - Knowledge-check focuses on one key concept explained during module
    - Skill-checks in classroom while knowledge-checks in instructor office
    - Instructor assigns teams for the retrospective presentations
    - Teams pick and present their own topics on this module's content
