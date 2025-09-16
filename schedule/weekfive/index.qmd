@@ -22,6 +22,8 @@ toc-expand: 3
    - Skill-check released at the start of the session and completed by students
    - Approximately five-minute knowledge-checks completed in random order
    - Skill-checks in classroom while knowledge-checks in instructor office
+   - Instructor assigns teams for the retrospective presentations
+   - Teams pick and present their own topics on this module's content
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
   - Instructor's presentation on this week's assigned topics
   - Charette session where students collaboratively ask and answer questions
