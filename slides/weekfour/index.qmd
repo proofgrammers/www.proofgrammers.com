@@ -287,6 +287,21 @@ that best suits our needs, often focusing on decision problems**
 
 :::
 
+## Converting between problem types
+
+::: incremental
+
+- Pathfinding example for a graph:
+  - `FindPath` is a search problem
+    - *Input*: graph of nodes and edges
+    - *Input*: start and end nodes
+    - *Output*: path from start to end
+  - `HasPath` is a decision problem
+  - `HasPath(s) = "yes"` if `FindPath(s)` returns a non-empty solution path and
+    `HasPath(s) = "no"` for all other `FindPath(s)` outputs
+
+:::
+
 ## Decision problems and SISO programs
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
