@@ -175,20 +175,19 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 :::
 
-## Formal definition of computational problem: map input strings to solutions
+## Define a computational problem: map input strings to valid solutions
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.9em;"}
 
 - {{< iconify fa6-solid gear >}} **Mathematical definition**
-  - **Computational problem**: function $F: \Sigma^* \rightarrow P(\Sigma^*)$
-  - Maps strings to *sets* of strings
+  - **Computational problem** defined by a function $F$
+  - A computational problem $F$ maps strings to *sets* of strings
   - $F(s)$ is the **solution set** for input string $s$
-  - Each element of $F(s)$ is a valid **solution**
+  - Each element of $F(s)$ is a valid **solution** to the problem
+- **Examples**: BeginsWithA, ShortestPath, or Palindromes
+- Any particular input to a problem is called an **instance**
+- Problem instances are classified as **positive** or **negative**
 
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-A computational problem maps each input string to a set of valid solution strings!
 :::
 
 ## Example: BEGINSWITHA problem
