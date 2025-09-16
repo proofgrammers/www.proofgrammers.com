@@ -12,3 +12,14 @@ toc-expand: 3
 - {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
   - Chapter four of [What Can be Computed? A Practical Guide to the
   Theory of Computation](https://whatcanbecomputed.com/)
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - Submit completed version of team's presentation slides by 11:59 PM
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - Instructor's presentation on this week's assigned topics
+- {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+   - Teams give a **ten minutes** talk with a **five minute** evaluation session
+   - Presentation order randomly assigned at the start of laboratory session
+   - Make new team assignment's for next week's proofgrammer presentations
+- {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
+  - Instructor's presentation on this week's assigned topics
+  - Charette session where students collaboratively ask and answer questions
