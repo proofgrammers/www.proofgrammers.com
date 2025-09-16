@@ -133,7 +133,7 @@ print("Broken sort (distinct):", brokenSort(test_distinct))
 print("Broken sort would hang on: 'banana grape banana apple'")
 ```
 
-::: {.fragment .fade-up style="font-size: 0.95em; margin-top: 0.1em;"}
+::: {.fragment .fade-up style="font-size: 0.95em; margin-top: 0.2em;"}
 
 {{< iconify fa6-solid lightbulb >}} A program doesn't truly solve a problem
 unless it terminates on *all* inputs and always produces the correct answer!
@@ -160,7 +160,7 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 ## Alphabets and strings
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.815em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.81em;"}
 
 - {{< iconify fa6-solid gear >}} **Alphabet $\Sigma$**
   - Finite set of symbols (e.g., ASCII characters)
@@ -191,6 +191,7 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 :::
 
+
 ## Example: BeginsWithA problem
 
 ```{pyodide}
@@ -218,13 +219,37 @@ solutions = beginsWithA(test_input)
 print(f"There is no valid solution: '{solutions[0]}'")
 ```
 
+## Positive and negative instances
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 10
+def classifyInstance(problem_result):
+    """Classify an instance as positive or negative."""
+    if problem_result == ["no"] or problem_result == "no":
+        return "negative"
+    else:
+        return "positive"
+
+# examples for BeginsWithA
+print("Instance 'cat dog bird':", classifyInstance(beginsWithA("cat dog bird")))
+print("Instance 'she ate apples':", classifyInstance(beginsWithA("she ate apples")))
+```
+
+::: {.fragment .fade-up style="font-size: 0.9em; margin-top: 0.2em;"}
+
+- **Positive instance**: at least one valid solution exists
+- **Negative instance**: no valid solutions exist to problem
+
+:::
+
 ## Computational problem categories
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid gear >}} **Search problems**
   - Find any valid solution
-  - Example: Find a path in a graph
+  - *Example*: Find a path in a graph
 
 :::
 
@@ -232,7 +257,7 @@ print(f"There is no valid solution: '{solutions[0]}'")
 
 - {{< iconify fa6-solid gear >}} **Optimization problems**
   - Find the *best* solution according to some criteria
-  - Example: Find the *shortest* path in a graph
+  - *Example*: Find the *shortest* path in a graph
 
 :::
 
@@ -240,13 +265,13 @@ print(f"There is no valid solution: '{solutions[0]}'")
 
 - {{< iconify fa6-solid gear >}} **Decision problems**
   - Answer only "yes" or "no"
-  - Example: Does a path exist between two nodes?
+  - *Example*: Does a path exist between two nodes?
 
 :::
 
 ## Advantages of different problems
 
-::: incremental
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
 - **Decision problems**:
   - *Advantage*: elegant for stating and proving results
@@ -257,7 +282,8 @@ print(f"There is no valid solution: '{solutions[0]}'")
   - *Disadvantage*: messy for proof and theoretical analysis
 
 - {{< iconify fa6-solid lightbulb >}} **We will often pick the problem formulation
-that best suits our needs, often focusing on decision problems!**
+that best suits our needs, often focusing on decision problems**
+- {{< iconify fa6-solid lightbulb >}} **Often possible to convert between problem types**
 
 :::
 
@@ -280,17 +306,36 @@ that best suits our needs, often focusing on decision problems!**
 
 :::
 
+## Decision and recognition
+
+::: incremental
+
+- `yesOnString`: uncomputable and undecidable
+- `crashOnString`: uncomputable and undecidable
+- `startsWithZ`: uncomputable and undecidable
+- `hasShortestPath`: computable and decidable
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+- Decision problems are same as the question of membership in a language!
+- Recognizing a language answers "yes" for strings in the language
+- However, recognizing can be undefined on negative instances
+- Intuitively, language recognition is "easier" than deciding!
+
+:::
+
 ## Meaning of "solving" a problem?
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Formal definition**
   - Program $P$ **solves** problem $F$ if:
   - For all valid inputs $s$: $P(s) \in F(s)$
   - Program must terminate on all inputs
   - Program must return a valid solution
-
-- Exploring the SortWords problem:
+- Exploring the `SortWords` problem:
   - Both `pythonSort` and `bubbleSort` solve it
   - `brokenSort` does *not* solve it
     - Correct answer when it returns
@@ -298,29 +343,6 @@ that best suits our needs, often focusing on decision problems!**
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-A program solves a problem if it always terminates and always returns a member
-of the solution set!
-
-:::
-
-## Review positive and negative instances
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 10
-def classifyInstance(problem_result):
-    """Classify an instance as positive or negative."""
-    if problem_result == ["no"] or problem_result == "no":
-        return "negative"
-    else:
-        return "positive"
-
-# Examples for BEGINSWITHA
-print("Instance 'cat dog bird':", classifyInstance(beginsWithA("cat dog bird")))
-print("Instance 'she ate apples':", classifyInstance(beginsWithA("she ate apples")))
-```
 
 ## Computability and decidability
 
