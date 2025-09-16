@@ -3,7 +3,7 @@ title: "`crashOnString` is Uncomputable"
 description: "Explore the limits of `crashOnString`"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Alexander Goddard, Miguel Orti Vila, Duru Akbas
 execute:
   echo: true
 format:
@@ -18,14 +18,110 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+# Introduction
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- Computability theory explores what problems can or cannot be solved by algorithms, so if a problem cannot be solved by algorithms, it is uncomputable
+
+- crashOnString determines, given an input string and a program, whether it will crash or not.
+
+- At first glance, this seems possible; however, by building self-referential programs, we will prove that this creates contradictions. 
+
+- This approach connects "crashOnString" directly to the Halting Problem; therefore, it is uncomputable.
+
+:::
+
+# Program sequence
+
+![Book Figure](program_sequence.png)
+
+## Example hypothetical 'crashOnString'
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 7  
+  def crashOnString(progString, inputStr):
+    ouput = ""
+    if progString == "crashOnContainsCrash.py":
+      output = crashOnContainsCrash(inputStr)
+    if progString == "noCrash.py":
+      output = noCrash(inputStr)
+
+    if output == "crashed":
+      return "yes"
+    else:
+      return "no"
+
+  def crashOnContainsCrash(inputStr):
+    if "Crash" in inputStr:
+      try:
+        result = 1 / 0
+      except ZeroDivisionError:
+        return "crashed"
+
+  def noCrash(inputStr):
+    return "did not crash!"
+
+  test_programs = [("crashOnContainsCrash.py", "Crash"), ("noCrash.py", "Crash"), ("crashOnContainsCrash.py", "Hello"), ("noCrash.py", "Hello")]
+
+  print("Hypothetical crashOnString behavior:")
+  for (prog, inputStr) in test_programs:
+      result = crashOnString(prog, inputStr)
+      print(f"crashOnString('{prog, inputStr}') = {result}")
+
+```
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- `crashOnString` takes as input a program and a string and then deterimes whether or not that program crashes on that string
+- Returns yes if program does crash and no if it doesn't
+:::
+
+## Defining `crashOnSelf` 
+
+```python
+  from crashOnString import crashOnString
+  def crashOnSelf(progString):
+    return crashOnString(progString, progString)
+```
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- `crashOnSelf` takes as input a program and deterimes whether or not that program crashes when  run on itself
+- Returns yes if program does crash and no if it doesn't
+:::
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+## Defining `weirdCrashOnSelf` 
 
+```python
+  from crashOnSelf import crashOnSelf 
+  def weirdCrashOnSelf(progString):
+    val = crashOnSelf(progString)
+    if (val == 'yes'):
+      return 'did not crash!'
+    else:
+      # deliberately crash (divide by zero)
+      x = 1 / 0
+```
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- `weirdCrashOnSelf` takes an input program and then deterimes whether or not it crashes using crash on self
+- If the program crashes it returns without crashing
+- If the program doesn't crash it will then force itself to crash
+- This program isn't possible becuase when run on itself it produces a contradiction
+:::
+
+## Proof that `crashOnString` is uncomputable
+- `crashOnString` can be proven to be uncomputable through contradiction using `weirdCrashOnSelf`
+- When `weirdCrashOnSelf` takes itself as an input there are only two possiblities
+  - if it crashes then $val = yes$ which means it will return without crashing which isn't possible becuase it cannot both crash and not crash
+  - if it doesn't crash then $val = no$ which means it will go on to crash with a divide-by-zero which once again isn't possible becuase it cannot both crash and not crash
+- Becuase both possibilties lead to a crontradiction we know that `weirdCrashOnSelf` isn't possible
+- If we were to assume `crashOnString` is possible. Then we could use it to write both `crashOnSelf` and `weirdCrashOnSelf`. Although, we know `weirdCrashOnSelf` is impossible therefore our assumption isn't correct and `crashOnString` must also be impossible
+  
+
+# Conclusion
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- `weirdCrashOnSelf` is impossible and causes a contradiction with `crashOnString`
+- therefore `crashOnString` is uncomputable (and untractable)
+- when `weirdCrashOnSelf` takes itself as an input it creates a contradiction with `crashOnString`
 :::
