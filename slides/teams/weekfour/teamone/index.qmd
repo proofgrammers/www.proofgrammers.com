@@ -109,6 +109,10 @@ def decider():
 
 decider()
 ```
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- We get an infinite chain of function calls
+
 :::
 
 ## Output of the Proof by Contradiction
@@ -117,8 +121,7 @@ decider()
 ![Image Two](contradiction_result.png)
 
 ## Similarity to Halting Program
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+ 
 
 ```{pyodide}
 #| max-lines: 15
@@ -158,15 +161,39 @@ def result():
 halting()
 ```
 
+::: {.fragment style="margin-top: -0.5em; font-size: 0.5em;"}
+
+Self-reference  
+– Halting: a program halts on its own input.  
+– yesOnString: a program outputs "yes" on itself.  
+
+Decider → paradox  
+– A universal decider cannot exist.  
+– The “troublemaker” flips/loops.  
+
+Non-termination  
+– Matches Turing’s proof of undecidability.  
 :::
 
-# Conclusion
+## Similarities between the Halting Problem and the `yesOnString`
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- Both rely on **self-reference**  
+- Both assume a **universal decider** → leads to paradox  
+- Both produce **infinite loops or recursion** in code demos  
+- Both are **undecidable problems**  
+- Both reveal the **limits of computation**
+
+:::
+
+## Conclusion
 
 ::: {.fragment style="margin-top: -0.3em; font-size: 0.8em;"} 
 
-- yesOnString seems useful, but leads to self-referential contradiction.
-- Therefore, it is Uncomputable, just like the Halting Problem.
-- This shows the limits of computation: not everything can be decided
-  by an algorithm.
+- Our code attempts to decide yesOnString but quickly falls into recursion or infinite loops.
+- The “troublemaker” example proves that self-referential programs break any decider.
+- Running the halting demo shows how undecidability appears in practice, not just theory.
+- These simple experiments reveal the real limits of what algorithms can compute.
 
 :::
