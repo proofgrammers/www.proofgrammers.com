@@ -59,7 +59,8 @@ format:
 ::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
 
 {{< iconify fa6-solid lightbulb >}} Programs solve problems --- but different
-programs can solve the same problem in very different ways! Let's explore this further!
+programs can solve the same problem in very different ways! Let's explore this
+further!
 
 :::
 
@@ -159,18 +160,18 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 ## Alphabets and strings
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.815em;"}
 
 - {{< iconify fa6-solid gear >}} **Alphabet $\Sigma$**
   - Finite set of symbols (e.g., ASCII characters)
   - $\Sigma^*$ means all possible strings over alphabet $\Sigma$
   - Empty string $\epsilon$ is always included
-  - Example: $\Sigma = \{0, 1\} \Rightarrow \Sigma^* = \{\epsilon, 0, 1, 00, 01, 10, 11, 000, ...\}$
-  - Example: $\Sigma = \{a, b\} \Rightarrow \Sigma^* = \{\epsilon, a, b, aa, ab, ba, bb, aaa, ...\}$
+  - **Example**: $\Sigma = \{0, 1\} \Rightarrow \Sigma^* = \{\epsilon, 0, 1, 00, 01, 10, 11, 000, ...\}$
+  - **Example**: $\Sigma = \{a, b\} \Rightarrow \Sigma^* = \{\epsilon, a, b, aa, ab, ba, bb, aaa, ...\}$
 
 - {{< iconify fa6-solid gear >}} **Language**
   - Any subset of $\Sigma^*$, can be finite or infinite
-  - Examples: all palindromes, all valid Python programs
+  - **Examples**: all palindromes, all valid Python programs
 - **Alphabets define the building blocks for program input and output!**
 
 :::
