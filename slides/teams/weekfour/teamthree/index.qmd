@@ -1,7 +1,7 @@
 ---
 title: "`definedOnString` is Uncomputable"
 description: "Explore the limits of `definedOnString`"
-date: "2025-09-15"
+date: "2025-09-16"
 date-format: long
 author: Ainslee Plesko, Javier Bejarano Jimenez, and Abishek Dhakal
 execute:
@@ -18,16 +18,13 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Introduction
+## Introduction
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
--   x
-:::
-
-## What is `definedOnString`?
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
--   x
+- `definedOnString(P, I)` is designed to answer this question:
+    - Return `"yes"` if program `P(I)` halts (is defined).
+    - Return `"no"` otherwise.
+- Uncomputable in the general case (see **Halting problem**)
 :::
 
 ## `definedOnString`: Case 1
@@ -36,7 +33,7 @@ format:
 # "rf" function: read a program file as a string
 def rf(filename: str) -> str:
     if filename == "definedOnString.py":
-        return """\
+        return """
 # full contents of definedOnString.py go here
 def DefinedOnString(program_code: str, inString: str) -> bool:
     return True
@@ -53,8 +50,7 @@ def Paradox():
 
 Paradox()
 """
-    else:
-        return ""
+
 
 
 # Case 1
@@ -82,7 +78,7 @@ Paradox()
 # "rf" function: read a program file as a string
 def rf(filename: str) -> str:
     if filename == "definedOnString.py":
-        return """\
+        return """
 # full contents of definedOnString.py go here
 def DefinedOnString(program_code: str, inString: str) -> bool:
     return False
@@ -99,8 +95,7 @@ def Paradox():
 
 Paradox()
 """
-    else:
-        return ""
+
 
 
 # Case 2
@@ -124,33 +119,25 @@ Paradox()
 
 ## Limitations
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
--   `definedOnString(P, I)` is designed to answer this question:
-  - Return `"yes"` if program `P(I)` halts (is defined).
-  - Return `"no"` otherwise.
-
--   `definedOnString` won't run its input, it will just analyze the code and decide if it **halts** or **runs forever**.
-
--   Works fine for simple examples (like `containsGAGA.py`, `yes.py`, etc.).
-
--   But since `definedOnString` is basically trying to see if the other program will halt or run forever, we already know by the **Halting Problem** that this is impossible to do.
-
--   The only way to do this program would be running the input with infinite time, to avoid **false positives** (when the program thinks it will run forever but it ends up breaking out later), **false negatives**.
-
--   This is not a bug or inefficiency, it’s a fundamental limitation of computation, that we found in the Halting Problem.
+::: {.incremental style="margin-top: -0.15em; font-size: 0.73em;"}
+- `definedOnString(P, I)` is designed to answer this question:
+    - Return `"yes"` if program `P(I)` halts (is defined).
+    - Return `"no"` otherwise.
+- `definedOnString` won't run its input; will just analyze the code and decide if it **halts** or **runs forever**.
+- Works fine for simple examples (like `containsGAGA.py`, `yes.py`, etc.)
+- But since `definedOnString` is seeing whether the other program will halt or run forever, we already know that this is impossible (**Halting Problem**)
+- The only way to do this program would be running the input with infinite time, to avoid **false positives** (program thinks it will run forever but it ends up breaking later) and **false negatives** (program does not break but thinks it will).
+- This is not a bug or inefficiency, it’s a fundamental limitation of computation, which we found in the Halting Problem.
 :::
 
 ## Why is it uncomputable?
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
--   We already know that this program is uncomputable due to the **Halting Problem**, since this program needs to know if its input (a program) will **halt** or **run forever**.
-
--   If we try to use this uncomputable program we can get to contradiction:
-
--   Assume `definedOnString(P, I)` exists.
-
--   Define a new program:
+- We already know that this program is uncomputable due to the **Halting Problem**, as this program needs to know if its input (a program) will **halt** or **run forever**.
+- If we try to use this uncomputable program, we get a contradiction:
+    - Assume `definedOnString(P, I)` exists
+    - Define a new program:
 
 ```python
 from definedOnString import definedOnString
@@ -162,20 +149,26 @@ def weirdDefinedOnSelf(P):
     else:
         return 'defined'
 ```
+:::
 
--   Run it on itself: `weirdDefinedOnSelf(rf('weirdDefinedOnSelf.py'))`
+## (cont.)
 
--   Case 1: Returns `defined` → but the program actually loops forever → **contradiction**.
-
--   Case 2: `Infinite loop` → program undefined → **contradiction**
-
--   Both cases lead to contradiction → initial assumption fails.
-
--   Conclusion: `definedOnString.py` cannot exist.
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+- Run it on itself: `weirdDefinedOnSelf(rf('weirdDefinedOnSelf.py'))`
+- Case 1: Returns `defined` → program actually loops forever → **contradiction**
+- Case 2: `Infinite loop` → program undefined → **contradiction**
+- Both cases lead to contradiction → initial assumption fails
+- Conclusion: `definedOnString.py` cannot exist.
 :::
 
 ## Conclusion
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
--   x
+- `definedOnString(P, I)` is uncomputable in the general case
+- proof by contradiction:
+    - we assume `definedOnString(P, I) exists and, therefore, can be created
+    - we assume `weirdDefinedOnSelf` exists
+    - `weirdDefinedOnSelf` acts as a troublemaker program
+    - no program can return both `yes` and `no` -> logical impossibility
+    - `definedOnString(P, I)` cannot exist
 :::
