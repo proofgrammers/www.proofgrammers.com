@@ -20,9 +20,15 @@ format:
 
 # Introduction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **What is crash on string?**
+- Computability theory explores what problems can or cannot be solved by algorithms, so if a problem cannot be solved by algorithms, it is uncomputable
+
+- crashOnString determines, given an input string and a program, whether it will crash or not.
+
+- At first glance, this seems possible; however, by building self-referential programs, we will prove that this creates contradictions. 
+
+- This approach connects "crashOnString" directly to the Halting Problem; therefore, it is uncomputable.
 
 :::
 
