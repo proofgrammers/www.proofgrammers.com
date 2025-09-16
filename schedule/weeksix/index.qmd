@@ -16,9 +16,12 @@ toc-expand: 3
   - Retrospective topics should be reserved in prior week
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
   - Students take the executable examination for module one
-  - Examination's focus is on the problems that are provably:
+  - Examination's focus is on the problems that are:
     - Computable
     - Tractable
+    - Restricted versions of problems that are:
+      - Undecidable
+      - Intractable
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
   - No new material due since it is the last week of the module
   - Teams four, five, and six give retrospective presentations
