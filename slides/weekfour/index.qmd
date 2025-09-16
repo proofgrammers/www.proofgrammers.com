@@ -18,19 +18,21 @@ format:
     footer: "Proofgrammers"
 ---
 
-# What is a computational problem?
+# Wait, we've not given a formal definition of a computational problem! Can we now?
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+## What is a computational problems?
 
-- {{< iconify fa6-solid lightbulb >}} **Problems vs programs**
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **Problems versus programs**
     - **Computational problem**: describes *what* we want to compute
     - **Computer program**: describes *how* to compute a solution
     - One problem can have many different program solutions
-    - Some programs may be correct, others incorrect
+    - Some programs may be correct, while others are incorrect
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+::: {.fragment style="margin-top: -0.5em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Our exploration strategy**
     - Examine sorting as a concrete example
