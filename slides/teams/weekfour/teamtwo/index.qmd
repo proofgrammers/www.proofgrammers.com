@@ -121,7 +121,7 @@ format:
 # Conclusion
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- Proof by contradiction
-- Determined uncomputable (and therefore untractable)
-- 
+- `weirdCrashOnSelf` is impossible and causes a contradiction with `crashOnString`
+- therefore `crashOnString` is uncomputable (and untractable)
+- when `weirdCrashOnSelf` takes itself as an input it creates a contradiction with `crashOnString`
 :::
