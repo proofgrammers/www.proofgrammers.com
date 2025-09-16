@@ -319,10 +319,10 @@ that best suits our needs, often focusing on decision problems**
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-- Decision problems are same as the question of membership in a language!
+- Decision problems are same as the question of membership in a language
 - Recognizing a language answers "yes" for strings in the language
 - However, recognizing can be undefined on negative instances
-- Intuitively, language recognition is "easier" than deciding!
+- Intuitively, language recognition is "easier" than deciding
 
 :::
 
@@ -355,19 +355,16 @@ that best suits our needs, often focusing on decision problems**
 
 :::
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.45em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Uncomputable problems**
   - No program can solve all instances
-  - We've already seen examples (perfect bug finder)
-  - Fundamental limits of computation
+  - We've already seen examples (e.g., the perfect bug finder)
+  - There are fundamental limits of computation
 
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-As proofgrammers, we must understand which problems *can* be computed and 
-which *cannot*!
+- Proofgrammers must be able to distinguish between problems that *can* be
+computed from those that *cannot*! And, be able to explain *why* this is the
+case! Avoid the temptation of simply saying "oh, the halting problem".
 
 :::
 
@@ -375,7 +372,7 @@ which *cannot*!
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **Problems vs solutions**
+- {{< iconify fa6-solid lightbulb >}} **Problems versus solutions**
   - Abstract problems have concrete program implementations
   - Multiple correct approaches may exist
   - Correctness requires termination + valid solutions
@@ -389,11 +386,7 @@ which *cannot*!
   - String representations make abstract concepts concrete
   - Sets of solutions capture multiple valid answers
 
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-Understanding computational problems formally prepares us to prove fundamental 
-limits and explore computational complexity!
+- **Understanding computational problems formally prepares us to prove
+fundamental limits and explore computational complexity!**
 
 :::
