@@ -3,7 +3,7 @@ title: "`yesOnString` is Uncomputable"
 description: "Explore the limits of `yesOnString`"
 date: "2025-09-15"
 date-format: long
-author: Gregory M. Kapfhammer
+author: Benedek Kaibas, Issei Hasegawa, Cullen Doyle
 execute:
   echo: true
 format:
@@ -18,14 +18,182 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Theory of computation
+
+
+## What is yesOnString?
+
+- Decision problem
+  - Inputs: A Python program (P), A string input (s)
+
+- **Question**: Does program P, when run on input s, return "yes"?
+
+- When does the program return "no"?
+  - Invalid program, undefined output, non-"yes" as a program return
+
+## Code
+
+
+```{pyodide}
+#| autorun: false
+#| max-lines: 15
+"""This file contains a basic yesOnString function."""
+
+def returnYesOnString(some_string: str) -> str:
+    """This function always says yes."""
+    return "yes"
+
+def yesOnString(program_input: str, input_string: str):
+    """Return yes on valid P, if input is defined and P(I) is yes."""
+    if program_input == 'returnYesOnString.py' and isinstance(input_string, str):
+            return returnYesOnString(input_string)
+    if not program_input.endswith(".py"):
+        error = f"{program_input} either does not exist or is not a valid Python program."
+        return error
+    if not isinstance(input_string, str):
+        error = f"{input_string} is not a string!"
+        return error
+
+print(yesOnString("returnYesOnString.py", "Go Gators!"))
+print(yesOnString("returnYesOnString.cpp", "Go Gators!"))
+print(yesOnString("returnYesOnString.py", 1))
+```
+
+
+## Proof By Contradiction
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- Assumption:
+     - Suppose yesOnString exists.
+- Self-referential program D:
+     - If yesOnString(x, "x") = Yes -> D outputs nothing.
+     - If yesOnString(x, "x") = No  -> D outputs "x".
+- Self - application (x = "D")
+     - If result = yes -> D does not output "D" -> actually not "Yes"
+     - If result = no  -> D outputs "D" -> actually Yes
+- Conclusion:
+     - The decider’s prediction always contradicts the actual behavior
+
+:::
+
+## Proof By Contradiction with Coding
+```{pyodide}
+
+#| max-lines: 15
+"""Create a proof by contradiction for the yesOnString problem."""
+
+def yesOnString(program_input: str, input_string: str):
+    """Return yes on a valid P, if input is defined and P(I) is yes."""
+    if program_input == 'troublemaker.py' and isinstance(input_string, str):
+        return troublemaker(input_string)
+    if not program_input.endswith(".py"):
+        err = f"{program_input} either does not exist or is not a valid Python program."
+        return err
+    if not isinstance(input_string, str):
+        err = f"{input_string} is not a string!"
+        return err
+
+
+def troublemaker(some_string: str):
+    """Flip the answer: say 'no' if yesOnString predicts 'yes', else 'yes'."""
+    prediction = yesOnString("troublemaker.py", "troublemaker.py")
+    if prediction == "yes":
+        return "no"
+    else:
+        return "yes"
+
+def decider():
+    """Show the contradiction when we ask about troublemaker on itself."""
+    result = yesOnString("troublemaker.py", "troublemaker.py")
+    print(f"yesOnString says: {result}")
+
+decider()
+```
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- We get an infinite chain of function calls
+
+:::
+
+## Output of the Proof by Contradiction
+
+![Image One](contradiction.png)
+![Image Two](contradiction_result.png)
+
+## Similarity to Halting Program
+ 
+
+```{pyodide}
+#| max-lines: 15
+
+"""Similarity to the Halting problem using yesOnString's logic."""
+    
+
+def yesOnString(program_input: str, input_string: str):
+    """Return yes on valid P, if input is defined and P(I) is yes."""
+    if program_input == "easemaker.py" and isinstance(input_string, str):
+        return easemaker(program_input)
+    if not program_input.endswith(".py"):
+        err = f"{program_input} either does not exist or is not a valid Python program."
+        return err
+    if not isinstance(input_string, str):
+        err = f"{input_string} is not a string!"
+        return err
+
+def easemaker(some_string: str):
+    prediction = yesOnString("easemaker.py", "easemaker.py")
+    if prediction == "yes":
+        return "yes"
+    else:
+        return "no"
+
+def halting():
+    program_w = yesOnString("easemaker.py", "easemaker.py")
+    while program_w == "yes":
+        pass
+
+
+def result():
+    output = yesOnString("easemaker.py", "easemaker.py")
+    print(f"yesOnString says: {output}")
+
+#result()
+halting()
+```
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.5em;"}
+
+Self-reference  
+– Halting: a program halts on its own input.  
+– yesOnString: a program outputs "yes" on itself.  
+
+Decider → paradox  
+– A universal decider cannot exist.  
+– The “troublemaker” flips/loops.  
+
+Non-termination  
+– Matches Turing’s proof of undecidability.  
+:::
+
+## Similarities between the Halting Problem and the `yesOnString`
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- Both rely on **self-reference**  
+- Both assume a **universal decider** → leads to paradox  
+- Both produce **infinite loops or recursion** in code demos  
+- Both are **undecidable problems**  
+- Both reveal the **limits of computation**
+
+:::
+
+## Conclusion
+
+::: {.fragment style="margin-top: -0.3em; font-size: 0.8em;"} 
+
+- Our code attempts to decide yesOnString but quickly falls into recursion or infinite loops.
+- The “troublemaker” example proves that self-referential programs break any decider.
+- Running the halting demo shows how undecidability appears in practice, not just theory.
+- These simple experiments reveal the real limits of what algorithms can compute.
 
 :::
