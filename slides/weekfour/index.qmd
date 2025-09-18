@@ -140,6 +140,18 @@ unless it terminates on *all* inputs and always produces the correct answer!
 
 :::
 
+# Mathematical foundations of proofgramming
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- Formal definitions of mathematical concepts
+  - Graphs, strings, and languages
+  - Set and string operations on languages
+  - Defining computational problems
+  - Categories of computational problems
+
+:::
+
 ## Mathematical foundations
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
@@ -447,3 +459,195 @@ case! Avoid the temptation of simply saying "oh, the halting problem".
 fundamental limits and explore computational complexity!**
 
 :::
+
+# Proofgramming skill-checks and exams 
+
+::: {.fragment .fade-right}
+
+- {{< iconify fa6-solid clipboard-check >}} **What is a document engineering skill-check?**
+- {{< iconify fa6-solid calendar >}} **When do these skill-checks happen?**
+- {{< iconify fa6-solid code >}} **What Python programming tasks are involved?**
+- {{< iconify fa6-solid rocket >}} **How do I successfully complete a skill-check?**
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} **Programming assessments for your document
+engineering skills!**
+
+:::
+
+## What is a skill-check?
+
+::: {.incremental .fade-right style="margin-top: -0.1em; font-size: 0.925em;"}
+
+- **Programming tasks** completed on certain Fridays during class
+- **Individual assessment** of your document engineering skills
+- **GitHub Classroom repository** provided as your starting point
+- **Contains `TODO` markers** and blank functions for you to complete
+- **Automated checking** ensures your solution meets requirements
+- **Time-limited** completion of tasks during the class session
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} **It's a focused coding challenge that
+assesses what you've learned and confirms that you have tools setup correctly!**
+
+:::
+
+## Step 1: Navigate to `exam/` directory
+
+```bash
+# navigate to your skill-check repository after cloning
+cd <your-skillcheck-repository-name>
+
+# navigate to the exam directory where all the work happens
+cd exam
+
+# verify you're in the right place for the skill-check
+ls -alg
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.825em;"}
+
+- **Important**: All skill-check work happens in the `exam/` directory
+- You should see files and directories like these: `questions/`, `tests/`,
+`gatorgrade.yml`, `pyproject.toml`, and `uv.lock`
+- The `questions/` directory contains files with `TODO` markers to complete
+- The `tests/` directory contains automated tests to verify your work
+- The `gatorgrade.yml` file configures the `gatorgrade` assessment tool
+
+:::
+
+## Step 2: Run the assessment tool
+
+```bash
+# run gatorgrade to see what needs to be completed
+uvx gatorgrade
+
+# this will show you:
+# ✅ Checks that are currently passing
+# ❌ Checks that need work to pass
+# 📊 Overall completion percentage
+```
+
+::: {.fragment .fade-up style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **`gatorgrade`** is the automated assessment tool
+- After installing `uv`, you can type `uvx gatorgrade`
+- **Red X marks** show what still needs to be fixed
+- **Green checkmarks** show completed requirements
+- **Task**: Iteratively complete work in required files
+- **Goal**: Keep working to get 100% of checks to pass
+
+:::
+
+## Step 3: Complete programming tasks
+
+::: {.incremental .fade-right style="margin-top: -0.1em; font-size: 0.85em;"}
+
+- **Open files** in the `questions/` directory (e.g., `question_one.py`)
+- **Find `TODO` markers** that indicate where to add code
+- **Read function docstrings** to understand what a function should do
+- **Write Python code** to implement the required functionality
+- **Add comments** to explain your code clearly
+- **Remove `TODO` markers** when you complete each section
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+{{< iconify fa6-solid lightbulb >}} **Don't forget**: You need to implement the
+functions _and_ remove the `TODO` markers! You can use `uvx gatorgrade` to check
+your progress and see which functions are working! It all works in your terminal
+window!
+
+:::
+
+## Step 4: Test your progress frequently
+
+```bash
+# run gatorgrade after making changes
+uvx gatorgrade
+
+# you should see your completion percentage improve
+# keep working until you reach 100%
+
+# or, for specific test details, you can also run:
+uv run pytest -v
+```
+
+::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.85em;"}
+
+- **Run `gatorgrade` frequently** to track your progress
+- **Each change** should improve your completion percentage
+- **Don't wait** until the end to test your work
+- **Green checkmarks** confirm your code is working correctly
+- **Reported score** is your current score on the skill-check
+- **Ask instructor** if you get stuck or need assistance
+
+:::
+
+## Step 5: Submit your work with Git
+
+```bash
+# add your completed work to Git staging area
+git add .
+
+# create a commit with a descriptive message
+git commit -m "Complete skill-check programming tasks"
+
+# push your work to GitHub
+git push origin main
+```
+
+::: {.fragment .fade-up style="margin-top: 0.1em; font-size: 0.875em;"}
+
+- **Push frequently** during the skill-check, not just at the end
+- **Use descriptive commit messages** that explain what you completed
+- **GitHub Actions** will automatically run additional tests on your code
+- **Final score** reported in GitHub Actions, matching local `gatorgrade`
+- **Score improvements** may occur each time to run `git commit`!
+
+:::
+
+## Avoid skill-check mistakes
+
+::: {.incremental .fade-right style="margin-top: -0.1em; font-size: 0.9em;"}
+
+- **Not reading instructions carefully**: read the entire README.md
+- **Forgetting to remove `TODO` markers**: avoid automatic failures
+- **Not running `gatorgrade` frequently**: test your work as you go
+- **Waiting until the last minute to push**: commit and push regularly
+- **Modifying test files**: never change files in the `tests/` directory
+- **Not completing the Honor Code**: you must digitally sign the pledge
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**Remember**: Read carefully, code thoughtfully, test frequently, and submit
+regularly! If you get stuck, make sure to chat with the instructor!
+
+:::
+
+## Skill-check success checklist
+
+::: {.fragment .callout-tip icon=true title="Suggestions for ensuring the successful completion of a skill-check"}
+
+- [ ] **Practice** using the software tools on your laptop
+- [ ] **Navigate** to the `exam/` directory in your repository
+- [ ] **Run** `uvx gatorgrade` and work to achieve 100% completion
+- [ ] **Complete** all programming tasks in the `questions/` directory
+- [ ] **Remove** all `TODO` markers from your code after task finish
+- [ ] **Add** meaningful comments to explain your code
+- [ ] **Complete** the Honor Code section in README.md
+- [ ] **Commit** and **push** your work to GitHub regularly
+- [ ] **Verify** GitHub Actions shows a passing build
+- [ ] **Schedule** office hours if you need further help
+
+:::
+
