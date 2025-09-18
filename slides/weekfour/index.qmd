@@ -464,7 +464,7 @@ fundamental limits and explore computational complexity!**
 
 ::: {.fragment .fade-right}
 
-- {{< iconify fa6-solid clipboard-check >}} **What is a skill-check of exam?**
+- {{< iconify fa6-solid clipboard-check >}} **What is a skill-check or executable exam?**
 - {{< iconify fa6-solid calendar >}} **When do these skill-checks happen?**
 - {{< iconify fa6-solid code >}} **What Python programming tasks are involved?**
 - {{< iconify fa6-solid rocket >}} **How do I successfully complete a skill-check?**
