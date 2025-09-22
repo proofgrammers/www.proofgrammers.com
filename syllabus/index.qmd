@@ -267,11 +267,6 @@ collapse="false"}
 - **Class Participation**: One grade reported at the conclusion of each of the
 **three** course modules.
 
-- **Proofgrammer Skill-Checks**: Grade automatically reported at end of a
-Tuesday laboratory session. Since there is one skill-check assessment for each
-of the three course modules, a student will receive a total of **three**
-assessment reports for their skill-checks.
-
 - **Proofgrammer Knowledge-Checks**: Grade reported at conclusion of a course
 module. Since there is one in-person knowledge-check assessment for each of the
 three course modules, a student will receive a total of **three** assessments
