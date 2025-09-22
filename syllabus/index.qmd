@@ -333,12 +333,8 @@ receive **twenty** assessments for this category of their work.
   - **Thanksgiving Break**: Week Fourteen
   - **End Semester**: Week Sixteen
   - **Final Examination**: Week Sixteen
-- **Proofgrammer Skill-Checks**:
-  - **Skill-Check One**: Week Five
-  - **Skill-Check Two**: Week Ten
-  - **Skill-Check Three**: Week Fifteen
 - **Proofgrammer Knowledge-Checks**:
-  - **Knowledge-Check One**: Week Five
+  - **Knowledge-Check One**: Week Five (Rescheduled to Week Six)
   - **Knowledge-Check Two**: Week Ten
   - **Knowledge-Check Three**: Week Fifteen
 - **Proofgrammer Presentations**:
