@@ -164,14 +164,14 @@ presents itself, the course instructor may, for instance, change the assigned
 percentages during the academic semester.
 
 
-| Category                          | Percentage |
-|-----------------------------------|:----------:|
-| Class Participation               |    10%     |
-| Proofgrammer Skill-Checks         |    10%     |
-| Proofgrammer Knowledge-Checks     |    10%     |
-| Proofgrammer Charettes            |    10%     |
-| Executable Examinations           |    20%     |
-| Proofgrammer Presentations        |    40%     |
+| Category                           | Percentage |
+|------------------------------------|:----------:|
+| Class Participation                |    10%     |
+| Proofgrammer Charettes             |    10%     |
+| Interim Executable Examinations    |    10%     |
+| Final Executable Examination       |    15%     |
+| Proofgrammer Knowledge-Checks      |    15%     |
+| Proofgrammer Presentations         |    40%     |
 
 
 These assessment categories have the following definitions:
@@ -187,20 +187,6 @@ student's weekly class participation grade will be reduced if they are
 frequently observed, during either class or laboratory sessions, undertaking
 non-course-related activities like viewing email, browsing social media, or
 looking at any other content not about the theory of computation.
-
-- **Proofgrammer Skill-Checks**: Completed during a Tuesday laboratory session,
-these skill-checks are online, cumulative assessments covering all prior
-technical material from the prior course sessions, as outlined on the [course
-schedule](../schedule/index.qmd). Unless prior arrangements are made with the
-instructor, all students should use their computer to take these skill-checks on
-the scheduled date and to complete it in the stated location while taking no
-more than the required amount of time. Designed to prepare learners for the
-three executable examinations, each skill-check is an executable assessment that
-students complete through the use of GitHub, a text editor like VS Code, and the
-Python programming tools on their laptops. During the completion of a
-skill-check, students may use external sources, including artificial
-intelligence coding assistants, provided that they cite these sources and
-explain how they used them to complete the skill-check.
 
 - **Proofgrammer Knowledge-Checks**: Completed individually during a Thursday
 laboratory session, these knowledge-checks are in-person, cumulative
