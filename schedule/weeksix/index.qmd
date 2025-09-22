@@ -15,6 +15,7 @@ toc-expand: 3
   - No new slides needed for this retrospective presentation
   - Retrospective topics should be reserved in prior week
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+  - Knowledge-checks rescheduled from Week Five
   - Students take the executable examination for module one
   - Examination's focus is on the problems that are:
     - Computable
