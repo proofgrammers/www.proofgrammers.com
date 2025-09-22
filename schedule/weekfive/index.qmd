@@ -16,21 +16,15 @@ toc-expand: 3
   - No new presentation slides due for this week
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
   - Instructor's presentation on this week's assigned topics
-  - Review of the format for skill and knowledge checks
+  - Review of the format for knowledge checks
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
-   - Skill and knowledge checks completed during laboratory session
-   - Skill-check released at the start of the session and completed by students
-   - Skill-check's focus is on the problems that are:
-     - Computable
-     - Tractable
-     - Restricted versions of problems that are:
-       - Undecidable
-       - Intractable
-   - Approximately five-minute knowledge-checks completed in random order
-   - Knowledge-check focuses on one key concept explained during module
-   - Skill-checks in classroom while knowledge-checks in instructor office
-   - Instructor assigns teams for the retrospective presentations
-   - Teams pick and present their own topics on this module's content
+   - *Knowledge-checks*:
+      - Approximately five-minute interviews completed in random order
+      - Knowledge-check focuses on key concepts explained during module
+   - *Retrospective Presentations*:
+      - Instructor assigns teams for the retrospective presentations
+      - Teams pick and present their own topics on this module's content
+      - Teams collaboratively complete their retrospective presentations
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
   - Instructor's presentation on this week's assigned topics
   - Charette session where students collaboratively ask and answer questions
