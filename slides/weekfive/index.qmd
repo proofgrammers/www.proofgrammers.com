@@ -44,7 +44,7 @@ format:
 
 :::
 
-## Meeting the Turing machine
+## Meet the Turing machine
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
