@@ -350,7 +350,7 @@ recognition task!
 
 ## Acceptor versus transducer machines
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.725em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.725em;"}
 
 - {{< iconify fa6-solid input-output >}} **Transducer Turing machines:**  
     - Transform input string to output string
@@ -368,11 +368,11 @@ recognition task!
 
 :::
 
-## Python implementation of `containsGAGA`
+## Simulate `containsGAGA` in Python
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 8
 # Define containsGAGA Turing machine transitions
 contains_gaga_transitions = {
     # From q0 (initial state)
@@ -381,21 +381,18 @@ contains_gaga_transitions = {
     ('q0', 'A'): ('q0', 'A', 'R'),  # Continue scanning  
     ('q0', 'T'): ('q0', 'T', 'R'),  # Continue scanning
     ('q0', '⊔'): ('qreject', '⊔', 'S'),  # End without GAGA
-    
     # From q1 (saw G)
     ('q1', 'A'): ('q2', 'A', 'R'),  # GA found
     ('q1', 'G'): ('q1', 'G', 'R'),  # Still in G state
     ('q1', 'C'): ('q0', 'C', 'R'),  # Reset
     ('q1', 'T'): ('q0', 'T', 'R'),  # Reset
     ('q1', '⊔'): ('qreject', '⊔', 'S'),
-    
     # From q2 (saw GA)
     ('q2', 'G'): ('q3', 'G', 'R'),  # GAG found
     ('q2', 'A'): ('q0', 'A', 'R'),  # Reset
     ('q2', 'C'): ('q0', 'C', 'R'),  # Reset
     ('q2', 'T'): ('q0', 'T', 'R'),  # Reset
     ('q2', '⊔'): ('qreject', '⊔', 'S'),
-    
     # From q3 (saw GAG)
     ('q3', 'A'): ('qaccept', 'A', 'S'),  # GAGA found!
     ('q3', 'G'): ('q1', 'G', 'R'),  # New G sequence
@@ -406,30 +403,37 @@ contains_gaga_transitions = {
 
 # Create the accepter machine
 gaga_tm = TuringMachine(contains_gaga_transitions)
-
 # Test cases for GAGA detection
 test_cases = ["GAGA", "CGAGAT", "GATACA", "GGAGAGA"]
-
 for test in test_cases:
     gaga_tm.reset()
     gaga_tm.load_input(test)
-    
     # Run until halt
     while step(gaga_tm) and gaga_tm.steps < 50:
         pass
-    
     decision = "ACCEPT" if gaga_tm.state == "qaccept" else "REJECT"
     print(f"Input: {test:<8} → {decision}")
 ```
 
-::: {.fragment .fade-up style="font-size: 0.9em;"}
+::: {.fragment .fade-up style="margin-top: -0.25em; font-size: 0.7em;"}
 
-- Shows pattern matching with state-based memory
+- Simulation of the `containsGAGA` acceptor Turing machine
+- Illustrates pattern matching with state-based memory
 - Demonstrates accept/reject computation model for proofgrammers!
 
 :::
 
 # From Turing machines to real computers
+
+::: incremental
+
+- Turing machines are simple but powerful
+    - Simulate any computation
+    - Extended in various ways
+    - Each extension is equivalent in power
+    - Python can simulate any Turing machine
+
+:::
 
 ## Multi-tape Turing machines
 
