@@ -72,7 +72,7 @@ format:
 
 - {{< iconify fa6-solid gear >}} **Physical metaphor: tape machine**
   - **Infinite tape**: divided into cells, each holds one symbol
-  - **Read/write head**: can read, write, and move left/right
+  - **Read/write head**: can read, write, and move left/right or stay
   - **Control unit**: finite state machine controlling behavior
   - **State dial**: shows current state of the machine
 - {{< iconify fa6-solid gear >}} **Operations per step**
@@ -87,7 +87,7 @@ format:
 
 ::: incremental
 
-- Turing machines are simpler than real computers
+- Turing machines are "simpler" than real computers
 - Yet, they can compute anything that is computable
 - Their simplicity allows for deep theoretical insights
 - Now, we can mathematically define a Turing machine
@@ -100,17 +100,17 @@ format:
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
 
 - {{< iconify fa6-solid cog >}} **Alphabet $\Sigma$**: finite set of symbols
-including blank symbol $\sqcup$
+always including blank symbol $\sqcup$
 - {{< iconify fa6-solid cog >}} **State set $Q$**: finite set including start
-state $q_0$ and halting states
+state $q_0$ and halting/accept/reject states
 - {{< iconify fa6-solid cog >}} **Transition function $\delta$** defined
-as$\delta(q, x) = (q', x', d)$
+as $\delta(q, x) = (q', x', d)$
   - **Input**: current state $q$ and scanned symbol $x$
-  - **Output**: new state $q'$, new symbol $x'$, direction $d$ (L/R/S)
+  - **Output**: new state $q'$, new symbol $x'$, direction $d \in \{L, R, S\}$
 - {{< iconify fa6-solid lightbulb >}} **Halting states**
     - $q_{accept}$: computation accepts the input
     - $q_{reject}$: computation rejects the input  
-    - $q_{halt}$: computation halts with output on tape
+    - $q_{halt}$: computation halts without acceptance or rejection of input
 - **Configuration**: complete description of machine state at any moment.
 Format: $q: \text{tape contents with head position boxed}$
 
