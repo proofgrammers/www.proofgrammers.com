@@ -826,3 +826,131 @@ program concepts
 fragments, and mathematical notation
 - Material directly supports "What Can be Computed" textbook Chapter 2
 learning objectives
+
+### Week Five Slides for Turing Machines (Chapter 5)
+
+**Turing Machine Theoretical Foundation**:
+
+- **Alan Turing's 1936 Contribution**: Turing machines formalize the concept of
+mechanical computation, providing mathematical basis for understanding
+computational limits and universal computation as described in "Computing
+Machinery and Intelligence"
+- **Finite State Control**: Turing machines have finite number of internal
+states, making them analyzable while maintaining computational universality
+- **Infinite Tape Model**: Unbounded tape memory represents unlimited storage
+capacity, distinguishing Turing machines from finite automata and enabling
+simulation of any algorithmic computation
+- **Church-Turing Thesis**: Equivalence between Turing-computable functions
+and effectively calculable functions, supported by decades of theoretical
+research and practical verification
+
+**Formal Mathematical Definition Components**:
+
+- **Alphabet Σ**: Finite set of symbols including blank symbol, providing
+foundation for all possible inputs and tape contents in theoretical analysis
+- **State Set Q**: Finite collection of machine states with designated start
+state and accept/reject states, enabling formal analysis of computation paths
+- **Transition Function δ**: Mapping from (current state, tape symbol) to
+(new state, write symbol, head movement), fully specifying deterministic
+machine behavior
+- **Configuration Representation**: (state, tape contents, head position)
+triples enable precise mathematical description of computation steps and
+formal verification of machine correctness
+
+**Simple Turing Machine Examples and Implementation**:
+
+- **lastTtoA Example**: Demonstrates basic tape manipulation by replacing last
+'T' with 'A', illustrating systematic left-to-right scanning followed by
+rightward processing - corresponds to WCBC Figure 5.2
+- **containsGAGA Example**: Shows pattern recognition capabilities with
+systematic string scanning, accepting input containing 'GAGA' substring -
+illustrates decision problem implementation using Turing machine formalism
+- **Python Simulator Implementation**: Complete working simulator with
+`TuringMachine` class enables hands-on experimentation with machine
+construction and execution tracing
+- **Step-by-step Execution Traces**: Detailed configuration sequences show
+exactly how machines process inputs, making abstract theoretical concepts
+concrete and accessible
+
+**Universal Computation and Church-Turing Thesis**:
+
+- **Universal Turing Machine Concept**: Single machine capable of simulating
+any other Turing machine when given appropriate program encoding, proven by
+Turing in 1936 and fundamental to modern computer architecture
+- **Equivalence to Real Computers**: Modern computers implement Turing machine
+capabilities through stored programs, random access memory, and conditional
+branching, validating Church-Turing thesis in practice
+- **Computational Completeness**: Turing machines can solve any problem that
+is algorithmically solvable, providing theoretical foundation for studying
+decidability and computational complexity
+- **Historical Significance**: Turing machines predate electronic computers by
+decades but accurately predicted capabilities and limitations of digital
+computation
+
+**Python Code Implementation and Educational Value**:
+
+- **Interactive Simulator**: Students can define custom machines using
+Python dictionaries for transition functions, making abstract formal
+definitions concrete and experimentally verifiable
+- **Execution Tracing**: `run_machine` function displays step-by-step
+configuration changes, allowing students to observe theoretical computation
+concepts in action
+- **Machine Construction Examples**: Provided implementations of `lastTtoA`
+and `containsGAGA` machines serve as templates for students to create their
+own Turing machine solutions
+- **Debugging and Analysis**: Visual execution traces help students understand
+why machines accept or reject inputs, reinforcing connection between formal
+specifications and computational behavior
+
+**Connection to Advanced Theoretical Topics**:
+
+- **Decidability Preparation**: Turing machine formalism provides foundation
+for proving undecidability results like the halting problem in subsequent
+chapters
+- **Complexity Theory Foundation**: Time and space complexity analysis relies
+on Turing machine computational model to define complexity classes
+- **Automata Theory Hierarchy**: Turing machines represent most powerful
+computational model in Chomsky hierarchy, enabling comparison with finite
+automata and pushdown automata
+- **Reduction Techniques**: Turing machine construction techniques prepare
+students for polynomial-time reductions and NP-completeness proofs
+
+**Educational Methodology and Proofgrammer Integration**:
+
+- **Theory-to-Code Translation**: Students learn to express abstract
+mathematical machine definitions as executable Python programs, embodying
+proofgrammer methodology
+- **Interactive Learning**: `pyodide` blocks enable real-time machine
+modification and testing, reinforcing theoretical understanding through
+hands-on experimentation
+- **Visual Computation Traces**: Detailed execution examples bridge gap
+between formal mathematical descriptions and concrete computational processes
+- **Progressive Complexity**: Examples build from simple tape manipulation to
+sophisticated pattern recognition, preparing for advanced topics
+
+**Content Sources and Theoretical Support**:
+
+- **"What Can be Computed" Chapter 5**: Direct source for machine examples,
+formal definitions, and theoretical explanations used throughout slides
+- **Turing's Original 1936 Paper**: Foundation for Church-Turing thesis and
+universal computation concepts presented in slides
+- **Standard Computability Theory Literature**: Formal definitions and
+examples align with presentations in Sipser, Hopcroft & Ullman, and other
+theoretical computer science textbooks
+- **Interactive Implementation**: Python simulator design based on educational
+best practices for making abstract concepts accessible to undergraduate
+students
+
+**Quality Assurance and Layout Verification**:
+
+- **Successful Rendering**: All slides render correctly with `quarto render
+slides/weekfive/index.qmd` producing functional HTML presentation
+- **Visual Layout Standards**: Screenshot verification at 1920x1080
+resolution confirms titles fit appropriately and content displays without
+overflow
+- **Code Execution**: All Python examples execute properly in `pyodide` blocks
+with expected output, enabling student interaction and experimentation
+- **Mathematical Notation**: LaTeX formatting displays correctly for formal
+definitions, state transitions, and Church-Turing thesis expressions
+- **Fragment Animation**: Incremental content reveals function properly to
+support effective presentation flow and student comprehension
