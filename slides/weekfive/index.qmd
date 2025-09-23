@@ -90,6 +90,8 @@ format:
 - Turing machines are simpler than real computers
 - Yet, they can compute anything that is computable
 - Their simplicity allows for deep theoretical insights
+- Now, we can mathematically define a Turing machine
+- **This is going to be both challenging and fun!**
 
 :::
 
