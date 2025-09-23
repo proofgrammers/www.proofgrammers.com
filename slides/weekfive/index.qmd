@@ -33,14 +33,14 @@ format:
 
 ::: fragment
 
-- Python is great for practical programming
-- Running a Python program depends on:
-  - Operating system
-  - Python interpreter
-  - Python libraries
-  - Hardware architecture
-- Completely rigorous proofs require more guarantees
-- The Turing machine provides a simple, idealized model
+- {{< iconify fa6-brands python >}} **Python** is great for practical programming
+- {{< iconify fa6-solid gear >}} Running a Python program depends on:
+  - {{< iconify fa6-solid desktop >}} Operating system
+  - {{< iconify fa6-solid code >}} Python interpreter
+  - {{< iconify fa6-solid boxes-stacked >}} Python libraries
+  - {{< iconify fa6-solid microchip >}} Hardware architecture
+- {{< iconify fa6-solid shield-halved >}} Completely rigorous proofs require more guarantees
+- {{< iconify fa6-solid robot >}} The Turing machine provides a simple, idealized model
 
 :::
 
@@ -68,7 +68,7 @@ format:
 
 ## Turing machine components
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Physical metaphor: tape machine**
   - **Infinite tape**: divided into cells, each holds one symbol
