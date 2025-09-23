@@ -499,54 +499,147 @@ power as Turing machines. Including programs in Python, Java, or C!
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 12
-def simulate_turing_machine(program_description, input_string):
-    """
-    Simulate any Turing machine using Python.
-    This shows how modern computers can run any computation
-    that a Turing machine can perform.
-    """
-    # Parse the program description (simplified for demo)
-    if "lastTtoA" in program_description:
-        return simulate_last_t_to_a(input_string)
-    elif "containsGAGA" in program_description:
-        return simulate_contains_gaga(input_string)
-    else:
-        return "Unknown program"
+#| max-lines: 10
+class Transition:
+    """Models a transition in a Turing machine."""
+    def __init__(self, sourceState, destState, label, writeSymbol, direction):
+        self.sourceState = sourceState
+        self.destState = destState
+        self.label = label
+        self.writeSymbol = writeSymbol
+        self.direction = direction
 
-def simulate_last_t_to_a(input_string):
-    """Simulate lastTtoA Turing machine with Python."""
-    # Find rightmost T and replace with A
-    chars = list(input_string)
-    for i in range(len(chars) - 1, -1, -1):
-        if chars[i] == 'T':
-            chars[i] = 'A'
-            break
-    return ''.join(chars)
+class TuringMachine:
+    """A simplified Turing machine simulator."""
+    blank = '_'
+    rightDir = 'R'
+    leftDir = 'L'
+    stayDir = 'S'
+    acceptState = 'qA'
+    rejectState = 'qR'
+    startState = 'q0'
+    maxSteps = 1000
+    
+    def __init__(self, description):
+        self.transitions = {}
+        self.parse_description(description)
+        
+    def parse_description(self, description):
+        """Parse Turing machine description format like 'q0->q1: G;R'"""
+        lines = [line.strip() for line in description.strip().split('\n') if line.strip()]
+        for line in lines:
+            # Parse format: q0->q1: G;R or q0->q0: !_G;R
+            parts = line.split(':')
+            states_part = parts[0].strip()
+            action_part = parts[1].strip()
+            source_state, dest_state = [s.strip() for s in states_part.split('->')]
+            if ';' in action_part:
+                label, direction = [s.strip() for s in action_part.split(';')]
+                write_symbol = None
+            else:
+                parts = action_part.split(';')
+                label = parts[0].strip()
+                if len(parts) > 1:
+                    direction = parts[1].strip()
+                else:
+                    direction = 'S'
+                write_symbol = None
+            transition = Transition(source_state, dest_state, label, write_symbol, direction)
+            if source_state not in self.transitions:
+                self.transitions[source_state] = []
+            self.transitions[source_state].append(transition)
+    
+    def label_matches_symbol(self, symbol, label):
+        """Check if symbol matches transition label."""
+        if label.startswith('!'):
+            # Handle negation: !_G means "not blank and not G"
+            excluded = label[1:]
+            return symbol not in excluded
+        else:
+            return symbol in label
+    
+    def reset(self, input_string):
+        """Reset machine with input string."""
+        self.tape = list(input_string) + [self.blank] * 20  # Add blanks for expansion
+        self.head_pos = 0
+        self.state = self.startState
+        self.steps = 0
+        self.halted = False
+    
+    def step(self):
+        """Perform one computation step."""
+        if self.halted or self.steps >= self.maxSteps:
+            return
+        current_symbol = self.tape[self.head_pos]
+        valid_transitions = []
+        # Find valid transitions from current state
+        for transition in self.transitions.get(self.state, []):
+            if self.label_matches_symbol(current_symbol, transition.label):
+                valid_transitions.append(transition)
+        if not valid_transitions:
+            # No valid transition - implicit reject
+            self.state = self.rejectState
+            self.halted = True
+            return
+        # Apply first valid transition
+        t = valid_transitions[0]
+        self.state = t.destState
+        if t.writeSymbol:
+            self.tape[self.head_pos] = t.writeSymbol
+        # Move head
+        if t.direction == self.rightDir:
+            self.head_pos += 1
+            if self.head_pos >= len(self.tape):
+                self.tape.append(self.blank)
+        elif t.direction == self.leftDir and self.head_pos > 0:
+            self.head_pos -= 1
+        # Check for halting states
+        if self.state in [self.acceptState, self.rejectState]:
+            self.halted = True
+        self.steps += 1
+    
+    def run(self):
+        """Run until halt or max steps."""
+        while not self.halted and self.steps < self.maxSteps:
+            self.step()
+        if self.state == self.acceptState:
+            return "yes"
+        elif self.state == self.rejectState:
+            return "no"
+        else:
+            return "timeout"
 
-def simulate_contains_gaga(input_string):
-    """Simulate containsGAGA Turing machine with Python."""
-    return "yes" if "GAGA" in input_string else "no"
+def simulateTM(tm_description, input_string):
+    """Simulate a Turing machine with given description and input."""
+    tm = TuringMachine(tm_description)
+    tm.reset(input_string)
+    return tm.run()
 
-# Test the universal simulation
-programs = ["lastTtoA", "containsGAGA"]
-test_input = "CTCGATA"
+# Real containsGAGA Turing machine description from textbook
+contains_gaga_tm = """
+q0->q0: !_G;R
+q0->q1: G;R
+q1->q2: A;R
+q1->q0: !_A;S
+q2->q3: G;R
+q2->q0: !_G;S
+q3->qA: A;R
+q3->q0: !_A;S
+"""
 
-for program in programs:
-    result = simulate_turing_machine(program, test_input)
-    print(f"{program}({test_input}) = {result}")
-
-# Show that Python can simulate any Turing machine computation!
-print("\nPython can simulate any Turing machine!")
-print("This demonstrates computational equivalence.")
+# Test with real Turing machine
+test_cases = [
+    ("CCCCCCCCCAAAAAA", "no"),
+    ("CCCGAGACCAAAAAA", "yes"),
+    ("GAGAXY", "yes")
+]
+print("Testing containsGAGA Turing machine:")
+for input_str, expected in test_cases:
+    result = simulateTM(contains_gaga_tm, input_str)
+    print(f"Input: {input_str[:12]}{'...' if len(input_str) > 12 else ''}")
+    print(f"Result: {result} (expected: {expected})")
 ```
 
-::: {.fragment .fade-up style="font-size: 0.9em;"}
-
-- Any Turing machine can be simulated by a Python program
-- Demonstrates universal computation in action for proofgrammers!
-
-:::
 
 ## Universal Turing machines
 
