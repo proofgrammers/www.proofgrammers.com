@@ -29,11 +29,11 @@ format:
 
 :::
 
-## Why not just use Python?
+## Wait, why not just use Python?
 
-::: fragment
+::: incremental
 
-- {{< iconify fa6-brands python >}} **Python** is great for practical programming
+- {{< iconify fa6-brands python >}} Python is great for practical programming
 - {{< iconify fa6-solid gear >}} Running a Python program depends on:
   - {{< iconify fa6-solid desktop >}} Operating system
   - {{< iconify fa6-solid code >}} Python interpreter
