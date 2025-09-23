@@ -460,14 +460,14 @@ fundamental limits and explore computational complexity!**
 
 :::
 
-# Proofgramming skill-checks and exams 
+# Executable examinations
 
 ::: {.fragment .fade-right}
 
-- {{< iconify fa6-solid clipboard-check >}} **What is a skill-check or executable exam?**
-- {{< iconify fa6-solid calendar >}} **When do these skill-checks happen?**
+- {{< iconify fa6-solid clipboard-check >}} **What is an executable examination?**
+- {{< iconify fa6-solid calendar >}} **When do these examinations happen?**
 - {{< iconify fa6-solid code >}} **What Python programming tasks are involved?**
-- {{< iconify fa6-solid rocket >}} **How do I successfully complete a skill-check?**
+- {{< iconify fa6-solid rocket >}} **How do I successfully complete a exam?**
 
 :::
 
@@ -477,7 +477,7 @@ fundamental limits and explore computational complexity!**
 
 :::
 
-## What is a skill-check?
+## What is a executable examination?
 
 ::: {.incremental .fade-right style="margin-top: -0.1em; font-size: 0.925em;"}
 
@@ -500,19 +500,19 @@ assesses what you've learned and confirms that you have tools setup correctly!**
 ## Step 1: Navigate to `exam/` directory
 
 ```bash
-# navigate to your skill-check repository after cloning
-cd <your-skillcheck-repository-name>
+# navigate to your examination repository after cloning
+cd <your-examination-repository-name>
 
 # navigate to the exam directory where all the work happens
 cd exam
 
-# verify you're in the right place for the skill-check
+# verify you're in the right place for the examination
 ls -alg
 ```
 
 ::: {.fragment .fade-up style="margin-top: -0.1em; font-size: 0.825em;"}
 
-- **Important**: All skill-check work happens in the `exam/` directory
+- **Important**: All programming work happens in the `exam/` directory
 - You should see files and directories like these: `questions/`, `tests/`,
 `gatorgrade.yml`, `pyproject.toml`, and `uv.lock`
 - The `questions/` directory contains files with `TODO` markers to complete
@@ -585,7 +585,7 @@ uv run pytest -v
 - **Each change** should improve your completion percentage
 - **Don't wait** until the end to test your work
 - **Green checkmarks** confirm your code is working correctly
-- **Reported score** is your current score on the skill-check
+- **Reported score** is your current score on the examination
 - **Ask instructor** if you get stuck or need assistance
 
 :::
@@ -597,7 +597,7 @@ uv run pytest -v
 git add .
 
 # create a commit with a descriptive message
-git commit -m "Complete skill-check programming tasks"
+git commit -m "Complete examination programming tasks"
 
 # push your work to GitHub
 git push origin main
@@ -605,7 +605,7 @@ git push origin main
 
 ::: {.fragment .fade-up style="margin-top: 0.1em; font-size: 0.875em;"}
 
-- **Push frequently** during the skill-check, not just at the end
+- **Push frequently** during the examination, not just at the end
 - **Use descriptive commit messages** that explain what you completed
 - **GitHub Actions** will automatically run additional tests on your code
 - **Final score** reported in GitHub Actions, matching local `gatorgrade`
@@ -613,7 +613,7 @@ git push origin main
 
 :::
 
-## Avoid skill-check mistakes
+## Avoid examination mistakes
 
 ::: {.incremental .fade-right style="margin-top: -0.1em; font-size: 0.9em;"}
 
@@ -633,9 +633,9 @@ regularly! If you get stuck, make sure to chat with the instructor!
 
 :::
 
-## Skill-check success checklist
+## Examination success checklist
 
-::: {.fragment .callout-tip icon=true title="Suggestions for ensuring the successful completion of a skill-check"}
+::: {.fragment .callout-tip icon=true title="Suggestions for ensuring the successful completion of an executable examination"}
 
 - [ ] **Practice** using the software tools on your laptop
 - [ ] **Navigate** to the `exam/` directory in your repository
