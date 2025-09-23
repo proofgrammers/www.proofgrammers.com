@@ -225,18 +225,15 @@ examination, students may use external sources, including artificial
 intelligence coding assistants, provided that they cite these sources and
 explain how they used them to complete the final examination.
 
-- **Proofgrammer Presentations**: Completed by assigned teams of students during
-a Tuesday laboratory session, these in-person presentations are on technical
-topics assigned by the course instructor. Students will use all the tools setup
-on their laptops to implement a Python program that solves the stated problem
-and/or completes the required proof, ensuring that it is built as a stand-alone
-script with its dependencies and virtual environments managed by
-[`uv`](https://docs.astral.sh/uv/). Along with the three proofgrammer
-presentations given per module, assigned teams of students will also complete
-two retrospective presentations that review the content covered during the first
-two modules of the course. For each team assigned to give a proofgrammer
-presentation, there will be another assigned team of students that is
-responsible for posing questions to the presenting team and evaluating the
+- **Proofgrammer Presentations**: Completed by assigned teams of students
+during a Tuesday laboratory session, these in-person presentations are on
+technical topics assigned by the course instructor. Students will use all the
+tools setup on their laptops to implement a Python program that solves the
+stated problem and/or completes the required proof, ensuring that it is built
+as a stand-alone script with its dependencies and virtual environments managed
+by [`uv`](https://docs.astral.sh/uv/).  For each team assigned to give a
+proofgrammer presentation, there will be another assigned team of students that
+is responsible for posing questions to the presenting team and evaluating the
 presentation. For all proofgrammer presentations, both the presentation and
 evaluation teams will receive a grade for their submitted work. Although both
 the presentation and evaluation teams may use external sources, including
@@ -252,14 +249,19 @@ model](https://docs.github.com/en/get-started/quickstart/github-flow). All work
 for a presentation must be available, in final form, as a pull request in the
 [GitHub repository for the course web
 site](https://github.com/proofgrammers/www.proofgrammers.com), no later than
-11:59 PM on the day before the team is scheduled to present. Each student member
-of a presentation team must use Git and their own GitHub account to commit their
-work through to the [pull
+11:59 PM on the day before the team is scheduled to present. Each student
+member of a presentation team must use Git and their own GitHub account to
+commit their work through to the [pull
 request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 that their team creates for the presentation. In addition to giving the
 presentation itself, every student on a presentation team must make a
 contribution to the presentation slides in the form of commits to the pull
-request.
+request. Along with the three proofgrammer presentations given per module,
+assigned teams of students will also complete two retrospective presentations
+that review the content covered during the first two modules of the course.
+While these retrospective presentations do not require new slides, the
+instructor will assign students to teams that will pick a topic to
+present during an interactive class session on Tuesday or Thursday.
 
 ::: {.callout-note appearance="minimal" title="Additional Assessment Details"
 collapse="false"}
