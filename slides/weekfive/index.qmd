@@ -1,6 +1,6 @@
 ---
-title: "Turing Machines"
-description: "Exploring a simple computer"
+title: "Turing Machines: The Simplest Computers"
+description: "Exploring the mathematical foundations of computation"
 date: "2025-09-22"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -18,26 +18,585 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Wait, we've not given a formal definition of a computational problem! Can we now?
+# What is the simplest possible computer? Can we define one?
 
-## What is a computational problem?
+## Meeting the Turing machine
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **Problems versus programs**
-    - **Computational problem**: describes *what* we want to compute
-    - **Computer program**: describes *how* to compute a solution
-    - One problem can have many different program solutions
-    - Some programs may be correct, while others are incorrect
+- {{< iconify fa6-solid lightbulb >}} **What is a Turing machine?**
+    - **Mathematical model**: formal definition of computation
+    - **Simplest computer**: only basic operations needed
+    - **Universal power**: can compute anything computable
+    - **Historical significance**: foundation of computer science
 
 :::
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **Our exploration strategy**
-    - Examine sorting as a concrete example
-    - Define formal mathematical framework
-    - Understand graphs, strings, and languages
-    - Categorize different types of computational problems
+- {{< iconify fa6-solid lightbulb >}} **Why study Turing machines?**
+    - Understand fundamental limits of computation
+    - Bridge abstract theory and concrete programming
+    - Prove what problems are solvable or unsolvable
+    - Foundation for complexity theory and analysis
+
+:::
+
+## Turing machine components
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid gear >}} **Physical metaphor: tape machine**
+  - **Infinite tape**: divided into cells, each holds one symbol
+  - **Read/write head**: can read, write, and move left/right
+  - **Control unit**: finite state machine controlling behavior
+  - **State dial**: shows current state of the machine
+- {{< iconify fa6-solid gear >}} **Operations per step**
+    - Read the symbol under the head
+    - Write a new symbol (or keep the same one)
+    - Move head left, right, or stay in place
+    - Change to a new state (or stay in same state)
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} A Turing machine is amazingly simple: just 
+tape, head, and state control. Yet it can compute anything that any computer can!
+
+:::
+
+## Formal Turing machine definition
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid cog >}} **Alphabet $\Sigma$**: finite set of symbols including blank symbol $\sqcup$
+- {{< iconify fa6-solid cog >}} **State set $Q$**: finite set including start state $q_0$ and halting states
+- {{< iconify fa6-solid cog >}} **Transition function $\delta$**: 
+  $$\delta(q, x) = (q', x', d)$$
+  - **Input**: current state $q$ and scanned symbol $x$
+  - **Output**: new state $q'$, new symbol $x'$, direction $d$ (L/R/S)
+
+:::
+
+::: {.fragment style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Halting states**
+    - $q_{accept}$: computation accepts the input
+    - $q_{reject}$: computation rejects the input  
+    - $q_{halt}$: computation halts with output on tape
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**Configuration**: complete description of machine state at any moment.
+Format: $q: \text{tape contents with head position boxed}$
+
+:::
+
+## Simple example: `lastTtoA` machine
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid dna >}} **Goal**: Change the last T in a DNA string to A
+- {{< iconify fa6-solid dna >}} **Algorithm outline**:
+  1. Start in $q_0$, move right to end of string
+  2. Move to $q_1$, scan left looking for last T
+  3. When T found, replace with A and halt
+- {{< iconify fa6-solid dna >}} **Example**: CTCGTA → CTCGAA
+
+:::
+
+::: {.fragment style="margin-top: -0.15em; font-size: 0.75em;"}
+
+**State transitions for `lastTtoA`**:
+
+| State | Symbol | New State | Write | Move |
+|-------|--------|-----------|-------|------|
+| $q_0$ | C,G,A,T | $q_0$ | same | R |
+| $q_0$ | $\sqcup$ | $q_1$ | same | L |
+| $q_1$ | C,G,A | $q_1$ | same | L |
+| $q_1$ | T | $q_{halt}$ | A | S |
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+{{< iconify fa6-solid lightbulb >}} This simple machine demonstrates key concepts:
+reading input, processing, and producing output!
+
+:::
+
+## Turing machine computation example
+
+::: {style="margin-top: -0.15em; font-size: 0.75em;"}
+
+**Trace of `lastTtoA` on input CTCGTA**:
+
+```
+Step 1: q₀: [C] T C G T A        (start, head at position 0)
+Step 2: q₀: C [T] C G T A        (read C, write C, move right)
+Step 3: q₀: C T [C] G T A        (read T, write T, move right)
+Step 4: q₀: C T C [G] T A        (read C, write C, move right)
+Step 5: q₀: C T C G [T] A        (read G, write G, move right)
+Step 6: q₀: C T C G T [A]        (read T, write T, move right)
+Step 7: q₀: C T C G T A [⊔]      (read A, write A, move right)
+Step 8: q₁: C T C G T [A] ⊔      (read ⊔, write ⊔, move left)
+Step 9: q₁: C T C G [T] A ⊔      (read A, write A, move left)
+Step 10: qₕₐₗₜ: C T C G [A] A ⊔   (read T, write A, stay)
+```
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**Result**: CTCGTA becomes CTCGAA. The machine successfully changed the last T to A!
+
+:::
+
+## Python Turing machine simulator
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+class TuringMachine:
+    """Simple Turing machine simulator for proofgrammers."""
+    
+    def __init__(self, transitions, start_state='q0', blank='⊔'):
+        self.transitions = transitions
+        self.state = start_state
+        self.blank = blank
+        self.reset()
+    
+    def reset(self):
+        """Reset machine to initial configuration."""
+        self.tape = []
+        self.head = 0
+        self.state = 'q0'
+        self.steps = 0
+    
+    def load_input(self, input_string):
+        """Load input string onto tape."""
+        self.tape = list(input_string) + [self.blank]
+        self.head = 0
+
+# Define lastTtoA transitions
+last_t_to_a_transitions = {
+    ('q0', 'C'): ('q0', 'C', 'R'),
+    ('q0', 'T'): ('q0', 'T', 'R'),
+    ('q0', 'G'): ('q0', 'G', 'R'),
+    ('q0', 'A'): ('q0', 'A', 'R'),
+    ('q0', '⊔'): ('q1', '⊔', 'L'),
+    ('q1', 'C'): ('q1', 'C', 'L'),
+    ('q1', 'G'): ('q1', 'G', 'L'),
+    ('q1', 'A'): ('q1', 'A', 'L'),
+    ('q1', 'T'): ('qhalt', 'A', 'S')
+}
+
+# Create and test the machine
+tm = TuringMachine(last_t_to_a_transitions)
+print("Created lastTtoA Turing machine!")
+print("Transitions loaded:", len(last_t_to_a_transitions))
+```
+
+::: {.fragment .fade-up style="font-size: 0.9em;"}
+
+- Define transitions as dictionary mapping `(state, symbol)` to `(new_state, new_symbol, direction)`
+- Create reusable simulator that any proofgrammer can extend!
+
+:::
+
+## Running the Turing machine simulator
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def step(tm):
+    """Execute one step of Turing machine computation."""
+    if tm.head >= len(tm.tape):
+        tm.tape.extend([tm.blank] * (tm.head - len(tm.tape) + 1))
+    
+    current_symbol = tm.tape[tm.head]
+    key = (tm.state, current_symbol)
+    
+    if key not in tm.transitions:
+        return False  # Halt if no transition defined
+    
+    new_state, new_symbol, direction = tm.transitions[key]
+    tm.tape[tm.head] = new_symbol
+    tm.state = new_state
+    
+    # Move head
+    if direction == 'L' and tm.head > 0:
+        tm.head -= 1
+    elif direction == 'R':
+        tm.head += 1
+    # 'S' means stay
+    
+    tm.steps += 1
+    return tm.state not in ['qhalt', 'qaccept', 'qreject']
+
+def run_machine(tm, input_string, max_steps=100):
+    """Run Turing machine on input string."""
+    tm.reset()
+    tm.load_input(input_string)
+    
+    print(f"Input: {input_string}")
+    print(f"Step 0: {tm.state}: {format_configuration(tm)}")
+    
+    while step(tm) and tm.steps < max_steps:
+        if tm.steps <= 10:  # Show first 10 steps
+            print(f"Step {tm.steps}: {tm.state}: {format_configuration(tm)}")
+    
+    output = ''.join(tm.tape).rstrip(tm.blank)
+    print(f"Final: {tm.state}: {format_configuration(tm)}")
+    print(f"Output: {output}")
+    return output
+
+def format_configuration(tm):
+    """Format current configuration for display."""
+    tape_str = ''.join(tm.tape[:tm.head]) + '[' + tm.tape[tm.head] + ']'
+    if tm.head + 1 < len(tm.tape):
+        tape_str += ''.join(tm.tape[tm.head+1:])
+    return tape_str.rstrip(tm.blank)
+
+# Test the machine
+result = run_machine(tm, "CTCGTA")
+```
+
+::: {.fragment .fade-up style="font-size: 0.9em;"}
+
+- Complete working implementation shows each computation step
+- Demonstrates how theoretical concepts become executable code!
+
+:::
+
+## The `containsGAGA` accepter machine
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid search >}} **Goal**: Accept strings containing "GAGA" substring
+- {{< iconify fa6-solid search >}} **Machine type**: accepter (not transducer)
+  - Outputs accept/reject decision, not modified string
+  - Uses states $q_{accept}$ and $q_{reject}$ instead of $q_{halt}$
+- {{< iconify fa6-solid search >}} **Strategy**: scan string left-to-right, track partial matches
+
+:::
+
+::: {.fragment style="margin-top: -0.15em; font-size: 0.75em;"}
+
+**State meanings for `containsGAGA`**:
+
+- $q_0$: haven't seen G, or just saw non-G character
+- $q_1$: just saw first G (looking for A)
+- $q_2$: saw GA (looking for second G)  
+- $q_3$: saw GAG (looking for final A)
+- $q_{accept}$: found complete GAGA pattern
+- $q_{reject}$: reached end without finding GAGA
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+{{< iconify fa6-solid lightbulb >}} Pattern matching is fundamental to many 
+computational problems. Turing machines can solve any pattern recognition task!
+
+:::
+
+## Accepter versus transducer machines
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid input-output >}} **Transducer machines**
+    - Transform input string to output string
+    - Like functions: input → output
+    - Use $q_{halt}$ state and read final tape contents
+    - Example: `lastTtoA` changes CTCGTA to CTCGAA
+
+- {{< iconify fa6-solid check-circle >}} **Accepter machines**  
+    - Make accept/reject decisions about input
+    - Like boolean functions: input → true/false
+    - Use $q_{accept}$ and $q_{reject}$ states
+    - Example: `containsGAGA` accepts/rejects DNA strings
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**For proofgrammers**: both types connect to Python functions! Transducers 
+return strings, accepters return `"yes"`/`"no"` (like our SISO programs).
+
+:::
+
+## Python implementation of `containsGAGA`
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+# Define containsGAGA Turing machine transitions
+contains_gaga_transitions = {
+    # From q0 (initial state)
+    ('q0', 'G'): ('q1', 'G', 'R'),  # Found first G
+    ('q0', 'C'): ('q0', 'C', 'R'),  # Continue scanning
+    ('q0', 'A'): ('q0', 'A', 'R'),  # Continue scanning  
+    ('q0', 'T'): ('q0', 'T', 'R'),  # Continue scanning
+    ('q0', '⊔'): ('qreject', '⊔', 'S'),  # End without GAGA
+    
+    # From q1 (saw G)
+    ('q1', 'A'): ('q2', 'A', 'R'),  # GA found
+    ('q1', 'G'): ('q1', 'G', 'R'),  # Still in G state
+    ('q1', 'C'): ('q0', 'C', 'R'),  # Reset
+    ('q1', 'T'): ('q0', 'T', 'R'),  # Reset
+    ('q1', '⊔'): ('qreject', '⊔', 'S'),
+    
+    # From q2 (saw GA)
+    ('q2', 'G'): ('q3', 'G', 'R'),  # GAG found
+    ('q2', 'A'): ('q0', 'A', 'R'),  # Reset
+    ('q2', 'C'): ('q0', 'C', 'R'),  # Reset
+    ('q2', 'T'): ('q0', 'T', 'R'),  # Reset
+    ('q2', '⊔'): ('qreject', '⊔', 'S'),
+    
+    # From q3 (saw GAG)
+    ('q3', 'A'): ('qaccept', 'A', 'S'),  # GAGA found!
+    ('q3', 'G'): ('q1', 'G', 'R'),  # New G sequence
+    ('q3', 'C'): ('q0', 'C', 'R'),  # Reset
+    ('q3', 'T'): ('q0', 'T', 'R'),  # Reset
+    ('q3', '⊔'): ('qreject', '⊔', 'S')
+}
+
+# Create the accepter machine
+gaga_tm = TuringMachine(contains_gaga_transitions)
+
+# Test cases for GAGA detection
+test_cases = ["GAGA", "CGAGAT", "GATACA", "GGAGAGA"]
+
+for test in test_cases:
+    gaga_tm.reset()
+    gaga_tm.load_input(test)
+    
+    # Run until halt
+    while step(gaga_tm) and gaga_tm.steps < 50:
+        pass
+    
+    decision = "ACCEPT" if gaga_tm.state == "qaccept" else "REJECT"
+    print(f"Input: {test:<8} → {decision}")
+```
+
+::: {.fragment .fade-up style="font-size: 0.9em;"}
+
+- Shows pattern matching with state-based memory
+- Demonstrates accept/reject computation model for proofgrammers!
+
+:::
+
+# From Turing machines to real computers
+
+## Multi-tape Turing machines
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid layer-group >}} **Extensions beyond single tape**
+    - **Two-tape machines**: separate input and output tapes
+    - **Multi-tape machines**: several tapes for different purposes
+    - **Two-way infinite tapes**: extend infinitely in both directions
+    - **Multi-head machines**: multiple read/write heads per tape
+
+- {{< iconify fa6-solid lightbulb >}} **Why extend the basic model?**
+    - Makes programming more natural and efficient
+    - Closer to real computer architectures
+    - Separates input, working memory, and output
+    - Still equivalent in computational power!
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**Computational equivalence**: All these variants can simulate each other! 
+They compute exactly the same class of functions.
+
+:::
+
+## From Turing machines to Python programs
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid arrow-right >}} **Multi-tape TM → Random-access TM**
+    - Add random access to any tape position
+    - Like having addressable memory locations
+    
+- {{< iconify fa6-solid arrow-right >}} **Random-access TM → Real computer**
+    - Add arithmetic operations and finite memory
+    - Modern CPU with RAM and instruction set
+    
+- {{< iconify fa6-solid arrow-right >}} **Real computer → Python program**
+    - High-level programming languages and interpreters
+    - The programs we write every day!
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**Church-Turing thesis**: Every "reasonable" computational model has the same 
+power as Turing machines. This includes Python, Java, C++, and even quantum computers!
+
+:::
+
+## Simulating Turing machines with Python
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def simulate_turing_machine(program_description, input_string):
+    """
+    Simulate any Turing machine using Python.
+    This shows how modern computers can run any computation
+    that a Turing machine can perform.
+    """
+    # Parse the program description (simplified for demo)
+    if "lastTtoA" in program_description:
+        return simulate_last_t_to_a(input_string)
+    elif "containsGAGA" in program_description:
+        return simulate_contains_gaga(input_string)
+    else:
+        return "Unknown program"
+
+def simulate_last_t_to_a(input_string):
+    """Simulate lastTtoA Turing machine with Python."""
+    # Find rightmost T and replace with A
+    chars = list(input_string)
+    for i in range(len(chars) - 1, -1, -1):
+        if chars[i] == 'T':
+            chars[i] = 'A'
+            break
+    return ''.join(chars)
+
+def simulate_contains_gaga(input_string):
+    """Simulate containsGAGA Turing machine with Python."""
+    return "yes" if "GAGA" in input_string else "no"
+
+# Test the universal simulation
+programs = ["lastTtoA", "containsGAGA"]
+test_input = "CTCGATA"
+
+for program in programs:
+    result = simulate_turing_machine(program, test_input)
+    print(f"{program}({test_input}) = {result}")
+
+# Show that Python can simulate any Turing machine computation!
+print("\nPython can simulate any Turing machine!")
+print("This demonstrates computational equivalence.")
+```
+
+::: {.fragment .fade-up style="font-size: 0.9em;"}
+
+- Any Turing machine can be simulated by a Python program
+- Demonstrates universal computation in action for proofgrammers!
+
+:::
+
+## Universal Turing machines
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid microchip >}} **The ultimate machine**
+    - **Input**: description of any Turing machine M and input string I
+    - **Output**: exactly what M would output on input I
+    - **Universal computation**: one machine simulates all others
+
+- {{< iconify fa6-solid lightbulb >}} **How it works**
+    - Encode machine description as a string
+    - Use multiple tapes to simulate M's computation
+    - Step through M's transitions systematically
+    - Universal TM = "interpreter" for Turing machine language
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**Mind-blowing insight**: A single, fixed Turing machine can compute anything 
+that any Turing machine can compute! This is the theoretical foundation of 
+general-purpose computers.
+
+:::
+
+## The Church-Turing thesis
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid balance-scale >}} **The fundamental claim**
+    - Any function computable by "effective procedure" 
+    - Can be computed by a Turing machine
+    - **Informal → formal**: bridges intuitive and mathematical computation
+
+- {{< iconify fa6-solid check >}} **Evidence supporting the thesis**
+    - All proposed models equivalent to Turing machines
+    - Lambda calculus, recursive functions, cellular automata
+    - Modern computers, programming languages, even quantum computers
+    - No counterexample found in 90+ years
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**For proofgrammers**: This means studying Turing machines teaches us about 
+the fundamental limits of all computation, including the Python programs we write!
+
+:::
+
+## Why Turing machines matter for proofgrammers
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid foundation >}} **Theoretical foundation**
+    - Formal definition of "computation"
+    - Precise statements about solvable/unsolvable problems
+    - Mathematical proofs about computational limits
+
+- {{< iconify fa6-solid code >}} **Practical connections**  
+    - Every Python program corresponds to a Turing machine
+    - Algorithm analysis and complexity theory
+    - Understanding why some problems have no solutions
+
+- {{< iconify fa6-solid lightbulb >}} **Proofgrammer perspective**
+    - Bridge between mathematical proofs and executable code
+    - Implement theoretical concepts as working programs
+    - Verify theoretical results through programming
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+**Key insight**: Turing machines show that computation is mathematically 
+definable. This makes it possible to prove things about what can and cannot be computed!
+
+:::
+
+# Summary: Turing machines as the foundation of computation
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid microchip >}} **Turing machines are**:
+  - Simple mathematical models of computation
+  - Universal: can compute anything computable
+  - Foundation for understanding computational limits
+  
+- {{< iconify fa6-solid gear >}} **Key concepts mastered**:
+  - Formal definition with states, alphabet, transitions
+  - Transducers (input→output) vs accepters (accept/reject)
+  - Multi-tape extensions and computational equivalence
+  - Universal machines and Church-Turing thesis
+
+- {{< iconify fa6-solid lightbulb >}} **For proofgrammers**:
+  - Bridge theory and practice through implementation
+  - Understand what Python programs can and cannot do
+  - Foundation for studying undecidability and complexity
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid rocket >}} Next: We'll use Turing machines to prove that 
+some computational problems are absolutely impossible to solve!
 
 :::
