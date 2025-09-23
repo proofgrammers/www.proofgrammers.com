@@ -97,61 +97,46 @@ format:
 
 ## Formal Turing machine definition
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.7em;"}
 
 - {{< iconify fa6-solid cog >}} **Alphabet $\Sigma$**: finite set of symbols
 always including blank symbol $\sqcup$
 - {{< iconify fa6-solid cog >}} **State set $Q$**: finite set including start
 state $q_0$ and halting/accept/reject states
 - {{< iconify fa6-solid cog >}} **Transition function $\delta$** defined
-as $\delta(q, x) = (q', x', d)$
-  - **Input**: current state $q$ and scanned symbol $x$
-  - **Output**: new state $q'$, new symbol $x'$, direction $d \in \{L, R, S\}$
-- {{< iconify fa6-solid lightbulb >}} **Halting states**
-    - $q_{accept}$: computation accepts the input
-    - $q_{reject}$: computation rejects the input  
-    - $q_{halt}$: computation halts without acceptance or rejection of input
-- **Configuration**: complete description of machine state at any moment.
-Format: $q: \text{tape contents with head position boxed}$
+as $\delta(q, x) = (q', x', d')$
+  - **Input**: current state $q \in Q$ and scanned symbol $x \in \Sigma$
+  - **Output**:
+     - New state $q' \in Q$
+     - New symbol $x' \in \Sigma$
+     - New direction $d' \in \{L, R, S\}$
+- **Halting states**
+    - $q_{accept}$: halt and computation accepts the input
+    - $q_{reject}$: halt and computation rejects the input  
+    - $q_{halt}$: halt without acceptance or rejection of input
 
 :::
 
 ## Simple example: `lastTtoA` machine
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid dna >}} **Goal**: Change the last T in a DNA string to A
 - {{< iconify fa6-solid dna >}} **Algorithm outline**:
-  1. Start in $q_0$, move right to end of string
-  2. Move to $q_1$, scan left looking for last T
-  3. When T found, replace with A and halt
-- {{< iconify fa6-solid dna >}} **Example**: CTCGTA → CTCGAA
-
-:::
-
-::: {.fragment style="margin-top: -0.15em; font-size: 0.75em;"}
-
-**State transitions for `lastTtoA`**:
-
-| State | Symbol | New State | Write | Move |
-|-------|--------|-----------|-------|------|
-| $q_0$ | C,G,A,T | $q_0$ | same | R |
-| $q_0$ | $\sqcup$ | $q_1$ | same | L |
-| $q_1$ | C,G,A | $q_1$ | same | L |
-| $q_1$ | T | $q_{halt}$ | A | S |
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
-
-{{< iconify fa6-solid lightbulb >}} This simple machine demonstrates key concepts:
-reading input, processing, and producing output!
+  1. Start in $q_0$, move right to end of string designated by $\sqcup$
+  2. Move to $q_1$, scan left looking for a T, which must be the last one
+  3. When T is found, replace it with A and then halt the machine
+- {{< iconify fa6-solid dna >}} **Examples**:
+  - CTCGTA → CTCGAA
+  - CGAT → CGAA
+  - GGGG → GGGG
+  - TTTT → TTTA
 
 :::
 
 ## Turing machine computation example
 
-::: {style="margin-top: -0.15em; font-size: 0.75em;"}
+::: {style="margin-top: -0.2em; font-size: 0.725em;"}
 
 **Trace of `lastTtoA` on input CTCGTA**:
 
@@ -165,14 +150,18 @@ Step 6: q₀: C T C G T [A]        (read T, write T, move right)
 Step 7: q₀: C T C G T A [⊔]      (read A, write A, move right)
 Step 8: q₁: C T C G T [A] ⊔      (read ⊔, write ⊔, move left)
 Step 9: q₁: C T C G [T] A ⊔      (read A, write A, move left)
-Step 10: qₕₐₗₜ: C T C G [A] A ⊔   (read T, write A, stay)
+Step 10: qₕₐₗₜ: C T C G [A] A ⊔  (read T, write A, stay, halt)
 ```
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+::: {.fragment .fade style="font-size: 0.7em;"}
 
-**Result**: CTCGTA becomes CTCGAA. The machine successfully changed the last T to A!
+- **This simple Turing machine demonstrates key concepts**:
+    - Reading and processing input
+    - Moving the read/write head
+    - Producing output by writing a new symbol
+- **Result**: Input CTCGTA becomes the output CTCGAA!
 
 :::
 
