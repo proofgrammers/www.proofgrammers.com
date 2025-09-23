@@ -48,7 +48,7 @@ format:
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is a Turing machine?**
+- {{< iconify fa6-solid cube >}} **What is a Turing machine?**
     - **Mathematical model**: formal definition of computation
     - **Simplest computer**: only basic operations needed
     - **Universal power**: can compute anything computable
