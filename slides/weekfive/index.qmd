@@ -435,6 +435,28 @@ for test in test_cases:
 
 :::
 
+## Chain of simulation approach
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+
+- Linux can run any Java virtual machine *and*
+- The Java virtual machine can run any Java program
+- **Visualization of this chain of simulation**:
+    - Linux → Java VM → Java program
+
+:::
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
+
+- **Visualization of this chain of simulation for Turing machines**:
+    - one-tape TM → multi-tape, single-head TM
+    - multi-tape, single-head TM → multi-tape, multi-head TM
+    - multi-tape, multi-head TM → random-access TM
+    - random-access TM → real, modern computer
+    - real, modern computer → Python program
+
+:::
+
 ## Multi-tape Turing machines
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
@@ -453,14 +475,7 @@ for test in test_cases:
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
-
-**Computational equivalence**: All these variants can simulate each other! 
-They compute exactly the same class of functions.
-
-:::
-
-## From Turing machines to Python programs
+## Turing machines to Python programs
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
