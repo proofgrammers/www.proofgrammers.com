@@ -155,7 +155,7 @@ Step 10: qₕₐₗₜ: C T C G [A] A ⊔  (read T, write A, stay, halt)
 
 :::
 
-::: {.fragment .fade style="font-size: 0.7em;"}
+::: {.fragment .fade style="font-size: 0.675em;"}
 
 - **This simple Turing machine demonstrates key concepts**:
     - Reading and processing input
@@ -169,7 +169,7 @@ Step 10: qₕₐₗₜ: C T C G [A] A ⊔  (read T, write A, stay, halt)
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 10
 class TuringMachine:
     """Simple Turing machine simulator for proofgrammers."""
     
@@ -204,46 +204,42 @@ last_t_to_a_transitions = {
     ('q1', 'T'): ('qhalt', 'A', 'S')
 }
 
-# Create and test the machine
+# create the machine for follow-on simulation
 tm = TuringMachine(last_t_to_a_transitions)
 print("Created lastTtoA Turing machine!")
 print("Transitions loaded:", len(last_t_to_a_transitions))
 ```
 
-::: {.fragment .fade-up style="font-size: 0.9em;"}
+::: {.fragment .fade-up style="font-size: 0.8em;"}
 
-- Define transitions as dictionary mapping `(state, symbol)` to `(new_state, new_symbol, direction)`
+- Map: `(state, symbol)` to `(new_state, new_symbol, direction)`
+- Next must define functions to run the machine for an input
 - Create reusable simulator that any proofgrammer can extend!
 
 :::
 
-## Running the Turing machine simulator
+## Simulate the Turing machine
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 6
 def step(tm):
     """Execute one step of Turing machine computation."""
     if tm.head >= len(tm.tape):
         tm.tape.extend([tm.blank] * (tm.head - len(tm.tape) + 1))
-    
     current_symbol = tm.tape[tm.head]
     key = (tm.state, current_symbol)
-    
     if key not in tm.transitions:
-        return False  # Halt if no transition defined
-    
+        return False  # halt if no transition defined
     new_state, new_symbol, direction = tm.transitions[key]
     tm.tape[tm.head] = new_symbol
     tm.state = new_state
-    
-    # Move head
+    # move head
     if direction == 'L' and tm.head > 0:
         tm.head -= 1
     elif direction == 'R':
         tm.head += 1
     # 'S' means stay
-    
     tm.steps += 1
     return tm.state not in ['qhalt', 'qaccept', 'qreject']
 
@@ -251,17 +247,13 @@ def run_machine(tm, input_string, max_steps=100):
     """Run Turing machine on input string."""
     tm.reset()
     tm.load_input(input_string)
-    
     print(f"Input: {input_string}")
     print(f"Step 0: {tm.state}: {format_configuration(tm)}")
-    
     while step(tm) and tm.steps < max_steps:
         if tm.steps <= 10:  # Show first 10 steps
             print(f"Step {tm.steps}: {tm.state}: {format_configuration(tm)}")
-    
     output = ''.join(tm.tape).rstrip(tm.blank)
-    print(f"Final: {tm.state}: {format_configuration(tm)}")
-    print(f"Output: {output}")
+    print(f"Final: {tm.state}: {format_configuration(tm)} / Output: {output}")
     return output
 
 def format_configuration(tm):
@@ -271,23 +263,16 @@ def format_configuration(tm):
         tape_str += ''.join(tm.tape[tm.head+1:])
     return tape_str.rstrip(tm.blank)
 
-# Test the machine
+# Test the machine with an input
 result = run_machine(tm, "CTCGTA")
 ```
 
-::: {.fragment .fade-up style="font-size: 0.9em;"}
-
-- Complete working implementation shows each computation step
-- Demonstrates how theoretical concepts become executable code!
-
-:::
-
-## The `containsGAGA` accepter machine
+## The `containsGAGA` acceptor machine
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid search >}} **Goal**: Accept strings containing "GAGA" substring
-- {{< iconify fa6-solid search >}} **Machine type**: accepter (not transducer)
+- {{< iconify fa6-solid search >}} **Machine type**: acceptor (not transducer)
   - Outputs accept/reject decision, not modified string
   - Uses states $q_{accept}$ and $q_{reject}$ instead of $q_{halt}$
 - {{< iconify fa6-solid search >}} **Strategy**: scan string left-to-right, track partial matches
