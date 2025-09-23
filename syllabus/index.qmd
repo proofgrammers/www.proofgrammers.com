@@ -392,7 +392,6 @@ receive **twenty** assessments for this category of their work.
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday Laboratory Session**:
   - Proofgrammer presentations and evaluations by all student teams
   - Teams and presentation topics assigned at the start of each week 
-  - On designated weeks, complete proofgrammer skill-checks and knowledge-checks
   - On designated weeks, complete the two interim executable examinations
 - {{< iconify fa6-solid lightbulb size=18px >}} **Thursday**:
   - Instructor presentation and activities as a deep-dive into the week's technical topic
@@ -426,9 +425,9 @@ specification and (b) submitted it by the deadline to the stated platform.
 Students may "spend" up to three "tokens" that they may use to retake certain
 assessments. After using a provided GitHub repository to request their use of a
 token, ensuring that they follow all guidelines, students may use a token to
-re-take either a proofgrammer skill-check or knowledge-check. Students cannot
-use a token for any interim or final executable examination or any type of
-presentation or evaluation. Outside of using these three tokens --- or severe,
+re-take either an executable examinations or a knowledge-check. Students cannot
+use a token for the final executable examination or any collaborative part of a
+proofgrammer presentation. Outside of using these three tokens --- or severe,
 extenuating, and unexpected circumstances that are well documented --- the
 instructor will not grant any requests for extensions or assignment
 re-reassessments.
