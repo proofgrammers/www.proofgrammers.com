@@ -97,29 +97,21 @@ format:
 
 ## Formal Turing machine definition
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
 
-- {{< iconify fa6-solid cog >}} **Alphabet $\Sigma$**: finite set of symbols including blank symbol $\sqcup$
-- {{< iconify fa6-solid cog >}} **State set $Q$**: finite set including start state $q_0$ and halting states
-- {{< iconify fa6-solid cog >}} **Transition function $\delta$**: 
-  $$\delta(q, x) = (q', x', d)$$
+- {{< iconify fa6-solid cog >}} **Alphabet $\Sigma$**: finite set of symbols
+including blank symbol $\sqcup$
+- {{< iconify fa6-solid cog >}} **State set $Q$**: finite set including start
+state $q_0$ and halting states
+- {{< iconify fa6-solid cog >}} **Transition function $\delta$** defined
+as$\delta(q, x) = (q', x', d)$
   - **Input**: current state $q$ and scanned symbol $x$
   - **Output**: new state $q'$, new symbol $x'$, direction $d$ (L/R/S)
-
-:::
-
-::: {.fragment style="margin-top: -0.15em; font-size: 0.8em;"}
-
 - {{< iconify fa6-solid lightbulb >}} **Halting states**
     - $q_{accept}$: computation accepts the input
     - $q_{reject}$: computation rejects the input  
     - $q_{halt}$: computation halts with output on tape
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
-
-**Configuration**: complete description of machine state at any moment.
+- **Configuration**: complete description of machine state at any moment.
 Format: $q: \text{tape contents with head position boxed}$
 
 :::
