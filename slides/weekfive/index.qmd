@@ -29,6 +29,21 @@ format:
 
 :::
 
+## Why not just use Python?
+
+::: fragment
+
+- Python is great for practical programming
+- Running a Python program depends on:
+  - Operating system
+  - Python interpreter
+  - Python libraries
+  - Hardware architecture
+- Completely rigorous proofs require more guarantees
+- The Turing machine provides a simple, idealized model
+
+:::
+
 ## Meeting the Turing machine
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
@@ -53,7 +68,7 @@ format:
 
 ## Turing machine components
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
 
 - {{< iconify fa6-solid gear >}} **Physical metaphor: tape machine**
   - **Infinite tape**: divided into cells, each holds one symbol
@@ -68,10 +83,13 @@ format:
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+## A Turing machine is amazingly simple: just tape, head, and state control. Yet it can compute anything that any computer can! Wow, this is incredible!
 
-{{< iconify fa6-solid lightbulb >}} A Turing machine is amazingly simple: just 
-tape, head, and state control. Yet it can compute anything that any computer can!
+::: incremental
+
+- Turing machines are simpler than real computers
+- Yet, they can compute anything that is computable
+- Their simplicity allows for deep theoretical insights
 
 :::
 
