@@ -41,7 +41,7 @@ format:
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.825em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Why study Turing machines?**
     - Understand fundamental limits of computation
