@@ -70,16 +70,16 @@ format:
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid gear >}} **Physical metaphor: tape machine**
+- {{< iconify fa6-solid gear >}} **Physical metaphor of a "tape machine"**
   - **Infinite tape**: divided into cells, each holds one symbol
   - **Read/write head**: can read, write, and move left/right or stay
   - **Control unit**: finite state machine controlling behavior
   - **State dial**: shows current state of the machine
 - {{< iconify fa6-solid gear >}} **Operations per step**
-    - Read the symbol under the head
-    - Write a new symbol (or keep the same one)
-    - Move head left, right, or stay in place
-    - Change to a new state (or stay in same state)
+    - **Read** the symbol under the head
+    - **Write** a new symbol (or keep the same one)
+    - **Move** head left, right, or stay in place
+    - **Change** to a new state (or stay in same state)
 
 :::
 
@@ -130,7 +130,7 @@ as $\delta(q, x) = (q', x', d')$
   - CTCGTA → CTCGAA
   - CGAT → CGAA
   - TTTT → TTTA
-  - Wait, what would happen with GGGG?
+  - *Wait*, what would happen with GGGG?
 
 :::
 
@@ -210,7 +210,7 @@ print("Created lastTtoA Turing machine!")
 print("Transitions loaded:", len(last_t_to_a_transitions))
 ```
 
-::: {.fragment .fade-up style="font-size: 0.8em;"}
+::: {.fragment .fade-up style="font-size: 0.75em;"}
 
 - Map: `(state, symbol)` to `(new_state, new_symbol, direction)`
 - Next must define functions to run the machine for an input
@@ -328,9 +328,9 @@ track partial matches
 
 - {{< iconify fa6-solid search >}} **States**: $q_0, q_1, q_2, q_3, q_{accept}, q_{reject}$
     - $q_0$: haven't seen G, or just saw non-G character
-    - $q_1$: just saw first G (looking for A)
-    - $q_2$: saw GA (looking for second G)  
-    - $q_3$: saw GAG (looking for final A)
+    - $q_1$: just saw first G (i.e., looking for A)
+    - $q_2$: saw GA (i.e., looking for second G)  
+    - $q_3$: saw GAG (i.e., looking for final A)
     - $q_{accept}$: found complete GAGA pattern
     - $q_{reject}$: reached end without finding GAGA
 
@@ -338,8 +338,9 @@ track partial matches
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
 
-{{< iconify fa6-solid lightbulb >}} Pattern matching is fundamental to many 
-computational problems. Turing machines can solve any pattern recognition task!
+{{< iconify fa6-solid lightbulb >}} Pattern matching is fundamental to many
+computational problems. Critically, Turing machines can solve any pattern
+recognition task!
 
 :::
 
