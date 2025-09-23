@@ -263,13 +263,13 @@ def format_configuration(tm):
         tape_str += ''.join(tm.tape[tm.head+1:])
     return tape_str.rstrip(tm.blank)
 
-# Test the machine with an input
+# test the machine with an input
 result = run_machine(tm, "CTCGTA")
 ```
 
 ## Halting and looping
 
-::: incremental
+::: {.incremental .fade-right style="font-size: 0.9em;"}
 
 - The `lastTtoA` machine halts under these assumptions:
     - Input only contains symbols in {A, C, G, T}
@@ -279,31 +279,60 @@ result = run_machine(tm, "CTCGTA")
     - The machine will never reach a halting state
 - A Turing machine that runs forever is said to **loop**
 - If a Turing machine is not looping we say it **halts**
+- If it halts, then it may **accept** or **reject**, or simply halt
+
+:::
+
+## Type of Turing machines
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.95em;"}
+
+- An acceptor **accepts** or **rejects** its input:
+  - Always halts in either $q_{accept}$ or $q_{reject}$
+- A transducer **transforms** its input:
+    - Always halts in $q_{halt}$
+    - Output is the tape contents when halted
+    - Output does not include the blank symbol $\sqcup$
+- Turing machines can act as:
+    - Acceptor or transducer
+    - Both acceptor and transducer
 
 :::
 
 ## The `containsGAGA` acceptor machine
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.775em;"}
 
-- {{< iconify fa6-solid search >}} **Goal**: Accept strings containing "GAGA" substring
-- {{< iconify fa6-solid search >}} **Machine type**: acceptor (not transducer)
-  - Outputs accept/reject decision, not modified string
+- {{< iconify fa6-solid search >}} **Goal**: Accept strings containing "GAGA"
+substring
+- {{< iconify fa6-solid search >}} **Alphabet**: {A, C, G, T, ⊔} (i.e., DNA
+characters and blank)
+- {{< iconify fa6-solid search >}} **Machine type**: acceptor, not transducer
+  - Outputs accept/reject decision, not a modified string
   - Uses states $q_{accept}$ and $q_{reject}$ instead of $q_{halt}$
-- {{< iconify fa6-solid search >}} **Strategy**: scan string left-to-right, track partial matches
+- {{< iconify fa6-solid search >}} **Strategy**: scan string left-to-right,
+track partial matches
+- {{< iconify fa6-solid search >}} **High-level Examples**:
+  - GAGA → ACCEPT
+  - CGAGAT → ACCEPT
+  - GATACA → REJECT
+  - GGAGAGA → ACCEPT
 
 :::
+
+## Understanding `containsGAGA` states
 
 ::: {.fragment style="margin-top: -0.15em; font-size: 0.75em;"}
 
 **State meanings for `containsGAGA`**:
 
-- $q_0$: haven't seen G, or just saw non-G character
-- $q_1$: just saw first G (looking for A)
-- $q_2$: saw GA (looking for second G)  
-- $q_3$: saw GAG (looking for final A)
-- $q_{accept}$: found complete GAGA pattern
-- $q_{reject}$: reached end without finding GAGA
+- {{< iconify fa6-solid search >}} **States**: $q_0, q_1, q_2, q_3, q_{accept}, q_{reject}$
+    - $q_0$: haven't seen G, or just saw non-G character
+    - $q_1$: just saw first G (looking for A)
+    - $q_2$: saw GA (looking for second G)  
+    - $q_3$: saw GAG (looking for final A)
+    - $q_{accept}$: found complete GAGA pattern
+    - $q_{reject}$: reached end without finding GAGA
 
 :::
 
@@ -314,7 +343,7 @@ computational problems. Turing machines can solve any pattern recognition task!
 
 :::
 
-## Accepter versus transducer machines
+## Acceptor versus transducer machines
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
@@ -324,7 +353,7 @@ computational problems. Turing machines can solve any pattern recognition task!
     - Use $q_{halt}$ state and read final tape contents
     - Example: `lastTtoA` changes CTCGTA to CTCGAA
 
-- {{< iconify fa6-solid check-circle >}} **Accepter machines**  
+- {{< iconify fa6-solid check-circle >}} **Acceptor machines**  
     - Make accept/reject decisions about input
     - Like boolean functions: input → true/false
     - Use $q_{accept}$ and $q_{reject}$ states
