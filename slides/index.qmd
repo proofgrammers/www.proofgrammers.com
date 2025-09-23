@@ -34,11 +34,13 @@ listing:
 
 ## Course Presentations
 
-Interesting in learning more about the theory of computation? Checkout
-these slide decks to learn more! Each deck explores topics in Python programming
-and theoretical machines. Finally, make sure to review the [course
-schedule](../schedule/index.qmd) for more details about how these slides connect
-to various course projects.
+Interesting in learning more about the theory of computation? Checkout these
+slide decks to learn more! Each deck explores topics in Python programming and
+theoretical machines. Finally, make sure to review the [course
+schedule](../schedule/index.qmd) and the [course
+syllabus](../syllabus/index.qmd) for more details about how these slides connect
+to various course projects and the content in the textbook called [What Can be
+Computed](https://whatcanbecomputed.com/).
 
 :::{#featured-presentations}
 :::
