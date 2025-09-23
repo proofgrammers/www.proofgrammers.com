@@ -344,11 +344,15 @@ recognition task!
 
 :::
 
+## `containsGAGA` diagram
+
+![State diagram for the `containsGAGA` Turing machine.](05-turing-machines_7.png)
+
 ## Acceptor versus transducer machines
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid input-output >}} **Transducer machines**
+- {{< iconify fa6-solid input-output >}} **Transducer machines**  
     - Transform input string to output string
     - Like functions: input → output
     - Use $q_{halt}$ state and read final tape contents
