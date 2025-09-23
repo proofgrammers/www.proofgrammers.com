@@ -1,0 +1,43 @@
+---
+title: "Turing Machines"
+description: "Exploring a simple computer"
+date: "2025-09-22"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Wait, we've not given a formal definition of a computational problem! Can we now?
+
+## What is a computational problem?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **Problems versus programs**
+    - **Computational problem**: describes *what* we want to compute
+    - **Computer program**: describes *how* to compute a solution
+    - One problem can have many different program solutions
+    - Some programs may be correct, while others are incorrect
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Our exploration strategy**
+    - Examine sorting as a concrete example
+    - Define formal mathematical framework
+    - Understand graphs, strings, and languages
+    - Categorize different types of computational problems
+
+:::
