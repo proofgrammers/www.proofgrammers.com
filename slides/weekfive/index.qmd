@@ -491,20 +491,16 @@ for test in test_cases:
     - High-level programming languages and interpreters
     - The programs we write every day!
 
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
-
-**Church-Turing thesis**: Every "reasonable" computational model has the same 
-power as Turing machines. This includes Python, Java, C++, and even quantum computers!
+- **Church-Turing thesis**: Every "reasonable" computational model has the same 
+power as Turing machines. Including programs in Python, Java, or C!
 
 :::
 
-## Simulating Turing machines with Python
+## Simulating Turing machines
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 15
+#| max-lines: 10
 def simulate_turing_machine(program_description, input_string):
     """
     Simulate any Turing machine using Python.
