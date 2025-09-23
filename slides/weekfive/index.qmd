@@ -457,6 +457,8 @@ for test in test_cases:
 
 :::
 
+# Chain of simulation reasoning shows we can simulate a Python program by a Turing machine! *Wow*!
+
 ## Multi-tape Turing machines
 
 ::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
@@ -482,15 +484,12 @@ for test in test_cases:
 - {{< iconify fa6-solid arrow-right >}} **Multi-tape TM → Random-access TM**
     - Add random access to any tape position
     - Like having addressable memory locations
-    
 - {{< iconify fa6-solid arrow-right >}} **Random-access TM → Real computer**
     - Add arithmetic operations and finite memory
     - Modern CPU with RAM and instruction set
-    
 - {{< iconify fa6-solid arrow-right >}} **Real computer → Python program**
     - High-level programming languages and interpreters
     - The programs we write every day!
-
 - **Church-Turing thesis**: Every "reasonable" computational model has the same 
 power as Turing machines. Including programs in Python, Java, or C!
 
@@ -500,7 +499,7 @@ power as Turing machines. Including programs in Python, Java, or C!
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 10
+#| max-lines: 12
 def simulate_turing_machine(program_description, input_string):
     """
     Simulate any Turing machine using Python.
@@ -551,7 +550,7 @@ print("This demonstrates computational equivalence.")
 
 ## Universal Turing machines
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.7em;"}
 
 - {{< iconify fa6-solid microchip >}} **The ultimate machine**
     - **Input**: description of any Turing machine M and input string I
@@ -566,43 +565,43 @@ print("This demonstrates computational equivalence.")
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
-**Mind-blowing insight**: A single, fixed Turing machine can compute anything 
-that any Turing machine can compute! This is the theoretical foundation of 
+**Insight**: A single, fixed Turing machine can compute anything that any
+Turing machine can compute! This is the theoretical foundation of
 general-purpose computers.
 
 :::
 
-## The Church-Turing thesis
+## Church-Turing thesis
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.7em;"}
 
-- {{< iconify fa6-solid balance-scale >}} **The fundamental claim**
+- {{< iconify fa6-solid scale >}}{{< iconify fa6-solid check >}} **The fundamental claim of the thesis**:
     - Any function computable by "effective procedure" 
     - Can be computed by a Turing machine
     - **Informal → formal**: bridges intuitive and mathematical computation
 
-- {{< iconify fa6-solid check >}} **Evidence supporting the thesis**
+- {{< iconify fa6-solid check >}} **Evidence supporting the thesis**:
     - All proposed models equivalent to Turing machines
     - Lambda calculus, recursive functions, cellular automata
-    - Modern computers, programming languages, even quantum computers
-    - No counterexample found in 90+ years
+    - Modern computers, all existing programming languages
+    - No counterexample found in 90+ years of research
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
 **For proofgrammers**: This means studying Turing machines teaches us about 
 the fundamental limits of all computation, including the Python programs we write!
 
 :::
 
-## Why Turing machines matter for proofgrammers
+## Turing machines for proofgrammers
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
 
-- {{< iconify fa6-solid foundation >}} **Theoretical foundation**
+- {{< iconify fa6-solid house >}} **Theoretical foundation**
     - Formal definition of "computation"
     - Precise statements about solvable/unsolvable problems
     - Mathematical proofs about computational limits
@@ -615,42 +614,22 @@ the fundamental limits of all computation, including the Python programs we writ
 - {{< iconify fa6-solid lightbulb >}} **Proofgrammer perspective**
     - Bridge between mathematical proofs and executable code
     - Implement theoretical concepts as working programs
-    - Verify theoretical results through programming
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+## Summary: Turing machines as the foundation of computation
 
-**Key insight**: Turing machines show that computation is mathematically 
-definable. This makes it possible to prove things about what can and cannot be computed!
-
-:::
-
-# Summary: Turing machines as the foundation of computation
-
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid microchip >}} **Turing machines are**:
   - Simple mathematical models of computation
   - Universal: can compute anything computable
   - Foundation for understanding computational limits
   
-- {{< iconify fa6-solid gear >}} **Key concepts mastered**:
+- {{< iconify fa6-solid gear >}} **Key concepts explored**:
   - Formal definition with states, alphabet, transitions
-  - Transducers (input→output) vs accepters (accept/reject)
+  - Transducers (input→output) versus accepters (accept/reject)
   - Multi-tape extensions and computational equivalence
   - Universal machines and Church-Turing thesis
-
-- {{< iconify fa6-solid lightbulb >}} **For proofgrammers**:
-  - Bridge theory and practice through implementation
-  - Understand what Python programs can and cannot do
-  - Foundation for studying undecidability and complexity
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
-
-{{< iconify fa6-solid rocket >}} Next: We'll use Turing machines to prove that 
-some computational problems are absolutely impossible to solve!
 
 :::
