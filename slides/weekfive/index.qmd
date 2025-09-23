@@ -91,7 +91,7 @@ format:
 - Yet, they can compute anything that is computable
 - Their simplicity allows for deep theoretical insights
 - Now, we can mathematically define a Turing machine
-- **This is going to be both challenging and fun!**
+- **Get ready, this is going to be both challenging and fun!**
 
 :::
 
