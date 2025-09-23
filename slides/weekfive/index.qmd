@@ -1,6 +1,6 @@
 ---
-title: "Turing Machines: The Simplest Computers"
-description: "Exploring the mathematical foundations of computation"
+title: "Turing Machines"
+description: "Exploring the 'simplest' computer"
 date: "2025-09-22"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -18,7 +18,16 @@ format:
     footer: "Proofgrammers"
 ---
 
-# What is the simplest possible computer? Can we define one?
+# Simplest possible computer? How to define? Benefits?
+
+::: fragment
+
+- Define the Turing machine
+- Explain how it works
+- Explore universal computation
+- Connect to Python programming
+
+:::
 
 ## Meeting the Turing machine
 
