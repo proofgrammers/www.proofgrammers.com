@@ -165,7 +165,7 @@ Step 10: qₕₐₗₜ: C T C G [A] A ⊔  (read T, write A, stay, halt)
 
 :::
 
-## Python Turing machine simulator
+## Simple Turing machine simulator
 
 ```{pyodide}
 #| autorun: true
@@ -218,7 +218,7 @@ print("Transitions loaded:", len(last_t_to_a_transitions))
 
 :::
 
-## Simulate the Turing machine
+## Run the simple simulator
 
 ```{pyodide}
 #| autorun: true
@@ -306,7 +306,7 @@ result = run_machine(tm, "CTCGTA")
 - {{< iconify fa6-solid search >}} **Goal**: Accept strings containing "GAGA"
 substring
 - {{< iconify fa6-solid search >}} **Alphabet**: {A, C, G, T, ⊔} (i.e., DNA
-characters and blank)
+characters and the special blank symbol)
 - {{< iconify fa6-solid search >}} **Machine type**: acceptor, not transducer
   - Outputs accept/reject decision, not a modified string
   - Uses states $q_{accept}$ and $q_{reject}$ instead of $q_{halt}$
@@ -350,7 +350,7 @@ recognition task!
 
 ## Acceptor versus transducer machines
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.725em;"}
+::: {.incremental style="margin-top: -0.35em; font-size: 0.725em;"}
 
 - {{< iconify fa6-solid input-output >}} **Transducer Turing machines:**  
     - Transform input string to output string
@@ -685,8 +685,28 @@ general-purpose computers.
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
-**For proofgrammers**: This means studying Turing machines teaches us about 
-the fundamental limits of all computation, including the Python programs we write!
+{{< iconify fa6-solid rocket >}} **For proofgrammers**: This means studying
+Turing machines teaches us about the fundamental limits of all computation,
+including the Python programs we write!
+
+:::
+
+## Python Programs $=$ Turing Machines
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-brands python >}} **Every Python program can be simulated by a Turing machine**:
+    - Apply the chain of simulation approach for:
+      - one-tape TM → $\ldots$ → Python program
+    - See textbook for more details about the chain
+
+- {{< iconify fa6-solid code >}} **Every Turing machine can be simulated by a Python program**:
+    - Write a Python interpreter for Turing machine descriptions
+    - Review the simulator code and check textbook for more details
+
+- {{< iconify fa6-solid brain >}} **Limitations of this approach to equivalence**:
+    - Turing machines assume an infinite tape
+    - Real computers have finite memory
 
 :::
 
