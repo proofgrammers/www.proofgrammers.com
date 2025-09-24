@@ -359,7 +359,7 @@ recognition task!
     - Example: `lastTtoA` changes CTCGTA to CTCGAA
     - Like a SISO program that returns a string
 
-- {{< iconify fa6-solid check-circle >}} **Acceptor Turning machines:**  
+- {{< iconify fa6-solid check-circle >}} **Acceptor Turing machines:**  
     - Make accept/reject decisions about input
     - Like boolean functions: input → true/false
     - Use $q_{accept}$ and $q_{reject}$ states
