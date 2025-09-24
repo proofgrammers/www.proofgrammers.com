@@ -26,6 +26,16 @@ toc-expand: 3
       - Instructor assigns teams for the retrospective presentations
       - Teams pick and present their own topics on this module's content
       - Teams collaboratively complete their retrospective presentations
+      - Team-based presentations occur next week on Tuesday and Thursday
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
   - Instructor's presentation on this week's assigned topics
   - Charette session where students collaboratively ask and answer questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekfive/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Five:
+Turing Machines](../../slides/weekfive/)
