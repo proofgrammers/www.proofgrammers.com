@@ -588,7 +588,7 @@ q4->q4: !x;L
     - **Multi-head machines**: multiple read/write heads per tape
 
 - {{< iconify fa6-solid lightbulb >}} **Why extend the basic model?**
-    - Makes programming more natural and efficient
+    - Makes "programming" more natural and efficient
     - Closer to real computer architectures
     - Separates input, working memory, and output
     - **Still equivalent in computational power**!
