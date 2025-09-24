@@ -864,3 +864,32 @@ including the Python programs we write!
   - Universal machines and Church-Turing thesis
 
 :::
+
+## Course learning objectives
+
+::: {.fragment .callout-note icon=true title="Learning Objectives for Theoretical Machines"}
+
+- **CS-204-1**: Use both intuitive analysis and theoretical proof techniques to
+correctly distinguish between problems that are tractable, intractable, and
+uncomputable.
+- **CS-204-2**: Correctly use one or more variants of the Turing machine (TM)
+abstraction to both describe and analyze the solution to a computational
+problem.
+- **CS-204-3**: Correctly use one or more variants of the finite statement
+machine (FSM) abstraction to describe and analyze the solution to a
+computational problem.
+- **CS-204-4**: Use a formal proof technique to correctly classify a problem
+according to whether or not it is in the P, NP, NP-Hard, and/or NP-Complete
+complexity class(es).
+- **CS-204-5**: Apply insights from theoretical proofs concerning the limits of
+either program feasibility or complexity to the implementation of both correct
+and efficient real-world Python programs.
+
+:::
+
+::: {.fragment style="margin-top: -0.05em; font-size: 0.775em;"}
+
+- {{< iconify fa6-solid bullhorn >}} Achieved through course content, skill and
+knowledge checks, and projects!
+
+:::
