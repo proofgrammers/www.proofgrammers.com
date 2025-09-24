@@ -886,10 +886,3 @@ either program feasibility or complexity to the implementation of both correct
 and efficient real-world Python programs.
 
 :::
-
-::: {.fragment style="margin-top: -0.05em; font-size: 0.775em;"}
-
-- {{< iconify fa6-solid bullhorn >}} Achieved through course content, skill and
-knowledge checks, and projects!
-
-:::
