@@ -425,7 +425,7 @@ for test in test_cases:
 
 ## The `moreCsThanGs` acceptor machine
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.775em;"}
 
 - {{< iconify fa6-solid dna >}} **Problem**: Determine if DNA string has more C's than G's
 - {{< iconify fa6-solid gear >}} **Algorithm strategy**: Use cancellation approach
@@ -433,8 +433,11 @@ for test in test_cases:
     - Find a C, mark it, look for G to cancel it  
     - If C's remain after all G's cancelled → accept
     - Otherwise reject (more G's or equal counts)
-
-- {{< iconify fa6-solid code >}} **Implementation**: Use marker symbol `z` for processed symbols
+- {{< iconify fa6-solid dna >}} **Examples**:
+    - CCGG → REJECT (equal counts)
+    - CCGGC → ACCEPT (more C's)
+    - CGCGC → ACCEPT (more C's)
+    - GGCCG → REJECT (more G's)
 
 :::
 
@@ -526,15 +529,15 @@ q4->q4: !x;L
 
 - {{< iconify fa6-solid code >}} **Compact notation in textbook**:
     - Each line represents a transition rule
-    - `zTA` means "any symbol from {z, T, A}"
-    - `zTAC` means "any symbol from {z, T, A, C}"  
-    - `zTAG` means "any symbol from {z, T, A, G}"
+    - `zTA` intuitively means "any symbol from {z, T, A}"
+    - `zTAC` intuitively means "any symbol from {z, T, A, C}"  
+    - `zTAG` intuitively means "any symbol from {z, T, A, G}"
 
 - {{< iconify fa6-solid gear >}} **Why this notation works**:
     - `z` = marker for processed symbols
     - `T`, `A` = input symbols to skip over
     - `C`, `G` = target symbols for counting/cancelling
-    - Encodes the full Turing machine in a text file!
+    - **Encodes the full Turing machine in a text file**!
 
 :::
 
@@ -546,7 +549,7 @@ q4->q4: !x;L
     - Simulate any computation
     - Extended in various ways
     - Each extension is equivalent in power
-    - Python can simulate any Turing machine
+    - **Python and Turing machines are equivalent**!
 
 :::
 
