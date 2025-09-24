@@ -23,3 +23,12 @@ toc-expand: 3
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
   - Instructor's presentation on this week's assigned topics
   - Charette session where students collaboratively ask and answer questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekthree/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Three:
+Impossible Programs](../../slides/weekthree/)
