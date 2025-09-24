@@ -130,7 +130,7 @@ as $\delta(q, x) = (q', x', d')$
   - CTCGTA → CTCGAA
   - CGAT → CGAA
   - TTTT → TTTA
-  - *Wait*, what would happen with GGGG?
+  - *Wait*, what would happen with GGGG? We will explain this soon!
 
 :::
 
@@ -155,7 +155,7 @@ Step 10: qₕₐₗₜ: C T C G [A] A ⊔  (read T, write A, stay, halt)
 
 :::
 
-::: {.fragment .fade style="font-size: 0.675em;"}
+::: {.fragment .fade style="font-size: 0.65em;"}
 
 - **This simple Turing machine demonstrates key concepts**:
     - Reading and processing input
@@ -213,8 +213,8 @@ print("Transitions loaded:", len(last_t_to_a_transitions))
 ::: {.fragment .fade-up style="font-size: 0.75em;"}
 
 - Map: `(state, symbol)` to `(new_state, new_symbol, direction)`
-- Next must define functions to run the machine for an input
-- Create reusable simulator that any proofgrammer can extend!
+- Next we must define functions to **run** the machine for an **input**
+- Create **simple simulator** that any proofgrammer can extend!
 
 :::
 
@@ -253,7 +253,7 @@ def run_machine(tm, input_string, max_steps=100):
         if tm.steps <= 10:  # Show first 10 steps
             print(f"Step {tm.steps}: {tm.state}: {format_configuration(tm)}")
     output = ''.join(tm.tape).rstrip(tm.blank)
-    print(f"Final: {tm.state}: {format_configuration(tm)} / Output: {output}")
+    print(f"Final: {tm.state}: {format_configuration(tm)} with Output: {output}")
     return output
 
 def format_configuration(tm):
