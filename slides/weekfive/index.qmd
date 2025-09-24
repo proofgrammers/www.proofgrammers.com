@@ -423,6 +423,121 @@ for test in test_cases:
 
 :::
 
+## The `moreCsThanGs` acceptor machine
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid dna >}} **Problem**: Determine if DNA string has more C's than G's
+- {{< iconify fa6-solid gear >}} **Algorithm strategy**: Use cancellation approach
+    - Find a G, mark it, look for C to cancel it
+    - Find a C, mark it, look for G to cancel it  
+    - If C's remain after all G's cancelled → accept
+    - Otherwise reject (more G's or equal counts)
+
+- {{< iconify fa6-solid code >}} **Implementation**: Use marker symbol `z` for processed symbols
+
+:::
+
+## Simulate `moreCsThanGs` in Python
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 12
+# moreCsThanGs Turing machine from textbook
+more_cs_than_gs_transitions = {
+    # From q0 - scan right looking for unmarked C or G
+    ('q0', 'x'): ('q1', 'x', 'R'),
+    # From q1 - main scanning state
+    ('q1', 'z'): ('q1', 'z', 'R'),  # Skip marked symbols
+    ('q1', 'T'): ('q1', 'T', 'R'),  # Skip T
+    ('q1', 'A'): ('q1', 'A', 'R'),  # Skip A
+    ('q1', 'G'): ('q2', 'z', 'R'),  # Found G, mark it, look for C
+    ('q1', 'C'): ('q3', 'z', 'R'),  # Found C, mark it, look for G
+    ('q1', 'x'): ('qreject', 'x', 'S'),  # End marker, reject
+    # From q2 - marked G, looking for C to cancel
+    ('q2', 'z'): ('q2', 'z', 'R'),  # Skip marked
+    ('q2', 'T'): ('q2', 'T', 'R'),  # Skip T
+    ('q2', 'A'): ('q2', 'A', 'R'),  # Skip A  
+    ('q2', 'G'): ('q2', 'G', 'R'),  # Skip unmarked G
+    ('q2', 'C'): ('q4', 'z', 'L'),  # Found C to cancel, go back
+    ('q2', 'x'): ('qreject', 'x', 'S'),  # No C found, reject
+    # From q3 - marked C, looking for G to cancel
+    ('q3', 'z'): ('q3', 'z', 'R'),  # Skip marked
+    ('q3', 'T'): ('q3', 'T', 'R'),  # Skip T
+    ('q3', 'A'): ('q3', 'A', 'R'),  # Skip A
+    ('q3', 'C'): ('q3', 'C', 'R'),  # Skip unmarked C
+    ('q3', 'G'): ('q4', 'z', 'L'),  # Found G to cancel, go back  
+    ('q3', 'x'): ('qaccept', 'x', 'S'),  # No G found, accept
+    # From q4 - return to start after cancelling pair
+    ('q4', 'x'): ('q1', 'x', 'R'),  # Found start, continue
+    ('q4', 'z'): ('q4', 'z', 'L'),  # Move left through anything
+    ('q4', 'T'): ('q4', 'T', 'L'),
+    ('q4', 'A'): ('q4', 'A', 'L'),
+    ('q4', 'C'): ('q4', 'C', 'L'),
+    ('q4', 'G'): ('q4', 'G', 'L')
+}
+
+# Create the accepter machine  
+more_cs_tm = TuringMachine(more_cs_than_gs_transitions)
+# Test cases for comparing C and G counts
+test_cases = ["xCCGx", "xGGCx", "xCGCx", "xGCGx", "xCCCGGx"]
+for test in test_cases:
+    more_cs_tm.reset()
+    more_cs_tm.load_input(test)
+    # Run until halt
+    while step(more_cs_tm) and more_cs_tm.steps < 100:
+        pass
+    decision = "ACCEPT" if more_cs_tm.state == "qaccept" else "REJECT" 
+    c_count = test.count('C')
+    g_count = test.count('G')
+    print(f"Input: {test:<8} (C:{c_count}, G:{g_count}) → {decision}")
+```
+
+
+## Textual representation
+
+```text
+q0->q1: x;R
+q1->q1: zTA;R
+q1->q2: G;z,R
+q1->q3: C;z,R
+q1->qR: x;S
+q2->q2: zTAG;R
+q2->q4: C;z,L
+q2->qR: x;S
+q3->q3: zTAC;R
+q3->q4: G;z,L
+q3->qA: x;S
+q4->q1: x;R
+q4->q4: !x;L
+```
+
+::: {.incremental style="margin-top: 0.05em; font-size: 0.9em;"}
+
+- Textbook defines a notation for representing Turing machines
+- Save these rules inside of a `moreCsThanGs.tm` file
+- Run in the universal simulator that we later define!
+
+:::
+
+## Explain `moreCsThanGs.tm`
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid code >}} **Compact notation in textbook**:
+    - Each line represents a transition rule
+    - `zTA` means "any symbol from {z, T, A}"
+    - `zTAC` means "any symbol from {z, T, A, C}"  
+    - `zTAG` means "any symbol from {z, T, A, G}"
+
+- {{< iconify fa6-solid gear >}} **Why this notation works**:
+    - `z` = marker for processed symbols
+    - `T`, `A` = input symbols to skip over
+    - `C`, `G` = target symbols for counting/cancelling
+    - Encodes the full Turing machine in a text file!
+
+:::
+
 # From Turing machines to real computers
 
 ::: incremental
@@ -473,13 +588,13 @@ for test in test_cases:
     - Makes programming more natural and efficient
     - Closer to real computer architectures
     - Separates input, working memory, and output
-    - Still equivalent in computational power!
+    - **Still equivalent in computational power**!
 
 :::
 
 ## Turing machines to Python programs
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.785em;"}
 
 - {{< iconify fa6-solid arrow-right >}} **Multi-tape TM → Random-access TM**
     - Add random access to any tape position
@@ -679,7 +794,7 @@ general-purpose computers.
     - All proposed models equivalent to Turing machines
     - Lambda calculus, recursive functions, cellular automata
     - Modern computers, all existing programming languages
-    - No counterexample found in 90+ years of research
+    - No counterexample found in decades of research
 
 :::
 
@@ -736,7 +851,7 @@ including the Python programs we write!
 
 - {{< iconify fa6-solid microchip >}} **Turing machines are**:
   - Simple mathematical models of computation
-  - Universal: can compute anything computable
+  - Universal since they can compute anything computable
   - Foundation for understanding computational limits
   
 - {{< iconify fa6-solid gear >}} **Key concepts explored**:
