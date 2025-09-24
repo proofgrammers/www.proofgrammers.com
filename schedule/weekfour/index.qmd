@@ -19,7 +19,16 @@ toc-expand: 3
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
    - Teams give a **ten minutes** talk with a **five minute** evaluation session
    - Presentation order randomly assigned at the start of laboratory session
-   - No team assignments since next week is for skill and knowledge checks
+   - No team assignments since next week is for knowledge checks
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
   - Instructor's presentation on this week's assigned topics
   - Charette session where students collaboratively ask and answer questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekfour/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Four:
+Computational Problems](../../slides/weekfour/)
