@@ -213,7 +213,7 @@ print("Transitions loaded:", len(last_t_to_a_transitions))
 ::: {.fragment .fade-up style="font-size: 0.75em;"}
 
 - Map: `(state, symbol)` to `(new_state, new_symbol, direction)`
-- Next we must define functions to **run** the machine for an **input**
+- Next we must **define** functions to **run** the machine for an **input**
 - Create **simple simulator** that any proofgrammer can extend!
 
 :::
@@ -278,8 +278,8 @@ result = run_machine(tm, "CTCGTA")
     - The machine gets stuck in state $q_1$
     - The machine will never reach a halting state
 - A Turing machine that runs forever is said to **loop**
-- If a Turing machine is not looping we say it **halts**
-- If it halts, then it may **accept** or **reject**, or simply halt
+- If a Turing machine is **not looping** we say it **halts**
+- If it halts, then it may **accept** or **reject**, or **simply halt**
 
 :::
 
