@@ -461,7 +461,7 @@ for test in test_cases:
 
 ## Multi-tape Turing machines
 
-::: {.incremental style="margin-top: -0.15em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid layer-group >}} **Extensions beyond single tape**
     - **Two-tape machines**: separate input and output tapes
