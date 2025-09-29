@@ -886,3 +886,29 @@ either program feasibility or complexity to the implementation of both correct
 and efficient real-world Python programs.
 
 :::
+
+## Key takeaways
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.75em;"}
+
+- {{< iconify fa6-solid gear >}} **Turing Machines**: Simple model equivalent to
+Python programs
+- {{< iconify fa6-solid microscope >}} **Many extensions**: Variants make
+"programming" simpler, but same power
+- {{< iconify fa6-solid diagram-project >}} **Universal computation**:
+A universal machine simulates all machines
+- {{< iconify fa6-solid book-open >}} **Practical implications**: Turing
+machines help to prove limits of computation
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Wow, this was really brain breaking! Now, you
+should**:
+    - Read the chapter and hand-write or type out the key results
+    - Explain the key results to several members of this class
+    - Explain the key results to the instructor in office hours
+    - Bring your questions to the next proofgrammer charette session
+
+:::
