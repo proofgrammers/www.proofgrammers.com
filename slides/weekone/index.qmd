@@ -447,7 +447,7 @@ whether or not the code is a correct.
 
 :::
 
-# can you clone the course website to your laptop and run `quarto preview`? Output?
+# Can you clone the course website to your laptop and run `quarto preview`? Output?
 
 ::: {.fragment .fade style="margin-top: 0em; font-size: 0.9em;"}
 
