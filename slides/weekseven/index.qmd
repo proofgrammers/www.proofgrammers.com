@@ -179,30 +179,6 @@ examples!
 
 :::
 
-
-## Levels of computational abstraction
-
-::: {.fragment style="margin-top: -0.2em; font-size: 0.85em;"}
-
-
-| **Analysis Type** | **Program** | **Parameters** |
-|:------------------|:------------|:---------------|
-| Analyze a string | `containsGAGA.py` | `"ATGAG"` |
-| Analyze another program | `countLines.py` | `containsGAGA.py` |
-| Simulate another program | `universal.py` | `(containsGAGA.py, "ATGAG")` |
-| Simulate altered program | `alterGAGAtoTATA.py` | Modified `repeatCAorGA.py` |
-
-
-:::
-
-::: {.fragment .fade style="font-size: 0.85em;"}
-
-- **Progression**: String analysis, program simulation, program alteration
-- **Difficulty**: String analysis is easiest, program alteration is hardest
-- **Power**: Simulating an altered program provides a powerful tool
-
-:::
-
 ## Program alteration techniques
 
 ![](06-universal-programs_5.png)
@@ -234,6 +210,29 @@ print(ignore_input('ANYTHING'))   # Ignores this input too
 ## Program to ignore input
 
 ![](06-universal-programs_8.png)
+
+## Levels of computational abstraction
+
+::: {.fragment style="margin-top: -0.2em; font-size: 0.85em;"}
+
+
+| **Analysis Type** | **Program** | **Parameters** |
+|:------------------|:------------|:---------------|
+| Analyze a string | `containsGAGA.py` | `"ATGAG"` |
+| Analyze another program | `countLines.py` | `containsGAGA.py` |
+| Simulate another program | `universal.py` | `(containsGAGA.py, "ATGAG")` |
+| Simulate altered program | `alterGAGAtoTATA.py` | Modified `repeatCAorGA.py` |
+
+
+:::
+
+::: {.fragment .fade style="font-size: 0.85em;"}
+
+- **Progression**: String analysis, program simulation, program alteration
+- **Difficulty**: String analysis is easiest, program alteration is hardest
+- **Power**: Simulating an altered program provides a powerful tool
+
+:::
 
 ## Recognizable versus decidable
 
