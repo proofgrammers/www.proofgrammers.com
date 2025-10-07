@@ -154,43 +154,7 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 
 ## Program alteration techniques
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
-
-```{python}
-#| autorun: true
-#| max-lines: 20
-def repeat_ca_or_ga(in_string):
-    """Original program that returns specific patterns."""
-    if in_string == 'CA':
-        return 'CACA'
-    elif in_string == 'GA':
-        return 'GAGA'
-    else:
-        return 'unknown'
-
-def alter_gaga_to_tata(encoded_input):
-    """Alters programs: changes GAGA output to TATA."""
-    # In practice, would decode prog_string and new_in_string
-    # For demo: simulate the alteration
-    original_result = repeat_ca_or_ga('GA')
-    print(f"Original result: {original_result}")
-    
-    # The crucial alteration
-    if original_result == 'GAGA':
-        return 'TATA'
-    else:
-        return original_result
-
-# Demonstrate program alteration
-result = alter_gaga_to_tata("dummy_input")
-print(f"Altered result: {result}")
-```
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Power**: One program can modify and execute any other program
-:::
+![](06-universal-programs_5.png)
 
 ## The strange `ignoreInput` program
 

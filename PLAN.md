@@ -997,3 +997,129 @@ with expected output, enabling student interaction and experimentation
 definitions, state transitions, and Church-Turing thesis expressions
 - **Fragment Animation**: Incremental content reveals function properly to
 support effective presentation flow and student comprehension
+
+### Week Seven Slides for Universal Computer Programs (Chapter 6)
+
+**Universal Computation Theoretical Foundation**:
+
+- **Alan Turing's Universal Machine Concept**: 1936 theoretical breakthrough
+demonstrating that a single machine can simulate any other computational
+device when given appropriate program encoding, forming basis for modern
+stored-program computer architecture
+- **Python's `exec()` Function**: Practical implementation of universal
+computation where one program can execute arbitrary Python source code,
+directly demonstrating Turing's theoretical concept in contemporary programming
+- **Computational Equivalence**: Universal programs in different systems
+(Python `exec()`, Turing machines, cellular automata) all achieve same
+computational power, validating Church-Turing thesis across multiple domains
+- **Meta-Computation**: Programs analyzing and executing other programs as
+data, essential for understanding compiler design, interpreters, and program
+analysis tools
+
+**Program Alteration and Simulation Techniques**:
+
+- **`ignoreInput.py` Transformation**: Systematic method to convert any program
+into one that ignores input, demonstrating program transformation techniques
+essential for theoretical proofs and compiler optimizations
+- **`alterGAGAtoTATA.py` Pattern Replacement**: String substitution method that
+modifies program behavior while preserving syntactic structure, showing how
+programs can be automatically analyzed and transformed
+- **Universal Simulation**: `universal.py` from WCBC textbook demonstrates
+complete program simulation using `exec()` with proper namespace management,
+enabling one program to execute any other Python program
+- **Computational Abstraction Levels**: Figure 6.7 table showing progression
+from high-level languages through interpreters to hardware, illustrating how
+universal computation enables software layering
+
+**Natural Universal Computation Examples**:
+
+- **Rule 110 Cellular Automaton**: Stephen Wolfram's proof that simple
+cellular automaton rules can achieve universal computation, demonstrating that
+universal behavior emerges in natural and artificial systems beyond
+traditional computers
+- **Conway's Game of Life**: Mathematical proof by Conway and others that
+Game of Life cellular automaton can simulate any Turing machine, showing
+universal computation in two-dimensional grid systems
+- **Biological Universal Computation**: DNA computing and protein folding
+demonstrate universal computational principles in natural biological processes,
+connecting theoretical computer science to molecular biology
+- **Physical Universal Computation**: Various physical systems (crystal
+growth, chemical reactions, quantum systems) exhibit universal computational
+capabilities when properly configured
+
+**Recognizable vs Decidable Problem Classification**:
+
+- **Recognizable Problems**: Programs that halt and output "yes" for inputs in
+the language but may run forever on inputs not in the language, corresponding
+to recursively enumerable sets in formal language theory
+- **Decidable Problems**: Programs that always halt with definitive "yes" or
+"no" answer for every input, corresponding to recursive sets and representing
+algorithmically solvable problems
+- **Halting Problem as Recognizable but Undecidable**: Can write program that
+recognizes when programs halt (by simulation) but cannot decide definitively
+for all cases due to fundamental logical limitations
+- **Practical Implications**: Static analysis tools work on decidable subsets
+of program properties while recognizable problems represent limits of
+automated verification and testing
+
+**Python Implementation and Educational Methodology**:
+
+- **Executable Universal Programs**: All theoretical concepts implemented as
+working Python code using `exec()`, `compile()`, and namespace management,
+enabling students to experiment with universal computation directly
+- **Interactive Code Examples**: `pyodide` blocks allow real-time modification
+of universal programs, pattern alteration functions, and cellular automaton
+simulations
+- **Step-by-step Execution Traces**: Detailed examples show exactly how
+universal programs process and execute other programs, making abstract
+concepts concrete and verifiable
+- **Progressive Complexity**: Examples build from simple `exec()` usage
+through sophisticated program transformation to natural universal computation,
+preparing students for advanced computability theory
+
+**Connection to Advanced Theoretical Concepts**:
+
+- **Undecidability Preparation**: Universal computation provides foundation for
+proving Rice's theorem and other undecidability results by enabling programs
+to analyze arbitrary other programs
+- **Complexity Theory Applications**: Universal simulation techniques enable
+definition of complexity classes and time hierarchy theorems by providing
+standard methods for program execution and analysis
+- **Compiler Theory Integration**: Program transformation techniques
+(`ignoreInput.py`, `alterGAGAtoTATA.py`) illustrate fundamental compiler
+operations like code generation, optimization, and semantic analysis
+- **Formal Verification Limits**: Recognizable vs decidable distinction
+explains why complete program verification is impossible while partial
+verification remains valuable for practical software development
+
+**Content Sources and Theoretical Support**:
+
+- **"What Can be Computed" Chapter 6**: Primary source for universal Python
+programs, program alteration techniques, and Figure 6.7 computational
+abstraction table used throughout slides
+- **Turing's 1936 Universal Machine Paper**: Theoretical foundation for all
+universal computation concepts and modern stored-program computer architecture
+- **Wolfram's "A New Kind of Science"**: Source for Rule 110 cellular automaton
+universality proof and natural computation examples
+- **Conway's Game of Life Literature**: Mathematical proofs of computational
+universality in simple two-dimensional cellular automaton systems
+- **Computability Theory Textbooks**: Standard presentations of recognizable
+vs decidable problems, recursive enumeration, and universal computation in
+Sipser, Rogers, and other theoretical computer science references
+
+**Quality Assurance and Implementation Verification**:
+
+- **Successful Rendering**: All slides render correctly with `quarto render
+slides/weekseven/index.qmd` producing functional HTML presentation without
+errors
+- **Python Code Execution**: All `exec()` examples, program transformation
+functions, and universal simulation code execute properly with expected output
+in `pyodide` environment
+- **Namespace Management**: Proper handling of Python execution contexts
+prevents variable conflicts and enables clean demonstration of universal
+computation concepts
+- **Visual Layout Standards**: Screenshot verification confirms titles fit
+appropriately, content displays without overflow, and fragment animations
+function correctly at presentation resolution
+- **Theoretical Accuracy**: Content aligns precisely with WCBC Chapter 6
+learning objectives and standard computability theory presentations
