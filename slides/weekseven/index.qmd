@@ -1,6 +1,6 @@
 ---
 title: "Universal Computer Programs"
-description: "Programs that can do anything"
+description: "Grasp programs that can run all programs"
 date: "2025-10-06"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -38,7 +38,7 @@ format:
     - Browser runs any WebAssembly program
 - **Operating system**: runs any executable program
 - Isn't it magical that one program can run another?
-- Why is this possible? What are the benefits?
+- Why is this possible? What are the benefits and limitations?
 
 :::
 
