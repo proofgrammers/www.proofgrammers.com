@@ -195,30 +195,6 @@ examples!
 
 ![](06-universal-programs_5.png)
 
-## Strange `ignoreInput` program
-
-```{python}
-#| autorun: true
-#| max-lines: 15
-def ignore_input(in_string):
-    """Ignores input, performs preset computation instead."""
-    # Simulate reading from files (in practice: rf('progString.txt'))
-    prog_string = """
-def contains_gaga(s):
-    return 'yes' if 'GAGA' in s else 'no'
-"""
-    # Simulate reading input file (in practice: rf('inString.txt'))
-    preset_input = 'GGGGGGGTTT'
-    # Execute the preset computation regardless of actual input
-    local_namespace = {}
-    exec(prog_string, local_namespace)
-    return local_namespace['contains_gaga'](preset_input)
-
-# Input is ignored - always same result
-print(ignore_input('GAGAGA'))     # Ignores this input
-print(ignore_input('ANYTHING'))   # Ignores this input too
-```
-
 ## Visualize a program to ignore input
 
 ![](06-universal-programs_8.png)
