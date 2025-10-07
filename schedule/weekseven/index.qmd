@@ -1,0 +1,37 @@
+---
+title: "Grasping Universal Computation"
+description: "Create and Use Simple Computers"
+date: 2025-10-06
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Activities
+
+- {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
+  - Chapter six of [What Can be Computed? A Practical Guide to the
+  Theory of Computation](https://whatcanbecomputed.com/)
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - No new presentation slides due for this week
+  - Fall break means that there is no class on Thursday
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - Instructor's presentation on this week's assigned topics
+  - Overview of content for the second module of the course
+- {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+  - No presentations during the laboratory session
+  - Make sure that you have created all GitHub repositories
+  - Make token requests as needed for work in module one
+  - Complete all missing work from module one
+- {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
+  - No class due to fall break starting on Thursday morning
+  - All new material covered during class session on Tuesday
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekseven/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week Seven:
+Universal Computation](../../slides/weekseven/)
