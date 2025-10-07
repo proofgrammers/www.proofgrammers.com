@@ -79,8 +79,9 @@ img.quarto-figure-center {
 }
 
 .reveal .r-stretch, .reveal .stretch {
-	max-width: none;
-	max-height: none;
+  width: 97% !important;
+  height: auto !important;
+  max-width: 100% !important;
   border: 3px solid #444;
   border-radius: 8px;
 }
