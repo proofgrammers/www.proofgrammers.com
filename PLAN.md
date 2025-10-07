@@ -167,9 +167,11 @@ starts "Example output of "rule 110" cellular automaton ..." and Figure
 - You have access to the source code connected to this book in the directory
 `theoreticalmachines/wcbc-code/`
 - I have created a template file for the slides in the
-`slides/weeksix/index.qmd`
+`slides/weekseven/index.qmd`. You can add to this file!
 - I would like you to create a starting version of the slides for Chapter Six:
-in the `slides/weeksix/index.qmd` file.
+in the `slides/weekseven/index.qmd` file. Please note that you are creating
+slides for _week seven_ of the course in the `index.qmd` file that is
+in that directory but for _chapter six_ of the book.
 - Figure 6.7 is important and I think that a table connected to it should
 definitely be in the slides for this chapter.
 - One challenge of this chapter is that it contains a lot of source code
