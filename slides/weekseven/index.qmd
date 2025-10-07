@@ -151,7 +151,7 @@ examples!
 - **Revised Minsky universal Turing machine had**
   - Only 7 states
   - Only 4 symbols in the alphabet
-- Universality does not require great complexity!
+- **Insight**: Universality does not require great complexity!
 - **Trade-off**: small universal machines may require
   long machine descriptions and often lead to inefficient simulations
 
@@ -219,7 +219,7 @@ print(ignore_input('GAGAGA'))     # Ignores this input
 print(ignore_input('ANYTHING'))   # Ignores this input too
 ```
 
-## Grasp a program to ignore input
+## Visualize a program to ignore input
 
 ![](06-universal-programs_8.png)
 
