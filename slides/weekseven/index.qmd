@@ -295,7 +295,7 @@ def recYesOnString(inString):
 
 - {{< iconify fa6-solid lightbulb >}} **Next, we will explore reductions**:
     - Transform one problem into another
-    - Reductions for easiness versus for hardness
+    - Reductions for "easiness" versus for "hardness"
     - Show that solving one solves the other
     - Key technique in computability and complexity theory
     - Aid proving undecidability and NP-completeness
