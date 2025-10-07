@@ -120,25 +120,40 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 
 :::
 
-## Universal Turing machines
+## Universal computation examples
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
 
-- {{< iconify fa6-solid brain >}} **Turing's 1936 breakthrough**
-    - Universal Turing machine $U$ can simulate any machine $M$
-    - Takes input $\text{str}(M, I) = \text{ESS}(\text{desc}(M), I)$
-    - Encodes machine description with input string
-    - $U(\text{str}(M, I)) = M(I)$ for all machines and inputs
+- **Hardware**: `containsGAGA` booted as machine code
+- **Operating system**: run the program `containsGAGA.exe`
+- **Python program**: interpreter runs `containsGAGA.py`
+- **Java virtual machine**: interpreter runs `containsGAGA.class`
+- **Web browser**: interpreter runs `containsGAGA.js`
+- **Web browser**: interpreter runs `containsGAGA.wasm`
 
 :::
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid gear >}} **Practical construction approach**
-    - Direct Turing machine construction is complex
-    - Easier: use Python-to-Turing machine equivalence
-    - Universal Python program proves universal Turing machine exists
-    - Same computational power, different representation
+{{< iconify fa6-solid microscope >}} These examples all suggest that universal
+computation is complicated! However, it is not! Let's look at some simple
+examples!
+
+:::
+
+## Universal Turing machines
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.95em;"}
+
+- **First universal Turing machine had**
+  - Only dozens of states
+  - About 20 symbols in the alphabet
+- **Revised Minsky universal Turing machine had**
+  - Only 7 states
+  - Only 4 symbols in the alphabet
+- Universality does not require great complexity!
+- **Trade-off**: small universal machines may require
+  long machine descriptions and often lead to inefficient simulations
 
 :::
 
@@ -163,6 +178,7 @@ print(universal(prog, 'GTTAA'))    # Should output: no
     - Potential natural occurrences in molecular systems
 
 :::
+
 
 ## Levels of computational abstraction
 
