@@ -60,13 +60,11 @@ def universal(prog_string, in_string):
     # This defines the function but doesn't invoke it
     namespace = {}
     exec(prog_string, namespace)
-    
     # Extract function name from the program string
     # Find the first callable function in namespace
     for name, obj in namespace.items():
         if callable(obj) and not name.startswith('_'):
             return obj(in_string)
-    
     return "No function found"
 
 # Test the universal program
@@ -79,7 +77,7 @@ print(universal(prog, 'GTTGAGA'))  # Should output: yes
 print(universal(prog, 'GTTAA'))    # Should output: no
 ```
 
-::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.85em;"}
+::: {.fragment .fade style="margin-top: -0.35em; font-size: 0.85em;"}
 
 - **Key insight**: Universal programs can simulate *any* other program!
 
@@ -210,32 +208,6 @@ print(ignore_input('ANYTHING'))   # Ignores this input too
     - Universal computation emerges from local interactions
     - Potential natural occurrences in molecular systems
 
-:::
-
-## Rule 110 cellular automaton visualization
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.75em;"}
-
-```
-Initial: --GG--------------------------------------------------------------
-Step 1:  -GG-G-------------------------------------------------------------
-Step 2:  GG-GGG------------------------------------------------------------
-Step 3:  -GGG-GG-----------------------------------------------------------
-Step 4:  GG-GGG-G----------------------------------------------------------
-Step 5:  -GGG-GGGG---------------------------------------------------------
-Step 6:  GG-GGG--GG--------------------------------------------------------
-Step 7:  -GGG-G-GG-G-------------------------------------------------------
-Step 8:  GG-GGGGGG-GG------------------------------------------------------
-```
-
-Each row represents one computational step
-Each cell's next state depends on its three neighbors above
-Simple rules create complex, universal computational behavior
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Amazing**: 8 simple rules = unlimited computational power
 :::
 
 ## Recognizable vs decidable problems
