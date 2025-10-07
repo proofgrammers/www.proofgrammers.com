@@ -250,13 +250,37 @@ print(ignore_input('ANYTHING'))   # Ignores this input too
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
-- {{< iconify fa6-solid check >}} **Recognizable problems**
+- {{< iconify fa6-solid lightbulb >}} **Recognizable** means that a language or
+decision problem can correctly decide all positive instances. In contrast,
+**decidable** means that a language or decision problem can correctly decide all
+instances, both positive and negative. *Remember, recognizable is harder than
+decidable*!
+
+- {{< iconify fa6-solid check >}} **Summary of recognizable problems**
     - Program correctly handles all positive instances
     - May loop forever on negative instances
     - `yesOnString` and `crashOnString` are recognizable
     - Universal simulation enables recognition
 
+- {{< iconify fa6-solid gears >}} **Let's look at some examples of recognizable problems!**
+
+- {{< iconify fa6-solid microscope >}} **Do you understand why this does not demonstrate decidability?**
+
 :::
+
+## Explore `recYesOnString`
+
+```python
+import utils; from utils import rf
+from universal import universal  
+def recYesOnString(inString):
+    (progString, newInString) = utils.DESS(inString) 
+    val = universal(progString, newInString)  
+    if val == 'yes':
+        return 'yes'
+    else:
+        return 'no'  
+```
 
 ## Why universal computation matters
 
