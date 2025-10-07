@@ -27,7 +27,7 @@ format:
 
 :::
 
-## Python programs executing other programs
+## Running Python programs
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
@@ -49,9 +49,7 @@ format:
 
 :::
 
-## The universal Python program
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+## Running Python code strings
 
 ```{python}
 #| autorun: true
@@ -81,10 +79,10 @@ print(universal(prog, 'GTTGAGA'))  # Should output: yes
 print(universal(prog, 'GTTAA'))    # Should output: no
 ```
 
-:::
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.85em;"}
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Key insight**: Universal programs can simulate *any* other program!
+- **Key insight**: Universal programs can simulate *any* other program!
+
 :::
 
 ## What makes this universal?
@@ -101,7 +99,7 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid cog >}} **Three-step process**
+- {{< iconify fa6-solid gears >}} **Three-step process**
     - **Define**: `exec()` creates function in memory
     - **Extract**: Get reference to the newly defined function  
     - **Execute**: Call function with provided input
@@ -133,7 +131,8 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 
 ## Levels of computational abstraction
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.fragment style="margin-top: -0.2em; font-size: 0.85em;"}
+
 
 | **Analysis Type** | **Program** | **Parameters** |
 |:------------------|:------------|:---------------|
@@ -142,10 +141,15 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 | Simulate another program | `universal.py` | `(containsGAGA.py, "ATGAG")` |
 | Simulate altered program | `alterGAGAtoTATA.py` | Modified `repeatCAorGA.py` |
 
+
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Progression**: From string analysis to program simulation to program alteration
+::: {.fragment .fade style="font-size: 0.85em;"}
+
+- **Progression**: String analysis, program simulation, program alteration
+- **Difficulty**: String analysis is easiest, program alteration is hardest
+- **Power**: Simulating an altered program provides a powerful tool
+
 :::
 
 ## Program alteration techniques
