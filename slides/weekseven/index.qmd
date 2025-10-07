@@ -200,52 +200,19 @@ print(ignore_input('GAGAGA'))     # Ignores this input
 print(ignore_input('ANYTHING'))   # Ignores this input too
 ```
 
-::: {.fragment .fade style="font-size: 1.0em;"}
-
-- **Purpose**: Fixed computation regardless of input - crucial for proofs!
-
-:::
-
 ## Program to ignore input
 
 ![](06-universal-programs_8.png)
 
-
-## Recognizable vs decidable problems
+## Recognizable versus decidable problems
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
 - {{< iconify fa6-solid check >}} **Recognizable problems**
     - Program correctly handles all positive instances
     - May loop forever on negative instances
-    - `YESONSTRING` and `CRASHONSTRING` are recognizable
+    - `yesOnString` and `crashOnString` are recognizable
     - Universal simulation enables recognition
-
-:::
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
-
-```{python}
-#| autorun: true
-#| max-lines: 12
-def rec_yes_on_string(encoded_input):
-    """Recognizes YESONSTRING - may not terminate on negatives."""
-    # Simulate decoding (prog_string, new_in_string)
-    prog_string = "def test(s): return 'yes'"
-    input_string = "test_input"
-    
-    # Simulate universal execution
-    namespace = {}
-    exec(prog_string, namespace)
-    result = namespace['test'](input_string)
-    
-    if result == 'yes':
-        return 'yes'
-    else:
-        return 'no'  # Or might loop forever in practice
-
-print(rec_yes_on_string("dummy"))
-```
 
 :::
 
