@@ -127,6 +127,28 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 
 :::
 
+## Universal computation examples
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid dna >}} **Rule 110 cellular automaton**
+    - Uses only 2 symbols and 8 simple rules
+    - Proven to be computationally universal
+    - Can simulate any computation given proper encoding
+    - Extremely simple yet infinitely powerful
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid globe >}} **Conway's Game of Life**
+    - Simple rules govern cell birth, death, survival
+    - Turing-complete: can compute anything computable
+    - Universal computation emerges from local interactions
+    - Potential natural occurrences in molecular systems
+
+:::
+
 ## Levels of computational abstraction
 
 ::: {.fragment style="margin-top: -0.2em; font-size: 0.85em;"}
@@ -154,7 +176,7 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 
 ![](06-universal-programs_5.png)
 
-## The strange `ignoreInput` program
+## Strange `ignoreInput` program
 
 ```{python}
 #| autorun: true
@@ -188,27 +210,6 @@ print(ignore_input('ANYTHING'))   # Ignores this input too
 
 ![](06-universal-programs_8.png)
 
-## Universal computation examples
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
-
-- {{< iconify fa6-solid dna >}} **Rule 110 cellular automaton**
-    - Uses only 2 symbols and 8 simple rules
-    - Proven to be computationally universal
-    - Can simulate any computation given proper encoding
-    - Extremely simple yet infinitely powerful
-
-:::
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
-
-- {{< iconify fa6-solid globe >}} **Conway's Game of Life**
-    - Simple rules govern cell birth, death, survival
-    - Turing-complete: can compute anything computable
-    - Universal computation emerges from local interactions
-    - Potential natural occurrences in molecular systems
-
-:::
 
 ## Recognizable vs decidable problems
 
