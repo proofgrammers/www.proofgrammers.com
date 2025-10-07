@@ -282,6 +282,15 @@ def recYesOnString(inString):
         return 'no'  
 ```
 
+::: incremental
+
+- Does this program recognize `yesOnString`? Yes!
+- Does this program decide `yesOnString`? No!
+- It may loop forever on some negative instances
+- Infinite loop is possible on the call to `universal()`
+
+:::
+
 ## Why universal computation matters
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
@@ -302,78 +311,4 @@ def recYesOnString(inString):
     - Program analysis and transformation tools
     - Understanding computational boundaries
 
-:::
-
-## Programming universal behavior
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 20
-def simple_universal(program_code, input_data):
-    """A simplified universal program for proofgrammers."""
-    try:
-        # Create a safe execution environment
-        namespace = {}
-        
-        # Execute the program definition
-        exec(program_code, namespace)
-        
-        # Find the main function (assume it's the first defined function)
-        main_function = None
-        for name, obj in namespace.items():
-            if callable(obj) and not name.startswith('_'):
-                main_function = obj
-                break
-        
-        if main_function:
-            return main_function(input_data)
-        else:
-            return "No function found"
-            
-    except Exception as e:
-        return f"Error: {e}"
-
-# Test with a sample program
-test_program = """
-def count_vowels(text):
-    vowels = 'aeiouAEIOU'
-    return str(len([c for c in text if c in vowels]))
-"""
-
-result = simple_universal(test_program, "Hello World")
-print(f"Vowel count: {result}")
-```
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Proofgrammers**: Express universal computation as executable Python!
-:::
-
-## Universal programs: infinite possibilities
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
-
-- {{< iconify fa6-solid infinity >}} **Universal capability**
-    - Any program can be simulated by a universal program
-    - Python's `exec()` and Turing machines both achieve universality
-    - Foundation for all modern computing systems
-    - Bridge between theoretical and practical computation
-
-:::
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
-
-- {{< iconify fa6-solid code >}} **Proofgrammer applications**
-    - Implement universal simulators in Python
-    - Understand program analysis and transformation
-    - Explore the boundaries of computation
-    - Connect abstract theory to concrete programming
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Next**: Apply universal computation to prove fundamental limits!
 :::
