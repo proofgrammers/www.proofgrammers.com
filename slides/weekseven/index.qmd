@@ -1,0 +1,67 @@
+---
+title: "Universal Computation"
+description: "Exploring a universal computer"
+date: "2025-10-06"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Simplest possible computer? How to define? Benefits?
+
+::: fragment
+
+- Define the Turing machine
+- Explain how it works
+- Explore universal computation
+- Connect to Python programming
+
+:::
+
+## Wait, why not just use Python?
+
+::: incremental
+
+- {{< iconify fa6-brands python >}} Python is great for practical programming
+- {{< iconify fa6-solid gear >}} Running a Python program depends on:
+  - {{< iconify fa6-solid desktop >}} Operating system
+  - {{< iconify fa6-solid code >}} Python interpreter
+  - {{< iconify fa6-solid boxes-stacked >}} Python libraries
+  - {{< iconify fa6-solid microchip >}} Hardware architecture
+- {{< iconify fa6-solid shield-halved >}} Completely rigorous proofs require more guarantees
+- {{< iconify fa6-solid robot >}} The Turing machine provides a simple, idealized model
+
+:::
+
+## Meet the Turing machine
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid cube >}} **What is a Turing machine?**
+    - **Mathematical model**: formal definition of computation
+    - **Simplest computer**: only basic operations needed
+    - **Universal power**: can compute anything computable
+    - **Historical significance**: foundation of computer science
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Why study Turing machines?**
+    - Understand fundamental limits of computation
+    - Bridge abstract theory and concrete programming
+    - Prove what problems are solvable or unsolvable
+    - Foundation for complexity theory and analysis
+
+:::
