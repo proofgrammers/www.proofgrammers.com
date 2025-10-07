@@ -1,6 +1,6 @@
 ---
-title: "Universal Computation"
-description: "Exploring a universal computer"
+title: "Universal Computer Programs"
+description: "Programs that can do anything"
 date: "2025-10-06"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -18,50 +18,388 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Simplest possible computer? How to define? Benefits?
+# What makes a program "universal"? Can any program execute any other program?
 
 ::: fragment
 
-- Define the Turing machine
-- Explain how it works
-- Explore universal computation
-- Connect to Python programming
+- {{< iconify fa6-solid robot >}} Explore universal Python programs and Turing machines
+- {{< iconify fa6-solid code >}} Develop automated program alteration techniques
 
 :::
 
-## Wait, why not just use Python?
-
-::: incremental
-
-- {{< iconify fa6-brands python >}} Python is great for practical programming
-- {{< iconify fa6-solid gear >}} Running a Python program depends on:
-  - {{< iconify fa6-solid desktop >}} Operating system
-  - {{< iconify fa6-solid code >}} Python interpreter
-  - {{< iconify fa6-solid boxes-stacked >}} Python libraries
-  - {{< iconify fa6-solid microchip >}} Hardware architecture
-- {{< iconify fa6-solid shield-halved >}} Completely rigorous proofs require more guarantees
-- {{< iconify fa6-solid robot >}} The Turing machine provides a simple, idealized model
-
-:::
-
-## Meet the Turing machine
+## Python programs executing other programs
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
-- {{< iconify fa6-solid cube >}} **What is a Turing machine?**
-    - **Mathematical model**: formal definition of computation
-    - **Simplest computer**: only basic operations needed
-    - **Universal power**: can compute anything computable
-    - **Historical significance**: foundation of computer science
+- {{< iconify fa6-brands python >}} **Python's built-in capability**
+    - `exec()` function executes Python code from strings
+    - Any programming language can execute its own code
+    - Python makes this particularly easy to implement
+    - Foundation for creating universal programs
 
 :::
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **Why study Turing machines?**
-    - Understand fundamental limits of computation
-    - Bridge abstract theory and concrete programming
-    - Prove what problems are solvable or unsolvable
-    - Foundation for complexity theory and analysis
+- {{< iconify fa6-solid lightbulb >}} **Simple example in action**
+    - `command = "print('abc', 5+2)"`
+    - `exec(command)` produces output `abc 7`
+    - The parameter `5+2` gets evaluated to `7`
+    - String becomes executable Python code
 
+:::
+
+## The universal Python program
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+
+```{python}
+#| autorun: true
+#| max-lines: 15
+def universal(prog_string, in_string):
+    """Execute any Python program with any input."""
+    # Execute the definition of the function in prog_string
+    # This defines the function but doesn't invoke it
+    namespace = {}
+    exec(prog_string, namespace)
+    
+    # Extract function name from the program string
+    # Find the first callable function in namespace
+    for name, obj in namespace.items():
+        if callable(obj) and not name.startswith('_'):
+            return obj(in_string)
+    
+    return "No function found"
+
+# Test the universal program
+prog = """
+def contains_gaga(inString):
+    return 'yes' if 'GAGA' in inString else 'no'
+"""
+
+print(universal(prog, 'GTTGAGA'))  # Should output: yes
+print(universal(prog, 'GTTAA'))    # Should output: no
+```
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Key insight**: Universal programs can simulate *any* other program!
+:::
+
+## What makes this universal?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid infinity >}} **Unlimited simulation power**
+    - Can execute any syntactically valid Python program
+    - Works with programs of arbitrary complexity
+    - No restrictions on program logic or structure
+    - Only limited by Python language capabilities
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid cog >}} **Three-step process**
+    - **Define**: `exec()` creates function in memory
+    - **Extract**: Get reference to the newly defined function  
+    - **Execute**: Call function with provided input
+    - Result matches original program's behavior
+
+:::
+
+## Universal Turing machines
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid brain >}} **Turing's 1936 breakthrough**
+    - Universal Turing machine $U$ can simulate any machine $M$
+    - Takes input $\text{str}(M, I) = \text{ESS}(\text{desc}(M), I)$
+    - Encodes machine description with input string
+    - $U(\text{str}(M, I)) = M(I)$ for all machines and inputs
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid gear >}} **Practical construction approach**
+    - Direct Turing machine construction is complex
+    - Easier: use Python-to-Turing machine equivalence
+    - Universal Python program proves universal Turing machine exists
+    - Same computational power, different representation
+
+:::
+
+## Levels of computational abstraction
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+
+| **Analysis Type** | **Program** | **Parameters** |
+|:------------------|:------------|:---------------|
+| Analyze a string | `containsGAGA.py` | `"ATGAG"` |
+| Analyze another program | `countLines.py` | `containsGAGA.py` |
+| Simulate another program | `universal.py` | `(containsGAGA.py, "ATGAG")` |
+| Simulate altered program | `alterGAGAtoTATA.py` | Modified `repeatCAorGA.py` |
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Progression**: From string analysis to program simulation to program alteration
+:::
+
+## Program alteration techniques
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+
+```{python}
+#| autorun: true
+#| max-lines: 20
+def repeat_ca_or_ga(in_string):
+    """Original program that returns specific patterns."""
+    if in_string == 'CA':
+        return 'CACA'
+    elif in_string == 'GA':
+        return 'GAGA'
+    else:
+        return 'unknown'
+
+def alter_gaga_to_tata(encoded_input):
+    """Alters programs: changes GAGA output to TATA."""
+    # In practice, would decode prog_string and new_in_string
+    # For demo: simulate the alteration
+    original_result = repeat_ca_or_ga('GA')
+    print(f"Original result: {original_result}")
+    
+    # The crucial alteration
+    if original_result == 'GAGA':
+        return 'TATA'
+    else:
+        return original_result
+
+# Demonstrate program alteration
+result = alter_gaga_to_tata("dummy_input")
+print(f"Altered result: {result}")
+```
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Power**: One program can modify and execute any other program
+:::
+
+## The strange `ignoreInput` program
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+
+```{python}
+#| autorun: true
+#| max-lines: 15
+def ignore_input(in_string):
+    """Ignores input, performs preset computation instead."""
+    # Simulate reading from files (in practice: rf('progString.txt'))
+    prog_string = """
+def contains_gaga(s):
+    return 'yes' if 'GAGA' in s else 'no'
+"""
+    
+    # Simulate reading input file (in practice: rf('inString.txt'))
+    preset_input = 'GGGGGGGTTT'
+    
+    # Execute the preset computation regardless of actual input
+    local_namespace = {}
+    exec(prog_string, local_namespace)
+    return local_namespace['contains_gaga'](preset_input)
+
+# Input is ignored - always same result
+print(ignore_input('GAGAGA'))     # Ignores this input
+print(ignore_input('ANYTHING'))   # Ignores this input too
+```
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Purpose**: Fixed computation regardless of input - crucial for proofs!
+:::
+
+## Universal computation in nature
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid dna >}} **Rule 110 cellular automaton**
+    - Uses only 2 symbols and 8 simple rules
+    - Proven to be computationally universal
+    - Can simulate any computation given proper encoding
+    - Extremely simple yet infinitely powerful
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid globe >}} **Conway's Game of Life**
+    - Simple rules govern cell birth, death, survival
+    - Turing-complete: can compute anything computable
+    - Universal computation emerges from local interactions
+    - Potential natural occurrences in molecular systems
+
+:::
+
+## Rule 110 cellular automaton visualization
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.75em;"}
+
+```
+Initial: --GG--------------------------------------------------------------
+Step 1:  -GG-G-------------------------------------------------------------
+Step 2:  GG-GGG------------------------------------------------------------
+Step 3:  -GGG-GG-----------------------------------------------------------
+Step 4:  GG-GGG-G----------------------------------------------------------
+Step 5:  -GGG-GGGG---------------------------------------------------------
+Step 6:  GG-GGG--GG--------------------------------------------------------
+Step 7:  -GGG-G-GG-G-------------------------------------------------------
+Step 8:  GG-GGGGGG-GG------------------------------------------------------
+```
+
+Each row represents one computational step
+Each cell's next state depends on its three neighbors above
+Simple rules create complex, universal computational behavior
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Amazing**: 8 simple rules = unlimited computational power
+:::
+
+## Recognizable vs decidable problems
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid check >}} **Recognizable problems**
+    - Program correctly handles all positive instances
+    - May loop forever on negative instances
+    - `YESONSTRING` and `CRASHONSTRING` are recognizable
+    - Universal simulation enables recognition
+
+:::
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+
+```{python}
+#| autorun: true
+#| max-lines: 12
+def rec_yes_on_string(encoded_input):
+    """Recognizes YESONSTRING - may not terminate on negatives."""
+    # Simulate decoding (prog_string, new_in_string)
+    prog_string = "def test(s): return 'yes'"
+    input_string = "test_input"
+    
+    # Simulate universal execution
+    namespace = {}
+    exec(prog_string, namespace)
+    result = namespace['test'](input_string)
+    
+    if result == 'yes':
+        return 'yes'
+    else:
+        return 'no'  # Or might loop forever in practice
+
+print(rec_yes_on_string("dummy"))
+```
+
+:::
+
+## Why universal computation matters
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid lightbulb >}} **Theoretical foundations**
+    - Proves existence of problems beyond computation
+    - Shows limits of what any computer can solve
+    - Enables rigorous mathematical analysis of computation
+    - Foundation for complexity theory and decidability
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid rocket >}} **Practical implications**
+    - Interpreters, compilers, virtual machines
+    - Emulation and simulation systems
+    - Program analysis and transformation tools
+    - Understanding computational boundaries
+
+:::
+
+## Programming universal behavior
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 20
+def simple_universal(program_code, input_data):
+    """A simplified universal program for proofgrammers."""
+    try:
+        # Create a safe execution environment
+        namespace = {}
+        
+        # Execute the program definition
+        exec(program_code, namespace)
+        
+        # Find the main function (assume it's the first defined function)
+        main_function = None
+        for name, obj in namespace.items():
+            if callable(obj) and not name.startswith('_'):
+                main_function = obj
+                break
+        
+        if main_function:
+            return main_function(input_data)
+        else:
+            return "No function found"
+            
+    except Exception as e:
+        return f"Error: {e}"
+
+# Test with a sample program
+test_program = """
+def count_vowels(text):
+    vowels = 'aeiouAEIOU'
+    return str(len([c for c in text if c in vowels]))
+"""
+
+result = simple_universal(test_program, "Hello World")
+print(f"Vowel count: {result}")
+```
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Proofgrammers**: Express universal computation as executable Python!
+:::
+
+## Universal programs: infinite possibilities
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
+
+- {{< iconify fa6-solid infinity >}} **Universal capability**
+    - Any program can be simulated by a universal program
+    - Python's `exec()` and Turing machines both achieve universality
+    - Foundation for all modern computing systems
+    - Bridge between theoretical and practical computation
+
+:::
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+
+- {{< iconify fa6-solid code >}} **Proofgrammer applications**
+    - Implement universal simulators in Python
+    - Understand program analysis and transformation
+    - Explore the boundaries of computation
+    - Connect abstract theory to concrete programming
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Next**: Apply universal computation to prove fundamental limits!
 :::
