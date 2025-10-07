@@ -253,7 +253,7 @@ print(ignore_input('ANYTHING'))   # Ignores this input too
 - {{< iconify fa6-solid lightbulb >}} **Recognizable** means that a language or
 decision problem can correctly decide all positive instances. In contrast,
 **decidable** means that a language or decision problem can correctly decide all
-instances, both positive and negative. *Remember, recognizable is harder than
+instances, both positive and negative. *Remember, recognizable is "easier" than
 decidable*!
 
 - {{< iconify fa6-solid check >}} **Summary of recognizable problems**
