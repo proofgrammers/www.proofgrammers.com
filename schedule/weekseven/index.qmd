@@ -1,6 +1,6 @@
 ---
 title: "Grasping Universal Computation"
-description: "Create and Use Simple Computers"
+description: "Create and Use Universally Powerful Programs"
 date: 2025-10-06
 layout: full
 toc: true
