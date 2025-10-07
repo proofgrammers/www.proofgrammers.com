@@ -79,7 +79,7 @@ img.quarto-figure-center {
 }
 
 .reveal .r-stretch, .reveal .stretch {
-  width: 97% !important;
+  width: 95% !important;
   height: auto !important;
   max-width: 100% !important;
   border: 3px solid #444;
