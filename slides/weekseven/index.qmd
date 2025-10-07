@@ -204,7 +204,7 @@ print(ignore_input('ANYTHING'))   # Ignores this input too
 
 ![](06-universal-programs_8.png)
 
-## Recognizable versus decidable problems
+## Recognizable versus decidable
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
