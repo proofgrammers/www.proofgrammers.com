@@ -27,6 +27,21 @@ format:
 
 :::
 
+## One programs runs another
+
+::: incremental
+
+- **Python program**: Python interpreter runs any program
+- **Web browser**:
+    - Browser renders any web page
+    - Browser runs any JavaScript program
+    - Browser runs any WebAssembly program
+- **Operating system**: runs any executable program
+- Isn't it magical that one program can run another?
+- Why is this possible? What are the benefits?
+
+:::
+
 ## Running Python programs
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
