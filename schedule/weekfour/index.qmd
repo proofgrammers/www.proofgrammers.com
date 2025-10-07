@@ -1,5 +1,5 @@
 ---
-title: Understanding Computational Problems
+title: Grasp Computational Problems
 description: "Explore Foundational Concepts of Computation"
 date: 2025-09-15
 layout: full
