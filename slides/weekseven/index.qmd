@@ -323,3 +323,13 @@ either program feasibility or complexity to the implementation of both correct
 and efficient real-world Python programs.
 
 :::
+
+# Reduction techniques, like Turing reduction, aid when proving that a problem is "hard"!
+
+::: fragment
+
+- "Reduction for hardness" helps with learning objective **CS-204-4**, in which
+you learn how to prove a problem is uncomputable or otherwise "hard". Stay tuned
+for more!
+
+:::
