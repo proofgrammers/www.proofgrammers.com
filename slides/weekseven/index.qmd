@@ -113,10 +113,10 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid gears >}} **Three-step process**
-    - **Define**: `exec()` creates function in memory
-    - **Extract**: Get reference to the newly defined function  
-    - **Execute**: Call function with provided input
-    - Result matches original program's behavior
+    - **Step One: Define**: `exec()` creates function in memory
+    - **Step Two: Extract**: Get reference to the newly defined function  
+    - **Step Three: Execute**: Call function with provided input
+    - Wow, the result matches program behavior if defined as a function!
 
 :::
 
