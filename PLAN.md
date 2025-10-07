@@ -150,6 +150,47 @@ will be revising this content, essentially using it as a starting point.
 - Please follow all the rules and regulations for creating this content and
 make sure that you notify me when you have completed this task.
 
+## Implement New Slides for Chapter Six, "Universal Computer Programs: Programs that Can Do Anything"
+
+- You have access to the content of the book in the file:
+`What-Can-Be-Computed.pdf` and `What-Can-Be-Computed.md` that is in the root of
+this repository.
+- You have access to the slides of the book in PPTX (which is hard for you to
+read) and a QMD file (which is easier for you to read) in the
+`theoreticalmachines/wcbc-slides/` directory.
+- You have access to the images that were created from the slides for this
+chapter. These images may be especially important because of the fact that
+there are some diagrams of the output of a universal computer.
+- Please consider adding the image for Figure 6.6 with the sub-caption that
+starts "Example output of "rule 110" cellular automaton ..." and Figure
+6.9 as a visualization for ignoreInput.py.
+- You have access to the source code connected to this book in the directory
+`theoreticalmachines/wcbc-code/`
+- I have created a template file for the slides in the
+`slides/weeksix/index.qmd`
+- I would like you to create a starting version of the slides for Chapter Six:
+in the `slides/weeksix/index.qmd` file.
+- Figure 6.7 is important and I think that a table connected to it should
+definitely be in the slides for this chapter.
+- One challenge of this chapter is that it contains a lot of source code
+examples that may not run correctly unless you include all needed source
+code from the book's archive. Do not include a source code example unless
+it is self-contained and it will run directly without an extra dependencies.
+- Make sure to only explain concepts that are connected to Chapter Six.
+- Make sure to review all the prior slides that I have created in the `slides/`
+directory and the subdirectories for prior weeks in `weekone/` and `weektwo/`
+and `weekthree/` and `weekfour/` and `weeksix/` to ensure that your slides are
+formatted and laid out just like the content that I have already created.
+- Do not make slides if they are not directly connected to the content in the
+book, the content in the slides (i.e., the PPTX or the extracted QMD file) or
+in the source code that connects to this chapter of the book.
+- Make sure that you connect the slides to the theme of being a "proofgrammer"
+as explained in the course syllabus that is available in `syllabus/index.qmd`.
+- Make sure that the concept that you create is short, succinct, and clear. I
+will be revising this content, essentially using it as a starting point.
+- Please follow all the rules and regulations for creating this content and
+make sure that you notify me when you have completed this task.
+
 ## Support for Content
 
 ### Week Four Slides Enhancement: Set Operations Addition
