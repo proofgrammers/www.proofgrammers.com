@@ -156,8 +156,6 @@ print(universal(prog, 'GTTAA'))    # Should output: no
 
 ## The strange `ignoreInput` program
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
-
 ```{python}
 #| autorun: true
 #| max-lines: 15
@@ -168,10 +166,8 @@ def ignore_input(in_string):
 def contains_gaga(s):
     return 'yes' if 'GAGA' in s else 'no'
 """
-    
     # Simulate reading input file (in practice: rf('inString.txt'))
     preset_input = 'GGGGGGGTTT'
-    
     # Execute the preset computation regardless of actual input
     local_namespace = {}
     exec(prog_string, local_namespace)
@@ -182,13 +178,17 @@ print(ignore_input('GAGAGA'))     # Ignores this input
 print(ignore_input('ANYTHING'))   # Ignores this input too
 ```
 
+::: {.fragment .fade style="font-size: 1.0em;"}
+
+- **Purpose**: Fixed computation regardless of input - crucial for proofs!
+
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Purpose**: Fixed computation regardless of input - crucial for proofs!
-:::
+## Program to ignore input
 
-## Universal computation in nature
+![](06-universal-programs_8.png)
+
+## Universal computation examples
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"} 
 
