@@ -276,9 +276,9 @@ otherwise
 
 :::
 
-## Summarizing the key programs
+## Code `YesOnString` $\leq_T$ `ContainsGAGA`
 
-::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.725em;"}
+::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.715em;"}
 
 - `yesViaGAGA`: uses the `GAGAOnString` (i.e., `ContainsGAGA`) oracle to decide
   `YesOnString` by calling the oracle on the transformed program.
