@@ -357,7 +357,7 @@ which we have previously proven in a separate proof by contradiction!
 
 ::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.8em;"}
 
-- Importantly, all of these uncomputability proofs start from a single 
+- **Key**: Importantly, all of these uncomputability proofs start from a single 
 problem, such as `YesOnString`, that we've proven to be uncomputable!
 
 -  **Building hierarchies**: Transitivity helps organize problems by hardness
@@ -371,7 +371,7 @@ reduction chain! Okay, let's see what this uncomputability tree looks like!
 
 ## Visualize uncomputability tree
 
-![](07-reductions_5.png)
+![](07-reductions_5.png){ .sensible-size-thick-border }
 
 # What are different ways that you can express the tree's relationships?
 
@@ -479,14 +479,77 @@ def testYesViaHalts():
 ::: {.incremental style="margin-top: 0.2em; font-size: 0.725em;"}
 
 - Use the `haltsOnString` "oracle" to solve `YesOnString`, meaning `YesOnString`
-$\leq_T$ `HaltsOnString`. Wow, we have shown that `HaltsOnString` is
-uncomputable!
+$\leq_T$ `HaltsOnString`. Next, what is the implementation of `haltsOnString`?
+
+:::
+
+## Define the `haltsOnString` program
+
+```python
+import utils; from utils import rf
+from universal import universal
+def haltsOnString(progString, inString):
+    # if it doesn't complete before timing out, assume it is in an infinite loop
+    val = utils.runWithTimeout(None, universal, progString, inString)
+    if val != None:
+        return 'yes'
+    else:
+        return 'no'
+
+def testhaltsOnString():
+    for (progName, inString, solution) in [
+            ('loopIfContainsGAGA.py', 'GAGAGAGAG', 'no'), \
+            ('loopIfContainsGAGA.py', 'TTTTGGCCGGT', 'yes') ]:
+        val = haltsOnString(rf(progName), inString)
+        utils.tprint( (progName, inString), ":", val )
+        assert val == solution
+```
+
+::: {.incremental style="margin-top: 0.2em; font-size: 0.725em;"}
+
+- This approximate version uses `runWithTimeout` to simulate halting behavior
+since the `universal` program may run forever with programs having infinite
+loops
+
+:::
+
+## Define the `alterYesToHalt` program
+
+```python
+import utils; from utils import rf
+from universal import universal 
+def alterYesToHalt(inString):
+    (progString, newInString) = utils.DESS(inString)
+    val = universal(progString, newInString)
+    if val == 'yes':
+        # return value is irrelevant, since returning any string halts
+        return 'halted' 
+    else:
+        # deliberately enter infinite loop
+        utils.loop()  
+
+def testAlterYesToHalt():
+    for (progName, inString, solution) in [
+            ('containsGAGA.py', 'GAGAGAGAG', 'halted'),
+            ('containsGAGA.py', 'TTTTGGCCGGT', None),
+    ]:
+        combinedString = utils.ESS(rf(progName), inString)
+        val = utils.runWithTimeout(None, alterYesToHalt, combinedString)
+        utils.tprint( (progName, inString), ":", val )
+        assert val == solution
+```
+
+::: {.incremental style="margin-top: 0.2em; font-size: 0.725em;"}
+
+- The `alterYesToHalt` program returns `'halted'` if $P(I)=$`'yes'` and
+otherwise enters an infinite loop using the utility function `utils.loop()`
+function
 
 :::
 
 ## Reduction proof strategy
 
-![](07-reductions_17.png){ scale=85% }
+![](07-reductions_17.png){ .sensible-square-thick-border height=95% }
 
 ## Key takeaways for proofgrammers
 
