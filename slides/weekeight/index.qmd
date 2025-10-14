@@ -40,6 +40,15 @@ and efficient real-world Python programs.
 
 :::
 
+# Reduction techniques, like Turing reduction, aid when proving that a problem is "hard"!
+
+::: fragment
+
+- "Reduction for hardness" helps with learning objective **CS-204-4**, in which
+you learn how to prove a problem is uncomputable or otherwise "hard". Okay,
+let's dive in!
+
+:::
 ## Prove computational problem is hard
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
@@ -73,7 +82,7 @@ and efficient real-world Python programs.
 prove reduction approach works
   - Assume $G$ is computable
   - Assume we have a reduction from $F$ to $G$ 
-  - This means that $F$ is also computable, 
+  - This means that $F$ is also computable
   - This contradicts the fact that $F$ is uncomputable
   - This means the initial assumption was incorrect
   - We can therefore conclude that $G$ is uncomputable
@@ -105,21 +114,24 @@ prove reduction approach works
 
 :::
 
-# Example: Reducing `YESONSTRING` to `CONTAINSGAGA`
+## Reduce `YesOnString` to `ContainsGAGA`
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid target >}} **Goal**: Prove `CONTAINSGAGA` is uncomputable
-- {{< iconify fa6-solid known >}} **Known fact**: `YESONSTRING` is uncomputable (Chapter 3)
-- {{< iconify fa6-solid strategy >}} **Strategy**: Show `YESONSTRING` $\leq_T$ `CONTAINSGAGA`
+- {{< iconify fa6-solid target >}} **Goal**: Prove `ContainsGAGA` is uncomputable
+- {{< iconify fa6-solid known >}} **Known fact**: `YesOnString` is uncomputable (Chapter 3)
+- {{< iconify fa6-solid strategy >}} **Strategy**: Show `YesOnString` $\leq_T$ `ContainsGAGA`
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Problem definitions**:
-    - `YESONSTRING`: Given program $P$ and input $I$, does $P(I) = $ "yes"?
-    - `CONTAINSGAGA`: Given program $P$ and input $I$, does $P(I)$ contain "GAGA"?
+    - `YesOnString`: Given program $P$ and input $I$, does $P(I) = $ "yes"?
+    - `ContainsGAGA`: Given program $P$ and input $I$, does $P(I)$ contain "GAGA"?
+- {{< iconify fa6-solid plan >}} **Reduction strategy**:
+    - Transform any instance of `YesOnString` into an instance of `ContainsGAGA`
+    - Use oracle for `ContainsGAGA` to solve `YesOnString`
 
 :::
 
