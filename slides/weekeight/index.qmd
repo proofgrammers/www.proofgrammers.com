@@ -314,7 +314,7 @@ which we have previously proven in a separate proof by contradiction!
 
 ::: {.fragment .boxed-content style="margin-top: 0em; font-size: 0.85em;"}
 
-- **Contradiction**: Cannot have both computable and uncomputable
+- **Contradiction**: Cannot have _both_ computable and uncomputable
 - **Realization**: Our initial assumption about `ContainsGAGA` was wrong
 - **Conclusion**: `ContainsGAGA` must be uncomputable via reduction
 - **This completes the proof that `ContainsGAGA` is uncomputable**!
