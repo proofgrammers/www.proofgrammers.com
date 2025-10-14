@@ -271,7 +271,15 @@ def testAlterYesToGAGA():
 ::: {.fragment style="margin-top: 0em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid code >}} **Key idea**: The `alterYesToGAGA` function
-transforms the output of any program to either "GAGA" or "no"
+transforms the output of any program to either "GAGA" if output is "yes" or "no"
+otherwise
+
+:::
+
+## Summarizing the key programs
+
+::: fragment
+
 
 :::
 
@@ -281,8 +289,8 @@ transforms the output of any program to either "GAGA" or "no"
 
 - {{< iconify fa6-solid gears >}} **Step 1**: Assume `ContainsGAGA` is
 computable
-- {{< iconify fa6-solid gears >}} **Step 2**: Then `YesOnString` is computable
-(via our reduction)
+- {{< iconify fa6-solid gears >}} **Step 2**: Then `YesOnString` is computable,
+via the reduction
 - {{< iconify fa6-solid gears >}} **Step 3**: But `YesOnString` is uncomputable,
 which we have previously proven in a separate proof by contradiction!
 
@@ -291,8 +299,8 @@ which we have previously proven in a separate proof by contradiction!
 ::: {.fragment .boxed-content style="margin-top: 0em; font-size: 0.85em;"}
 
 - **Contradiction**: Cannot have both computable and uncomputable
-- **Realization**: Our initial assumption was wrong
-- **Conclusion**: `ContainsGAGA` must be uncomputable
+- **Realization**: Our initial assumption about `ContainsGAGA` was wrong
+- **Conclusion**: `ContainsGAGA` must be uncomputable via reduction
 - **This completes the proof that `ContainsGAGA` is uncomputable**!
 
 :::
