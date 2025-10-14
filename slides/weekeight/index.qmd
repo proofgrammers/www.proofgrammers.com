@@ -28,7 +28,7 @@ uncomputable.
 - **CS-204-2**: Correctly use one or more variants of the Turing machine (TM)
 abstraction to both describe and analyze the solution to a computational
 problem.
-- **CS-204-3**: Correctly use one or more variants of the finite statement
+- **CS-204-3**: Correctly use one or more variants of the finite state
 machine (FSM) abstraction to describe and analyze the solution to a
 computational problem.
 - **CS-204-4**: Use a formal proof technique to correctly classify a problem
@@ -278,8 +278,19 @@ otherwise
 
 ## Summarizing the key programs
 
-::: fragment
+::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.75em;"}
 
+- `yesViaGAGA`: uses the `GAGAOnString` (i.e., `ContainsGAGA`) oracle to decide
+  `YesOnString` by calling the oracle on the transformed program.
+    - `yesViaGAGA` is functionally equivalent to `YesOnString`
+    - However, `yesViaGAGA` uses `GAGAOnString` as a key building block
+
+- `alterYesToGAGA.py`: transforms an instance `(P, I)` so that if `P(I)`
+  returns `"yes"` the transformed program prints `"GAGA"`, otherwise prints
+  `"no"`.
+
+- `GAGAOnString`: oracle wrapper that simulates a program and returns `"yes"`
+iff the program's standard output equals `GAGA`.
 
 :::
 
