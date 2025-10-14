@@ -1,6 +1,6 @@
 ---
 title: "Turing Reductions"
-description: "Proving problems are hard using reduction techniques"
+description: "Proving problems are hard using reduction"
 date: "2025-10-13"
 date-format: long
 author: Gregory M. Kapfhammer
