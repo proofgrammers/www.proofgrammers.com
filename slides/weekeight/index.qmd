@@ -91,7 +91,7 @@ prove reduction approach works
 
 ## Example of Turing reduction concepts
 
-![](07-reductions_0.png)
+![](07-reductions_0.png){ scale=85% } 
 
 ## Reduction as Python source code
 
@@ -258,8 +258,8 @@ which we have previously proven in a separate proof by contradiction!
 
 ::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.8em;"}
 
-- Importantly, all of these uncomputability proofs start from a single known
-uncomputable problem, such as `YesOnString`!
+- Importantly, all of these uncomputability proofs start from a single 
+problem, such as `YesOnString`, that we've proven to be uncomputable!
 
 -  **Building hierarchies**: Transitivity helps organize problems by hardness
 
@@ -363,24 +363,11 @@ def testYesViaHalts():
         assert val == solution
 ```
 
-::: {.incremental style="margin-top: 0.2em; font-size: 0.7em;"}
+::: {.incremental style="margin-top: 0.2em; font-size: 0.725em;"}
 
 - Use the `haltsOnString` "oracle" to solve `YesOnString`, meaning `YesOnString`
 $\leq_T$ `HaltsOnString`. Wow, we have shown that `HaltsOnString` is
 uncomputable!
-
-:::
-
-# Many reductions in complexity theory
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
-
-- {{< iconify fa6-solid speed >}} **Polynomial-time reductions**: Used for
-NP-completeness proofs
-- {{< iconify fa6-solid limit >}} **Resource bounds**: Reduction must be
-computed efficiently
-- {{< iconify fa6-solid practical >}} **Implication**: Hard problems
-remain hard under efficient reductions
 
 :::
 
