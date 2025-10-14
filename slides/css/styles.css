@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Ubuntu+Mono&display=swap");
 
 .reveal {
-  background-color: #F9F7FB;
+  background-color: #f9f7fb;
   color: #333333;
 }
 
@@ -11,12 +11,12 @@
 }
 
 .reveal a:hover {
-  color: #7A4E99 !important;
+  color: #7a4e99 !important;
   text-decoration: underline;
 }
 
 .reveal pre {
-  background-color: #F9F7FB;
+  background-color: #f9f7fb;
 }
 
 .reveal pre code {
@@ -34,13 +34,14 @@
 }
 
 .reveal code {
-  color: #8A2BE2; /* Brighter Purple */
+  color: #8a2be2;
+  /* Brighter Purple */
   background-color: rgba(0, 0, 0, 0);
   white-space: pre-wrap;
 }
 
 code span.bu {
-  color: #5D3A74;
+  color: #5d3a74;
 }
 
 p.codespacer {
@@ -73,9 +74,23 @@ img.quarto-figure-center {
   height: auto !important;
   max-width: 100% !important;
   display: block;
-  margin-top: .75em !important;
+  margin-top: 0.75em !important;
   margin-left: auto;
   margin-right: auto;
+}
+
+img.reduced-thick-border {
+  max-width: 50% !important;
+  max-height: 50% !important;
+  border: 3px solid #444;
+  border-radius: 8px;
+}
+
+img.sensible-size-thick-border {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  border: 3px solid #444;
+  border-radius: 8px;
 }
 
 img.thick-border {
@@ -83,9 +98,19 @@ img.thick-border {
   border-radius: 8px;
 }
 
-.reveal .r-stretch, .reveal .stretch {
+img.sensible-square-thick-border {
+  width: 65% !important;
+  height: 70% !important;
+  max-width: 100% !important;
+  max-height: 95% !important;
+  border: 3px solid #444;
+  border-radius: 8px;
+}
+
+.reveal .r-stretch,
+.reveal .stretch {
   width: 95% !important;
-  height: 80% !important;
+  height: 90% !important;
   max-width: 100% !important;
   max-height: 95% !important;
   border: 3px solid #444;
