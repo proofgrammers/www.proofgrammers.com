@@ -270,13 +270,32 @@ Turing reduction chain! Okay, let's see what this looks like!
 
 :::
 
+## Tree of uncomputable problems
+
+![](07-reductions_5.png)
+
+# What are different ways that you can express the tree's relationships?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- `YesOnString` is at least as hard as `HaltsOnString`
+- `HaltsOnString` is at least as hard as `HaltsOnEmpty`
+- `HaltsOnString` is at least as hard as `NumStepsOnString`
+- `YesOnString` is at least as hard as `HaltsOnEmpty`
+- `YesOnString` is at least as hard as `NumStepsOnString`
+
+:::
+
 # Reductions in complexity theory
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid speed >}} **Polynomial-time reductions**: Used for NP-completeness proofs
-- {{< iconify fa6-solid limit >}} **Resource bounds**: Reduction must be computed efficiently
-- {{< iconify fa6-solid practical >}} **Practical implications**: Hard problems remain hard under efficient reductions
+- {{< iconify fa6-solid speed >}} **Polynomial-time reductions**: Used for
+NP-completeness proofs
+- {{< iconify fa6-solid limit >}} **Resource bounds**: Reduction must be
+computed efficiently
+- {{< iconify fa6-solid practical >}} **Practical implications**: Hard problems
+remain hard under efficient reductions
 
 :::
 
@@ -293,22 +312,27 @@ Turing reduction chain! Okay, let's see what this looks like!
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.75em;"}
 
-- {{< iconify fa6-solid bug >}} **Program analysis**: Many verification problems are uncomputable
-- {{< iconify fa6-solid approximation >}} **Practical solutions**: Use approximation algorithms and heuristics
-- {{< iconify fa6-solid tools >}} **Static analysis tools**: Work within computable approximations
+- {{< iconify fa6-solid bug >}} **Program analysis**: Many verification problems
+are uncomputable
+- {{< iconify fa6-solid approximation >}} **Practical solutions**: Use
+approximation algorithms and heuristics
+- {{< iconify fa6-solid tools >}} **Static analysis tools**: Work within
+computable approximations
 
 :::
 
-# Key takeaways for proofgrammers
-
-## Essential concepts mastered today
+## Key takeaways for proofgrammers
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid concept1 >}} **Turing reductions**: Systematic way to prove problems uncomputable
-- {{< iconify fa6-solid concept2 >}} **Oracle methodology**: Assume solution exists to build contradiction
-- {{< iconify fa6-solid concept3 >}} **Proof by contradiction**: Powerful technique for impossibility results
-- {{< iconify fa6-solid concept4 >}} **Problem hierarchies**: Organize computational problems by difficulty
+- {{< iconify fa6-solid concept1 >}} **Turing reductions**: Systematic way to
+prove problems uncomputable
+- {{< iconify fa6-solid concept2 >}} **Oracle methodology**: Assume solution
+exists to build contradiction
+- {{< iconify fa6-solid concept3 >}} **Proof by contradiction**: Powerful
+technique for impossibility results
+- {{< iconify fa6-solid concept4 >}} **Problem hierarchies**: Organize
+computational problems by difficulty
 
 :::
 
@@ -316,8 +340,11 @@ Turing reduction chain! Okay, let's see what this looks like!
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid code >}} **Program transformation**: Modify programs to change their behavior
-- {{< iconify fa6-solid proof >}} **Reduction construction**: Build systematic arguments for hardness
-- {{< iconify fa6-solid reasoning >}} **Mathematical reasoning**: Apply formal logic to computational problems
+- {{< iconify fa6-solid code >}} **Program transformation**: Modify programs to
+change their behavior
+- {{< iconify fa6-solid proof >}} **Reduction construction**: Build systematic
+arguments for hardness
+- {{< iconify fa6-solid reasoning >}} **Mathematical reasoning**: Apply formal
+logic to computational problems
 
 :::
