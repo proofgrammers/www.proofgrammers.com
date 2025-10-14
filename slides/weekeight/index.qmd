@@ -1,5 +1,5 @@
 ---
-title: "Reductions"
+title: "Turing Reductions"
 description: "Proving problems are hard using reduction techniques"
 date: "2025-10-13"
 date-format: long
@@ -18,7 +18,7 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Course learning objectives
+# Learning objectives
 
 ::: {.fragment .callout-note icon=true title="Learning Objectives for Theoretical Machines"}
 
@@ -40,7 +40,7 @@ and efficient real-world Python programs.
 
 :::
 
-# How do we prove a computational problem is hard?
+## Prove computational problem is hard
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
@@ -53,23 +53,16 @@ and efficient real-world Python programs.
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid gear >}} **Two proof approaches we've seen**
-    - **Direct proof**: Diagonalization argument (like halting problem)
-    - **Reduction proof**: Transform known hard problem to new problem
+- {{< iconify fa6-solid gear >}} **Two proof approaches to try**
+    - **Contradiction proof**: Prove uncomputability by contradiction
+    - **Reduction proof**: Constructively transform a known hard problem $F$ to
+    a new problem $G$, thereby showing that new problem $G$ is at least as hard
+    as known problem $F$
+    - **Let's explore how to perform a reduction proof**!
 
 :::
 
-## Reduction is the focus today
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
-
-- {{< iconify fa6-solid arrow-right >}} **Key insight**: If we can solve new problem, then we can solve known uncomputable problem
-- {{< iconify fa6-solid arrow-right >}} **Contradiction**: Known problem is uncomputable by previous proof
-- {{< iconify fa6-solid arrow-right >}} **Conclusion**: New problem must also be uncomputable
-
-:::
-
-# What is a Turing reduction?
+## What is a Turing reduction?
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
