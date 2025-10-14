@@ -50,10 +50,479 @@ for more!
 
 :::
 
-# What is a Turing reduction?
+# Two ways to use reductions
+
+## Reduction for **easiness** vs. **hardness**
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-right >}} **Mathematicians & Engineers**: Use reductions to make hard problems easy
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-right >}} **Theoretical Computer Scientists**: Use reductions to prove problems are hard!
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**As proofgrammers, we focus on reductions for hardness to prove uncomputability**
+:::
+
+# Reduction for easiness: Simple example
+
+## Transform `ISODD` into `LASTDIGITISEVEN`
 
 ::: fragment
+**Insight**: An integer $M$ is odd if and only if the last digit of $M + 1$ is even
+:::
 
-- Explain a Turing reduction
+```{pyodide}
+#| autorun: true
+def lastDigitIsEven(inString):
+    """Check if last digit of number is even."""
+    lastDigit = inString[-1]  # Get last character
+    return 'yes' if lastDigit in '02468' else 'no'
 
+def isOddViaReduction(inString):
+    """Check if number is odd by reducing to LASTDIGITISEVEN."""
+    inStringPlusOne = int(inString) + 1
+    return lastDigitIsEven(str(inStringPlusOne))
+
+# Test the reduction
+print(f"Is 17 odd? {isOddViaReduction('17')}")
+print(f"Is 24 odd? {isOddViaReduction('24')}")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Key insight**: We solved `ISODD` by transforming it to `LASTDIGITISEVEN`
+:::
+
+# Reduction for hardness: Core concept
+
+## Use known uncomputable problem to prove new problem uncomputable
+
+::: fragment
+**Problem**: We suspect `GAGAONSTRING` is uncomputable but need proof
+:::
+
+::: fragment
+**Solution**: Reduce known uncomputable `YESONSTRING` to `GAGAONSTRING`
+:::
+
+::: {.incremental}
+1. **Assume** `GAGAONSTRING` is computable
+2. **Then** `YESONSTRING` is also computable (via reduction)
+3. **But** `YESONSTRING` is uncomputable (proven in Chapter 3)
+4. **Contradiction!** Therefore `GAGAONSTRING` is uncomputable
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Proof strategy**: Use contradiction to establish uncomputability
+:::
+
+# What is a Turing reduction?
+
+## **Formal definition** for proofgrammers
+
+::: fragment
+**Turing Reduction**: Let $F$ and $G$ be computational problems. We say that $F$ has a Turing reduction to $G$ if we can write a Python program solving $F$, after first assuming the existence of a program solving $G$.
+:::
+
+::: fragment
+**Notation**: If $F$ has a Turing reduction to $G$, we write $F \leq_T G$
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid lightbulb >}} **Think of it**: $F \leq_T G$ means "$F$ is no harder than $G$"
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**As proofgrammers**: We express reductions as executable Python programs
+:::
+
+# Oracle programs: The magic ingredient
+
+## **Oracle function**: Mythical program that solves problem $G$
+
+```{pyodide}
+#| autorun: true
+# Example: Oracle function for GAGAONSTRING
+def GAGAOnString_oracle(progString, inString):
+    """Oracle that magically solves GAGAONSTRING problem."""
+    # This is mythical - we pretend it exists!
+    print("Oracle called: Would determine if program outputs 'GAGA'")
+    return "yes"  # Pretend result for demonstration
+
+# Use oracle in our reduction
+def yesViaGAGA(progString, inString):
+    """Solve YESONSTRING by reducing to GAGAONSTRING."""
+    # Transform program to output 'GAGA' instead of 'yes'
+    # Then call oracle on transformed program
+    return GAGAOnString_oracle("transformed_program", inString)
+
+print("Reduction uses oracle as black box subroutine")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Key point**: We assume oracle exists, even for uncomputable problems!
+:::
+
+# Understanding the $\leq_T$ symbol
+
+## Why does $F \leq_T G$ mean "$F$ is easier than $G$"?
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-right >}} If we can solve $G$, we immediately know how to solve $F$
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-right >}} We might solve $F$ directly without learning anything about $G$
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-right >}} Therefore $F$ is "no harder than" $G$
+:::
+
+::: fragment
+**Beware confusion!** {{< iconify fa6-solid triangle-exclamation >}}
+
+In ordinary math: "reduce 27 by 6" gives $21 \leq 27$
+
+In computation: "reduce $F$ to $G$" gives $F \leq_T G$
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Remember**: $F \leq_T G$ orders problems by increasing hardness, left to right
+:::
+
+# Transitivity: Chaining reductions
+
+## **Claim**: If $F \leq_T G$ and $G \leq_T H$, then $F \leq_T H$
+
+```{pyodide}
+#| autorun: true
+# Demonstrate transitivity with example programs
+def F_program():
+    """Program F that uses oracle G."""
+    print("F calls G as subroutine")
+    return G_oracle()
+
+def G_oracle():
+    """Program G that uses oracle H."""
+    print("G calls H as subroutine")
+    return H_oracle()
+
+def H_oracle():
+    """Base oracle H that solves hardest problem."""
+    print("H solves the hardest problem")
+    return "solution"
+
+# Chain of reductions: F ≤T G ≤T H
+print("Reduction chain:")
+result = F_program()
+print(f"Final result: {result}")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Insight**: Transitivity lets us build chains of hardness proofs
+:::
+
+# Propagation of computability
+
+## **Key theorem** for proving uncomputability
+
+::: fragment
+**Theorem**: Suppose $F \leq_T G$. Then:
+
+- If $G$ is computable, then $F$ is computable
+- If $F$ is uncomputable, then $G$ is uncomputable
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid gear >}} **Part (a)**: Direct from reduction definition
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid gear >}} **Part (b)**: Proof by contradiction
+:::
+
+::: {.incremental}
+1. Assume $G$ is computable
+2. Then $F$ is computable (by part a)
+3. Contradicts fact that $F$ is uncomputable
+4. Therefore $G$ is uncomputable
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**This theorem is our main tool for proving problems uncomputable!**
+:::
+
+# Example reduction: `YESONSTRING` to `GAGAONSTRING`
+
+## Two-step process for hardness proof
+
+::: fragment
+**Step 1**: Create program that transforms "yes" output to "GAGA"
+:::
+
+```{pyodide}
+#| autorun: true
+def universal_simulator(progString, inputString):
+    """Simulate universal computation (simplified for demo)."""
+    # In reality, this would execute the program
+    print(f"Simulating program on input: {inputString}")
+    return "yes"  # Pretend result
+
+def alterYesToGAGA(progAndInput):
+    """Transform program to output 'GAGA' instead of 'yes'."""
+    progString, inputString = progAndInput.split("|")
+    result = universal_simulator(progString, inputString)
+    if result == 'yes':
+        return 'GAGA'
+    else:
+        return 'no'
+
+# Test the transformation
+test_input = "some_program|test_input"
+print(f"Transformed output: {alterYesToGAGA(test_input)}")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Step 1 complete**: Program outputs "GAGA" iff original outputs "yes"
+:::
+
+# Example reduction: Complete implementation
+
+## **Step 2**: Use oracle to solve original problem
+
+```{pyodide}
+#| autorun: true
+def GAGA_oracle(progString, inputString):
+    """Oracle for GAGAONSTRING (mythical)."""
+    print("Oracle determines if program outputs 'GAGA'")
+    return "yes"  # Pretend result
+
+def yesViaGAGA(progString, inputString):
+    """Solve YESONSTRING by reducing to GAGAONSTRING."""
+    # Create transformed program that outputs 'GAGA' instead of 'yes'
+    transformed_prog = f"alterYesToGAGA_wrapper|{progString}"
+    
+    # Call GAGAONSTRING oracle on transformed program
+    return GAGA_oracle(transformed_prog, inputString)
+
+# Demonstrate the complete reduction
+print("Complete reduction from YESONSTRING to GAGAONSTRING:")
+result = yesViaGAGA("example_program", "test_input")
+print(f"YESONSTRING result: {result}")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Reduction complete**: `YESONSTRING` $\leq_T$ `GAGAONSTRING` proven!
+:::
+
+# Tree of uncomputable problems
+
+## Building an **abundance** of uncomputability results
+
+::: fragment
+{{< iconify fa6-solid tree >}} **Root**: `YESONSTRING` (uncomputable from Chapter 3)
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-down >}} Reduce to: `YESONEMPTY`, `YESONALL`, `YESONSOME`
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-down >}} Reduce to: `HALTSONSTRING`, `HALTSONEMPTY`, etc.
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid arrow-down >}} Reduce to: `NUMCHARSONSTRING`, `NUMSTEPSONSTRING`
+:::
+
+::: fragment
+**Variants of `YESONSTRING`**:
+
+- `YESONEMPTY`: Does $P(\epsilon) = $ "yes"?
+- `YESONALL`: Does $P(I) = $ "yes" for all strings $I$?
+- `YESONSOME`: Does $P(I) = $ "yes" for some string $I$?
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Each reduction propagates uncomputability down the tree**
+:::
+
+# Implementation: Variants of `YESONSTRING`
+
+## Use `ignoreInput.py` for elegant reductions
+
+```{pyodide}
+#| autorun: true
+def ignoreInput_simulator(inString, progFile, inputFile):
+    """Simulate ignoreInput.py that ignores its input."""
+    # Read preset program and input from files
+    print(f"Running preset computation, ignoring: {inString}")
+    # In reality: return universal(progFile_content, inputFile_content)
+    return "yes"  # Simplified result
+
+# Reduction from YESONSTRING to YESONEMPTY
+def yesViaEmpty(progString, inputString):
+    """Reduce YESONSTRING to YESONEMPTY."""
+    # Store program and input in special files
+    print(f"Storing: prog='{progString}', input='{inputString}'")
+    
+    # Call oracle on ignoreInput.py with empty string
+    return ignoreInput_simulator("", progString, inputString)
+
+# Test the reduction
+print("YESONSTRING to YESONEMPTY reduction:")
+result = yesViaEmpty("test_program", "test_input")
+print(f"Result: {result}")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Key insight**: `ignoreInput.py` produces same output regardless of input
+:::
+
+# Halting problem variants
+
+## From program analysis to execution analysis
+
+::: fragment
+**Halting Problem Variants**:
+
+- `HALTSONSTRING`: Does $P(I)$ halt?
+- `HALTSONEMPTY`: Does $P(\epsilon)$ halt?
+- `HALTSONALL`: Does $P(I)$ halt for all $I$?
+- `HALTSONSOME`: Does $P(I)$ halt for some $I$?
+:::
+
+```{pyodide}
+#| autorun: true
+def alterYesToHalt(progAndInput):
+    """Transform program to halt iff original outputs 'yes'."""
+    progString, inputString = progAndInput.split("|")
+    result = universal_simulator(progString, inputString)
+    if result == 'yes':
+        print("Original output 'yes', so we halt")
+        return "halted"
+    else:
+        print("Original didn't output 'yes', so we loop forever")
+        # In reality: while True: pass  # Infinite loop
+        return "infinite_loop"
+
+# Demonstrate halting transformation
+test = "example_prog|input"
+print(f"Halting behavior: {alterYesToHalt(test)}")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**All halting variants are uncomputable via similar reductions**
+:::
+
+# Beyond decision problems
+
+## **Non-decision problems** are also uncomputable
+
+::: fragment
+**`NUMCHARSONSTRING`**: How many characters does $P(I)$ output?
+
+**`NUMSTEPSONSTRING`**: How many steps does $P(I)$ take?
+:::
+
+```{pyodide}
+#| autorun: true
+def yesViaNumChars(progString, inputString):
+    """Reduce YESONSTRING to NUMCHARSONSTRING."""
+    # Create program that outputs "yes" (3 chars) or "no" (2 chars)
+    def char_counting_program(input_str):
+        result = universal_simulator(progString, inputString)
+        return result  # "yes" or "no"
+    
+    # Oracle tells us number of characters
+    num_chars = 3  # Pretend oracle result
+    
+    # If 3 characters, original output "yes"
+    return "yes" if num_chars == 3 else "no"
+
+print("Reducing YESONSTRING to character counting:")
+print(f"Result: {yesViaNumChars('prog', 'input')}")
+```
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Uncomputability extends beyond yes/no questions**
+:::
+
+# Rice's theorem preview
+
+## **Infinite family** of uncomputable problems
+
+::: fragment
+**Rice's Theorem**: For any non-trivial property of program behavior, determining whether a program has that property is uncomputable.
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid examples >}} **Examples**: Does program compute a constant function? Is it total? Does it halt on all inputs?
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+{{< iconify fa6-solid gear >}} **Proof technique**: Reduce from halting problem
+:::
+
+::: fragment
+**`COMPUTESF` Problem**: Given program $P$, does $P$ compute function $F$?
+
+**Result**: `COMPUTESF` is uncomputable for any computable function $F$
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Reductions reveal vast landscape of uncomputability**
+:::
+
+# Proof techniques summary
+
+## **Three approaches** for uncomputability proofs
+
+::: {.incremental}
+1. **Direct diagonalization** (Chapter 3): Use self-reference paradox
+2. **Reduction from known uncomputable** (Chapter 7): Use $\leq_T$ relation  
+3. **Rice's theorem** (Chapter 8): Apply general theorem
+:::
+
+::: fragment
+**When to use reductions**:
+
+{{< iconify fa6-solid arrow-right >}} Problem involves program analysis
+
+{{< iconify fa6-solid arrow-right >}} Can transform inputs/outputs systematically
+
+{{< iconify fa6-solid arrow-right >}} Want to build on existing uncomputability results
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**As proofgrammers**: Express all techniques as executable Python code
+:::
+
+# Key takeaways for proofgrammers
+
+## **Essential concepts** from Turing reductions
+
+::: {.incremental}
+- **Reductions for hardness**: Prove problems uncomputable via contradiction
+- **Turing reduction**: $F \leq_T G$ means $F$ solvable if $G$ solvable
+- **Oracle programs**: Assume existence of solution to build reductions
+- **Transitivity**: Chain reductions to build hardness hierarchies
+- **Propagation**: Uncomputability flows from hard to easier problems
+:::
+
+::: fragment
+**Next steps**:
+
+{{< iconify fa6-solid forward >}} Apply to complexity theory (polynomial reductions)
+
+{{< iconify fa6-solid forward >}} Study NP-completeness proofs  
+
+{{< iconify fa6-solid forward >}} Explore practical implications for software verification
+:::
+
+::: {.fragment .boxed-content style="font-size: 1.0em;"}
+**Master reductions to become expert at proving computational limits**
 :::
