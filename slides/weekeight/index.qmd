@@ -81,7 +81,7 @@ let's dive in!
 - {{< iconify fa6-solid diagram >}} **Steps**: Proceed by contradiction to
 prove reduction approach works
   - Assume $G$ is computable
-  - Assume we have a reduction from $F$ to $G$ 
+  - Construct a reduction from $F$ to $G$ 
   - This means that $F$ is also computable
   - This contradicts the fact that $F$ is uncomputable
   - This means the initial assumption was incorrect
