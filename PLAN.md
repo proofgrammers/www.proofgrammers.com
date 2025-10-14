@@ -193,43 +193,114 @@ will be revising this content, essentially using it as a starting point.
 - Please follow all the rules and regulations for creating this content and
 make sure that you notify me when you have completed this task.
 
+## Implement New Slides for Chapter Seven, "Reductions: How to Prove a Problem is Hard"
+
+- You have access to the content of the book in the file:
+`What-Can-Be-Computed.pdf` and `What-Can-Be-Computed.md` that is in the root of
+this repository.
+- You have access to the slides of the book in PPTX (which is hard for you to
+read) and a QMD file (which is easier for you to read) in the
+`theoreticalmachines/wcbc-slides/` directory.
+- You have access to the images that were created from the slides for this
+chapter. These images may be especially important because of the fact that
+there are some diagrams of the output of a universal computer. You can include
+these images into the slides you make by finding them in the `img` directory
+that is in the `theoreticalmachines/wcbc-slides/`
+- Make sure to include the image for Figure 7.5 and Figure 7.6 (these are the
+figures in the book and their content is also inside of the slides).
+- You have access to the source code connected to this book in the directory
+`theoreticalmachines/wcbc-code/`
+- I have created a template file for the slides in the
+`slides/weekeight/index.qmd`. You can add to this file! Please note that I have
+already created the correct title and added the review slides from the last
+week that I want you to keep in this slide deck.
+- I would like you to create a starting version of the slides for Chapter
+Seven: in the `slides/weekeight/index.qmd` file. Please note that you are
+creating slides for _week eight_ of the course in the `index.qmd` file that is
+in that directory but for _chapter seven_ of the book.
+- One challenge of this chapter is that it contains a lot of source code
+examples that may not run correctly unless you include all needed source code
+from the book's archive. Do not include a source code example unless it is
+self-contained and it will run directly without an extra dependencies.
+- Make sure to only explain concepts that are connected to Chapter Seven.
+- Make sure to review all the prior slides that I have created in the `slides/`
+directory and the subdirectories for prior weeks in `weekone/` and `weektwo/`
+and `weekthree/` and `weekfour/` and `weeksix/` and `weekseven` to ensure that
+your slides are formatted and laid out just like the content that I have
+already created.
+- Do not make slides if they are not directly connected to the content in the
+book, the content in the slides (i.e., the PPTX or the extracted QMD file) or
+in the source code that connects to this chapter of the book.
+- Make sure that you connect the slides to the theme of being a "proofgrammer"
+as explained in the course syllabus that is available in `syllabus/index.qmd`.
+- Make sure that the concept that you create is short, succinct, and clear. I
+will be revising this content, essentially using it as a starting point.
+- Please follow all the rules and regulations for creating this content and
+make sure that you notify me when you have completed this task.
+
 ## Support for Content
 
 ### Week Four Slides Enhancement: Set Operations Addition
 
 **Missing Content Identification and Resolution**:
 
-- **Set Operations Definition Slide Added**: Added comprehensive slide defining union ($L_1 \cup L_2$), intersection ($L_1 \cap L_2$), complement ($\overline{L}$), concatenation ($L_1 L_2$), and repetition ($L^*$) operations on languages
-- **Mathematical Rigor**: Each operation includes formal mathematical notation and concrete examples using small alphabets like $\{a, b\}$ to demonstrate concepts clearly
-- **Pedagogical Examples**: Specific examples such as $\{a, ab\} \cup \{b, ab\} = \{a, b, ab\}$ and $\{ab\}^* = \{\epsilon, ab, abab, ababab, ...\}$ illustrate how operations work in practice
-- **Connection to Automata Theory**: Explicitly linked these operations to their foundational role in automata theory and formal language construction
+- **Set Operations Definition Slide Added**: Added comprehensive slide defining
+union ($L_1 \cup L_2$), intersection ($L_1 \cap L_2$), complement
+($\overline{L}$), concatenation ($L_1 L_2$), and repetition ($L^*$) operations
+on languages
+- **Mathematical Rigor**: Each operation includes formal mathematical notation
+and concrete examples using small alphabets like $\{a, b\}$ to demonstrate
+concepts clearly
+- **Pedagogical Examples**: Specific examples such as $\{a, ab\} \cup \{b, ab\}
+= \{a, b, ab\}$ and $\{ab\}^* = \{\epsilon, ab, abab, ababab, ...\}$ illustrate
+how operations work in practice
+- **Connection to Automata Theory**: Explicitly linked these operations to their
+foundational role in automata theory and formal language construction
 
 **Content Completeness Review**:
 
-- **Comprehensive Chapter 4 Coverage**: Verified that slides already covered all major Chapter 4 concepts including computational problem definitions, problem categories, SISO programs, and computability theory
-- **No Additional Missing Content**: Review of existing slides confirmed coverage of graphs, alphabets, strings, languages, decision problems, and formal problem definitions
-- **Appropriate Balance**: Content maintains proper balance between theoretical rigor and practical Python implementations for proofgrammers
+- **Comprehensive Chapter 4 Coverage**: Verified that slides already covered all
+major Chapter 4 concepts including computational problem definitions, problem
+categories, SISO programs, and computability theory
+- **No Additional Missing Content**: Review of existing slides confirmed
+coverage of graphs, alphabets, strings, languages, decision problems, and formal
+problem definitions
+- **Appropriate Balance**: Content maintains proper balance between theoretical
+rigor and practical Python implementations for proofgrammers
 
 **Quality Assurance and Verification**:
 
-- **Successful Rendering**: All slides render correctly with `quarto render slides/weekfour/index.qmd`
-- **Layout Verification**: Used headless browser screenshot testing to confirm proper slide layout at 1920x1080 presentation resolution
-- **Mathematical Notation**: LaTeX mathematical expressions display correctly for set operations and formal definitions
-- **Fragment Animation**: Incremental content reveals function properly to support effective presentation flow
+- **Successful Rendering**: All slides render correctly with `quarto render
+slides/weekfour/index.qmd`
+- **Layout Verification**: Used headless browser screenshot testing to confirm
+proper slide layout at 1920x1080 presentation resolution
+- **Mathematical Notation**: LaTeX mathematical expressions display correctly
+for set operations and formal definitions
+- **Fragment Animation**: Incremental content reveals function properly to
+support effective presentation flow
 
 **Technical Implementation Details**:
 
-- **Set Operation Examples**: Provided concrete examples using simple finite languages to make abstract concepts accessible
-- **Visual Organization**: Used appropriate iconify icons and boxed content to highlight key takeaways
-- **Font Sizing**: Maintained readability standards with appropriate font sizes for mathematical notation and example content
-- **Content Flow**: New slides integrate seamlessly with existing content progression from alphabets to languages to operations
+- **Set Operation Examples**: Provided concrete examples using simple finite
+languages to make abstract concepts accessible
+- **Visual Organization**: Used appropriate iconify icons and boxed content to
+highlight key takeaways
+- **Font Sizing**: Maintained readability standards with appropriate font sizes
+for mathematical notation and example content
+- **Content Flow**: New slides integrate seamlessly with existing content
+progression from alphabets to languages to operations
 
 **Theoretical Foundation Support**:
 
-- **Formal Language Theory**: Set operations form the mathematical foundation for constructing complex languages from simpler ones
-- **Automata Theory Preparation**: These operations are essential for understanding regular expressions, finite automata, and language recognition
-- **Computational Complexity**: Understanding language operations prepares students for analyzing decision problems and complexity classes
-- **Chapter 4 Alignment**: Content directly supports "What Can be Computed" Chapter 4 learning objectives about computational problems and formal language theory
+- **Formal Language Theory**: Set operations form the mathematical foundation
+for constructing complex languages from simpler ones
+- **Automata Theory Preparation**: These operations are essential for
+understanding regular expressions, finite automata, and language recognition
+- **Computational Complexity**: Understanding language operations prepares
+students for analyzing decision problems and complexity classes
+- **Chapter 4 Alignment**: Content directly supports "What Can be Computed"
+Chapter 4 learning objectives about computational problems and formal language
+theory
 
 ### Rewriting Content in Several Files
 
