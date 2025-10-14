@@ -78,6 +78,11 @@ img.quarto-figure-center {
   margin-right: auto;
 }
 
+img.thick-border {
+  border: 3px solid #444;
+  border-radius: 8px;
+}
+
 .reveal .r-stretch, .reveal .stretch {
   width: 95% !important;
   height: 80% !important;
