@@ -384,30 +384,28 @@ remain hard under efficient reductions
 
 :::
 
+## Reduction proof strategy
+
+![](07-reductions_17.png){ scale=85% }
+
 ## Key takeaways for proofgrammers
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid concept1 >}} **Turing reductions**: Systematic way to
-prove problems uncomputable
-- {{< iconify fa6-solid concept2 >}} **Oracle methodology**: Assume solution
-exists to build contradiction
-- {{< iconify fa6-solid concept3 >}} **Proof by contradiction**: Powerful
-technique for impossibility results
-- {{< iconify fa6-solid concept4 >}} **Problem hierarchies**: Organize
-computational problems by difficulty
+- {{< iconify fa6-solid gears >}} *Key concepts learned this week*:
+    - **Turing reductions**: Way to prove problems uncomputable
+    - **Oracle methodology**: Assume solution exists to build contradiction
+    - **Proof by contradiction**: Powerful technique for impossibility results
+    - **Problem hierarchies**: Organize computational problems by difficulty
+    - **Realization**: From `YesOnString`, many problems are uncomputable!
 
 :::
 
-## Practical skills developed
-
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid code >}} **Program transformation**: Modify programs to
-change their behavior
-- {{< iconify fa6-solid proof >}} **Reduction construction**: Build systematic
-arguments for hardness
-- {{< iconify fa6-solid reasoning >}} **Mathematical reasoning**: Apply formal
-logic to computational problems
+- {{< iconify fa6-solid gears >}} *Practical skills developed this week*:
+    - **Program transformation**: Modify programs to change their behavior
+    - **Reduction construction**: Build systematic arguments for hardness
+    - **Mathematical reasoning**: Formal logic for computational problems
 
 :::
