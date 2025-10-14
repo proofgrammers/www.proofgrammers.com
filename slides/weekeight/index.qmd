@@ -132,8 +132,8 @@ prove reduction approach works
     string "GAGA"?
 - {{< iconify fa6-solid plan >}} **Reduction strategy**:
     - Transform any instance of `YesOnString` into an instance of `ContainsGAGA`
-    (i.e., `ContainsGAGA` will call `YesOnString`)
-    - Use oracle for `ContainsGAGA` to solve `YesOnString`
+    (i.e., `ContainsGAGA` will "call" `YesOnString`)
+    - Use "oracle" for `ContainsGAGA` to solve `YesOnString`
 
 :::
 
