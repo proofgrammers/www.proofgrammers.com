@@ -92,7 +92,7 @@ prove reduction works:
 
 ## Example of Turing reduction concepts
 
-![](07-reductions_0.png){ scale=85% } 
+![](07-reductions_0.png){ scale=85% }
 
 ## Reduction as Python source code
 
@@ -364,12 +364,12 @@ problem, such as `YesOnString`, that we've proven to be uncomputable!
 
 - **Viewing hierarchies**: See the relationships between problems in a tree
 
-- **Tree Interpretation**: Node at the top is the "starting point" of the
-Turing reduction chain! Okay, let's see what this looks like!
+- **Tree Interpretation**: Node at the top is the "starting point" of the Turing
+reduction chain! Okay, let's see what this uncomputability tree looks like!
 
 :::
 
-## Tree of uncomputable problems
+## Visualize uncomputability tree
 
 ![](07-reductions_5.png)
 
@@ -382,6 +382,20 @@ Turing reduction chain! Okay, let's see what this looks like!
 - `HaltsOnString` is no harder than `NumStepsOnString`
 - `YesOnString` is no harder than `HaltsOnEmpty`
 - `YesOnString` is no harder than as `NumStepsOnString`
+
+:::
+
+## Implications of transitivity
+
+![](07-reductions_2.png){ .thick-border height=75% } 
+
+::: {.incremental style="margin-top: -0.35em; font-size: 0.75em;"}
+
+- To start, problem $F$ is no harder than problem $G$
+- It also true that problem $G$ is no harder than problem $H$
+- By transitivity, problem $F$ is no harder than problem $H$
+- The Turing reduction operator $\leq_T$ orders problems in "increasing levels
+of hardness" from left ("easier" problems) to right ("harder" problems)
 
 :::
 
