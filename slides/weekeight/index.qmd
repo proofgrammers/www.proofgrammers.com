@@ -7,7 +7,7 @@ author: Gregory M. Kapfhammer
 execute:
   echo: true
 format:
-  live-revealjs:
+  revealjs:
     completion: true
     theme: default
     css: ../css/styles.css
@@ -180,7 +180,7 @@ def testisOddViaReduction():
 - {{< iconify fa6-solid plan >}} **Reduction strategy**:
     - Transform any instance of `YesOnString` into an instance of `ContainsGAGA`
     (i.e., `ContainsGAGA` will compute `YesOnString`)
-    - Use "oracle" for `ContainsGAGA` to solve `YesOnString`
+    - Use "oracle" for `ContainsGAGA` to solve the `YesOnString` problem
 
 :::
 
@@ -209,8 +209,67 @@ def testYesViaGAGA():
 ::: {.fragment style="margin-top: 0em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid code >}} **Key idea**: Solve the `YesOnString` problem
-using an "oracle" for `ContainsGAGA`, meaning we can solve known problem with
+using an "oracle" for `ContainsGAGA`, meaning we will solve known problem with
 new one
+
+:::
+
+## Define the `GAGAOnString` program
+
+```python
+import utils; from utils import rf
+from universal import universal
+def GAGAOnString(progString, inString):
+    val = universal(progString, inString)
+    if val == 'GAGA':
+        return 'yes'
+    else:
+        return 'no'
+
+def testGAGAOnString():
+    testvals = [('containsGAGA.py', 'GAGAGAGAG', 'no'), 
+                ('repeatCAorGA.py', 'CA', 'no'), 
+                ('repeatCAorGA.py', 'GA', 'yes') ]
+    for (progName, inString, solution) in testvals:
+        val = GAGAOnString(rf(progName), inString)
+        utils.tprint( (progName, inString), ":", val )
+        assert val == solution
+```
+
+::: {.fragment style="margin-top: 0em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid code >}} **Key idea**: The `alterYesToGAGA` function
+transforms the output of any program to either "GAGA" or "no"
+
+:::
+
+## Define the `alterYesToGAGA` program
+
+```python
+import utils; from utils import rf
+from universal import universal
+def alterYesToGAGA(inString):  
+    (progString, newInString) = utils.DESS(inString)
+    val = universal(progString, newInString)
+    if val == 'yes':
+        return 'GAGA'
+    else:
+        return 'no'  
+
+def testAlterYesToGAGA():
+    for (progName, inString, solution) in [('containsGAGA.py', 'GAGAGAGAG', 'GAGA'), 
+                                           ('containsGAGA.py', 'ATATACCC', 'no') ]:
+        progString = rf(progName)
+        combinedString = utils.ESS(progString, inString) 
+        val = alterYesToGAGA(combinedString)
+        utils.tprint( (progName, inString), ":", val )  
+        assert val == solution
+```
+
+::: {.fragment style="margin-top: 0em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid code >}} **Key idea**: The `alterYesToGAGA` function
+transforms the output of any program to either "GAGA" or "no"
 
 :::
 
