@@ -547,6 +547,29 @@ function
 
 :::
 
+## Code `YesOnString` $\leq_T$ `HaltsOnString`
+
+::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.715em;"}
+
+- `yesViaGAGA`: uses the `GAGAOnString` (i.e., `ContainsGAGA`) oracle to decide
+  `YesOnString` by calling the oracle on the transformed program.
+    - `yesViaGAGA` is functionally equivalent to `YesOnString`
+    - However, `yesViaGAGA` uses `GAGAOnString` as a key building block
+
+- `alterYesToGAGA.py`: transforms an instance `(P, I)` so that if `P(I)`
+  returns `"yes"` the transformed program prints `"GAGA"`, otherwise prints
+  `"no"`.
+
+- `GAGAOnString`: oracle wrapper that simulates a program and returns `"yes"`
+iff the program's standard output equals `GAGA`.
+
+- Key insights about this proof technique using Turing reductions:
+    - Not a "direct" proof by contradiction for `ContainsGAGA`'s uncomputability
+    - Instead, we prove `YesOnString` $\leq_T$ ("reduces to") `ContainsGAGA`
+    - This reduction means that `YesOnString` is no harder than `ContainsGAGA`
+
+:::
+
 ## Reduction proof strategy
 
 ![](07-reductions_17.png){ .sensible-square-thick-border height=95% }
