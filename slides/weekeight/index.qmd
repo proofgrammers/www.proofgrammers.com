@@ -122,7 +122,7 @@ def testisOddViaReduction():
 ::: {.fragment style="margin-top: -0.25em; font-size: 0.815em;"}
 
 - `isOddViaReduction` uses `lastDigitIsEven` to solve the `isOdd` problem
-- `isOddViaReduction` solves `IsOdd` by reduction it to `LastDigitIsEven`
+- `isOddViaReduction` solves `IsOdd` by "reducing" it to `lastDigitIsEven`
 
 :::
 
