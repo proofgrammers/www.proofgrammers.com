@@ -547,7 +547,7 @@ function
 
 :::
 
-## Code `YesOnString` $\leq_T$ `HaltsOnString`
+## `YesOnString` $\leq_T$ `HaltsOnString`
 
 ::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.715em;"}
 
