@@ -45,8 +45,8 @@ and efficient real-world Python programs.
 ::: fragment
 
 - "Reduction for hardness" helps with learning objective **CS-204-4**, in which
-you learn how to prove a problem is uncomputable or otherwise "hard". Okay,
-let's dive in!
+you learn how to prove a problem is uncomputable or otherwise "hard". **Okay,
+let's dive in!**
 
 :::
 ## Prove computational problem is hard
@@ -92,7 +92,7 @@ prove reduction works:
 
 ## Example of Turing reduction concepts
 
-![](07-reductions_0.png){ scale=85% }
+![](07-reductions_0.png){.sensible-size-thick-border}
 
 ## Reduction as Python source code
 
@@ -578,7 +578,7 @@ function
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid gears >}} *Key concepts learned this week*:
+- {{< iconify fa6-solid gears >}} **Key concepts learned this week**:
     - **Turing reductions**: Way to prove problems uncomputable
     - **Oracle methodology**: Assume solution exists to build contradiction
     - **Proof by contradiction**: Powerful technique for impossibility results
@@ -589,7 +589,7 @@ function
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid gears >}} *Practical skills developed this week*:
+- {{< iconify fa6-solid gears >}} **Practical skills developed this week**:
     - **Program transformation**: Modify programs to change their behavior
     - **Reduction construction**: Build systematic arguments for hardness
     - **Mathematical reasoning**: Formal logic for computational problems

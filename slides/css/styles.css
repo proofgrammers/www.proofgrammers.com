@@ -87,8 +87,8 @@ img.reduced-thick-border {
 }
 
 img.sensible-size-thick-border {
-  max-width: 100% !important;
-  max-height: 100% !important;
+  max-width: 95% !important;
+  max-height: 85% !important;
   border: 3px solid #444;
   border-radius: 8px;
 }
@@ -109,10 +109,10 @@ img.sensible-square-thick-border {
 
 .reveal .r-stretch,
 .reveal .stretch {
-  width: 95% !important;
-  height: 90% !important;
-  max-width: 100% !important;
-  max-height: 95% !important;
+  width: 95%;
+  height: 90%;
+  max-width: 95%;
+  max-height: 85%;
   border: 3px solid #444;
   border-radius: 8px;
 }
