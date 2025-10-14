@@ -276,7 +276,7 @@ otherwise
 
 :::
 
-## Code `YesOnString` $\leq_T$ `ContainsGAGA`
+## `YesOnString` $\leq_T$ `ContainsGAGA`
 
 ::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.715em;"}
 
@@ -415,42 +415,10 @@ def yesViaEmpty(progString, inString):
 - Use the "ignore input" technique to transform the problem
 - Ignoring input helps to create the correct reduction:
   -  `YesOnString` $\leq_T$ `YesOnEmpty`
-  - `YesOnEmpty` is at least as hard as `YesOnString`
-  - This approach shows that `YesOnEmpty` is uncomputable
-- {{< iconify fa6-solid lightbulb >}} Can we prove that `HaltsOnString` is uncomputable?
-
-:::
-
-## `alterYesToHalt` program
-
-```python
-import utils; from utils import rf
-from universal import universal 
-def alterYesToHalt(inString):
-    (progString, newInString) = utils.DESS(inString)
-    val = universal(progString, newInString)
-    if val == 'yes':
-        # return value is irrelevant, since returning any string halts
-        return 'halted' 
-    else:
-        # deliberately enter infinite loop
-        utils.loop()  
-
-def testAlterYesToHalt():
-    for (progName, inString, solution) in [
-            ('containsGAGA.py', 'GAGAGAGAG', 'halted'),
-            ('containsGAGA.py', 'TTTTGGCCGGT', None),
-    ]:
-        combinedString = utils.ESS(rf(progName), inString)
-        val = utils.runWithTimeout(None, alterYesToHalt, combinedString)
-        utils.tprint( (progName, inString), ":", val )
-        assert val == solution
-```
-
-::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
-
-- The `alterYesToHalt` will be used in the next reduction!
-- Remember, `alterYesToHalt` uses source code provided by the textbook
+  - `YesOnString` is no harder than `YesOnEmpty`
+  - This approach shows that `YesOnEmpty` is undecidable
+- {{< iconify fa6-solid lightbulb >}} Can we prove that `HaltsOnString` is
+undecidable?
 
 :::
 
