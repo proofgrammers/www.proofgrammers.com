@@ -286,7 +286,92 @@ Turing reduction chain! Okay, let's see what this looks like!
 
 :::
 
-# Reductions in complexity theory
+## `YesOnString` to `YesOnEmpty`
+
+```python
+import utils; from utils import rf
+from yesOnEmpty import yesOnEmpty # oracle function  
+def yesViaEmpty(progString, inString):
+    utils.writeFile('progString.txt', progString)
+    utils.writeFile('inString.txt', inString)
+    return yesOnEmpty(rf('ignoreInput.py')) 
+```
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.95em;"}
+
+- Use the "ignore input" technique to transform the problem
+- Ignoring input helps to create the correct reduction:
+  -  `YesOnString` $\leq_T$ `YesOnEmpty`
+  - `YesOnEmpty` is at least as hard as `YesOnString`
+  - This approach shows that `YesOnEmpty` is uncomputable
+- {{< iconify fa6-solid lightbulb >}} Can we prove that `haltOnString` is uncomputable?
+
+:::
+
+## `alterYesToHalt` program
+
+```python
+import utils; from utils import rf
+from universal import universal 
+def alterYesToHalt(inString):
+    (progString, newInString) = utils.DESS(inString)
+    val = universal(progString, newInString)
+    if val == 'yes':
+        # return value is irrelevant, since returning any string halts
+        return 'halted' 
+    else:
+        # deliberately enter infinite loop
+        utils.loop()  
+
+def testAlterYesToHalt():
+    for (progName, inString, solution) in [
+            ('containsGAGA.py', 'GAGAGAGAG', 'halted'),
+            ('containsGAGA.py', 'TTTTGGCCGGT', None),
+    ]:
+        combinedString = utils.ESS(rf(progName), inString)
+        val = utils.runWithTimeout(None, alterYesToHalt, combinedString)
+        utils.tprint( (progName, inString), ":", val )
+        assert val == solution
+```
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
+
+- The `alterYesToHalt` will be used in the next reduction!
+- Remember, `alterYesToHalt` uses source code provided by the textbook
+
+:::
+
+## Create `yesViaHalt` program 
+
+```python
+import utils; from utils import rf
+from haltsOnString import haltsOnString # oracle function  
+def yesViaHalts(progString, inString):
+    singleStr = utils.ESS(progString, inString)
+    return haltsOnString(rf('alterYesToHalt.py'), singleStr) 
+
+def testYesViaHalts():
+    testvals = [
+        ('containsGAGA.py', 'TTTTGAGATT', 'yes'),
+        ('containsGAGA.py', 'TTTTGAGTT', 'no'),
+        ('isEmpty.py', '', 'yes'),
+        ('isEmpty.py', 'x', 'no'),
+    ]
+    for (filename, inString, solution) in testvals:
+        val = yesViaHalts(rf(filename), inString)
+        utils.tprint(filename + ":", val)
+        assert val == solution
+```
+
+::: {.incremental style="margin-top: 0.2em; font-size: 0.7em;"}
+
+- Use the `haltsOnString` "oracle" to solve `YesOnString`, meaning `YesOnString`
+$\leq_T$ `HaltsOnString`. Wow, we have shown that `HaltsOnString` is
+uncomputable!
+
+:::
+
+# Many reductions in complexity theory
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
@@ -294,30 +379,8 @@ Turing reduction chain! Okay, let's see what this looks like!
 NP-completeness proofs
 - {{< iconify fa6-solid limit >}} **Resource bounds**: Reduction must be
 computed efficiently
-- {{< iconify fa6-solid practical >}} **Practical implications**: Hard problems
+- {{< iconify fa6-solid practical >}} **Implication**: Hard problems
 remain hard under efficient reductions
-
-:::
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
-
-- {{< iconify fa6-solid preview >}} **Coming attractions**:
-    - **Chapter 8**: NP-completeness and polynomial reductions
-    - **Chapter 9**: More complexity classes and their relationships
-    - **Applications**: Real-world problems that are provably hard
-
-:::
-
-## Connection to software verification
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.75em;"}
-
-- {{< iconify fa6-solid bug >}} **Program analysis**: Many verification problems
-are uncomputable
-- {{< iconify fa6-solid approximation >}} **Practical solutions**: Use
-approximation algorithms and heuristics
-- {{< iconify fa6-solid tools >}} **Static analysis tools**: Work within
-computable approximations
 
 :::
 
