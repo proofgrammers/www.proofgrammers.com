@@ -86,59 +86,22 @@ prove reduction approach works
 
 ## What is a Turing reduction?
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid definition >}} **Formal definition**: 
     - Let $F$ and $G$ be computational problems
     - $F$ has a Turing reduction to $G$ if we can solve $F$ using a program for $G$
-    - We write this as $F \leq_T G$ (read "$F$ reduces to $G$")
+    - We write this as $F \leq_T G$ (read this notation as "$F$ reduces to $G$")
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **Intuitive meaning**:
+- {{< iconify fa6-solid lightbulb >}} **Intuitive meanings**:
     - "$F$ is no harder than $G$"
     - If $G$ is solvable, then $F$ is automatically solvable
     - If $F$ is unsolvable, then $G$ must also be unsolvable
-
-:::
-
-## Oracle programs make reductions work
-
-```{pyodide}
-#| autorun: true
-def solve_F_using_G_oracle(input_to_F):
-    """Solve problem F by calling oracle for problem G."""
-    # Transform input for F into input for G
-    transformed_input = transform_for_G(input_to_F)
-    
-    # Call mythical oracle that solves G
-    g_result = G_oracle(transformed_input)
-    
-    # Transform G's result back to F's format
-    return transform_result_for_F(g_result)
-
-def transform_for_G(f_input):
-    """Transform F input to G input format."""
-    return f"transformed_{f_input}"
-
-def G_oracle(g_input):
-    """Mythical oracle that solves problem G."""
-    return "oracle_solution"
-
-def transform_result_for_F(g_result):
-    """Transform G result to F result format."""
-    return f"F_answer_from_{g_result}"
-
-# Demonstrate the reduction pattern
-result = solve_F_using_G_oracle("test_input")
-print(f"F result: {result}")
-```
-
-::: {.fragment style="font-size: 0.9em;"}
-
-{{< iconify fa6-solid key >}} **Key point**: Oracle for $G$ may not exist, but we assume it does to build our reduction
+    - Visually, write $F \leq_T G$ as $F \rightarrow G$
 
 :::
 
