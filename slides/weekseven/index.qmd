@@ -7,7 +7,7 @@ author: Gregory M. Kapfhammer
 execute:
   echo: true
 format:
-  live-revealjs:
+  revealjs:
     completion: true
     theme: default
     css: ../css/styles.css
