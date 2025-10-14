@@ -80,8 +80,9 @@ img.quarto-figure-center {
 
 .reveal .r-stretch, .reveal .stretch {
   width: 95% !important;
-  height: auto !important;
+  height: 80% !important;
   max-width: 100% !important;
+  max-height: 95% !important;
   border: 3px solid #444;
   border-radius: 8px;
 }
