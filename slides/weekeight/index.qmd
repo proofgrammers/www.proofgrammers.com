@@ -294,8 +294,8 @@ iff the program's standard output equals `GAGA`.
 
 - Key insights about this proof technique using Turing reductions:
     - Not a "direct" proof by contradiction for `ContainsGAGA`'s uncomputability
-    - Instead, we prove `YesOnString` $\leq_T$ `ContainsGAGA`
-    - Means that `YesOnString` is no harder than `ContainsGAGA`
+    - Instead, we prove `YesOnString` $\leq_T$ ("reduces to") `ContainsGAGA`
+    - This reduction means that `YesOnString` is no harder than `ContainsGAGA`
 
 :::
 
