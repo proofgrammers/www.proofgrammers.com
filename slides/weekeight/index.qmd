@@ -184,7 +184,7 @@ def testisOddViaReduction():
 
 :::
 
-## Reduction as Python source code
+## Define the `yesViaGAGA` program
 
 ```python
 import utils; from utils import rf
