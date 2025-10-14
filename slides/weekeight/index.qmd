@@ -133,7 +133,7 @@ def testisOddViaReduction():
 
 - {{< iconify fa6-solid definition >}} **Formal definition**: 
     - Let $F$ and $G$ be computational problems
-    - $F$ has a Turing reduction to $G$ if can solve $F$ using a program for $G$
+    - $F$ has a Turing reduction to $G$ if we can solve $F$ using a program for $G$
     - We write this as $F \leq_T G$ (read this notation as "$F$ reduces to $G$")
 
 :::
@@ -240,7 +240,7 @@ def testGAGAOnString():
 ::: {.fragment style="margin-top: 0em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid code >}} **Key idea**: The `GAGAOnString` function
-transforms the output of any program to "yes" if standard output of "GAGA" or
+transforms the output of any program to "yes" if standard output equals "GAGA" or
 "no" otherwise
 
 :::
@@ -278,7 +278,7 @@ otherwise
 
 ## Summarizing the key programs
 
-::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.75em;"}
+::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.725em;"}
 
 - `yesViaGAGA`: uses the `GAGAOnString` (i.e., `ContainsGAGA`) oracle to decide
   `YesOnString` by calling the oracle on the transformed program.
@@ -291,6 +291,11 @@ otherwise
 
 - `GAGAOnString`: oracle wrapper that simulates a program and returns `"yes"`
 iff the program's standard output equals `GAGA`.
+
+- Key insights about this proof technique using Turing reductions:
+    - Not a "direct" proof by contradiction for `ContainsGAGA`'s uncomputability
+    - Instead, we prove `YesOnString` $\leq_T$ `ContainsGAGA`
+    - Means that `YesOnString` is no harder than `ContainsGAGA`
 
 :::
 
@@ -372,11 +377,11 @@ Turing reduction chain! Okay, let's see what this looks like!
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- `YesOnString` is at least as hard as `HaltsOnString`
-- `HaltsOnString` is at least as hard as `HaltsOnEmpty`
-- `HaltsOnString` is at least as hard as `NumStepsOnString`
-- `YesOnString` is at least as hard as `HaltsOnEmpty`
-- `YesOnString` is at least as hard as `NumStepsOnString`
+- `YesOnString` is no harder than `HaltsOnString`
+- `HaltsOnString` is no harder than `HaltsOnEmpty`
+- `HaltsOnString` is no harder than `NumStepsOnString`
+- `YesOnString` is no harder than `HaltsOnEmpty`
+- `YesOnString` is no harder than as `NumStepsOnString`
 
 :::
 
@@ -398,7 +403,7 @@ def yesViaEmpty(progString, inString):
   -  `YesOnString` $\leq_T$ `YesOnEmpty`
   - `YesOnEmpty` is at least as hard as `YesOnString`
   - This approach shows that `YesOnEmpty` is uncomputable
-- {{< iconify fa6-solid lightbulb >}} Can we prove that `haltOnString` is uncomputable?
+- {{< iconify fa6-solid lightbulb >}} Can we prove that `HaltsOnString` is uncomputable?
 
 :::
 
