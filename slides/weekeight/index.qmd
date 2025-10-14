@@ -147,6 +147,20 @@ def testisOddViaReduction():
 
 :::
 
+# Prove uncomputability using Turing reductions
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- Explore the properties of Turing reductions
+- By reducing from `YesOnString`:
+    - Prove that `ContainsGAGA` is uncomputable
+    - Prove that `HaltsOnString` is uncomputable
+    - Importantly, many other reductions are also possible!
+    - Done correctly, a reduction proves uncomputability
+- Visualize a tree of uncomputable problems and their relationships
+
+:::
+
 ## `YesOnString` $\rightarrow$ `ContainsGAGA`
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
