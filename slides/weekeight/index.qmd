@@ -62,9 +62,9 @@ let's dive in!
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid gear >}} **Two proof approaches to try**
-    - **Contradiction proof**: Prove uncomputability by contradiction
-    - **Reduction proof**: Constructively transform a known uncomputable
+- {{< iconify fa6-solid gear >}} **Two proof approaches to try**:
+    - **Contradiction**: As before, prove uncomputability by contradiction
+    - **Reduction**: Constructively transform a known uncomputable
     problem $F$ to a new problem $G$, thereby showing that problem $F$ is "no
     harder than" new problem $G$ and that $G$ is also uncomputable
     - **Let's explore reduction proofs for problem uncomputability**!
@@ -78,8 +78,8 @@ let's dive in!
 - We have a problem $F$ that is already proven to be uncomputable
 - We want to prove a new problem $G$ is also uncomputable
 - Reduction from $F$ to $G$ means we can solve $F$ using a solution for $G$
-- {{< iconify fa6-solid diagram >}} **Steps**: Proceed by contradiction to
-prove reduction approach works
+- {{< iconify fa6-solid diagram >}} **Steps**: Still proceed by contradiction to
+prove reduction works:
   - Assume $G$ is computable
   - Construct a reduction from $F$ to $G$ 
   - This means that $F$ is also computable
