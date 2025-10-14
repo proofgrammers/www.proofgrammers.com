@@ -239,8 +239,9 @@ def testGAGAOnString():
 
 ::: {.fragment style="margin-top: 0em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid code >}} **Key idea**: The `alterYesToGAGA` function
-transforms the output of any program to either "GAGA" or "no"
+- {{< iconify fa6-solid code >}} **Key idea**: The `GAGAOnString` function
+transforms the output of any program to "yes" if standard output of "GAGA" or
+"no" otherwise
 
 :::
 
