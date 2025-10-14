@@ -189,62 +189,20 @@ which we have previously proven in a separate proof by contradiction!
 
 :::
 
-# Building a tree of uncomputable problems
+## Tree of uncomputable problems
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid tree >}} **Starting point**: `YESONSTRING` (uncomputable by diagonalization)
+- {{< iconify fa6-solid tree >}} **Starting point**: `YesOnString`, previously proven uncomputable 
 
-:::
-
-## First level reductions
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.75em;"}
-
-- {{< iconify fa6-solid branch >}} **Reduce to**: `YESONEMPTY` (does $P(\epsilon) = $ "yes"?)
-- {{< iconify fa6-solid branch >}} **Reduce to**: `YESONALL` (does $P(I) = $ "yes" for all $I$?)
-- {{< iconify fa6-solid branch >}} **Reduce to**: `YESONSOME` (does $P(I) = $ "yes" for some $I$?)
-- {{< iconify fa6-solid branch >}} **Reduce to**: `CONTAINSGAGA` (does $P(I)$ output contain "GAGA"?)
-
-:::
-
-## Second level reductions
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.75em;"}
-
-- {{< iconify fa6-solid branch >}} **From halting**: `HALTSONSTRING`, `HALTSONEMPTY`, `HALTSONALL`
-- {{< iconify fa6-solid branch >}} **From counting**: `NUMCHARSONSTRING`, `NUMSTEPSONSTRING`
-- {{< iconify fa6-solid branch >}} **From analysis**: Does program compute constant function? Is program total?
-
-:::
-
-```{pyodide}
-#| autorun: true
-def reduce_yes_to_empty(prog_string, input_string):
-    """Reduce YESONSTRING to YESONEMPTY."""
-    # Create ignoreInput program that runs prog_string on input_string
-    # regardless of what input it receives
-    
-    def ignore_input_program(any_input):
-        # Ignore any_input, always run original computation
-        return simulate_program(prog_string, input_string)
-    
-    # Oracle question: Does ignore_input_program("") output "yes"?
-    # This is equivalent to: Does original program output "yes"?
-    return yesonempty_oracle("ignore_input_code", "")
-
-def yesonempty_oracle(prog_str, empty_input):
-    """Oracle for YESONEMPTY problem."""
-    return "yes"  # Pretend oracle result
-
-print("YESONSTRING reduces to YESONEMPTY via ignoreInput technique")
-result = reduce_yes_to_empty("sample_prog", "sample_input")
-print(f"Reduction result: {result}")
-```
-
-::: {.fragment style="font-size: 0.9em;"}
-
-{{< iconify fa6-solid cascade >}} **Cascade effect**: Each reduction proves another problem uncomputable
+- {{< iconify fa6-solid gears >}} **First level reductions**:
+    - {{< iconify fa6-solid branch >}} **Reduce to**: `YesOnEmpty` (does $P(\epsilon)=$ "yes"?)
+    - {{< iconify fa6-solid branch >}} **Reduce to**: `YesOnAll` (does $P(I)=$ "yes" for all $I$?)
+    - {{< iconify fa6-solid branch >}} **Reduce to**: `YesOnSome` (does $P(I)=$ "yes" for some $I$?)
+    - {{< iconify fa6-solid branch >}} **Reduce to**: `ContainsGAGA` (does $P(I)$ output contain "GAGA"?)
+- {{< iconify fa6-solid gears >}} **Second level reductions**:
+    - {{< iconify fa6-solid branch >}} **From halting**: `HaltsOnString`, `HaltsOnEmpty`, `HaltsOnAll`
+    - {{< iconify fa6-solid branch >}} **From counting**: `NumCharsOnString`, `NumStepsOnString`
 
 :::
 
@@ -264,35 +222,12 @@ print(f"Reduction result: {result}")
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid self >}} **Reflexive**: $F \leq_T F$ (trivial - solve $F$ using $F$ oracle)
-- {{< iconify fa6-solid equal >}} **Antisymmetric**: If $F \leq_T G$ and $G \leq_T F$, then $F$ and $G$ are equivalent
+- {{< iconify fa6-solid self >}} **Reflexive**: $F \leq_T F$ (trivial - solve
+$F$ using $F$ oracle)
+- {{< iconify fa6-solid equal >}} **Antisymmetric**: If $F \leq_T G$ and $G
+\leq_T F$, then $F$ and $G$ are equivalent
 
 :::
-
-```{pyodide}
-#| autorun: true
-def demonstrate_transitivity():
-    """Show how reduction chains work."""
-    print("Reduction chain: F ≤_T G ≤_T H")
-    
-    def solve_F_via_H():
-        print("  F calls G oracle...")
-        def solve_G_via_H():
-            print("    G calls H oracle...")
-            h_result = "H_solution"
-            print(f"    H oracle returns: {h_result}")
-            return f"G_processed_{h_result}"
-        
-        g_result = solve_G_via_H()
-        print(f"  G oracle returns: {g_result}")
-        return f"F_processed_{g_result}"
-    
-    final_result = solve_F_via_H()
-    print(f"Final F result: {final_result}")
-    print("\nConclusion: F ≤_T H via composition")
-
-demonstrate_transitivity()
-```
 
 ::: {.fragment style="font-size: 0.9em;"}
 
