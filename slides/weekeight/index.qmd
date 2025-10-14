@@ -142,8 +142,8 @@ def testisOddViaReduction():
 
 - {{< iconify fa6-solid lightbulb >}} **Intuitive meanings**:
     - "$F$ is easier than $G$" or "$F$ is no harder than $G$"
-    - If $G$ is solvable, then $F$ is automatically solvable
-    - If $F$ is unsolvable, then $G$ must also be unsolvable
+    - If $G$ is computable, then $F$ is automatically computable
+    - If $F$ is uncomputable, then $G$ must also be uncomputable
     - Visually, write the notation $F \leq_T G$ as $F \rightarrow G$ in a diagram
 
 :::
