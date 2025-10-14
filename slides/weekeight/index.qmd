@@ -60,14 +60,14 @@ let's dive in!
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid gear >}} **Two proof approaches to try**
     - **Contradiction proof**: Prove uncomputability by contradiction
-    - **Reduction proof**: Constructively transform a known hard problem $F$ to
-    a new problem $G$, thereby showing that new problem $G$ is at least as hard
-    as known problem $F$
-    - **Let's explore how to perform a reduction proof**!
+    - **Reduction proof**: Constructively transform a known uncomputable
+    problem $F$ to a new problem $G$, thereby showing that problem $F$ is "no
+    harder than" new problem $G$ and that $G$ is also uncomputable
+    - **Let's explore reduction proofs for problem uncomputability**!
 
 :::
 
