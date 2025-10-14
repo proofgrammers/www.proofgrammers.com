@@ -1,0 +1,59 @@
+---
+title: "Turing Reductions"
+description: "Use reduction techniques to proof problems are hard"
+date: "2025-10-13"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Course learning objectives
+
+::: {.fragment .callout-note icon=true title="Learning Objectives for Theoretical Machines"}
+
+- **CS-204-1**: Use both intuitive analysis and theoretical proof techniques to
+correctly distinguish between problems that are tractable, intractable, and
+uncomputable.
+- **CS-204-2**: Correctly use one or more variants of the Turing machine (TM)
+abstraction to both describe and analyze the solution to a computational
+problem.
+- **CS-204-3**: Correctly use one or more variants of the finite statement
+machine (FSM) abstraction to describe and analyze the solution to a
+computational problem.
+- **CS-204-4**: Use a formal proof technique to correctly classify a problem
+according to whether or not it is in the P, NP, NP-Hard, and/or NP-Complete
+complexity class(es).
+- **CS-204-5**: Apply insights from theoretical proofs concerning the limits of
+either program feasibility or complexity to the implementation of both correct
+and efficient real-world Python programs.
+
+:::
+
+# Reduction techniques, like Turing reduction, aid when proving that a problem is "hard"!
+
+::: fragment
+
+- "Reduction for hardness" helps with learning objective **CS-204-4**, in which
+you learn how to prove a problem is uncomputable or otherwise "hard". Stay tuned
+for more!
+
+:::
+
+# What is a Turing reduction?
+
+::: fragment
+
+- Explain a Turing reduction
+
+:::
