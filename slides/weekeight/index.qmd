@@ -237,6 +237,9 @@ which we have previously proven in a separate proof by contradiction!
     - {{< iconify fa6-solid branch >}} **From halting**: `HaltsOnString`, `HaltsOnEmpty`, `HaltsOnAll`
     - {{< iconify fa6-solid branch >}} **From counting**: `NumCharsOnString`, `NumStepsOnString`
 
+- {{< iconify fa6-solid lightbulb >}} **Next question**: What are the properties of Turing reductions?
+- {{< iconify fa6-solid tree >}} **And, finally, how can we visualize a tree of reductions**?
+
 :::
 
 ## Properties of Turing reductions
@@ -251,8 +254,12 @@ which we have previously proven in a separate proof by contradiction!
     - {{< iconify fa6-solid result >}} **Combined**: Can solve $F$ using $H$ oracle
     directly
 
-- {{< iconify fa6-solid lightbulb >}} Importantly, all of these uncomputability
-proofs start from a single known uncomputable problem, such as `YesOnString`!
+:::
+
+::: {.fragment .boxed-content style="margin-top: -0.25em; font-size: 0.8em;"}
+
+- Importantly, all of these uncomputability proofs start from a single known
+uncomputable problem, such as `YesOnString`!
 
 -  **Building hierarchies**: Transitivity helps organize problems by hardness
 
