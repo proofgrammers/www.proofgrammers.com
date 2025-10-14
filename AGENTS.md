@@ -301,7 +301,7 @@ file but you should follow them for whatever slide you are working on.
      of the slide
 
 4. **Title length verification**:
-   - Titles should fit on a single line at 1920x1080 resolution
+   - Titles should fit on a single line at `1920x1080` resolution
    - If title spans two lines, it must fill those lines nearly completely
    - Use concise, descriptive titles (prefer "Essential tools" over "Four 
      essential theory of computation tools")
@@ -310,6 +310,8 @@ file but you should follow them for whatever slide you are working on.
    - Ensure bullet points, code blocks, and text fit within slide boundaries
    - Check that boxed content and fragments are properly positioned
    - Verify code examples display without horizontal scrolling
+   - Write short and clear bullet points because they are more
+     likely to fit onto a single line and thus avoid content overflow
 
 6. **Cross-browser compatibility** (optional but recommended):
    ```bash
@@ -421,6 +423,8 @@ UPPER_SNAKE_CASE for constants.
 string paths.
 - **Error handling:** Use specific exceptions, not generic `Exception`; provide
 meaningful error messages.
+- **Cannot crash:** Do not stop working if any of the source code segments
+crash the `quarto` build process.
 
 ## Agent Rules
 
