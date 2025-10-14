@@ -99,22 +99,22 @@ prove reduction approach works
 
 - {{< iconify fa6-solid definition >}} **Formal definition**: 
     - Let $F$ and $G$ be computational problems
-    - $F$ has a Turing reduction to $G$ if we can solve $F$ using a program for $G$
+    - $F$ has a Turing reduction to $G$ if can solve $F$ using a program for $G$
     - We write this as $F \leq_T G$ (read this notation as "$F$ reduces to $G$")
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.825em;"}
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Intuitive meanings**:
-    - "$F$ is no harder than $G$"
+    - "$F$ is easier than $G$" or "$F$ is no harder than $G$"
     - If $G$ is solvable, then $F$ is automatically solvable
     - If $F$ is unsolvable, then $G$ must also be unsolvable
-    - Visually, write $F \leq_T G$ as $F \rightarrow G$
+    - Visually, write the notation $F \leq_T G$ as $F \rightarrow G$ in a diagram
 
 :::
 
-## Reduce `YesOnString` to `ContainsGAGA`
+## `YesOnString` $\rightarrow$ `ContainsGAGA`
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
@@ -127,92 +127,58 @@ prove reduction approach works
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid gear >}} **Problem definitions**:
-    - `YesOnString`: Given program $P$ and input $I$, does $P(I) = $ "yes"?
-    - `ContainsGAGA`: Given program $P$ and input $I$, does $P(I)$ contain "GAGA"?
+    - `YesOnString`: Given program $P$ and input $I$, does $P(I)=$ "yes"?
+    - `ContainsGAGA`: Given program $P$ and input $I$, does $P(I)$ contain the
+    string "GAGA"?
 - {{< iconify fa6-solid plan >}} **Reduction strategy**:
     - Transform any instance of `YesOnString` into an instance of `ContainsGAGA`
+    (i.e., `ContainsGAGA` will call `YesOnString`)
     - Use oracle for `ContainsGAGA` to solve `YesOnString`
 
 :::
 
-## Step 1: Transform programs
+## Reduction as Python source code
 
-```{pyodide}
-#| autorun: true
-def alter_yes_to_gaga(prog_string, input_string):
-    """Transform program to output GAGA instead of yes."""
-    def new_program(input_data):
-        # Simulate running original program
-        original_result = simulate_program(prog_string, input_string)
-        
-        # Transform output: yes becomes GAGA, anything else becomes empty
-        if original_result == "yes":
-            return "GAGA"
-        else:
-            return ""
-    
-    return new_program
+```python
+import utils; from utils import rf
+from GAGAOnString import GAGAOnString # oracle function  
+def yesViaGAGA(progString, inString):
+    singleString = utils.ESS(progString, inString)
+    return GAGAOnString(rf('alterYesToGAGA.py'), singleString) 
 
-def simulate_program(prog, inp):
-    """Simulate program execution (simplified)."""
-    # In reality, this would run the actual program
-    return "yes"  # Pretend result for demonstration
-
-# Test the transformation
-transformed = alter_yes_to_gaga("sample_prog", "sample_input")
-result = transformed("any_input")
-print(f"Transformed program output: '{result}'")
+def testYesViaGAGA():
+    testvals = [
+        ('containsGAGA.py', 'TTTTGAGATT', 'yes'),
+        ('containsGAGA.py', 'TTTTGAGTT', 'no'),
+        ('isEmpty.py', '', 'yes'),
+        ('isEmpty.py', 'x', 'no'),
+    ]
+    for (filename, inString, solution) in testvals:
+        val = yesViaGAGA(rf(filename), inString)
+        utils.tprint(filename + ":", val)
+        assert val == solution
 ```
 
-::: {.fragment style="font-size: 0.9em;"}
+::: {.fragment style="margin-top: -0.1em; font-size: 0.85em;"}
 
-{{< iconify fa6-solid check >}} **Step 1 complete**: New program outputs "GAGA" iff original outputs "yes"
+- {{< iconify fa6-solid code >}} **Key idea**: Solve the `YesOnString` problem
+using an "oracle" for `ContainsGAGA`, meaning we can solve known problem with
+new one
 
 :::
 
-## Step 2: Complete the reduction
-
-```{pyodide}
-#| autorun: true
-def solve_yesonstring_via_containsgaga(prog_string, input_string):
-    """Solve YESONSTRING by reducing to CONTAINSGAGA."""
-    # Create transformed program that outputs GAGA instead of yes
-    transformed_prog = alter_yes_to_gaga(prog_string, input_string)
-    
-    # Convert transformed program to string representation
-    transformed_prog_string = "altered_program_code"
-    
-    # Call CONTAINSGAGA oracle on transformed program
-    contains_gaga_result = containsgaga_oracle(transformed_prog_string, input_string)
-    
-    # Return the same result (yes iff contains GAGA)
-    return contains_gaga_result
-
-def containsgaga_oracle(prog_str, inp_str):
-    """Oracle for CONTAINSGAGA (mythical but assumed to exist)."""
-    print("Oracle determines if program output contains GAGA")
-    return "yes"  # Pretend oracle result
-
-# Demonstrate complete reduction
-print("Solving YESONSTRING via CONTAINSGAGA:")
-result = solve_yesonstring_via_containsgaga("test_prog", "test_input")
-print(f"YESONSTRING result: {result}")
-```
-
-::: {.fragment style="font-size: 0.9em;"}
-
-{{< iconify fa6-solid trophy >}} **Reduction complete**: If `CONTAINSGAGA` oracle exists, we can solve `YESONSTRING`
-
-:::
-
-# Why this proves `CONTAINSGAGA` is uncomputable
+## Why does this prove that `ContainsGAGA` is uncomputable?
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid step1 >}} **Step 1**: Assume `CONTAINSGAGA` is computable
-- {{< iconify fa6-solid step2 >}} **Step 2**: Then `YESONSTRING` is computable (via our reduction)
-- {{< iconify fa6-solid step3 >}} **Step 3**: But `YESONSTRING` is uncomputable (proven in Chapter 3)
-- {{< iconify fa6-solid contradiction >}} **Contradiction**: Cannot have both computable and uncomputable
+- {{< iconify fa6-solid gears >}} **Step 1**: Assume `ContainsGAGA` is
+computable
+- {{< iconify fa6-solid gears >}} **Step 2**: Then `YesOnString` is computable
+(via our reduction)
+- {{< iconify fa6-solid gears >}} **Step 3**: But `YesOnString` is uncomputable
+(proven in Chapter 3)
+- {{< iconify fa6-solid contradiction >}} **Contradiction**: Cannot have both
+computable and uncomputable
 
 :::
 
