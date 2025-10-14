@@ -875,7 +875,7 @@ uncomputable.
 - **CS-204-2**: Correctly use one or more variants of the Turing machine (TM)
 abstraction to both describe and analyze the solution to a computational
 problem.
-- **CS-204-3**: Correctly use one or more variants of the finite statement
+- **CS-204-3**: Correctly use one or more variants of the finite state
 machine (FSM) abstraction to describe and analyze the solution to a
 computational problem.
 - **CS-204-4**: Use a formal proof technique to correctly classify a problem
