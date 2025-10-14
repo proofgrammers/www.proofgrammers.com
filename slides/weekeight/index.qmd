@@ -159,7 +159,7 @@ def testYesViaGAGA():
         assert val == solution
 ```
 
-::: {.fragment style="margin-top: -0.1em; font-size: 0.85em;"}
+::: {.fragment style="margin-top: 0em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid code >}} **Key idea**: Solve the `YesOnString` problem
 using an "oracle" for `ContainsGAGA`, meaning we can solve known problem with
@@ -175,27 +175,17 @@ new one
 computable
 - {{< iconify fa6-solid gears >}} **Step 2**: Then `YesOnString` is computable
 (via our reduction)
-- {{< iconify fa6-solid gears >}} **Step 3**: But `YesOnString` is uncomputable
-(proven in Chapter 3)
-- {{< iconify fa6-solid contradiction >}} **Contradiction**: Cannot have both
-computable and uncomputable
+- {{< iconify fa6-solid gears >}} **Step 3**: But `YesOnString` is uncomputable,
+which we have previously proven in a separate proof by contradiction!
 
 :::
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.fragment .boxed-content style="margin-top: 0em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid conclusion >}} **Conclusion**: Our assumption was wrong
-- {{< iconify fa6-solid result >}} **Therefore**: `CONTAINSGAGA` must be uncomputable
-
-:::
-
-## The power of proof by contradiction
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
-
-- {{< iconify fa6-solid magic >}} **Elegant technique**: Assume opposite of what we want to prove
-- {{< iconify fa6-solid chain >}} **Follow logical chain**: Use assumption to derive impossible conclusion
-- {{< iconify fa6-solid boom >}} **Reach contradiction**: Shows assumption must be false
+- **Contradiction**: Cannot have both computable and uncomputable
+- **Realization**: Our initial assumption was wrong
+- **Conclusion**: `ContainsGAGA` must be uncomputable
+- **This completes the proof that `ContainsGAGA` is uncomputable**!
 
 :::
 
