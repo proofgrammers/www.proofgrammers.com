@@ -329,7 +329,9 @@ the layout is correct and that you have followed all of these standards.
 These are the high-level rules about modifying the files in this repository:
 
 - **Line width:** All text files, including Markdown and source code, should
-have a line width of 80 characters.
+have a line width of 80 characters. You must adhere to this line width when you
+are creating the content for the slides and also when you are writing to the
+PLAN.md file to provide support for the content that you created.
 - **Tool usage:** Use available tools (Read, Write, Edit, Bash, etc.) effectively 
 to complete tasks. Prefer using the Task tool for complex searches or multi-step 
 operations.
