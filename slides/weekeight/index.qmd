@@ -73,10 +73,11 @@ let's dive in!
 
 ## Why do reductions work?
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.815em;"}
 
 - We have a problem $F$ that is already proven to be uncomputable
-- We want to prove a new problem $G$ is also uncomputable
+- We want to prove a new problem $G$ is also uncomputable --- without
+  having to "start from scratch" for this proof for $G$'s uncomputability!
 - Reduction from $F$ to $G$ means we can solve $F$ using a solution for $G$
 - {{< iconify fa6-solid diagram >}} **Steps**: Still proceed by contradiction to
 prove reduction works:
