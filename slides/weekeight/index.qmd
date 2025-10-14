@@ -206,32 +206,27 @@ which we have previously proven in a separate proof by contradiction!
 
 :::
 
-# Properties of Turing reductions
-
-## Transitivity
+## Properties of Turing reductions
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid chain >}} **Chain reductions**: If $F \leq_T G$ and $G \leq_T H$, then $F \leq_T H$
-- {{< iconify fa6-solid compose >}} **Composition**: Solve $F$ using $G$ oracle, solve $G$ using $H$ oracle
-- {{< iconify fa6-solid result >}} **Combined**: Can solve $F$ using $H$ oracle directly
+- **Transitivity property:**
+    - {{< iconify fa6-solid chain >}} **Chain reductions**: If $F \leq_T G$ and $G
+    \leq_T H$, then $F \leq_T H$
+    - {{< iconify fa6-solid compose >}} **Composition**: Solve $F$ using $G$ oracle,
+    solve $G$ using $H$ oracle
+    - {{< iconify fa6-solid result >}} **Combined**: Can solve $F$ using $H$ oracle
+    directly
 
-:::
+- {{< iconify fa6-solid lightbulb >}} Importantly, all of these uncomputability
+proofs start from a single known uncomputable problem, such as `YesOnString`!
 
-## Reflexivity and antisymmetry
+-  **Building hierarchies**: Transitivity helps organize problems by hardness
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+- **Viewing hierarchies**: See the relationships between problems in a tree
 
-- {{< iconify fa6-solid self >}} **Reflexive**: $F \leq_T F$ (trivial - solve
-$F$ using $F$ oracle)
-- {{< iconify fa6-solid equal >}} **Antisymmetric**: If $F \leq_T G$ and $G
-\leq_T F$, then $F$ and $G$ are equivalent
-
-:::
-
-::: {.fragment style="font-size: 0.9em;"}
-
-{{< iconify fa6-solid hierarchy >}} **Building hierarchies**: Transitivity helps organize problems by hardness
+- **Tree Interpretation**: Node at the top is the "starting point" of the
+Turing reduction chain! Okay, let's see what this looks like!
 
 :::
 
