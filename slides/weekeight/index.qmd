@@ -119,7 +119,7 @@ prove reduction approach works
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid target >}} **Goal**: Prove `ContainsGAGA` is uncomputable
-- {{< iconify fa6-solid known >}} **Known fact**: `YesOnString` is uncomputable (Chapter 3)
+- {{< iconify fa6-solid known >}} **Known fact**: `YesOnString` is uncomputable
 - {{< iconify fa6-solid strategy >}} **Strategy**: Show `YesOnString` $\leq_T$ `ContainsGAGA`
 
 :::
