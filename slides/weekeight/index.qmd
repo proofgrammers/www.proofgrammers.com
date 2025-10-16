@@ -162,7 +162,7 @@ def testisOddViaReduction():
 
 ## What is a Turing reduction?
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.805em;"}
 
 - {{< iconify fa6-solid definition >}} **Formal definition**: 
     - Let $F$ and $G$ be computational problems
