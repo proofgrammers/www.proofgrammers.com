@@ -240,6 +240,74 @@ make sure that you notify me when you have completed this task.
 
 ## Support for Content
 
+### Week Eight — Edits
+
+- [x] Fix wording typo in `slides/weekeight/index.qmd` (removed extra "as" in the
+  sentence: "`YesOnString` is no harder than `NumStepsOnString`").
+- [X] Remove duplicated `isOddViaReduction` code block in
+  `slides/weekeight/index.qmd` (found two identical blocks near the top of the
+  file).
+- [X] Add clarifying demo note near `haltsOnString` about the limitation of
+  `utils.runWithTimeout` (user declined this change; left unchecked).
+
+**Duplicate explanation and excerpt**:
+
+The `isOddViaReduction` code block appears twice in
+`slides/weekeight/index.qmd`. Below is an excerpt of the repeated block (first
+occurrence):
+
+```python
+import utils; from utils import rf
+from lastDigitIsEven import lastDigitIsEven 
+def isOddViaReduction(inString):
+    inStringPlusOne = int(inString) + 1
+    return lastDigitIsEven(str(inStringPlusOne)) 
+
+def testisOddViaReduction():
+    testVals = [('-2', 'no'),
+                ('0', 'no'),
+                ('2', 'no'),
+                ('3742788', 'no'),
+                ('-1', 'yes'),
+                ('1', 'yes'),
+                ('3', 'yes'),
+                ('17', 'yes'),
+                ('3953969', 'yes'),
+                ]
+    for (inString, solution) in testVals:
+        val = isOddViaReduction(inString)
+        utils.tprint(inString, ':', val)
+        assert val == solution
+```
+
+And here is the second occurrence (immediately repeated later in the same file):
+
+```python
+import utils; from utils import rf
+from lastDigitIsEven import lastDigitIsEven 
+def isOddViaReduction(inString):
+    inStringPlusOne = int(inString) + 1
+    return lastDigitIsEven(str(inStringPlusOne)) 
+
+def testisOddViaReduction():
+    testVals = [('-2', 'no'),
+                ('0', 'no'),
+                ('2', 'no'),
+                ('3742788', 'no'),
+                ('-1', 'yes'),
+                ('1', 'yes'),
+                ('3', 'yes'),
+                ('17', 'yes'),
+                ('3953969', 'yes'),
+                ]
+    for (inString, solution) in testVals:
+        val = isOddViaReduction(inString)
+        utils.tprint(inString, ':', val)
+        assert val == solution
+```
+
+User declined the demo-note change; leaving that item unchecked.
+
 ### Week Four Slides Enhancement: Set Operations Addition
 
 **Missing Content Identification and Resolution**:
