@@ -94,7 +94,7 @@ prove reduction works:
 
 ![](07-reductions_0.png){.sensible-size-thick-border}
 
-## Reduction as Python source code
+## Reduction concept as Python function
 
 ```python
 import utils; from utils import rf
