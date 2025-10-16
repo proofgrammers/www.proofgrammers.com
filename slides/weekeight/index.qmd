@@ -414,7 +414,7 @@ reduction chain! Okay, let's see what this uncomputability tree looks like!
 - `HaltsOnString` is no harder than `HaltsOnEmpty`
 - `HaltsOnString` is no harder than `NumStepsOnString`
 - `YesOnString` is no harder than `HaltsOnEmpty`
-- `YesOnString` is no harder than as `NumStepsOnString`
+- `YesOnString` is no harder than `NumStepsOnString`
 
 :::
 
