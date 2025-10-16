@@ -491,6 +491,8 @@ import utils; from utils import rf
 from universal import universal
 def haltsOnString(progString, inString):
     # if it doesn't complete before timing out, assume it is in an infinite loop
+    # note that this is for demonstration purposes only and not how an
+    # actual "haltsOnString" oracle would be implemented in the proof
     val = utils.runWithTimeout(None, universal, progString, inString)
     if val != None:
         return 'yes'
@@ -561,7 +563,7 @@ function
   returns `"yes"` the transformed program halts (returns), otherwise it enters
   an infinite loop.
 
-- `haltsOnString`: oracle wrapper that simulates a program with timeout and
+- `haltsOnString`: oracle "wrapper" that simulates a program with timeout and
   returns `"yes"` iff the program halts within the timeout period.
 
 - Key insights about this proof technique using Turing reductions:
