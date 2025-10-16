@@ -90,7 +90,7 @@ prove reduction works:
 
 :::
 
-## Example of Turing reduction concepts
+## Example of "reduction" concepts
 
 ![](07-reductions_0.png){.sensible-size-thick-border}
 
@@ -124,6 +124,39 @@ def testisOddViaReduction():
 
 - `isOddViaReduction` uses `lastDigitIsEven` to solve the `isOdd` problem
 - `isOddViaReduction` solves `isOdd` by "reducing" it to `lastDigitIsEven`
+
+:::
+
+## Define the `lastDigitIsEven` function
+
+```python
+import utils; from utils import rf
+from lastDigitIsEven import lastDigitIsEven 
+def isOddViaReduction(inString):
+    inStringPlusOne = int(inString) + 1
+    return lastDigitIsEven(str(inStringPlusOne)) 
+
+def testisOddViaReduction():
+    testVals = [('-2', 'no'),
+                ('0', 'no'),
+                ('2', 'no'),
+                ('3742788', 'no'),
+                ('-1', 'yes'),
+                ('1', 'yes'),
+                ('3', 'yes'),
+                ('17', 'yes'),
+                ('3953969', 'yes'),
+                ]
+    for (inString, solution) in testVals:
+        val = isOddViaReduction(inString)
+        utils.tprint(inString, ':', val)
+        assert val == solution
+```
+
+::: {.fragment style="margin-top: -0.15em; font-size: 0.815em;"}
+
+- This `lastDigitIsEven` function can solve the `isOdd` problem
+- The `isOddViaReduction` behaves the same way as the `isOdd` function
 
 :::
 
