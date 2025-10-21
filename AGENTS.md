@@ -26,7 +26,7 @@ mathematical concepts as Python programs. These are the course's goals:
     this GitHub repository (only available locally of the course instructor's
     repository and not in the publicly available GitHub repository) called
     `What-Can-Be-Computed.pdf` and in `What-Can-Be-Computed.md`.
-    - You will also find access to slides from the book's author that connect
+    - You will also find access to the slides from the book's author that connect
     to the textbook in a specific file like ` 03-impossible-programs.qmd`
     that are provided to you on a case-by-case basis for a specific task.
     - These are the main objectives of the course:
@@ -318,6 +318,14 @@ file but you should follow them for whatever slide you are working on.
    chromium-browser --headless --disable-gpu --window-size=1920,1080 \
      --screenshot=slide-verify.png http://localhost:8081/slides/weekone/index.html
    ```
+
+7. **Shutdown servers**: 
+    - If you started a server, make sure that it has been shutdown. You 
+    can check to see what ports are still running. If you have started a server
+    at a specific port, make sure that it is not running before you are done.
+    However, if a port is still running and you are not sure what to do to
+    stop it, then please alert me to the processes still running related
+    to the use of the `quarto preview` command or other commands.
 
 **Important**: Always complete this verification process before finalizing slides.
 The visual presentation quality directly affects the effectiveness of course
