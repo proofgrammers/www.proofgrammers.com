@@ -48,6 +48,8 @@ and efficient real-world Python programs.
 - Nondeterminism can be more expressive and easier to analyze
 - Any problem that can be computed by a nondeterministic Python program can also
 be computed by a deterministic Python program
+- While there are nondeterministic versions of Turning machines and finite
+automata, they aid modelling and not computability
 
 :::
 
@@ -55,21 +57,22 @@ be computed by a deterministic Python program
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid microchip >}} Modern computers appear to do
-many things simultaneously
-- {{< iconify fa6-solid clock >}} Pre-2000: single-core CPUs switched
-between programs every few milliseconds
-- {{< iconify fa6-solid shuffle >}} **Nondeterminism**: Next step could
-advance any current task
-- {{< iconify fa6-solid question-circle >}} **Key question**: Does
-multitasking increase computational power?
+- {{< iconify fa6-solid microchip >}} Modern computers appear to do many things
+simultaneously
+- {{< iconify fa6-solid shuffle >}} **Nondeterminism**: Next step could advance
+any current task
+- {{< iconify fa6-solid question-circle >}} **Key question**: Does multitasking
+increase computational power? Again, no, it does not! We will "sketch" a proof
+of this claim.
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-{{< iconify fa6-solid lightbulb >}} Answer: No! Nondeterminism aids
-efficiency but not computability
+- **Practical steps to explore the concepts of nondeterminism**:
+    - Use a program to see what processes are running on your computer
+    - Discover how languages like Python or Java support multithreading
+    - Grasp the differences between threads and processes in Python or Java
 
 :::
 
