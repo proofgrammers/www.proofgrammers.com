@@ -200,16 +200,16 @@ match; otherwise returns `no`, giving the `N` concept
 
 - {{< iconify fa6-solid sitemap >}} **Nodes**: Represent threads;
 **Root**: Initial thread
-- {{< iconify fa6-solid leaf >}} **Leaves**: Threads that return "yes",
-"no", or never terminate
-- {{< iconify fa6-solid check >}} Any positive leaf: output is positive
-- {{< iconify fa6-solid x >}} All leaves negative: output is "no"
+- {{< iconify fa6-solid leaf >}} **Leaves**: Threads that return `yes`,
+`no`, or never terminate
+- {{< iconify fa6-solid check >}} Any positive leaf: output of overall program is `yes`
+- {{< iconify fa6-solid x >}} All leaves negative: output of overall program is is `no`
 
 :::
 
-## Claim 8.1: nondeterminism does not add power
+## Claim 8.1: nondeterminism does not add power in terms of computability
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: -0.25em; font-size: 0.9em;"}
 
 {{< iconify fa6-solid scale-balanced >}} **Claim 8.1**: Any problem
 computable by a nondeterministic Python program can also be computed by
@@ -217,16 +217,7 @@ a deterministic Python program.
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid key >}} Nondeterminism aids efficiency but not
-computational power
-
-:::
-
-## Proof sketch of Claim 8.1
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid play >}} Deterministically simulate
 nondeterminism by switching between tasks
@@ -240,8 +231,9 @@ proved this works in practice
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid triangle-exclamation >}} Nondeterminism may
-greatly improve efficiency despite not changing computability
+{{< iconify fa6-solid triangle-exclamation >}} Nondeterminism may greatly
+improve efficiency despite not changing the problem's overall computability.
+Wow!
 
 :::
 
