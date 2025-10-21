@@ -1,6 +1,6 @@
 ---
 title: "Understanding Nondeterminism"
-description: "Grasp how nondeterminism does not change computability"
+description: "Nondeterminism does not aid computability"
 date: "2025-10-20"
 date-format: long
 author: Gregory M. Kapfhammer
@@ -18,7 +18,17 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Nondeterminism does not increase computational power! Let's prove it!
+# Nondeterminism does not increase or change computational power!
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Key Result**: Any problem that can be
+computed by a nondeterministic Python program can also be computed by a
+deterministic Python program. This means that, while nondeterminism may provide
+flexibility in how computations are performed or how we model certain problems,
+it does not expand the set of problems that are computable. Wow!
+
+:::
 
 ## What is nondeterminism?
 
@@ -29,14 +39,47 @@ computation**
     - Programs can explore **multiple paths** simultaneously
     - Operating system switches between threads unpredictably
     - Timing and order of execution are not predetermined
-- {{< iconify fa6-solid question-circle >}} **Key questions**
+- {{< iconify fa6-solid microscope >}} **Key questions**
     - Does nondeterminism let us solve more problems?
     - How do we model nondeterministic computations?
     - Why study nondeterminism if it doesn't add power?
 
 :::
 
-## Example problem: FindNANA
+## Operating system process listing
+
+```shell
+ 358101 gkapfham  20   0  562772 265936  17752 S   9.1   0.5  22:58.95 nvim
+ 707583 gkapfham  20   0  232632  64584  10884 S   9.1   0.1   0:48.75 nvim
+      1 root      20   0   23928  15284  11056 S   0.0   0.0   0:02.98 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.07 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_workqueue_release
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_gp
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-sync_wq
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-kvfree_rcu_reclaim
+      7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-slub_flushwq
+      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-netns
+     11 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri
+     14 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-mm_percpu_wq
+     15 root      20   0       0      0      0 S   0.0   0.0   0:00.70 ksoftirqd/0
+     16 root      20   0       0      0      0 I   0.0   0.0   0:15.75 rcu_preempt
+     17 root      20   0       0      0      0 S   0.0   0.0   0:00.00 rcu_exp_par_gp_kthread_worker/0
+     18 root      20   0       0      0      0 S   0.0   0.0   0:00.02 rcu_exp_gp_kthread_worker
+     19 root      rt   0       0      0      0 S   0.0   0.0   0:08.83 migration/0
+     20 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/0
+     21 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0
+     22 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/2
+     23 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/2
+```
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- There are many processes and threads running on your computer
+- The operating system's scheduler switches between them rapidly
+
+:::
+
+## Example problem: `FindNANA`
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
