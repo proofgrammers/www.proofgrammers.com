@@ -76,29 +76,33 @@ of this claim.
 
 :::
 
-## Nondeterministic Python with threads
+## Python with threads
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
 - {{< iconify fa6-brands python >}} Python's `threading` module creates
 nondeterministic programs
-- {{< iconify fa6-solid dna >}} **Example**: `ContainsNANA` searches
-for genetic patterns (CACA, GAGA, TATA, AAAA)
-- {{< iconify fa6-solid layer-group >}} Launch all four searches
-simultaneously in separate threads
-- {{< iconify fa6-solid forward >}} Return "yes" as soon as any thread
+- {{< iconify fa6-solid dna >}} **Example**: `ContainsNANA` searches for genetic
+patterns (e.g., CACA, GAGA, TATA, AAAA) where `N` means "any nucleotide"
+- {{< iconify fa6-solid layer-group >}} Launch all four searches simultaneously
+in separate threads
+- {{< iconify fa6-solid forward >}} Return `yes` as soon as any Python thread
 finds a match
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
-{{< iconify fa6-solid rocket >}} Nondeterministic approach potentially
-faster than sequential search
+- {{< iconify fa6-solid lightbulb >}} **Key insights from the suggested
+approach**:
+    - Threads may complete in any order, leading to nondeterministic behavior
+    - This means that output may vary between runs for the same input
+    - However, the same input will always yield the same overall output
+    - Nondeterministic approach potentially faster than sequential search
 
 :::
 
-## Deterministic solution for `ContainsNANA`
+## Deterministic `ContainsNANA`
 
 ```{python}
 def containsNANA(inString):
@@ -121,7 +125,7 @@ a time
 
 :::
 
-## Nondeterministic `ContainsNANA` structure
+## Nondeterministic `ContainsNANA`
 
 ```{python}
 from threading import Thread
