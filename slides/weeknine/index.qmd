@@ -207,17 +207,6 @@ match; otherwise returns `no`, giving the `N` concept
 
 :::
 
-## Example computation tree
-
-![](08-nondeterminism_0.png)
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid dna >}} Input "CCCTATACCCGAGACCC" has two
-positive leaves returning "yes"
-
-:::
-
 ## Claim 8.1: nondeterminism does not add power
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
