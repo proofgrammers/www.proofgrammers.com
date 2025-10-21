@@ -217,7 +217,7 @@ a deterministic Python program.
 
 :::
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.05em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid play >}} Deterministically simulate
 nondeterminism by switching between tasks
@@ -251,10 +251,13 @@ proofs
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
 
-{{< iconify fa6-solid key >}} Nondeterministic TMs formalize
-multithreaded computation
+- Nondeterministic Turing machines formalize multithreaded computation in
+programming languages like Python
+- These Turing machines allow for "choice" at each state in the model
+- Makes it possible to prove results about nondeterministic computation,
+helps understanding P versus NP and NP-completeness
 
 :::
 
@@ -262,31 +265,49 @@ multithreaded computation
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid input-text >}} Input: Genetic string bracketed
+- {{< iconify fa6-solid rocket >}} Input: Genetic string bracketed
 by x's
 - {{< iconify fa6-solid check >}} Accept if some "G" has exactly one "T"
 between G and either end
-- {{< iconify fa6-solid clone >}} When G found: create three clones
+- {{< iconify fa6-solid clone >}} When G is found: create three "clones"
     - Check left for one T
     - Check right for one T
     - Continue searching for next G
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
 
-{{< iconify fa6-solid example >}} "xATGTTx" accepted; "xATTGx" rejected
+-  “xATGTTx”, “xATTGTGCCTACx”, and “xTGGGTTx” are all accepted; “xATTGx”,
+“xCTTGAGTGTATx”, and “xCTCTx” are all rejected. Can you explain why? How would
+we visually express this Turing machine?
 
 :::
 
-## Nondeterministic Turing machine diagram
+## Visualize `GthenOneT` Turning machine
 
 ![](08-nondeterminism_7.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid diagram-project >}} State $q_1$ has ambiguous
-transitions: multiple valid next states when scanning G
+- {{< iconify fa6-solid diagram-project >}} State $q_1$ has ambiguous
+transitions: multiple valid next states when scanning G. How does this work?
+Let's explore!
+
+:::
+
+## Understanding `GthenOneT`
+
+::: fragment
+
+- At first glance, this looks deterministic, right?
+- Key difference: states can have ambiguous transitions
+- When in $q_1$ and scanning G, three possible transitions:
+    - Stay in state $q_1$
+    - Go to state $q_2$
+    - Go to state $q_4$
+- Critically, this does not change computability
+- Visualize the computation tree, show simulation is possible
 
 :::
 
@@ -294,31 +315,10 @@ transitions: multiple valid next states when scanning G
 
 ![](08-nondeterminism_9.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid check >}} Input "xTGTGGTx": three leaves accept,
+- {{< iconify fa6-solid check >}} Input "xTGTGGTx": three leaves accept,
 so result is accept
-
-:::
-
-## Formal definition: transition functions
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid book >}} **Deterministic**: $(q, x) \mapsto
-(q', x', d')$ returns single 3-tuple
-- {{< iconify fa6-solid list >}} **Nondeterministic**: $(q, x) \mapsto
-\{(q'_1, x'_1, d'_1), (q'_2, x'_2, d'_2), \ldots\}$ returns set of
-3-tuples
-- {{< iconify fa6-solid one >}} Singleton sets behave deterministically
-- {{< iconify fa6-solid clone >}} Multiple elements enable cloning
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid lightbulb >}} Only difference: sets instead of
-single values
 
 :::
 
