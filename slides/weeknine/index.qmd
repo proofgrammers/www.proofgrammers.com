@@ -1,5 +1,5 @@
 ---
-title: "Uderstanding Nondeterminism"
+title: "Understanding Nondeterminism"
 description: "Grasp how nondeterminism does not change computability"
 date: "2025-10-20"
 date-format: long
@@ -7,7 +7,7 @@ author: Gregory M. Kapfhammer
 execute:
   echo: true
 format:
-  revealjs:
+  live-revealjs:
     completion: true
     theme: default
     css: ../css/styles.css
@@ -18,4 +18,221 @@ format:
     footer: "Proofgrammers"
 ---
 
+# Nondeterminism does not increase computational power! Let's prove it!
 
+## What is nondeterminism?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid wand-magic-sparkles >}} **Nondeterministic
+computation**
+    - Programs can explore **multiple paths** simultaneously
+    - Operating system switches between threads unpredictably
+    - Timing and order of execution are not predetermined
+- {{< iconify fa6-solid question-circle >}} **Key questions**
+    - Does nondeterminism let us solve more problems?
+    - How do we model nondeterministic computations?
+    - Why study nondeterminism if it doesn't add power?
+
+:::
+
+## Example problem: FindNANA
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid dna >}} **Genetic string search**
+    - In genetic strings, `N` matches any of: `C`, `A`, `G`, `T`
+    - Find `NANA` pattern in input (matches `CACA`, `GAGA`, `TATA`,
+    `AAAA`)
+    - Search 2KB file `geneticString.txt` for these patterns
+    - Use divide-and-conquer with multiple threads
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} Multiple threads explore different
+patterns **simultaneously** in a nondeterministic fashion
+
+:::
+
+## Nondeterministic search results
+
+![](08-nondeterminism_0.png){.sensible-size-thick-border}
+
+## Modern computers use many threads
+
+![](08-nondeterminism_1.png){.sensible-size-thick-border}
+
+## Concurrency creates nondeterminism
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid microchip >}} **Process and thread management**
+    - Hundreds of processes and threads run "simultaneously"
+    - Only a few genuinely simultaneous (depends on CPU cores)
+    - Operating system rapidly switches between threads
+    - Switching timing is **unpredictable**: behavior is
+    nondeterministic
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} Check your system with Task Manager
+(Windows), Activity Monitor (Mac), or `ps` (Linux)
+
+:::
+
+## Python's threading module
+
+![](08-nondeterminism_2.png){.sensible-size-thick-border}
+
+## Launching nondeterministic threads
+
+![](08-nondeterminism_3.png){.sensible-size-thick-border}
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-brands python >}} **Thread behavior**
+    - `findString` invoked nondeterministically in four separate threads
+    - Wait for first positive solution if one exists
+    - Otherwise wait until all threads terminate with negative solution
+
+:::
+
+## Computation trees model nondeterminism
+
+![](08-nondeterminism_4.png){.sensible-size-thick-border}
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid sitemap >}} Each node is a **computational
+choice**; branches show alternative paths
+
+:::
+
+## Computation tree outcomes
+
+![](08-nondeterminism_5.png){.sensible-size-thick-border}
+
+## Understanding tree outputs
+
+![](08-nondeterminism_6.png){.sensible-size-thick-border}
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid question-circle >}} **Exercise**: What is the
+output of each tree? Any **positive leaf** is valid; infinite trees may
+not terminate
+
+:::
+
+## Nondeterminism does not add power
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid scale-balanced >}} **Claim**: Any problem
+computable by a nondeterministic program is computable by a
+deterministic program
+
+:::
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid pen >}} **Proof sketch**:
+    - Deterministic program simulates the nondeterministic one
+    - Maintain a list of unexplored nodes in computation tree
+    - Visit each node systematically (breadth-first or depth-first)
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} Nondeterminism provides
+**flexibility** but not more computational power
+
+:::
+
+## Nondeterministic Turing machines
+
+![](08-nondeterminism_7.png){.sensible-size-thick-border}
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid question-circle >}} **Exercise**: Which states
+exhibit nondeterminism in this machine?
+
+:::
+
+## Multiple transitions from one state
+
+![](08-nondeterminism_8.png){.sensible-size-thick-border}
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid clone >}} Machines **clone** themselves to follow
+multiple transitions simultaneously
+
+:::
+
+## Turing machine computation tree
+
+![](08-nondeterminism_9.png){.sensible-size-thick-border}
+
+## Formal definition of nondeterministic TM
+
+![](08-nondeterminism_10.png){.sensible-size-thick-border}
+
+## Transition functions map to sets
+
+![](08-nondeterminism_11.png){.sensible-size-thick-border}
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid book >}} Transition function maps to **sets** of
+configurations instead of single configuration
+
+:::
+
+## Three equivalent views of nondeterminism
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid eye >}} **Simultaneous threads**: Programs
+execute all threads at once
+- {{< iconify fa6-solid dice >}} **Random choice**: Program randomly
+chooses one action when offered a choice
+- {{< iconify fa6-solid user >}} **External choice**: External operator
+advises program which action to take
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid equals >}} All three models ask: **Can we reach a
+positive solution?** All yield identical results
+
+:::
+
+## Why study nondeterminism?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid brain >}} **Natural thinking**: Intuitive way
+to approach certain problems and prove results
+- {{< iconify fa6-solid server >}} **Real systems**: Models large
+clusters of computers (with finite limits, unlike theory)
+- {{< iconify fa6-solid layer-group >}} **Complexity theory**:
+Foundation for **NP-completeness** concepts
+- {{< iconify fa6-solid ban >}} **Proof technique**: Helps prove that
+unrecognizable problems exist
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid graduation-cap >}} Nondeterminism is a powerful
+**conceptual tool** even though it doesn't solve more problems
+
+:::
