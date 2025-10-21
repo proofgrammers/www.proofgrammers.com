@@ -250,6 +250,15 @@ print(not duplicates([1,2,3,4]))
      chapter of the book and the specified content for the author's slides.
      Do not make up any new content unless it is clearly needed and it is
      easy to justify the new content and easy for a beginner to understand it.
+23.  Make sure that when you include images, you look for them in the 
+     `theoreticalmachines/wcbc-slides/img/` directory and you include them
+     using source code segments like the following:
+
+```markdown
+## Program alteration techniques
+
+![](06-universal-programs_5.png)
+```
 
 ## Content Verification
 
