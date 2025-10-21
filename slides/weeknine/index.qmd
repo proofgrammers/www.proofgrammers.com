@@ -110,7 +110,7 @@ of this claim.
  773201 nscd      20   0  688988   7300   5520 S   0.3   0.0   0:00.99 nsncd
 ```
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.2em; font-size: 0.8em;"}
 
 - The operating system's scheduler allocates CPU time to each process
 - Scheduling aids resource sharing and overall system responsiveness
