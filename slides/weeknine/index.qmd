@@ -183,11 +183,12 @@ def ndContainsNANA(inString):
     return solution
 ```
 
-::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.95em;"}
+::: {.fragment .fade style="margin-top: -0.05em; font-size: 0.95em;"}
 
-- Iteratively look for each string in `strings`
-- Return `yes` if found; otherwise return `no`
-- Deterministic: same output for same input every time
+- Create a thread for each string in `strings`
+- The `waitForOnePosOrAllNeg` utility returns `yes` if any thread finds a
+match; otherwise returns `no`, giving the `N` concept
+- Achieves nondeterminism through multithreading in Python
 
 :::
 
