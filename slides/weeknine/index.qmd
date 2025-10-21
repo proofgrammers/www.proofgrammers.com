@@ -20,23 +20,34 @@ format:
 
 # Learning objectives
 
-::: {.fragment .callout-note icon=true title="Learning Objectives"}
+::: {.fragment .callout-note icon=true title="Learning Objectives for Theoretical Machines"}
 
-- **CS-204-1**: Use intuitive analysis and proof techniques to
-distinguish between tractable, intractable, and uncomputable problems.
-- **CS-204-2**: Correctly use Turing machine variants to describe and
-analyze computational problem solutions.
-- **CS-204-5**: Apply theoretical insights about limits of computation
-to implement correct and efficient Python programs.
+- **CS-204-1**: Use both intuitive analysis and theoretical proof techniques to
+correctly distinguish between problems that are tractable, intractable, and
+uncomputable.
+- **CS-204-2**: Correctly use one or more variants of the Turing machine (TM)
+abstraction to both describe and analyze the solution to a computational
+problem.
+- **CS-204-3**: Correctly use one or more variants of the finite state
+machine (FSM) abstraction to describe and analyze the solution to a
+computational problem.
+- **CS-204-4**: Use a formal proof technique to correctly classify a problem
+according to whether or not it is in the P, NP, NP-Hard, and/or NP-Complete
+complexity class(es).
+- **CS-204-5**: Apply insights from theoretical proofs concerning the limits of
+either program feasibility or complexity to the implementation of both correct
+and efficient real-world Python programs.
 
 :::
 
-# Nondeterminism helps understand computational limits but does not increase power!
+# Nondeterminism does not increase power!
 
-::: fragment
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- Nondeterminism connects to **CS-204-1** and **CS-204-2**, helping you
-understand computational power limits. **Let's explore!**
+- Nondeterminism can improves efficiency, but not computability
+- Nondeterminism can be more expressive and easier to analyze
+- Any problem that can be computed by a nondeterministic Python program can also
+be computed by a deterministic Python program
 
 :::
 
