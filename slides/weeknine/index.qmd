@@ -18,16 +18,36 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Introduction to Nondeterminism
+# Learning objectives
+
+::: {.fragment .callout-note icon=true title="Learning Objectives"}
+
+- **CS-204-1**: Use intuitive analysis and proof techniques to
+distinguish between tractable, intractable, and uncomputable problems.
+- **CS-204-2**: Correctly use Turing machine variants to describe and
+analyze computational problem solutions.
+- **CS-204-5**: Apply theoretical insights about limits of computation
+to implement correct and efficient Python programs.
+
+:::
+
+# Nondeterminism helps understand computational limits but does not increase power!
+
+::: fragment
+
+- Nondeterminism connects to **CS-204-1** and **CS-204-2**, helping you
+understand computational power limits. **Let's explore!**
+
+:::
 
 ## What is nondeterminism?
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid microchip >}} **Multitasking**: Modern computers
-appear to do many things at once
-- {{< iconify fa6-solid wand-magic-sparkles >}} **Parallelism**: Tasks
-executed in parallel (simultaneously)
+- {{< iconify fa6-solid microchip >}} Modern computers appear to do
+many things simultaneously
+- {{< iconify fa6-solid clock >}} Pre-2000: single-core CPUs switched
+between programs every few milliseconds
 - {{< iconify fa6-solid shuffle >}} **Nondeterminism**: Next step could
 advance any current task
 - {{< iconify fa6-solid question-circle >}} **Key question**: Does
@@ -37,138 +57,30 @@ multitasking increase computational power?
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid lightbulb >}} Computers switched between tasks
-rapidly even before multi-core processors existed
+{{< iconify fa6-solid lightbulb >}} Answer: No! Nondeterminism aids
+efficiency but not computability
 
 :::
 
-## Multitasking in modern computers
+## Nondeterministic Python with threads
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid video >}} Watch video while editing document
-- {{< iconify fa6-solid envelope >}} Receive email notifications
-- {{< iconify fa6-solid share-nodes >}} Update social media feeds
-- {{< iconify fa6-solid server >}} All happen "simultaneously"
+- {{< iconify fa6-brands python >}} Python's `threading` module creates
+nondeterministic programs
+- {{< iconify fa6-solid dna >}} **Example**: `ContainsNANA` searches
+for genetic patterns (CACA, GAGA, TATA, AAAA)
+- {{< iconify fa6-solid layer-group >}} Launch all four searches
+simultaneously in separate threads
+- {{< iconify fa6-solid forward >}} Return "yes" as soon as any thread
+finds a match
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid brain >}} Modern computers have multiple CPU
-cores that enable true parallel execution
-
-:::
-
-## Historical perspective: single-core multitasking
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid clock >}} Before 2000: Most computers had one
-CPU with single core
-- {{< iconify fa6-solid forward >}} Operating systems switched between
-programs every few milliseconds
-- {{< iconify fa6-solid eye >}} Fast enough switching creates illusion
-of multitasking
-- {{< iconify fa6-solid equals >}} Appearance vs. reality: fake vs.
-genuine parallelism
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid history >}} Standard Turing machines cannot
-multitask: single head, one symbol at a time
-
-:::
-
-## Parallelism versus nondeterminism
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid layer-group >}} **Parallelism**: Tasks done in
-parallel at same time
-- {{< iconify fa6-solid dice >}} **Nondeterminism**: Next step chosen
-nondeterministically from multiple tasks
-- {{< iconify fa6-solid network-wired >}} **Communication**: Parallel
-computations can communicate with each other
-- {{< iconify fa6-solid users-slash >}} **Independence**: Nondeterministic
-computations operate independently
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid book >}} This book focuses on nondeterministic
-computations that act independently
-
-:::
-
-## Nondeterminism: magic or reality?
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid check >}} **Reality**: Scientists use thousands
-of CPU cores across data centers
-- {{< iconify fa6-solid star-half-stroke >}} **Magic**: Theoretical
-nondeterminism allows unbounded parallel threads
-- {{< iconify fa6-solid infinity >}} **Impossible**: Cannot exceed number
-of atoms in universe
-- {{< iconify fa6-solid flask >}} **Fruitful**: Theoretical study leads
-to practical results
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid wand-sparkles >}} Theoretical nondeterminism is
-slightly "magical" but extremely useful
-
-:::
-
-# Nondeterministic Python Programs
-
-## Threads: the basic unit of parallelism
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid code >}} **Thread**: Basic unit of parallelism
-in modern operating systems
-- {{< iconify fa6-brands python >}} **Python**: Use `threading` module
-to create threads
-- {{< iconify fa6-solid play >}} **Start**: Use `start()` method to run
-thread
-- {{< iconify fa6-solid handshake >}} **Join**: Use `join()` method to
-wait for thread completion
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid gears >}} Operating system handles whether
-multitasking is real or simulated
-
-:::
-
-## Example problem: `ContainsNANA`
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid dna >}} **Problem**: Search for genetic
-substrings in input
-- {{< iconify fa6-solid magnifying-glass >}} **Target patterns**: `CACA`,
-`GAGA`, `TATA`, `AAAA`
-- {{< iconify fa6-solid n >}} **Notation**: `N` represents any
-nucleotide (C, A, G, or T)
-- {{< iconify fa6-solid circle-check >}} **Solution**: "yes" if any
-pattern found; "no" otherwise
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid dna >}} Molecular biologists use "NANA" to
-describe this pattern concisely
+{{< iconify fa6-solid rocket >}} Nondeterministic approach potentially
+faster than sequential search
 
 :::
 
@@ -190,60 +102,16 @@ print(containsNANA('CCCGGGCCC'))
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid arrow-right >}} Sequential approach: search input
-four times, one string at a time
+{{< iconify fa6-solid arrow-right >}} Sequential: search one string at
+a time
 
 :::
 
-## Nondeterministic approach: search in parallel
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid arrow-right >}} Still search input four times
-- {{< iconify fa6-solid layer-group >}} Launch all four searches
-simultaneously in separate threads
-- {{< iconify fa6-solid forward >}} Don't wait for each search to
-complete before starting next
-- {{< iconify fa6-brands python >}} Use Python's `threading` module
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid rocket >}} Program `ndContainsNANA.py` implements
-this nondeterministic approach
-
-:::
-
-## Helper function: `findString`
+## Nondeterministic `ContainsNANA` structure
 
 ```{python}
 from threading import Thread
 
-def findString(string, text, ndSoln):
-    if string in text:
-        ndSoln.setSolution('yes')
-```
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid search >}} Searches for `string` in `text`
-- {{< iconify fa6-solid box >}} Uses `ndSoln` object to store solution
-- {{< iconify fa6-solid check >}} Sets solution to "yes" if string found
-- {{< iconify fa6-solid x >}} Does not set to "no" if string not found
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid lightbulb >}} `NonDetSolution` objects start with
-"no" and change only when positive solution found
-
-:::
-
-## Main nondeterministic function structure
-
-```{python}
 def ndContainsNANA(inString):
     strings = ['CACA', 'GAGA', 'TATA', 'AAAA']
     threads = []
@@ -257,390 +125,41 @@ def ndContainsNANA(inString):
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid list >}} Creates threads but does not start them
-yet
+{{< iconify fa6-solid graduation-cap >}} Focus on nondeterminism
+concept, not multithreaded programming details
 
 :::
 
-## Understanding Python thread creation
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid code >}} `Thread(target=myFunction, args=(val1,
-val2))`
-- {{< iconify fa6-solid tag >}} Uses keyword arguments: `target=` and
-`args=`
-- {{< iconify fa6-solid play >}} `myThread.start()` begins execution
-- {{< iconify fa6-solid equals >}} Equivalent to `myFunction(val1,
-val2)` in separate thread
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid book >}} Keyword arguments: parameter names
-explicitly specified in function call
-
-:::
-
-## Starting threads and waiting for results
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid play >}} `waitForOnePosOrAllNeg()` starts each
-thread in list
-- {{< iconify fa6-solid clock >}} Waits until one of two conditions:
-    - {{< iconify fa6-solid check >}} Any thread finds positive solution
-    - {{< iconify fa6-solid stop >}} All threads terminate with negative
-    solution
-- {{< iconify fa6-solid arrow-left >}} Returns the solution
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid forward >}} "yes" returned as soon as any thread
-finds desired string
-
-:::
-
-## Important notes on multithreaded programming
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid triangle-exclamation >}} Multithreaded
-programming is notoriously challenging
-- {{< iconify fa6-solid toolbox >}} Use provided utilities:
-`NonDetSolution` and `waitForOnePosOrAllNeg()`
-- {{< iconify fa6-solid skull >}} Python cannot easily kill specific
-threads
-- {{< iconify fa6-solid stop-circle >}} Use
-`utils.killAllThreadsAndExit()` to guarantee termination
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid graduation-cap >}} Focus on understanding
-nondeterminism, not general multithreaded programming
-
-:::
-
-# Nondeterministic Programs for Non-Decision Problems
-
-## Decision problems versus general problems
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid gavel >}} **Decision problems**: Only "yes" and
-"no" solutions
-- {{< iconify fa6-solid list >}} **General problems**: Arbitrary
-solution sets
-- {{< iconify fa6-solid check >}} **Positive solutions**: Any solution
-except "no"
-- {{< iconify fa6-solid x >}} **Negative solutions**: Solution is "no"
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid examples >}} Positive solutions include "534",
-"GAGA", and "yes"
-
-:::
-
-## Example problem: `FindNANA`
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid dna >}} Similar to `ContainsNANA` but different
-output
-- {{< iconify fa6-solid magnifying-glass >}} Search for `CACA`, `GAGA`,
-`TATA`, `AAAA`
-- {{< iconify fa6-solid arrow-left >}} **Return**: Found substring
-instead of "yes"
-- {{< iconify fa6-solid x >}} **Return**: "no" if no substring found
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid example >}} Input "CCCTATACCCGAGACCC" has solution
-set {"TATA", "GAGA"}
-
-:::
-
-## Multiple correct solutions
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid list >}} Solution set can have multiple elements
-- {{< iconify fa6-solid check >}} Program solves problem by outputting
-any element from solution set
-- {{< iconify fa6-solid shuffle >}} Nondeterministic programs may choose
-different solutions on different runs
-- {{< iconify fa6-solid dice >}} Choice depends on operating system
-thread interleaving
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid lightbulb >}} Different correct outputs on same
-input is acceptable for general problems
-
-:::
-
-## Nondeterministic `FindNANA` implementation
-
-```{python}
-def findString(string, text, nonDetSolution):
-    if string in text:
-        nonDetSolution.setSolution(string)
-```
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid code >}} Nearly identical to `ndContainsNANA.py`
-- {{< iconify fa6-solid exchange-alt >}} Only difference:
-`setSolution(string)` instead of `setSolution('yes')`
-- {{< iconify fa6-solid dna >}} Returns actual substring found
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid magic >}} Tiny change produces nondeterministic
-solution for general problem
-
-:::
-
-# Computation Trees
-
-## Visualizing nondeterministic computation
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid sitemap >}} **Computation tree**: Labeled graph
-showing nondeterministic execution
-- {{< iconify fa6-solid circle-nodes >}} **Nodes**: Represent threads in
-computation
-- {{< iconify fa6-solid diagram-project >}} **Root**: Initial thread of
-program
-- {{< iconify fa6-solid code-branch >}} **Children**: Threads spawned by
-parent threads
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid tree >}} Computation trees help understand
-nondeterministic program behavior
-
-:::
-
-## Computation tree examples
+## Computation trees visualize nondeterminism
 
 ![](08-nondeterminism_4.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid sitemap >}} Top: `ndContainsNANA.py`; Middle:
-`ndFindNANA.py`; Bottom: divide-and-conquer
-
-:::
-
-## Thread naming in computation trees
-
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid circle >}} **Root**: Initial thread
-- {{< iconify fa6-solid 1 >}}{{< iconify fa6-solid 2 >}}{{< iconify
-fa6-solid 3 >}} Root's children: numbered 1, 2, 3, ...
-- {{< iconify fa6-solid diagram-project >}} Child threads can spawn
-their own children
-- {{< iconify fa6-solid tag >}} Children named by appending ".1", ".2",
-".3", etc.
+- {{< iconify fa6-solid sitemap >}} **Nodes**: Represent threads;
+**Root**: Initial thread
+- {{< iconify fa6-solid leaf >}} **Leaves**: Threads that return "yes",
+"no", or never terminate
+- {{< iconify fa6-solid check >}} Any positive leaf: output is positive
+- {{< iconify fa6-solid x >}} All leaves negative: output is "no"
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid example >}} Node 3.2 is second child of third
-child of root
+{{< iconify fa6-solid key >}} "One-positive-or-all-negative" defines
+nondeterministic output
 
 :::
 
-## Types of leaf nodes
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid x >}} **Negative leaves**: Thread terminates and
-returns "no"
-- {{< iconify fa6-solid check >}} **Positive leaves**: Thread terminates
-and returns anything except "no"
-- {{< iconify fa6-solid infinity >}} **Nonterminating leaves**: Thread
-does not terminate
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid leaf >}} Leaf nodes return potential solutions to
-computational problem
-
-:::
-
-## Output of terminating nondeterministic computation
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid check-circle >}} If tree has any positive
-leaves: output is any positive return value
-- {{< iconify fa6-solid x-circle >}} If all leaves negative: output is
-"no"
-- {{< iconify fa6-solid hand-point-right >}} Simplifying assumption:
-finite tree, all threads terminate
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid key >}} "One-positive-or-all-negative" approach
-defines output
-
-:::
-
-## Example: `ndContainsNANA` output
+## Example computation tree
 
 ![](08-nondeterminism_0.png)
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid input-text >}} Input:
-"CCCTATACCCGAGACCC"
-- {{< iconify fa6-solid check >}} Two leaves return "yes"
-- {{< iconify fa6-solid arrow-right >}} Output: "yes"
-
-:::
-
-## Example: `ndFindNANA` output
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid input-text >}} Input:
-"CCCTATACCCGAGACCC"
-- {{< iconify fa6-solid check >}} Two positive leaves: "GAGA" and "TATA"
-- {{< iconify fa6-solid dice >}} Output: "GAGA" or "TATA"
-(nondeterministic choice)
-- {{< iconify fa6-solid question-circle >}} Impossible to determine
-which will be chosen
-
-:::
-
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid shuffle >}} Program makes nondeterministic choice
-between valid solutions
-
-:::
-
-## Example: divide-and-conquer `FindNANA`
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid divide >}} Splits input into two halves
-- {{< iconify fa6-solid code-branch >}} Launches two threads to search
-each half
-- {{< iconify fa6-solid recycle >}} Process applied recursively
-- {{< iconify fa6-solid leaf >}} Leaf threads search small portions
-deterministically
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid dna >}} See `ndFindNANADivConq.py` for complete
-implementation
-
-:::
-
-## Nonterminating computation trees
-
-![](08-nondeterminism_6.png)
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid arrow-down >}} Tree (a) and (b): infinitely deep
-- {{< iconify fa6-solid infinity >}} Tree (c) and (d): leaves enter
-infinite loops
-- {{< iconify fa6-solid check >}} Trees (b) and (d): have positive
-leaves, so output defined
-- {{< iconify fa6-solid question >}} Trees (a) and (c): output undefined
-
-:::
-
-## Output definition for nonterminating computations
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid check >}} Any positive leaf: output is any
-positive return value
-- {{< iconify fa6-solid x >}} Finite tree, all leaves negative: output
-is "no"
-- {{< iconify fa6-solid question >}} Otherwise: output is undefined
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid clock >}} Cannot conclude "no" until all threads
-terminate negatively
-
-:::
-
-## Growth rate of computation trees
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid code >}} Python's `Thread.start()` launches one
-thread at a time
-- {{< iconify fa6-solid diagram-project >}} Computation trees are binary
-trees: each node has two children
-- {{< iconify fa6-solid layer-group >}} Sometimes model multiple threads
-launching simultaneously
-- {{< iconify fa6-solid c >}} Constant $C$ bounds threads that can
-sprout in single step
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid chart-line >}} Trees grow exponentially fast: at
-most $C^k$ nodes at level $k$
-
-:::
-
-# Nondeterminism and Computational Power
-
-## Nondeterminism does not change computability
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid layer-group >}} Chapter 5 hierarchy: standard
-Turing machine through modern computer
-- {{< iconify fa6-solid equals >}} All models equal in computational
-power (ignoring efficiency)
-- {{< iconify fa6-solid question-circle >}} Does multitasking solve
-additional problems?
-- {{< iconify fa6-solid x >}} Answer: No
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid lightbulb >}} Multi-core computers solve exactly
-same problems as single-core
+{{< iconify fa6-solid dna >}} Input "CCCTATACCCGAGACCC" has two
+positive leaves returning "yes"
 
 :::
 
@@ -656,8 +175,8 @@ a deterministic Python program.
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid key >}} Nondeterminism provides flexibility but
-not more computational power
+{{< iconify fa6-solid key >}} Nondeterminism aids efficiency but not
+computational power
 
 :::
 
@@ -665,164 +184,62 @@ not more computational power
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid play >}} **Idea**: Deterministically simulate
-nondeterminism
+- {{< iconify fa6-solid play >}} Deterministically simulate
+nondeterminism by switching between tasks
 - {{< iconify fa6-solid list >}} Add each new thread to task list
-- {{< iconify fa6-solid shuffle >}} Switch between all tasks periodically
 - {{< iconify fa6-solid check >}} If any positive leaf exists: simulation
 eventually reaches it
-- {{< iconify fa6-solid x >}} If finite tree with only negative leaves:
-simulation returns "no"
-- {{< iconify fa6-solid infinity >}} If no positive leaves and infinite:
-simulation won't terminate
-
-:::
-
-## Connection to real-world computers
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid desktop >}} Pre-2000 desktop computers: single
-core
-- {{< iconify fa6-solid code >}} Operating systems ran multithreaded
-code by switching
-- {{< iconify fa6-solid wrench >}} Practical implementation of proof
-above
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid history >}} Single-core multitasking proves
-nondeterminism can be simulated
-
-:::
-
-## Important note: efficiency versus computability
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid check >}} **Equivalence**: Relates only to
-computability, not efficiency
-- {{< iconify fa6-solid tachometer-alt >}} **Performance**: Deterministic
-and nondeterministic versions vastly different
-- {{< iconify fa6-solid clock >}} **Running time**: Can differ by orders
-of magnitude
+- {{< iconify fa6-solid desktop >}} Pre-2000 single-core computers
+proved this works in practice
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
 {{< iconify fa6-solid triangle-exclamation >}} Nondeterminism may
-greatly improve efficiency even though it does not change computability
+greatly improve efficiency despite not changing computability
 
 :::
 
-# Section Summary: Introduction and Python Programs
-
-## What we learned about nondeterministic Python
+## Nondeterministic Turing machines
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid microchip >}} Nondeterminism models multitasking
-and parallel execution
-- {{< iconify fa6-brands python >}} Python's `threading` module creates
-nondeterministic programs
-- {{< iconify fa6-solid sitemap >}} Computation trees visualize
-nondeterministic execution
-- {{< iconify fa6-solid equals >}} Nondeterminism does not increase
-computational power
-- {{< iconify fa6-solid tachometer-alt >}} Nondeterminism can greatly
-improve efficiency
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid forward >}} Next: Nondeterministic Turing machines
-formalize these concepts
-
-:::
-
-# Nondeterministic Turing Machines
-
-## Why study nondeterministic Turing machines?
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-brands python >}} Nondeterministic Python helpful for
-understanding practice
-- {{< iconify fa6-solid gavel >}} Often too unwieldy for rigorous
-mathematical proofs
-- {{< iconify fa6-solid graduation-cap >}} Nondeterministic Turing
-machines formalize nondeterministic computing
 - {{< iconify fa6-solid clone >}} Standard Turing machine that can clone
 itself
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid book >}} Mathematical formalism enables rigorous
-proofs about computation
-
-:::
-
-## Cloning in nondeterministic Turing machines
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid copy >}} **Clone**: Exact copy of machine in
-same state
-- {{< iconify fa6-solid tape >}} Clone has same tape contents as original
+- {{< iconify fa6-solid tape >}} Each clone has same tape and state
 - {{< iconify fa6-solid arrow-right >}} Each clone follows different
-transition as first step
-- {{< iconify fa6-solid layer-group >}} Cloned machines operate in
-parallel
-- {{< iconify fa6-solid recycle >}} Clones can create new clones
+transition
+- {{< iconify fa6-solid book >}} Formalism enables rigorous mathematical
+proofs
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid clone >}} Cloning enables exploration of multiple
-computational paths
+{{< iconify fa6-solid key >}} Nondeterministic TMs formalize
+multithreaded computation
 
 :::
 
-## Example problem: `GthenOneT`
+## Example: `GthenOneT` problem
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid input-text >}} **Input**: Genetic string
-bracketed by x's
-- {{< iconify fa6-solid check >}} **Accept**: If some "G" has exactly
-one "T" between G and either end
-- {{< iconify fa6-solid x >}} **Reject**: Otherwise
+- {{< iconify fa6-solid input-text >}} Input: Genetic string bracketed
+by x's
+- {{< iconify fa6-solid check >}} Accept if some "G" has exactly one "T"
+between G and either end
+- {{< iconify fa6-solid clone >}} When G found: create three clones
+    - Check left for one T
+    - Check right for one T
+    - Continue searching for next G
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid example >}} "xATGTTx", "xATTGTGCCTACx",
-"xTGGGTTx" accepted; "xATTGx", "xCTTGAGTGTATx" rejected
-
-:::
-
-## Nondeterministic approach for `GthenOneT`
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid magnifying-glass >}} Scan input searching for G
-- {{< iconify fa6-solid clone >}} When G found: transform into three
-clones
-    - {{< iconify fa6-solid arrow-left >}} Clone 1: check left for
-    exactly one T
-    - {{< iconify fa6-solid arrow-right >}} Clone 2: check right for
-    exactly one T
-    - {{< iconify fa6-solid forward >}} Clone 3: continue searching for
-    next G
-- {{< iconify fa6-solid recycle >}} Process repeats recursively
+{{< iconify fa6-solid example >}} "xATGTTx" accepted; "xATTGx" rejected
 
 :::
 
@@ -832,268 +249,66 @@ clones
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid question-circle >}} State $q_1$ has ambiguous
-transitions when scanning G
+{{< iconify fa6-solid diagram-project >}} State $q_1$ has ambiguous
+transitions: multiple valid next states when scanning G
 
 :::
 
-## Ambiguous transitions in state $q_1$
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid diagram-project >}} **Ambiguous**: Multiple
-valid transitions for same state and symbol
-- {{< iconify fa6-solid clone >}} State $q_1$ scanning G: three valid
-transitions to $q_2$, $q_4$, or back to $q_1$
-- {{< iconify fa6-solid code-branch >}} Three clones created when
-machine enters $q_1$ and scans G
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid key >}} Ambiguous transitions distinguish
-nondeterministic from deterministic machines
-
-:::
-
-## Computation tree for Turing machine
+## Computation tree for `GthenOneT`
 
 ![](08-nondeterminism_9.png)
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid input-text >}} Input: "xTGTGGTx"
-- {{< iconify fa6-solid circle >}} Each node: machine clone
-- {{< iconify fa6-solid tree >}} Root: initial machine in state $q_0$
-- {{< iconify fa6-solid clone >}} Total of 10 clones (including root)
-
-:::
-
-## Leaves and internal clones
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid leaf >}} **Leaf clones**: Spawn no additional
-clones
-- {{< iconify fa6-solid diagram-project >}} **Internal clones**: Spawn
-new clones and disappear
-- {{< iconify fa6-solid check >}} Leaves accept (✓) or reject (×)
-- {{< iconify fa6-solid gavel >}} Result determined only by leaves
-
-:::
-
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid example >}} Three leaves accept, so overall result
-is accept
+{{< iconify fa6-solid check >}} Input "xTGTGGTx": three leaves accept,
+so result is accept
 
 :::
 
-## Output definition for nondeterministic Turing machines
+## Formal definition: transition functions
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid check >}} If any leaf accepts: result is accept
-- {{< iconify fa6-solid x >}} If finite tree and all leaves reject:
-result is reject
-- {{< iconify fa6-solid question >}} Otherwise: result is undefined
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid equals >}} Same definition as nondeterministic
-Python programs
-
-:::
-
-# Formal Definition of Nondeterministic Turing Machines
-
-## Transition function in deterministic machines
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid input-text >}} **Input**: Current state $q$ and
-scanned symbol $x$
-- {{< iconify fa6-solid output >}} **Output**: 3-tuple $(q', x', d')$
-- {{< iconify fa6-solid state-machine >}} $q'$: new state
-- {{< iconify fa6-solid keyboard >}} $x'$: new symbol to write
-- {{< iconify fa6-solid arrows-alt-h >}} $d'$: direction to move head (L
-or R)
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid book >}} Transition function: $(q, x) \mapsto (q',
-x', d')$
-
-:::
-
-## Transition function in nondeterministic machines
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid input-text >}} **Input**: Current state $q$ and
-scanned symbol $x$
-- {{< iconify fa6-solid list >}} **Output**: Finite set of possible
+- {{< iconify fa6-solid book >}} **Deterministic**: $(q, x) \mapsto
+(q', x', d')$ returns single 3-tuple
+- {{< iconify fa6-solid list >}} **Nondeterministic**: $(q, x) \mapsto
+\{(q'_1, x'_1, d'_1), (q'_2, x'_2, d'_2), \ldots\}$ returns set of
 3-tuples
-- {{< iconify fa6-solid clone >}} Multiple transitions possible from same
-configuration
+- {{< iconify fa6-solid one >}} Singleton sets behave deterministically
+- {{< iconify fa6-solid clone >}} Multiple elements enable cloning
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid book >}} Transition function: $(q, x) \mapsto
-\{(q'_1, x'_1, d'_1), (q'_2, x'_2, d'_2), \ldots\}$
+{{< iconify fa6-solid lightbulb >}} Only difference: sets instead of
+single values
 
 :::
 
-## Singleton sets behave deterministically
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid one >}} **Singleton set**: Contains only one
-element
-- {{< iconify fa6-solid example >}} In `GthenOneT`: $(q_2, T) \mapsto
-\{(q_3, T, R)\}$
-- {{< iconify fa6-solid equals >}} Behaves exactly like deterministic
-transition
-- {{< iconify fa6-solid arrow-right >}} Machine enters only possible new
-configuration
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid lightbulb >}} Most transition sets are singletons
-in practice
-
-:::
-
-## Nondeterministic configurations
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid clone >}} Some $(q, x)$ values map to multiple
-possibilities
-- {{< iconify fa6-solid example >}} In `GthenOneT`: $(q_1, G) \mapsto
-\{(q_1, G, R), (q_2, G, R), (q_4, G, L)\}$
-- {{< iconify fa6-solid code-branch >}} Three transitions available from
-state $q_1$ scanning G
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid key >}} Nondeterministic configurations enable
-multiple computational paths
-
-:::
-
-## Formal definition of nondeterministic Turing machine
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid book >}} **Definition**: A nondeterministic Turing
-machine is defined the same way as a Turing machine, except that the
-transition function maps to sets of 3-tuples, rather than single
-3-tuples.
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid lightbulb >}} Only difference: transition function
-returns sets instead of single values
-
-:::
-
-## Claim 8.2: equivalence of nondeterministic models
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
-
-{{< iconify fa6-solid equals >}} **Claim 8.2**: Given a nondeterministic
-Python program, there exists an equivalent nondeterministic Turing
-machine, and vice versa.
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid book >}} Generalizes equivalence from Chapter 5 to
-include nondeterminism
-
-:::
-
-## Claim 8.3: deterministic and nondeterministic equivalence
+## Claim 8.3: equivalence of models
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
 
 {{< iconify fa6-solid scale-balanced >}} **Claim 8.3**: Given a
-nondeterministic Turing machine $M$ that solves a computational problem
-$P$, there exists a deterministic Turing machine $M'$ that also solves
-$P$.
+nondeterministic Turing machine $M$ that solves problem $P$, there
+exists a deterministic Turing machine $M'$ that also solves $P$.
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid key >}} Follows from Claims 8.1 and 8.2:
-nondeterministic and deterministic have same power
+{{< iconify fa6-solid triangle-exclamation >}} Same computability but
+potentially vastly different efficiency
 
 :::
-
-## Efficiency versus computability reminder
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid check >}} Machines $M$ and $M'$ solve same
-problem $P$
-- {{< iconify fa6-solid tachometer-alt >}} Running times could be vastly
-different
-- {{< iconify fa6-solid clock >}} Nondeterministic may be exponentially
-faster
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid triangle-exclamation >}} Claim refers only to
-computability, not efficiency
-
-:::
-
-## Nondeterministic transducers
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid check-circle >}} **Accepters**: Give
-accept/reject decision
-- {{< iconify fa6-solid output >}} **Transducers**: Produce output string
-- {{< iconify fa6-solid focus >}} This chapter: focused on accepters
-- {{< iconify fa6-brands python >}} Extension: nondeterministic Python
-programs can be transducers
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid book >}} Formalism extends to transducers with
-similar details
-
-:::
-
-# Models of Nondeterminism and Applications
 
 ## Three models of nondeterminism
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
 - {{< iconify fa6-solid layer-group >}} **Simultaneous threads**:
-Execute all threads simultaneously
+Execute all threads simultaneously (book's model)
 - {{< iconify fa6-solid dice >}} **Random choice**: Choose one transition
 at random
 - {{< iconify fa6-solid user >}} **External choice**: External operator
@@ -1103,93 +318,12 @@ chooses transition
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid equals >}} All three models produce identical
-computation trees and results
+{{< iconify fa6-solid equals >}} All three produce identical computation
+trees and results
 
 :::
 
-## Simultaneous threads model
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid book >}} Standard model used in this book
-- {{< iconify fa6-solid layer-group >}} Nondeterministic program
-executes all threads simultaneously
-- {{< iconify fa6-solid clone >}} All possible computational paths
-explored at once
-
-:::
-
-## Random choice model
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid one >}} Program executes only one thread
-- {{< iconify fa6-solid dice >}} At nondeterministic transition: choose
-one at random
-- {{< iconify fa6-solid random >}} Randomness determines computational
-path
-
-:::
-
-## External choice model
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid one >}} Program executes only one thread
-- {{< iconify fa6-solid user >}} External operator makes choices
-- {{< iconify fa6-solid person >}} Operator could be human or operating
-system
-- {{< iconify fa6-solid hand-pointer >}} Program asks operator which
-transition to take
-
-:::
-
-## Why models are equivalent
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid sitemap >}} Computation tree looks same in all
-models
-- {{< iconify fa6-solid output >}} Output definition based on computation
-tree
-- {{< iconify fa6-solid equals >}} Same definition in all three models
-- {{< iconify fa6-solid lightbulb >}} Only difference: how tree
-translates to physical reality
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid key >}} Mathematical equivalence: all models ask
-"Can positive solution be reached?"
-
-:::
-
-# Unrecognizable Problems
-
-## Extending understanding with nondeterminism
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid book >}} Section 6.5: recognizable but
-undecidable problems
-- {{< iconify fa6-solid question-circle >}} Are there unrecognizable
-languages?
-- {{< iconify fa6-solid check >}} Answer: Yes
-- {{< iconify fa6-solid arrow-turn-up >}} Take complement of recognizable
-undecidable problems
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid graduation-cap >}} Nondeterminism helps prove
-existence of unrecognizable problems
-
-:::
-
-## Claim 8.4: complement of recognizable is unrecognizable
+## Unrecognizable problems via nondeterminism
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
 
@@ -1198,130 +332,40 @@ of a recognizable, undecidable decision problem is unrecognizable.
 
 :::
 
-## Proof of Claim 8.4
-
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid check >}} Let $D$ be recognizable, undecidable
-- {{< iconify fa6-solid arrow-turn-up >}} Assume complement $\overline{D}$
-is recognizable (proof by contradiction)
-- {{< iconify fa6-solid code >}} $P_1$ decides positive instances of $D$;
-$P_2$ decides positive instances of $\overline{D}$
-- {{< iconify fa6-solid clone >}} Create nondeterministic program $P$:
-execute $P_1$ and $P_2$ in separate threads
-- {{< iconify fa6-solid arrow-left >}} Return first result from either
-thread
-- {{< iconify fa6-solid check >}} $P$ terminates on all inputs: $P_1$
-terminates on positive, $P_2$ on negative
-- {{< iconify fa6-solid x >}} This means $P$ decides $D$, contradicting
-undecidability
+- {{< iconify fa6-solid clone >}} **Proof idea**: Create
+nondeterministic program executing both $P_1$ (for $D$) and $P_2$ (for
+$\overline{D}$) in parallel
+- {{< iconify fa6-solid x >}} If both recognizable: combined program
+decides $D$, contradicting undecidability
+- {{< iconify fa6-solid example >}} `NotYesOnString` is unrecognizable
 
 :::
 
-## Example: `NotYesOnString` is unrecognizable
+## Why study nondeterminism?
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid code >}} `YesOnString`: recognizable but
-undecidable
-- {{< iconify fa6-solid arrow-turn-up >}} `NotYesOnString`: complement
-of `YesOnString`
-- {{< iconify fa6-solid input-text >}} Input: $P$, $I$; solution "yes"
-if and only if $P(I)$ is not "yes"
-- {{< iconify fa6-solid x >}} `NotYesOnString` is unrecognizable
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid key >}} Taking complements creates unrecognizable
-problems from recognizable ones
-
-:::
-
-# Why Study Nondeterminism?
-
-## Is nondeterminism worth studying?
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid question-circle >}} Why study physically
-unrealistic model?
-- {{< iconify fa6-solid infinity >}} Theoretical model allows unbounded
-threads
-- {{< iconify fa6-solid atom >}} Cannot exceed atoms in universe
-- {{< iconify fa6-solid check >}} Several good reasons exist
-
-:::
-
-## Reason 1: natural and easier analysis
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid brain >}} More natural to analyze some problems
-nondeterministically
-- {{< iconify fa6-solid pen >}} Easier to prove results using
-nondeterministic machines
-- {{< iconify fa6-solid example >}} Claim 8.4 example of this approach
-- {{< iconify fa6-solid forward >}} More examples in next chapter with
-nondeterministic finite automata
-
-:::
-
-## Reason 2: reasonable model of real systems
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid server >}} Web search engines: query processed by
-hundreds of computers
-- {{< iconify fa6-solid globe >}} Vivid example of nondeterministic
-computation in action
-- {{< iconify fa6-solid check >}} Reasonable model to certain extent
-- {{< iconify fa6-solid infinity >}} Finite limits in practice, unlike
-theory
-
-:::
-
-## Reason 3: practical complexity theory results
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid layer-group >}} Theory of nondeterministic
-computation leads to practical results
-- {{< iconify fa6-solid key >}} Especially NP-completeness theory
+- {{< iconify fa6-solid brain >}} Easier to analyze and prove results
+(e.g., Claim 8.4)
+- {{< iconify fa6-solid server >}} Models real systems (web search
+engines use hundreds of computers)
+- {{< iconify fa6-solid key >}} Foundation for NP-completeness theory
 (Chapter 14)
-- {{< iconify fa6-solid example >}} Integer factorization problem
-- {{< iconify fa6-solid lock >}} Implications for cryptography security
-
-:::
-
-## Example: integer factorization
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid check >}} Easy to factorize efficiently with
-nondeterministic Turing machine
-- {{< iconify fa6-solid clone >}} Launch enough clones to test every
-factor simultaneously
-- {{< iconify fa6-solid question >}} No known efficient deterministic
-algorithm
-- {{< iconify fa6-solid lock >}} Modern cryptography depends on
-factorization difficulty
-- {{< iconify fa6-solid shield-halved >}} Theoretical results affect
-practical security
+- {{< iconify fa6-solid lock >}} Example: integer factorization easy
+nondeterministically, hard deterministically
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid graduation-cap >}} Understanding deterministic vs.
-nondeterministic distinction has real-world impact
+{{< iconify fa6-solid graduation-cap >}} Nondeterminism: powerful
+conceptual tool for complexity theory
 
 :::
 
-# Course Summary
-
-## Key takeaways about nondeterminism
+## Key takeaways
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
@@ -1331,12 +375,8 @@ computational power
 improve efficiency
 - {{< iconify fa6-solid sitemap >}} Computation trees visualize
 nondeterministic execution
-- {{< iconify fa6-solid clone >}} Nondeterministic Turing machines
-formalize the concept
-- {{< iconify fa6-solid equals >}} Three equivalent models: simultaneous
-threads, random choice, external choice
-- {{< iconify fa6-solid brain >}} Useful conceptual tool for proofs and
-analysis
+- {{< iconify fa6-solid clone >}} Nondeterministic TMs formalize the
+concept mathematically
 - {{< iconify fa6-solid graduation-cap >}} Foundation for complexity
 theory and NP-completeness
 
@@ -1344,7 +384,7 @@ theory and NP-completeness
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
 
-{{< iconify fa6-solid lightbulb >}} Nondeterminism: powerful conceptual
-tool despite physical limitations
+{{< iconify fa6-solid lightbulb >}} Nondeterminism aids efficiency and
+proofs, not computability
 
 :::
