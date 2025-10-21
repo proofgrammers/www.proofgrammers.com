@@ -79,6 +79,26 @@ computation**
 
 :::
 
+## Concurrency creates nondeterminism
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid microchip >}} **Process and thread management**
+    - Hundreds of processes and threads run "simultaneously"
+    - Only a few genuinely simultaneous (depends on CPU cores)
+    - Operating system rapidly switches between threads
+    - Switching timing is **unpredictable**: behavior is
+    nondeterministic
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
+
+{{< iconify fa6-solid lightbulb >}} Check your system with Task Manager
+(Windows), Activity Monitor (Mac), or `ps` (Linux)
+
+:::
+
 ## Example problem: `FindNANA`
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
@@ -103,29 +123,6 @@ patterns **simultaneously** in a nondeterministic fashion
 
 ![](08-nondeterminism_0.png){.sensible-size-thick-border}
 
-## Modern computers use many threads
-
-![](08-nondeterminism_1.png){.sensible-size-thick-border}
-
-## Concurrency creates nondeterminism
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
-
-- {{< iconify fa6-solid microchip >}} **Process and thread management**
-    - Hundreds of processes and threads run "simultaneously"
-    - Only a few genuinely simultaneous (depends on CPU cores)
-    - Operating system rapidly switches between threads
-    - Switching timing is **unpredictable**: behavior is
-    nondeterministic
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
-
-{{< iconify fa6-solid lightbulb >}} Check your system with Task Manager
-(Windows), Activity Monitor (Mac), or `ps` (Linux)
-
-:::
 
 ## Python's threading module
 
