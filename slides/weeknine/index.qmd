@@ -306,7 +306,7 @@ Let's explore!
     - Stay in state $q_1$
     - Go to state $q_2$
     - Go to state $q_4$
-- Critically, this does not change computability
+- Critically, this does not change overall computability
 - Visualize the computation tree, show simulation is possible
 
 :::
@@ -322,9 +322,23 @@ so result is accept
 
 :::
 
+## Okay, nondeterministic Turning machines have transition functions that map to _sets_ of configurations!
+
+![](08-nondeterminism_10.png)
+
+::: {.incremental style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- Each state-symbol pair maps to a set of possible actions
+- When multiple actions exist, machine "clones" itself to explore all
+- Each clone continues independently, forming a computation tree
+- Accept if any clone reaches accept state; reject only if all clones reject
+- **Concepts like to multithreading in many programming languages**!
+
+:::
+
 ## Claim 8.3: equivalence of models
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: 0.1em; font-size: 0.95em;"}
 
 {{< iconify fa6-solid scale-balanced >}} **Claim 8.3**: Given a
 nondeterministic Turing machine $M$ that solves problem $P$, there
@@ -332,10 +346,15 @@ exists a deterministic Turing machine $M'$ that also solves $P$.
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.85em;"}
 
-{{< iconify fa6-solid triangle-exclamation >}} Same computability but
-potentially vastly different efficiency
+- **Implications of this claim**:
+  - Nondeterministic Turing machines are more "expressive" than deterministic
+    Turing machines
+  - Importantly, they do not increase the set of computable problems
+  - Any problem solvable by a nondeterministic Turing machine can also be solved
+  by a deterministic Turing machine
+  - Nondeterminism aids modelling and analysis, not computability
 
 :::
 
