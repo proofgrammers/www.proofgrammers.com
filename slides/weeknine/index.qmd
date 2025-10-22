@@ -110,7 +110,7 @@ of this claim.
  773201 nscd      20   0  688988   7300   5520 S   0.3   0.0   0:00.99 nsncd
 ```
 
-::: {.incremental style="margin-top: -0.2em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.05em; font-size: 0.8em;"}
 
 - The operating system's scheduler allocates CPU time to each process
 - Scheduling aids resource sharing and overall system responsiveness
@@ -218,7 +218,7 @@ match; otherwise returns `no`, giving the `N` concept
 - {{< iconify fa6-solid leaf >}} **Leaves**: Threads that return `yes`,
 `no`, or never terminate
 - {{< iconify fa6-solid check >}} Any positive leaf: output of overall program is `yes`
-- {{< iconify fa6-solid x >}} All leaves negative: output of overall program is is `no`
+- {{< iconify fa6-solid x >}} All leaves negative: output of overall program is `no`
 
 :::
 
