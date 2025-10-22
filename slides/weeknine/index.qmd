@@ -295,7 +295,7 @@ helps understanding P versus NP and NP-completeness
 - {{< iconify fa6-solid rocket >}} Input: Genetic string bracketed
 by x's
 - {{< iconify fa6-solid check >}} Accept if some "G" has exactly one "T"
-between "G" and either end
+between it and either end
 - {{< iconify fa6-solid clone >}} When G is found: create three "clones"
     - Check left for one T
     - Check right for one T
@@ -322,7 +322,7 @@ we visually express this Turing machine?
 | `xATTGTGCCTACx`       | Yes       | At least one `G` with exactly one `T` between it and an end (use last `G` and look to right) |
 | `xTGGGTTx`            | Yes       | `G` with exactly one `T` between it and an end (use first `G` and look to the left)             |
 | `xATTGx`              | No        | The only `G` does not meet the requirements           |
-| `xCTTGAGTGTATx`       | No       | Neither `G` meets the requirements     |
+| `xCTTGAGTGTATx`       | No       | None of three `G`s meet the requirements     |
 | `xCTCTx`              | No        | There is no `G` present in the input string                                              |
 
 
