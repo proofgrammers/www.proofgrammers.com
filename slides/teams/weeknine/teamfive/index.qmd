@@ -1,0 +1,23 @@
+---
+title: "`HasMoreNsThanMs` is Computable"
+description: "Explore the `HasMoreNsThanMs` program"
+date: "2025-10-28"
+date-format: long
+author: Aidan Dyga, Molly Suppo, Anoop Guragain
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+## Introduction
+
+slides here
