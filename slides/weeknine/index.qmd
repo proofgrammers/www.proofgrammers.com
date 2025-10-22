@@ -268,13 +268,11 @@ Aha!
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid clone >}} Standard Turing machine that can clone
+- {{< iconify fa6-solid clone >}} Standard Turing machine that can "clone"
 itself
 - {{< iconify fa6-solid tape >}} Each clone has same tape and state
-- {{< iconify fa6-solid arrow-right >}} Each clone follows different
-transition
-- {{< iconify fa6-solid book >}} Formalism enables rigorous mathematical
-proofs
+- {{< iconify fa6-solid arrow-right >}} Each clone follows different transition
+- {{< iconify fa6-solid book >}} Formalism enables rigorous mathematical proofs
 
 :::
 
