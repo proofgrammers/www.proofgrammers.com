@@ -7,7 +7,7 @@ author: Gregory M. Kapfhammer
 execute:
   echo: true
 format:
-  live-revealjs:
+  revealjs:
     completion: true
     theme: default
     css: ../css/styles.css
@@ -450,8 +450,8 @@ input $P$, $I$, the solution is `"yes"` if and only if $P(I)$ is not "`yes`").
 
 - {{< iconify fa6-solid x >}} Nondeterminism does not increase
 computational power
-- {{< iconify fa6-solid tachometer-alt >}} Nondeterminism can greatly
-improve efficiency
+- {{< iconify fa6-solid rocket >}} Nondeterminism can greatly
+improve program efficiency
 - {{< iconify fa6-solid sitemap >}} Computation trees visualize
 nondeterministic execution
 - {{< iconify fa6-solid clone >}} Nondeterministic TMs formalize the
@@ -461,9 +461,12 @@ theory and NP-completeness
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.725em;"}
 
-{{< iconify fa6-solid lightbulb >}} Nondeterminism aids efficiency and
-proofs, not computability
+- {{< iconify fa6-solid lightbulb >}} Looking ahead to the upcoming week:
+    - **Deterministic finite automata** as special cases of deterministic Turing
+    machines and **nondeterministic finite automata** as special case of a
+    nondeterministic Turing machine (i.e., head moves right, cannot edit tape)
+    - Practical connections to **regular expressions** and **regular languages**
 
 :::
