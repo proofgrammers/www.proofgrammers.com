@@ -382,7 +382,7 @@ so result is accept
 - When multiple actions exist, machine "clones" itself to explore all
 - Each clone continues independently, forming a computation tree
 - Accept if any clone reaches accept state; reject only if all clones reject
-- **Concepts like to multithreading in many programming languages**!
+- **Connects to multi-processing in many `fork` and `exec` systems**!
 
 :::
 
