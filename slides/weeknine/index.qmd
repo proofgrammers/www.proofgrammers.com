@@ -322,7 +322,7 @@ we visually express this Turing machine?
 | `xATTGTGCCTACx`       | Yes       | At least one `G` with exactly one `T` between it and an end (use last `G` and look to right) |
 | `xTGGGTTx`            | Yes       | `G` with exactly one `T` between it and an end (use first `G` and look to the left)             |
 | `xATTGx`              | No        | The only `G` does not meet the requirements           |
-| `xCTTGAGTGTATx`       | Yes       | Neither `G` meets the requirements     |
+| `xCTTGAGTGTATx`       | No       | Neither `G` meets the requirements     |
 | `xCTCTx`              | No        | There is no `G` present in the input string                                              |
 
 
