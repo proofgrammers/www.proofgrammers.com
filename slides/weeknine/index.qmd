@@ -40,7 +40,7 @@ and efficient real-world Python programs.
 
 :::
 
-# Nondeterminism does not increase power!
+# Nondeterminism does not increase "power"!
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
@@ -114,6 +114,21 @@ of this claim.
 
 - The operating system's scheduler allocates CPU time to each process
 - Scheduling aids resource sharing and overall system responsiveness
+
+:::
+
+# Explore `ContainsNANA`
+
+::: incremental
+
+- {{< iconify fa6-solid dna >}} **Problem**: Determine if a genetic string on
+the input contains any of the patterns CACA, GAGA, TATA, or AAAA
+- {{< iconify fa6-solid rocket >}} **Goal**: Detect the occurrence of any of the
+patterns as quickly and accurately as possible, outputting `yes` or `no`
+- The symbol `N` represents "any nucleotide" in the DNA string
+- Deterministic and nondeterministic solutions in Python
+- View execution of the nondeterministic solution in a tree
+- Use example to for claim about limits of nondeterminism
 
 :::
 
