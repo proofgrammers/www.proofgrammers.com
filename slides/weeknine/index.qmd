@@ -444,28 +444,6 @@ input $P$, $I$, the solution is `"yes"` if and only if $P(I)$ is not "`yes`").
 
 :::
 
-## Why study nondeterminism?
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid brain >}} Easier to analyze and prove results
-(e.g., Claim 8.4)
-- {{< iconify fa6-solid server >}} Models real systems (web search
-engines use hundreds of computers)
-- {{< iconify fa6-solid key >}} Foundation for NP-completeness theory
-(Chapter 14)
-- {{< iconify fa6-solid lock >}} Example: integer factorization easy
-non-deterministically, hard deterministically
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid graduation-cap >}} Nondeterminism: powerful
-conceptual tool for complexity theory
-
-:::
-
 ## Key takeaways for proofgrammers
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
