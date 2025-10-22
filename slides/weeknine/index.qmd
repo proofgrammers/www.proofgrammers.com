@@ -128,7 +128,7 @@ patterns as quickly and accurately as possible, outputting `yes` or `no`
 - The symbol `N` represents "any nucleotide" in the DNA string
 - Deterministic and nondeterministic solutions in Python
 - View execution of the nondeterministic solution in a tree
-- Use example to for claim about limits of nondeterminism
+- **Use example for a claim about limits of nondeterminism**
 
 :::
 
@@ -409,23 +409,18 @@ exists a deterministic Turing machine $M'$ that also solves $P$.
 
 :::
 
-## Three models of nondeterminism
+# Understand three ways to think about nondeterminism
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.92em;"}
 
 - {{< iconify fa6-solid layer-group >}} **Simultaneous threads**:
-Execute all threads simultaneously (book's model)
+Execute all threads simultaneously
 - {{< iconify fa6-solid dice >}} **Random choice**: Choose one transition
 at random
 - {{< iconify fa6-solid user >}} **External choice**: External operator
 chooses transition
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-
-{{< iconify fa6-solid equals >}} All three produce identical computation
-trees and results
+- {{< iconify fa6-solid equals >}} **All three produce identical computation
+trees and results!**
 
 :::
 
