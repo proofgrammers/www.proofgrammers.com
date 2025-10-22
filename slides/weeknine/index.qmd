@@ -295,7 +295,7 @@ helps understanding P versus NP and NP-completeness
 - {{< iconify fa6-solid rocket >}} Input: Genetic string bracketed
 by x's
 - {{< iconify fa6-solid check >}} Accept if some "G" has exactly one "T"
-between G and either end
+between "G" and either end
 - {{< iconify fa6-solid clone >}} When G is found: create three "clones"
     - Check left for one T
     - Check right for one T
