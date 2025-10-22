@@ -311,6 +311,24 @@ we visually express this Turing machine?
 
 :::
 
+## Grasp `GthenOneT` Turing machine
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+
+| String                | Accepted? | Reason                                                      |
+|-----------------------|-----------|-------------------------------------------------------------|
+| `xATGTTx`             | Yes       | `G` with exactly one `T` between it and an end              |
+| `xATTGTGCCTACx`       | Yes       | At least one `G` with exactly one `T` between it and an end |
+| `xTGGGTTx`            | Yes       | `G` with exactly one `T` between it and an end              |
+| `xATTGx`              | No        | No `G` with exactly one `T` between it and an end           |
+| `xCTTGAGTGTATx`       | No        | No `G` with exactly one `T` between it and an end           |
+| `xCTCTx`              | No        | No `G` present                                              |
+
+
+:::
+
+
 ## Visualize `GthenOneT` Turning machine
 
 ![](08-nondeterminism_7.png)
@@ -436,7 +454,7 @@ engines use hundreds of computers)
 - {{< iconify fa6-solid key >}} Foundation for NP-completeness theory
 (Chapter 14)
 - {{< iconify fa6-solid lock >}} Example: integer factorization easy
-nondeterministically, hard deterministically
+non-deterministically, hard deterministically
 
 :::
 
