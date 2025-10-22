@@ -253,6 +253,17 @@ Aha!
 
 :::
 
+# Grasp nondeterministic Turing machines with the `GthenOneT` problem
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Intuitively define a nondeterministic Turing machine
+- Define the `GthenOneT` problem and solve with a Turing machine
+- Understand the concept of "cloning" for ambiguous transitions
+- Visualize and reason about the computation tree for `GthenOneT`
+
+:::
+
 ## Nondeterministic Turing machines
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
