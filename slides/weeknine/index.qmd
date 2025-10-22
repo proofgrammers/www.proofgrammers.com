@@ -424,23 +424,23 @@ trees and results!**
 
 :::
 
-## Unrecognizable problems via nondeterminism
+## Nondeterminism aids proofs about unrecognizability of languages
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.fragment .boxed-content style="margin-top: -0.05em; font-size: 0.975em;"}
 
 {{< iconify fa6-solid scale-balanced >}} **Claim 8.4**: The complement
 of a recognizable, undecidable decision problem is unrecognizable.
 
 :::
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid clone >}} **Proof idea**: Create
-nondeterministic program executing both $P_1$ (for $D$) and $P_2$ (for
-$\overline{D}$) in parallel
-- {{< iconify fa6-solid x >}} If both recognizable: combined program
-decides $D$, contradicting undecidability
-- {{< iconify fa6-solid example >}} `NotYesOnString` is unrecognizable
+- The word "complement" intuitively means "the opposite of"
+- You can prove this result using nondeterminism and contradiction
+- Connect a decision program `D` to a nondeterministic program `P`
+- Let `NotYesOnString` be the complement of `YesOnString` (i.e., on
+input $P$, $I$, the solution is `"yes"` if and only if $P(I)$ is not "`yes`").
+- Wow, this result means that `NotYesOnString` is unrecognizable!
 
 :::
 
@@ -466,7 +466,7 @@ conceptual tool for complexity theory
 
 :::
 
-## Key takeaways
+## Key takeaways for proofgrammers
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
