@@ -108,3 +108,13 @@ instructions)
 - Applied appropriate iconify icons for each concept
 - Images sized with `{.sensible-size-thick-border}` class for
 consistency
+
+**Content corrections**:
+
+- **GthenOneT table correction** (Slide 15): Fixed error in summary table
+where `xCTTGAGTGTATx` was incorrectly marked as "No" (rejected). Per
+textbook definition, this string should be "Yes" (accepted) because the
+second G at position 6 has exactly one T between it and the left end of
+the string. Changed table entry to reflect correct acceptance status
+with proper reasoning: "Second G has exactly one T between it and left
+end".
