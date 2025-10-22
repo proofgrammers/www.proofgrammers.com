@@ -388,7 +388,7 @@ so result is accept
 
 ## Claim 8.3: equivalence of models
 
-::: {.fragment style="margin-top: 0.1em; font-size: 0.95em;"}
+::: {.fragment style="margin-top: 0.1em; font-size: 0.75em;"}
 
 {{< iconify fa6-solid scale-balanced >}} **Claim 8.3**: Given a
 nondeterministic Turing machine $M$ that solves problem $P$, there
@@ -399,12 +399,13 @@ exists a deterministic Turing machine $M'$ that also solves $P$.
 ::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.85em;"}
 
 - **Implications of this claim**:
-  - Nondeterministic Turing machines are more "expressive" than deterministic
-    Turing machines
-  - Importantly, they do not increase the set of computable problems
   - Any problem solvable by a nondeterministic Turing machine can also be solved
   by a deterministic Turing machine
+  - Nondeterministic Turing machines are more "expressive" and/or "compact" than
+  deterministic Turing machines
+  - Importantly, they do not increase the set of computable problems
   - Nondeterminism aids modelling and analysis, not computability
+  - Nondeterminism makes results align with real-world computers
 
 :::
 
