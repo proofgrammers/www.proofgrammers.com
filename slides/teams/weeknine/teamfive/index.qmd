@@ -1,6 +1,6 @@
 ---
-title: "`HasMoreNsThanMs` is Computable"
-description: "Explore the `HasMoreNsThanMs` program"
+title: "DNA String Analysis: Computable Functions"
+description: "Exploring genetic symbol counting and comparison"
 date: "2025-10-28"
 date-format: long
 author: Aidan Dyga, Molly Suppo, Anoop Guragain
@@ -18,6 +18,78 @@ format:
     footer: "Proofgrammers"
 ---
 
-## Introduction
+## Introduction to DNA String Analysis
 
-slides here
+::: {.incremental}
+- {{< iconify fa6-solid dna >}} **DNA sequences** consist of four
+  genetic symbols: $\{A, C, T, G\}$
+- {{< iconify fa6-solid calculator >}} We analyze these sequences by
+  **counting** and **comparing** symbol occurrences
+- {{< iconify fa6-solid check-circle >}} These operations are
+  **computable**: they always terminate and produce correct results
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Key insight:** String analysis problems with finite alphabets and
+deterministic counting are decidable.
+:::
+
+## Problem Statement
+
+::: {.incremental}
+- Given variables $N$ and $M$ in the set $\{A, C, T, G\}$ where
+  $M \neq N$
+- **Goal:** Implement functions to analyze DNA strings:
+  - Count occurrences of specific symbols
+  - Compare frequencies between different symbols
+:::
+
+## Building `countCs`: Counting a Specific Symbol
+
+x
+
+## Building `countNs`: Counting Any Symbol
+
+x
+
+## Building `more_cs_than_gs`: Symbol Comparison
+
+x
+
+## Building `has_more_ns_than_ms`: General Comparison
+
+x
+
+## Why These Functions Are Computable
+
+x
+
+## Computational Complexity Analysis
+
+x
+
+## Conclusion
+
+::: {.incremental}
+- {{< iconify fa6-solid lightbulb >}} **Computability:** DNA string
+  analysis problems are decidable and tractable
+- {{< iconify fa6-solid code >}} **Implementation:** Simple counting and
+  comparison operations suffice
+- {{< iconify fa6-solid brain >}} **Theory:** Demonstrates clear
+  distinction between computable and uncomputable problems
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Take-home message:** Not all comquaputational problems are equally
+difficult; understanding computability helps us recognize solvable
+problems.
+:::
+
+## Sources
+
+::: {.fragment}
+- Course Textbook
+- Python `str.count()` documentation
+- GitHub Copilot
+- Microsoft Copilot
+:::
