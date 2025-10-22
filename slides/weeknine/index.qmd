@@ -211,7 +211,7 @@ match; otherwise returns `no`, giving the `N` concept
 
 ![](08-nondeterminism_4.png)
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
 
 - {{< iconify fa6-solid sitemap >}} **Nodes**: Represent threads;
 **Root**: Initial thread
@@ -236,7 +236,8 @@ a deterministic Python program.
 
 - {{< iconify fa6-solid play >}} Deterministically simulate
 nondeterminism by switching between tasks
-- {{< iconify fa6-solid list >}} Add each new thread to task list
+- {{< iconify fa6-solid list >}} Add each new thread to task list, each of which
+will be run
 - {{< iconify fa6-solid check >}} If any positive leaf exists: simulation
 eventually reaches it
 - {{< iconify fa6-solid desktop >}} Pre-2000 single-core computers
@@ -248,7 +249,7 @@ proved this works in practice
 
 {{< iconify fa6-solid triangle-exclamation >}} Nondeterminism may greatly
 improve efficiency despite not changing the problem's overall computability.
-Wow!
+Aha!
 
 :::
 
