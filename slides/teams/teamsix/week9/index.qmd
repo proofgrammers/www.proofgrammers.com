@@ -1,0 +1,55 @@
+---
+title: "The LastTtoA Problem"
+date: "2025-10-23"
+date-format: long
+author: Hemani Alaparthi, Benedek Kaibas, Miguel Orti Vila
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Introduction
+
+::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
+- **Goal**: To implement and analyze the LastTtoA problem using multiple computation models and programming styles.
+- **Problem**: Given a DNA string with symbols {A, C, T, G}, replace the last occurrence of 'T' with 'A'
+- **Approaches**: Turing machine, Python (with/without regular expression(regex)), and other languages that is not python.
+:::
+
+
+## The LastTtoA Function
+
+::: {.fragment}
+- **Input**: A string `s` consisting of DNA symbols {A, C, T, G}
+
+- **Output**: String `s'` where the last occurrence of 'T' is replaced with 'A'
+
+**Examples**:
+- `ATCGT` → `ATCGA`
+
+- `TTTT` → `TTTA` (last T becomes A)
+
+- `ACGAA` → `ACGAA` (no T to replace)
+- `T` → `A`
+:::
+
+
+
+# Conclusion
+
+::: {.fragment}
+
+:::
+
+
+
+
