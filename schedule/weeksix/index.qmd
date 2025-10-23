@@ -1,6 +1,6 @@
 ---
 title: Module One Retrospective
-description: "First Proofgrammer Jam"
+description: "Review content in the first module"
 date: 2025-09-29
 layout: full
 toc: true
