@@ -2,7 +2,7 @@
 title: "The LastTtoA Problem"
 date: "2025-10-23"
 date-format: long
-author: Hemani Alaparthi, Benedek Kaibas, Miguel Orti Vila
+author: Hemani Alaparthi, Benedek Kaibas, Miguel Orti Vila, Ritesh Ojha
 execute:
   echo: true
 format:
@@ -31,7 +31,7 @@ format:
 ::: {.fragment}
 - **Input**: A string `s` consisting of DNA symbols {A, C, T, G}
 
-- **Output**: String `s'` where the last occurrence of 'T' is replaced with 'A'
+-**Output**: String `s'` where the last occurrence of 'T' is replaced with 'A'
 
 **Examples**:
 - `ATCGT` → `ATCGA`
