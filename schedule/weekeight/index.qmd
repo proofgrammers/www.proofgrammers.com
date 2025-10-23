@@ -13,7 +13,7 @@ toc-expand: 3
   - Chapter seven of [What Can be Computed? A Practical Guide to the
   Theory of Computation](https://whatcanbecomputed.com/)
 - {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
-  - No presentations slides due since start of new module
+  - No presentations slides needed yet due to schedule changes
 - {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
   - Instructor's presentation on this week's assigned topics
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
