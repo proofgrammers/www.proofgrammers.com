@@ -40,7 +40,9 @@ theoretical machines. Finally, make sure to review the [course
 schedule](../schedule/index.qmd) and the [course
 syllabus](../syllabus/index.qmd) for more details about how these slides connect
 to various course projects and the content in the textbook called [What Can be
-Computed](https://whatcanbecomputed.com/).
+Computed](https://whatcanbecomputed.com/). Importantly, content in these course
+slides is derived from the content in and companion slides for the textbook
+[What Can be Computed](https://whatcanbecomputed.com/).
 
 :::{#featured-presentations}
 :::
