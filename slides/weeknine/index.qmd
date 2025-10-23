@@ -1,5 +1,5 @@
 ---
-title: "Understanding Nondeterminism"
+title: "Exploring Nondeterminism"
 description: "Nondeterminism does not aid computability"
 date: "2025-10-20"
 date-format: long
