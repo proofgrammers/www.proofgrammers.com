@@ -4,10 +4,18 @@
 
 def count_cs(dna: str) -> int:
     """Returns the number of occurrences of the symbol C in DNA."""
+    # Check for the empty string case
+    if len(dna) == 0:
+        return 0
+    # If string isn't empty, use count function to return number of "Cs"
     return dna.count("C")
 
 def count_ns(dna: str, n: str) -> int:
     """Returns the number of occurrences of the symbol N in DNA."""
+    # Check for the empty string case
+    if len(dna) == 0:
+        return 0
+    # If string isn't empty, use count function to return number of "Gs"
     return dna.count(n)
 
 def more_cs_than_gs(dna: str) -> bool:
