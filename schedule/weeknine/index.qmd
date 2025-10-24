@@ -1,7 +1,7 @@
 ---
-title: "Applying Turing Reductions"
-description: "Explore a new way to prove uncomputability"
-date: 2025-10-13
+title: "Exploring Nondeterminism"
+description: "Nondeterminism does not change computability"
+date: 2025-10-20
 layout: full
 toc: true
 toc-expand: 3
@@ -10,7 +10,7 @@ toc-expand: 3
 ## Activities
 
 - {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
-  - Chapter seven of [What Can be Computed? A Practical Guide to the
+  - Chapter eight of [What Can be Computed? A Practical Guide to the
   Theory of Computation](https://whatcanbecomputed.com/)
 - {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
   - No presentations slides needed yet due to schedule changes
@@ -19,11 +19,10 @@ toc-expand: 3
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
   - No new presentations during the laboratory session
   - Complete these tasks during the laboratory session:
-    - Make sure that you have created all GitHub repositories
-    - Make token requests as needed for work in module one
-    - Complete all remaining work from module one
+    - Participate in an extra charette session
+    - Prepare for the standard charette session on Thursday
+    - Start working on the presentations for next week
     - Read all content in the current chapter to grasp fully
-    - Prepare for the interactive discussion session on Thursday
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
   - Instructor's presentation on this week's assigned topics
   - Charette session where students collaboratively ask and answer questions
@@ -31,8 +30,8 @@ toc-expand: 3
 ## Slides
 
 ```{=html}
-<iframe class="slide-deck" src="../../slides/weekeight/"></iframe>
+<iframe class="slide-deck" src="../../slides/weeknine/"></iframe>
 ```
 
 {{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week
-Eight: Turing Reductions](../../slides/weekeight/)
+Nine: Exploring Nondeterminism](../../slides/weeknine/)

@@ -1,5 +1,5 @@
 ---
-title: "Understanding Nondeterminism"
+title: "Exploring Nondeterminism"
 description: "Nondeterminism does not aid computability"
 date: "2025-10-20"
 date-format: long
@@ -61,7 +61,7 @@ automata, they aid modelling and not computability
 simultaneously
 - {{< iconify fa6-solid shuffle >}} **Nondeterminism**: Next step could advance
 any current task
-- {{< iconify fa6-solid question-circle >}} **Key question**: Does multitasking
+- {{< iconify fa6-solid microscope >}} **Key question**: Does multitasking
 increase computational power? Again, no, it does not! We will "sketch" a proof
 of this claim.
 
