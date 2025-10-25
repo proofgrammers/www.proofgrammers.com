@@ -43,6 +43,17 @@ format:
 :::
 
 
+## LastTtoA Turing Machine
+
+
+![State Diagram](lastTtoA.png)
+
+
+## Complete Computation of the LastTtoA Machine
+
+
+![Complete Computation](lastTtoA_2.png){height=50%}
+
 
 # Conclusion
 
