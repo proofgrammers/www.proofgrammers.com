@@ -1,0 +1,111 @@
+---
+title: "Proving HaltsOnString is Uncomputable"
+subtitle: "Using a Turing Reduction from YesOnString"
+date: "10-28-2025"
+author: Javier Bejarano
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+## Introduction
+
+In this presentation, we will show that **HaltsOnString** is **uncomputable**.  
+We will use a **Turing reduction** from **YesOnString**, which is already known to be uncomputable.  
+By the end, we will understand the connection between these two problems and why the halting behavior of programs cannot be determined by any algorithm.
+
+---
+
+## Background on Uncomputability
+
+A problem is **uncomputable** if no Turing machine can decide it for all possible inputs.  
+That means there is **no algorithm** that always gives a correct yes/no answer.  
+
+Problems like that ones we are going to see today (YesOnString, HaltsOnString) help us understand the **limits of computation**.
+
+---
+
+## The YesOnString Problem
+
+YesOnString is a program that takes another program as input.  
+YesOnString returns **yes** if the input program outputs *yes*, and **no** otherwise.
+
+## The HaltsOnString Problem
+
+HaltsOnString is a program that takes another program as input and returns **yes** if the program **halts**, and **no** otherwise.
+
+## What Is a Turing Reduction?
+
+x
+
+## The Reduction from YesOnString to HaltsOnString
+
+We know from the previous chapter that **YesOnString is uncomputable**, and now we want to see if **HaltsOnString** is also uncomputable.
+
+- Let’s assume **HaltsOnString is computable**.  
+- Let’s try to use HaltsOnString to build a program that decides **YesOnString**.  
+- If we are able to do that, then **HaltsOnString** must also be **uncomputable**, since it would make YesOnString computable, which is impossible.
+
+## Oracle Program
+
+We can create a program that uses **HaltsOnString** as an *oracle* but behaves just like **YesOnString**.  
+This means it takes a program and an input, and returns **yes** if the program outputs *yes*, and **no** otherwise.
+
+How is that possible?
+
+We create a program that:
+- If the input program outputs *yes*, it halts and returns “halted”.
+- Otherwise, it goes into an **infinite loop**.
+
+```python
+from universal import universal
+
+def alterYesToHalt(inString):
+    (progString, newInString) = utils.DESS(inString)
+    val = universal(progString, newInString)
+    if val == 'yes':
+        # return value is irrelevant, since returning any string halts
+        return 'halted'
+    else:
+        # deliberately enter infinite loop
+        utils.loop()
+```
+
+```python
+from haltsOnString import haltsOnString  # oracle function
+
+def yesViaHalts(progString, inString):
+    singleStr = utils.ESS(progString, inString)
+    return haltsOnString(rf('alterYesToHalts.py'), singleStr)
+```
+
+## Contradiction and Conclusion of the Proof
+
+If **HaltsOnString** were computable, then we could use it to decide **YesOnString**,  
+because we just built a program that does exactly that using HaltsOnString as a helper.
+
+But **YesOnString** is already known to be **uncomputable**.  
+This gives us a **contradiction**.
+
+Therefore, our assumption must be false, and 
+ **HaltsOnString is also uncomputable.**
+
+## Theoretical Implications
+
+x
+## Summary of the Result
+
+- We reduced **YesOnString** to **HaltsOnString** using a **Turing reduction**.  
+- Assuming **HaltsOnString** is computable leads to a **contradiction**.  
+- Therefore, **HaltsOnString is uncomputable**.  
+- This result highlights the **boundaries of computation** —  
+  even with perfect logic and programming, some questions can never be answered by an algorithm.
