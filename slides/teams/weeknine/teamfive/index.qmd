@@ -46,11 +46,36 @@ deterministic counting are decidable.
 
 ## Building `countCs`: Counting a Specific Symbol
 
-x
+```{pyodide}
+def count_cs(dna: str) -> int:
+    """Returns the number of occurrences of the symbol C in DNA."""
+    # Check for the empty string case
+    if len(dna) == 0:
+        return 0
+    # If string isn't empty, use count function to return number of "Cs"
+    return dna.count("C")
+```
+
+- The count_cs function searches for "C" and is a specific case.
+- This function analyzes the input.
+- count_cs is computable and tractable.
+
 
 ## Building `countNs`: Counting Any Symbol
 
-x
+```{pyodide}
+def count_ns(dna: str, n: str) -> int:
+    """Returns the number of occurrences of the symbol N in DNA."""
+    # Check for the empty string case
+    if len(dna) == 0:
+        return 0
+    # If string isn't empty, use count function to return number of "Gs"
+    return dna.count(n)
+```
+
+- The count_ns function searches for the value of n and is a general case.
+- This function analyzes the input.
+- count_ns is computable and tractable.
 
 ## Building `more_cs_than_gs`: Symbol Comparison
 
