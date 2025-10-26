@@ -42,12 +42,48 @@ format:
 - `T` → `A`
 :::
 
+## Implementation 1: Turing Machine
+
+::: {.fragment style="font-size: 0.95em;"}
+**Formal Components**:
+
+- **States**: {q0, q1, qhalt}
+- **Tape Alphabet**: {A, C, G, T, _}
+
+**Two-Phase Algorithm**:
+
+- **q0**: Scan right to find blank `_` → transition to q1
+- **q1**: Scan left to find 'T' → replace with 'A' → halt
+
+**Key Feature**: Explicit state machine matching formal TM definition
+:::
+
+
+## Implementation 2: Pure Python
+
+::: {.fragment style="font-size: 0.9em;"}
+**Algorithm** (No libraries, no regex):
+
+1. **Initialize**: `last_t_index = -1`
+2. **Scan forward**: Loop through entire string
+   - Each time 'T' is found, update `last_t_index = i`
+   - After loop completes, `last_t_index` holds position of last T
+3. **Check**: If `last_t_index == -1`, no T exists → return unchanged
+4. **Reconstruct**: `dna[:last_t_index] + 'A' + dna[last_t_index + 1:]`
+:::
+
+## Key Difference from TM
+
+- Single forward pass vs. TM's two-phase scan (right then left)
+- Direct string indexing vs. tape head movements
+- Both achieve O(n) time complexity
 
 ## LastTtoA Turing Machine
 
 
 ![State Diagram](lastTtoA.png)
 
+## LasttoA Turing Machine Implementation
 
 ## Complete Computation of the LastTtoA Machine
 
@@ -58,7 +94,7 @@ format:
 ## Conclusion (Summary of Implementations)
 
 ::: {.fragment}
-**Deterministic Turing Machine**:Formal 3-state machine with transition function (q0→q1→qhalt, tape operations)
+**Deterministic Turing Machine**: Formal 3-state machine with transition function (q0→q1→qhalt, tape operations)
 
 - Example: `ATCGT⊔` → scan right → scan left → replace T → `ATCGA`
 
