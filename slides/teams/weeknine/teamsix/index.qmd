@@ -21,15 +21,15 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
 - **Goal**: To implement and analyze the LastTtoA problem using multiple computation models and programming styles.
-- **Problem**: Given a DNA string with symbols {A, C, T, G}, replace the last occurrence of 'T' with 'A'
-- **Approaches**: Turing machine, Python (with/without regular expression(regex)), and other languages that is not python.
+- **Problem**: Given a DNA string with symbols (e.g.,{A, C, T, G}), replace the last occurrence of 'T' with 'A'
+- **Approaches**: Turing machine, Python (with/without regular expression(regex)), and another langauge.
 :::
 
 
 ## The LastTtoA Function
 
 ::: {.fragment}
-- **Input**: A string `s` consisting of DNA symbols {A, C, T, G}
+- **Input**: A string `s` that contains DNA symbols {A, C, T, G}
 
 -**Output**: String `s'` where the last occurrence of 'T' is replaced with 'A'
 
@@ -91,7 +91,7 @@ format:
 ![Complete Computation](lastTtoA_2.png){height=50%}
 
 
-## Conclusion (Summary of Implementations)
+## Conclusion
 
 ::: {.fragment}
 **Deterministic Turing Machine**: Formal 3-state machine with transition function (q0→q1→qhalt, tape operations)
@@ -120,7 +120,4 @@ format:
 - **Efficiency**: All approaches achieve optimal O(n) time complexity  
 - **Correctness**: Formal verification through comprehensive testing
 :::
-
-
-
 
