@@ -101,7 +101,22 @@ Therefore, our assumption must be false, and
 
 ## Theoretical Implications
 
-x
+Limits of computation:
+ - Our proof employs a universal program to demonstrate the computability of programs by reducing one problem to another. This highlights that not every program is computable or decidable.
+Hierarchy of problems:
+ - We illustrated how to reduce from **YesOnString** to **HaltsOnString**. By proving that **HaltsOnString** is uncomputable, assuming **YesOnString** is already known to be uncomputable, we see that **YesOnString** is **no harder** than **HaltsOnString**.
+Simulation using Turing reduction:
+ - We can mimic the behavior of other programs using the known behavior of a different program. By creating **alterYesToHalt** and applying the oracle function **HaltsOnString**, we predicted the output through **alterYesToHalt** to examine computability.
+No General Algorithmic Predictor:
+ - There exists no universal machine capable of determining whether an arbitrary program will halt.
+ 
+## Practical Implications
+
+- You can study or emulate programs, but it is not always possible to completely verify termination from one machine to another.
+- Tools like static analyzers or formal verification systems can handle many real-world programs, but they cannot guarantee termination or verify all properties for every possible program, because these problems often reduce to the Halting Problem.
+- Understanding this limitation informs decisions about which problems to attempt, as any program - regardless of complexity - can potentially be reduced to a simpler one.
+- Recognizing these boundaries is critical, as they can influence choices in cybersecurity, autonomous systems, and mission-critical software design.
+
 ## Summary of the Result
 
 - We reduced **YesOnString** to **HaltsOnString** using a **Turing reduction**.  
