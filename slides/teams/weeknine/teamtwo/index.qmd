@@ -45,7 +45,11 @@ HaltsOnString is a program that takes another program as input and returns **yes
 
 ## What Is a Turing Reduction?
 
-x
+**Formal definition:**  
+A problem F is Turing reducible to a problem G (written **F ≤T G**) if there is an algorithm that can solve F using a subroutine (oracle) that solves G.
+
+**Simpler explanation:**  
+If you can solve G, then you can use that solution to solve F. So, if F is uncomputable and F reduces to G, then G is also uncomputable.
 
 ## The Reduction from YesOnString to HaltsOnString
 
