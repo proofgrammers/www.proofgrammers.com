@@ -53,11 +53,11 @@ format:
 # Recognition is Easier than Decision
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **Why Recognition is Easier than Decision?**
+    - Recognition try to find only positive instance; it does not care about 
+      Negative instance and infinite loop. 
+    - Decision try to find all possible case; it must correctly distinguish
+      all cases (both yes- and no-instances)
 :::
 
 ---
