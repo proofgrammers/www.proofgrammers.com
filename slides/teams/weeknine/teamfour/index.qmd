@@ -1,0 +1,112 @@
+---
+title: "Similarities and Differences between Recognition and Decision"
+description: ""
+date: "2025-10-28"
+date-format: long
+author: Cullen Doyle, Issei Hasegawa, Preston Smith
+execute:
+  echo: true
+format:
+  revealjs:
+    theme: default
+    css: ../../../css/styles.css
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Recognition
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
+
+# Decision
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
+
+# Similarities & Differences
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
+
+# Recognition is Easier than Decision
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
+
+# What is RecYesOnString?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
+
+# RecYesOnString Program
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
+
+# Recognizes, but Does Not Decide
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
+
+# Conclusion
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+    - Understanding what can be computed
+    - Analyzing computational complexity
+    - Proving limits of computation
+    - "Proofgrammers" combine *proofs* and *programming*
+:::
+
+---
