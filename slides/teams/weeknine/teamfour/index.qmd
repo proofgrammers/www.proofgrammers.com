@@ -30,10 +30,10 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+    - Accepts and halts when the string is in the
+      language (positive instance)
+    - Rejects and halts when the string is not in the
+      language (negative instance).
 :::
 
 ---
