@@ -229,28 +229,18 @@ int main() {
 
 ## Comprehensive Test Suite
 
-::: {.fragment}
-**Professional Testing Approach**: Created unified test suite validating all implementations
-:::
-
-```python
+```py
 def test_all_implementations():
-    """Test all LastTtoA implementations with identical test cases."""
     test_cases = [
         ("ATCGT", "ATCGA"),      # Basic case
-        ("TTTT", "TTTA"),        # Multiple T's
         ("ACGAA", "ACGAA"),      # No T's
-        ("T", "A"),              # Single T
         ("", ""),                # Empty string
-        ("ACGTACGT", "ACGTACGA") # Complex case
     ]
-    
     implementations = [
         ("Turing Machine", turing_lastTtoA),
         ("Pure Python", lastTtoA_plain),
         ("Regex Python", lastTtoA_regex)
     ]
-    
     for name, func in implementations:
         print(f"\nTesting {name}:")
         for input_str, expected in test_cases:
@@ -258,10 +248,6 @@ def test_all_implementations():
             status = "✓" if result == expected else "✗"
             print(f"  {status} '{input_str}' → '{result}' (expected: '{expected}')")
 ```
-
-::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
-**Verification**: All implementations produce identical results across comprehensive test cases
-:::
 
 ## Test Results and Validation
 
