@@ -277,22 +277,28 @@ def test_all_implementations():
 **Key Finding**: All four implementations (TM, Pure Python, Regex, C++) produce identical outputs for identical inputs
 :::
 
-## Conclusion
+## Summary of implementations
 
 ::: {.fragment}
-**Deterministic Turing Machine**: Formal 3-state machine with transition function (q0 → q1 → qhalt, tape operations)
 
-- Example: `ATCGT⊔` → scan right → scan left → replace T → `ATCGA`
+- **Deterministic Turing Machine**: Formal 3-state machine with transition function (q0 → q1 → qhalt, tape operations)
+    - Example: `ATCGT⊔` → scan right → scan left → replace T → `ATCGA`
 
-**Pure Python**: We used Loop-based scanning with string slicing reconstruction
+- **Pure Python**: We used Loop-based scanning with string slicing reconstruction
 
-**Python with Regex**: Implemented pattern matching to locate and process the last 'T' and transformation to 'A'
+- **Python with Regex**: Implemented pattern matching to locate and process the last 'T' and transformation to 'A'
 
-**Non-Python Implementation**:
-**Result**: All implementations produce `"ATCGT"` → `"ATCGA"` 
+- **Non-Python Implementation**: Implemented algorithm in C++ using string reversal and pattern matching techniques
+:::
 
-**Comprehensive Testing**: All implementations validated with identical test suites
+## Conclusion
 
-**Theoretical Analysis**: LastTtoA is **computable** and **tractable** (O(n))
+:::{.fragment}
+
+- **Result**: All implementations produce `"ATCGT"` → `"ATCGA"`
+
+- **Comprehensive Testing**: All implementations validated with identical test suites
+
+- **Theoretical Analysis**: LastTtoA is **computable** and **tractable** (O(n))
 :::
 
