@@ -68,7 +68,7 @@ def count_ns(dna: str, n: str) -> int:
     # Check for the empty string case
     if len(dna) == 0:
         return 0
-    # If string isn't empty, use count function to return number of "Gs"
+    # If string isn't empty, use count function to return number of "Ns"
     return dna.count(n)
 ```
 
@@ -101,11 +101,24 @@ def has_more_ns_than_ms(dna: str, n: str, m: str) -> bool:
 
 ## Why These Functions Are Computable
 
-x
+::: {.incremental}
+- Each function performs **Finite Operations** (counting and comparison).
+- Python’s `str.count()` method scans the string once, it always terminates.
+- There are **no infinite loops**.
+- Therefore, these functions are **Decidable** and **Computable**.
+:::
 
 ## Computational Complexity Analysis
 
-x
+::: {.incremental}
+- Each `count()` call scans the string once which is **O(n)**.
+- Comparisons are **O(1)** operations.
+- Overall complexity:
+  - `count_cs`: O(n)
+  - `count_ns`: O(n)
+  - `more_cs_than_gs`: O(n)
+  - `has_more_ns_than_ms`: O(n)
+:::
 
 ## Conclusion
 
