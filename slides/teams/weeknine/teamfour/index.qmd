@@ -112,11 +112,13 @@ format:
 # What is RecYesOnString?
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **What is RecYesOnString?**
+    - Takes two inputs: a Python program P as a string and an input string I.
+    - Runs the program P with I as the input: P(I)
+    - Outcomes:
+      - If P halts and prints "yes", then RecYesOnString prints "yes".
+      - If P halts and does not print "yes", then RecYesOnString prints "no".
+      - If P does not halt, then RecYesOnString does not halt.
 :::
 
 ---
