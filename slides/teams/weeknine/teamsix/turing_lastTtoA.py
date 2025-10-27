@@ -34,3 +34,13 @@ def turing_lastTtoA(tape_input: str) -> str:
 
     # return everything before the first blank
     return ''.join([s for s in tape if s != '_'])
+
+
+# simple test calls
+print("Testing Turing Machine Implementation:")
+print("ATCGT ->", turing_lastTtoA("ATCGT"))  # Expected: ATCGA
+print("TTTT ->", turing_lastTtoA("TTTT"))    # Expected: TTTA
+print("ACGA ->", turing_lastTtoA("ACGA"))    # Expected: ACGA
+print("T ->", turing_lastTtoA("T"))          # Expected: A
+print("'' ->", turing_lastTtoA(""))          # Expected: (empty)
+print("TATGCT ->", turing_lastTtoA("TATGCT"))  # Expected: TATGCA
