@@ -2,35 +2,64 @@
 #include <algorithm>
 #include <string>
 
+/**
+ * LastTtoA C++ Implementation
+ * Strategy: Reverse string, find first T (which is last in original),
+ * replace it, then reverse back.
+ */
 std::string lastTtoA_cpp(std::string input_string) {
+    // Reverse the string so last T becomes first
     std::reverse(input_string.begin(), input_string.end());
-    char const replace_letter = 'T';
-    char const replace_with = 'A';
-
-    std::size_t position = input_string.find(replace_letter);
-    if(position == std::string::npos) {
+    
+    // Find the first T (which was the last T in original string)
+    std::size_t position = input_string.find('T');
+    
+    // If no T found, reverse back and return unchanged
+    if (position == std::string::npos) {
         std::reverse(input_string.begin(), input_string.end());
         return input_string;
     }
     
-    input_string[position] = replace_with;
+    // Replace the T with A
+    input_string[position] = 'A';
     
-    std::string normal_string;
-    for (int i = input_string.length() - 1; i >= 0; --i) {
-        normal_string += input_string[i];
-    }
-    return normal_string;
+    // Reverse back to original order
+    std::reverse(input_string.begin(), input_string.end());
+    return input_string;
 }
 
 int main() {
-    std::string result1 = lastTtoA_cpp("ATCGT");
-    std::cout << "ATCGT -> " << result1 << std::endl;
+    std::cout << "Testing C++ LastTtoA Implementation" << std::endl;
+    std::cout << "====================================" << std::endl;
     
-    std::string result2 = lastTtoA_cpp("atcgt");
-    std::cout << "atcgt -> " << result2 << std::endl;
+    // Test cases
+    std::string test_cases[][2] = {
+        {"ATCGT", "ATCGA"},
+        {"TTTT", "TTTA"},
+        {"ACGAA", "ACGAA"},
+        {"T", "A"},
+        {"", ""}
+    };
     
-    std::string result3 = lastTtoA_cpp("AtCgT");
-    std::cout << "AtCgT -> " << result3 << std::endl;
+    bool all_passed = true;
+    
+    for (const auto& test : test_cases) {
+        std::string input = test[0];
+        std::string expected = test[1];
+        std::string result = lastTtoA_cpp(input);
+        
+        bool passed = (result == expected);
+        std::cout << (passed ? "  ✓ " : "  ✗ ");
+        std::cout << "'" << input << "' → '" << result << "'";
+        if (!passed) {
+            std::cout << " (expected '" << expected << "')";
+            all_passed = false;
+        }
+        std::cout << std::endl;
+    }
+    
+    std::cout << "\n====================================" << std::endl;
+    std::cout << (all_passed ? "✓ ALL TESTS PASSED" : "✗ SOME TESTS FAILED") << std::endl;
     
     return 0;
 }

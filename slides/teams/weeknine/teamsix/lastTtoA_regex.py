@@ -11,7 +11,7 @@ def main(input_str: str):
     for find_t in found_t:
         last_match = find_t
 
-    if last_match != None:
+    if last_match is not None:
         last_t_position = last_match.start()
         output = input[:last_t_position] + 'a' + input[last_t_position+1:]
     else:
@@ -22,8 +22,8 @@ def main(input_str: str):
 
 
 
-main("ACGTA")
-main("CAT")
-main("LETTER")
-main("TEST")
-main("PATTERN")
+if __name__ == "__main__":
+    main("ATCGT")
+    main("TTTT")
+    main("ACGAA")
+    main("T")
