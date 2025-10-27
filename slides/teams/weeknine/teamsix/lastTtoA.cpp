@@ -19,7 +19,7 @@ void lastTtoA() {
     std::size_t position = input_string.find(replace_letter);
     if(position == std::string::npos) return;
     std::replace(input_string.begin(), input_string.end(), replace_letter, replace_with);
-    
+ 
     // logic to re-reverse input string
     std::string normal_string;
     for (int i = input_string.length() - 1; i>= 0; --i) {
