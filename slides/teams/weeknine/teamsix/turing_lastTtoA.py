@@ -22,13 +22,15 @@ def turing_lastTtoA(tape_input: str) -> str:
             if symbol == 'T':
                 tape[head] = 'A'
                 state = 'qhalt'  # halt after replacement
+            elif symbol == '_':
+                # no T found, halt without changes
+                state = 'qhalt'
             else:
                 head -= 1  # move left
 
         # safety: make sure head never goes below zero
         if head < 0:
-            tape.insert(0, '_')
-            head = 0
+            state = 'qhalt'  # halt if we reach the beginning
 
     # return everything before the first blank
     return ''.join([s for s in tape if s != '_'])
