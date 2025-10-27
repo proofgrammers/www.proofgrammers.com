@@ -1,6 +1,6 @@
 ---
-title: "`YesonEmpty` is Uncomputable"
-description: "Exploring `YesonEmpty`"
+title: "`YesOnEmpty` is Uncomputable"
+description: "Exploring `YesOnEmpty`"
 date: "2025-010-28"
 date-format: long
 author: Ainslee Plesko, Hannah Brown, & Coltin Colucci
@@ -17,6 +17,9 @@ format:
     highlight-style: github
     footer: "Proofgrammers"
 ---
+
+# Ignore Input Trick
+- 
 
 ## YesOnString Code Block
 
@@ -46,7 +49,7 @@ print(yesOnString("returnYesOnString.py", 4))
 ```
 ---
 
-## YesonEmpty
+## YesOnEmpty
 
 ```{pyodide}
 ## yesonempty
@@ -77,5 +80,9 @@ print(yesOnEmpty("returnYesOnEmpty.py", "not empty"))
 
 ```
 
+# Proving (un)compuablity via reduction
+- 
 
+# Conclusion
+- 
 ---
