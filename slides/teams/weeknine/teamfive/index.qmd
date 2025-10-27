@@ -56,9 +56,8 @@ def count_cs(dna: str) -> int:
     return dna.count("C")
 ```
 
-- The count_cs function searches for "C" and is a specific case.
-- This function analyzes the input.
-- count_cs is computable and tractable.
+- The `count_cs` function searches for "C" and is a specific case.
+- `count_cs` is computable and tractable.
 
 
 ## Building `countNs`: Counting Any Symbol
@@ -73,17 +72,32 @@ def count_ns(dna: str, n: str) -> int:
     return dna.count(n)
 ```
 
-- The count_ns function searches for the value of n and is a general case.
-- This function analyzes the input.
-- count_ns is computable and tractable.
+- The `count_ns` function searches for the value of n and is a general case.
+- `count_ns` is computable and tractable.
 
 ## Building `more_cs_than_gs`: Symbol Comparison
 
-x
+```{pyodide}
+def more_cs_than_gs(dna: str) -> bool:
+    """Returns True if DNA contains more Cs than Gs; otherwise False."""
+    return count_cs(dna) > count_ns(dna, "G") 
+```
+
+- The `more_cs_than_gs` function compares the count of "C" and "G" symbols.
+- Uses `count_cs` and `count_ns` for clarity and reuse.
+- Returns `True` if there are more Cs than Gs, else `False`.
 
 ## Building `has_more_ns_than_ms`: General Comparison
 
-x
+```{pyodide}
+def has_more_ns_than_ms(dna: str, n: str, m: str) -> bool:
+    """Returns True if DNA contains more Ns than Ms; otherwise False."""
+    return count_ns(dna, n) > count_ns(dna, m)
+```
+
+- The `has_more_ns_than_ms` function generalizes symbol comparison.
+- Compares the count of any two symbols, `n` and `m`.
+- Returns `True` if there are more `n` symbols than `m` symbols.
 
 ## Why These Functions Are Computable
 
