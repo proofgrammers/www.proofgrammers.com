@@ -266,11 +266,11 @@ def test_all_implementations():
 ## Test Results and Validation
 
 ::: {.fragment}
-**Testing Methodology**:
-- **Unit Testing**: Individual function validation
-- **Integration Testing**: Cross-implementation consistency
-- **Performance Testing**: Execution time comparison
-- **Edge Case Testing**: Boundary condition validation
+- **Testing Methodology**:
+    - **Unit Testing**: Individual function validation
+    - **Integration Testing**: Cross-implementation consistency
+    - **Performance Testing**: Execution time comparison
+    - **Edge Case Testing**: Boundary condition validation
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
