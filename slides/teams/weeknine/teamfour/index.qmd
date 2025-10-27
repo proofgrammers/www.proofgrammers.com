@@ -22,6 +22,9 @@ format:
     - A language or decision problem can correctly decide all positive instances.
     - Either rejects and halts or loops forever when the string is not in
       the language (negative instance).
+    - **Example**: A C++ compiler(g++) checks whether a program is syntactically
+      correct. If the syntax is valid → it halts and accepts. If invalid →
+      it may reject with an error or keep processing indefinitely.
 :::
 
 ---
