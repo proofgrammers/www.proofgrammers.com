@@ -148,23 +148,10 @@ def recYesOnString(inString):
 # Recognizes, but Does Not Decide
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
-:::
-
----
-
-# Conclusion
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **How does this Recognize and not Decide?**
+    - RecYesOnString only considers the positive instance of the YesOnString program. 
+    - If anything but the positive instance is returned, then RecYesOnString returns "no".
+    - This is different than deciding, since deciding a program requires the program to halt: choosing either "yes" or "no".
 :::
 
 ---
