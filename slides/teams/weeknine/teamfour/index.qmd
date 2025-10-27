@@ -123,13 +123,23 @@ format:
 
 # RecYesOnString Program
 
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
-:::
+```{pyodide}
+# This can be found in the "What Can Be Computed?" book.
+
+# returns: If P(I) is 'yes', returns 'yes'. If P(I) terminates but
+# does not return 'yes', then 'no' is returned. If P(I) enters an
+# infinite loop, this program also enters an infinite loop.
+
+import utils; from utils import rf
+from universal import universal  
+def recYesOnString(inString):
+    (progString, newInString) = utils.DESS(inString) 
+    val = universal(progString, newInString)  
+    if val == 'yes':
+        return 'yes'
+    else:
+        return 'no'  
+```
 
 ---
 
