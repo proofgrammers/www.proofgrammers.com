@@ -1,6 +1,6 @@
 ---
 title: "Similarities and Differences between Recognition and Decision"
-description: ""
+description: "Explore Recognition and Decision"
 date: "2025-10-28"
 date-format: long
 author: Cullen Doyle, Issei Hasegawa, Preston Smith
