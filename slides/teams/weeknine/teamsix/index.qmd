@@ -244,10 +244,3 @@ for i in range(len(dna)):
 **Theoretical Analysis**: LastTtoA is **computable** and **tractable** (O(n))
 :::
 
-## Key Insights
-
-::: {.fragment}
-- **Universality**: Same problem solvable across different computational models
-- **Efficiency**: All approaches achieve optimal O(n) time complexity
-- **Correctness**: Formal verification through comprehensive testing
-:::
