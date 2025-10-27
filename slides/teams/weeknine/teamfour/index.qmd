@@ -29,9 +29,9 @@ format:
 # Decision
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+- {{< iconify fa6-solid lightbulb >}} **What is Decision?**
     - Accepts and halts when the string is in the
-      language (positive instance)
+      language (positive instance).
     - Rejects and halts when the string is not in the
       language (negative instance).
 :::
@@ -41,11 +41,16 @@ format:
 # Similarities & Differences
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
-    - Understanding what can be computed
-    - Analyzing computational complexity
-    - Proving limits of computation
-    - "Proofgrammers" combine *proofs* and *programming*
+- {{< iconify fa6-solid lightbulb >}} **What are Similarities & Differences?**
+    - Similarities
+      - Both guarantee correct acceptance for “Yes” instances.
+      - Both are defined using Turing machines.
+
+    - Differences
+      - Decision "Always" halts in finite time, while Recognition
+        "May not" halt for some inputs.
+      - Decision corresponds to both ‘Yes’ and ‘No’ cases, while Recognition
+        corresponds only to the ‘Yes’ case.
 :::
 
 ---
