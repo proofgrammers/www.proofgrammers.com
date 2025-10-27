@@ -15,11 +15,11 @@ format:
     footer: "Proofgrammers"
 ---
 
-# Recognition
+## Recognition
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - {{< iconify fa6-solid lightbulb >}} **What is "Recognition"?**
-    - A language or decision problem can correctly decide all positive instances.
+    - A language or decision problem always accepts and halts on all positive instances.
     - Either rejects and halts or loops forever when the string is not in
       the language (negative instance).
     - **Example**: A C++ compiler(g++) checks whether a program is syntactically
@@ -29,7 +29,7 @@ format:
 
 ---
 
-# Decision
+## Decision
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - {{< iconify fa6-solid lightbulb >}} **What is Decision?**
@@ -41,7 +41,46 @@ format:
 
 ---
 
-# Similarities & Differences
+## Recognition Visualized
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.6em;"} 
+
+::: {.columns}
+
+::: {.column width="33%"}
+### Positive Instance
+
+![Positive Instance](../teamfour/Artboard%201.webp)
+:::
+
+::: {.column width="33%"}
+
+### Negative Instance
+
+![Negative-Instance-Orange](../teamfour/Neg_instance.webp)
+:::
+
+::: {.column width="33%"}
+
+### <<
+
+![Negative-Instance-Jammed](../teamfour/Jammed_Instance.webp)
+:::
+
+
+:::
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.70em;"}
+
+- Only guaranteed to receive a fruit if it's an apple
+- There's a chance the machine jams if an apple isn't passing through
+- A decidable version of this situation is if the result could only be an apple or orange
+
+:::
+
+## Similarities & Differences
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - {{< iconify fa6-solid lightbulb >}} **What are Similarities & Differences?**
@@ -58,7 +97,7 @@ format:
 
 ---
 
-# Recognition is Easier than Decision
+## Recognition is Easier than Decision
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - {{< iconify fa6-solid lightbulb >}} **Why Recognition is Easier than Decision?**
