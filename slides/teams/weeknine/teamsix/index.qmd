@@ -31,13 +31,12 @@ format:
 ::: {.fragment}
 - **Input**: A string `s` that contains DNA symbols {A, C, T, G}
 
--**Output**: String `s'` where the last occurrence of 'T' is replaced with 'A'
+- **Output**: String `s'` where the last occurrence of 'T' is replaced with 'A'
 
-**Examples**:
+**Examples**
+
 - `ATCGT` → `ATCGA`
-
 - `TTTT` → `TTTA` (last T becomes A)
-
 - `ACGAA` → `ACGAA` (no T to replace)
 - `T` → `A`
 :::
@@ -80,27 +79,29 @@ format:
 
 ## LastTtoA Turing Machine
 
-
 ![State Diagram](lastTtoA.png)
 
 ## LasttoA Turing Machine Implementation
 
 ## Complete Computation of the LastTtoA Machine
 
-
 ![Complete Computation](lastTtoA_2.png){height=50%}
-
 
 ## Conclusion
 
 ::: {.fragment}
-**Deterministic Turing Machine**: Formal 3-state machine with transition function (q0→q1→qhalt, tape operations)
+**Deterministic Turing Machine**: Formal 3-state machine with transition function (q0 → q1 → qhalt, tape operations)
 
 - Example: `ATCGT⊔` → scan right → scan left → replace T → `ATCGA`
 
 **Pure Python**: We used Loop-based scanning with string slicing reconstruction
 
-- Example: `for i in range(len(dna)): if dna[i] == 'T': last_t_index = i`
+- Example:
+```py
+for i in range(len(dna)):
+  if dna[i] == 'T':
+    last_t_index = i
+```
 
 **Python with Regex**: Implemented pattern matching to locate and process the last 'T' and transformation to 'A'
 
@@ -117,7 +118,6 @@ format:
 
 ::: {.fragment}
 - **Universality**: Same problem solvable across different computational models
-- **Efficiency**: All approaches achieve optimal O(n) time complexity  
+- **Efficiency**: All approaches achieve optimal O(n) time complexity
 - **Correctness**: Formal verification through comprehensive testing
 :::
-
