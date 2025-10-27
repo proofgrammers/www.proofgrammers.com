@@ -15,6 +15,18 @@ format:
     footer: "Proofgrammers"
 ---
 
+## Decision
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is Decision?**
+    - Accepts and halts when the string is in the
+      language (positive instance).
+    - Rejects and halts when the string is not in the
+      language (negative instance).
+:::
+
+---
+
 ## Recognition
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
@@ -25,18 +37,6 @@ format:
     - **Example**: A C++ compiler(g++) checks whether a program is syntactically
       correct. If the syntax is valid → it halts and accepts. If invalid →
       it may reject with an error or keep processing indefinitely.
-:::
-
----
-
-## Decision
-
-::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-- {{< iconify fa6-solid lightbulb >}} **What is Decision?**
-    - Accepts and halts when the string is in the
-      language (positive instance).
-    - Rejects and halts when the string is not in the
-      language (negative instance).
 :::
 
 ---
