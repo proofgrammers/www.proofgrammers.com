@@ -1,7 +1,7 @@
 ---
 title: "`YesOnEmpty` is Uncomputable"
 description: "Exploring `YesOnEmpty`"
-date: "2025-10-28"
+date: "2025-10-27"
 date-format: long
 author: Ainslee Plesko, Hannah Brown, & Coltin Colucci
 execute:
