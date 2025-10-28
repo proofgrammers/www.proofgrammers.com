@@ -1,6 +1,6 @@
 ---
 title: "Turing Machine Cycle Detector"
-description: "Explore the limits of longerThan10"
+description: "Explore the limits of `longerThan10`"
 date: "2025-10-27"
 date-format: long
 author: Grant Anderson, Joseph Oforkansi, Duru Akbas
@@ -30,44 +30,27 @@ Beyond implementation, we analyze our program from two critical areas:
 (b) whether it is **tractable or intractable**.  
 :::
 
----
+## Turing Machine Cycle Detector
 
-# Problem Definition
+::: {.fragment style="margin-top: 1.5em; font-size: 1.0em;"} 
+- {{< iconify fa6-solid arrow-right >}} Transition class
 
-::: {.fragment style="font-size: 1em;"}
-Given a Turing Machine \(M\), our goal is to determine whether the **state diagram** of \(M\) contains cycles.  
-A cycle represents a sequence of transitions that returns to a previous state — suggesting **repetition or potential infinite looping**.  
-Understanding whether such cycles exist helps illustrate the **structural behavior** of computation without running the machine on input.  
-This provides insight into **decidable vs. undecidable** questions in computation.
+    - Represents single transition rule
+
+- {{< iconify fa6-solid gear >}} TuringMachine Class
+
+    - Models a Turing machine
+
+- {{< iconify fa6-solid arrows-spin >}} has_cycles()
+
+    - Looks for cycles using Depth First Search
+    
 :::
-
----
-
-# Theoretical Background
-
-::: {.fragment style="font-size: 1em;"}
-- A **Turing Machine (TM)** is a mathematical abstraction that captures the essence of computation.  
-- It consists of an infinite tape, read/write head, and a finite set of states governed by a **transition function**.  
-- The concept of **computability** asks what problems can be solved by any TM, while **tractability** measures how efficiently they can be solved.  
-- In this project, we focus on a **structural property**—the existence of cycles in the TM’s transition graph.
-:::
-
----
-
-# Turing Machine Cycle Detector
-
-::: {.fragment style="font-size: 1em;"}
-- {{< iconify fa6-solid arrow-right >}} **Transition Class:** Represents a single transition rule in the Turing Machine  
-- {{< iconify fa6-solid gear >}} **TuringMachine Class:** Models a Turing Machine with states, symbols, and transitions  
-- {{< iconify fa6-solid arrows-spin >}} **has_cycles():** Detects cycles using **Depth-First Search (DFS)** on the state diagram
-:::
-
----
 
 ## Implementation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-```{python}
+```
 from typing import Dict, Set, List, Tuple
 from dataclasses import dataclass
 
@@ -150,75 +133,38 @@ def test_cycle_detection():
     tm1 = TuringMachine()
     tm1.add_transition(Transition("q0", "1", "q1", "1", "R"))
     tm1.add_transition(Transition("q1", "1", "q2", "1", "R"))
-    tm1.add_transition(Transition("q2", "1", "q0", "1", "R"))  # Creates cycle
-    assert has_cycles(tm1) == True, "Failed to detect cycle in tm1"
+    tm1.add_transition(Transition("q2", "1", "q0", "1", "R"))  # cycle here
+    print(has_cycles(tm1)) # expected output should be true
     
     # Example 2: TM without cycles
     tm2 = TuringMachine()
     tm2.add_transition(Transition("q0", "1", "q1", "1", "R"))
     tm2.add_transition(Transition("q1", "1", "q2", "1", "R"))
-    tm2.add_transition(Transition("q2", "1", "qaccept", "1", "R"))
-    assert has_cycles(tm2) == False, "False positive cycle detection in tm2"
+    tm2.add_transition(Transition("q2", "1", "q3", "1", "R"))
+    print(has_cycles(tm2))  # expected output is False
     
-    print("All tests passed!")
+    # Example 3: TM with immediate cycle
+    m3 = TuringMachine()
+    tm3.add_transition(Transition("q0", "1", "q0", "1", "R"))  # self-loop
+    print(has_cycles(tm3))  # expected output is True
 
 if __name__ == "__main__":
     test_cycle_detection()
 ```
 :::
 
-# Visualizing a Cycle in a Turing Machine
-
-::: {.fragment style="font-size: 1em;"}
-To understand what it means for a Turing Machine to contain a **cycle**, consider the example below.
-:::
-
----
-
-### Example State Diagram
-
-::: {.fragment style="font-size: 1.0em; font-family: monospace; background-color: #f6f8fa; padding: 1em; border-radius: 8px;"}
-q0 --(1/R)--> q1  
-q1 --(1/R)--> q2  
-q2 --(1/R)--> q0   ← forms a **cycle**
-:::
-
-::: {.fragment style="font-size: 1em; margin-top: 1em;"}
-- Each arrow represents a **transition** on symbol `1`, moving right (R).  
-- Starting from `q0`, the machine returns to `q0` after a series of transitions.  
-- This **loop** means the TM can potentially repeat these states indefinitely.
-:::
-
----
-
-### Visual Representation
-
-::: {.fragment style="font-size: 1em;"}
-If you include a diagram file, you can render it like this:
-:::
-
-```{r}
-#| echo: false
-#| fig-cap: "Cycle in Turing Machine State Diagram"
-#| out-width: 70%
-#| fig-align: center
-# This is an optional placeholder if you want to include an image later
-# knitr::include_graphics("cycle_diagram.png")
-```
-
----
-
-# Computability and Tractability Analysis
+## Computability and Tractablility
 
 ::: {.fragment style="margin-top: .75em; font-size: 1.0em;"} 
 
-**Computability:**
-Detecting cycles in a finite state diagram is decidable — the algorithm always halts since the number of states and transitions is finite.
+{{< iconify fa6-solid check >}} The program is computable.
 
-**Tractability:**
-The Depth-First Search runs in O(V + E) time, making the solution tractable (polynomial time).
+- The program only analyzes the structure, not the actual output behavior based on inputs.
 
-This demonstrates that while many Turing Machine questions are undecidable, this structural problem is both computable and efficiently solvable.
+{{< iconify fa6-solid check >}} The program is tractable.
+
+- Using the current depth first search, the time complexity is O(V*E).
+
 :::
 
 ## Test cases
@@ -226,16 +172,16 @@ This demonstrates that while many Turing Machine questions are undecidable, this
 ::: {.fragment style="margin-top: 0em; font-size: 1.0em;"} 
 Here are some of the test cases for this code:
 
-```{python}
+```
 tm1 = TuringMachine()
 tm1.add_transition(Transition("q0", "1", "q1", "1", "R"))
 tm1.add_transition(Transition("q1", "1", "q2", "1", "R"))
 tm1.add_transition(Transition("q2", "1", "q0", "1", "R"))  # cycle here
 print(has_cycles(tm1)) # expected output should be true
 ```
-- This is a case where it goes until the 3rd state and comes back to "q0" where it started.
+- This is a case where it goes until the 3rd state and comes bak to "q0" where it started.
 - q0 → q1 → q2 → q0
-- The symbol `1` is just an example; what matters are the states and their transitions.
+- 1 is just an example what it reads, we care about the states not what it reads.
 
 :::
 
@@ -243,7 +189,7 @@ print(has_cycles(tm1)) # expected output should be true
 
 ::: {.fragment style="margin-top: 0.5em; font-size: 1.0em;"}
 
-```{python}
+```
 tm2 = TuringMachine()
 tm2.add_transition(Transition("q0", "1", "q1", "1", "R"))
 tm2.add_transition(Transition("q1", "1", "q2", "1", "R"))
@@ -251,7 +197,7 @@ tm2.add_transition(Transition("q2", "1", "q3", "1", "R"))
 print(has_cycles(tm2))  # expected output is False
 ```
 
-- Linear chain — each state transitions to the next without looping back, so no cycles occur.
+- Linear chain => always points to the next one no cycles
 - q0 → q1 → q2 → q3
 
 :::
@@ -259,7 +205,7 @@ print(has_cycles(tm2))  # expected output is False
 # Test Case 3
 ::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
 
-```{python}
+```
 tm3 = TuringMachine()
 tm3.add_transition(Transition("q0", "1", "q0", "1", "R"))  # self-loop
 print(has_cycles(tm3))  # expected output is True
@@ -269,11 +215,11 @@ print(has_cycles(tm3))  # expected output is True
 - q0 → q0
 :::
 
-# Conclusion
+## Conclusion
 ::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
 
--  The cycle detection problem in a Turing Machine’s states is a computable problem, since it only examines a finite set of states and transitions.
+- The cycle detection problem in a Turing Machine states is a computable problem, since it only examines a finite sets of states and transitions.
 
 - The algorithm is tractable, running in O(V + E) time using Depth-First Search — efficient for real implementations.
 
-- It does not require executing or simulating the Turing Machine, which avoids undecidable cases such as determining whether it accepts an input or halts on a given input.
+- It doesn't require running or simulating the Turing Machine, whoch avoids the undecidable cases: such as accepting an input or halting on a given input.
