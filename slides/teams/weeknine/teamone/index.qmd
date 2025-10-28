@@ -159,18 +159,17 @@ if __name__ == "__main__":
 ```
 :::
 
-## Computability and Tractablility
+## Computability and Tractability Analysis
 
 ::: {.fragment style="margin-top: .75em; font-size: 1.0em;"} 
 
-{{< iconify fa6-solid check >}} The program is computable.
+**Computability:**
+Detecting cycles in a finite state diagram is decidable — the algorithm always halts since the number of states and transitions is finite.
 
-- The program only analyzes the structure, not the actual output behavior based on inputs.
+**Tractability:**
+The Depth-First Search runs in O(V + E) time, making the solution tractable (polynomial time).
 
-{{< iconify fa6-solid check >}} The program is tractable.
-
-- Using the current depth first search, the time complexity is O(V*E).
-
+This demonstrates that while many Turing Machine questions are undecidable, this structural problem is both computable and efficiently solvable.
 :::
 
 ## 
