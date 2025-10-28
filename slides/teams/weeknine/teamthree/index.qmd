@@ -1,7 +1,7 @@
 ---
 title: "`YesOnEmpty` is Uncomputable"
 description: "Exploring `YesOnEmpty`"
-date: "2025-010-28"
+date: "2025-10-28"
 date-format: long
 author: Ainslee Plesko, Hannah Brown, & Coltin Colucci
 execute:
@@ -32,17 +32,16 @@ format:
 Let `F` and `G` be computational problems. We say that F has a Turing reduction to `G` if we can write a python program solving `F`, after first assuming the existence of a program solving `G`.
 
 # Ignore Input Trick
-```{pyodide}
-import utils
-from utils import rf, universal
+```{python}
+import utils; from utils import rf, universal
 
 def ignoreInput(inputStr: str):
     try:
-        programStr = rf('programStr.txt')
+        programInput = rf('programInput.txt')
         newInputStr = rf('inputStr.txt')
     except FileNotFoundError as e:
         return f"missing file: {e.filename}"
-    return universal(programStr, newInputStr)
+    return universal(programInput, newInputStr)
 ```
 
 ## YesOnString Code Block
@@ -105,7 +104,7 @@ print(yesOnEmpty("returnYesOnEmpty.py", "not empty"))
 ```
 
 # Proving (un)compuablity via reduction
-- 
+![](/slides/teams/weeknine/teamthree/W9T3_Proof.png)
 
 # Conclusion
 
