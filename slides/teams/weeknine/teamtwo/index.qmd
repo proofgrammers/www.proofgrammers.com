@@ -1,7 +1,7 @@
 ---
 title: "Proving haltsOnString is Uncomputable"
 description: "Using a Turing Reduction from yesOnString"
-date: "10-28-2025"
+date: "10-27-2025"
 author: Javier Bejarano,  Abishek Dhakal, & Alexander Goddard
 execute:
   echo: true
