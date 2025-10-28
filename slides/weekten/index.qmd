@@ -99,23 +99,29 @@ values or have memory.
 
 :::
 
-## DFA examples: `containsGAGA` and `multipleOf5`
+## Understanding simple DFAs
 
-![DFA for `containsGAGA`](09-finite-automata_0.png)
+::: {.fragment .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
 
-## DFA examples continued
-
-![DFA for `multipleOf5`](09-finite-automata_1.png)
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **`containsGAGA`**: accepts strings containing the substring "GAGA"
-- **`multipleOf5`**: accepts decimal numbers divisible by 5
+- Nodes represents states, arrows are transitions on input symbols
+- Behavior of two simple DFAs:
+    - **`containsGAGA`**: accepts strings with substring "GAGA"
+    - **`multipleOf5`**: accepts decimal numbers divisible by 5
 - **Implicit transitions**: unspecified transitions go to `qreject`
+
 - {{< iconify fa6-solid lightbulb >}} **What other patterns can DFAs
 recognize?**
 
 :::
+
+## DFA examples: `containsGAGA`
+
+![DFA for `containsGAGA`](09-finite-automata_1.png)
+
+## DFA examples: `multipleOf5`
+
+![DFA for `multipleOf5`](09-finite-automata_0.png)
+
 
 ## Implementing a simple DFA simulator
 
