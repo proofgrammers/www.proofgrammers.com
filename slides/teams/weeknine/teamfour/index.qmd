@@ -1,0 +1,146 @@
+---
+title: "Recognition and Decision featuring YesOnString"
+description: "Explore Recognition and Decision with YesOnString"
+date: "2025-10-27"
+date-format: long
+author: Cullen Doyle, Issei Hasegawa, Preston Smith
+execute:
+  echo: true
+format:
+  revealjs:
+    theme: default
+    css: ../../../css/styles.css
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+## Decision
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is Decision?**
+    - Accepts and halts when the string is in the
+      language (positive instance).
+    - Rejects and halts when the string is not in the
+      language (negative instance).
+:::
+
+## Recognition
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is "Recognition"?**
+    - A language or decision problem always accepts and halts on all positive instances.
+    - Either rejects and halts or loops forever when the string is not in
+      the language (negative instance).
+    - **Example**: A C++ compiler(g++) checks whether a program is syntactically
+      correct. If the syntax is valid → it halts and accepts. If invalid →
+      it may reject with an error or keep processing indefinitely.
+:::
+
+## Similarities & Differences
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What are Similarities & Differences?**
+    - Similarities
+      - Both guarantee correct acceptance for “Yes” instances.
+      - Both are defined using Turing machines.
+
+    - Differences
+      - Decision "Always" halts in finite time, while Recognition
+        "May not" halt for some inputs.
+      - Decision corresponds to both ‘Yes’ and ‘No’ cases, while Recognition
+        corresponds only to the ‘Yes’ case.
+:::
+
+## Recognition Visualized
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.6em;"} 
+
+::: {.columns}
+
+::: {.column width="33%"}
+### Positive Instance
+
+![Positive Instance](../teamfour/Artboard%201.webp)
+:::
+
+::: {.column width="33%"}
+
+### Negative Instance
+
+![Negative-Instance-Orange](../teamfour/Neg_instance.webp)
+:::
+
+::: {.column width="33%"}
+
+### <<
+
+![Negative-Instance-Jammed](../teamfour/Jammed_Instance.webp)
+:::
+
+
+:::
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.70em;"}
+
+- Only guaranteed to receive a fruit if it's an apple
+- There's a chance the machine jams if an apple isn't passing through
+- A decidable version of this situation is if the result could only be an apple or orange
+
+:::
+
+## Recognition is Easier than Decision
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **Why Recognition is Easier than Decision?**
+    - Recognition try to find only positive instance; it does not care about 
+      Negative instance and infinite loop. 
+    - Decision try to find all possible case; it must correctly distinguish
+      all cases (both yes- and no-instances)
+:::
+
+
+## What is RecYesOnString?
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **What is RecYesOnString?**
+    - Takes two inputs: a Python program P as a string and an input string I.
+    - Runs the program P with I as the input: P(I)
+    - Outcomes:
+      - If P halts and prints "yes", then RecYesOnString prints "yes".
+      - If P halts and does not print "yes", then RecYesOnString prints "no".
+      - If P does not halt, then RecYesOnString does not halt.
+:::
+
+
+## RecYesOnString Program
+
+```{pyodide}
+# This can be found in the "What Can Be Computed?" book.
+
+# returns: If P(I) is 'yes', returns 'yes'. If P(I) terminates but
+# does not return 'yes', then 'no' is returned. If P(I) enters an
+# infinite loop, this program also enters an infinite loop.
+
+import utils; from utils import rf
+from universal import universal  
+def recYesOnString(inString):
+    (progString, newInString) = utils.DESS(inString) 
+    val = universal(progString, newInString)  
+    if val == 'yes':
+        return 'yes'
+    else:
+        return 'no'  
+```
+
+
+## Recognizes, but Does Not Decide
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+- {{< iconify fa6-solid lightbulb >}} **How does this Recognize and not Decide?**
+    - RecYesOnString only considers the positive instance of the YesOnString program. 
+    - If anything but the positive instance is returned, then RecYesOnString returns "no".
+    - This is different than deciding, since deciding a program requires the program to halt: choosing either "yes" or "no".
+:::
