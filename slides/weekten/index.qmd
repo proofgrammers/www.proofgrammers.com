@@ -328,7 +328,7 @@ powerful!
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
 - **Observation**: DFA has more states than original NFA
-- **Trade-off**: clarity vs. size in automaton design
+- **Trade-off**: clarity versus size in automaton design
 - {{< iconify fa6-solid lightbulb >}} **When would you prefer an NFA
 over a DFA?**
 
