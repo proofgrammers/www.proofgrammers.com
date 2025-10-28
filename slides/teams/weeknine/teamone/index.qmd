@@ -1,1 +1,66 @@
+---
+title: "Turing Machine Cycle Detector"
+description: "Explore the limits of `longerThan10`"
+date: "2025-10-27"
+date-format: long
+author: Grant Anderson, 
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Introduction
+
+::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
+- 
+:::
+
+##  
+
+::: {.fragment style="margin-top: 1.0em; font-size: 1.0em;"} 
+- 
+:::
+
+## 
+
+::: {.fragment style="margin-top: 1.5em; font-size: 1.0em;"} 
+
+:::
+
+## 
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
+
+:::
+
+## 
+
+::: {.fragment style="margin-top: .75em; font-size: 1.0em;"} 
+
+:::
+
+## 
+
+::: {.fragment style="margin-top: 0em; font-size: 1.0em;"} 
+
+:::
+
+# 
+
+::: {.fragment style="margin-top: 0.5em; font-size: 1.0em;"}
+
+:::
+
+::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
+
+:::
 
