@@ -192,8 +192,12 @@ more expressive, not more powerful!**
 - **Accept**: if any clone reaches accept state
 - **Reject**: if all clones reject
 - **Undefined**: if clones enter infinite $\epsilon$-loop
-- {{< iconify fa6-solid lightbulb >}} **Same definition as
-nondeterministic Turing machines!**
+- {{< iconify fa6-solid lightbulb >}} **Same definition as nondeterministic
+Turing machines!**
+- **Next Step**: Explore an NFA that accepts the strings “AA”, “AGA”, and an “A”
+followed by any combination of C’s and G’s (provided there is at least one C or
+G). How would be build this NFA?
+- **There are different, equivalent ways to build this NFA!**
 
 :::
 
