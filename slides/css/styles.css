@@ -99,8 +99,8 @@ img.thick-border {
 }
 
 img.sensible-square-thick-border {
-  width: 65% !important;
-  height: 70% !important;
+  width: 50% !important;
+  height: 65% !important;
   max-width: 100% !important;
   max-height: 95% !important;
   border: 3px solid #444;
