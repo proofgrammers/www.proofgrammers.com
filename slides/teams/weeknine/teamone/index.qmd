@@ -20,14 +20,16 @@ format:
 
 # Introduction
 
+# Introduction
+
 ::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
-In this presentation, we will explore the design and analysis of a **Python program** that determines whether the **state diagram of a Turing Machine (M)** contains cycles. A Turing Machine is a fundamental model of computation that defines the limits of what can be calculated. By detecting cycles in its state diagram, we can identify repeating or potentially infinite behaviors within a machine’s structure. This project bridges **theoretical computer science** and **practical programming**, showing how abstract models can be represented in real code.  
+In this presentation, we explore the design and analysis of a **Python program** that determines whether the **state diagram of a Turing Machine (M)** contains cycles. A Turing Machine is a fundamental model of computation that defines the limits of what can be calculated. By detecting cycles in its state diagram, we can identify repeating or potentially infinite behaviors within a machine’s structure. This project bridges **theoretical computer science** and **practical programming**, showing how abstract models can be represented in real code.  
 
 Beyond implementation, we analyze our program from two critical perspectives in computation theory:  
 (a) whether the problem is **computable or uncomputable**, and  
 (b) whether it is **tractable or intractable**.  
 
-Through this analysis, we will demonstrate that while many Turing Machine problems are undecidable, detecting cycles in a finite state diagram is both **computable** and **tractable**, highlighting the deep connection between **mathematical theory** and **algorithmic design**.
+Through this analysis, we demonstrate that while many Turing Machine problems are undecidable, detecting cycles in a finite state diagram is both **computable** and **tractable**, revealing the deep connection between **mathematical theory** and **algorithmic design**.
 :::
 
 ##  
