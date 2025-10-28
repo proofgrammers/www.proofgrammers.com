@@ -1,7 +1,7 @@
 ---
-title: "Exploring Nondeterminism"
-description: "Nondeterminism does not aid computability"
-date: "2025-10-20"
+title: "Finite State Automata"
+description: "Grasp computing with limited resources"
+date: "2025-10-27"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:
@@ -18,4 +18,872 @@ format:
     footer: "Proofgrammers"
 ---
 
+# Learning objectives
 
+::: {.fragment .callout-note icon=true title="Learning Objectives for Theoretical Machines"}
+
+- **CS-204-1**: Use both intuitive analysis and theoretical proof
+techniques to correctly distinguish between problems that are tractable,
+intractable, and uncomputable.
+- **CS-204-2**: Correctly use one or more variants of the Turing machine
+(TM) abstraction to both describe and analyze the solution to a
+computational problem.
+- **CS-204-3**: Correctly use one or more variants of the finite state
+machine (FSM) abstraction to describe and analyze the solution to a
+computational problem.
+- **CS-204-4**: Use a formal proof technique to correctly classify a
+problem according to whether or not it is in the P, NP, NP-Hard, and/or
+NP-Complete complexity class(es).
+- **CS-204-5**: Apply insights from theoretical proofs concerning the
+limits of either program feasibility or complexity to the implementation
+of both correct and efficient real-world Python programs.
+
+:::
+
+# Finite automata are simplified Turing machines with limited resources!
+
+::: {.fragment}
+
+- Finite automata help with learning objective **CS-204-3**, in which
+you learn about finite state machines (FSMs) and their computational
+power. **Let's explore how constraints affect computability!**
+
+:::
+
+## What are finite automata?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid microchip >}} **Finite automata**: special case
+of Turing machines
+- {{< iconify fa6-solid arrow-right >}} **Key restrictions**: head only
+moves right, never edits tape
+- {{< iconify fa6-solid stop >}} **Termination**: blank symbol ends
+input processing
+- {{< iconify fa6-solid microscope >}} **Key question**: What problems
+can finite automata solve?
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Finite automata model computation with severely limited resources**:
+no memory beyond a fixed number of states, and no ability to revisit
+previous input. Despite these constraints, they remain useful for
+pattern matching, lexical analysis, and network protocol verification!
+
+:::
+
+## Deterministic finite automata (DFA)
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- **DFA components**:
+    - Alphabet of symbols (including blank)
+    - Finite set of states (start, accept, reject)
+    - Transition function: $(q, x) \rightarrow q'$
+- **Computation**: read symbol, transition to new state, move right
+- **Always halts**: after at most $n$ steps for input length $n$
+- **Deterministic**: exactly one possible transition from each state
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**DFAs are the simplest computational model**: they recognize patterns
+in strings but cannot count unbounded values or remember arbitrary
+amounts of information. Perfect for tasks like email validation!
+
+:::
+
+## DFA examples: `containsGAGA` and `multipleOf5`
+
+![DFA for `containsGAGA`](09-finite-automata_0.png)
+
+## DFA examples continued
+
+![DFA for `multipleOf5`](09-finite-automata_1.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **`containsGAGA`**: accepts strings containing the substring "GAGA"
+- **`multipleOf5`**: accepts decimal numbers divisible by 5
+- **Implicit transitions**: unspecified transitions go to `qreject`
+- {{< iconify fa6-solid lightbulb >}} **What other patterns can DFAs
+recognize?**
+
+:::
+
+## Implementing a simple DFA simulator
+
+```{python}
+def simulate_dfa(transitions: dict, start: str, accept: set,
+                 input_string: str) -> bool:
+    """Simulate a DFA on an input string."""
+    current_state = start
+    for symbol in input_string:
+        if (current_state, symbol) in transitions:
+            current_state = transitions[(current_state, symbol)]
+        else:
+            return False
+    return current_state in accept
+
+# DFA for strings ending in 'AB'
+transitions = {
+    ('q0', 'A'): 'q1', ('q0', 'B'): 'q0',
+    ('q1', 'A'): 'q1', ('q1', 'B'): 'q2',
+    ('q2', 'A'): 'q1', ('q2', 'B'): 'q0'
+}
+accept = {'q2'}
+
+print(f"'AAAB' accepted: {simulate_dfa(transitions, 'q0', accept, 'AAAB')}")
+print(f"'ABAB' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABAB')}")
+print(f"'ABBA' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABBA')}")
+```
+
+## Try the DFA simulator yourself!
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+def simulate_dfa(transitions: dict, start: str, accept: set,
+                 input_string: str) -> bool:
+    """Simulate a DFA on an input string."""
+    current_state = start
+    for symbol in input_string:
+        if (current_state, symbol) in transitions:
+            current_state = transitions[(current_state, symbol)]
+        else:
+            return False
+    return current_state in accept
+
+# DFA for strings ending in 'AB'
+transitions = {
+    ('q0', 'A'): 'q1', ('q0', 'B'): 'q0',
+    ('q1', 'A'): 'q1', ('q1', 'B'): 'q2',
+    ('q2', 'A'): 'q1', ('q2', 'B'): 'q0'
+}
+accept = {'q2'}
+
+test_strings = ['AAAB', 'ABAB', 'ABBA', 'BAB']
+for s in test_strings:
+    result = simulate_dfa(transitions, 'q0', accept, s)
+    print(f"'{s}': {result}")
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
+
+- Modify the transitions to recognize different patterns
+- Try creating a DFA that accepts strings with even number of 'A's
+
+:::
+
+# Nondeterministic finite automata (NFA)
+
+## What are NFAs?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid clone >}} **Nondeterminism**: multiple possible
+transitions from same state
+- {{< iconify fa6-solid code-branch >}} **Epsilon transitions**: can
+transition without reading input
+- {{< iconify fa6-solid check >}} **Acceptance**: accept if **any**
+computational path accepts
+- {{< iconify fa6-solid microscope >}} **Key insight**: NFAs can be
+simpler than equivalent DFAs
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Think of NFAs as exploring multiple possibilities simultaneously**:
+like a DFA that can clone itself at decision points. If any clone
+reaches an accept state, the entire computation accepts the input!
+
+:::
+
+## NFA visualization: cloning and choices
+
+![NFA transition options](09-finite-automata_2.png)
+
+## NFA cloning process
+
+![NFA clones processing input](09-finite-automata_3.png)
+
+## NFA acceptance definition
+
+![NFA acceptance criteria](09-finite-automata_4.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Accept**: if any clone reaches accept state
+- **Reject**: if all clones reject
+- **Undefined**: if clones enter infinite $\epsilon$-loop
+- {{< iconify fa6-solid lightbulb >}} **Same definition as
+nondeterministic Turing machines!**
+
+:::
+
+## NFA example: multiples of 2 or 3
+
+![NFA for multiples of 2 or 3](09-finite-automata_5.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Problem**: accept strings of $n$ G's where $n$ is divisible by 2 or
+3
+- **NFA advantage**: naturally decomposes into two independent checks
+- **Top path**: checks divisibility by 2
+- **Bottom path**: checks divisibility by 3
+- **Equivalent DFA**: would be more complex, less intuitive
+- {{< iconify fa6-solid lightbulb >}} **NFAs often model problems more
+naturally!**
+
+:::
+
+# Converting NFAs to DFAs
+
+## NFAs and DFAs have equal power!
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid equals >}} **Key theorem**: Every NFA has an
+equivalent DFA
+- {{< iconify fa6-solid diagram-project >}} **Subset construction**:
+DFA states represent sets of NFA states
+- {{< iconify fa6-solid arrow-up-right-dots >}} **State explosion**:
+DFA may have up to $2^k$ states for $k$ NFA states
+- {{< iconify fa6-solid microscope >}} **Implication**: Nondeterminism
+doesn't increase computational power for finite automata
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Nondeterminism provides convenience, not power**: any language
+recognized by an NFA can also be recognized by a DFA. The DFA may be
+exponentially larger, but it exists and solves the same problem!
+
+:::
+
+## NFA to DFA conversion algorithm
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+1. **Create DFA start state**: set containing NFA start state plus all
+states reachable via $\epsilon$-transitions
+2. **For each DFA state and symbol**: compute the set of NFA states
+reachable
+3. **Mark DFA states as accepting**: if they contain any NFA accepting
+state
+4. **Repeat** until no new DFA states discovered
+5. **Result**: DFA with states as subsets of NFA states
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Subset construction** systematically tracks all possible NFA states:
+each DFA state represents "all places the NFA could be" after reading
+the input so far. This construction proves NFAs and DFAs are equally
+powerful!
+
+:::
+
+## NFA to DFA conversion example
+
+![Starting NFA](09-finite-automata_6.png)
+
+## Conversion step 1
+
+![First conversion step](09-finite-automata_7.png)
+
+## Conversion step 2
+
+![Second conversion step](09-finite-automata_8.png)
+
+## Conversion step 3
+
+![Third conversion step](09-finite-automata_9.png)
+
+## Conversion step 4
+
+![Fourth conversion step](09-finite-automata_10.png)
+
+## Conversion step 5
+
+![Fifth conversion step](09-finite-automata_11.png)
+
+## Conversion step 6
+
+![Sixth conversion step](09-finite-automata_12.png)
+
+## Final DFA result
+
+![Completed DFA conversion](09-finite-automata_13.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Observation**: DFA has more states than original NFA
+- **Trade-off**: clarity vs. size in automaton design
+- {{< iconify fa6-solid lightbulb >}} **When would you prefer an NFA
+over a DFA?**
+
+:::
+
+# Regular expressions
+
+## Regular expressions: a powerful notation
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid code >}} **Regular expressions (regex)**:
+concise pattern description language
+- {{< iconify fa6-solid equals >}} **Equivalent to finite automata**:
+same computational power as DFAs/NFAs
+- {{< iconify fa6-solid wrench >}} **Practical applications**: text
+search, validation, lexical analysis
+- {{< iconify fa6-solid microscope >}} **Theoretical importance**:
+define regular languages precisely
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Regular expressions bridge theory and practice**: they're both a
+formal mathematical notation for describing languages and a practical
+tool used daily by programmers for pattern matching and text
+processing!
+
+:::
+
+## Pure regular expressions: elementary definitions
+
+![Regular expression basics](09-finite-automata_14.png)
+
+## Regular expression operations
+
+![Regex operations](09-finite-automata_15.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Empty string** $\epsilon$: matches nothing (zero characters)
+- **Single character** $a$: matches exactly that character
+- **Concatenation** $r_1 r_2$: match $r_1$ then $r_2$
+- **Alternation** $r_1 | r_2$: match $r_1$ or $r_2$
+- **Kleene star** $r^*$: match $r$ zero or more times
+- {{< iconify fa6-solid lightbulb >}} **All regular languages can be
+built from these operations!**
+
+:::
+
+## Regular expression examples
+
+![Regex examples](09-finite-automata_16.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Pattern matching**: describe sets of strings concisely
+- **Practical extensions**: `.` (any char), `+` (one or more), `[...]`
+(character class)
+- {{< iconify fa6-solid lightbulb >}} **Can you write a regex for email
+addresses?**
+
+:::
+
+## Additional regex notation for convenience
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- **Period** `.`: represents any single character
+- **Plus** `+`: one or more repetitions (equivalent to $rr^*$)
+- **Square brackets** `[abc]`: set of character alternatives
+- **Character ranges** `[a-z]`: matches any character in range
+- **Negation** `[^abc]`: matches any character except those listed
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Practical regex extensions** make patterns easier to write and read:
+while theoretically unnecessary (pure regex suffices), they
+significantly improve usability. Python's `re` module includes these
+and many more features!
+
+:::
+
+## Regular expressions in Python
+
+```{python}
+import re
+
+def test_pattern(pattern: str, test_strings: list) -> None:
+    """Test a regex pattern against multiple strings."""
+    regex = re.compile(pattern)
+    for s in test_strings:
+        match = regex.fullmatch(s)
+        print(f"'{s}': {'Match' if match else 'No match'}")
+
+# Pattern: strings starting with 'A' and ending with 'B'
+pattern = r'A.*B'
+test_strings = ['AB', 'ACCCB', 'AXYZB', 'ABC', 'BA']
+print("Pattern: A.*B (start with A, end with B)")
+test_pattern(pattern, test_strings)
+
+# Pattern: exactly 3 digits
+print("\nPattern: [0-9]{3} (exactly 3 digits)")
+pattern2 = r'[0-9]{3}'
+test_strings2 = ['123', '456', '12', '1234', 'abc']
+test_pattern(pattern2, test_strings2)
+```
+
+## Try regex patterns yourself!
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 15
+import re
+
+def test_pattern(pattern: str, test_strings: list) -> None:
+    """Test a regex pattern against multiple strings."""
+    regex = re.compile(pattern)
+    for s in test_strings:
+        match = regex.fullmatch(s)
+        print(f"'{s}': {'Match' if match else 'No match'}")
+
+# Pattern for simple email validation
+pattern = r'[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+'
+test_strings = [
+    'user@example.com',
+    'test.user@domain.org',
+    'invalid@',
+    '@invalid.com',
+    'no-at-sign.com'
+]
+print("Email pattern: [a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]+")
+test_pattern(pattern, test_strings)
+```
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
+
+- Modify the pattern to allow dots in usernames
+- What patterns cannot be matched by regular expressions?
+
+:::
+
+## Regex and finite automata equivalence
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid exchange-alt >}} **Two-way conversion**: regex
+↔ NFA ↔ DFA
+- {{< iconify fa6-solid arrow-right >}} **Regex to NFA**: build NFA
+compositionally from operations
+- {{< iconify fa6-solid arrow-left >}} **DFA to regex**: simplify
+automaton by labeling transitions with regex
+- {{< iconify fa6-solid equals >}} **Same power**: all three
+formalisms recognize exactly the regular languages
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Multiple equivalent formalisms** provide different perspectives: DFAs
+are easiest to simulate, NFAs are easiest to design, and regexes are
+easiest to write. Choose the representation that best fits your task!
+
+:::
+
+## Implementing concatenation with NFA
+
+![Concatenation with epsilon transition](09-finite-automata_18.png)
+
+## Concatenation NFA continued
+
+![Complete concatenation NFA](09-finite-automata_19.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Construction**: connect two NFAs with $\epsilon$-transition
+- **Accept state**: original first NFA accept becomes intermediate
+- **Final accept**: second NFA accept becomes overall accept
+- {{< iconify fa6-solid lightbulb >}} **Simple construction proves
+regex to NFA conversion possible!**
+
+:::
+
+## Implementing alternation with NFA
+
+![Alternation with nondeterminism](09-finite-automata_20.png)
+
+## Alternation NFA continued
+
+![Complete alternation NFA](09-finite-automata_21.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Construction**: new start state with $\epsilon$-transitions to both
+options
+- **Nondeterminism**: machine chooses which branch to follow
+- **Accept states**: either original accept state works
+- {{< iconify fa6-solid lightbulb >}} **Alternation naturally maps to
+nondeterministic choice!**
+
+:::
+
+## Implementing Kleene star with NFA
+
+![Kleene star with epsilon loops](09-finite-automata_22.png)
+
+## Kleene star NFA continued
+
+![Complete Kleene star NFA](09-finite-automata_23.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Construction**: $\epsilon$-transitions for zero or repeated
+matches
+- **Zero matches**: direct path from new start to new accept
+- **Repetition**: loop back from old accept to old start
+- {{< iconify fa6-solid lightbulb >}} **These three constructions prove
+any regex has equivalent NFA!**
+
+:::
+
+## Converting DFA to regex: key example
+
+![DFA to regex base case](09-finite-automata_24.png)
+
+## DFA to regex base case continued
+
+![Base case solution](09-finite-automata_25.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Two-state DFA**: simplest case of DFA to regex conversion
+- **Self-loops**: become Kleene stars in regex
+- **Direct transitions**: become concatenations
+- **Formula**: combines loops and transitions algebraically
+- {{< iconify fa6-solid lightbulb >}} **General case reduces to this
+pattern!**
+
+:::
+
+## DFA to regex: simplification process
+
+![Start with DFA](09-finite-automata_26.png)
+
+## Simplification step 1
+
+![First simplification](09-finite-automata_27.png)
+
+## Simplification step 2
+
+![Second simplification](09-finite-automata_28.png)
+
+## Simplification step 3
+
+![Third simplification](09-finite-automata_29.png)
+
+## Final regex result
+
+![Complete regex from DFA](09-finite-automata_30.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Gradual elimination**: remove states one by one
+- **Relabel transitions**: with increasingly complex regexes
+- **Final result**: regex connecting start to accept
+- {{< iconify fa6-solid lightbulb >}} **Proves every DFA has
+equivalent regex!**
+
+:::
+
+# Regular languages
+
+## What are regular languages?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid book >}} **Regular language**: decided by some
+DFA (or NFA, or regex)
+- {{< iconify fa6-solid equals >}} **Three equivalent definitions**:
+DFA-decidable, NFA-decidable, or regex-describable
+- {{< iconify fa6-solid circle-question >}} **Key question**: Are all
+decidable languages regular?
+- {{< iconify fa6-solid xmark >}} **Answer**: No! Some decidable
+languages are not regular
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**First computational hierarchy**: regular languages are a proper
+subset of decidable languages. This reveals that computational models
+differ in power, and resource limitations (like finite memory) restrict
+what can be computed!
+
+:::
+
+## Regular languages are decidable
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- **Claim**: If a language is regular, then it's decidable
+- **Proof**: Every DFA is a special case of Turing machine
+- **Therefore**: Any language decided by DFA is decided by TM
+- **Implication**: Regular ⊆ Decidable
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Trivial but important**: the containment Regular ⊆ Decidable is
+obvious from definitions. The interesting question is whether the
+containment is strict. Next: we'll prove it is!
+
+:::
+
+## $G^nT^n$ is decidable but not regular
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- **Language**: $\{G^nT^n : n \geq 0\} = \{\epsilon, GT, GGTT, GGGTTTT,
+...\}$
+- **Decidable**: Turing machine can count G's and T's (exercise!)
+- **Not regular**: DFA has finite states, cannot count unbounded values
+- **Proof technique**: suppose DFA exists, derive contradiction
+- **Contradiction**: DFA must accept strings it shouldn't
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**$G^nT^n$ requires unbounded counting**: a DFA would need different
+states for each possible value of $n$, but DFAs have only finitely many
+states. This proves some decidable languages are not regular!
+
+:::
+
+## Proof visualization: $G^nT^n$ not regular
+
+![Pigeonhole principle applied to DFA](09-finite-automata_31.png)
+
+## Proof visualization continued
+
+![Cycle in DFA state diagram](09-finite-automata_32.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Pigeonhole principle**: more G's than states forces a cycle
+- **Cycle traversal**: can repeat or skip, creating wrong string
+- **"Pumping" the cycle**: generates strings not in language
+- {{< iconify fa6-solid lightbulb >}} **This technique generalizes to
+the pumping lemma!**
+
+:::
+
+# Pumping lemma
+
+## What is pumping?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid rotate >}} **Pumping**: repeating a substring
+zero or more times
+- {{< iconify fa6-solid text >}} **Example**: "TGACGT" → pump "AC" →
+"TGACACGT" or "TGT"
+- {{< iconify fa6-solid circle-check >}} **Still in language**: pumped
+string remains valid
+- {{< iconify fa6-solid microscope >}} **Key insight**: regular
+languages always allow pumping long strings
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Pumping exploits finite-state limitation**: if a DFA accepts a long
+string, it must revisit states, creating a cycle that can be repeated
+or skipped. This forced repetition is the essence of pumping!
+
+:::
+
+## Pumping example in language
+
+![Pumping substrings in ATC*|TG(AC)*GT](09-finite-automata_33.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Original string**: underlined portion can be repeated
+- **Pumped versions**: repeat 0, 1, 2, or more times
+- **All accepted**: because pumped portion corresponds to DFA cycle
+- {{< iconify fa6-solid lightbulb >}} **Regular languages have this
+property!**
+
+:::
+
+## Formal definition of pumping
+
+![Pumping lemma definition](09-finite-automata_34.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Decomposition**: string $w = xyz$ where $y$ is the pumped part
+- **Constraints**: $|y| \geq 1$ (non-empty), $|xy| \leq k$ (early in
+string)
+- **Pumping**: $xy^iz$ in language for all $i \geq 0$
+- {{< iconify fa6-solid lightbulb >}} **Formalization of cycle-based
+repetition!**
+
+:::
+
+## The pumping lemma for regular languages
+
+![Pumping lemma statement](09-finite-automata_35.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Theorem**: If language is regular and infinite, it can be pumped
+- **Constant** $k$: depends on the DFA (usually number of states)
+- **Every long string**: length ≥ $k$ can be decomposed and pumped
+- **Contrapositive**: if no pumping possible, language is not regular
+- {{< iconify fa6-solid lightbulb >}} **Main use: prove languages are
+not regular!**
+
+:::
+
+## Using pumping lemma to prove non-regularity
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+1. **Assume** language $L$ is regular
+2. **Apply pumping lemma**: get constant $k$ and decomposition $xyz$
+3. **Choose specific string** $w \in L$ with $|w| \geq k$
+4. **Consider all possible decompositions** satisfying constraints
+5. **Show pumping fails**: find $i$ where $xy^iz \notin L$
+6. **Contradiction**: therefore $L$ is not regular
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Proof by contradiction**: the pumping lemma gives us a powerful tool.
+To prove $L$ is not regular, show that no matter how we pump, we
+eventually generate a string not in $L$. This contradicts regularity!
+
+:::
+
+## Combining regular languages
+
+![Closure properties of regular languages](09-finite-automata_36.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+
+- **Union**: $L_1 \cup L_2$ is regular if $L_1$, $L_2$ regular
+- **Concatenation**: $L_1 L_2$ is regular if $L_1$, $L_2$ regular
+- **Complement**: $\overline{L}$ is regular if $L$ regular
+- **Intersection**: $L_1 \cap L_2$ is regular if $L_1$, $L_2$ regular
+- **Closure properties**: regular languages closed under these
+operations
+- {{< iconify fa6-solid lightbulb >}} **Proof exercise: construct DFAs
+for operations!**
+
+:::
+
+## Applications of closure properties
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- **Proving non-regularity**: if $L$ regular and $\overline{L}$ not
+regular, contradiction!
+- **SameGT example**: equal numbers of G's and T's is not regular
+- **Proof**: combine $G^nT^n$ result with closure properties
+- **Java programs**: language of syntactically valid Java is not
+regular
+- **Practical implication**: need more powerful parsers than DFAs
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Closure properties are proof tools**: they let us build new
+non-regularity results from known ones. Programming language syntax
+generally requires context-free grammars (more powerful than regular
+expressions) for parsing!
+
+:::
+
+## Summary: finite automata and regular languages
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- **DFAs**: simplest computational model, deterministic state
+transitions
+- **NFAs**: allow nondeterminism and $\epsilon$-transitions, equal
+power to DFAs
+- **Regular expressions**: concise notation, equivalent to DFAs/NFAs
+- **Regular languages**: decided by DFAs, described by regex
+- **Pumping lemma**: tool for proving languages are not regular
+- **Closure properties**: regular languages closed under many
+operations
+- **Hierarchy**: Regular ⊂ Decidable ⊂ All Languages
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Finite automata reveal computational limits**: despite their
+simplicity and practical utility, they cannot recognize all decidable
+languages. Understanding these limits helps proofgrammers choose
+appropriate tools for different computational tasks!
+
+:::
+
+## Proofgrammer perspective on finite automata
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid code >}} **Implement**: DFA simulators, NFA to
+DFA converters, regex matchers
+- {{< iconify fa6-solid file-code >}} **Prove**: use pumping lemma to
+show languages are not regular
+- {{< iconify fa6-solid microscope >}} **Analyze**: when are finite
+automata sufficient?
+- {{< iconify fa6-solid wrench >}} **Apply**: lexical analysis,
+protocol verification, pattern matching
+- {{< iconify fa6-solid graduation-cap >}} **Understand**: limits of
+computational models
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Proofgrammers master both theory and practice**: build simulators to
+understand automata behavior, write formal proofs of non-regularity,
+and apply these insights to real-world problems like text processing
+and input validation!
+
+:::
+
+# Questions for discussion
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- Why are regular expressions so widely used in practice?
+- When would you prefer an NFA over a DFA in your design?
+- Can you think of a language that is decidable but not regular?
+- How do closure properties help in proving non-regularity?
+- What practical applications have you seen for finite automata?
+- How does the pumping lemma exploit the finite-state nature of DFAs?
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Explore these questions in your teams**: finite automata connect
+theory to practice in numerous ways. Discuss how resource limitations
+affect computability and how you might apply these concepts in your own
+programming projects!
+
+:::
