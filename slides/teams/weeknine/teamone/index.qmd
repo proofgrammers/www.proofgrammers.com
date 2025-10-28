@@ -7,7 +7,7 @@ author: Grant Anderson, Joseph Oforkansi, Duru Akbas
 execute:
   echo: true
 format:
-  live-revealjs:
+  revealjs:
     completion: true
     theme: default
     css: ../../../css/styles.css
@@ -50,7 +50,8 @@ Beyond implementation, we analyze our program from two critical areas:
 ## Implementation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
-```
+
+```python
 from typing import Dict, Set, List, Tuple
 from dataclasses import dataclass
 
@@ -153,7 +154,7 @@ if __name__ == "__main__":
 ```
 :::
 
-## Computability and Tractablility
+## Computability and Tractability
 
 ::: {.fragment style="margin-top: .75em; font-size: 1.0em;"} 
 
@@ -172,14 +173,15 @@ if __name__ == "__main__":
 ::: {.fragment style="margin-top: 0em; font-size: 1.0em;"} 
 Here are some of the test cases for this code:
 
-```
+```python
 tm1 = TuringMachine()
 tm1.add_transition(Transition("q0", "1", "q1", "1", "R"))
 tm1.add_transition(Transition("q1", "1", "q2", "1", "R"))
 tm1.add_transition(Transition("q2", "1", "q0", "1", "R"))  # cycle here
 print(has_cycles(tm1)) # expected output should be true
 ```
-- This is a case where it goes until the 3rd state and comes bak to "q0" where it started.
+
+- This is a case where it goes until the 3rd state and comes back to "q0" where it started.
 - q0 → q1 → q2 → q0
 - 1 is just an example what it reads, we care about the states not what it reads.
 
@@ -189,7 +191,7 @@ print(has_cycles(tm1)) # expected output should be true
 
 ::: {.fragment style="margin-top: 0.5em; font-size: 1.0em;"}
 
-```
+```python
 tm2 = TuringMachine()
 tm2.add_transition(Transition("q0", "1", "q1", "1", "R"))
 tm2.add_transition(Transition("q1", "1", "q2", "1", "R"))
@@ -203,23 +205,31 @@ print(has_cycles(tm2))  # expected output is False
 :::
 
 # Test Case 3
-::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
 
-```
+```python
 tm3 = TuringMachine()
 tm3.add_transition(Transition("q0", "1", "q0", "1", "R"))  # self-loop
 print(has_cycles(tm3))  # expected output is True
 ```
 
+::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
+
 - Self-loop => transitions to itself immediately
 - q0 → q0
+
 :::
 
 ## Conclusion
+
 ::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
 
-- The cycle detection problem in a Turing Machine states is a computable problem, since it only examines a finite sets of states and transitions.
+- The cycle detection problem in a Turing Machine states is a computable
+problem, since it only examines a finite sets of states and transitions.
 
-- The algorithm is tractable, running in O(V + E) time using Depth-First Search — efficient for real implementations.
+- The algorithm is tractable, running in O(V + E) time using Depth-First Search
+— efficient for real implementations.
 
-- It doesn't require running or simulating the Turing Machine, whoch avoids the undecidable cases: such as accepting an input or halting on a given input.
+- It doesn't require running or simulating the Turing Machine, which avoids the
+undecidable cases: such as accepting an input or halting on a given input.
+
+:::
