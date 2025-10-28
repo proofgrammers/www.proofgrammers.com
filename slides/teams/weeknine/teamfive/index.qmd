@@ -1,0 +1,147 @@
+---
+title: "DNA String Analysis: Computable Functions"
+description: "Exploring genetic symbol counting and comparison"
+date: "2025-10-28"
+date-format: long
+author: Aidan Dyga, Molly Suppo, Anoop Guragain
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+## Introduction to DNA String Analysis
+
+::: {.incremental}
+- {{< iconify fa6-solid dna >}} **DNA sequences** consist of four
+  genetic symbols: $\{A, C, T, G\}$
+- {{< iconify fa6-solid calculator >}} We analyze these sequences by
+  **counting** and **comparing** symbol occurrences
+- {{< iconify fa6-solid check-circle >}} These operations are
+  **computable**: they always terminate and produce correct results
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Key insight:** String analysis problems with finite alphabets and
+deterministic counting are decidable.
+:::
+
+## Problem Statement
+
+::: {.incremental}
+- Given variables $N$ and $M$ in the set $\{A, C, T, G\}$ where
+  $M \neq N$
+- **Goal:** Implement functions to analyze DNA strings:
+  - Count occurrences of specific symbols
+  - Compare frequencies between different symbols
+:::
+
+## Building `countCs`: Counting a Specific Symbol
+
+```{pyodide}
+def count_cs(dna: str) -> int:
+    """Returns the number of occurrences of the symbol C in DNA."""
+    # Check for the empty string case
+    if len(dna) == 0:
+        return 0
+    # If string isn't empty, use count function to return number of "Cs"
+    return dna.count("C")
+```
+
+- The `count_cs` function searches for "C" and is a specific case.
+- `count_cs` is computable and tractable.
+
+
+## Building `countNs`: Counting Any Symbol
+
+```{pyodide}
+def count_ns(dna: str, n: str) -> int:
+    """Returns the number of occurrences of the symbol N in DNA."""
+    # Check for the empty string case
+    if len(dna) == 0:
+        return 0
+    # If string isn't empty, use count function to return number of "Ns"
+    return dna.count(n)
+```
+
+- The `count_ns` function searches for the value of n and is a general case.
+- `count_ns` is computable and tractable.
+
+## Building `more_cs_than_gs`: Symbol Comparison
+
+```{pyodide}
+def more_cs_than_gs(dna: str) -> bool:
+    """Returns True if DNA contains more Cs than Gs; otherwise False."""
+    return count_cs(dna) > count_ns(dna, "G") 
+```
+
+- The `more_cs_than_gs` function compares the count of "C" and "G" symbols.
+- Uses `count_cs` and `count_ns` for clarity and reuse.
+- Returns `True` if there are more Cs than Gs, else `False`.
+
+## Building `has_more_ns_than_ms`: General Comparison
+
+```{pyodide}
+def has_more_ns_than_ms(dna: str, n: str, m: str) -> bool:
+    """Returns True if DNA contains more Ns than Ms; otherwise False."""
+    return count_ns(dna, n) > count_ns(dna, m)
+```
+
+- The `has_more_ns_than_ms` function generalizes symbol comparison.
+- Compares the count of any two symbols, `n` and `m`.
+- Returns `True` if there are more `n` symbols than `m` symbols.
+
+## Why These Functions Are Computable
+
+::: {.incremental}
+- Each function performs **Finite Operations** (counting and comparison).
+- Python’s `str.count()` method scans the string once, it always terminates.
+- There are **no infinite loops**.
+- Therefore, these functions are **Decidable** and **Computable**.
+:::
+
+## Computational Complexity Analysis
+
+::: {.incremental}
+- Each `count()` call scans the string once which is **O(n)**.
+- Comparisons are **O(1)** operations.
+- Overall complexity:
+  - `count_cs`: O(n)
+  - `count_ns`: O(n)
+  - `more_cs_than_gs`: O(n)
+  - `has_more_ns_than_ms`: O(n)
+:::
+
+## Conclusion
+
+::: {.incremental}
+- {{< iconify fa6-solid lightbulb >}} **Computability:** DNA string
+  analysis problems are decidable and tractable
+- {{< iconify fa6-solid code >}} **Implementation:** Simple counting and
+  comparison operations suffice
+- {{< iconify fa6-solid brain >}} **Theory:** Demonstrates clear
+  distinction between computable and uncomputable problems
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+**Take-home message:** Not all comquaputational problems are equally
+difficult; understanding computability helps us recognize solvable
+problems.
+:::
+
+## Sources
+
+::: {.fragment}
+- Course Textbook
+- Python `str.count()` documentation
+- GitHub Copilot
+- Microsoft Copilot
+:::
