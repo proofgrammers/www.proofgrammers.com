@@ -113,5 +113,3 @@ print(yesOnEmpty("returnYesOnEmpty.py", "not empty"))
 - Illustrated the use of the "Ignore Input Trick"
 
 - `YesOnEmpty` is no harder than `YesOnString`
-
----
