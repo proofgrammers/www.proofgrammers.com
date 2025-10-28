@@ -18,6 +18,11 @@ format:
     footer: "Proofgrammers"
 ---
 
+# Introduction
+
+
+# Turing Reduction
+
 # Ignore Input Trick
 - 
 
