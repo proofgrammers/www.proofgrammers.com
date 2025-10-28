@@ -3,7 +3,7 @@ title: "Turing Machine Cycle Detector"
 description: "Explore the limits of `longerThan10`"
 date: "2025-10-27"
 date-format: long
-author: Grant Anderson, 
+author: Grant Anderson, Joseph Oforkansi, 
 execute:
   echo: true
 format:
