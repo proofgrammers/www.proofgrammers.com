@@ -213,7 +213,7 @@ G). How would be build this NFA?
 
 ## NFA: multiples of 2 or 3 letters
 
-![NFA for multiples of 2 or 3](09-finite-automata_5.png){.sensible-square-thick-border}
+![NFA for input strings with length that is a multiple of 2 or 3](09-finite-automata_5.png){.sensible-square-thick-border}
 
 ## Understanding the prior NFA
 
@@ -250,15 +250,15 @@ design "simpler" or more "expressive" machines. Get the trade-off?
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Nondeterminism provides convenience, not power**: any language
-recognized by an NFA can also be recognized by a DFA. The DFA may be
-exponentially larger, but it exists and solves the same problem!
+**Nondeterminism provides convenience, not power**: any language recognized by
+an NFA can also be recognized by a DFA. The DFA may be exponentially larger,
+but it exists and solves the same problem!
 
 :::
 
 ## NFA to DFA conversion algorithm
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 1. **Create DFA start state**: set containing NFA start state plus all
 states reachable via $\epsilon$-transitions
@@ -273,44 +273,19 @@ state
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Subset construction** systematically tracks all possible NFA states:
-each DFA state represents "all places the NFA could be" after reading
-the input so far. This construction proves NFAs and DFAs are equally
-powerful!
+- **Subset construction** systematically tracks all possible NFA states: each DFA
+state represents "all places the NFA could be" after reading the input so far.
+This construction proves NFAs and DFAs are equally powerful!
+- **Key questions**: what would the DFA that arises from this conversion process
+look like for a prior NFA? Which one do you prefer? Why?
 
 :::
 
-## NFA to DFA conversion example
+## Final DFA arising from an NFA {transition="convex"}
 
-![Starting NFA](09-finite-automata_6.png)
+![Completed DFA conversion](09-finite-automata_13.png){.sensible-size-thick-border}
 
-## Conversion step 1
-
-![First conversion step](09-finite-automata_7.png)
-
-## Conversion step 2
-
-![Second conversion step](09-finite-automata_8.png)
-
-## Conversion step 3
-
-![Third conversion step](09-finite-automata_9.png)
-
-## Conversion step 4
-
-![Fourth conversion step](09-finite-automata_10.png)
-
-## Conversion step 5
-
-![Fifth conversion step](09-finite-automata_11.png)
-
-## Conversion step 6
-
-![Sixth conversion step](09-finite-automata_12.png)
-
-## Final DFA result
-
-![Completed DFA conversion](09-finite-automata_13.png)
+## Grasping trade-offs of the DFA
 
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
