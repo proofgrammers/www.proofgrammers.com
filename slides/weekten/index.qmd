@@ -287,8 +287,15 @@ look like for a prior NFA? Which one do you prefer? Why?
 
 ## Grasping trade-offs of the DFA
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
 
+- **What do NFAs and DFAs have in common?**
+  - Both are finite automata
+    - States
+    - Transitions
+  - Both recognize regular languages
+  - Both support the blank symbol
+  - Both have a start state and an accepting state
 - **Observation**: DFA has more states than original NFA
 - **Trade-off**: clarity versus size in automaton design
 - {{< iconify fa6-solid lightbulb >}} **When would you prefer an NFA
