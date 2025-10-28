@@ -351,30 +351,38 @@ These are the high-level rules about modifying the files in this repository:
 have a line width of 80 characters. You must adhere to this line width when you
 are creating the content for the slides and also when you are writing to the
 PLAN.md file to provide support for the content that you created.
-- **Tool usage:** Use available tools (Read, Write, Edit, Bash, etc.) effectively 
-to complete tasks. Prefer using the Task tool for complex searches or multi-step 
-operations.
+- **Tool usage:** Use available tools (Read, Write, Edit, Bash, etc.)
+effectively to complete tasks. Prefer using the Task tool for complex searches
+or multi-step operations.
 - **Incremental changes:** Make small, incremental changes. This makes it easier
 to review your work and catch errors early.
-- **Communication style:** Follow the concise communication guidelines. Be direct, 
-minimize explanations unless requested, and focus on completing the task.
+- **Communication style:** Follow the concise communication guidelines. Be
+direct, minimize explanations unless requested, and focus on completing the
+task.
 - **Correct tone:** This repository often contains examples of existing content
 that Gregory M. Kapfhammer already wrote about the topic of document
-engineering. Use the Read tool to review this content so as to make sure that you
-write with the correct tone. Ultimately, you need to make sure that the content
-is funny and engaging while also being informative and accurate. It also needs
-to come across as being written by a human and not an AI. It is also important
-that all the content is professional in nature and not overly casual.
+engineering. Use the Read tool to review this content so as to make sure that
+you write with the correct tone. Ultimately, you need to make sure that the
+content is funny and engaging while also being informative and accurate. It also
+needs to come across as being written by a human and not an AI. It is also
+important that all the content is professional in nature and not overly casual.
 - **Support your work:** Once you are finished writing the content, you need to
 make sure that you provide evidence to support the sentences and/or bullet
 points that you wrote. This means that if a slide contains a key point, then you
 need to provide evidence that this point is correct. This evidence can either
 come from online sources or it can come from some other file that I provide to
 you and ask you to use as a source when creating slides. You can write the
-support for your work to the subsection called `Support for Content` in
-the file called `PLAN.md` that is in the root of this repository. If you are 
+support for your work to the subsection called `Support for Content` in the file
+called `COMPLETED.md` that is in the root of this repository. If you are
 creating new content for `slides/weekone/index.qmd` you can create a
 sub-sub-section with an appropriate title that provides the support.
+- **Indicate You Completed Your Work**: Once you are done with the task in the
+`PLAN.md` file, make sure that you copy all the tasks you completed from the
+`PLAN.md` file to the `COMPLETED.md` file. Indicate that you have finished
+working on all the tasks by placing the `X` symbol inside of the square
+brackets. Make sure that you only place this symbol for tasks you completed.
+Then, when finished, delete all the completed tasks from the `PLAN.md` file so
+that I can see what work still remains to be done.
 
 ## Claude-Specific and GPT-Specific Guidelines for OpenCode
 
@@ -449,8 +457,8 @@ These are the high-level rules about modifying the files in this repository:
 
 - **Line width:** All text files, including Markdown and source code, should
 have a line width of 80 characters.
-- **Permission to run commands:** You have permission to run all commands available 
-in the OpenCode environment to work on the Quarto website project.
+- **Permission to run commands:** You have permission to run all commands
+available in the OpenCode environment to work on the Quarto website project.
 - **Incremental changes:** Make small, incremental changes. This makes it easier
 to review your work and catch errors early.
 - **Communicate clearly:** When you propose changes, explain what you've done
@@ -468,8 +476,8 @@ points that you wrote. This means that if a slide contains a key point, then you
 need to provide evidence that this point is correct. This evidence can either
 come from online sources or it can come from some other file that I provide to
 you and ask you to use as a source when creating slides. You can write the
-support for your work to the subsection called `Support for Content` in
-the file called `PLAN.md` that is in the root of this repository. If you are 
+support for your work to the subsection called `Support for Content` in the file
+called `COMPLETED.md` that is in the root of this repository. If you are
 creating new content for `slides/weekone/index.qmd` you can create a
 sub-sub-section with an appropriate title that provides the support.
 
