@@ -54,25 +54,26 @@ practical computing?**
 
 ## What are finite automata?
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
 
-- {{< iconify fa6-solid microchip >}} **Finite automata**: special case
-of Turing machines
-- {{< iconify fa6-solid arrow-right >}} **Key restrictions**: head only
-moves right, never edits tape
-- {{< iconify fa6-solid stop >}} **Termination**: blank symbol ends
-input processing
-- {{< iconify fa6-solid microscope >}} **Key question**: What problems
-can finite automata solve?
+- {{< iconify fa6-solid microchip >}} **Finite automata**: special, restricted
+case of Turing machines
+- {{< iconify fa6-solid arrow-right >}} **Key restrictions**: head only moves
+right, never edits tape
+- {{< iconify fa6-solid stop >}} **Termination**: blank symbol ends input
+processing
+- {{< iconify fa6-solid microscope >}} **Key question**: What problems can
+finite automata solve?
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Finite automata model computation with severely limited resources**:
-no memory beyond a fixed number of states, and no ability to revisit
-previous input. Despite these constraints, they remain useful for
-pattern matching, lexical analysis, and network protocol verification!
+**Finite automata model computation with severely limited resources**: no memory
+beyond a fixed number of states, and no ability to revisit previous input.
+Despite these constraints, they remain useful for pattern matching, lexical
+analysis, and network protocol verification! Although restricted, there are
+**deterministic** and **nondeterministic** versions. Let's explore in detail!
 
 :::
 
@@ -92,9 +93,9 @@ pattern matching, lexical analysis, and network protocol verification!
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**DFAs are the simplest computational model**: they recognize patterns
-in strings but cannot count unbounded values or remember arbitrary
-amounts of information. Perfect for tasks like email validation!
+{{< iconify fa6-solid lightbulb >}} **DFAs are the simplest computational
+model**! They can recognize patterns in strings but cannot count unbounded
+values or have memory.
 
 :::
 
