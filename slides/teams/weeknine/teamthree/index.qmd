@@ -1,0 +1,115 @@
+---
+title: "`YesOnEmpty` is Uncomputable"
+description: "Exploring `YesOnEmpty`"
+date: "2025-10-28"
+date-format: long
+author: Ainslee Plesko, Hannah Brown, & Coltin Colucci
+execute:
+  echo: true
+format:
+  revealjs:
+    completion: true
+    theme: default
+    css: ../../../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Introduction
+
+- "Ignore Input Trick"
+
+- Explain and show a turing reduction proving that `YesOnEmpty` is uncomputable from reducing `YesOnString`
+
+- Explain the results of this reduction
+
+
+# Turing Reduction
+
+Let `F` and `G` be computational problems. We say that F has a Turing reduction to `G` if we can write a python program solving `F`, after first assuming the existence of a program solving `G`.
+
+# Ignore Input Trick
+```python
+import utils; from utils import rf, universal
+
+def ignoreInput(inputStr: str):
+    try:
+        programInput = rf('programInput.txt')
+        newInputStr = rf('inputStr.txt')
+    except FileNotFoundError as e:
+        return f"missing file: {e.filename}"
+    return universal(programInput, newInputStr)
+```
+
+## YesOnString Code Block
+
+```python
+"""yesOnString function."""
+
+def returnYesOnString(some_string: str) -> str:
+    """This function always says yes."""
+    return "yes"
+
+def yesOnString(program_input: str, input_string: str):
+    """Return yes on valid P, if input is defined and P(I) is yes."""
+    if program_input == 'returnYesOnString.py' and isinstance(input_string, str):
+            return returnYesOnString(input_string)
+    if not program_input.endswith(".py"):
+        error = f"{program_input} either does not exist or is not a valid Python program."
+        return error
+    if not isinstance(input_string, str):
+        error = f"no"
+        return error
+
+print(yesOnString("returnYesOnString.py", "Hello World!"))
+print(yesOnString("returnYesOnString.py", 4))
+
+
+
+```
+---
+
+## YesOnEmpty
+
+```python
+## yesonempty
+def returnYesOnEmpty(some_string: str) -> str:
+    """This function says yes only if the string is empty."""
+    if some_string == "":
+        return "yes"
+    else:
+        return "no"
+
+
+def yesOnEmpty(program_input: str, input_string: str):
+    """Return yes on valid P, if input is defined and P(I) is empty."""
+    if program_input == "returnYesOnEmpty.py" and isinstance(input_string, str):
+        return returnYesOnEmpty(input_string)
+    if not program_input.endswith(".py"):
+        error = f"{program_input} either does not exist or is not a valid Python program."
+        return error
+    if not isinstance(input_string, str):
+        error = f"{input_string} is not a string!"
+        return error
+
+
+print(yesOnEmpty("returnYesOnEmpty.py", ""))
+print(yesOnEmpty("returnYesOnEmpty.py", "not empty"))
+
+
+
+```
+
+# Proving (un)computability via reduction
+![](/slides/teams/weeknine/teamthree/W9T3_Proof.png)
+
+# Conclusion
+
+- Proved that `YesOnEmpty` in uncomputable by reducing `YesOnString` to it
+
+- Illustrated the use of the "Ignore Input Trick"
+
+- `YesOnEmpty` is no harder than `YesOnString`
