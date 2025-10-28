@@ -32,7 +32,18 @@ format:
 Let `F` and `G` be computational problems. We say that F has a Turing reduction to `G` if we can write a python program solving `F`, after first assuming the existence of a program solving `G`.
 
 # Ignore Input Trick
-- 
+```{pyodide}
+import utils
+from utils import rf, universal
+
+def ignoreInput(inputStr: str):
+    try:
+        programStr = rf('programStr.txt')
+        newInputStr = rf('inputStr.txt')
+    except FileNotFoundError as e:
+        return f"missing file: {e.filename}"
+    return universal(programStr, newInputStr)
+```
 
 ## YesOnString Code Block
 
