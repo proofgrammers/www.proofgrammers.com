@@ -359,6 +359,8 @@ MULTILINECOMMENT_RE_PYTHON = r'^[ \t]*"""(.*?)"""[ \t]*$'
 
 ![Regex operations](09-finite-automata_15.png)
 
+## Key details about regular expression
+
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
 - **Empty string** $\epsilon$: matches nothing (zero characters)
@@ -373,7 +375,9 @@ built from these operations!**
 
 ## Regular expression examples
 
-![Regex examples](09-finite-automata_16.png)
+![Examples of pure regular expressions](09-finite-automata_16.png)
+
+## Pure regular expression notation
 
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
@@ -385,7 +389,7 @@ addresses?**
 
 :::
 
-## Additional regex notation for convenience
+## Extra notation for convenience
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
