@@ -21,7 +21,7 @@ format:
 # Introduction
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
-- In this presentation, we explore the design and analysis of a **Python program** that determines whether the **state diagram of a Turing Machine (M)** contains cycles. A Turing Machine is a fundamental model of computation that defines the limits of what can be calculated. By detecting cycles in its state diagram, we can identify repeating or potentially infinite behaviors within a machine’s structure. This project bridges **theoretical computer science** and **practical programming**, showing how abstract models can be represented in real code.  
+In this presentation, we explore the design and analysis of a **Python program** that determines whether the **state diagram of a Turing Machine (M)** contains cycles. A Turing Machine is a fundamental model of computation that defines the limits of what can be calculated. By detecting cycles in its state diagram, we can identify repeating or potentially infinite behaviors within a machine’s structure. This project bridges **theoretical computer science** and **practical programming**, showing how abstract models can be represented in real code.  
 
 Beyond implementation, we analyze our program from two critical perspectives in computation theory:  
 (a) whether the problem is **computable or uncomputable**, and  
@@ -30,30 +30,27 @@ Beyond implementation, we analyze our program from two critical perspectives in 
 Through this analysis, we demonstrate that while many Turing Machine problems are undecidable, detecting cycles in a finite state diagram is both **computable** and **tractable**, revealing the deep connection between **mathematical theory** and **algorithmic design**.
 :::
 
-##  Problem Definition
+##  
 
 ::: {.fragment style="margin-top: 1.0em; font-size: 1.0em;"} 
-- Given a Turing Machine \(M\), our goal is to determine whether the **state diagram** of \(M\) contains cycles.  
-A cycle represents a sequence of transitions that returns to a previous state — suggesting **repetition or potential infinite looping**.  
-Understanding whether such cycles exist helps illustrate the **structural behavior** of computation without running the machine on input.  
-This provides insight into **decidable vs. undecidable** questions in computation.
-:::
-
-## Theoretical Background
-
-::: {.fragment style="font-size: 1em;"}
-- A **Turing Machine (TM)** is a mathematical abstraction that captures the essence of computation.  
-- It consists of an infinite tape, read/write head, and a finite set of states governed by a **transition function**.  
-- The concept of **computability** asks what problems can be solved by any TM, while **tractability** measures how efficiently they can be solved.  
-- In this project, we focus on a **structural property**—the existence of cycles in the TM’s transition graph.
+- 
 :::
 
 ## Turing Machine Cycle Detector
 
-::: {.fragment style="font-size: 1em;"}
-- {{< iconify fa6-solid arrow-right >}} **Transition Class:** Represents a single transition rule in the Turing Machine  
-- {{< iconify fa6-solid gear >}} **TuringMachine Class:** Models a Turing Machine with states, symbols, and transitions  
-- {{< iconify fa6-solid arrows-spin >}} **has_cycles():** Detects cycles using **Depth-First Search (DFS)** on the state diagram
+::: {.fragment style="margin-top: 1.5em; font-size: 1.0em;"} 
+- {{< iconify fa6-solid arrow-right >}} Transition class
+
+    - Represents single transition rule
+
+- {{< iconify fa6-solid gear >}} TuringMachine Class
+
+    - Models a Turing machine
+
+- {{< iconify fa6-solid arrows-spin >}} has_cycles()
+
+    - Looks for cycles using Depth First Search
+    
 :::
 
 ## Implementation
@@ -159,32 +156,75 @@ if __name__ == "__main__":
 ```
 :::
 
-## Computability and Tractability Analysis
+## Computability and Tractablility
 
 ::: {.fragment style="margin-top: .75em; font-size: 1.0em;"} 
 
-**Computability:**
-Detecting cycles in a finite state diagram is decidable — the algorithm always halts since the number of states and transitions is finite.
+{{< iconify fa6-solid check >}} The program is computable.
 
-**Tractability:**
-The Depth-First Search runs in O(V + E) time, making the solution tractable (polynomial time).
+- The program only analyzes the structure, not the actual output behavior based on inputs.
 
-This demonstrates that while many Turing Machine questions are undecidable, this structural problem is both computable and efficiently solvable.
+{{< iconify fa6-solid check >}} The program is tractable.
+
+- Using the current depth first search, the time complexity is O(V*E).
+
 :::
 
-## 
+## Test cases
 
 ::: {.fragment style="margin-top: 0em; font-size: 1.0em;"} 
+Here are some of the test cases for this code:
+
+```{python}
+tm1 = TuringMachine()
+tm1.add_transition(Transition("q0", "1", "q1", "1", "R"))
+tm1.add_transition(Transition("q1", "1", "q2", "1", "R"))
+tm1.add_transition(Transition("q2", "1", "q0", "1", "R"))  # cycle here
+print(has_cycles(tm1)) # expected output should be true
+```
+- This is a case where it goes until the 3rd state and comes bak to "q0" where it started.
+- q0 → q1 → q2 → q0
+- 1 is just an example what it reads, we care about the states not what it reads.
 
 :::
 
-# 
+# Test Case 2
 
 ::: {.fragment style="margin-top: 0.5em; font-size: 1.0em;"}
 
+```{python}
+tm2 = TuringMachine()
+tm2.add_transition(Transition("q0", "1", "q1", "1", "R"))
+tm2.add_transition(Transition("q1", "1", "q2", "1", "R"))
+tm2.add_transition(Transition("q2", "1", "q3", "1", "R"))
+print(has_cycles(tm2))  # expected output is False
+```
+
+- Linear chain => always points to the next one no cycles
+- q0 → q1 → q2 → q3
+
 :::
 
+# Test Case 3
 ::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
 
+```{python}
+tm3 = TuringMachine()
+tm3.add_transition(Transition("q0", "1", "q0", "1", "R"))  # self-loop
+print(has_cycles(tm3))  # expected output is True
+```
+
+- Self-loop => transitions to itself immediately
+- q0 → q0
 :::
+
+## Conclusion
+::: {.fragment style="margin-top: 1.0em; font-size: 1.0em; font-weight: bold;"}
+
+- The cycle detection problem in a Turing Machine states is a computable problem, since it only examines a finite sets of states and transitions.
+
+- The algorithm is tractable, running in O(V + E) time using Depth-First Search — efficient for real implementations.
+
+- It doesn't require running or simulating the Turing Machine, whoch avoids the undecidable cases: such as accepting an input or halting on a given input.
+
 
