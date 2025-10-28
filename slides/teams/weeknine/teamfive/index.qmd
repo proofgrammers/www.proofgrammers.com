@@ -1,7 +1,7 @@
 ---
 title: "DNA String Analysis: Computable Functions"
 description: "Exploring genetic symbol counting and comparison"
-date: "2025-10-28"
+date: "2025-10-27"
 date-format: long
 author: Aidan Dyga, Molly Suppo, Anoop Guragain
 execute:
