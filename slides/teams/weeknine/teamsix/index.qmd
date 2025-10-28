@@ -1,5 +1,6 @@
 ---
 title: "The LastTtoA Problem"
+description: "Explore multiple solutions to the LastTtoA problem"
 date: "2025-10-23"
 date-format: long
 author: Hemani Alaparthi, Benedek Kaibas, Miguel Orti Vila, Ritesh Ojha
@@ -22,7 +23,7 @@ format:
 ::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
 - **Goal**: To implement and analyze the LastTtoA problem using multiple computation models and programming styles.
 - **Problem**: Given a DNA string with symbols (e.g.,{A, C, T, G}), replace the last occurrence of 'T' with 'A'
-- **Approaches**: Turing machine, Python (with/without regular expression(regex)), and another langauge.
+- **Approaches**: Turing machine, Python (with/without regular expression(regex)), and another language.
 :::
 
 
