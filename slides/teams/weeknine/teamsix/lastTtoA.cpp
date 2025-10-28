@@ -8,7 +8,7 @@ std::string lower(std::string input) {
     return input;
 };
 
-std::string lower_text = lower("TTTTT");
+std::string lower_text = lower("ACTGT");
 
 void lastTtoA() {
     std::string& input_string = lower_text;
@@ -17,7 +17,7 @@ void lastTtoA() {
     char const& replace_with = 'a';
 
     std::size_t position = input_string.find(replace_letter);
-    if(position == std::string::npos) return;
+    if(position == std::string::npos) std::cout << "No letter T in the string: ";
     if(position != std::string::npos){
       input_string.replace(position, 1, 1, replace_with);
     }
