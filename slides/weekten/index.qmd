@@ -435,11 +435,9 @@ test_strings2 = ['123', '456', '12', '1234', 'abc']
 test_pattern(pattern2, test_strings2)
 ```
 
-## Try regex patterns yourself!
+## Pattern matching for email
 
-```{pyodide}
-#| autorun: true
-#| max-lines: 15
+```{python}
 import re
 
 def test_pattern(pattern: str, test_strings: list) -> None:
@@ -462,164 +460,49 @@ print("Email pattern: [a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]+")
 test_pattern(pattern, test_strings)
 ```
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
-
-- Modify the pattern to allow dots in usernames
-- What patterns cannot be matched by regular expressions?
-
-:::
-
-## Regex and finite automata equivalence
+## Regex and finite automata
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid exchange-alt >}} **Two-way conversion**: regex
-↔ NFA ↔ DFA
+- {{< iconify fa6-solid exchange-alt >}} **Two-way conversion**: regex ↔ NFA ↔
+DFA
 - {{< iconify fa6-solid arrow-right >}} **Regex to NFA**: build NFA
 compositionally from operations
-- {{< iconify fa6-solid arrow-left >}} **DFA to regex**: simplify
-automaton by labeling transitions with regex
-- {{< iconify fa6-solid equals >}} **Same power**: all three
-formalisms recognize exactly the regular languages
+- {{< iconify fa6-solid arrow-left >}} **DFA to regex**: simplify DFA by
+labeling transitions with regex
+- {{< iconify fa6-solid equals >}} **Same power**: all models recognize same
+regular languages!
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Multiple equivalent formalisms** provide different perspectives: DFAs
-are easiest to simulate, NFAs are easiest to design, and regexes are
-easiest to write. Choose the representation that best fits your task!
+- **Conversion between models is possible**:
+    - Convert a regular expression to a DFA or NFA
+    - Convert a DFA or NFA to a regular expression
 
-:::
-
-## Implementing concatenation with NFA
-
-![Concatenation with epsilon transition](09-finite-automata_18.png)
-
-## Concatenation NFA continued
-
-![Complete concatenation NFA](09-finite-automata_19.png)
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Construction**: connect two NFAs with $\epsilon$-transition
-- **Accept state**: original first NFA accept becomes intermediate
-- **Final accept**: second NFA accept becomes overall accept
-- {{< iconify fa6-solid lightbulb >}} **Simple construction proves
-regex to NFA conversion possible!**
-
-:::
-
-## Implementing alternation with NFA
-
-![Alternation with nondeterminism](09-finite-automata_20.png)
-
-## Alternation NFA continued
-
-![Complete alternation NFA](09-finite-automata_21.png)
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Construction**: new start state with $\epsilon$-transitions to both
-options
-- **Nondeterminism**: machine chooses which branch to follow
-- **Accept states**: either original accept state works
-- {{< iconify fa6-solid lightbulb >}} **Alternation naturally maps to
-nondeterministic choice!**
-
-:::
-
-## Implementing Kleene star with NFA
-
-![Kleene star with epsilon loops](09-finite-automata_22.png)
-
-## Kleene star NFA continued
-
-![Complete Kleene star NFA](09-finite-automata_23.png)
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Construction**: $\epsilon$-transitions for zero or repeated
-matches
-- **Zero matches**: direct path from new start to new accept
-- **Repetition**: loop back from old accept to old start
-- {{< iconify fa6-solid lightbulb >}} **These three constructions prove
-any regex has equivalent NFA!**
-
-:::
-
-## Converting DFA to regex: key example
-
-![DFA to regex base case](09-finite-automata_24.png)
-
-## DFA to regex base case continued
-
-![Base case solution](09-finite-automata_25.png)
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Two-state DFA**: simplest case of DFA to regex conversion
-- **Self-loops**: become Kleene stars in regex
-- **Direct transitions**: become concatenations
-- **Formula**: combines loops and transitions algebraically
-- {{< iconify fa6-solid lightbulb >}} **General case reduces to this
-pattern!**
-
-:::
-
-## DFA to regex: simplification process
-
-![Start with DFA](09-finite-automata_26.png)
-
-## Simplification step 1
-
-![First simplification](09-finite-automata_27.png)
-
-## Simplification step 2
-
-![Second simplification](09-finite-automata_28.png)
-
-## Simplification step 3
-
-![Third simplification](09-finite-automata_29.png)
-
-## Final regex result
-
-![Complete regex from DFA](09-finite-automata_30.png)
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Gradual elimination**: remove states one by one
-- **Relabel transitions**: with increasingly complex regexes
-- **Final result**: regex connecting start to accept
-- {{< iconify fa6-solid lightbulb >}} **Proves every DFA has
-equivalent regex!**
+- **Multiple formalisms give different viewpoint**: DFAs are easiest to
+simulate, NFAs are easiest to design, and regexes are easiest to program.
 
 :::
 
 # Regular languages
 
-## What are regular languages?
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid book >}} **Regular language**: decided by some
 DFA (or NFA, or regex)
 - {{< iconify fa6-solid equals >}} **Three equivalent definitions**:
-DFA-decidable, NFA-decidable, or regex-describable
+    - DFA-decidable
+    - NFA-decidable
+    - Regex-describable
 - {{< iconify fa6-solid circle-question >}} **Key question**: Are all
 decidable languages regular?
 - {{< iconify fa6-solid xmark >}} **Answer**: No! Some decidable
 languages are not regular
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**First computational hierarchy**: regular languages are a proper
-subset of decidable languages. This reveals that computational models
-differ in power, and resource limitations (like finite memory) restrict
-what can be computed!
+- **Key computational hierarchy**: regular languages are a proper subset of
+decidable languages. Computational models differ in power, and resource
+limitations (like finite memory) restrict what can be computed!
 
 :::
 
