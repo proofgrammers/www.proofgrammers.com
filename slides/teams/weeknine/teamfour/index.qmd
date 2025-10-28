@@ -1,7 +1,7 @@
 ---
 title: "Recognition and Decision featuring YesOnString"
 description: "Explore Recognition and Decision with YesOnString"
-date: "2025-10-28"
+date: "2025-10-27"
 date-format: long
 author: Cullen Doyle, Issei Hasegawa, Preston Smith
 execute:
