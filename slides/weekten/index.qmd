@@ -77,11 +77,11 @@ analysis, and network protocol verification! Although restricted, there are
 
 :::
 
-## Deterministic finite automata (DFA)
+## Deterministic finite automata
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- **DFA components**:
+- **Components of a deterministic finite automaton (DFA)**:
     - Alphabet of symbols (including blank)
     - Finite set of states (start, accept, reject)
     - Transition function: $(q, x) \rightarrow q'$
@@ -95,7 +95,7 @@ analysis, and network protocol verification! Although restricted, there are
 
 {{< iconify fa6-solid lightbulb >}} **DFAs are the simplest computational
 model**! They can recognize patterns in strings but cannot count unbounded
-values or have memory.
+values or maintain memory.
 
 :::
 
@@ -152,9 +152,7 @@ print(f"'ABBA' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABBA')}")
 
 # Nondeterministic finite automata (NFA)
 
-## What are NFAs?
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.7em;"}
 
 - {{< iconify fa6-solid clone >}} **Nondeterminism**: multiple possible
 transitions from same state
@@ -167,7 +165,7 @@ simpler than equivalent DFAs
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
 **Think of NFAs as exploring multiple possibilities simultaneously**:
 like a DFA that can clone itself at decision points. If any clone
