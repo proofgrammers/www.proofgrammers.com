@@ -2,11 +2,7 @@
 title: "Proving haltsOnString is Uncomputable"
 subtitle: "Using a Turing Reduction from yesOnString"
 date: "10-28-2025"
-<<<<<<< HEAD
-author: Javier Bejarano, Abishek Dhakal, Alexander Goddard
-=======
 author: "Javier Bejarano,  Abishek Dhakal, Alexander Goddard"
->>>>>>> ee78d93c2e6429d950a7efb785c0ca6df3d42dc1
 execute:
   echo: true
 format:
@@ -23,61 +19,31 @@ format:
 
 ## Introduction
 
-<<<<<<< HEAD
-In this presentation, we will show that **HaltsOnString** is **uncomputable**.  
-We will use a **Turing reduction** from **YesOnString**, which is already known to be uncomputable.  
-By the end, we will understand the connection between these two problems and why the halting behavior of programs cannot be determined by any algorithm.
-
----
-=======
 - In this presentation, we will show that **haltsOnString** is **uncomputable**.  
 
 - We will use a **Turing reduction** from **yesOnString**, which is already known to be uncomputable.  
 
 - By the end, we will understand the connection between these two problems and why the **halting behavior of programs** cannot be determined by any algorithm.
->>>>>>> ee78d93c2e6429d950a7efb785c0ca6df3d42dc1
 
 ## Background on Uncomputability
 
 - A problem is **uncomputable** if no Turing machine can decide it for all possible inputs.  
 That means there is **no algorithm** that always gives a correct yes/no answer.  
 
-<<<<<<< HEAD
-Problems like that ones we are going to see today (YesOnString, HaltsOnString) help us understand the **limits of computation**.
-
----
-=======
 - Problems like the ones we are going to see today (yesOnString, haltsOnString) will help us understand the **limits of computation**.
->>>>>>> ee78d93c2e6429d950a7efb785c0ca6df3d42dc1
 
 ## The yesOnString Problem
 
-<<<<<<< HEAD
-YesOnString is a program that takes another program as input.  
-YesOnString returns **yes** if the input program outputs *yes*, and **no** otherwise.
-=======
 - **yesOnString** is a problem that takes another **program** as input.  
 
 It returns:  
   ✅ **yes** — if the input program outputs *"yes"*  
   ❌ **no** — otherwise 
->>>>>>> ee78d93c2e6429d950a7efb785c0ca6df3d42dc1
 
 - Theoretical **yesOnString**
 ```python
 from universal import universal
 
-<<<<<<< HEAD
-HaltsOnString is a program that takes another program as input and returns **yes** if the program **halts**, and **no** otherwise.
-
-## What Is a Turing Reduction?
-
-**Formal definition:**  
-A problem F is Turing reducible to a problem G (written **F ≤T G**) if there is an algorithm that can solve F using a subroutine (oracle) that solves G.
-
-**Simpler explanation:**  
-If you can solve G, then you can use that solution to solve F. So, if F is uncomputable and F reduces to G, then G is also uncomputable.
-=======
 def yesOnString(program, inString):
     if program(inString) == 'yes':
         # return yes because program returned yes
@@ -107,17 +73,9 @@ It returns:
 
 - So, if **F** is **uncomputable** and **F reduces to G**,  
 then **G** must also be **uncomputable**.
->>>>>>> ee78d93c2e6429d950a7efb785c0ca6df3d42dc1
 
 ## The Reduction from yesOnString to haltsOnString
 
-<<<<<<< HEAD
-We know from the previous chapter that **YesOnString is uncomputable**, and now we want to see if **HaltsOnString** is also uncomputable.
-
-- Let’s assume **HaltsOnString is computable**.  
-- Let’s try to use HaltsOnString to build a program that decides **YesOnString**.  
-- If we are able to do that, then **HaltsOnString** must also be **uncomputable**, since it would make YesOnString computable, which is impossible.
-=======
 - We already know that **yesOnString** is **uncomputable**.  
 Now, we want to see if **haltsOnString** is also **uncomputable**.
 
@@ -133,7 +91,6 @@ but that’s **impossible**, since it’s already proven uncomputable.
 
 - Our assumption must be **false**, which means that  
 👉 **haltsOnString is also uncomputable.**
->>>>>>> ee78d93c2e6429d950a7efb785c0ca6df3d42dc1
 
 ## Oracle Program
 
