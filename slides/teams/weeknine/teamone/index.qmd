@@ -39,7 +39,7 @@ Understanding whether such cycles exist helps illustrate the **structural behavi
 This provides insight into **decidable vs. undecidable** questions in computation.
 :::
 
-# Theoretical Background
+## Theoretical Background
 
 ::: {.fragment style="font-size: 1em;"}
 - A **Turing Machine (TM)** is a mathematical abstraction that captures the essence of computation.  
@@ -48,7 +48,7 @@ This provides insight into **decidable vs. undecidable** questions in computatio
 - In this project, we focus on a **structural property**—the existence of cycles in the TM’s transition graph.
 :::
 
-# Turing Machine Cycle Detector
+## Turing Machine Cycle Detector
 
 ::: {.fragment style="font-size: 1em;"}
 - {{< iconify fa6-solid arrow-right >}} **Transition Class:** Represents a single transition rule in the Turing Machine  
