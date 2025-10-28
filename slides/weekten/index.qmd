@@ -150,43 +150,6 @@ print(f"'ABAB' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABAB')}")
 print(f"'ABBA' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABBA')}")
 ```
 
-## Try the DFA simulator yourself!
-
-```{pyodide}
-#| autorun: true
-#| max-lines: 15
-def simulate_dfa(transitions: dict, start: str, accept: set,
-                 input_string: str) -> bool:
-    """Simulate a DFA on an input string."""
-    current_state = start
-    for symbol in input_string:
-        if (current_state, symbol) in transitions:
-            current_state = transitions[(current_state, symbol)]
-        else:
-            return False
-    return current_state in accept
-
-# DFA for strings ending in 'AB'
-transitions = {
-    ('q0', 'A'): 'q1', ('q0', 'B'): 'q0',
-    ('q1', 'A'): 'q1', ('q1', 'B'): 'q2',
-    ('q2', 'A'): 'q1', ('q2', 'B'): 'q0'
-}
-accept = {'q2'}
-
-test_strings = ['AAAB', 'ABAB', 'ABBA', 'BAB']
-for s in test_strings:
-    result = simulate_dfa(transitions, 'q0', accept, s)
-    print(f"'{s}': {result}")
-```
-
-::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
-
-- Modify the transitions to recognize different patterns
-- Try creating a DFA that accepts strings with even number of 'A's
-
-:::
-
 # Nondeterministic finite automata (NFA)
 
 ## What are NFAs?
