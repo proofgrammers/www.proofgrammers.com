@@ -126,7 +126,7 @@ def yesViaHalts(progString, inString):
     return haltsOnString(rf('alterYesToHalts.py'), singleStr)
 ```
 
-- Because **haltsOnString** only returns "yes" when **alterYesToHalt** halts and this only can happen when the inputted program returns "yes" means that this program functions identicly to **yesOnString** using **haltsOnString** showing a turing reduction of **yesOnString**
+- Because **haltsOnString** only returns "yes" when **alterYesToHalt** halts and this only can happen when the inputted program returns "yes" means that this program functions identicly to **yesOnString** using **haltsOnString**. This shows a turing reduction of **yesOnString** to **haltsOnString**
 
 ## Contradiction and Conclusion of the Proof
 
