@@ -150,9 +150,9 @@ print(f"'ABAB' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABAB')}")
 print(f"'ABBA' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABBA')}")
 ```
 
-# Nondeterministic finite automata (NFA)
+# Define nondeterministic finite automata
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.7em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid clone >}} **Nondeterminism**: multiple possible
 transitions from same state
@@ -167,15 +167,36 @@ simpler than equivalent DFAs
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
-**Think of NFAs as exploring multiple possibilities simultaneously**:
-like a DFA that can clone itself at decision points. If any clone
-reaches an accept state, the entire computation accepts the input!
+**You can think of NFAs as exploring multiple possibilities simultaneously**! An
+NFA is like a DFA that can "clone itself" at decision points. If any clone
+reaches an accept state, the entire computation accepts the input! Wait, sound
+familiar to the nondeterministic Turing machine? **Oh, don't forget that they are
+more expressive, not more powerful!**
 
 :::
 
 ## NFA visualization: cloning and choices
 
 ![NFA transition options](09-finite-automata_2.png)
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.975em;"}
+
+- **How to think about the NFA in relation to types of TM?**
+
+:::
+
+## Understanding NFA acceptance
+
+::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
+
+- **Accept**: if any clone reaches accept state
+- **Reject**: if all clones reject
+- **Undefined**: if clones enter infinite $\epsilon$-loop
+- {{< iconify fa6-solid lightbulb >}} **Same definition as
+nondeterministic Turing machines!**
+
+:::
+
 
 ## NFA cloning process
 
@@ -185,15 +206,6 @@ reaches an accept state, the entire computation accepts the input!
 
 ![NFA acceptance criteria](09-finite-automata_4.png)
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Accept**: if any clone reaches accept state
-- **Reject**: if all clones reject
-- **Undefined**: if clones enter infinite $\epsilon$-loop
-- {{< iconify fa6-solid lightbulb >}} **Same definition as
-nondeterministic Turing machines!**
-
-:::
 
 ## NFA example: multiples of 2 or 3
 
