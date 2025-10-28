@@ -307,10 +307,10 @@ over a DFA?**
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid code >}} **Regular expressions (regex)**:
+- {{< iconify fa6-solid code >}} **Regular expressions**:
 concise pattern description language
 - {{< iconify fa6-solid equals >}} **Equivalent to finite automata**:
-same computational power as DFAs/NFAs
+same power as DFAs or NFAs
 - {{< iconify fa6-solid wrench >}} **Practical applications**: text
 search, validation, lexical analysis
 - {{< iconify fa6-solid microscope >}} **Theoretical importance**:
@@ -320,14 +320,38 @@ define regular languages precisely
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Regular expressions bridge theory and practice**: they're both a
-formal mathematical notation for describing languages and a practical
-tool used daily by programmers for pattern matching and text
-processing!
+{{< iconify fa6-solid rocket >}} **Regular expressions bridge theory and
+practice**: they're both a formal mathematical notation for describing
+languages and a practical tool used daily by programmers for **pattern matching**
+and **text processing**!
 
 :::
 
-## Pure regular expressions: elementary definitions
+## Find an open-source Python project that contains a regular expression! {transition="convex"}
+
+::: fragment
+
+- What did you find? How does it work?
+- What are the benefits and limitations?
+- **Share the link and a code segment**
+- Here is an example from `GatorGrader`:
+
+:::
+
+::: fragment
+
+```python
+MULTILINECOMMENT_RE_JAVA = r"""/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/"""
+SINGLELINECOMMENT_RE_JAVA = r"""^(?:[^"/\\]|\"(?:[^\"\\]|\\.)*
+\"|/(?:[^/"\\]|\\.)|/\"(?:[^\"\\]|\\.)*\"|\\.)*//(.*)$"""
+SINGLELINECOMMENT_RE_PYTHON = r"""^(?:[^"#\\]|\"(?:[^\"\\]|\\.)*\"|
+/(?:[^#"\\]|\\.)|/\"(?:[^\"\\]|\\.)*\"|\\.)*#(.*)$"""
+MULTILINECOMMENT_RE_PYTHON = r'^[ \t]*"""(.*?)"""[ \t]*$'
+```
+
+:::
+
+## Define pure regular expressions
 
 ![Regular expression basics](09-finite-automata_14.png)
 
