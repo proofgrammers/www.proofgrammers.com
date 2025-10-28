@@ -30,12 +30,6 @@ Beyond implementation, we analyze our program from two critical perspectives in 
 Through this analysis, we demonstrate that while many Turing Machine problems are undecidable, detecting cycles in a finite state diagram is both **computable** and **tractable**, revealing the deep connection between **mathematical theory** and **algorithmic design**.
 :::
 
-##  
-
-::: {.fragment style="margin-top: 1.0em; font-size: 1.0em;"} 
-- 
-:::
-
 ## Turing Machine Cycle Detector
 
 ::: {.fragment style="margin-top: 1.5em; font-size: 1.0em;"} 
