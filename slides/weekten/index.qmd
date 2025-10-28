@@ -114,14 +114,13 @@ values or maintain memory.
 
 :::
 
-## DFA examples: `containsGAGA`
+## DFA examples: `containsGAGA` {transition="convex"}
 
 ![DFA for `containsGAGA`](09-finite-automata_1.png)
 
-## DFA examples: `multipleOf5`
+## DFA examples: `multipleOf5` {transition="convex"}
 
 ![DFA for `multipleOf5`](09-finite-automata_0.png)
-
 
 ## Implementing a simple DFA simulator
 
@@ -175,7 +174,7 @@ more expressive, not more powerful!**
 
 :::
 
-## NFA visualization: cloning and choices
+## NFA visualization: cloning and choices {transition="convex"}
 
 ![NFA transition options](09-finite-automata_2.png)
 
@@ -187,61 +186,65 @@ more expressive, not more powerful!**
 
 ## Understanding NFA acceptance
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.95em;"}
+::: {.fragment style="margin-top: -0.25em; font-size: 0.825em;"}
 
 - **Accept**: if any clone reaches accept state
 - **Reject**: if all clones reject
 - **Undefined**: if clones enter infinite $\epsilon$-loop
-- {{< iconify fa6-solid lightbulb >}} **Same definition as nondeterministic
+- **Same definition as nondeterministic
 Turing machines!**
 - **Next Step**: Explore an NFA that accepts the strings “AA”, “AGA”, and an “A”
 followed by any combination of C’s and G’s (provided there is at least one C or
 G). How would be build this NFA?
 - **There are different, equivalent ways to build this NFA!**
+    - Use a blank symbol
+    - Use the $\epsilon$-transition
+    - Combine both blank symbols and $\epsilon$-transitions
 
 :::
 
+## Using a blank symbol {transition="convex"}
 
-## NFA cloning process
+![An NFA that leverages a blank symbol](09-finite-automata_3.png)
 
-![NFA clones processing input](09-finite-automata_3.png)
+## Using the $\epsilon$-transition {transition="convex"}
 
-## NFA acceptance definition
+![An NFA that uses the $\epsilon$-transition](09-finite-automata_4.png)
 
-![NFA acceptance criteria](09-finite-automata_4.png)
+## NFA: multiples of 2 or 3 letters
 
+![NFA for multiples of 2 or 3](09-finite-automata_5.png){.sensible-square-thick-border}
 
-## NFA example: multiples of 2 or 3
-
-![NFA for multiples of 2 or 3](09-finite-automata_5.png)
+## Understanding the prior NFA
 
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
 - **Problem**: accept strings of $n$ G's where $n$ is divisible by 2 or
 3
-- **NFA advantage**: naturally decomposes into two independent checks
-- **Top path**: checks divisibility by 2
-- **Bottom path**: checks divisibility by 3
-- **Equivalent DFA**: would be more complex, less intuitive
-- {{< iconify fa6-solid lightbulb >}} **NFAs often model problems more
-naturally!**
+- **NFA advantage**: decomposes into two independent checks
+- **Top path**: checks divisibility of string length $n$ by 2
+- **Bottom path**: checks divisibility of string length $n$ by 3
+- **Equivalent DFA**: would be more complex and perhaps less intuitive
+- **NFAs often model problems more naturally!**
+    - Make sure that you see how it uses the blank symbol
+    - Confirm that you understand how it uses the $\epsilon$-transition
+    - Could you build this NFA as a DFA? Go ahead, try it out!
 
 :::
 
 # Converting NFAs to DFAs
 
-## NFAs and DFAs have equal power!
-
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid equals >}} **Key theorem**: Every NFA has an
-equivalent DFA
-- {{< iconify fa6-solid diagram-project >}} **Subset construction**:
-DFA states represent sets of NFA states
-- {{< iconify fa6-solid arrow-up-right-dots >}} **State explosion**:
-DFA may have up to $2^k$ states for $k$ NFA states
-- {{< iconify fa6-solid microscope >}} **Implication**: Nondeterminism
-doesn't increase computational power for finite automata
+- {{< iconify fa6-solid equals >}} **Key theorem**: Every NFA has an equivalent
+DFA
+- {{< iconify fa6-solid diagram-project >}} **Subset construction**: DFA states
+represent sets of NFA states
+- {{< iconify fa6-solid arrow-up-right-dots >}} **State explosion**: DFA may
+have up to $2^k$ states for $k$ NFA states
+- {{< iconify fa6-solid microscope >}} **Implication**: Nondeterminism doesn't
+increase computational power for finite automata! Instead, it enables us to
+design "simpler" or more "expressive" machines. Get the trade-off?
 
 :::
 
