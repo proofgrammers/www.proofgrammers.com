@@ -283,7 +283,7 @@ look like for a prior NFA? Which one do you prefer? Why?
 
 ## Final DFA arising from an NFA {transition="convex"}
 
-![Completed DFA conversion](09-finite-automata_13.png){.sensible-size-thick-border}
+![Completed DFA resulting from a original NFA](09-finite-automata_13.png){.sensible-size-thick-border}
 
 ## Grasping trade-offs of the DFA
 
@@ -297,8 +297,6 @@ over a DFA?**
 :::
 
 # Regular expressions
-
-## Regular expressions: a powerful notation
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
