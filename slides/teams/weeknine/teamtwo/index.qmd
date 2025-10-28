@@ -1,6 +1,6 @@
 ---
 title: "Proving haltsOnString is Uncomputable"
-subtitle: "Using a Turing Reduction from yesOnString"
+description: "Using a Turing Reduction from yesOnString"
 date: "10-28-2025"
 author: Javier Bejarano,  Abishek Dhakal, & Alexander Goddard
 execute:
