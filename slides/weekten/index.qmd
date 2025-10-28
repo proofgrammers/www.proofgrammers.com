@@ -1,0 +1,470 @@
+---
+title: "Exploring Nondeterminism"
+description: "Nondeterminism does not aid computability"
+date: "2025-10-20"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Learning objectives
+
+::: {.fragment .callout-note icon=true title="Learning Objectives for Theoretical Machines"}
+
+- **CS-204-1**: Use both intuitive analysis and theoretical proof techniques to
+correctly distinguish between problems that are tractable, intractable, and
+uncomputable.
+- **CS-204-2**: Correctly use one or more variants of the Turing machine (TM)
+abstraction to both describe and analyze the solution to a computational
+problem.
+- **CS-204-3**: Correctly use one or more variants of the finite state
+machine (FSM) abstraction to describe and analyze the solution to a
+computational problem.
+- **CS-204-4**: Use a formal proof technique to correctly classify a problem
+according to whether or not it is in the P, NP, NP-Hard, and/or NP-Complete
+complexity class(es).
+- **CS-204-5**: Apply insights from theoretical proofs concerning the limits of
+either program feasibility or complexity to the implementation of both correct
+and efficient real-world Python programs.
+
+:::
+
+# Nondeterminism does not increase "power"!
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- Nondeterminism can improves efficiency, but not computability
+- Nondeterminism can be more expressive and easier to analyze
+- Any problem that can be computed by a nondeterministic Python program can also
+be computed by a deterministic Python program
+- While there are nondeterministic versions of Turning machines and finite
+automata, they aid modelling and not computability
+
+:::
+
+## What is nondeterminism?
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid microchip >}} Modern computers appear to do many things
+simultaneously
+- {{< iconify fa6-solid shuffle >}} **Nondeterminism**: Next step could advance
+any current task
+- {{< iconify fa6-solid microscope >}} **Key question**: Does multitasking
+increase computational power? Again, no, it does not! We will "sketch" a proof
+of this claim.
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+- **Practical steps to explore the concepts of nondeterminism**:
+    - Use a program to see what processes are running on your computer
+    - Discover how languages like Python or Java support multithreading
+    - Grasp the differences between threads and processes in Python or Java
+    - Explore how the operating system schedules user and root processes
+
+:::
+
+## Operating system process listing
+
+```shell
+ 772343 gkapfham  20   0  572064 273692  19100 R   9.6   0.5   2:58.16 nvim
+ 808852 gkapfham  20   0   44.3g 245404  66136 S   8.6   0.4   0:17.49 deno
+ 375317 gkapfham  20   0 1381168 132520  17564 S   5.6   0.2  30:06.67 tui-fdpw1bra.
+ 358101 gkapfham  20   0  562772 265936  17752 S   2.0   0.5  23:15.04 nvim
+ 804126 gkapfham  20   0 2771712 255572 118704 S   1.7   0.4   0:14.86 Isolated Web Co
+ 796574 gkapfham  20   0 1446460 126660  17820 S   1.3   0.2   2:16.39 tui-yrtvy00h.
+ 357079 gkapfham  20   0   11.0g 572044 127176 S   1.0   1.0  10:42.75 Isolated Web Co
+ 769462 gkapfham  20   0 1315544 172680 103540 S   1.0   0.3   0:18.81 .kitty-wrapped
+   1267 root      20   0 1323932 203364 144172 S   0.7   0.4   9:35.36 X
+   2249 gkapfham  20   0   54508  48888   4132 S   0.7   0.1   2:39.05 tmux: server
+   6653 gkapfham  20   0   14.8g   2.4g   1.6g S   0.7   4.5  70:28.21 .firefox-wrappe
+   6922 gkapfham  20   0 9143112   1.9g 267792 S   0.7   3.5   9:59.18 Isolated Web Co
+  28977 gkapfham  20   0  386616  88000  12864 S   0.7   0.2   9:04.62 nvim
+ 371506 gkapfham  20   0 1448172 120924  17704 S   0.7   0.2   6:28.71 tui-hgvapgb9.
+ 700601 gkapfham  20   0 2789416 245556 116312 S   0.7   0.4   1:30.08 Isolated Web Co
+ 707583 gkapfham  20   0  232632  64584  10884 S   0.7   0.1   0:51.66 nvim
+    981 root      20   0  105504  25260   9300 S   0.3   0.0   2:41.67 ..auto-cpufreq-
+   1642 gkapfham  20   0 1076296 127456  81752 S   0.3   0.2   5:02.86 picom
+   1693 gkapfham  20   0  110772  17544   8108 S   0.3   0.0   0:13.65 pipewire-pulse
+   7159 gkapfham  20   0 3922996   1.1g 170292 S   0.3   2.0   9:53.91 Isolated Web Co
+  12592 gkapfham  20   0  227952  59884  10844 S   0.3   0.1   9:18.19 nvim
+ 358100 gkapfham  20   0   15908   9848   8328 S   0.3   0.0   0:11.58 nvim
+ 464888 gkapfham  20   0   44.3g 185868  65992 S   0.3   0.3   2:26.13 deno
+ 729844 gkapfham  20   0 1392.1g 243904 139904 S   0.3   0.4   0:14.31 .Discord-wrappe
+ 729969 gkapfham  20   0 1405.6g 531080 171428 S   0.3   0.9   2:34.68 .Discord-wrappe
+ 771604 gkapfham  20   0 2580952  35352  18872 S   0.3   0.1   0:02.76 lazygit
+ 772342 gkapfham  20   0   15908   9656   8224 S   0.3   0.0   0:01.55 nvim
+ 773201 nscd      20   0  688988   7300   5520 S   0.3   0.0   0:00.99 nsncd
+```
+
+::: {.incremental style="margin-top: -0.05em; font-size: 0.8em;"}
+
+- The operating system's scheduler allocates CPU time to each process
+- Scheduling aids resource sharing and overall system responsiveness
+
+:::
+
+# Explore `ContainsNANA`
+
+::: incremental
+
+- {{< iconify fa6-solid dna >}} **Problem**: Determine if a genetic string on
+the input contains any of the patterns CACA, GAGA, TATA, or AAAA
+- {{< iconify fa6-solid rocket >}} **Goal**: Detect the occurrence of any of the
+patterns as quickly and accurately as possible, outputting `yes` or `no`
+- The symbol `N` represents "any nucleotide" in the DNA string
+- Deterministic and nondeterministic solutions in Python
+- View execution of the nondeterministic solution in a tree
+- **Use example for a claim about limits of nondeterminism**
+
+:::
+
+## Python with threads
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-brands python >}} Python's `threading` module creates
+nondeterministic programs
+- {{< iconify fa6-solid dna >}} **Example**: `ContainsNANA` searches for genetic
+patterns (e.g., CACA, GAGA, TATA, AAAA) where `N` means "any nucleotide"
+- {{< iconify fa6-solid layer-group >}} Launch all four searches simultaneously
+in separate threads
+- {{< iconify fa6-solid forward >}} Return `yes` as soon as any Python thread
+finds a match
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Key insights from the suggested
+approach**:
+    - Threads may complete in any order, leading to nondeterministic behavior
+    - This means that output may vary between runs for the same input
+    - However, the same input will always yield the same overall output
+    - Nondeterministic approach potentially faster than sequential search
+
+:::
+
+## Deterministic `ContainsNANA`
+
+```{python}
+def containsNANA(inString):
+    strings = ['CACA', 'GAGA', 'TATA', 'AAAA']
+    for string in strings:
+        if string in inString:
+            return 'yes'
+    return 'no'
+
+assert containsNANA('CCCTATACCCGAGACCC') == 'yes'
+assert containsNANA('CCCGGGCCC') == 'no'
+print(containsNANA('CCCTATACCCGAGACCC'))
+print(containsNANA('CCCGGGCCC'))
+```
+
+::: {.fragment .fade style="margin-top: -0.25em; font-size: 0.95em;"}
+
+- Iteratively look for each string in `strings`
+- Return `yes` if found; otherwise return `no`
+- Deterministic: same output for same input every time
+
+:::
+
+## Nondeterministic `ContainsNANA`
+
+```{python}
+from threading import Thread
+
+def ndContainsNANA(inString):
+    strings = ['CACA', 'GAGA', 'TATA', 'AAAA']
+    threads = []
+    ndSoln = utils.NonDetSolution()
+    for s in strings:
+        t = Thread(target=findString, args=(s, inString, ndSoln))
+        threads.append(t)
+    solution = utils.waitForOnePosOrAllNeg(threads, ndSoln)
+    return solution
+```
+
+::: {.fragment .fade style="margin-top: -0.05em; font-size: 0.95em;"}
+
+- Create a thread for each string in `strings`
+- The `waitForOnePosOrAllNeg` utility returns `yes` if any thread finds a
+match; otherwise returns `no`, giving the `N` concept
+- Achieves nondeterminism through multithreading in Python
+
+:::
+
+## Visualizing nondeterminism
+
+![](08-nondeterminism_4.png)
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+
+- {{< iconify fa6-solid sitemap >}} **Nodes**: Represent threads;
+**Root**: Initial thread
+- {{< iconify fa6-solid leaf >}} **Leaves**: Threads that return `yes`,
+`no`, or never terminate
+- {{< iconify fa6-solid check >}} Any positive leaf: output of overall program is `yes`
+- {{< iconify fa6-solid x >}} All leaves negative: output of overall program is `no`
+
+:::
+
+## Claim 8.1: nondeterminism does not add power in terms of computability
+
+::: {.fragment style="margin-top: -0.25em; font-size: 0.9em;"}
+
+{{< iconify fa6-solid scale-balanced >}} **Claim 8.1**: Any problem
+computable by a nondeterministic Python program can also be computed by
+a deterministic Python program.
+
+:::
+
+::: {.incremental style="margin-top: -0.05em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid play >}} Deterministically simulate
+nondeterminism by switching between tasks
+- {{< iconify fa6-solid list >}} Add each new thread to task list, each of which
+will be run
+- {{< iconify fa6-solid check >}} If any positive leaf exists: simulation
+eventually reaches it
+- {{< iconify fa6-solid desktop >}} Pre-2000 single-core computers
+proved this works in practice
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 1.0em;"}
+
+{{< iconify fa6-solid triangle-exclamation >}} Nondeterminism may greatly
+improve efficiency despite not changing the problem's overall computability.
+Aha!
+
+:::
+
+# Grasp nondeterministic Turing machines with the `GthenOneT` problem
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Intuitively define a nondeterministic Turing machine
+- Define the `GthenOneT` problem and solve with a Turing machine
+- Understand the concept of "cloning" for ambiguous transitions
+- Visualize and reason about the computation tree for `GthenOneT`
+
+:::
+
+## Nondeterministic Turing machines
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid clone >}} Standard Turing machine that can "clone"
+itself
+- {{< iconify fa6-solid tape >}} Each clone has same tape and state
+- {{< iconify fa6-solid arrow-right >}} Each clone follows different transition
+- {{< iconify fa6-solid book >}} Formalism enables rigorous mathematical proofs
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+- Nondeterministic Turing machines formalize multithreaded computation in
+programming languages like Python
+- These Turing machines allow for "choice" at each state in the model
+- Makes it possible to prove results about nondeterministic computation,
+helps understanding P versus NP and NP-completeness
+
+:::
+
+## Example: `GthenOneT` problem
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid rocket >}} Input: Genetic string bracketed
+by x's
+- {{< iconify fa6-solid check >}} Accept if some "G" has exactly one "T"
+between it and either end
+- {{< iconify fa6-solid clone >}} When G is found: create three "clones"
+    - Check left for one T
+    - Check right for one T
+    - Continue searching for next G
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+
+-  “xATGTTx”, “xATTGTGCCTACx”, and “xTGGGTTx” are all accepted; “xATTGx”,
+“xCTTGAGTGTATx”, and “xCTCTx” are all rejected. Can you explain why? How would
+we visually express this Turing machine?
+
+:::
+
+## Grasp `GthenOneT` Turing machine
+
+::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
+
+
+| String                | Accepted? | Reason                                                      |
+|-----------------------|-----------|-------------------------------------------------------------|
+| `xATGTTx`             | Yes       | `G` with exactly one `T` between it and an end (start with the  `G` and look to the left)             |
+| `xATTGTGCCTACx`       | Yes       | At least one `G` with exactly one `T` between it and an end (use last `G` and look to right) |
+| `xTGGGTTx`            | Yes       | `G` with exactly one `T` between it and an end (use first `G` and look to the left)             |
+| `xATTGx`              | No        | The only `G` does not meet the requirements           |
+| `xCTTGAGTGTATx`       | No       | None of three `G`s meet the requirements     |
+| `xCTCTx`              | No        | There is no `G` present in the input string                                              |
+
+
+:::
+
+::: {.fragment .fade-up  style="margin-top: -0.05em; font-size: 0.925em;"}
+
+- Okay, makes sense! How can we visualize this Turing machine?
+
+:::
+
+## Visualize `GthenOneT` Turning machine
+
+![](08-nondeterminism_7.png)
+
+::: {.fragment .fade style="font-size: 1.0em;"}
+
+- {{< iconify fa6-solid diagram-project >}} State $q_1$ has ambiguous
+transitions: multiple valid next states when scanning G. How does this work?
+Let's explore!
+
+:::
+
+## Understanding `GthenOneT`
+
+::: fragment
+
+- At first glance, this looks deterministic, right?
+- Key difference: states can have ambiguous transitions
+- When in $q_1$ and scanning G, three possible transitions:
+    - Stay in state $q_1$
+    - Go to state $q_2$
+    - Go to state $q_4$
+- Critically, this does not change overall computability
+- Visualize the computation tree, show simulation is possible
+
+:::
+
+## Computation tree for `GthenOneT`
+
+![](08-nondeterminism_9.png)
+
+::: {.fragment .fade style="font-size: 1.0em;"}
+
+- {{< iconify fa6-solid check >}} Input "xTGTGGTx": three leaves accept,
+so result is accept
+
+:::
+
+## Okay, nondeterministic Turning machines have transition functions that map to _sets_ of configurations!
+
+![](08-nondeterminism_10.png)
+
+::: {.incremental style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- Each state-symbol pair maps to a set of possible actions
+- When multiple actions exist, machine "clones" itself to explore all
+- Each clone continues independently, forming a computation tree
+- Accept if any clone reaches accept state; reject only if all clones reject
+- **Connects to multi-processing in many `fork` and `exec` systems**!
+
+:::
+
+## Claim 8.3: equivalence of models
+
+::: {.fragment style="margin-top: 0.1em; font-size: 0.75em;"}
+
+{{< iconify fa6-solid scale-balanced >}} **Claim 8.3**: Given a
+nondeterministic Turing machine $M$ that solves problem $P$, there
+exists a deterministic Turing machine $M'$ that also solves $P$.
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: 0.1em; font-size: 0.85em;"}
+
+- **Implications of this claim**:
+  - Any problem solvable by a nondeterministic Turing machine can also be solved
+  by a deterministic Turing machine
+  - Nondeterministic Turing machines are more "expressive" and/or "compact" than
+  deterministic Turing machines
+  - Importantly, they do not increase the set of computable problems
+  - Nondeterminism aids modelling and analysis, not computability
+  - Nondeterminism makes results align with real-world computers
+
+:::
+
+# Understand three ways to think about nondeterminism
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.92em;"}
+
+- {{< iconify fa6-solid layer-group >}} **Simultaneous threads**:
+Execute all threads simultaneously
+- {{< iconify fa6-solid dice >}} **Random choice**: Choose one transition
+at random
+- {{< iconify fa6-solid user >}} **External choice**: External operator
+chooses transition
+- {{< iconify fa6-solid equals >}} **All three produce identical computation
+trees and results!**
+
+:::
+
+## Nondeterminism aids proofs about unrecognizability of languages
+
+::: {.fragment .boxed-content style="margin-top: -0.05em; font-size: 0.975em;"}
+
+{{< iconify fa6-solid scale-balanced >}} **Claim 8.4**: The complement
+of a recognizable, undecidable decision problem is unrecognizable.
+
+:::
+
+::: {.incremental style="margin-top: -0.15em; font-size: 0.85em;"}
+
+- The word "complement" intuitively means "the opposite of"
+- You can prove this result using nondeterminism and contradiction
+- Connect a decision program `D` to a nondeterministic program `P`
+- Let `NotYesOnString` be the complement of `YesOnString` (i.e., on
+input $P$, $I$, the solution is `"yes"` if and only if $P(I)$ is not "`yes`").
+- Wow, this result means that `NotYesOnString` is unrecognizable!
+
+:::
+
+## Key takeaways for proofgrammers
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid x >}} Nondeterminism does not increase
+computational power
+- {{< iconify fa6-solid rocket >}} Nondeterminism can greatly
+improve program efficiency
+- {{< iconify fa6-solid sitemap >}} Computation trees visualize
+nondeterministic execution
+- {{< iconify fa6-solid clone >}} Nondeterministic TMs formalize the
+concept mathematically
+- {{< iconify fa6-solid graduation-cap >}} Foundation for complexity
+theory and NP-completeness
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.725em;"}
+
+- {{< iconify fa6-solid lightbulb >}} Looking ahead to the upcoming week:
+    - **Deterministic finite automata** as special cases of deterministic Turing
+    machines and **nondeterministic finite automata** as special case of a
+    nondeterministic Turing machine (i.e., head moves right, cannot edit tape)
+    - Practical connections to **regular expressions** and **regular languages**
+
+:::
