@@ -40,13 +40,15 @@ of both correct and efficient real-world Python programs.
 
 :::
 
-# Finite automata are simplified Turing machines with limited resources!
+# Finite state automata are simplified Turing machines! Interesting!
 
-::: {.fragment}
+::: {.fragment .boxed-content style="font-size: 0.8em;"}
 
-- Finite automata help with learning objective **CS-204-3**, in which
-you learn about finite state machines (FSMs) and their computational
-power. **Let's explore how constraints affect computability!**
+{{< iconify fa6-solid lightbulb >}} Finite automata help with learning objective
+**CS-204-3**, in which you learn about finite state machines (FSMs) and their
+computational power. **Let's explore how constraints affect computability! Why
+is it beneficial to make these constraints? How does the FSM connect to
+practical computing?**
 
 :::
 
