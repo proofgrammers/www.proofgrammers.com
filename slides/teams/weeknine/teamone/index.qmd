@@ -21,7 +21,7 @@ format:
 # Introduction
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 1em;"} 
-In this presentation, we explore the design and analysis of a **Python program** that determines whether the **state diagram of a Turing Machine (M)** contains cycles. A Turing Machine is a fundamental model of computation that defines the limits of what can be calculated. By detecting cycles in its state diagram, we can identify repeating or potentially infinite behaviors within a machine’s structure. This project bridges **theoretical computer science** and **practical programming**, showing how abstract models can be represented in real code.  
+- In this presentation, we explore the design and analysis of a **Python program** that determines whether the **state diagram of a Turing Machine (M)** contains cycles. A Turing Machine is a fundamental model of computation that defines the limits of what can be calculated. By detecting cycles in its state diagram, we can identify repeating or potentially infinite behaviors within a machine’s structure. This project bridges **theoretical computer science** and **practical programming**, showing how abstract models can be represented in real code.  
 
 Beyond implementation, we analyze our program from two critical perspectives in computation theory:  
 (a) whether the problem is **computable or uncomputable**, and  
@@ -30,27 +30,30 @@ Beyond implementation, we analyze our program from two critical perspectives in 
 Through this analysis, we demonstrate that while many Turing Machine problems are undecidable, detecting cycles in a finite state diagram is both **computable** and **tractable**, revealing the deep connection between **mathematical theory** and **algorithmic design**.
 :::
 
-##  
+##  Problem Definition
 
 ::: {.fragment style="margin-top: 1.0em; font-size: 1.0em;"} 
-- 
+- Given a Turing Machine \(M\), our goal is to determine whether the **state diagram** of \(M\) contains cycles.  
+A cycle represents a sequence of transitions that returns to a previous state — suggesting **repetition or potential infinite looping**.  
+Understanding whether such cycles exist helps illustrate the **structural behavior** of computation without running the machine on input.  
+This provides insight into **decidable vs. undecidable** questions in computation.
 :::
 
-## Turing Machine Cycle Detector
+# Theoretical Background
 
-::: {.fragment style="margin-top: 1.5em; font-size: 1.0em;"} 
-- {{< iconify fa6-solid arrow-right >}} Transition class
+::: {.fragment style="font-size: 1em;"}
+- A **Turing Machine (TM)** is a mathematical abstraction that captures the essence of computation.  
+- It consists of an infinite tape, read/write head, and a finite set of states governed by a **transition function**.  
+- The concept of **computability** asks what problems can be solved by any TM, while **tractability** measures how efficiently they can be solved.  
+- In this project, we focus on a **structural property**—the existence of cycles in the TM’s transition graph.
+:::
 
-    - Represents single transition rule
+# Turing Machine Cycle Detector
 
-- {{< iconify fa6-solid gear >}} TuringMachine Class
-
-    - Models a Turing machine
-
-- {{< iconify fa6-solid arrows-spin >}} has_cycles()
-
-    - Looks for cycles using Depth First Search
-    
+::: {.fragment style="font-size: 1em;"}
+- {{< iconify fa6-solid arrow-right >}} **Transition Class:** Represents a single transition rule in the Turing Machine  
+- {{< iconify fa6-solid gear >}} **TuringMachine Class:** Models a Turing Machine with states, symbols, and transitions  
+- {{< iconify fa6-solid arrows-spin >}} **has_cycles():** Detects cycles using **Depth-First Search (DFS)** on the state diagram
 :::
 
 ## Implementation
