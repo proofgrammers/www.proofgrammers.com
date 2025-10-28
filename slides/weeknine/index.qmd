@@ -49,7 +49,7 @@ and efficient real-world Python programs.
 - Any problem that can be computed by a nondeterministic Python program can also
 be computed by a deterministic Python program
 - While there are nondeterministic versions of Turning machines and finite
-automata, they aid modelling and not computability
+automata, they aid modeling and not computability
 
 :::
 
