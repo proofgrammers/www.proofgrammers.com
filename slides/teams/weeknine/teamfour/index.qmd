@@ -37,8 +37,6 @@ format:
       it may reject with an error or keep processing indefinitely.
 :::
 
-:::
-
 ## Similarities & Differences
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
@@ -91,6 +89,7 @@ format:
 - There's a chance the machine jams if an apple isn't passing through
 - A decidable version of this situation is if the result could only be an apple or orange
 
+:::
 
 ## Recognition is Easier than Decision
 
@@ -103,7 +102,7 @@ format:
 :::
 
 
-# What is RecYesOnString?
+## What is RecYesOnString?
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - {{< iconify fa6-solid lightbulb >}} **What is RecYesOnString?**
@@ -116,7 +115,7 @@ format:
 :::
 
 
-# RecYesOnString Program
+## RecYesOnString Program
 
 ```{pyodide}
 # This can be found in the "What Can Be Computed?" book.
@@ -137,7 +136,7 @@ def recYesOnString(inString):
 ```
 
 
-# Recognizes, but Does Not Decide
+## Recognizes, but Does Not Decide
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 - {{< iconify fa6-solid lightbulb >}} **How does this Recognize and not Decide?**
