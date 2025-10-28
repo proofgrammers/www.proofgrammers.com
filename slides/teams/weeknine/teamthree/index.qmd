@@ -20,8 +20,16 @@ format:
 
 # Introduction
 
+- "Ignore Input Trick"
+
+- Explain and show a turing reduction proving that `YesOnEmpty` is uncomputable from reducing `YesOnString`
+
+- Explain the results of this reduction
+
 
 # Turing Reduction
+
+Let `F` and `G` be computational problems. We say that F has a Turing reduction to `G` if we can write a python program solving `F`, after first assuming the existence of a program solving `G`.
 
 # Ignore Input Trick
 - 
@@ -89,5 +97,11 @@ print(yesOnEmpty("returnYesOnEmpty.py", "not empty"))
 - 
 
 # Conclusion
-- 
+
+- Proved that `YesOnEmpty` in uncomputable by reducing `YesOnString` to it
+
+- Illustrated the use of the "Ignore Input Trick"
+
+- `YesOnEmpty` is no harder than `YesOnString`
+
 ---
