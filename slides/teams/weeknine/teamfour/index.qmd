@@ -25,8 +25,6 @@ format:
       language (negative instance).
 :::
 
----
-
 ## Recognition
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
@@ -38,8 +36,6 @@ format:
       correct. If the syntax is valid → it halts and accepts. If invalid →
       it may reject with an error or keep processing indefinitely.
 :::
-
----
 
 :::
 
@@ -57,8 +53,6 @@ format:
       - Decision corresponds to both ‘Yes’ and ‘No’ cases, while Recognition
         corresponds only to the ‘Yes’ case.
 :::
-
----
 
 ## Recognition Visualized
 
@@ -97,7 +91,6 @@ format:
 - There's a chance the machine jams if an apple isn't passing through
 - A decidable version of this situation is if the result could only be an apple or orange
 
----
 
 ## Recognition is Easier than Decision
 
@@ -109,7 +102,6 @@ format:
       all cases (both yes- and no-instances)
 :::
 
----
 
 # What is RecYesOnString?
 
@@ -123,7 +115,6 @@ format:
       - If P does not halt, then RecYesOnString does not halt.
 :::
 
----
 
 # RecYesOnString Program
 
@@ -145,7 +136,6 @@ def recYesOnString(inString):
         return 'no'  
 ```
 
----
 
 # Recognizes, but Does Not Decide
 
@@ -155,5 +145,3 @@ def recYesOnString(inString):
     - If anything but the positive instance is returned, then RecYesOnString returns "no".
     - This is different than deciding, since deciding a program requires the program to halt: choosing either "yes" or "no".
 :::
-
----
