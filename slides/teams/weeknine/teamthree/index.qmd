@@ -7,7 +7,7 @@ author: Ainslee Plesko, Hannah Brown, & Coltin Colucci
 execute:
   echo: true
 format:
-  live-revealjs:
+  revealjs:
     completion: true
     theme: default
     css: ../../../css/styles.css
@@ -32,7 +32,7 @@ format:
 Let `F` and `G` be computational problems. We say that F has a Turing reduction to `G` if we can write a python program solving `F`, after first assuming the existence of a program solving `G`.
 
 # Ignore Input Trick
-```{python}
+```python
 import utils; from utils import rf, universal
 
 def ignoreInput(inputStr: str):
@@ -46,7 +46,7 @@ def ignoreInput(inputStr: str):
 
 ## YesOnString Code Block
 
-```{pyodide}
+```python
 """yesOnString function."""
 
 def returnYesOnString(some_string: str) -> str:
@@ -74,7 +74,7 @@ print(yesOnString("returnYesOnString.py", 4))
 
 ## YesOnEmpty
 
-```{pyodide}
+```python
 ## yesonempty
 def returnYesOnEmpty(some_string: str) -> str:
     """This function says yes only if the string is empty."""
@@ -103,7 +103,7 @@ print(yesOnEmpty("returnYesOnEmpty.py", "not empty"))
 
 ```
 
-# Proving (un)compuablity via reduction
+# Proving (un)computability via reduction
 ![](/slides/teams/weeknine/teamthree/W9T3_Proof.png)
 
 # Conclusion
