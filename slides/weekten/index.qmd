@@ -151,7 +151,7 @@ print(f"'ABAB' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABAB')}")
 print(f"'ABBA' accepted: {simulate_dfa(transitions, 'q0', accept, 'ABBA')}")
 ```
 
-# Define nondeterministic finite automata
+# Define nondeterministic finite automata (NFA)
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
@@ -162,7 +162,7 @@ transition without reading input
 - {{< iconify fa6-solid check >}} **Acceptance**: accept if **any**
 computational path accepts
 - {{< iconify fa6-solid microscope >}} **Key insight**: NFAs can be
-simpler than equivalent DFAs
+"simpler" than equivalent DFAs
 
 :::
 
@@ -178,26 +178,25 @@ more expressive, not more powerful!**
 
 ## NFA visualization: cloning and choices {transition="convex"}
 
-![NFA transition options](09-finite-automata_2.png)
+![Viewing an NFA in light of a TM or a DFA](09-finite-automata_2.png)
 
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.975em;"}
 
-- **How to think about the NFA in relation to types of TM?**
+- {{< iconify fa6-solid clone >}} **What are connections between an NFA and DFA or TM?**
 
 :::
 
 ## Understanding NFA acceptance
 
-::: {.fragment style="margin-top: -0.25em; font-size: 0.825em;"}
+::: {.fragment style="margin-top: -0.35em; font-size: 0.825em;"}
 
 - **Accept**: if any clone reaches accept state
 - **Reject**: if all clones reject
-- **Undefined**: if clones enter infinite $\epsilon$-loop
-- **Same definition as nondeterministic
-Turing machines!**
-- **Next Step**: Explore an NFA that accepts the strings “AA”, “AGA”, and an “A”
-followed by any combination of C’s and G’s (provided there is at least one C or
-G). How would be build this NFA?
+- **Undefined**: if all clones enter infinite $\epsilon$-loop
+- **Essentially, same conception as nondeterministic Turing machines!**
+- **Next Step**: Explore a DFA or an NFA that accepts the strings “AA”, “AGA”,
+and an “A” followed by any combination of C’s and G’s (provided there is at
+least one C or G). **How would be build this finite automaton?**
 - **There are different, equivalent ways to build this NFA!**
     - Use a blank symbol
     - Use the $\epsilon$-transition
