@@ -54,7 +54,7 @@ practical computing?**
 
 ## What are finite automata?
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
 
 - {{< iconify fa6-solid microchip >}} **Finite automata**: Special, restricted
 case of Turing machines
@@ -71,8 +71,8 @@ regular expressions?
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Finite automata model computation with severely limited resources**: no memory
-beyond a fixed number of states, and no ability to revisit previous input.
+**Finite automata model computation with severely limited resources**! No memory
+beyond a fixed number of states and no ability to revisit previous input.
 Despite these constraints, they remain useful for pattern matching, lexical
 analysis, and network protocol verification! Although restricted, there are
 **deterministic** and **nondeterministic** versions. Let's explore in detail!
