@@ -708,9 +708,8 @@ proves $L$ is not regular.
 - **Concatenation**: $L_1 L_2$ is regular if $L_1$, $L_2$ regular
 - **Complement**: $\overline{L}$ is regular if $L$ regular
 - **Intersection**: $L_1 \cap L_2$ is regular if $L_1$, $L_2$ regular
-- **Closure properties**: regular languages closed under these
-operations
-- {{< iconify fa6-solid lightbulb >}} **Proof exercise: construct DFAs
+- **Closure properties**: regular languages closed under operations
+- {{< iconify fa6-solid lightbulb >}} **Proof exercise: try to construct DFAs
 for operations!**
 
 :::
@@ -719,12 +718,11 @@ for operations!**
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- **Proving non-regularity**: if $L$ regular and $\overline{L}$ not
-regular, contradiction!
+- **Proving non-regularity**: if $L$ regular and $\overline{L}$ is not,
+contradiction!
 - **SameGT example**: equal numbers of G's and T's is not regular
 - **Proof**: combine $G^nT^n$ result with closure properties
-- **Java programs**: language of syntactically valid Java is not
-regular
+- **Java programs**: language of syntactically valid Java is not regular
 - **Practical implication**: need more powerful parsers than DFAs
 
 :::
@@ -738,76 +736,22 @@ expressions) for parsing!
 
 :::
 
-## Summary: finite automata and regular languages
+## Finite automata and regular languages: limited but useful!
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
-- **DFAs**: simplest computational model, deterministic state
-transitions
-- **NFAs**: allow nondeterminism and $\epsilon$-transitions, equal
-power to DFAs
+- **DFAs**: simplest computational model, deterministic state transitions
+- **NFAs**: allow nondeterminism and $\epsilon$-transitions, equal power to DFAs
 - **Regular expressions**: concise notation, equivalent to DFAs/NFAs
 - **Regular languages**: decided by DFAs, described by regex
 - **Pumping lemma**: tool for proving languages are not regular
-- **Closure properties**: regular languages closed under many
-operations
-- **Hierarchy**: Regular ⊂ Decidable ⊂ All Languages
+- **Closure properties**: regular languages closed under many operations
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Finite automata reveal computational limits**: despite their
-simplicity and practical utility, they cannot recognize all decidable
-languages. Understanding these limits helps proofgrammers choose
-appropriate tools for different computational tasks!
-
-:::
-
-## Proofgrammer perspective on finite automata
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- {{< iconify fa6-solid code >}} **Implement**: DFA simulators, NFA to
-DFA converters, regex matchers
-- {{< iconify fa6-solid file-code >}} **Prove**: use pumping lemma to
-show languages are not regular
-- {{< iconify fa6-solid microscope >}} **Analyze**: when are finite
-automata sufficient?
-- {{< iconify fa6-solid wrench >}} **Apply**: lexical analysis,
-protocol verification, pattern matching
-- {{< iconify fa6-solid graduation-cap >}} **Understand**: limits of
-computational models
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**Proofgrammers master both theory and practice**: build simulators to
-understand automata behavior, write formal proofs of non-regularity,
-and apply these insights to real-world problems like text processing
-and input validation!
-
-:::
-
-# Questions for discussion
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- Why are regular expressions so widely used in practice?
-- When would you prefer an NFA over a DFA in your design?
-- Can you think of a language that is decidable but not regular?
-- How do closure properties help in proving non-regularity?
-- What practical applications have you seen for finite automata?
-- How does the pumping lemma exploit the finite-state nature of DFAs?
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**Explore these questions in your teams**: finite automata connect
-theory to practice in numerous ways. Discuss how resource limitations
-affect computability and how you might apply these concepts in your own
-programming projects!
+**Finite automata reveal computational limits**: despite their simplicity and
+practical utility, they cannot recognize all decidable languages.
 
 :::
