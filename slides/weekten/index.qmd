@@ -291,16 +291,16 @@ look like for a prior NFA? Which one do you prefer? Why?
 ::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
 
 - **What do NFAs and DFAs have in common?**
-  - Both are finite automata
+  - Both are finite automata consisting of:
     - States
     - Transitions
   - Both recognize regular languages
   - Both support the blank symbol
   - Both have a start state and an accepting state
-- **Observation**: DFA has more states than original NFA
+- **Observation**: DFA often has more states than original NFA
 - **Trade-off**: clarity versus size in automaton design
 - {{< iconify fa6-solid lightbulb >}} **When would you prefer an NFA
-over a DFA?**
+over a DFA? Why?**
 
 :::
 
@@ -322,9 +322,9 @@ define regular languages precisely
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
 {{< iconify fa6-solid rocket >}} **Regular expressions bridge theory and
-practice**: they're both a formal mathematical notation for describing
-languages and a practical tool used daily by programmers for **pattern matching**
-and **text processing**!
+practice** as they're both a formal mathematical notation for describing
+languages and a practical tool used daily by programmers for **pattern
+matching** and **text processing**!
 
 :::
 
@@ -352,9 +352,18 @@ MULTILINECOMMENT_RE_PYTHON = r'^[ \t]*"""(.*?)"""[ \t]*$'
 
 :::
 
-## Define pure regular expressions
+## Define "pure" regular expressions
 
-![Regular expression basics](09-finite-automata_14.png)
+![The basics of pure regular expression](09-finite-automata_14.png)
+
+::: fragment
+
+- Define a good starting point for grasping regular expressions
+- Help us to think about how they relate to DFAs and NFAs
+- Although not exactly how they often appear in programming languages, many of
+the concepts are the same!
+
+:::
 
 ## Regular expression operations
 
