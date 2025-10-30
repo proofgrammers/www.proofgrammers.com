@@ -54,16 +54,18 @@ practical computing?**
 
 ## What are finite automata?
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.95em;"}
 
-- {{< iconify fa6-solid microchip >}} **Finite automata**: special, restricted
+- {{< iconify fa6-solid microchip >}} **Finite automata**: Special, restricted
 case of Turing machines
-- {{< iconify fa6-solid arrow-right >}} **Key restrictions**: head only moves
+- {{< iconify fa6-solid arrow-right >}} **Key restrictions**: Head only moves
 right, never edits tape
-- {{< iconify fa6-solid stop >}} **Termination**: blank symbol ends input
+- {{< iconify fa6-solid stop >}} **Termination**: Blank symbol ends input
 processing
-- {{< iconify fa6-solid microscope >}} **Key question**: What problems can
-finite automata solve?
+- {{< iconify fa6-solid microscope >}} **Question**: What problems can finite
+automata solve?
+- {{< iconify fa6-solid rocket >}} **Question**: How do they aid agents and
+regular expressions?
 
 :::
 
