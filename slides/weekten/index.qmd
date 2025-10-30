@@ -74,7 +74,7 @@ regular expressions?
 **Finite automata model computation with severely limited resources**! No memory
 beyond a fixed number of states and no ability to revisit previous input.
 Despite these constraints, they remain useful for pattern matching, lexical
-analysis, and network protocol verification! Although restricted, there are
+analysis, and network protocol verification. Although restricted, there are
 **deterministic** and **nondeterministic** versions. Let's explore in detail!
 
 :::
@@ -186,7 +186,7 @@ more expressive, not more powerful!**
 
 :::
 
-## Understanding NFA acceptance
+## Grasping automaton acceptance
 
 ::: {.fragment style="margin-top: -0.35em; font-size: 0.825em;"}
 
@@ -196,8 +196,8 @@ more expressive, not more powerful!**
 - **Essentially, same conception as nondeterministic Turing machines!**
 - **Next Step**: Explore a DFA or an NFA that accepts the strings “AA”, “AGA”,
 and an “A” followed by any combination of C’s and G’s (provided there is at
-least one C or G). **How would be build this finite automaton?**
-- **There are different, equivalent ways to build this NFA!**
+least one C or G). **How would we build this finite automaton?**
+- **There are different, equivalent ways to build this finite automaton!**
     - Use a blank symbol
     - Use the $\epsilon$-transition
     - Combine both blank symbols and $\epsilon$-transitions
