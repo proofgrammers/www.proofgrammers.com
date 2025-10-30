@@ -212,7 +212,7 @@ least one C or G). **How would we build this finite automaton?**
 
 ![An NFA that uses the $\epsilon$-transition](09-finite-automata_4.png)
 
-## NFA: multiples of 2 or 3 letters
+## Accepting multiples of 2 or 3 letters
 
 ![NFA for input strings with length that is a multiple of 2 or 3](09-finite-automata_5.png){.sensible-square-thick-border}
 
@@ -229,7 +229,7 @@ least one C or G). **How would we build this finite automaton?**
 - **NFAs often model problems more naturally!**
     - Make sure that you see how it uses the blank symbol
     - Confirm that you understand how it uses the $\epsilon$-transition
-    - Could you build this NFA as a DFA? Go ahead, try it out!
+    - Could you build this NFA as a DFA? **Go ahead, try it out!**
 
 :::
 
