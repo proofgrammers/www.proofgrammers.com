@@ -524,7 +524,7 @@ definitions. Specifically, we know that a finite automaton is a restricted
 Turing machine. Next, we want to explore whether there are decidable languages
 that are not regular by exploring the language defined by $G^nT^n$. In a moment
 we will also implement this language in Python, further confirming that it is
-decidable. Okay, let's dive in!
+decidable. **Okay, let's dive in!**
 
 :::
 
@@ -591,7 +591,7 @@ def testGnTn():
 testGnTn()
 ```
 
-## Proof visualization: $G^nT^n$ not regular
+## Key result: $G^nT^n$ is not regular
 
 ![Pigeonhole principle applied to DFA](09-finite-automata_31.png)
 
@@ -627,20 +627,20 @@ machine?**
 
 - {{< iconify fa6-solid rotate >}} **Pumping**: repeating a substring
 zero or more times
-- {{< iconify fa6-solid text >}} **Example**: "TGACGT" → pump "AC" →
+- {{< iconify fa6-solid box >}} **Example**: "TGACGT" → pump "AC" →
 "TGACACGT" or "TGT"
 - {{< iconify fa6-solid circle-check >}} **Still in language**: pumped
 string remains valid
-- {{< iconify fa6-solid microscope >}} **Key insight**: regular
+- {{< iconify fa6-solid microscope >}} **Key**: regular
 languages always allow pumping long strings
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Pumping exploits finite-state limitation**: if a DFA accepts a long
-string, it must revisit states, creating a cycle that can be repeated
-or skipped. This forced repetition is the essence of pumping!
+**Pumping exploits finite-state limitation**: if a DFA accepts a long string, it
+must revisit states, creating a cycle that can be repeated or skipped. This
+forced repetition is the essence of pumping, helps in proof by contradiction.
 
 :::
 
@@ -648,7 +648,7 @@ or skipped. This forced repetition is the essence of pumping!
 
 ![Pumping substrings in ATC*|TG(AC)*GT](09-finite-automata_33.png)
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: -0.25em; font-size: 0.9em;"}
 
 - **Original string**: underlined portion can be repeated
 - **Pumped versions**: repeat 0, 1, 2, or more times
@@ -660,31 +660,21 @@ property!**
 
 ## Formal definition of pumping
 
-![Pumping lemma definition](09-finite-automata_34.png)
+![Define the concept of pumping a language $L$](09-finite-automata_34.png)
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
-
-- **Decomposition**: string $w = xyz$ where $y$ is the pumped part
-- **Constraints**: $|y| \geq 1$ (non-empty), $|xy| \leq k$ (early in
-string)
-- **Pumping**: $xy^iz$ in language for all $i \geq 0$
-- {{< iconify fa6-solid lightbulb >}} **Formalization of cycle-based
-repetition!**
-
-:::
-
-## The pumping lemma for regular languages
+## Pumping for regular languages
 
 ![Pumping lemma statement](09-finite-automata_35.png)
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: -0.25em; font-size: 0.825em;"}
 
 - **Theorem**: If language is regular and infinite, it can be pumped
 - **Constant** $k$: depends on the DFA (usually number of states)
 - **Every long string**: length ≥ $k$ can be decomposed and pumped
 - **Contrapositive**: if no pumping possible, language is not regular
-- {{< iconify fa6-solid lightbulb >}} **Main use: prove languages are
-not regular!**
+- **Main use**: prove languages are not regular!
+- **Key**: Instead of using fact that "regular languages can be pumped," we use
+the equivalent statement "if it can’t be pumped, then it’s not regular."
 
 :::
 
