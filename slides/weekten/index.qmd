@@ -685,7 +685,7 @@ the equivalent statement "if it can’t be pumped, then it’s not regular."
 - **Proof by contradiction**: the pumping lemma is a powerful tool. To
 prove $L$ is not regular, assume that it is and show that no matter how we pump,
 we eventually generate a string not in $L$. This contradicts regularity and
-proves that $L$ is not regular.
+proves $L$ is not regular.
 - **Mechanical flow of the proof**:
   - Assume $L$ is a regular language
   - Apply pumping lemma to $L$ and accept its conditions
