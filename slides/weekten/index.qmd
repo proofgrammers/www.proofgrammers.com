@@ -361,13 +361,21 @@ MULTILINECOMMENT_RE_PYTHON = r'^[ \t]*"""(.*?)"""[ \t]*$'
 - Define a good starting point for grasping regular expressions
 - Help us to think about how they relate to DFAs and NFAs
 - Although not exactly how they often appear in programming languages, many of
-the concepts are the same!
+the concepts are very similar!
 
 :::
 
 ## Regular expression operations
 
-![Regex operations](09-finite-automata_15.png)
+![Operations available in regular expressions](09-finite-automata_15.png)
+
+::: fragment
+
+- Build up more useful pure regular expressions with operations. Using
+concatenation, alteration, or Kleene star always results in a new regular
+expression!
+
+:::
 
 ## Key details about regular expression
 
@@ -375,48 +383,36 @@ the concepts are the same!
 
 - **Empty string** $\epsilon$: matches nothing (zero characters)
 - **Single character** $a$: matches exactly that character
-- **Concatenation** $r_1 r_2$: match $r_1$ then $r_2$
-- **Alternation** $r_1 | r_2$: match $r_1$ or $r_2$
-- **Kleene star** $r^*$: match $r$ zero or more times
-- {{< iconify fa6-solid lightbulb >}} **All regular languages can be
-built from these operations!**
+- **Concatenation** (written as $r_1 r_2$): match $r_1$ then $r_2$
+- **Alternation** (written as $r_1 | r_2$): match $r_1$ or $r_2$
+- **Kleene star** (written as $r^*$): match $r$ zero or more times
+- All regular languages can be created from these operations
+- A language is **regular** if some regular expression describes it
+- Or, a regular expression **describes** a regular language
+- **Let's look at some examples so we better grasp how they work!**
 
 :::
 
 ## Regular expression examples
 
-![Examples of pure regular expressions](09-finite-automata_16.png)
+![Examples of pure regular expressions and the language that they describe](09-finite-automata_16.png)
 
 ## Pure regular expression notation
 
-::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
 
 - **Pattern matching**: describe sets of strings concisely
-- **Practical extensions**: `.` (any char), `+` (one or more), `[...]`
-(character class)
+- **Practical extensions**: 
+    - `.` means any char
+    - `+` means one or more
+    - `[...]` is a character class
+    - `[a-z]` matches any character in range
+    - `[^abc]` matches any character except those listed
+    - These are all "syntactic sugar" for convenience
 - {{< iconify fa6-solid lightbulb >}} **Can you write a regex for email
 addresses?**
-
-:::
-
-## Extra notation for convenience
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
-
-- **Period** `.`: represents any single character
-- **Plus** `+`: one or more repetitions (equivalent to $rr^*$)
-- **Square brackets** `[abc]`: set of character alternatives
-- **Character ranges** `[a-z]`: matches any character in range
-- **Negation** `[^abc]`: matches any character except those listed
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**Practical regex extensions** make patterns easier to write and read:
-while theoretically unnecessary (pure regex suffices), they
-significantly improve usability. Python's `re` module includes these
-and many more features!
+- {{< iconify fa6-solid rocket >}} **How do you test a regular expressions'
+correctness?**
 
 :::
 
@@ -432,13 +428,13 @@ def test_pattern(pattern: str, test_strings: list) -> None:
         match = regex.fullmatch(s)
         print(f"'{s}': {'Match' if match else 'No match'}")
 
-# Pattern: strings starting with 'A' and ending with 'B'
+# pattern: strings starting with 'A' and ending with 'B'
 pattern = r'A.*B'
 test_strings = ['AB', 'ACCCB', 'AXYZB', 'ABC', 'BA']
 print("Pattern: A.*B (start with A, end with B)")
 test_pattern(pattern, test_strings)
 
-# Pattern: exactly 3 digits
+# pattern: exactly 3 digits
 print("\nPattern: [0-9]{3} (exactly 3 digits)")
 pattern2 = r'[0-9]{3}'
 test_strings2 = ['123', '456', '12', '1234', 'abc']
@@ -450,14 +446,7 @@ test_pattern(pattern2, test_strings2)
 ```{python}
 import re
 
-def test_pattern(pattern: str, test_strings: list) -> None:
-    """Test a regex pattern against multiple strings."""
-    regex = re.compile(pattern)
-    for s in test_strings:
-        match = regex.fullmatch(s)
-        print(f"'{s}': {'Match' if match else 'No match'}")
-
-# Pattern for simple email validation
+# pattern for simple email validation
 pattern = r'[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+'
 test_strings = [
     'user@example.com',
