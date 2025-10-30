@@ -605,9 +605,23 @@ the pumping lemma!**
 
 :::
 
-# Pumping lemma
+## Compare Turing machines and DFAs
 
-## What is pumping?
+::: fragment
+
+- The finite memory of a DFA that makes it more limited than a Turing machine.
+But Turing machines also have a finite number of states. **Why don’t they have
+the same problem?**
+- They use a tape to recall as much information as needed!
+- They can record infinitely many distinct strings on its tape.
+- So although it has a finite set of states, it has infinitely many possible
+configurations. **Do you now see the power of unbounded memory in a Turing
+machine?**
+- Okay, now we are ready to explore the pumping lemma!
+
+:::
+
+# Pumping lemma
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
