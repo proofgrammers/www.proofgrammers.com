@@ -226,7 +226,7 @@ least one C or G). **How would we build this finite automaton?**
 - **Top path**: checks divisibility of string length $n$ by 2
 - **Bottom path**: checks divisibility of string length $n$ by 3
 - **Equivalent DFA**: would be more complex and perhaps less intuitive
-- **NFAs often model problems more naturally!**
+- **NFAs often model problems more "naturally"!**
     - Make sure that you see how it uses the blank symbol
     - Confirm that you understand how it uses the $\epsilon$-transition
     - Could you build this NFA as a DFA? **Go ahead, try it out!**
@@ -253,7 +253,7 @@ design "simpler" or more "expressive" machines. Get the trade-off?
 
 **Nondeterminism provides convenience, not power**: any language recognized by
 an NFA can also be recognized by a DFA. The DFA may be exponentially larger,
-but it exists and solves the same problem!
+but it can be built and it solves the same problem!
 
 :::
 
@@ -274,7 +274,7 @@ state
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-- **Subset construction** systematically tracks all possible NFA states: each DFA
+- **Subset construction** systematically tracks all possible NFA states. Each DFA
 state represents "all places the NFA could be" after reading the input so far.
 This construction proves NFAs and DFAs are equally powerful!
 - **Key questions**: what would the DFA that arises from this conversion process
@@ -284,7 +284,7 @@ look like for a prior NFA? Which one do you prefer? Why?
 
 ## Final DFA arising from an NFA {transition="convex"}
 
-![Completed DFA resulting from a original NFA](09-finite-automata_13.png){.sensible-size-thick-border}
+![Completed DFA resulting from an original NFA](09-finite-automata_13.png){.sensible-size-thick-border}
 
 ## Grasping trade-offs of the DFA
 
