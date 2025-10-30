@@ -631,7 +631,7 @@ zero or more times
 "TGACACGT" or "TGT"
 - {{< iconify fa6-solid circle-check >}} **Still in language**: pumped
 string remains valid
-- {{< iconify fa6-solid microscope >}} **Key**: regular
+- {{< iconify fa6-solid microscope >}} **Insight**: regular
 languages always allow pumping long strings
 
 :::
@@ -653,8 +653,8 @@ forced repetition is the essence of pumping, helps in proof by contradiction.
 - **Original string**: underlined portion can be repeated
 - **Pumped versions**: repeat 0, 1, 2, or more times
 - **All accepted**: because pumped portion corresponds to DFA cycle
-- {{< iconify fa6-solid lightbulb >}} **Regular languages have this
-property!**
+- {{< iconify fa6-solid lightbulb >}} **Critically, all regular languages have
+this property!**
 
 :::
 
@@ -678,24 +678,23 @@ the equivalent statement "if it can’t be pumped, then it’s not regular."
 
 :::
 
-## Using pumping lemma to prove non-regularity
+## Proving non-regularity of language
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental .fade style="font-size: 0.725em;"}
 
-1. **Assume** language $L$ is regular
-2. **Apply pumping lemma**: get constant $k$ and decomposition $xyz$
-3. **Choose specific string** $w \in L$ with $|w| \geq k$
-4. **Consider all possible decompositions** satisfying constraints
-5. **Show pumping fails**: find $i$ where $xy^iz \notin L$
-6. **Contradiction**: therefore $L$ is not regular
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**Proof by contradiction**: the pumping lemma gives us a powerful tool.
-To prove $L$ is not regular, show that no matter how we pump, we
-eventually generate a string not in $L$. This contradicts regularity!
+- **Proof by contradiction**: the pumping lemma is a powerful tool. To
+prove $L$ is not regular, assume that it is and show that no matter how we pump,
+we eventually generate a string not in $L$. This contradicts regularity and
+proves that $L$ is not regular.
+- **Mechanical flow of the proof**:
+  - Assume $L$ is a regular language
+  - Apply pumping lemma to $L$ and accept its conditions
+  - Produce a fixed, but unknown, and sufficiently large cutoff $N$
+  - Creatively pick a string $S$ that is in $L$ and has length ≥ $N$
+  - Consider all valid substrings $R$ of $S$ that are "pumpable"
+  - Show that pumping $R$ produces a string not in $L$
+  - Note that there is a contradiction of initial assumption
+  - Conclude that $L$ is not a regular language!
 
 :::
 
