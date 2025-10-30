@@ -7,7 +7,7 @@ author: Gregory M. Kapfhammer
 execute:
   echo: true
 format:
-  revealjs:
+  live-revealjs:
     completion: true
     theme: default
     css: ../css/styles.css
@@ -477,8 +477,8 @@ regular languages!
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
 - **Conversion between models is possible**:
-    - Convert a regular expression to a DFA or NFA
-    - Convert a DFA or NFA to a regular expression
+    - Convert a regular expression to a DFA or an NFA
+    - Convert a DFA or an NFA to a regular expression
 
 - **Multiple formalisms give different viewpoint**: DFAs are easiest to
 simulate, NFAs are easiest to design, and regexes are easiest to program.
@@ -489,19 +489,20 @@ simulate, NFAs are easiest to design, and regexes are easiest to program.
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid book >}} **Regular language**: decided by some
-DFA (or NFA, or regex)
+- {{< iconify fa6-solid book >}} **Regular language**: decided by some DFA (or
+NFA, or regex)
 - {{< iconify fa6-solid equals >}} **Three equivalent definitions**:
     - DFA-decidable
     - NFA-decidable
     - Regex-describable
-- {{< iconify fa6-solid circle-question >}} **Key question**: Are all
-decidable languages regular?
-- {{< iconify fa6-solid xmark >}} **Answer**: No! Some decidable
-languages are not regular
-- **Key computational hierarchy**: regular languages are a proper subset of
-decidable languages. Computational models differ in power, and resource
-limitations (like finite memory) restrict what can be computed!
+- {{< iconify fa6-solid circle-question >}} **Key question**: Are all decidable
+languages regular?
+- {{< iconify fa6-solid xmark >}} **Answer**: No, some decidable languages are
+not regular!
+- {{< iconify fa6-solid rocket >}} **Key computational hierarchy**: regular
+languages are a proper subset of decidable languages. Computational models
+differ in power, and resource limitations, like finite memory, restrict what can
+be computed!
 
 :::
 
@@ -516,11 +517,14 @@ limitations (like finite memory) restrict what can be computed!
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
 
-**Trivial but important**: the containment Regular ⊆ Decidable is
-obvious from definitions. The interesting question is whether the
-containment is strict. Next: we'll prove it is!
+**Trivial but important**: the containment Regular ⊆ Decidable is obvious from
+definitions. Specifically, we know that a finite automaton is a restricted
+Turing machine. Next, we want to explore whether there are decidable languages
+that are not regular by exploring the language defined by $G^nT^n$. In a moment
+we will also implement this language in Python, further confirming that it is
+decidable. Okay, let's dive in!
 
 :::
 
@@ -530,28 +534,66 @@ containment is strict. Next: we'll prove it is!
 
 - **Language**: $\{G^nT^n : n \geq 0\} = \{\epsilon, GT, GGTT, GGGTTTT,
 ...\}$
-- **Decidable**: Turing machine can count G's and T's (exercise!)
-- **Not regular**: DFA has finite states, cannot count unbounded values
-- **Proof technique**: suppose DFA exists, derive contradiction
+- **Decidable**: Turing machine (or Python program) can count G's and T's
+- **Not regular**: DFA has finite states and cannot count unbounded values
+- **Proof technique**: suppose DFA exists, derive a logical contradiction
 - **Contradiction**: DFA must accept strings it shouldn't
+- **Conclusion**: $G^nT^n$ is not a regular language for any $n \geq 0$
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**$G^nT^n$ requires unbounded counting**: a DFA would need different
-states for each possible value of $n$, but DFAs have only finitely many
-states. This proves some decidable languages are not regular!
+**$G^nT^n$ requires unbounded counting**: a DFA would need different states for
+each possible value of $n$, but DFAs have only finitely many states. This proves
+some decidable languages are not regular, a key result for this class!
 
 :::
+
+## Explore $G^nT^n$ in Python
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 6
+def GnTn(inString): 
+    length = len(inString)
+    # length must be even
+    if length % 2 != 0: return 'no'
+    # split into first half and second half of input
+    firstHalf = inString[:length//2]
+    secondHalf = inString[length//2:]
+    # firstHalf must contain all Gs
+    for x in firstHalf:
+        if x != 'G': return 'no'
+    # secondHalf must contain all Ts
+    for x in secondHalf:
+        if x != 'T': return 'no'
+    return 'yes' 
+
+def testGnTn():
+    testvals = [('', 'yes'),
+                ('GT', 'yes'),
+                ('GGTT', 'yes'),
+                ('GGGTTT', 'yes'),
+                ('GGGGTTTT', 'yes'),
+                ('G', 'no'),
+                ('T', 'no'),
+                ('TG', 'no'),
+                ('GGTTT', 'no'),
+                ('TTTTTT', 'no'),
+                ('GGTTTT', 'no'),
+            ]
+    for (inString, solution) in testvals:
+        val = GnTn(inString)
+        print(inString, ': ', val)
+        assert val == solution
+
+testGnTn()
+```
 
 ## Proof visualization: $G^nT^n$ not regular
 
 ![Pigeonhole principle applied to DFA](09-finite-automata_31.png)
-
-## Proof visualization continued
-
-![Cycle in DFA state diagram](09-finite-automata_32.png)
 
 ::: {.fragment style="margin-top: 0.25em; font-size: 0.9em;"}
 
