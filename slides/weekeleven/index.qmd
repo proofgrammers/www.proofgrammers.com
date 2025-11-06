@@ -345,7 +345,7 @@ focus is on growth rates of functions describing algorithms!
 ::: {.fragment .fade style="font-size: 0.75em;"}
 
 - $f(n) \in O(g)$ means constants $c$ and $N$ exist
-- The main constraint is $f(n) \leq c \times g(n)$ for all $n \geq N$
+- The main constraint is $f(n) \leq c \times g(n)$ for all $n \get N$
 
 :::
 
@@ -444,27 +444,16 @@ print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 
 ![containsGAGA Turing machine](10-complexity-theory-basics_11.png)
 
-## Exact versus asymptotic time
-
-![Exact running time calculation](10-complexity-theory-basics_13.png)
-
-::: {.fragment .fade style="font-size: 0.875em;"}
-
-- **Calculating exact running times is tedious and unnecessary**
-- Instead, use asymptotic estimates with Big-O notation
-- Focus on dominant terms and growth rates rather than exact step counts
-
-:::
-
 ## Formal definition of running time
 
 ![Running time definition](10-complexity-theory-basics_14.png)
 
 ::: {.fragment .fade style="font-size: 0.875em;"}
 
-- **Key points**: Maximum over all inputs of given length (worst case)
+- **Key points**: Maximum over all inputs of given length or "worst case"
 - "Computational step" means single CPU instruction for Python
-- Or single transition for Turing machines
+- Or, it could mean taking a single transition for Turing machines
+- Look at running time and then consider the asymptotic costs!
 
 :::
 
@@ -476,32 +465,41 @@ print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 
 ![Python analysis exercise](10-complexity-theory-basics_16.png)
 
-# Input size versus input value
+# Input size versus value
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid ruler >}} **Critical distinction**: Input size
-$n$ is length in symbols, not the number's value
+$n$ is length in symbols, not number's value
 - {{< iconify fa6-solid calculator >}} **Arithmetic costs**: Operations
 on large numbers are not constant time
 - {{< iconify fa6-solid explosion >}} **Exponential trap**: Loop running
 $M$ times is exponential in $n = \log M$
-- {{< iconify fa6-solid lock >}} **Cryptography connection**: Factoring
+- {{< iconify fa6-solid lock >}} **Cryptography**: Factoring
 large numbers takes exponential time
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
 
 **Don't confuse size with value**: the number 1000 has size $n=4$ digits
 but value $M=1000$. A loop running $M$ times is exponential in $n$, not
-linear. This mistake leads to incorrect complexity analysis!
+linear. This mistake leads to incorrect complexity analysis! See the book's
+discussion of the `MCopiesOfC.py` program for more details!
 
 :::
 
 ## Deceptive program analysis
 
-![Trick question program](10-complexity-theory-basics_17.png)
+![Trick question program called `MCopiesOfC.py`](10-complexity-theory-basics_17.png)
+
+::: fragment
+
+- Start with an empty list and append character 'C' $M$ times
+- This program as a whole requires $O(M)$ time, or not?
+- Actually, the running time is $O(10^n)$ in input size $n$!
+
+:::
 
 ## Size versus value distinction
 
@@ -512,7 +510,8 @@ linear. This mistake leads to incorrect complexity analysis!
 - **Critical insight**: Input size $n$ is length of input in symbols
 - Input value $M$ is the number represented
 - The loop runs $M$ times, not $n$ times
-- This is exponential in $n$!
+- However, this is exponential in $n$!
+- Subtle, but important distinction for complexity analysis!
 
 :::
 
@@ -524,20 +523,7 @@ linear. This mistake leads to incorrect complexity analysis!
 
 ![Arithmetic complexity](10-complexity-theory-basics_20.png)
 
-## Arithmetic operation complexities
-
-![Arithmetic operation costs](10-complexity-theory-basics_21.png)
-
-::: {.fragment .fade style="font-size: 0.875em;"}
-
-- **Addition/subtraction**: $O(n)$ where $n$ is number of digits
-- **Multiplication**: $O(n^2)$ using standard algorithm
-- **Division**: $O(n^2)$
-- These costs matter when analyzing algorithms on large numbers
-
-:::
-
-## Factoring: An exponential-time problem
+## Factoring is exponential-time
 
 ![Factoring algorithm](10-complexity-theory-basics_22.png)
 
@@ -554,7 +540,7 @@ linear. This mistake leads to incorrect complexity analysis!
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 20
+#| max-lines: 10
 def factor(N: int) -> str:
     """Find smallest factor of N greater than 1."""
     for i in range(2, N):
@@ -566,15 +552,11 @@ def factor(N: int) -> str:
 print(f"factor(15) = {factor(15)}")
 print(f"factor(91) = {factor(91)}")
 print(f"factor(17) = {factor(17)}")
-
-# larger numbers take exponentially longer!
-# try factor(1000000007) - takes very long time
 ```
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .fade style="font-size: 0.8em;"}
 
-- **Observe**: Small inputs are fast
-- But doubling the number of digits roughly squares the time
+- Small inputs fast, but doubling the number of digits increases time
 - This exponential growth makes factoring large numbers infeasible
 
 :::
