@@ -276,7 +276,7 @@ dominant terms?
 
 :::
 
-::: {.fragment .boxed-content .fade style="font-size: 0.815em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.8em;"}
 
 - **Big-O provides a standard language for discussing efficiency**
 - Lets proofgrammers communicate about algorithm performance
@@ -312,70 +312,83 @@ focus is on growth rates of functions describing algorithms!
 
 ![Practical Big-O definition](10-complexity-theory-basics_6.png)
 
-## Practical Big-O: Ignore constants and lower terms
+::: {.fragment .fade style="font-size: 0.715em;"}
+
+- $f(n) = 3n + 5n \times logn$, $DT(f) = n \times logn$ and $f(n) \in O(n \times logn)$
+- $g(n) = 3n \times logn^2$, $DT(g) = n \times logn^2$ and $g(n) \in O(n \times logn^2)$
+- Also conclude that $f(n) \in O(g)$ since $n \times logn$ grows slower than $n \times logn^2$
+- Example illustrates how big-O captures growth rate comparisons effectively
+- Notice that it captures an "upper bound" on an algorithm's running time
+- **Key task**: ignore constants and lower terms to find the dominant term
+- **Important question**: how do you understand the meaning of $f \in O(g)$?
+
+:::
+
+## Ignore constants and lower terms
 
 ![Practical Big-O examples](10-complexity-theory-basics_7.png)
+
+::: {.fragment .fade-right style="font-size: 0.825em;"}
+
+- Determine the growth function for an algorithm as $f$
+- Identify the dominant term $DT(f)$
+- Express the complexity as $O(DT(f))$
+- Capture the essential growth behavior of the algorithm
+- Slow growth rates indicate efficient algorithms
+
+:::
 
 ## Formal definition of Big-O notation
 
 ![Formal Big-O definition](10-complexity-theory-basics_8.png)
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .fade style="font-size: 0.75em;"}
 
-- **Formal definition**: $f(n) = O(g(n))$ means constants $c$ and $n_0$
-exist
-- Such that $f(n) \leq c \cdot g(n)$ for all $n \geq n_0$
-- Captures intuition that $f$ grows no faster than $g$ (up to constant
-factors)
+- $f(n) \in O(g)$ means constants $c$ and $N$ exist
+- The main constraint is $f(n) \leq c \times g(n)$ for all $n \geq N$
 
 :::
 
-## Two common Big-O mistakes
+## Some common Big-O mistakes
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 1**: Confusing
-input size with input value
+- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 1**: Confusing input
+size with input value
     - Input size $n$ is length in symbols
     - Input value $M$ is the number represented
     - Example: Number 1000 has size $n=4$ but value $M=1000$
-- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 2**: Assuming
-all operations are constant time
+- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 2**: Assuming all
+operations are constant time
     - Arithmetic on large numbers is not $O(1)$
     - Multiplication is $O(n^2)$, division is $O(n^2)$
     - Addition and subtraction are $O(n)$
-
-:::
-
-::: {.fragment .fade style="font-size: 0.875em;"}
-
-- {{< iconify fa6-solid lightbulb >}} **These mistakes lead to incorrect
-complexity analysis**
-- Always distinguish input size from value
-- Remember that arithmetic complexity depends on number size
+- These mistakes may lead to incorrect complexity analysis
+- Remember that arithmetic complexity depends on "number size"
 
 :::
 
 # Running time analysis
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid code >}} **Practical examples**: Analyze Python
-programs to determine complexity
+programs for complexity
 - {{< iconify fa6-solid repeat >}} **Loop analysis**: Nested loops often
-indicate quadratic or higher complexity
+show quadratic or higher complexity
 - {{< iconify fa6-solid search >}} **String operations**: Common
-operations like substring search have linear time
+methods like substring search have linear time
 - {{< iconify fa6-solid robot >}} **Turing machines**: Formal running
-time analysis extends to theoretical models
+time analysis extends to prior models
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Running time analysis reveals algorithm efficiency**: count how many
-times the innermost operations execute as a function of input size $n$.
-This skill helps proofgrammers write faster, more scalable programs!
+**Running time analysis reveals algorithm efficiency**: count how many times the
+innermost operations execute as a function of input size $n$. This skill helps
+proofgrammers write faster, more scalable Python programs! For a Turing machine,
+you can count how many transitions you follow!
 
 :::
 
