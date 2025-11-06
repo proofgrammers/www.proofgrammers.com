@@ -19,7 +19,8 @@ images and you should only include those that are the most important.
 - I have created a template file for the slides in the
 `slides/weekeleven/index.qmd`. You can add to this file! Please note that I have
 already created the correct title and added the review slides from the last week
-that I want you to keep in this slide deck.
+that I want you to keep in this slide deck. So, please adapt the slide about
+the learning objectives to support content for this week!
 - I would like you to create a starting version of the slides for Chapter Ten:
 in the `slides/weekeleven/index.qmd` file. Please note that you are creating
 slides for _week eleven_ of the course in the `index.qmd` file that is in that
@@ -42,6 +43,7 @@ sure that you notify me when you have completed this task.
 - You must create a similar number of slides to prior slide decks.
 - You must use "signposting" slides at the subsection level that set the
 stage for the content that is going to be explained about a specific topic.
+- Overall, keep the same structure and length to the prior slides.
 - Do not go into too much detail. Make sure that the content is accessible to
 an undergraduate learner who is exploring the topic of computational complexity
 for the first time.
