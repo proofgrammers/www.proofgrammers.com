@@ -236,18 +236,18 @@ implementations. **Okay, let's dive into growth rates**!
 
 :::
 
-# Grasp the Big-O notation
+# Grasp Big-O notation
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid function >}} **Upper bound**: Big-O provides a
-formal upper bound on growth rate
-- {{< iconify fa6-solid filter >}} **Dominant terms**: Keep only the
-fastest growing term, drop constants
-- {{< iconify fa6-solid graduation-cap >}} **Standard language**: Common
-notation for discussing algorithm efficiency
-- {{< iconify fa6-solid exclamation-triangle >}} **Common mistakes**:
-Input size vs value, arithmetic operation costs
+- {{< iconify fa6-solid function >}} **Upper bound**: Big-O provides a formal
+upper bound on growth rate
+- {{< iconify fa6-solid filter >}} **Dominant terms**: Keep only the fastest
+growing term, drop constants
+- {{< iconify fa6-solid graduation-cap >}} **Standard language**: Main notation
+for discussing algorithm efficiency
+- {{< iconify fa6-solid circle-exclamation >}} **Common mistakes**: Input size
+vs value, arithmetic operation costs
 
 :::
 
@@ -263,24 +263,25 @@ This enables meaningful comparisons across implementations and machines!
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
 
-- {{< iconify fa6-solid function >}} **Big-O notation**: Upper bound on
+- {{< iconify fa6-solid book-open >}} **Big-O notation**: Upper bound on
 growth rate
 - {{< iconify fa6-solid filter >}} **Dominant terms**: Keep fastest
 growing term
-- {{< iconify fa6-solid times >}} **Drop constants**: $5n^2$ becomes
+- {{< iconify fa6-solid users-gear >}} **Drop constants**: $5n^2$ becomes
 $O(n^2)$
-- {{< iconify fa6-solid trash >}} **Drop lower terms**: $n^2 + 100n$
+- {{< iconify fa6-solid rocket >}} **Drop lower terms**: $n^2 + 100n$
 becomes $O(n^2)$
 - {{< iconify fa6-solid microscope >}} **Question**: How to identify
 dominant terms?
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.85em;"}
 
 - **Big-O provides a standard language for discussing efficiency**
 - Lets proofgrammers communicate about algorithm performance
-- No need to worry about implementation details or hardware differences
+- Don't worry about implementation details or hardware differences since the
+focus is on growth rates of functions describing algorithms!
 
 :::
 
