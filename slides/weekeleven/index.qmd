@@ -40,15 +40,17 @@ of both correct and efficient real-world Python programs.
 
 :::
 
-# Complexity matters greatly! Efficient algorithms enable progress!
+# Why complexity matters
 
-::: {.fragment .boxed-content style="font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
 
-{{< iconify fa6-solid lightbulb >}} Complexity theory helps with learning
-objective **CS-204-1** and **CS-204-4**, where you distinguish tractable
-from intractable problems and classify problems by complexity class.
-**What makes some problems efficiently solvable while others require
-impractical time? How do we measure and compare algorithm efficiency?**
+- {{< iconify fa6-solid lightbulb >}} Complexity theory helps with learning
+objectives **CS-204-1** and **CS-204-4**
+- Distinguish tractable from intractable problems
+- Classify problems by complexity class
+- **Key questions**: Why are some problems efficiently solvable while
+others require impractical time?
+- How do we measure and compare algorithm efficiency?
 
 :::
 
@@ -69,13 +71,13 @@ efficiently solvable?
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Complexity theory distinguishes feasible from infeasible computation**!
-While uncomputability showed absolute limits, complexity reveals
-practical limits. An exponential-time algorithm may theoretically solve a
-problem, but it's unusable for large inputs. Understanding complexity
-helps proofgrammers design efficient solutions!
+- **Complexity distinguishes feasible from infeasible computation**
+- Uncomputability showed absolute limits
+- Complexity reveals practical limits
+- Exponential-time algorithms may work theoretically but are unusable for
+large inputs
 
 :::
 
@@ -92,15 +94,15 @@ helps proofgrammers design efficient solutions!
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-{{< iconify fa6-solid lightbulb >}} **Finite automata showed
-computational restrictions**. Now we study time restrictions: how quickly
-can problems be solved?
+- {{< iconify fa6-solid lightbulb >}} **Finite automata showed
+computational restrictions**
+- Now we study time restrictions: how quickly can problems be solved?
 
 :::
 
-## Review: Finite automata recognize patterns efficiently
+## Review: Pattern recognition efficiency
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
@@ -114,11 +116,11 @@ restricted problems
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Automata theory connects to complexity theory**! Finite automata solve
-their problems efficiently (linear time). Now we ask: which problems need
-more time? How much more?
+- **Automata theory connects to complexity theory**
+- Finite automata solve their problems efficiently (linear time)
+- Now we ask: which problems need more time? How much more?
 
 :::
 
@@ -141,12 +143,12 @@ rates?
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Asymptotic analysis ignores constant factors and focuses on growth**!
-An algorithm taking $100n$ steps is fundamentally faster than one taking
-$n^2$ steps for large $n$. This approach enables meaningful comparisons
-across different machines and implementations.
+- **Asymptotic analysis ignores constant factors and focuses on growth**
+- Algorithm taking $100n$ steps is fundamentally faster than $n^2$ for
+large $n$
+- Enables meaningful comparisons across machines and implementations
 
 :::
 
@@ -154,7 +156,7 @@ across different machines and implementations.
 
 ![Growth rate comparison](10-complexity-theory-basics_0.png)
 
-## Exponential growth overwhelms polynomial growth
+## Exponential versus polynomial growth
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
@@ -166,12 +168,12 @@ across different machines and implementations.
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-{{< iconify fa6-solid lightbulb >}} **The polynomial/exponential
-boundary defines tractability**! Problems solvable in polynomial time are
-considered efficiently computable, while exponential-time problems are
-generally impractical.
+- {{< iconify fa6-solid lightbulb >}} **The polynomial/exponential
+boundary defines tractability**
+- Polynomial-time problems are considered efficiently computable
+- Exponential-time problems are generally impractical
 
 :::
 
@@ -194,11 +196,11 @@ dominant terms?
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Big-O provides a standard language for discussing efficiency**! It lets
-proofgrammers communicate about algorithm performance without worrying
-about implementation details or hardware differences.
+- **Big-O provides a standard language for discussing efficiency**
+- Lets proofgrammers communicate about algorithm performance
+- No need to worry about implementation details or hardware differences
 
 :::
 
@@ -226,12 +228,13 @@ about implementation details or hardware differences.
 
 ![Formal Big-O definition](10-complexity-theory-basics_8.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Formal definition**: $f(n) = O(g(n))$ means there exist constants $c$
-and $n_0$ such that $f(n) \leq c \cdot g(n)$ for all $n \geq n_0$. This
-captures the intuition that $f$ grows no faster than $g$ (up to constant
-factors).
+- **Formal definition**: $f(n) = O(g(n))$ means constants $c$ and $n_0$
+exist
+- Such that $f(n) \leq c \cdot g(n)$ for all $n \geq n_0$
+- Captures intuition that $f$ grows no faster than $g$ (up to constant
+factors)
 
 :::
 
@@ -252,11 +255,12 @@ all operations are constant time
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-{{< iconify fa6-solid lightbulb >}} **These mistakes lead to incorrect
-complexity analysis**! Always distinguish input size from value, and
-remember that arithmetic complexity depends on number size.
+- {{< iconify fa6-solid lightbulb >}} **These mistakes lead to incorrect
+complexity analysis**
+- Always distinguish input size from value
+- Remember that arithmetic complexity depends on number size
 
 :::
 
@@ -284,14 +288,15 @@ print(f"duplicates([1,2,6,3,4,5,6,7,8]) = {duplicates([1,2,6,3,4,5,6,7,8])}")
 print(f"duplicates([1,2,3,4]) = {duplicates([1,2,3,4])}")
 ```
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Analysis**: Outer loop runs $n$ times, inner loop runs $n$ times.
-Comparison is $O(1)$. Total: $O(n \times n) = O(n^2)$ quadratic time.
+- **Analysis**: Outer loop runs $n$ times, inner loop runs $n$ times
+- Comparison is $O(1)$
+- Total: $O(n \times n) = O(n^2)$ quadratic time
 
 :::
 
-## Analyzing linear-time string search
+## Linear-time string search
 
 ```{pyodide}
 #| autorun: true
@@ -309,10 +314,11 @@ print(f"contains_gaga('HELLO') = {contains_gaga('HELLO')}")
 print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 ```
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Analysis**: String search examines each position once. For input length
-$n$: $O(n)$ linear time. Much faster than $O(n^2)$ for large inputs!
+- **Analysis**: String search examines each position once
+- For input length $n$: $O(n)$ linear time
+- Much faster than $O(n^2)$ for large inputs
 
 :::
 
@@ -320,7 +326,7 @@ $n$: $O(n)$ linear time. Much faster than $O(n^2)$ for large inputs!
 
 ![containsGAGA Turing machine](10-complexity-theory-basics_11.png)
 
-## Exact versus asymptotic running time
+## Exact versus asymptotic time
 
 ![Exact running time calculation](10-complexity-theory-basics_13.png)
 
