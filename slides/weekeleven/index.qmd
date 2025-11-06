@@ -52,16 +52,16 @@ of both correct and efficient real-world Python programs.
 
 :::
 
-## Why study computational complexity?
+## Why computational complexity?
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid clock >}} **Time matters**: Some algorithms are
-fast, others impossibly slow
-- {{< iconify fa6-solid scale-balanced >}} **Comparing efficiency**: Need
-formal methods to compare algorithms
-- {{< iconify fa6-solid chart-line >}} **Growth rates**: How does running
-time change with input size?
+- {{< iconify fa6-solid clock >}} **Time matters**: Some algorithms are fast,
+others impossibly slow
+- {{< iconify fa6-solid scale-balanced >}} **Comparing efficiency**: Formal ways
+to compare algorithms
+- {{< iconify fa6-solid chart-line >}} **Growth rates**: How does running time
+change with input size?
 - {{< iconify fa6-solid key >}} **Cryptography**: Security depends on
 computational hardness
 - {{< iconify fa6-solid microscope >}} **Question**: What problems are
@@ -69,17 +69,15 @@ efficiently solvable?
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.85em;"}
 
 - **Complexity distinguishes feasible from infeasible computation**
-- Uncomputability showed absolute limits
-- Complexity reveals practical limits
-- Exponential-time algorithms may work theoretically but are unusable for
-large inputs
+- Complexity reveals both theoretical and practical limits
+- Exponential algorithms may work sometimes but are often unusable!
 
 :::
 
-## Review: Key concepts from finite automata
+## Review: finite automata
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
@@ -92,17 +90,16 @@ large inputs
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.875em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **Finite automata showed
-computational restrictions**
-- Now we study time restrictions: how quickly can problems be solved?
+- **Okay, finite automata showed computational restrictions!**
+- **Now time restrictions: how quickly can problems be solved?**
 
 :::
 
 ## Review: Pattern recognition efficiency
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
 - **Linear time**: DFAs process input in $O(n)$ time
 - **Single pass**: Read input once, left to right
@@ -110,21 +107,21 @@ computational restrictions**
 - **Applications**: Lexical analysis, pattern matching, protocol
 verification
 - **Connection to complexity**: Automata provide efficient solutions for
-restricted problems
+restricted problems. So, how else can restriction prove beneficial?
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.825em;"}
 
 - **Automata theory connects to complexity theory**
-- Finite automata solve their problems efficiently (linear time)
+- Finite automata solve their problems efficiently (i.e., linear time)
 - Now we ask: which problems need more time? How much more?
 
 :::
 
-# Asymptotic running time
+# Worst-case time
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
 
 - {{< iconify fa6-solid chart-line >}} **Growth rates matter**: How
 running time changes with input size $n$
