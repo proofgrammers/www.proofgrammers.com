@@ -2,6 +2,60 @@
 
 ## Week Eleven Slides: Chapter Ten Complexity Theory (November 6, 2025)
 
+### Week Eleven Slides Layout Improvements (November 7, 2025)
+
+- [X] Removed all `.boxed-content` styling from slides (approximately 15
+instances) to improve readability and reduce visual clutter at bottom of
+slides
+- [X] Converted boxed content blocks to clean `.fragment .fade` bullet point
+lists with consistent formatting
+- [X] Shortened 12 overly long slide titles that were crunching content
+together, ensuring single-line display at 1920x1080 presentation resolution
+- [X] Specific title improvements:
+    - "Complexity matters greatly! Efficient algorithms enable progress!" →
+    "Why complexity matters"
+    - "Review: Finite automata recognize patterns efficiently" → "Review:
+    Pattern recognition efficiency"
+    - "Exponential growth overwhelms polynomial growth" → "Exponential versus
+    polynomial growth"
+    - "Analyzing linear-time string search" → "Linear-time string search"
+    - "Exact versus asymptotic running time" → "Exact versus asymptotic time"
+    - "Python running time: Use known operation costs" → "Python operation
+    costs"
+    - "A deceptive program: Constant time?" → "Deceptive program analysis"
+    - "The crucial distinction: Size vs value" → "Size versus value
+    distinction"
+    - "Specific examples of size versus value" → "Size versus value examples"
+    - "Arithmetic operations are not constant time!" → "Arithmetic operation
+    complexity"
+    - "Computational models and polynomial equivalence" → "Model equivalence"
+    - "Complexity classes: Tractable vs intractable" → "Tractable versus
+    intractable"
+- [X] Rendered slides successfully with `quarto render
+slides/weekeleven/index.qmd`
+- [X] Launched preview server at port 8081 for visual verification
+- [X] Verified improved layout with better content distribution and no bottom
+crunching
+- [X] Maintained all technical content integrity while improving presentation
+quality
+- [X] Preserved iconify icons, mathematical notation, and fragment animations
+- [X] Confirmed consistent font sizing (0.875em for most content) throughout
+slides
+
+**Rationale for Layout Changes**:
+
+- `.boxed-content` styling created visual emphasis that made bottom content
+harder to read by adding borders, background colors, and padding that
+competed with slide content
+- Long slide titles forced content to compress into smaller vertical space,
+reducing readability and creating cramped layouts
+- Bullet point lists provide cleaner visual hierarchy without decorative
+boxing
+- Single-line titles maximize vertical space for actual content while
+maintaining descriptive accuracy
+- Changes align with presentation standards specified in AGENTS.md
+verification guidelines
+
 ### Implement New Slides for Chapter Ten, "Complexity Theory: When Efficiency Does Matter"
 
 - [X] Review content from book in `What-Can-Be-Computed.pdf` and
