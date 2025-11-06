@@ -2,6 +2,32 @@
 
 ## Week Eleven Slides: Chapter Ten Complexity Theory (November 6, 2025)
 
+### Week Eleven Slides Signposting Improvements (November 7, 2025)
+
+- [X] Added signposting content to 5 level-1 header slides following Week
+10 model
+- [X] Each signposting slide now includes 4 incremental bullet points
+previewing upcoming section content
+- [X] Added boxed-content summary at bottom of each signposting slide with
+key takeaway message
+- [X] Signposting slides transformed:
+    - "Asymptotic running time" (line 127): Growth rates, asymptotic
+    analysis, polynomial vs exponential, Big-O notation
+    - "Big-O notation" (line 180): Upper bounds, dominant terms, standard
+    language, common mistakes
+    - "Running time analysis" (line 267): Python examples, loop analysis,
+    string operations, TM analysis
+    - "Input size versus input value" (line 361): Size vs value
+    distinction, arithmetic costs, exponential trap, cryptography
+    - "Complexity classes" (line 443): Model equivalence, organizing
+    problems, Poly vs Expo, P vs NP
+- [X] All signposting content uses appropriate iconify icons for visual
+interest
+- [X] Font sizing set to 0.9em for bullet points, 0.8em for boxed content
+- [X] Boxed content fits nicely on page without overflow
+- [X] Rendered slides successfully to verify layout
+- [X] Maintained 80-character line width throughout
+
 ### Week Eleven Slides Layout Improvements (November 7, 2025)
 
 - [X] Removed all `.boxed-content` styling from slides (approximately 15
