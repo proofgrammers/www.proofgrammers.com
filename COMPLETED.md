@@ -1,5 +1,41 @@
 # Completed for Proofgrammers
 
+## Week Eleven Slides: Chapter Ten Complexity Theory (November 6, 2025)
+
+### Implement New Slides for Chapter Ten, "Complexity Theory: When Efficiency Does Matter"
+
+- [X] Review content from book in `What-Can-Be-Computed.pdf` and
+`What-Can-Be-Computed.md` focusing on Chapter 10 complexity theory concepts
+- [X] Review slides from book in QMD file at
+`theoreticalmachines/wcbc-slides/10-complexity-theory-basics.qmd`
+- [X] Access images from `theoreticalmachines/wcbc-slides/img/` directory
+(24 images: 10-complexity-theory-basics_0.png through _23.png)
+- [X] Review source code from `theoreticalmachines/wcbc-code/` for
+complexity examples
+- [X] Build upon template file at `slides/weekeleven/index.qmd` with
+pre-existing title and review slides
+- [X] Create comprehensive slide deck for Week Eleven covering Chapter Ten
+concepts
+- [X] Explain only concepts directly connected to Chapter Ten (asymptotic
+analysis, Big-O notation, complexity classes, polynomial vs exponential time)
+- [X] Review all prior slide decks (weeks one through ten) to ensure
+consistent formatting and layout
+- [X] Integrate 24 images from author's slides showing growth rates, Big-O
+definitions, and complexity analysis
+- [X] Connect slides to "proofgrammer" theme from syllabus
+- [X] Create short, succinct, clear content suitable as starting point for
+instructor revision
+- [X] Create similar number of slides to prior decks (40+ slides total)
+- [X] Use signposting slides at subsection level to introduce major topics
+- [X] Keep structure and length consistent with prior slides
+- [X] Ensure content is accessible to undergraduate learners exploring
+complexity for first time
+- [X] Add interactive Python examples with `pyodide` blocks:
+`duplicates()`, `contains_gaga()`, `factor()`
+- [X] Render slides and verify layout meets presentation standards
+- [X] Document support and evidence in COMPLETED.md
+- [X] Move completed task from PLAN.md to COMPLETED.md with [X] markers
+
 ## Image Integration for Week Ten Slides (October 28, 2025)
 
 ### Copy Images for Finite Automata Slides (Chapter 9)
@@ -1458,6 +1494,165 @@ appropriately, fragments function correctly
 standard finite automata theory presentations
 - **80-Character Line Width**: All content maintains required line width
 for markdown formatting consistency
+
+### Week Eleven Slides for Complexity Theory (Chapter 10)
+
+**Complexity Theory Theoretical Foundation**:
+
+- **Asymptotic Running Time Analysis**: Focus on growth rates for large
+inputs rather than absolute execution time, eliminating hardware and
+implementation dependencies through Big-O notation - from WCBC Chapter 10
+- **Polynomial vs Exponential Boundary**: Fundamental distinction where
+polynomial-time algorithms ($O(n^k)$) are considered tractable while
+exponential-time algorithms ($O(2^n)$) become infeasible for large inputs
+- **Big-O Notation Formalism**: $f(n) = O(g(n))$ means constants $c$ and
+$n_0$ exist where $f(n) \leq c \cdot g(n)$ for all $n \geq n_0$,
+providing rigorous mathematical framework for comparing algorithm
+efficiency
+- **Computational Model Equivalence**: Python programs, Turing machines,
+and real computers simulate each other with only polynomial overhead,
+justifying use of Python as standard model for complexity analysis
+
+**Big-O Analysis and Dominant Terms**:
+
+- **Dominant Term Hierarchy**: Constant $O(1)$ < Logarithmic $O(\log n)$
+< Linear $O(n)$ < Quadratic $O(n^2)$ < Polynomial $O(n^k)$ < Exponential
+$O(2^n)$ < Factorial $O(n!)$
+- **Simplification Rules**: Drop constant factors ($5n^2 \rightarrow
+O(n^2)$), eliminate lower-order terms ($n^2 + 100n \rightarrow O(n^2)$),
+focus only on fastest-growing component
+- **Growth Rate Comparison Images**: Figures 10-complexity-theory-basics_0
+through _7 illustrate exponential vs polynomial growth and practical Big-O
+definitions from WCBC slides
+- **Common Big-O Mistakes**: Confusing input size $n$ (length in symbols)
+with input value $M$ (number represented), assuming arithmetic operations
+are constant time for large numbers
+
+**Running Time Analysis Examples**:
+
+- **`duplicates()` Function**: Nested loops create $O(n^2)$ quadratic time
+complexity, demonstrating how loop structure determines asymptotic
+behavior
+- **`contains_gaga()` String Search**: Single pass through input produces
+$O(n)$ linear time, illustrating efficiency advantage of simple algorithms
+- **Turing Machine Analysis**: containsGAGA TM examined step-by-step
+showing transition from exact counting to asymptotic estimates - Figures
+10-complexity-theory-basics_11-13
+- **Python Operation Costs**: Dictionary lookups $O(1)$, list operations
+$O(n)$, sorting $O(n \log n)$ - Figure 10-complexity-theory-basics_15
+
+**Input Size vs Input Value Distinction**:
+
+- **Critical Conceptual Error**: Algorithms looping $M$ times on number
+$M$ with $n$ digits actually run in $O(M) = O(2^n)$ exponential time, not
+$O(n)$ polynomial time
+- **Specific Examples**: Number 1000 has size $n=4$ digits but value
+$M=1000$; algorithm running 1000 iterations is exponential in input size -
+Figure 10-complexity-theory-basics_18-19
+- **Arithmetic Complexity**: Addition/subtraction $O(n)$, multiplication
+$O(n^2)$ using standard algorithm, division $O(n^2)$ where $n$ is digit
+count - Figures 10-complexity-theory-basics_20-21
+- **Factoring Example**: Trial division runs up to $M$ iterations on
+$n$-digit number, producing $O(M) = O(2^n)$ exponential complexity -
+underlies RSA cryptography security (Figure 10-complexity-theory-basics_22)
+
+**Complexity Classes and Tractability**:
+
+- **Complexity Class Definitions**: Const ($O(1)$), Lin ($O(n)$), Quad
+($O(n^2)$), Poly ($O(n^k)$), Expo ($O(2^n)$), PolyCheck (solution
+verifiable in polynomial time)
+- **Tractable vs Intractable**: Problems in Poly class considered
+efficiently solvable, exponential-time problems generally impractical for
+large inputs
+- **Model Independence**: Poly, Expo, PolyCheck classes robust across
+computational models (Python, TMs, real computers) due to polynomial
+simulation overhead
+- **Open Questions**: Is factoring in Poly? Does P=NP (is every PolyCheck
+problem also in Poly)? - fundamental unsolved problems in theoretical CS
+
+**Python Code Implementation and Educational Value**:
+
+- **Interactive `duplicates()` Example**: Students experiment with $O(n^2)$
+nested loop algorithm using `pyodide` blocks, observing quadratic growth
+in execution time
+- **String Search Demonstration**: `contains_gaga()` shows linear-time
+pattern matching, contrasting with quadratic-time algorithms for
+efficiency comparison
+- **Factoring Algorithm**: `factor()` function illustrates exponential
+time complexity, demonstrating why large prime factorization underlies
+modern cryptography
+- **Progressive Complexity**: Examples build from simple loop analysis
+through input size/value distinction to cryptographic applications
+
+**Connection to Advanced Theoretical Topics**:
+
+- **P vs NP Preparation**: Complexity classes (Poly, PolyCheck)
+foundation for understanding P, NP, NP-completeness in subsequent chapters
+- **Cryptography Applications**: Exponential factoring difficulty enables
+RSA public-key encryption, showing practical importance of complexity
+theory
+- **Algorithm Design Implications**: Understanding complexity guides
+choice between algorithms (quicksort vs bubble sort, binary search vs
+linear search)
+- **Computational Limits**: Distinguishes feasible from infeasible
+computation, complementing undecidability results from earlier chapters
+
+**Content Sources and Theoretical Support**:
+
+- **"What Can be Computed" Chapter 10**: Primary source for complexity
+definitions, Big-O notation, running time analysis, and complexity class
+definitions
+- **Author's Slides**: 24 images (10-complexity-theory-basics_0.png
+through _23.png) provide visual representations of growth rates, Big-O
+definitions, and arithmetic complexity
+- **Standard Complexity Theory Literature**: Definitions align with
+Sipser, Garey & Johnson presentations of polynomial vs exponential time,
+Big-O notation, and complexity classes
+- **Cryptography Research**: RSA factoring example demonstrates real-world
+applications of exponential-time hardness assumptions
+
+**Educational Methodology and Proofgrammer Integration**:
+
+- **Theory-to-Code Translation**: Students implement complexity concepts
+as executable Python programs, measuring actual running time to verify
+theoretical predictions
+- **Interactive Experimentation**: `pyodide` blocks enable testing
+algorithms on various input sizes, observing growth rate differences
+firsthand
+- **Visual Growth Comparisons**: Images showing exponential vs polynomial
+curves make abstract mathematical concepts concrete and memorable
+- **Practical Applications**: Cryptography and algorithm selection
+examples motivate theoretical complexity study with real-world
+consequences
+
+**Quality Assurance and Verification**:
+
+- **Successful Rendering**: Slides render correctly with `quarto render
+slides/weekeleven/index.qmd` producing functional HTML presentation
+- **Code Execution**: All Python examples (`duplicates()`,
+`contains_gaga()`, `factor()`) execute properly in `pyodide` blocks with
+expected output
+- **Visual Layout Standards**: Preview server verification at port 8081
+confirmed slides display properly without content overflow
+- **Line Width Compliance**: Single line exceeds 80 characters (callout
+header from template), all other content meets formatting requirements
+- **Theoretical Accuracy**: Content precisely follows WCBC Chapter 10
+learning objectives and standard complexity theory presentations
+
+**Images Used (24 total)**:
+
+- Growth rate comparison: 10-complexity-theory-basics_0.png
+- Dominant terms hierarchy: 10-complexity-theory-basics_1-4.png
+- Practical Big-O definitions: 10-complexity-theory-basics_6-7.png
+- Formal Big-O definition: 10-complexity-theory-basics_8.png
+- Turing machine analysis: 10-complexity-theory-basics_9-13.png
+- Running time definition: 10-complexity-theory-basics_14.png
+- Python operation costs: 10-complexity-theory-basics_15.png
+- Analysis exercises: 10-complexity-theory-basics_16-17.png
+- Size vs value distinction: 10-complexity-theory-basics_18-19.png
+- Arithmetic complexity: 10-complexity-theory-basics_20-21.png
+- Factoring example: 10-complexity-theory-basics_22.png
+- Computational model equivalence: 10-complexity-theory-basics_23.png
 
 ## Implement New Slides for Chapter Nine, "Finite Automata"
 
