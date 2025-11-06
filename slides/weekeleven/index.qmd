@@ -1,5 +1,5 @@
 ---
-title: "Computational Complexity Theory"
+title: "Computational Complexity"
 description: "Discover how efficiency matters"
 date: "2025-11-06"
 date-format: long
@@ -37,5 +37,489 @@ NP-Complete complexity class(es).
 - **CS-204-5**: Apply insights from theoretical proofs concerning the
 limits of either program feasibility or complexity to the implementation
 of both correct and efficient real-world Python programs.
+
+:::
+
+# Complexity matters greatly! Efficient algorithms enable progress!
+
+::: {.fragment .boxed-content style="font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} Complexity theory helps with learning
+objective **CS-204-1** and **CS-204-4**, where you distinguish tractable
+from intractable problems and classify problems by complexity class.
+**What makes some problems efficiently solvable while others require
+impractical time? How do we measure and compare algorithm efficiency?**
+
+:::
+
+## Why study computational complexity?
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+
+- {{< iconify fa6-solid clock >}} **Time matters**: Some algorithms are
+fast, others impossibly slow
+- {{< iconify fa6-solid scale-balanced >}} **Comparing efficiency**: Need
+formal methods to compare algorithms
+- {{< iconify fa6-solid chart-line >}} **Growth rates**: How does running
+time change with input size?
+- {{< iconify fa6-solid key >}} **Cryptography**: Security depends on
+computational hardness
+- {{< iconify fa6-solid microscope >}} **Question**: What problems are
+efficiently solvable?
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Complexity theory distinguishes feasible from infeasible computation**!
+While uncomputability showed absolute limits, complexity reveals
+practical limits. An exponential-time algorithm may theoretically solve a
+problem, but it's unusable for large inputs. Understanding complexity
+helps proofgrammers design efficient solutions!
+
+:::
+
+## Review: Key concepts from finite automata
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- **Finite automata**: Restricted Turing machines with limited memory
+- **DFA vs NFA**: Deterministic versus nondeterministic computation
+- **Regular languages**: Languages recognized by finite automata
+- **Regular expressions**: Compact notation for pattern matching
+- **Equivalence**: DFAs, NFAs, and regex recognize same language class
+- **Limitations**: Cannot count or maintain unbounded memory
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} **Finite automata showed
+computational restrictions**. Now we study time restrictions: how quickly
+can problems be solved?
+
+:::
+
+## Review: Finite automata recognize patterns efficiently
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- **Linear time**: DFAs process input in $O(n)$ time
+- **Single pass**: Read input once, left to right
+- **No backtracking**: Decisions made immediately
+- **Applications**: Lexical analysis, pattern matching, protocol
+verification
+- **Connection to complexity**: Automata provide efficient solutions for
+restricted problems
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Automata theory connects to complexity theory**! Finite automata solve
+their problems efficiently (linear time). Now we ask: which problems need
+more time? How much more?
+
+:::
+
+# Asymptotic running time
+
+## Understanding algorithm efficiency
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+
+- {{< iconify fa6-solid stopwatch >}} **Absolute time**: Depends on
+hardware, language, implementation
+- {{< iconify fa6-solid chart-line >}} **Growth rate**: How time changes
+with input size $n$
+- {{< iconify fa6-solid microscope >}} **Asymptotic analysis**: Focus on
+behavior for large $n$
+- {{< iconify fa6-solid balance-scale >}} **Comparing algorithms**:
+Growth rate matters more than constants
+- {{< iconify fa6-solid rocket >}} **Question**: How to formalize growth
+rates?
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Asymptotic analysis ignores constant factors and focuses on growth**!
+An algorithm taking $100n$ steps is fundamentally faster than one taking
+$n^2$ steps for large $n$. This approach enables meaningful comparisons
+across different machines and implementations.
+
+:::
+
+## The vast gulf between growth rates
+
+![Growth rate comparison](10-complexity-theory-basics_0.png)
+
+## Exponential growth overwhelms polynomial growth
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **Polynomial time**: $n$, $n^2$, $n^3$, $n^{100}$ (tractable)
+- **Exponential time**: $2^n$, $3^n$, $n!$ (intractable for large $n$)
+- **Key insight**: Polynomial is feasible, exponential is not
+- **Example**: $2^{100} \approx 10^{30}$ versus $100^2 = 10,000$
+- **Cryptography**: Security relies on exponential-time attacks
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} **The polynomial/exponential
+boundary defines tractability**! Problems solvable in polynomial time are
+considered efficiently computable, while exponential-time problems are
+generally impractical.
+
+:::
+
+# Big-O notation
+
+## Formalizing asymptotic growth
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+
+- {{< iconify fa6-solid function >}} **Big-O notation**: Upper bound on
+growth rate
+- {{< iconify fa6-solid filter >}} **Dominant terms**: Keep fastest
+growing term
+- {{< iconify fa6-solid times >}} **Drop constants**: $5n^2$ becomes
+$O(n^2)$
+- {{< iconify fa6-solid trash >}} **Drop lower terms**: $n^2 + 100n$
+becomes $O(n^2)$
+- {{< iconify fa6-solid microscope >}} **Question**: How to identify
+dominant terms?
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Big-O provides a standard language for discussing efficiency**! It lets
+proofgrammers communicate about algorithm performance without worrying
+about implementation details or hardware differences.
+
+:::
+
+## Ordered list of dominant terms
+
+![Dominant terms ordering](10-complexity-theory-basics_1.png)
+
+## Understanding dominant term hierarchy
+
+![Common complexity classes](10-complexity-theory-basics_2.png)
+
+## Examples of simplifying to dominant terms
+
+![Dominant term examples](10-complexity-theory-basics_4.png)
+
+## Practical definition of Big-O notation
+
+![Practical Big-O definition](10-complexity-theory-basics_6.png)
+
+## Practical Big-O: Ignore constants and lower terms
+
+![Practical Big-O examples](10-complexity-theory-basics_7.png)
+
+## Formal definition of Big-O notation
+
+![Formal Big-O definition](10-complexity-theory-basics_8.png)
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Formal definition**: $f(n) = O(g(n))$ means there exist constants $c$
+and $n_0$ such that $f(n) \leq c \cdot g(n)$ for all $n \geq n_0$. This
+captures the intuition that $f$ grows no faster than $g$ (up to constant
+factors).
+
+:::
+
+## Two common Big-O mistakes
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+
+- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 1**: Confusing
+input size with input value
+    - Input size $n$ is length in symbols
+    - Input value $M$ is the number represented
+    - Example: Number 1000 has size $n=4$ but value $M=1000$
+- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 2**: Assuming
+all operations are constant time
+    - Arithmetic on large numbers is not $O(1)$
+    - Multiplication is $O(n^2)$, division is $O(n^2)$
+    - Addition and subtraction are $O(n)$
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} **These mistakes lead to incorrect
+complexity analysis**! Always distinguish input size from value, and
+remember that arithmetic complexity depends on number size.
+
+:::
+
+# Running time analysis
+
+## Analyzing a simple nested loop
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 18
+from typing import List
+def duplicates(input_list: List[int]) -> bool:
+    """Determine if the list contains a duplicate value."""
+    n = len(input_list)
+    for i in range(n):
+        for j in range(n):
+            if i != j and input_list[i] == input_list[j]:
+                return True
+    return False
+
+# test cases
+assert(duplicates([1,2,6,3,4,5,6,7,8]))
+assert(not duplicates([1,2,3,4]))
+print(f"duplicates([1,2,6,3,4,5,6,7,8]) = {duplicates([1,2,6,3,4,5,6,7,8])}")
+print(f"duplicates([1,2,3,4]) = {duplicates([1,2,3,4])}")
+```
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Analysis**: Outer loop runs $n$ times, inner loop runs $n$ times.
+Comparison is $O(1)$. Total: $O(n \times n) = O(n^2)$ quadratic time.
+
+:::
+
+## Analyzing linear-time string search
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 16
+def contains_gaga(s: str) -> str:
+    """Check if string contains 'GAGA' as substring."""
+    if 'GAGA' in s:
+        return 'yes'
+    else:
+        return 'no'
+
+# test cases
+print(f"contains_gaga('GAGAGA') = {contains_gaga('GAGAGA')}")
+print(f"contains_gaga('HELLO') = {contains_gaga('HELLO')}")
+print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
+```
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Analysis**: String search examines each position once. For input length
+$n$: $O(n)$ linear time. Much faster than $O(n^2)$ for large inputs!
+
+:::
+
+## Turing machine running time analysis
+
+![containsGAGA Turing machine](10-complexity-theory-basics_11.png)
+
+## Exact versus asymptotic running time
+
+![Exact running time calculation](10-complexity-theory-basics_13.png)
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Calculating exact running times is tedious and unnecessary**! Instead,
+use asymptotic estimates with Big-O notation. Focus on dominant terms and
+growth rates rather than exact step counts.
+
+:::
+
+## Formal definition of running time
+
+![Running time definition](10-complexity-theory-basics_14.png)
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Key points**: Maximum over all inputs of given length (worst case).
+"Computational step" means single CPU instruction for Python or single
+transition for Turing machines.
+
+:::
+
+## Python running time: Use known operation costs
+
+![Python operation costs](10-complexity-theory-basics_15.png)
+
+## Exercise: Analyze this Python program
+
+![Python analysis exercise](10-complexity-theory-basics_16.png)
+
+# Input size versus input value
+
+## A deceptive program: Constant time?
+
+![Trick question program](10-complexity-theory-basics_17.png)
+
+## The crucial distinction: Size vs value
+
+![Input size versus value](10-complexity-theory-basics_18.png)
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Critical insight**: Input size $n$ is the length of the input in
+symbols. Input value $M$ is the number represented. The loop runs $M$
+times, not $n$ times. This is exponential in $n$!
+
+:::
+
+## Specific examples of size versus value
+
+![Size vs value examples](10-complexity-theory-basics_19.png)
+
+## Arithmetic operations are not constant time!
+
+![Arithmetic complexity](10-complexity-theory-basics_20.png)
+
+## Arithmetic operation complexities
+
+![Arithmetic operation costs](10-complexity-theory-basics_21.png)
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Addition/subtraction**: $O(n)$ where $n$ is number of digits.
+**Multiplication**: $O(n^2)$ using standard algorithm.
+**Division**: $O(n^2)$. These costs matter when analyzing algorithms on
+large numbers!
+
+:::
+
+## Factoring: An exponential-time problem
+
+![Factoring algorithm](10-complexity-theory-basics_22.png)
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Factoring complexity**: Loop runs up to $M$ iterations. Input size is
+$n = \log M$ digits. Time complexity: $O(M) = O(2^n)$ exponential! This
+exponential difficulty underlies RSA cryptography security.
+
+:::
+
+## Factoring example with Python
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 20
+def factor(N: int) -> str:
+    """Find smallest factor of N greater than 1."""
+    for i in range(2, N):
+        if N % i == 0:
+            return str(i)
+    return str(N)
+
+# test small numbers (fast)
+print(f"factor(15) = {factor(15)}")
+print(f"factor(91) = {factor(91)}")
+print(f"factor(17) = {factor(17)}")
+
+# larger numbers take exponentially longer!
+# try factor(1000000007) - takes very long time
+```
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Observe**: Small inputs are fast. But doubling the number of digits
+roughly squares the time! This exponential growth makes factoring large
+numbers infeasible.
+
+:::
+
+# Complexity classes
+
+## Computational models and polynomial equivalence
+
+![Computational model equivalence](10-complexity-theory-basics_23.png)
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Key result**: Classical models (Turing machines, Python, real
+computers) simulate each other with only polynomial overhead. From now
+on, we use Python programs as our standard model. Equivalent to
+random-access TM and real computers up to polynomial factors.
+
+:::
+
+## Defining complexity classes
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **Complexity class**: Collection of problems sharing complexity
+properties
+- **Const**: Problems solvable in constant time $O(1)$
+- **Lin**: Problems solvable in linear time $O(n)$
+- **Quad**: Problems solvable in quadratic time $O(n^2)$
+- **Poly**: Problems solvable in polynomial time $O(n^k)$
+- **Expo**: Problems solvable in exponential time $O(2^n)$
+- **PolyCheck**: Problems whose solutions are verifiable in polynomial
+time
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Focus on Poly, Expo, and PolyCheck**: These classes are
+model-independent and capture fundamental distinctions. Later chapters
+explore P, NP, and NP-completeness in depth!
+
+:::
+
+## Complexity classes: Tractable vs intractable
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **Tractable**: Problems in **Poly** (polynomial time)
+    - Examples: Sorting, searching, graph connectivity
+    - Feasible for large inputs
+- **Intractable**: Problems requiring exponential time
+    - Examples: Factoring (no known polynomial algorithm)
+    - Infeasible for large inputs
+- **Open questions**: Many problems have unknown complexity
+    - Is factoring in Poly?
+    - Is every problem in PolyCheck also in Poly? (P vs NP!)
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+{{< iconify fa6-solid lightbulb >}} **The polynomial/exponential boundary
+is crucial**! Understanding which side a problem falls on determines
+whether it's practically solvable. Proofgrammers must recognize this
+distinction!
+
+:::
+
+## Key insights for proofgrammers
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid check-circle >}} **Big-O notation**: Standard
+language for algorithm efficiency
+- {{< iconify fa6-solid check-circle >}} **Asymptotic analysis**: Focus
+on growth rates, not constants
+- {{< iconify fa6-solid check-circle >}} **Input size vs value**:
+Critical distinction for correctness
+- {{< iconify fa6-solid check-circle >}} **Arithmetic costs**: Not
+constant time for large numbers
+- {{< iconify fa6-solid check-circle >}} **Complexity classes**: Organize
+problems by resource requirements
+- {{< iconify fa6-solid check-circle >}} **Practical impact**:
+Exponential algorithms are infeasible
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Complexity theory provides essential tools for algorithm design**!
+Understanding these concepts helps proofgrammers write efficient programs
+and recognize when problems are inherently difficult. Next: P, NP, and
+NP-completeness!
 
 :::
