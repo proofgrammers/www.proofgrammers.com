@@ -113,9 +113,46 @@ restricted problems. So, how else can restriction prove beneficial?
 
 ::: {.fragment .boxed-content .fade style="font-size: 0.825em;"}
 
-- **Automata theory connects to complexity theory**
-- Finite automata solve their problems efficiently (i.e., linear time)
+- **Automata theory connects to and motivates complexity theory**
+- Finite automata solve their problems efficiently (i.e., in linear time)
 - Now we ask: which problems need more time? How much more?
+
+:::
+
+## Algorithm efficiency challenges 
+
+::: {.columns style="margin-top: 1.25em;"}
+
+::: {.fragment .column .fade style="margin-top: 0.25em;"}
+
+### Different Inputs
+
+- Varying sizes of input data
+- Different types of data
+- Degrees of sortedness
+- Degrees of duplication
+- Different data distributions
+
+:::
+
+::: {.fragment .column style="margin-top: 0.25em;"}
+
+### Different Computers
+
+- Diverse hardware setups
+- Varying system performance
+- Diverse system building
+- Different operating systems
+- Variation in system load
+
+:::
+
+:::
+
+::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
+
+**Ultimate goal**: rigorous analytical evaluation method that yields actionable
+insights that supports *understanding* and *prediction*
 
 :::
 
@@ -127,7 +164,7 @@ restricted problems. So, how else can restriction prove beneficial?
 running time changes with input size $n$
 - {{< iconify fa6-solid microscope >}} **Asymptotic analysis**: Focus on
 behavior for large $n$, ignore constants
-- {{< iconify fa6-solid balance-scale >}} **Polynomial vs exponential**:
+- {{< iconify fa6-solid scale-balanced >}} **Polynomial vs exponential**:
 Fundamental distinction for tractability
 - {{< iconify fa6-solid rocket >}} **Big-O notation**: Formalize and
 compare algorithm efficiency
@@ -144,27 +181,27 @@ Asymptotic analysis lets proofgrammers compare algorithms meaningfully!
 
 ## Understanding algorithm efficiency
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid stopwatch >}} **Absolute time**: Depends on
-hardware, language, implementation
-- {{< iconify fa6-solid chart-line >}} **Growth rate**: How time changes
-with input size $n$
+- {{< iconify fa6-solid stopwatch >}} **Absolute time**: Depends on hardware,
+language, implementation
+- {{< iconify fa6-solid chart-line >}} **Growth rate**: How time changes with
+input size $n$
 - {{< iconify fa6-solid microscope >}} **Asymptotic analysis**: Focus on
 behavior for large $n$
-- {{< iconify fa6-solid balance-scale >}} **Comparing algorithms**:
-Growth rate matters more than constants
-- {{< iconify fa6-solid rocket >}} **Question**: How to formalize growth
-rates?
+- {{< iconify fa6-solid scale-balanced >}} **Comparing algorithms**: Growth rate
+matters more than constants
+- {{< iconify fa6-solid rocket >}} **Question**: How to effectively formalize
+growth rates?
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.85em;"}
 
 - **Asymptotic analysis ignores constant factors and focuses on growth**
-- Algorithm taking $100n$ steps is fundamentally faster than $n^2$ for
-large $n$
-- Enables meaningful comparisons across machines and implementations
+- Since absolute time varies by hardware and implementation, focus on worst-case
+time complexity to enable meaningful comparisons across machines and
+implementations. **Okay, let's dive into growth rates**!
 
 :::
 
