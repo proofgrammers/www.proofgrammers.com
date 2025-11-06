@@ -496,7 +496,7 @@ discussion of the `MCopiesOfC.py` program for more details!
 ::: fragment
 
 - Start with an empty list and append character 'C' $M$ times
-- This program as a whole requires $O(M)$ time, or not?
+- This program as a whole requires $O(M)$ time, ... or not?
 - Actually, the running time is $O(10^n)$ in input size $n$!
 
 :::
