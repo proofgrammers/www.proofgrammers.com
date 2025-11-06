@@ -1,7 +1,7 @@
 ---
 title: "Computational Complexity"
 description: "Discover how efficiency matters"
-date: "2025-11-06"
+date: "2025-11-03"
 date-format: long
 author: Gregory M. Kapfhammer
 execute:
@@ -205,11 +205,18 @@ implementations. **Okay, let's dive into growth rates**!
 
 :::
 
-## The vast gulf between growth rates
+## Vast gulf between growth rates
 
 ![Growth rate comparison](10-complexity-theory-basics_0.png)
 
-## Exponential versus polynomial growth
+::: fragment
+
+- **Insight**: Wow, these growth rates differ dramatically!
+- **Insight**: Polynomial growth is feasible, exponential is not!
+
+:::
+
+## Exponential versus polynomial
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
@@ -221,16 +228,15 @@ implementations. **Okay, let's dive into growth rates**!
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.825em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **The polynomial/exponential
-boundary defines tractability**
+- **The polynomial/exponential boundary defines tractability**
 - Polynomial-time problems are considered efficiently computable
-- Exponential-time problems are generally impractical
+- Exponential-time problems are generally computationally impractical
 
 :::
 
-# Big-O notation
+# Grasp the Big-O notation
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
