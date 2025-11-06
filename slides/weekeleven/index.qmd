@@ -330,11 +330,11 @@ print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 
 ![Exact running time calculation](10-complexity-theory-basics_13.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Calculating exact running times is tedious and unnecessary**! Instead,
-use asymptotic estimates with Big-O notation. Focus on dominant terms and
-growth rates rather than exact step counts.
+- **Calculating exact running times is tedious and unnecessary**
+- Instead, use asymptotic estimates with Big-O notation
+- Focus on dominant terms and growth rates rather than exact step counts
 
 :::
 
@@ -342,15 +342,15 @@ growth rates rather than exact step counts.
 
 ![Running time definition](10-complexity-theory-basics_14.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Key points**: Maximum over all inputs of given length (worst case).
-"Computational step" means single CPU instruction for Python or single
-transition for Turing machines.
+- **Key points**: Maximum over all inputs of given length (worst case)
+- "Computational step" means single CPU instruction for Python
+- Or single transition for Turing machines
 
 :::
 
-## Python running time: Use known operation costs
+## Python operation costs
 
 ![Python operation costs](10-complexity-theory-basics_15.png)
 
@@ -360,27 +360,28 @@ transition for Turing machines.
 
 # Input size versus input value
 
-## A deceptive program: Constant time?
+## Deceptive program analysis
 
 ![Trick question program](10-complexity-theory-basics_17.png)
 
-## The crucial distinction: Size vs value
+## Size versus value distinction
 
 ![Input size versus value](10-complexity-theory-basics_18.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Critical insight**: Input size $n$ is the length of the input in
-symbols. Input value $M$ is the number represented. The loop runs $M$
-times, not $n$ times. This is exponential in $n$!
+- **Critical insight**: Input size $n$ is length of input in symbols
+- Input value $M$ is the number represented
+- The loop runs $M$ times, not $n$ times
+- This is exponential in $n$!
 
 :::
 
-## Specific examples of size versus value
+## Size versus value examples
 
 ![Size vs value examples](10-complexity-theory-basics_19.png)
 
-## Arithmetic operations are not constant time!
+## Arithmetic operation complexity
 
 ![Arithmetic complexity](10-complexity-theory-basics_20.png)
 
@@ -388,12 +389,12 @@ times, not $n$ times. This is exponential in $n$!
 
 ![Arithmetic operation costs](10-complexity-theory-basics_21.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Addition/subtraction**: $O(n)$ where $n$ is number of digits.
-**Multiplication**: $O(n^2)$ using standard algorithm.
-**Division**: $O(n^2)$. These costs matter when analyzing algorithms on
-large numbers!
+- **Addition/subtraction**: $O(n)$ where $n$ is number of digits
+- **Multiplication**: $O(n^2)$ using standard algorithm
+- **Division**: $O(n^2)$
+- These costs matter when analyzing algorithms on large numbers
 
 :::
 
@@ -401,11 +402,12 @@ large numbers!
 
 ![Factoring algorithm](10-complexity-theory-basics_22.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Factoring complexity**: Loop runs up to $M$ iterations. Input size is
-$n = \log M$ digits. Time complexity: $O(M) = O(2^n)$ exponential! This
-exponential difficulty underlies RSA cryptography security.
+- **Factoring complexity**: Loop runs up to $M$ iterations
+- Input size is $n = \log M$ digits
+- Time complexity: $O(M) = O(2^n)$ exponential
+- This exponential difficulty underlies RSA cryptography security
 
 :::
 
@@ -430,26 +432,28 @@ print(f"factor(17) = {factor(17)}")
 # try factor(1000000007) - takes very long time
 ```
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Observe**: Small inputs are fast. But doubling the number of digits
-roughly squares the time! This exponential growth makes factoring large
-numbers infeasible.
+- **Observe**: Small inputs are fast
+- But doubling the number of digits roughly squares the time
+- This exponential growth makes factoring large numbers infeasible
 
 :::
 
 # Complexity classes
 
-## Computational models and polynomial equivalence
+## Model equivalence
 
 ![Computational model equivalence](10-complexity-theory-basics_23.png)
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Key result**: Classical models (Turing machines, Python, real
-computers) simulate each other with only polynomial overhead. From now
-on, we use Python programs as our standard model. Equivalent to
-random-access TM and real computers up to polynomial factors.
+- **Key result**: Classical models simulate each other with only
+polynomial overhead
+- Turing machines, Python, and real computers are equivalent
+- From now on, we use Python programs as our standard model
+- Equivalent to random-access TM and real computers up to polynomial
+factors
 
 :::
 
@@ -469,15 +473,16 @@ time
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Focus on Poly, Expo, and PolyCheck**: These classes are
-model-independent and capture fundamental distinctions. Later chapters
-explore P, NP, and NP-completeness in depth!
+- **Focus on Poly, Expo, and PolyCheck**: These classes are
+model-independent
+- They capture fundamental distinctions
+- Later chapters explore P, NP, and NP-completeness in depth
 
 :::
 
-## Complexity classes: Tractable vs intractable
+## Tractable versus intractable
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
@@ -493,12 +498,13 @@ explore P, NP, and NP-completeness in depth!
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-{{< iconify fa6-solid lightbulb >}} **The polynomial/exponential boundary
-is crucial**! Understanding which side a problem falls on determines
-whether it's practically solvable. Proofgrammers must recognize this
-distinction!
+- {{< iconify fa6-solid lightbulb >}} **The polynomial/exponential
+boundary is crucial**
+- Understanding which side a problem falls on determines practical
+solvability
+- Proofgrammers must recognize this distinction
 
 :::
 
@@ -521,11 +527,12 @@ Exponential algorithms are infeasible
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade style="font-size: 0.875em;"}
 
-**Complexity theory provides essential tools for algorithm design**!
-Understanding these concepts helps proofgrammers write efficient programs
-and recognize when problems are inherently difficult. Next: P, NP, and
-NP-completeness!
+- **Complexity theory provides essential tools for algorithm design**
+- Understanding these concepts helps proofgrammers write efficient
+programs
+- Recognize when problems are inherently difficult
+- Next: P, NP, and NP-completeness
 
 :::
