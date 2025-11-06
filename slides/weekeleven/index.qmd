@@ -276,7 +276,7 @@ dominant terms?
 
 :::
 
-::: {.fragment .boxed-content .fade style="font-size: 0.85em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.815em;"}
 
 - **Big-O provides a standard language for discussing efficiency**
 - Lets proofgrammers communicate about algorithm performance
@@ -285,15 +285,11 @@ focus is on growth rates of functions describing algorithms!
 
 :::
 
-## Ordered list of dominant terms
-
-![Dominant terms ordering](10-complexity-theory-basics_1.png)
-
-## Understanding dominant term hierarchy
+## Dominant term hierarchy
 
 ![Common complexity classes](10-complexity-theory-basics_2.png)
 
-## Examples of simplifying to dominant terms
+## Simplifying to dominant terms
 
 ![Dominant term examples](10-complexity-theory-basics_4.png)
 
