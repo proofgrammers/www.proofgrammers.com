@@ -289,9 +289,24 @@ focus is on growth rates of functions describing algorithms!
 
 ![Common complexity classes](10-complexity-theory-basics_2.png)
 
+::: {.fragment .fade-right style="font-size: 0.825em;"}
+
+- Dominant terms define the growth rates, with many easy to compare
+- Form a hierarchy based on "common-sense rules" about growth rates
+
+:::
+
 ## Simplifying to dominant terms
 
 ![Dominant term examples](10-complexity-theory-basics_4.png)
+
+::: fragment
+
+- For a function $f(n)$, define the dominant term as $DT(f)$
+- The $DT$ captures the "fastest growing part" of $f(n)$
+- Makes growth rates more clear, can see algorithm efficiency
+
+:::
 
 ## Practical definition of Big-O notation
 
