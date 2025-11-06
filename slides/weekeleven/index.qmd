@@ -126,6 +126,27 @@ restricted problems
 
 # Asymptotic running time
 
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid chart-line >}} **Growth rates matter**: How
+running time changes with input size $n$
+- {{< iconify fa6-solid microscope >}} **Asymptotic analysis**: Focus on
+behavior for large $n$, ignore constants
+- {{< iconify fa6-solid balance-scale >}} **Polynomial vs exponential**:
+Fundamental distinction for tractability
+- {{< iconify fa6-solid rocket >}} **Big-O notation**: Formalize and
+compare algorithm efficiency
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Understanding growth rates is crucial**: an algorithm taking $100n$
+steps is fundamentally faster than one taking $n^2$ steps for large $n$.
+Asymptotic analysis lets proofgrammers compare algorithms meaningfully!
+
+:::
+
 ## Understanding algorithm efficiency
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
@@ -178,6 +199,27 @@ boundary defines tractability**
 :::
 
 # Big-O notation
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid function >}} **Upper bound**: Big-O provides a
+formal upper bound on growth rate
+- {{< iconify fa6-solid filter >}} **Dominant terms**: Keep only the
+fastest growing term, drop constants
+- {{< iconify fa6-solid graduation-cap >}} **Standard language**: Common
+notation for discussing algorithm efficiency
+- {{< iconify fa6-solid exclamation-triangle >}} **Common mistakes**:
+Input size vs value, arithmetic operation costs
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Big-O notation standardizes efficiency discussions**: $5n^2 + 100n$
+becomes $O(n^2)$ because we focus on dominant terms and ignore constants.
+This enables meaningful comparisons across implementations and machines!
+
+:::
 
 ## Formalizing asymptotic growth
 
@@ -265,6 +307,27 @@ complexity analysis**
 :::
 
 # Running time analysis
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid code >}} **Practical examples**: Analyze Python
+programs to determine complexity
+- {{< iconify fa6-solid repeat >}} **Loop analysis**: Nested loops often
+indicate quadratic or higher complexity
+- {{< iconify fa6-solid search >}} **String operations**: Common
+operations like substring search have linear time
+- {{< iconify fa6-solid robot >}} **Turing machines**: Formal running
+time analysis extends to theoretical models
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Running time analysis reveals algorithm efficiency**: count how many
+times the innermost operations execute as a function of input size $n$.
+This skill helps proofgrammers write faster, more scalable programs!
+
+:::
 
 ## Analyzing a simple nested loop
 
@@ -360,6 +423,27 @@ print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 
 # Input size versus input value
 
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid ruler >}} **Critical distinction**: Input size
+$n$ is length in symbols, not the number's value
+- {{< iconify fa6-solid calculator >}} **Arithmetic costs**: Operations
+on large numbers are not constant time
+- {{< iconify fa6-solid explosion >}} **Exponential trap**: Loop running
+$M$ times is exponential in $n = \log M$
+- {{< iconify fa6-solid lock >}} **Cryptography connection**: Factoring
+large numbers takes exponential time
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Don't confuse size with value**: the number 1000 has size $n=4$ digits
+but value $M=1000$. A loop running $M$ times is exponential in $n$, not
+linear. This mistake leads to incorrect complexity analysis!
+
+:::
+
 ## Deceptive program analysis
 
 ![Trick question program](10-complexity-theory-basics_17.png)
@@ -441,6 +525,27 @@ print(f"factor(17) = {factor(17)}")
 :::
 
 # Complexity classes
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+
+- {{< iconify fa6-solid equals >}} **Model equivalence**: Turing
+machines, Python, and real computers are polynomially equivalent
+- {{< iconify fa6-solid layer-group >}} **Organizing problems**:
+Complexity classes group problems by resource requirements
+- {{< iconify fa6-solid check-circle >}} **Poly vs Expo**: Tractable
+versus intractable problems
+- {{< iconify fa6-solid question >}} **Open questions**: P versus NP and
+the limits of efficient computation
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Complexity classes organize computational difficulty**: **Poly**
+contains tractable problems, **Expo** contains intractable ones. The
+polynomial/exponential boundary determines practical solvability!
+
+:::
 
 ## Model equivalence
 
