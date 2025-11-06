@@ -414,19 +414,11 @@ print(f"duplicates([1,2,6,3,4,5,6,7,8]) = {duplicates([1,2,6,3,4,5,6,7,8])}")
 print(f"duplicates([1,2,3,4]) = {duplicates([1,2,3,4])}")
 ```
 
-::: {.fragment .fade style="font-size: 0.875em;"}
-
-- **Analysis**: Outer loop runs $n$ times, inner loop runs $n$ times
-- Comparison is $O(1)$
-- Total: $O(n \times n) = O(n^2)$ quadratic time
-
-:::
-
 ## Linear-time string search
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 16
+#| max-lines: 8
 def contains_gaga(s: str) -> str:
     """Check if string contains 'GAGA' as substring."""
     if 'GAGA' in s:
@@ -443,8 +435,8 @@ print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 ::: {.fragment .fade style="font-size: 0.875em;"}
 
 - **Analysis**: String search examines each position once
-- For input length $n$: $O(n)$ linear time
-- Much faster than $O(n^2)$ for large inputs
+- For input length $n$, `contains_gaga` is $O(n)$ or linear time!
+- Importantly, it is much faster than $O(n^2)$ for large inputs!
 
 :::
 
