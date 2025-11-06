@@ -312,7 +312,7 @@ focus is on growth rates of functions describing algorithms!
 
 ![Practical Big-O definition](10-complexity-theory-basics_6.png)
 
-::: {.fragment .fade style="font-size: 0.715em;"}
+::: {.fragment .fade style="font-size: 0.7em;"}
 
 - $f(n) = 3n + 5n \times logn$, $DT(f) = n \times logn$ and $f(n) \in O(n \times logn)$
 - $g(n) = 3n \times logn^2$, $DT(g) = n \times logn^2$ and $g(n) \in O(n \times logn^2)$
@@ -334,7 +334,7 @@ focus is on growth rates of functions describing algorithms!
 - Identify the dominant term $DT(f)$
 - Express the complexity as $O(DT(f))$
 - Capture the essential growth behavior of the algorithm
-- Slow growth rates indicate efficient algorithms
+- **Remember that slow growth rates indicate efficient algorithms**!
 
 :::
 
@@ -345,7 +345,7 @@ focus is on growth rates of functions describing algorithms!
 ::: {.fragment .fade style="font-size: 0.75em;"}
 
 - $f(n) \in O(g)$ means constants $c$ and $N$ exist
-- The main constraint is $f(n) \leq c \times g(n)$ for all $n \get N$
+- The main constraint is $f(n) \leq c \times g(n)$ for all $n \geq N$
 
 :::
 
