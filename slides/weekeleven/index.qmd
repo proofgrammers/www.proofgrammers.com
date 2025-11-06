@@ -40,17 +40,15 @@ of both correct and efficient real-world Python programs.
 
 :::
 
-# Why complexity matters
+# Why computational complexity matters
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.925em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid lightbulb >}} Complexity theory helps with learning
-objectives **CS-204-1** and **CS-204-4**
+- Theory aids with learning objectives **CS-204-1** and **CS-204-4**
 - Distinguish tractable from intractable problems
-- Classify problems by complexity class
-- **Key questions**: Why are some problems efficiently solvable while
-others require impractical time?
+- Why some problems efficiently solvable while others impractical?
 - How do we measure and compare algorithm efficiency?
+- How do we classify problems by their complexity class?
 
 :::
 
