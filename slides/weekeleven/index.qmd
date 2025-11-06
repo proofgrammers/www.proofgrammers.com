@@ -387,8 +387,8 @@ time analysis extends to prior models
 
 **Running time analysis reveals algorithm efficiency**: count how many times the
 innermost operations execute as a function of input size $n$. This skill helps
-proofgrammers write faster, more scalable Python programs! For a Turing machine,
-you can count how many transitions you follow!
+proofgrammers write faster, more scalable Python programs! Or, for a Turing
+machine, you can count how many transitions you follow!
 
 :::
 
