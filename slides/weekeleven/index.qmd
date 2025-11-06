@@ -276,7 +276,7 @@ dominant terms?
 
 :::
 
-::: {.fragment .boxed-content .fade style="font-size: 0.8em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.75em;"}
 
 - **Big-O provides a standard language for discussing efficiency**
 - Lets proofgrammers communicate about algorithm performance
