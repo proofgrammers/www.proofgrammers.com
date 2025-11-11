@@ -770,8 +770,8 @@ time
 language for algorithm efficiency
 - {{< iconify fa6-solid check-circle >}} **Asymptotic analysis**: Focus
 on growth rates, not constants
-- {{< iconify fa6-solid check-circle >}} **Input size vs value**:
-Critical distinction for correctness
+- {{< iconify fa6-solid check-circle >}} **Input size versus value**:
+Critical distinction for correct analysis
 - {{< iconify fa6-solid check-circle >}} **Arithmetic costs**: Not
 constant time for large numbers
 - {{< iconify fa6-solid check-circle >}} **Complexity classes**: Organize
@@ -783,8 +783,8 @@ Exponential algorithms are infeasible
 
 ::: {.fragment .boxed-content .fade style="font-size: 0.7em;"}
 
-- **Complexity theory provides essential tools for algorithm design**
 - Understanding these concepts helps proofgrammers write efficient programs
 - Use these methods to recognize when problems are inherently difficult
+- **Complexity theory provides essential tools for algorithm design**
 
 :::
