@@ -716,7 +716,9 @@ equivalence](10-complexity-theory-basics_23.png){.sensible-size-thick-border}
 - Python programs are a good "abstraction" for Turing machines
 - Python programs are equivalent to random-access Turing machine and real
 computers up to polynomial factors
-- **With that in mind, are the other complexity classes**?
+- **With that in mind, what are the other complexity classes**?
+- {{< iconify fa6-solid rocket >}} **Let's briefly explore these classes in
+greater detail**!
 
 :::
 
