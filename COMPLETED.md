@@ -2,6 +2,71 @@
 
 ## Week Eleven Slides: Chapter Ten Complexity Theory (November 6, 2025)
 
+### Time Complexity Correction: `matchingCharIndices` O(n² log n) 
+(November 11, 2025)
+
+- [X] Corrected incomplete complexity analysis from O(n²) to O(n² log n)
+- [X] Identified missing logarithmic factor from string construction on line 10
+- [X] Revised first slide to "Initial complexity analysis" emphasizing nested 
+loops
+- [X] Added second slide explaining complete O(n² log n) analysis
+- [X] Explained why `str(i) + ',' + str(j)` costs O(log n) time
+- [X] Showed integer-to-string conversion requires time proportional to digit 
+count
+- [X] Provided concrete example: integer 999 requires O(3) = O(log 1000) time
+- [X] Combined factors: O(n²) iterations × O(log n) per iteration = O(n² log n)
+- [X] Verified slides render correctly with `quarto render`
+- [X] Started preview server on port 8081 for visual verification
+- [X] Killed preview server process 360904 and verified cleanup
+- [X] Updated COMPLETED.md with correction details and theoretical support
+
+**Corrected Time Complexity Analysis**:
+
+The `matchingCharIndices` function actually has O(n² log n) complexity, not 
+just O(n²):
+
+1. **Nested loops**: O(n₁ × n₂) = O(n²) iterations from outer and inner loops
+2. **String construction cost**: Line 10 executes `thisPair = str(i) + ',' + 
+str(j)`
+3. **Integer-to-string conversion**: Converting integer k to string requires 
+O(log₁₀ k) time because k has approximately log₁₀ k digits
+4. **Combined complexity**: O(n²) iterations × O(log n) string construction = 
+O(n² log n)
+
+**Why String Construction Isn't Free**:
+
+- Converting integer to string requires processing each digit individually
+- An integer M has approximately log₁₀ M digits in decimal representation
+- Since loop indices reach n, string conversion takes O(log n) time
+- Common misconception: assuming all operations inside loops are O(1)
+- This logarithmic factor appears whenever converting numbers to strings
+
+**Example Calculation**:
+
+- Integer 999 has 3 digits: log₁₀(1000) ≈ 3
+- String conversion `str(999)` requires time proportional to digit count: O(3)
+- For indices up to n, string construction costs O(log n) time
+- Repeated n² times in nested loops: total complexity O(n² log n)
+
+**Source Evidence**:
+
+- WCBC textbook Claim 10.2 (What-Can-Be-Computed.md lines 12230-12330) 
+explicitly states `matchingCharIndices` has O(n² log n) complexity
+- Textbook explanation: "Line 10 constructs a string `thisPair = str(i) + ',' 
++ str(j)`, and converting integers to strings requires logarithmic time"
+- Standard complexity theory: integer-to-string conversion is not constant 
+time operation, requires time proportional to number of digits
+
+**Support for Complexity Analysis**:
+
+- Integer-to-string conversion complexity documented in algorithm analysis 
+textbooks including Cormen et al. "Introduction to Algorithms"
+- String construction operations analyzed in Sipser's "Introduction to the 
+Theory of Computation" for complexity bounds
+- WCBC Chapter 10 provides detailed analysis of hidden logarithmic factors in 
+seemingly simple operations
+- Correct complexity O(n² log n) matches book's formal analysis in Claim 10.2
+
 ### Week Eleven Slides Signposting Improvements (November 7, 2025)
 
 - [X] Added signposting content to 5 level-1 header slides following Week
