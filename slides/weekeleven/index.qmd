@@ -376,21 +376,22 @@ operations are constant time
 
 - {{< iconify fa6-solid code >}} **Practical examples**: Analyze Python
 programs for complexity
-- {{< iconify fa6-solid repeat >}} **Loop analysis**: Nested loops often
-show quadratic or higher complexity
-- {{< iconify fa6-solid rocket >}} **String operations**: Common
-methods like substring search are linear time
-- {{< iconify fa6-solid robot >}} **Turing machines**: Formal running
-time analysis extends to prior models
+- {{< iconify fa6-solid repeat >}} **Loop analysis**: Nested loops often show
+quadratic or higher complexity
+- {{< iconify fa6-solid rocket >}} **String operations**: Methods like
+substring search are linear time
+- {{< iconify fa6-solid robot >}} **Turing machines**: Formal running time
+analysis extends to prior models
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Running time analysis reveals algorithm efficiency**: count how many times the
-innermost operations execute as a function of input size $n$. This skill helps
-proofgrammers write faster, more scalable Python programs! Or, for a Turing
-machine, you can count how many transitions you follow!
+**Running time analysis reveals algorithm efficiency**: count how many times
+the innermost operations execute as a function of input size $n$. This skill
+helps proofgrammers write faster, more scalable Python programs. Or, for a
+Turing machine, you can count how many transitions you follow! **In both cases,
+make sure to "count" from the perspective of the worst-case input**!
 
 :::
 
@@ -461,7 +462,7 @@ print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 
 ## Python operation costs
 
-![Python operation costs](10-complexity-theory-basics_15.png)
+![](10-complexity-theory-basics_15.png)
 
 ## Exercise: Analyze this Python program
 
