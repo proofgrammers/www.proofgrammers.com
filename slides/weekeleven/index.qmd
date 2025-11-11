@@ -678,24 +678,25 @@ print(f"factor(17) = {factor(17)}")
 
 ## Complexity classes
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
 
-- {{< iconify fa6-solid equals >}} **Model equivalence**: Turing
-machines, Python, and real computers are polynomially equivalent
-- {{< iconify fa6-solid layer-group >}} **Organizing problems**:
-Complexity classes group problems by resource requirements
-- {{< iconify fa6-solid check-circle >}} **Poly vs Expo**: Tractable
-versus intractable problems
-- {{< iconify fa6-solid question >}} **Open questions**: P versus NP and
-the limits of efficient computation
+- {{< iconify fa6-solid equals >}} **Model equivalence**: Turing machines,
+Python, and real computers are "polynomially equivalent"
+- {{< iconify fa6-solid circle-exclamation >}} **Model distinctions**: From the
+lens of complexity, Turing machines are "less efficient" than typical computer
+- {{< iconify fa6-solid layer-group >}} **Organizing problems**: After picking a
+model, complexity classes group problems by resource requirements
+- {{< iconify fa6-solid circle-check >}} **Poly versus Expo**: Tractable versus
+intractable problems
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Complexity classes organize computational difficulty**: **Poly**
-contains tractable problems, **Expo** contains intractable ones. The
-polynomial/exponential boundary determines practical solvability!
+{{< iconify fa6-solid lightbulb >}} **Complexity classes organize computational
+difficulty**: **Poly** contains the "tractable" problems, **Expo** contains
+"intractable" ones. This means that the polynomial/exponential boundary
+determines practical solvability!
 
 :::
 
