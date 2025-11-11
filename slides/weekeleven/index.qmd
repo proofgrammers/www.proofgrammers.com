@@ -568,12 +568,12 @@ iterations times $O(log n)$ per iteration = **$O(n² log n)$**
 - For a list in Python called `L` the length is `len(L)`
 - It is more difficult to understand the length of an `int`!
 - The integer 999 has 3 digits, requiring $O(log 1000) = O(3)$
-time to convert and/or process this variable as a string.
+time to convert and/or process this variable as a string
 - For input size $n$, indices can reach $n$, requiring $O(log n)$ time
-per conversion and/or processing.
+per conversion and/or processing
 - This logarithmic factor multiplies the quadratic loop structure, yielding
 $O(n² log n)$ total complexity!
-- **Not sufficient to only look at the loop structure!**
+- **Not sufficient to _only_ look at the loop structure!**
 
 :::
 
