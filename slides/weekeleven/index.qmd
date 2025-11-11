@@ -231,9 +231,10 @@ implementations. **Okay, let's dive into growth rates**!
 
 ::: {.fragment .boxed-content .fade style="font-size: 0.825em;"}
 
-- **The polynomial/exponential boundary defines tractability**
 - Polynomial-time problems are considered "efficiently computable"
 - Exponential-time problems are generally "computationally impractical"
+- {{< iconify fa6-solid rocket >}} **The polynomial/exponential
+boundary demarcates tractability**
 
 :::
 
@@ -241,14 +242,14 @@ implementations. **Okay, let's dive into growth rates**!
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid function >}} **Upper bound**: Big-O provides a formal
+- {{< iconify fa6-solid book-open >}} **Upper bound**: Big-O provides a formal
 upper bound on growth rate
 - {{< iconify fa6-solid filter >}} **Dominant terms**: Keep only the fastest
 growing term, drop constants
 - {{< iconify fa6-solid graduation-cap >}} **Standard language**: Main notation
 for discussing algorithm efficiency
 - {{< iconify fa6-solid circle-exclamation >}} **Common mistakes**: Input size
-vs value, arithmetic operation costs
+versus value, arithmetic operation costs
 
 :::
 
