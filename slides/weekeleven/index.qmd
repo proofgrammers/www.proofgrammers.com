@@ -511,7 +511,7 @@ understand how it works**!
 
 ## Initial complexity analysis of `matchingCharIndices`
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
 
 - {{< iconify fa6-solid code >}} **Function purpose**: Find matching character
 indices between two words
@@ -526,38 +526,42 @@ have equal length $\approx n/2$
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
-**The nested loops suggest O(n²) complexity**: With input `'aaa aaaaa'`, the
-function performs $3 \times 5 = 15$ iterations. However, the complete analysis
-requires examining what happens *inside* each iteration, particularly the
-string construction operations!
+{{< iconify fa6-solid lightbulb >}} **The nested loops suggest $O(n²)$
+complexity**: With input `'aaa aaaaa'`, the function performs $3 \times 5 = 15$
+iterations. While this analysis is not "wrong" per se it does not give the
+complete picture! The full analysis requires examining what happens *inside*
+each iteration, particularly the string construction operations! **Let's
+explore further**!
 
 :::
 
-## Complete analysis: Why O(n² log n)?
+## Complete analysis: Why $O(n² log n)$?
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
 
 - {{< iconify fa6-solid magnifying-glass >}} **Careful examination**: The
 nested loops are only part of the story!
 - {{< iconify fa6-solid text-width >}} **String construction cost**: Line 10
 creates `thisPair = str(i) + ',' + str(j)`
 - {{< iconify fa6-solid hashtag >}} **Integer-to-string conversion**:
-Converting integer `i` or `j` to string requires O(log n) time
+Converting integer `i` or `j` to string requires $O(log n)$ time
 - {{< iconify fa6-solid list-ol >}} **Why logarithmic?**: Number of digits in
-integer `k` is O(log₁₀ k), so `str(k)` takes O(log k) time
-- {{< iconify fa6-solid times >}} **Combined complexity**: O(n²) iterations ×
-O(log n) per iteration = **O(n² log n)**
+integer `k` is $O(log_₁₀ k)$, so `str(k)` takes $O(log k)$
+time
+- {{< iconify fa6-solid times >}} **Combined complexity**: $O(n²)$
+iterations × $O(log n)$ per iteration = **O(n² log n)**
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.85em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.65em;"}
 
 **String operations are not free**: The integer 999 has 3 digits, requiring
-O(log 1000) = O(3) time to convert to string. For input size n, indices can
-reach n, requiring O(log n) time per conversion. This logarithmic factor
-multiplies the quadratic loop structure, yielding O(n² log n) total complexity!
+$O(log 1000) = O(3)$ time to convert to string. For input
+size $n$, indices can reach $n$, requiring $O(log n)$ time per
+conversion. This logarithmic factor multiplies the quadratic loop structure,
+yielding $O(n² log n)$ total complexity!
 
 :::
 
