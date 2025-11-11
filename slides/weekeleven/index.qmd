@@ -552,16 +552,18 @@ integer `k` is $O(log_{₁₀} k)$, so `str(k)` takes $O(log k)$
 time. And, importantly, the cost of `append` is $O(1)$!
 - {{< iconify fa6-solid times >}} **Combined complexity**: $O(n²)$
 iterations times $O(log n)$ per iteration = **$O(n² log n)$**
+- **Here is the full breakdown for the line ranges in book's code**:
+    - Lines 3-5: $O(n)$
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.65em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.625em;"}
 
-**String operations are not free**: The integer 999 has 3 digits, requiring
-$O(log 1000) = O(3)$ time to convert to string. For input
-size $n$, indices can reach $n$, requiring $O(log n)$ time per
-conversion. This logarithmic factor multiplies the quadratic loop structure,
-yielding $O(n² log n)$ total complexity!
+- {{< iconify fa6-solid lightbulb >}} **String operations are not free**: The
+integer 999 has 3 digits, requiring $O(log 1000) = O(3)$ time
+to convert to string. For input size $n$, indices can reach $n$, requiring
+$O(log n)$ time per conversion. This logarithmic factor multiplies the
+quadratic loop structure, yielding $O(n² log n)$ total complexity!
 
 :::
 
