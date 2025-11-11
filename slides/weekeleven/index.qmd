@@ -344,7 +344,7 @@ focus is on growth rates of functions describing algorithms!
 
 ![Formal Big-O definition](10-complexity-theory-basics_8.png)
 
-::: {.fragment .fade style="font-size: 0.75em;"}
+::: {.fragment .fade style="font-size: 0.85em;"}
 
 - $f(n) \in O(g)$ means constants $c$ and $N$ exist
 - The main constraint is $f(n) \leq c \times g(n)$ for all $n \geq N$
@@ -355,12 +355,12 @@ focus is on growth rates of functions describing algorithms!
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 1**: Confusing input
+- {{< iconify fa6-solid circle-exclamation >}} **Mistake 1**: Confusing input
 size with input value
     - Input size $n$ is length in symbols
     - Input value $M$ is the number represented
     - Example: Number 1000 has size $n=4$ but value $M=1000$
-- {{< iconify fa6-solid exclamation-triangle >}} **Mistake 2**: Assuming all
+- {{< iconify fa6-solid circle-exclamation >}} **Mistake 2**: Assuming all
 operations are constant time
     - Arithmetic on large numbers is not $O(1)$
     - Multiplication is $O(n^2)$, division is $O(n^2)$
