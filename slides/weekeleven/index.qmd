@@ -705,16 +705,17 @@ determines practical solvability!
 ![Computational model
 equivalence](10-complexity-theory-basics_23.png){.sensible-size-thick-border} 
 
-## Grasp model equivalence
+## Classical models simulate each other with only polynomial overhead
 
 ::: {.fragment .fade style="font-size: 0.95em;"}
 
-- **Key result**: Classical models simulate each other with only
-polynomial overhead
-- Turing machines, Python, and real computers are equivalent
+- Turing machines, Python, and real computers are "equivalent"
+- However, Turing machines tend to be harder to "program"
 - From now on, we use Python programs as our standard model
-- Equivalent to random-access TM and real computers up to polynomial
-factors
+- Python programs are a good "abstraction" for Turing machines
+- Python programs are equivalent to random-access Turing machine and real
+computers up to polynomial factors
+- **With that in mind, are the other complexity classes**?
 
 :::
 
@@ -734,12 +735,11 @@ time
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.7em;"}
 
-- **Focus on Poly, Expo, and PolyCheck**: These classes are
-model-independent
-- They capture fundamental distinctions
-- Later chapters explore P, NP, and NP-completeness in depth
+- **Focus on Poly, Expo, and PolyCheck**: These classes are "model independent"
+- They capture fundamental distinctions, generalize by use of the variable $k$
+- Later chapters explore P, NP, and NP-completeness in depth!
 
 :::
 
