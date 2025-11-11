@@ -615,21 +615,22 @@ discussion of the `MCopiesOfC.py` program for more details!
 
 ## Size versus value distinction
 
-![Input size versus value](10-complexity-theory-basics_18.png)
+![Input size versus value for numbers in decimal or binary
+notation](10-complexity-theory-basics_18.png)
 
 ::: {.fragment .fade style="font-size: 0.875em;"}
 
 - **Critical insight**: Input size $n$ is length of input in symbols
-- Input value $M$ is the number represented
-- The loop runs $M$ times, not $n$ times
-- However, this is exponential in $n$!
+- Input value $M$ is the number represented in a notation
+- To be clear, the loop runs $M$ times, not $n$ times
+- However, this is exponential in $n$ when using binary notation!
 - Subtle, but important distinction for complexity analysis!
 
 :::
 
 ## Size versus value examples
 
-![Size vs value examples](10-complexity-theory-basics_19.png)
+![Size versus value examples for integers](10-complexity-theory-basics_19.png)
 
 ## Arithmetic operation complexity
 
