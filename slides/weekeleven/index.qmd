@@ -357,7 +357,7 @@ focus is on growth rates of functions describing algorithms!
 
 - {{< iconify fa6-solid circle-exclamation >}} **Mistake 1**: Confusing input
 size with input value
-    - Input size $n$ is length in symbols
+    - Input size $n$ is "length in symbols"
     - Input value $M$ is the number represented
     - Example: Number 1000 has size $n=4$ but value $M=1000$
 - {{< iconify fa6-solid circle-exclamation >}} **Mistake 2**: Assuming all
@@ -378,8 +378,8 @@ operations are constant time
 programs for complexity
 - {{< iconify fa6-solid repeat >}} **Loop analysis**: Nested loops often
 show quadratic or higher complexity
-- {{< iconify fa6-solid search >}} **String operations**: Common
-methods like substring search have linear time
+- {{< iconify fa6-solid rocket >}} **String operations**: Common
+methods like substring search are linear time
 - {{< iconify fa6-solid robot >}} **Turing machines**: Formal running
 time analysis extends to prior models
 
