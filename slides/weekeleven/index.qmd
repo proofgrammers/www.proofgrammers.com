@@ -502,6 +502,13 @@ def testMatchingCharIndices():
 testMatchingCharIndices()
 ```
 
+::: {.fragment style="font-size: 0.8em;"}
+
+- {{< iconify fa6-solid repeat >}} **Run this program with different inputs and
+understand how it works**!
+
+:::
+
 ## Initial complexity analysis of `matchingCharIndices`
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
