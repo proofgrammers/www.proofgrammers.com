@@ -395,7 +395,7 @@ make sure to "count" from the perspective of the worst-case input**!
 
 :::
 
-## Analyzing a simple nested loop
+## Analyzing a simple nested loop {transition="convex"}
 
 ```{pyodide}
 #| autorun: true
@@ -417,7 +417,7 @@ print(f"duplicates([1,2,6,3,4,5,6,7,8]) = {duplicates([1,2,6,3,4,5,6,7,8])}")
 print(f"duplicates([1,2,3,4]) = {duplicates([1,2,3,4])}")
 ```
 
-## Linear-time string search
+## Linear-time string search {transition="convex"}
 
 ```{pyodide}
 #| autorun: true
@@ -468,7 +468,7 @@ print(f"contains_gaga('XGAGAY') = {contains_gaga('XGAGAY')}")
 
 ![Python analysis exercise](10-complexity-theory-basics_16.png)
 
-## Run `matchingCharIndices`
+## Run `matchingCharIndices` {transition="convex"}
 
 ```{pyodide}
 #| autorun: true
@@ -563,17 +563,18 @@ iterations times $O(log n)$ per iteration = **$O(n² log n)$**
 
 ## String operations are not free! 
 
-::: fragment
+::: {.fragment style="margin-top: -0.5em; font-size: 0.925em;"}
 
 - For a list in Python called `L` the length is `len(L)`
 - It is more difficult to understand the length of an `int`!
 - The integer 999 has 3 digits, requiring $O(log 1000) = O(3)$
 time to convert and/or process this variable as a string
 - For input size $n$, indices can reach $n$, requiring $O(log n)$ time
-per conversion and/or processing
-- This logarithmic factor multiplies the quadratic loop structure, yielding
-$O(n² log n)$ total complexity!
-- **Not sufficient to _only_ look at the loop structure!**
+per conversion and/or processing of the string
+- Accordingly, this logarithmic factor multiplies the quadratic loop structure,
+yielding $O(n² log n)$ total complexity!
+- **Key insight: Not sufficient to _only_ look at the loop structure!**
+- **What is distinction between "size" and "value" of an input?**
 
 :::
 
