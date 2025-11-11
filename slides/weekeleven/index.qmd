@@ -633,9 +633,6 @@ notation](10-complexity-theory-basics_18.png)
 
 ![Size versus value examples for integers](10-complexity-theory-basics_19.png)
 
-## Arithmetic operation complexity
-
-![Arithmetic complexity](10-complexity-theory-basics_20.png)
 
 ## Factoring is exponential-time
 
@@ -644,9 +641,9 @@ notation](10-complexity-theory-basics_18.png)
 ::: {.fragment .fade style="font-size: 0.875em;"}
 
 - **Factoring complexity**: Loop runs up to $M$ iterations
-- Input size is $n = \log M$ digits
-- Time complexity: $O(M) = O(2^n)$ exponential
-- This exponential difficulty underlies RSA cryptography security
+- Input size is actually $n = \log M$ digits
+- Time complexity: $O(M) = O(2^n)$ or exponential in nature
+- **This exponential difficulty underlies RSA cryptography security**
 
 :::
 
@@ -676,6 +673,10 @@ print(f"factor(17) = {factor(17)}")
 :::
 
 # Aha! Time complexity is measured as a function of the length of the input, not the numerical value(s) of the input!
+
+## Arithmetic operation complexity
+
+![Arithmetic complexity](10-complexity-theory-basics_20.png)
 
 ## Complexity classes {transition="convex"} 
 
@@ -716,7 +717,8 @@ equivalence](10-complexity-theory-basics_23.png){.sensible-size-thick-border}
 - Python programs are a good "abstraction" for Turing machines
 - Python programs are equivalent to random-access Turing machine and real
 computers up to polynomial factors
-- **With that in mind, what are the other complexity classes**?
+- {{< iconify fa6-solid users-gear >}} **With that in mind, what are the other
+complexity classes**?
 - {{< iconify fa6-solid rocket >}} **Let's briefly explore these classes in
 greater detail**!
 
