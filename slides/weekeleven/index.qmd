@@ -778,12 +778,10 @@ Exponential algorithms are infeasible
 
 :::
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+::: {.fragment .boxed-content .fade style="font-size: 0.7em;"}
 
 - **Complexity theory provides essential tools for algorithm design**
-- Understanding these concepts helps proofgrammers write efficient
-programs
+- Understanding these concepts helps proofgrammers write efficient programs
 - Recognize when problems are inherently difficult
-- Next: P, NP, and NP-completeness
 
 :::
