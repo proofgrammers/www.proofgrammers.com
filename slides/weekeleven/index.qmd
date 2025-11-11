@@ -537,7 +537,7 @@ explore further**!
 
 :::
 
-## Complete analysis: Why $O(n² log n)$?
+## Wait, why is it $O(n² log n)$?
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.725em;"}
 
@@ -677,7 +677,7 @@ print(f"factor(17) = {factor(17)}")
 
 # Aha! Time complexity is measured as a function of the length of the input, not the numerical value(s) of the input!
 
-## Complexity classes
+## Complexity classes {transition="convex"} 
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
 
@@ -724,7 +724,7 @@ greater detail**!
 
 ## Defining complexity classes
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.775em;"}
 
 - **Complexity class**: Collection of problems sharing complexity
 properties
