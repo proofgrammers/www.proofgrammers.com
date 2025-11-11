@@ -760,7 +760,7 @@ time
     - Infeasible for large inputs
 - **Open questions**: Many problems have unknown complexity
     - Is factoring in Poly?
-    - Is every problem in PolyCheck also in Poly? (P vs NP!)
+    - Is every problem in PolyCheck also in Poly? (P versus NP!)
 
 :::
 
