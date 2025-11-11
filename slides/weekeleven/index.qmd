@@ -72,7 +72,7 @@ efficiently solvable?
 ::: {.fragment .boxed-content .fade style="font-size: 0.85em;"}
 
 - **Complexity distinguishes feasible from infeasible computation**
-- Complexity reveals both theoretical and practical limits
+- Computational complexity reveals theoretical and practical limits
 - Exponential algorithms may work sometimes but are often unusable!
 
 :::
@@ -115,7 +115,7 @@ restricted problems. So, how else can restriction prove beneficial?
 
 - **Automata theory connects to and motivates complexity theory**
 - Finite automata solve their problems efficiently (i.e., in linear time)
-- Now we ask: which problems need more time? How much more?
+- **Now we ask**: which problems need more time? How much more?
 
 :::
 
@@ -151,8 +151,9 @@ restricted problems. So, how else can restriction prove beneficial?
 
 ::: {.fragment .fade .boxed-content style="margin-top: -0.25em; font-size: 0.9em;"}
 
-**Ultimate goal**: rigorous analytical evaluation method that yields actionable
-insights that supports *understanding* and *prediction*
+{{< iconify fa6-solid rocket >}} **Ultimate goal**: rigorous analytical
+evaluation method that yields actionable insights that supports *understanding*
+and *prediction*
 
 :::
 
