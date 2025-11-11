@@ -529,11 +529,11 @@ have equal length $\approx n/2$
 ::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
 {{< iconify fa6-solid lightbulb >}} **The nested loops suggest $O(n²)$
-complexity**: With input `'aaa aaaaa'`, the function performs $3 \times 5 = 15$
-iterations. While this analysis is not "wrong" per se it does not give the
-complete picture! The full analysis requires examining what happens *inside*
+complexity**: With input `'aaa aaaaa'`, the function performs $3 \times
+5 = 15$ iterations. While this analysis is not "wrong" per se it does not give
+the complete picture! The full analysis requires examining what happens *inside*
 each iteration, particularly the string construction operations! **Let's
-explore further**!
+explore**!
 
 :::
 
