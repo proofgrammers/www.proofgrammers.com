@@ -257,7 +257,7 @@ versus value, arithmetic operation costs
 
 **Big-O notation standardizes efficiency discussions**: $5n^2 + 100n$
 becomes $O(n^2)$ because we focus on dominant terms and ignore constants.
-This enables meaningful comparisons across implementations and machines!
+This enables meaningful comparisons across system configurations!
 
 :::
 
