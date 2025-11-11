@@ -680,10 +680,10 @@ print(f"factor(17) = {factor(17)}")
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.95em;"}
 
-- {{< iconify fa6-solid equals >}} **Model equivalence**: Turing machines,
-Python, and real computers are "polynomially equivalent"
 - {{< iconify fa6-solid circle-exclamation >}} **Model distinctions**: From the
 lens of complexity, Turing machines are "less efficient" than typical computer
+- {{< iconify fa6-solid equals >}} **Model equivalence**: Turing machines,
+Python, and real computers are "polynomially equivalent"
 - {{< iconify fa6-solid layer-group >}} **Organizing problems**: After picking a
 model, complexity classes group problems by resource requirements
 - {{< iconify fa6-solid circle-check >}} **Poly versus Expo**: Tractable versus
