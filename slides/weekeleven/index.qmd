@@ -281,7 +281,7 @@ dominant terms?
 ::: {.fragment .boxed-content .fade style="font-size: 0.75em;"}
 
 - **Big-O provides a "standard language" for discussing efficiency**
-- Enables proofgrammers to communicate about algorithm performance
+- It enables proofgrammers to communicate about algorithm performance
 - Don't worry about implementation details or hardware differences since the
 focus is on growth rates of functions describing algorithms!
 
