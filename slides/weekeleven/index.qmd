@@ -539,19 +539,19 @@ explore further**!
 
 ## Complete analysis: Why $O(n² log n)$?
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.725em;"}
 
 - {{< iconify fa6-solid magnifying-glass >}} **Careful examination**: The
 nested loops are only part of the story!
-- {{< iconify fa6-solid text-width >}} **String construction cost**: Line 10
-creates `thisPair = str(i) + ',' + str(j)`
-- {{< iconify fa6-solid hashtag >}} **Integer-to-string conversion**:
+- {{< iconify fa6-solid text-width >}} **String construction**: Line 10
+creates `thisPair = str(i) + ',' + str(j)`. 
+- {{< iconify fa6-solid hashtag >}} **Integer-to-string**:
 Converting integer `i` or `j` to string requires $O(log n)$ time
 - {{< iconify fa6-solid list-ol >}} **Why logarithmic?**: Number of digits in
-integer `k` is $O(log_₁₀ k)$, so `str(k)` takes $O(log k)$
-time
+integer `k` is $O(log_{₁₀} k)$, so `str(k)` takes $O(log k)$
+time. And, importantly, the cost of `append` is $O(1)$!
 - {{< iconify fa6-solid times >}} **Combined complexity**: $O(n²)$
-iterations × $O(log n)$ per iteration = **O(n² log n)**
+iterations times $O(log n)$ per iteration = **$O(n² log n)$**
 
 :::
 
