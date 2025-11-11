@@ -273,15 +273,15 @@ growing term
 $O(n^2)$
 - {{< iconify fa6-solid rocket >}} **Drop lower terms**: $n^2 + 100n$
 becomes $O(n^2)$
-- {{< iconify fa6-solid microscope >}} **Question**: How to identify
+- {{< iconify fa6-solid microscope >}} **Key Question**: How to identify
 dominant terms?
 
 :::
 
 ::: {.fragment .boxed-content .fade style="font-size: 0.75em;"}
 
-- **Big-O provides a standard language for discussing efficiency**
-- Lets proofgrammers communicate about algorithm performance
+- **Big-O provides a "standard language" for discussing efficiency**
+- Enables proofgrammers to communicate about algorithm performance
 - Don't worry about implementation details or hardware differences since the
 focus is on growth rates of functions describing algorithms!
 
@@ -305,8 +305,8 @@ focus is on growth rates of functions describing algorithms!
 ::: fragment
 
 - For a function $f(n)$, define the dominant term as $DT(f)$
-- The $DT$ captures the "fastest growing part" of $f(n)$
-- Makes growth rates more clear, can see algorithm efficiency
+- The $DT(f)$ captures the "fastest growing part" of $f(n)$
+- Makes growth rates more clear, can see algorithm efficiency!
 
 :::
 
