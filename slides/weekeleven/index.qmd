@@ -702,9 +702,12 @@ determines practical solvability!
 
 ## Model equivalence
 
-![Computational model equivalence](10-complexity-theory-basics_23.png)
+![Computational model
+equivalence](10-complexity-theory-basics_23.png){.sensible-size-thick-border} 
 
-::: {.fragment .fade style="font-size: 0.875em;"}
+## Grasp model equivalence
+
+::: {.fragment .fade style="font-size: 0.95em;"}
 
 - **Key result**: Classical models simulate each other with only
 polynomial overhead
@@ -717,7 +720,7 @@ factors
 
 ## Defining complexity classes
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
 
 - **Complexity class**: Collection of problems sharing complexity
 properties
