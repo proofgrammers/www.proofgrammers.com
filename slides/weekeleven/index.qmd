@@ -707,7 +707,7 @@ determines practical solvability!
 ![Computational model
 equivalence](10-complexity-theory-basics_23.png){.sensible-size-thick-border} 
 
-## Classical models simulate each other with only polynomial overhead
+## Classical models simulate each other with "only" polynomial overhead
 
 ::: {.fragment .fade style="font-size: 0.95em;"}
 
