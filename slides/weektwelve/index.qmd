@@ -200,8 +200,8 @@ $\subseteq$ Expo
 (exponential, currently)
 - {{< iconify fa6-solid lightbulb >}} **Insight**: small problem changes yield
 dramatic complexity shifts!
-- {{< iconify fa6-solid rocket >}} **Question**: what are suitable ways to
-"tweak" problems to make them tractable?
+- {{< iconify fa6-solid rocket >}} **Question**: ways to "tweak" problems to
+make them tractable?
 
 :::
 
@@ -213,7 +213,7 @@ path" versus "shortest Hamilton cycle" crosses the Poly/Expo boundary!
 
 :::
 
-# Explore All3Sets versus AllSubsets
+# All3Sets or AllSubsets?
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
 
@@ -319,7 +319,7 @@ print(f"allSubsets('4 5 6') = '{allSubsets('4 5 6')}'")
 
 :::
 
-# Explore graph path problems
+# Graph path problems
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
 
