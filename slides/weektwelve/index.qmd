@@ -344,26 +344,26 @@ is a famous problem in Expo with no known polynomial algorithm! *At least, yet*!
 
 :::
 
-## TSP problem definition
+## Visualize an example graph
 
-![TSP specification](11-poly-and-expo_7.png){.sensible-square-thick-border}
+![](11-poly-and-expo_7.png){.sensible-square-thick-border}
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="font-size: 0.75em;"}
 
 - Find shortest Hamilton cycle in weighted graph
 - Must visit all vertices exactly once and return to start
 
 :::
 
-## ShortestPath problem definition
+## TSP problem definition
 
-![ShortestPath specification](11-poly-and-expo_5.png)
+![TSP problem specification](11-poly-and-expo_5.png)
 
 ::: {.fragment style="font-size: 0.85em;"}
 
 - Can you decode the meaning of `a,b,3` or `b,c,1`?
-- Find shortest path between two vertices in weighted graph
-- Solvable in polynomial time using Bellman-Ford algorithm
+- Focus on the connections between vertices and their weights
+- Connects to the `TSPPath` and `ShortestPath` problems
 
 :::
 
@@ -371,60 +371,63 @@ is a famous problem in Expo with no known polynomial algorithm! *At least, yet*!
 
 ![TSPPath specification](11-poly-and-expo_6.png)
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="margin-top: -0.15em; font-size: 0.75em;"}
 
-- Find shortest path visiting all vertices exactly once
-- No known polynomial algorithm for the general case
+- **Goal**: Find shortest path visiting all vertices exactly once
+- **Alarm**: No known polynomial algorithm for the general case!
+- Currently, we have a $O(n!)$ brute-force search where $n! \in O(2^{n^2})$
 
 :::
 
+## ShortestPath problem definition
 
-## Visualize TSP complexity
+![ShortestPath specification](11-poly-and-expo_8.png)
 
-![TSP example graph](11-poly-and-expo_8.png)
+::: {.fragment style="margin-top: -0.15em; font-size: 0.75em;"}
 
-::: {.fragment style="font-size: 0.875em;"}
-
-- Finding shortest Hamilton cycle requires checking many possibilities
-- No known polynomial-time algorithm for general TSP
-- **Question**: is TSP in Poly? This remains unknown!
+- When there are positive weights, solved by Dijkstra's algorithm
+- This means that it is in $O(n^2)$ time, which is polynomial!
+- **Aha, this means that ShortestPath in Poly, while TSPPath is in Expo**!
 
 :::
 
 ## Compare path and cycle
 
-![Path versus cycle visualization](11-poly-and-expo_9.png)
+![Exploring complexity class membership that is "obvious"](11-poly-and-expo_9.png){.sensible-square-thick-border}
 
-::: {.fragment style="font-size: 0.875em;"}
+# Using a similar graph data structure, two algorithms have vastly different complexity!
 
-- **ShortestPath**: efficient Bellman-Ford algorithm, $O(n^2)$
+::: {.fragment style="margin-top: -.2em; font-size: 0.875em;"}
+
+- **ShortestPath**: use Dijkstra or Bellman-Ford algorithm at $O(n^2)$
 - **TSP**: no known polynomial algorithm, requires exponential search
-- Small change in problem specification, huge complexity difference!
+- **Small change in problem specification, huge complexity difference**!
 
 :::
 
-# The boundary between Poly and Expo
+## The boundary between Poly and Expo
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid ruler-combined >}} **Subtle distinctions**: small
-problem changes dramatically alter complexity
-- {{< iconify fa6-solid cubes >}} **All3Sets vs AllSubsets**: fixed size
-vs all sizes
-- {{< iconify fa6-solid route >}} **ShortestPath vs TSP**: any path vs
+- {{< iconify fa6-solid ruler-combined >}} **Subtle difference**: small problem
+changes really alter complexity
+- {{< iconify fa6-solid cubes >}} **All3Sets versus AllSubsets**: fixed size
+versus all sizes
+- {{< iconify fa6-solid route >}} **ShortestPath versus TSP**: any path versus
 Hamilton cycle
-- {{< iconify fa6-solid microscope >}} **Key lesson**: problem
-constraints matter enormously
-- {{< iconify fa6-solid lightbulb >}} **Proofgrammer skill**: recognize
-when constraints push problems across boundary!
+- {{< iconify fa6-solid microscope >}} **Key lesson**: problem constraints
+matter enormously
+- {{< iconify fa6-solid lightbulb >}} **Proofgrammer skill**: recognize when
+constraints push problems across boundary and try to "reel them back"!
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Understanding the Poly/Expo boundary is crucial**: as proofgrammers,
-we must recognize which problem variations are tractable and which are not.
-This guides algorithm design and problem formulation!
+**Understanding the Poly/Expo boundary is crucial**: as proofgrammers, we must
+first prove a problem computable and then recognize which problem variations are
+tractable and which are not. This guides algorithm design and problem
+formulation, with small "tweaks" changing tractability!
 
 :::
 
@@ -472,8 +475,6 @@ size equals value
 
 ## HaltEx upper bound analysis
 
-![HaltEx is in Expo](11-poly-and-expo_11.png)
-
 ::: fragment
 
 - Can simulate program for $M$ steps
@@ -483,8 +484,6 @@ size equals value
 :::
 
 ## HaltEx complexity analysis
-
-![HaltEx complexity details](11-poly-and-expo_12.png)
 
 ::: {.fragment style="font-size: 0.875em;"}
 
