@@ -456,71 +456,7 @@ theoretical computer science. HaltEx is an artificial construction!
 
 :::
 
-## HaltEx problem definition
-
-![HaltEx specification](11-poly-and-expo_10.png)
-
-::: {.fragment style="font-size: 0.825em;"}
-
-- **HaltEx**: does program $P$ halt in exactly $M$ steps on input $I$?
-- **Input encoding**: number $M$ can be unary (size $M$) or binary
-(size $\log M$)
-- **Unary encoding**: $M$ represented as string of $M$ ones, input
-size equals value
-- **Binary encoding**: $M$ represented in binary, input size is $\log M$
-- **Key insight**: encoding choice dramatically affects complexity analysis!
-- Artificial problem designed to demonstrate Poly/Expo separation
-
-:::
-
-## HaltEx upper bound analysis
-
-::: fragment
-
-- Can simulate program for $M$ steps
-- Input size is $M$ (unary), so this is $O(M) = O(n)$ steps
-- Wait, that looks polynomial, not exponential! What's happening?
-
-:::
-
-## HaltEx complexity analysis
-
-::: {.fragment style="font-size: 0.875em;"}
-
-- **Critical detail**: each simulation step may take polynomial time
-- If each step is $O(n^k)$, total is $O(M \times n^k) = O(n^{k+1})$
-- This is polynomial in $n$, so actually HaltEx is in Poly!
-- **The book's example uses binary encoding to make it exponential**
-
-:::
-
-## Alternative HaltEx analysis
-
-![HaltEx with binary encoding](11-poly-and-expo_13.png)
-
-::: {.fragment style="font-size: 0.875em;"}
-
-- With binary encoding: $n = \log M$, so $M = 2^n$
-- Simulating $M$ steps requires $O(2^n)$ time
-- This is exponential in input size $n$!
-- **Encoding matters for complexity analysis**!
-
-:::
-
-## HaltEx lower bound
-
-![HaltEx not in Poly](11-poly-and-expo_14.png)
-
-::: {.fragment style="font-size: 0.875em;"}
-
-- **Proof sketch**: any correct program must simulate at least $M$ steps
-- With binary encoding, $M = 2^n$, requiring exponential time
-- Therefore, HaltEx is in Expo but not in Poly!
-- This is an artificial example, but it proves the separation exists
-
-:::
-
-# Why study Poly?
+# Why study Poly class?
 
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
 
@@ -531,7 +467,7 @@ across computational models
 - {{< iconify fa6-solid layer-group >}} **Foundation**: leads to
 NP-completeness theory
 - {{< iconify fa6-solid microscope >}} **Structure**: polynomial
-algorithms have special mathematical properties
+algorithms have special properties
 - {{< iconify fa6-solid lightbulb >}} **Caveat**: not all Poly algorithms
 practical (e.g., $O(n^{100})$)!
 
@@ -539,7 +475,7 @@ practical (e.g., $O(n^{100})$)!
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Poly is the gold standard for efficiency**: while not perfect (some
+**Poly is the gold standard for efficiency**: while not perfect (i.e., some
 polynomial algorithms are slow), Poly captures the essence of tractable
 computation. It's the foundation for understanding computational limits!
 
