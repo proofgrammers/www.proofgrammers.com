@@ -339,8 +339,19 @@ vertices" constraint changes everything!
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
 **Hamilton cycle constraint is expensive**: requiring a path to visit every
-vertex exactly once transforms a tractable problem into an intractable one.
-TSP is a famous problem in Expo with no known polynomial algorithm!
+vertex exactly once transforms a tractable problem into an intractable one. TSP
+is a famous problem in Expo with no known polynomial algorithm! *At least, yet*!
+
+:::
+
+## TSP problem definition
+
+![TSP specification](11-poly-and-expo_7.png){.sensible-square-thick-border}
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- Find shortest Hamilton cycle in weighted graph
+- Must visit all vertices exactly once and return to start
 
 :::
 
@@ -350,6 +361,7 @@ TSP is a famous problem in Expo with no known polynomial algorithm!
 
 ::: {.fragment style="font-size: 0.85em;"}
 
+- Can you decode the meaning of `a,b,3` or `b,c,1`?
 - Find shortest path between two vertices in weighted graph
 - Solvable in polynomial time using Bellman-Ford algorithm
 
@@ -362,20 +374,10 @@ TSP is a famous problem in Expo with no known polynomial algorithm!
 ::: {.fragment style="font-size: 0.85em;"}
 
 - Find shortest path visiting all vertices exactly once
-- No known polynomial algorithm for general case
+- No known polynomial algorithm for the general case
 
 :::
 
-## TSP problem definition
-
-![TSP specification](11-poly-and-expo_7.png){.sensible-size-thick-border}
-
-::: {.fragment style="font-size: 0.85em;"}
-
-- Find shortest Hamilton cycle in weighted graph
-- Must visit all vertices exactly once and return to start
-
-:::
 
 ## Visualize TSP complexity
 
