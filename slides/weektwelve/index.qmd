@@ -135,7 +135,7 @@ exponential time
 - {{< iconify fa6-solid calculator >}} **Definition**: program runs in
 $O(2^{n^k})$ for some constant $k$
 - {{< iconify fa6-solid rocket >}} **Examples**: all Poly problems, plus
-`factor`, `MCopiesOfC`
+`factor` and `MCopiesOfC`
 - {{< iconify fa6-solid clock >}} **Key insight**: exponential growth
 is infeasible for large inputs
 - {{< iconify fa6-solid microscope >}} **Contains Poly**: every
@@ -148,7 +148,7 @@ polynomial-time problem is also in Expo
 **Expo includes intractable problems**: algorithms with exponential running time
 become impractical as input grows. A problem in **Expo** but not **Poly** is
 considered computationally intractable! Wait, is there any case in which we
-would prefer an **Expo** over a **Poly** algorithm?
+would prefer an **Expo** over a **Poly** algorithm? Can you explain why?
 
 :::
 
