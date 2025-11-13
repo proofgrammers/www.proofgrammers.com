@@ -10,9 +10,12 @@ to read) and a QMD file (which is easier for you to read) in the
 `theoreticalmachines/wcbc-slides/` directory.
 - [ ] You have access to the images that were created from the slides for this
 chapter. These images may be especially important because of the fact that there
-are some diagrams of the output of a universal computer. You can include these
-images into the slides you make by finding them in the `img/` directory that is
-in the `theoreticalmachines/wcbc-slides/`
+are some diagrams like the one for the slide "Poly is a subset of Expo" that
+should _definitely_ be included in the slides that you create. You can include
+these images into the slides you make by finding them in the `img/` directory
+that is in the `theoreticalmachines/wcbc-slides/`. You have my permission to
+access this directory and to them copy images into the directory for the slides
+that you are creating to complete these tasks.
 - [ ] You have access to the source code connected to this book in the directory
 `theoreticalmachines/wcbc-code/`
 - [ ] I have created a template file for the slides in the
@@ -28,16 +31,16 @@ examples that may not run correctly unless you include all needed source code
 from the book's archive. Do not include a source code example unless it is
 self-contained and it will run directly without an extra dependencies.
 - [ ] There is source code available for you to include if you look in the
-directory that is called `theoreticalmachines/wcbc-code`. Please note that
-this is actually a symbolic link to another directory but you have my permission
-to access it and to copy files, like source code files, into the presentation's
+directory that is called `theoreticalmachines/wcbc-code`. Please note that this
+is actually a symbolic link to another directory but you have my permission to
+access it and to copy files, like source code files, into the presentation's
 index.qmd file. You do not need to ask me for permission to do this task.
 - [ ] Make sure to review all the prior slides that I have created in the
 `slides/` directory and the subdirectories for prior weeks in `weekone/` and
 `weektwo/` and `weekthree/` and `weekfour/` and `weeksix/` and `weekseven` and
 `weekeight/` to ensure that your slides are formatted and laid out just like the
-content that I have already created. There are also other directories that
-you can look at to see how I programmed these slides.
+content that I have already created. There are also other directories that you
+can look at to see how I programmed these slides.
 - [ ] Do not use slide layouts that you do not already see in these example
 slide decks.
 - [ ] Unless there is a clear motivation to do so, do you not use features of
@@ -56,9 +59,9 @@ the next key idea that is going to be explained in the next section of slides.
 I will be revising this content, essentially using it as a starting point.
 - [ ] Please follow all the rules and regulations for creating this content and
 make sure that you notify me when you have completed this task.
-- [ ] Render slides and verify layout meets presentation standards. An easy
-way for you to make sure the slides fit the required format is to use short
-titles and to follow the font sizes and layouts I have already used.
+- [ ] Render slides and verify layout meets presentation standards. An easy way
+for you to make sure the slides fit the required format is to use short titles
+and to follow the font sizes and layouts I have already used.
 - [ ] Document support and evidence in COMPLETED.md
 - [ ] Place all the completed tasks at the bottom of the COMPLETED.md file,
 exactly as they are written in this plan, making sure that I have a historical
