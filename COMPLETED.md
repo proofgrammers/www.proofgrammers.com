@@ -1799,6 +1799,216 @@ learning objectives and standard complexity theory presentations
 - Factoring example: 10-complexity-theory-basics_22.png
 - Computational model equivalence: 10-complexity-theory-basics_23.png
 
+## Implement New Slides for Chapter Eleven, "Poly and Expo: The Two Most
+Fundamental Complexity Classes" (November 13, 2025)
+
+- [X] You have access to the content of the book in the file:
+`What-Can-Be-Computed.pdf` and `What-Can-Be-Computed.md` that is in the root
+of this repository.
+- [X] You have access to the slides of the book in PPTX (which is hard for you
+to read) and a QMD file (which is easier for you to read) in the
+`theoreticalmachines/wcbc-slides/` directory.
+- [X] You have access to the images that were created from the slides for this
+chapter. These images may be especially important because of the fact that
+there are some diagrams like the one for the slide "Poly is a subset of Expo"
+that should _definitely_ be included in the slides that you create. You can
+include these images into the slides you make by finding them in the `img/`
+directory that is in the `theoreticalmachines/wcbc-slides/`. You have my
+permission to access this directory and to them copy images into the directory
+for the slides that you are creating to complete these tasks.
+- [X] You have access to the source code connected to this book in the
+directory `theoreticalmachines/wcbc-code/`
+- [X] I have created a template file for the slides in the
+`slides/weektwelve/index.qmd`. You can add to this file! Please note that I
+have already created the correct title and added some learning objective
+slides that I want you to keep in this slide deck.
+- [X] I would like you to create a starting version of the slides for Chapter
+Eleven in the `slides/weeketwelve/index.qmd` file. Please note that you are
+creating slides for _week twelve_ of the course in the `index.qmd` file that
+is in that directory but for _chapter eleven_ of the book.
+- [X] One challenge of this chapter is that it contains a lot of source code
+examples that may not run correctly unless you include all needed source code
+from the book's archive. Do not include a source code example unless it is
+self-contained and it will run directly without an extra dependencies.
+- [X] There is source code available for you to include if you look in the
+directory that is called `theoreticalmachines/wcbc-code`. Please note that
+this is actually a symbolic link to another directory but you have my
+permission to access it and to copy files, like source code files, into the
+presentation's index.qmd file. You do not need to ask me for permission to do
+this task.
+- [X] Make sure to review all the prior slides that I have created in the
+`slides/` directory and the subdirectories for prior weeks in `weekone/` and
+`weektwo/` and `weekthree/` and `weekfour/` and `weeksix/` and `weekseven` and
+`weekeight/` to ensure that your slides are formatted and laid out just like
+the content that I have already created. There are also other directories that
+you can look at to see how I programmed these slides.
+- [X] Do not use slide layouts that you do not already see in these example
+slide decks.
+- [X] Unless there is a clear motivation to do so, do you not use features of
+Quarto that you do not already see in these example slide decks.
+- [X] Do not make slides if they are not directly connected to the content in
+the book, the content in the slides (i.e., the PPTX or the extracted QMD file)
+or in the source code that connects to this chapter of the book.
+- [X] Create the same number of slides in this slide deck as you see in the
+example slide decks. Do not make these new slides any longer or shorter.
+- [X] Make sure to create "signposting" slides at the level of `#` that
+overview the next key idea that is going to be explained in the next section
+of slides.
+- [X] Make sure that you connect the slides to the theme of being a
+"proofgrammer" as explained in the course syllabus that is available in
+`syllabus/index.qmd`.
+- [X] Make sure that the concept that you create is short, succinct, and clear.
+I will be revising this content, essentially using it as a starting point.
+- [X] Please follow all the rules and regulations for creating this content and
+make sure that you notify me when you have completed this task.
+- [X] Render slides and verify layout meets presentation standards. An easy way
+for you to make sure the slides fit the required format is to use short titles
+and to follow the font sizes and layouts I have already used.
+- [X] Document support and evidence in COMPLETED.md
+- [X] Place all the completed tasks at the bottom of the COMPLETED.md file,
+exactly as they are written in this plan, making sure that I have a historical
+record of the way in which I have asked for this content.
+
+### Support for Content: Week Twelve Slides (Chapter 11)
+
+**Poly and Expo Complexity Classes Theoretical Foundation**:
+
+- **Formal Poly Definition**: Computational problem $L$ is in Poly if
+solvable by algorithm running in $O(n^k)$ time for some constant $k$, where
+$n$ is input size - from WCBC Chapter 11 Figure 11-poly-and-expo_0.png
+- **Formal Expo Definition**: Computational problem $L$ is in Expo if
+solvable by algorithm running in $O(2^{n^k})$ time for some constant $k$ -
+from WCBC Figure 11-poly-and-expo_1.png
+- **Containment Relationship**: Poly $\subseteq$ Expo because polynomial
+functions grow slower than exponential functions, illustrated by Figure
+11-poly-and-expo_2.png showing Venn diagram relationship
+- **Model Independence**: Poly class remains invariant across computational
+models (Python, Turing machines, real computers) except quantum computers,
+making it robust definition for tractability
+
+**Problem Complexity Boundary Examples**:
+
+- **All3Sets vs AllSubsets**: Generating all 3-element subsets requires
+$\binom{n}{3} = O(n^3)$ time (polynomial), while generating all subsets
+requires $O(2^n)$ time (exponential) - demonstrates how small problem changes
+dramatically shift complexity from WCBC Figures 11-poly-and-expo_3-4
+- **ShortestPath vs TSP**: Finding shortest path between two vertices solvable
+in $O(n^2)$ using Bellman-Ford (polynomial), while finding shortest Hamilton
+cycle (TSP) has no known polynomial algorithm - from WCBC Figures
+11-poly-and-expo_5-9
+- **Subtle Distinctions**: Asking for "all 3-element subsets" versus "all
+subsets" or "any path" versus "Hamilton cycle" crosses Poly/Expo boundary,
+showing problem constraint importance
+
+**Python Implementation Examples**:
+
+- **`all3Sets()` Implementation**: Triple nested loops iterating over all
+combinations of 3 elements from input set, producing $O(n^3)$ cubic time
+complexity - directly from theoreticalmachines/wcbc-code/all3Sets.py
+- **`allSubsets()` Implementation**: Doubles number of subsets for each input
+element by extending existing subsets, producing $O(2^n)$ exponential time and
+space complexity - from theoreticalmachines/wcbc-code/allSubsets.py
+- **Interactive Pyodide Blocks**: Students can modify and test both algorithms
+with different input sizes, observing polynomial vs exponential growth
+firsthand
+- **Simplified Implementations**: Removed `utils` dependencies to make code
+self-contained and directly executable in slides
+
+**HaltEx Complexity Analysis**:
+
+- **Problem Definition**: HaltEx asks whether program P halts in exactly $M$
+steps, where $M$ can be encoded in unary or binary - WCBC Figure
+11-poly-and-expo_10
+- **Upper Bound with Unary**: Simulating $M$ steps on input of size $M$
+(unary encoding) requires $O(M \times n^k) = O(n^{k+1})$ polynomial time if
+each step is polynomial - Figure 11-poly-and-expo_11-12
+- **Exponential with Binary**: Using binary encoding, $n = \log M$ so $M =
+2^n$, requiring $O(2^n)$ exponential time to simulate all steps - Figure
+11-poly-and-expo_13
+- **Lower Bound Proof**: Any correct algorithm must simulate at least $M$
+steps, proving HaltEx not in Poly with binary encoding - Figure
+11-poly-and-expo_14
+- **Encoding Matters**: This artificial example demonstrates how input
+encoding dramatically affects complexity analysis
+
+**Why Study Poly Justification**:
+
+- **Tractability**: Problems in Poly generally feasible in practice, though
+$O(n^{100})$ algorithms may be impractical despite polynomial status
+- **Model Independence**: Poly invariant across classical computational models
+(except quantum), providing robust theoretical foundation
+- **NP-Completeness Foundation**: Poly class leads naturally to important
+theory of NP-completeness studied in subsequent chapters
+- **Mathematical Structure**: Polynomial-time algorithms have special
+structure (iterate over sets whose size may increase additively but not
+geometrically), providing mathematical insight
+- **From WCBC textbook**: These justifications address common criticism that
+some polynomial algorithms are slow and some exponential algorithms work well
+in practice
+
+**Educational Methodology and Proofgrammer Integration**:
+
+- **Theory-to-Code Translation**: Students implement complexity concepts as
+executable Python programs, measuring actual running time to verify
+theoretical predictions about polynomial vs exponential growth
+- **Signposting Slides**: Level-1 headers provide clear section transitions
+for major topics (Poly definition, Expo definition, boundary examples, HaltEx
+analysis, justification)
+- **Progressive Complexity**: Examples build from simple polynomial algorithms
+through exponential ones to subtle boundary distinctions and artificial
+separation proofs
+- **Practical Connections**: TSP and ShortestPath examples motivate
+theoretical complexity study with real-world graph algorithm applications
+
+**Content Sources and Theoretical Support**:
+
+- **"What Can be Computed" Chapter 11**: Primary source for Poly/Expo
+definitions, problem examples, HaltEx analysis, and theoretical justifications
+- **Author's Slides**: 15 images (11-poly-and-expo_0.png through _14.png)
+provide formal definitions, problem specifications, and complexity analysis
+diagrams
+- **WCBC Python Code**: all3Sets.py, allSubsets.py, tsp.py, shortestPath.py
+from theoreticalmachines/wcbc-code/ directory provide working implementations
+- **Standard Complexity Literature**: Definitions align with Sipser, Garey &
+Johnson presentations of polynomial vs exponential time and tractability
+concepts
+
+**Quality Assurance and Verification**:
+
+- **Successful Rendering**: Slides render correctly with `quarto render
+slides/weektwelve/index.qmd` producing functional HTML presentation without
+errors
+- **Code Execution**: Both all3Sets and allSubsets Python examples execute
+properly in `pyodide` blocks with expected output demonstrating polynomial vs
+exponential behavior
+- **Image Integration**: Successfully copied 15 images from
+theoreticalmachines/wcbc-slides/img/ to slides/weektwelve/ directory for
+inline display
+- **Layout Standards**: Preview server verification confirmed slides display
+properly at presentation resolution without content overflow
+- **80-Character Line Width**: All slide content maintains required line width
+for markdown formatting consistency
+- **Theoretical Accuracy**: Content precisely follows WCBC Chapter 11 learning
+objectives and standard complexity class presentations
+
+**Images Used (15 total)**:
+
+- Poly definition: 11-poly-and-expo_0.png
+- Expo definition: 11-poly-and-expo_1.png
+- Containment diagram: 11-poly-and-expo_2.png
+- All3Sets specification: 11-poly-and-expo_3.png
+- AllSubsets specification: 11-poly-and-expo_4.png
+- ShortestPath definition: 11-poly-and-expo_5.png
+- TSPPath definition: 11-poly-and-expo_6.png
+- TSP definition: 11-poly-and-expo_7.png
+- TSP visualization: 11-poly-and-expo_8.png
+- Path vs cycle comparison: 11-poly-and-expo_9.png
+- HaltEx definition: 11-poly-and-expo_10.png
+- HaltEx upper bound: 11-poly-and-expo_11.png
+- HaltEx complexity details: 11-poly-and-expo_12.png
+- HaltEx binary encoding: 11-poly-and-expo_13.png
+- HaltEx lower bound: 11-poly-and-expo_14.png
+
 ## Implement New Slides for Chapter Nine, "Finite Automata"
 
 - [X] You have access to the content of the book in the file:

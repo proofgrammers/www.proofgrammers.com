@@ -40,15 +40,16 @@ of both correct and efficient real-world Python programs.
 
 :::
 
-# Poly and Expo are two complexity classes that matter!
+# Poly and Expo are two key complexity classes!
 
 ::: {.fragment .boxed-content style="font-size: 0.825em;"}
 
 {{< iconify fa6-solid layer-group >}} **Poly and Expo** help with learning
 objectives **CS-204-1** and **CS-204-4**. We will formally define these two
-critical complexity classes and explore their boundary. Small changes to
-problem definitions can dramatically shift complexity! **Let's explore the
-fundamental distinction between tractable and intractable problems**!
+critical complexity classes and **explore their boundary**. One thing we will
+learn is that small changes to problem definitions can dramatically shift
+complexity! **As proofgrammers, let's explore the distinction between tractable
+and intractable problems with formal definitions and Python code**!
 
 :::
 
@@ -193,9 +194,23 @@ subsets while AllSubsets generates 1024. With 20 elements: 1140 vs over
 
 ![All3Sets specification](11-poly-and-expo_3.png)
 
+::: {.fragment style="font-size: 0.85em;"}
+
+- Given set $S$ with $n$ elements, return all 3-element subsets
+- Output formatted as set of sets with $\binom{n}{3} = O(n^3)$ subsets
+
+:::
+
 ## AllSubsets problem definition
 
 ![AllSubsets specification](11-poly-and-expo_4.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- Given set $S$ with $n$ elements, return all possible subsets
+- Output contains $2^n$ subsets, exponential growth in input size
+
+:::
 
 ## Run `all3Sets` in Python {transition="convex"}
 
@@ -286,13 +301,34 @@ TSP is a famous problem in Expo with no known polynomial algorithm!
 
 ![ShortestPath specification](11-poly-and-expo_5.png)
 
+::: {.fragment style="font-size: 0.85em;"}
+
+- Find shortest path between two vertices in weighted graph
+- Solvable in polynomial time using Bellman-Ford algorithm
+
+:::
+
 ## TSPPath problem definition
 
 ![TSPPath specification](11-poly-and-expo_6.png)
 
+::: {.fragment style="font-size: 0.85em;"}
+
+- Find shortest path visiting all vertices exactly once
+- No known polynomial algorithm for general case
+
+:::
+
 ## TSP problem definition
 
-![TSP specification](11-poly-and-expo_7.png)
+![TSP specification](11-poly-and-expo_7.png){.sensible-size-thick-border}
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- Find shortest Hamilton cycle in weighted graph
+- Must visit all vertices exactly once and return to start
+
+:::
 
 ## Visualize TSP complexity
 
@@ -372,11 +408,16 @@ theoretical computer science. HaltEx is an artificial construction!
 
 ![HaltEx specification](11-poly-and-expo_10.png)
 
-::: fragment
+::: {.fragment style="font-size: 0.825em;"}
 
-- **HaltEx**: does program halt in exactly $M$ steps?
-- Input includes number $M$ in unary (size $M$, value $M$)
-- This encoding makes the problem exponential-time by construction!
+- **HaltEx**: does program $P$ halt in exactly $M$ steps on input $I$?
+- **Input encoding**: number $M$ can be unary (size $M$) or binary
+(size $\log M$)
+- **Unary encoding**: $M$ represented as string of $M$ ones, input
+size equals value
+- **Binary encoding**: $M$ represented in binary, input size is $\log M$
+- **Key insight**: encoding choice dramatically affects complexity analysis!
+- Artificial problem designed to demonstrate Poly/Expo separation
 
 :::
 
