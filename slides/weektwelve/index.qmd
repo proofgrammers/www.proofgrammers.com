@@ -241,7 +241,7 @@ vs over 1 million! **The difference becomes astronomical quickly**!
 
 ![All3Sets specification](11-poly-and-expo_3.png)
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="margin-top: -0.15em; font-size: 0.85em;"}
 
 - Given set $S$ with $n$ elements, return all 3-element subsets
 - Output formatted as set of sets with $\binom{n}{3} = O(n^3)$ subsets
@@ -252,7 +252,7 @@ vs over 1 million! **The difference becomes astronomical quickly**!
 
 ![AllSubsets specification](11-poly-and-expo_4.png)
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="margin-top: -0.2em; font-size: 0.7em;"}
 
 - Given set $S$ with $n$ elements, return all possible subsets
 - Output contains $2^n$ subsets, exponential growth in input size
