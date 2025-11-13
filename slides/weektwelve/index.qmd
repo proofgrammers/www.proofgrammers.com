@@ -1,0 +1,53 @@
+---
+title: "Poly and Expo Complexity Classes"
+description: "Explore the boundaries of complexity"
+date: "2025-11-10"
+date-format: long
+author: Gregory M. Kapfhammer
+execute:
+  echo: true
+format:
+  live-revealjs:
+    completion: true
+    theme: default
+    css: ../css/styles.css
+    history: false
+    scrollable: true
+    transition: slide
+    highlight-style: github
+    footer: "Proofgrammers"
+---
+
+# Learning objectives
+
+::: {.fragment .callout-note icon=true title="Learning Objectives for Theoretical Machines"}
+
+- **CS-204-1**: Use both intuitive analysis and theoretical proof
+techniques to correctly distinguish between problems that are tractable,
+intractable, and uncomputable.
+- **CS-204-2**: Correctly use one or more variants of the Turing machine
+(TM) abstraction to both describe and analyze the solution to a
+computational problem.
+- **CS-204-3**: Correctly use one or more variants of the finite state
+machine (FSM) abstraction to describe and analyze the solution to a
+computational problem.
+- **CS-204-4**: Use a formal proof technique to correctly classify a
+problem according to whether or not it is in the P, NP, NP-Hard, and/or
+NP-Complete complexity class(es).
+- **CS-204-5**: Apply insights from theoretical proofs concerning the
+limits of either program feasibility or complexity to the implementation
+of both correct and efficient real-world Python programs.
+
+:::
+
+# Why computational complexity matters
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- Theory aids with learning objectives **CS-204-1** and **CS-204-4**
+- Distinguish tractable from intractable problems
+- Why some problems efficiently solvable while others impractical?
+- How do we measure and compare algorithm efficiency?
+- How do we classify problems by their complexity class?
+
+:::
