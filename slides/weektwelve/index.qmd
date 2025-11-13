@@ -48,8 +48,41 @@ of both correct and efficient real-world Python programs.
 objectives **CS-204-1** and **CS-204-4**. We will formally define these two
 critical complexity classes and **explore their boundary**. One thing we will
 learn is that small changes to problem definitions can dramatically shift
-complexity! **As proofgrammers, let's explore the distinction between tractable
-and intractable problems with formal definitions and Python code**!
+complexity. **As proofgrammers, let's explore the distinction between tractable
+and intractable problems with both formal definitions and Python code**. Let's
+dive into the details!
+
+:::
+
+## Vast gulf between growth rates
+
+![Growth rate comparison](10-complexity-theory-basics_0.png)
+
+::: fragment
+
+- **Insight**: Wow, these growth rates differ dramatically!
+- **Insight**: Polynomial growth is feasible, exponential is not!
+
+:::
+
+## Exponential versus polynomial
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **Polynomial time**: $n$, $n^2$, $n^3$, $n^{100}$ (i.e., broadly tractable)
+- **Exponential time**: $2^n$, $3^n$, $n!$ (i.e., intractable for large $n$)
+- **Key insight**: Polynomial is feasible, exponential is not
+- **Numerical Example**: $2^{100} \approx 10^{30}$ versus $100^2 = 10,000$
+- **Cryptography**: Security relies on exponential-time attacks
+
+:::
+
+::: {.fragment .boxed-content .fade style="font-size: 0.825em;"}
+
+- Polynomial-time problems are considered "efficiently computable"
+- Exponential-time problems are generally "computationally impractical"
+- {{< iconify fa6-solid rocket >}} **The polynomial/exponential
+boundary demarcates tractability**
 
 :::
 
