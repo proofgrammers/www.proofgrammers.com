@@ -174,13 +174,14 @@ exponential time
 
 ::: {.fragment style="font-size: 0.975em;"}
 
-- **Key relationship**: Poly $\subseteq$ Expo
+- {{< iconify fa6-solid lightbulb >}} **Key relationship to note**: Poly
+$\subseteq$ Expo
 - Every polynomial-time algorithm is also exponential-time
 - Some books refer to Poly as **FP** (function polynomial)
-- {{< iconify fa6-solid lightbulb >}} **Key questions to ask**:
+- {{< iconify fa6-solid microscope >}} **Key questions to ask**:
     - What are the practical implications of this relationship?
     - What are the "hallmarks" of problems in these classes?
-    - How can we "tweak" a problem to make it Poly instead of Expo?
+    - Can we "tweak" a problem to make it Poly instead of Expo?
     - Overall, what is the "boundary" between Poly and Expo?
 
 :::
@@ -189,16 +190,18 @@ exponential time
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
-- {{< iconify fa6-solid check >}} **All3Sets**: generate all 3-element
-subsets (polynomial)
-- {{< iconify fa6-solid explosion >}} **AllSubsets**: generate all
-subsets (exponential)
-- {{< iconify fa6-solid route >}} **ShortestPath**: find shortest path
-in graph (polynomial)
+- {{< iconify fa6-solid check >}} **All3Sets**: generate all 3-element subsets
+(polynomial)
+- {{< iconify fa6-solid explosion >}} **AllSubsets**: generate all subsets
+(exponential)
+- {{< iconify fa6-solid route >}} **ShortestPath**: find shortest path in graph
+(polynomial)
 - {{< iconify fa6-solid map >}} **TSP**: find shortest Hamilton cycle
 (exponential, currently)
-- {{< iconify fa6-solid lightbulb >}} **Insight**: small problem changes
-yield dramatic complexity shifts!
+- {{< iconify fa6-solid lightbulb >}} **Insight**: small problem changes yield
+dramatic complexity shifts!
+- {{< iconify fa6-solid rocket >}} **Question**: what are suitable ways to
+"tweak" problems to make them tractable?
 
 :::
 
