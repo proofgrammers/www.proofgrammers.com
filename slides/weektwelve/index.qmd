@@ -282,10 +282,10 @@ print(f"all3Sets('4 5 6') = '{all3Sets('4 5 6')}'")
 print(f"all3Sets('4 5 6 7') = '{all3Sets('4 5 6 7')}'")
 ```
 
-::: {.fragment style="font-size: 0.875em;"}
+::: {.fragment style="font-size: 0.75em;"}
 
 - **Analysis**: three nested loops, each iterates at most $n$ times
-- **Time complexity**: $O(n^3)$ or cubic time, in Poly!
+- **Time complexity**: $O(n^3)$ or cubic time, which means it is in Poly!
 
 :::
 
