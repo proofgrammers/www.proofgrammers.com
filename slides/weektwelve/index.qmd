@@ -231,9 +231,9 @@ exponential growth!
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Exponential explosion**: with 10 elements, All3Sets generates 120
-subsets while AllSubsets generates 1024. With 20 elements: 1140 vs over
-1 million! **The difference becomes astronomical quickly**!
+**Exponential explosion**: with 10 elements, All3Sets generates 120 subsets
+while AllSubsets generates 1024. About the same, right? With 20 elements: 1140
+vs over 1 million! **The difference becomes astronomical quickly**!
 
 :::
 
