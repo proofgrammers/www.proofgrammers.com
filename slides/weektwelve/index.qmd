@@ -168,18 +168,24 @@ exponential time
 
 # Poly is a subset of Expo
 
-![Containment relationship](11-poly-and-expo_2.png)
+![](11-poly-and-expo_2.png){.sensible-size-thick-border}
 
-::: {.fragment style="font-size: 0.875em;"}
+## Explore containment relationship
+
+::: {.fragment style="font-size: 0.975em;"}
 
 - **Key relationship**: Poly $\subseteq$ Expo
 - Every polynomial-time algorithm is also exponential-time
-- But not every exponential-time problem has a polynomial solution!
 - Some books refer to Poly as **FP** (function polynomial)
+- {{< iconify fa6-solid lightbulb >}} **Key questions to ask**:
+    - What are the practical implications of this relationship?
+    - What are the "hallmarks" of problems in these classes?
+    - How can we "tweak" a problem to make it Poly instead of Expo?
+    - Overall, what is the "boundary" between Poly and Expo?
 
 :::
 
-## Examples contrasting complexity
+## Examples that contrast complexity
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
 
@@ -198,10 +204,9 @@ yield dramatic complexity shifts!
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Subtle distinctions matter**: asking for "all 3-element subsets" versus
-"all subsets" changes complexity from polynomial to exponential. Similarly,
-"shortest path" versus "shortest Hamilton cycle" crosses the Poly/Expo
-boundary!
+**Subtle distinctions matter**: asking for "all 3-element subsets" versus "all
+subsets" changes complexity from polynomial to exponential. Also, "shortest
+path" versus "shortest Hamilton cycle" crosses the Poly/Expo boundary!
 
 :::
 
