@@ -118,7 +118,7 @@ think of any circumstance in which a **Poly** algorithm might not be practical?
 
 ::: fragment
 
-- Assume we already know this problem is computable
+- Assume we already know problem $L$ is computable
 - Computational problem $L$ is in **Poly** if solvable in polynomial time with
 a computable method
 - For some constant $k$, program runs in $O(n^k)$ time
@@ -156,10 +156,12 @@ would prefer an **Expo** over a **Poly** algorithm? Can you explain why?
 
 ![Expo definition](11-poly-and-expo_1.png)
 
-::: fragment
+::: {.fragment style="font-size: 0.95em;"}
 
-- Computational problem $L$ is in **Expo** if solvable in exponential time
-- For some constant $k$, program runs in $O(2^{n^k})$ time
+- Assume we already know a problem $L$ is computable
+- Computational problem $L$ is in **Expo** if it is computable and solvable in
+exponential time
+- For polynomial function $p(n)$, program runs in $O(2^{p(n)})$ time
 - **Important**: Poly $\subseteq$ Expo since polynomial is faster!
 
 :::
