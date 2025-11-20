@@ -514,16 +514,16 @@ This mathematical robustness makes it the right abstraction for tractability!
 
 - {{< iconify fa6-solid check-circle >}} **Poly and Expo**: fundamental
 complexity classes
-- {{< iconify fa6-solid check-circle >}} **Boundary matters**: small
-problem changes shift complexity
+- {{< iconify fa6-solid check-circle >}} **Boundary matters**: small problem
+changes shift complexity
 - {{< iconify fa6-solid check-circle >}} **Tractability**: Poly captures
 efficiently solvable problems
-- {{< iconify fa6-solid check-circle >}} **Open questions**: many
-problems' complexity unknown
+- {{< iconify fa6-solid check-circle >}} **Open questions**: many problems'
+complexity unknown
 - {{< iconify fa6-solid check-circle >}} **Proofgrammer skill**: recognize
 complexity boundaries
-- {{< iconify fa6-solid check-circle >}} **Foundation**: sets stage for
-P vs NP question!
+- {{< iconify fa6-solid check-circle >}} **Foundation**: sets the stage for the
+"P versus NP question"!
 
 :::
 
@@ -531,6 +531,6 @@ P vs NP question!
 
 **Understanding Poly and Expo is essential**: these complexity classes help
 proofgrammers reason about computational feasibility and guide algorithm
-design. Next, we'll explore NP and the famous P vs NP question!
+design. Later, we'll explore NP and the famous P vs NP question!
 
 :::
