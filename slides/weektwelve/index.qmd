@@ -523,7 +523,7 @@ complexity unknown
 - {{< iconify fa6-solid check-circle >}} **Proofgrammer skill**: recognize
 complexity boundaries
 - {{< iconify fa6-solid check-circle >}} **Foundation**: sets the stage for the
-"P versus NP question"!
+"P versus NP" question!
 
 :::
 
@@ -531,6 +531,6 @@ complexity boundaries
 
 **Understanding Poly and Expo is essential**: these complexity classes help
 proofgrammers reason about computational feasibility and guide algorithm
-design. Later, we'll explore NP and the famous P vs NP question!
+design. Later, we'll explore NP and the famous "P versus NP" question!
 
 :::
