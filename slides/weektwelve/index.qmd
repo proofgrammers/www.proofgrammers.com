@@ -252,7 +252,7 @@ vs over 1 million! **The difference becomes astronomical quickly**!
 
 ![AllSubsets specification](11-poly-and-expo_4.png)
 
-::: {.fragment style="margin-top: -0.2em; font-size: 0.7em;"}
+::: {.fragment style="margin-top: -0.2em; font-size: 0.68em;"}
 
 - Given set $S$ with $n$ elements, return all possible subsets
 - Output contains $2^n$ subsets, exponential growth in input size
@@ -359,11 +359,12 @@ is a famous problem in Expo with no known polynomial algorithm! *At least, yet*!
 
 ![TSP problem specification](11-poly-and-expo_5.png)
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="margin-top: -0.25em; font-size: 0.85em;"}
 
 - Can you decode the meaning of `a,b,3` or `b,c,1`?
 - Focus on the connections between vertices and their weights
 - Connects to the `TSPPath` and `ShortestPath` problems
+- **Practical applications**: logistics, scheduling, DNA sequencing
 
 :::
 
@@ -387,7 +388,7 @@ is a famous problem in Expo with no known polynomial algorithm! *At least, yet*!
 
 - When there are positive weights, solved by Dijkstra's algorithm
 - This means that it is in $O(n^2)$ time, which is polynomial!
-- **Aha, this means that ShortestPath in Poly, while TSPPath is in Expo**!
+- **Aha, this means that ShortestPath is in Poly, while TSPPath is in Expo**!
 
 :::
 
@@ -431,7 +432,7 @@ formulation, with small "tweaks" changing tractability!
 
 :::
 
-## Decision problems in Expo but not Poly
+## Problems in Expo but not Poly
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.875em;"}
 
@@ -441,18 +442,19 @@ provably in Expo but not Poly?
 extremely hard
 - {{< iconify fa6-solid microscope >}} **HaltEx**: artificial problem
 in Expo but not Poly
+    - Given program $P$ and input $I$, simulate $P$ on $I$ for $2^n$ steps
+    - Requires at most an exponential nubmer of steps
+    - This shows that Expo contains problems not in Poly
 - {{< iconify fa6-solid clock >}} **Constructed**: designed specifically
 to require exponential time
-- {{< iconify fa6-solid rocket >}} **Insight**: we can build
-exponential-time problems!
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Proving separations is difficult**: while we believe many problems require
-exponential time, proving it rigorously is one of the deepest challenges in
-theoretical computer science. HaltEx is an artificial construction!
+{{< iconify fa6-solid lightbulb >}} **Proving separations is difficult**: while
+we believe many problems require exponential time, rigorous proof is
+challenging, not all lower bounds known!
 
 :::
 
@@ -488,7 +490,7 @@ computation. It's the foundation for understanding computational limits!
 - {{< iconify fa6-solid computer >}} **Different models**: Turing
 machines, Python, Java, C++
 - {{< iconify fa6-solid equals >}} **Polynomial equivalence**: models
-simulate each other with polynomial overhead
+simulate each other with "polynomial overhead", so Python as an "API" for a TM
 - {{< iconify fa6-solid check >}} **Robust definition**: Poly remains
 consistent across models
 - {{< iconify fa6-solid rocket >}} **Exception**: quantum computers may
