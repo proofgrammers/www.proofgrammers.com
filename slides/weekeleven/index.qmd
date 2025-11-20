@@ -539,7 +539,7 @@ explore**!
 
 ## Wait, why is it $O(n² log n)$?
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.725em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.7em;"}
 
 - {{< iconify fa6-solid magnifying-glass >}} **Careful examination**: The
 nested loops are only part of the story!
