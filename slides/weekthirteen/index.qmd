@@ -215,20 +215,13 @@ $O(n^k)$ time for instance length $n$
 - {{< iconify fa6-solid ruler >}} **Crucial detail**: Only $|I|$ matters,
 not $|S|$ or $|H|$
 - {{< iconify fa6-solid shield >}} **Protection needed**: Must reject
-excessively long $S$ and $H$ and defect benefit of verification
+excessively long $S$ and $H$
 - {{< iconify fa6-solid lightbulb >}} **Why?**: Without this check,
-processing long $S$ or $H$ could take exponential time
+processing long $S$ or $H$ could take exponential time, which defeats
+the purpose of quick verification
 - {{< iconify fa6-solid microscope >}} **Solution**: Reject if $|S| > |I|$
 or $|H| > |I|$
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**Polytime verifiers must protect against long inputs**: if $S$ has length
-$2n$, just converting it to an integer takes $2n$ steps, violating polynomial
-time! Rejecting excessively long solutions and hints ensures truly polynomial
-running time!
+- **Let's see what this would look like for FACTOR!**
 
 :::
 
@@ -244,6 +237,13 @@ running time!
 
 :::
 
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Polytime verifiers must protect against long inputs**: if $S$ has length
+$2n$, just converting it to an integer takes $2n$ steps, which is too expensive!
+
+:::
+
 ## Formal definition of polytime verifier
 
 ![](12-polycheck-and-npoly_6.png)
@@ -256,20 +256,28 @@ running time!
 
 :::
 
-# PolyCheck: problems with efficient verification
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+{{< iconify fa6-solid gears >}}  Can you intuitively see the benefits of
+verification? Do you have a strong intuitive understanding of the concept of a
+polytime verifier?
 
-- {{< iconify fa6-solid layer-group >}} **PolyCheck**: Problems whose
-positive instances can be verified in polynomial time
+:::
+
+# Efficient verification
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid layer-group >}} **PolyCheck**: Complexity class
+containing problems whose positive instances can be verified in polynomial time
 - {{< iconify fa6-solid check-circle >}} **Definition**: Problem $F \in$
 PolyCheck if there exists a polytime verifier for $F$
 - {{< iconify fa6-solid rocket >}} **Examples**: FACTOR, TSPD, PACKING,
 SUBSETSUM, PARTITION
-- {{< iconify fa6-solid microscope >}} **Key insight**: Verification easier
-than solving
-- {{< iconify fa6-solid lightbulb >}} **Practical meaning**: Solutions are
-hard to find but easy to check
+- {{< iconify fa6-solid microscope >}} **Key insight**: Verification easier than
+solving
+- {{< iconify fa6-solid lightbulb >}} **Practical meaning**: Solutions are hard
+to find but easy to check
 
 :::
 
