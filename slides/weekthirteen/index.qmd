@@ -106,7 +106,7 @@ prior concept of nondeterminism!
 
 ```{pyodide}
 #| autorun: true
-#| max-lines: 12
+#| max-lines: 8
 def verifyFactor(I, S, H):
     """Verify a proposed solution to the FACTOR problem."""
     if S == 'no':
@@ -123,23 +123,23 @@ print(f"verifyFactor('1400', '500', '') = {verifyFactor('1400', '500', '')}")
 print(f"verifyFactor('20', '5', '') = {verifyFactor('20', '5', '')}")
 ```
 
-::: {.fragment style="font-size: 0.85em;"}
+::: {.fragment style="font-size: 0.8em;"}
 
 - **Easy to verify**: Check if $m$ divides $M$ in polynomial time
 - **Hard to find**: Finding factors requires searching many candidates
-- **Note**: Returns `unsure` for incorrect solutions, not `incorrect`
+- **Note**: Returns `unsure` when the "quick check" is not clear
 
 :::
 
-## Why output `unsure` instead of `incorrect`?
+## Why `unsure` not `incorrect`?
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid circle-question >}} **Two reasons for failure**:
     - Proposed solution $S$ is actually incorrect
     - Hint $H$ was wrong (even if $S$ is correct)
-- {{< iconify fa6-solid ban >}} **Cannot distinguish**: No way to tell
-which case occurred
+- {{< iconify fa6-solid ban >}} **Cannot distinguish**: No way to tell which
+case occurred
 - {{< iconify fa6-solid microscope >}} **Asymmetry**: Positive instances
 verifiable, negative instances never are
 - {{< iconify fa6-solid lightbulb >}} **Connection**: Similar to
@@ -150,9 +150,9 @@ nondeterministic computation!
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
 **The `unsure` output reflects fundamental asymmetry**: verifiers can confirm
-correctness but cannot definitively reject. This asymmetry mirrors
-nondeterministic computation where positive solutions are found but negative
-instances only yield `no`!
+correctness but cannot definitively reject; they are "helpful" but not perfect.
+This asymmetry mirrors nondeterministic computation where positive solutions are
+found but negative instances only yield `no`!
 
 :::
 
@@ -162,7 +162,7 @@ instances only yield `no`!
 
 ::: {.fragment style="font-size: 0.85em;"}
 
-- Verifier $V(I, S, H)$ receives instance, solution, and hint
+- Verifier $V(I, S, H)$ receives instance $I$, solution $S$, and hint $H$
 - Always halts, returning `correct` or `unsure`
 - Positive instances verifiable with some correct $S$ and $H$
 - Negative instances never verifiable, always return `unsure`
