@@ -371,6 +371,9 @@ NPoly!
 - **Parallel perspective**: All threads run simultaneously
 - **Polynomial bound**: All threads must finish in $O(n^k)$ time
 - **Key**: Count steps in longest thread, not total across all threads
+- **Important questions**:
+    - What problems are in NPoly?
+    - How does this relate to PolyCheck?
 
 :::
 
@@ -429,7 +432,7 @@ nondeterminism are equivalent!
 
 :::
 
-## Every NPoly problem is in PolyCheck
+## Key result summary
 
 ![](12-polycheck-and-npoly_11.png)
 
