@@ -156,7 +156,7 @@ found but negative instances only yield `no`!
 
 :::
 
-## Formal definition of a verifier
+## Review of verification
 
 ![](12-polycheck-and-npoly_2.png)
 
@@ -181,20 +181,20 @@ found but negative instances only yield `no`!
 
 :::
 
-# Hints enable efficient verification
+# Hints help verification
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
 - {{< iconify fa6-solid lightbulb >}} **Hint string $H$**: Additional
 information to help verification
 - {{< iconify fa6-solid map >}} **Example**: For TSPD, hint provides the
 Hamilton cycle
-- {{< iconify fa6-solid rocket >}} **Efficiency**: Without hint, checking
-all cycles takes exponential time
-- {{< iconify fa6-solid check-circle >}} **With hint**: Simply verify the
-given cycle in polynomial time
-- {{< iconify fa6-solid microscope >}} **Key insight**: Hints transform
-exponential searches into polynomial checks
+- {{< iconify fa6-solid rocket >}} **Efficiency**: Without hint, checking all
+cycles takes exponential time
+- {{< iconify fa6-solid circle-check >}} **With hint**: Simply verify the given
+cycle in polynomial time
+- {{< iconify fa6-solid microscope >}} **Key insight**: Hints make exponential
+searches into polynomial checks
 
 :::
 
@@ -202,45 +202,7 @@ exponential searches into polynomial checks
 
 **Hints are the secret to efficient verification**: they tell us where the
 needle is in the haystack, so we can quickly verify it's a needle without
-searching the entire haystack. This makes verification much easier than
-solving!
-
-:::
-
-## TSPD problem definition
-
-![](12-polycheck-and-npoly_3.png)
-
-::: {.fragment style="font-size: 0.85em;"}
-
-- **Input**: Weighted graph $G$ and threshold $L$
-- **Solution**: `yes` if Hamilton cycle exists with length $\leq L$
-- **Example**: Graph `a,b,5 b,c,6 c,a,3` with $L=20$ has solution `yes`
-- **Challenge**: Finding Hamilton cycles is exponential-time
-
-:::
-
-## Verifier for TSPD with hint
-
-```{python}
-def verifyTspD(I, S, H):
-    """Verify a solution to TSPD using hint H."""
-    if S == 'no':
-        return 'unsure'
-    (graph_str, L_str) = I.split(';')
-    L = int(L_str)
-    cycle = H.split(',')
-    if is_hamilton_cycle(graph_str, cycle) and cycle_length(graph_str, cycle) <= L:
-        return 'correct'
-    else:
-        return 'unsure'
-```
-
-::: {.fragment style="font-size: 0.85em;"}
-
-- **Hint $H$**: Specifies the Hamilton cycle (e.g., `a,b,c`)
-- **Verification**: Check cycle visits all vertices and length $\leq L$
-- **Polynomial time**: Checking is fast, finding would be slow!
+searching the entire haystack. This makes verification much easier than solving!
 
 :::
 
@@ -253,7 +215,7 @@ $O(n^k)$ time for instance length $n$
 - {{< iconify fa6-solid ruler >}} **Crucial detail**: Only $|I|$ matters,
 not $|S|$ or $|H|$
 - {{< iconify fa6-solid shield >}} **Protection needed**: Must reject
-excessively long $S$ and $H$
+excessively long $S$ and $H$ and defect benefit of verification
 - {{< iconify fa6-solid lightbulb >}} **Why?**: Without this check,
 processing long $S$ or $H$ could take exponential time
 - {{< iconify fa6-solid microscope >}} **Solution**: Reject if $|S| > |I|$
