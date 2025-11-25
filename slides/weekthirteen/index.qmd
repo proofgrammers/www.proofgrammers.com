@@ -42,15 +42,15 @@ of both correct and efficient real-world Python programs.
 
 # PolyCheck and NPoly are about verification!
 
-::: {.fragment .boxed-content style="font-size: 0.825em;"}
+::: {.fragment .boxed-content style="font-size: 0.875em;"}
 
-{{< iconify fa6-solid layer-group >}} **PolyCheck and NPoly** help with
-learning objectives **CS-204-1** and **CS-204-4**. We will define two
-complexity classes that capture problems whose solutions are **easy to
-verify** even if they're **hard to find**. This chapter reveals a surprising
-result: these two classes, defined in completely different ways, are
-identical! **As proofgrammers, let's explore verification and nondeterminism
-to understand what can be efficiently checked**. Let's dive in!
+{{< iconify fa6-solid layer-group >}} **PolyCheck and NPoly** help with learning
+objectives **CS-204-1** and **CS-204-4**. We will define two complexity classes
+that capture problems whose solutions are **easy to verify** even if they're
+**hard to find**. This chapter reveals a surprising result: these two classes,
+defined in completely different ways, are identical! **As proofgrammers, let's
+explore verification and nondeterminism to understand what can be efficiently
+checked**. Okay, let's dive in!
 
 :::
 
