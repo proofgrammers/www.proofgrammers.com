@@ -355,8 +355,9 @@ simultaneously in parallel
 ::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
 **NPoly uses parallel computation**: imagine launching a separate thread for
-every possible solution and checking them all at once. Intuitively, if the
-longest thread runs in polynomial time, the problem is in NPoly!
+every possible solution and checking them "all at once" in a parallel fashion.
+Intuitively, if the longest thread runs in polynomial time, the problem is in
+NPoly!
 
 :::
 
@@ -373,22 +374,22 @@ longest thread runs in polynomial time, the problem is in NPoly!
 
 :::
 
-## FACTOR in NPoly
+## FACTOR is in NPoly
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
 
-- {{< iconify fa6-solid code-branch >}} **Nondeterministic approach**:
-Launch thread for each possible factor
-- {{< iconify fa6-solid calculator >}} **Number of threads**: $O(M) =
-O(10^n)$ for $n$-digit number
-- {{< iconify fa6-solid tree >}} **Binary tree**: Each thread launches at
-most two children
-- {{< iconify fa6-solid ruler >}} **Tree depth**: $O(\log M) = O(n)$
-levels deep
-- {{< iconify fa6-solid stopwatch >}} **Each thread**: Checks one factor
-in $O(n^2)$ time (division)
-- {{< iconify fa6-solid rocket >}} **Total nondeterministic time**: $O(n)
-\times O(n^2) = O(n^3)$
+- {{< iconify fa6-solid code-branch >}} **Nondeterministic approach**: Launch
+thread for each possible factor
+- {{< iconify fa6-solid calculator >}} **Number of threads**: $O(M) = O(10^n)$
+for $n$-digit number
+- {{< iconify fa6-solid tree >}} **Binary tree**: Each thread launches at most
+two children
+- {{< iconify fa6-solid ruler >}} **Tree depth**: $O(\log M) =
+O(n)$ levels deep
+- {{< iconify fa6-solid stopwatch >}} **Each thread**: Checks one factor in
+$O(n^2)$ time (due to division)
+- {{< iconify fa6-solid rocket >}} **Total nondeterministic time**: $O(n) \times
+O(n^2) = O(n^3)$
 
 :::
 
@@ -402,12 +403,12 @@ root to leaf takes polynomial time, so FACTOR is in NPoly!
 
 # The remarkable result: PolyCheck = NPoly
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.825em;"}
 
-- {{< iconify fa6-solid equals >}} **Main theorem**: PolyCheck and NPoly
-are identical
-- {{< iconify fa6-solid lightbulb >}} **Surprising**: Two completely
-different definitions!
+- {{< iconify fa6-solid equals >}} **Main theorem**: PolyCheck and NPoly are
+identical
+- {{< iconify fa6-solid lightbulb >}} **Surprising**: Two completely different
+definitions!
     - PolyCheck: Can verify solutions in polynomial time
     - NPoly: Can solve with nondeterministic polynomial time
 - {{< iconify fa6-solid microscope >}} **Proof strategy**: Show mutual
@@ -419,96 +420,30 @@ nondeterminism are equivalent!
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+# Efficient verification or nondeterministic solving is the same complexity class!
 
-**Two paths to the same class**: whether we define problems by efficient
-verification or nondeterministic solving, we get the same complexity class.
-This deep connection reveals fundamental computational structure!
+::: fragment
 
-:::
-
-## Proof: PolyCheck $\subseteq$ NPoly
-
-::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
-
-- {{< iconify fa6-solid arrow-right >}} **Given**: Polytime verifier
-$V(I, S, H)$ for problem $F$
-- {{< iconify fa6-solid target >}} **Goal**: Create nondeterministic
-polytime program $P(I)$
-- {{< iconify fa6-solid code-branch >}} **Construction**: Launch thread
-for each possible $S$ and $H$
-    - Every time $V$ reads a character from $S$ or $H$, launch threads for
-    all alphabet symbols
-    - Each thread tests one possible solution/hint combination
-- {{< iconify fa6-solid tree >}} **Tree structure**: Depth bounded by
-polynomial running time of $V$
-- {{< iconify fa6-solid check-circle >}} **Each thread**: Runs $V$ on one
-choice, finishes in polynomial time
-- {{< iconify fa6-solid rocket >}} **Result**: $P(I)$ solves $F$ in
-nondeterministic polynomial time
+- **PolyCheck**: Problems with efficient verification
+- **NPoly**: Problems solvable with non-determinism
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.75em;"}
-
-**Converting verification to nondeterministic solving**: we systematically
-try all possible solutions and hints in parallel. Since the verifier runs in
-polynomial time, each thread finishes in polynomial time, so $F \in$ NPoly!
-
-:::
-
-## Proof: NPoly $\subseteq$ PolyCheck
+## Every NPoly problem is in PolyCheck
 
 ![](12-polycheck-and-npoly_11.png)
 
-## Understanding the NPoly to PolyCheck proof
+::: {.fragment style="font-size: 0.85em;"}
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
-
-- {{< iconify fa6-solid arrow-right >}} **Given**: Nondeterministic
-polytime program $P(I)$
-- {{< iconify fa6-solid target >}} **Goal**: Create polytime verifier
-$V(I, S, H)$
-- {{< iconify fa6-solid map >}} **Key insight**: Use hint $H$ to specify
-which path to follow
-    - Hint is a label like `2.1.2` identifying a path in the computation
-    tree
-    - Components $c_0, c_1, c_2, \ldots$ indicate which thread to follow
-    at each level
-- {{< iconify fa6-solid code >}} **Construction**: $V$ simulates one path
-from $P$'s tree
-    - At each nondeterministic choice, follow the thread specified by hint
-    - Compute return value $R$ at chosen leaf
-- {{< iconify fa6-solid check-circle >}} **Verification**: Return
-`correct` if $S = R$, else `unsure`
-- {{< iconify fa6-solid stopwatch >}} **Running time**: Single path takes
-polynomial time
+- **Claim 1**: Every NPoly problem is in PolyCheck
+- **Claim 2**: Poly is a subset of PolyCheck/NPoly
+- **Claim 3**: PolyCheck/NPoly is a subset of Expo
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.75em;"}
+# Middle ground: PolyCheck/NPoly
 
-**Hints encode paths through computation trees**: the hint tells us exactly
-which nondeterministic choices to make. By following this single path, we
-deterministically verify the solution in polynomial time!
-
-:::
-
-# PolyCheck and NPoly are identical!
-
-::: {.fragment .boxed-content style="font-size: 0.85em;"}
-
-{{< iconify fa6-solid equals >}} **Proven**: PolyCheck = NPoly, so we can
-call it **PolyCheck/NPoly**. This remarkable result shows that efficient
-verification and nondeterministic solving are equivalent perspectives on the
-same computational phenomenon. **As proofgrammers, we can use whichever
-definition is more convenient**!
-
-:::
-
-# The PolyCheck/NPoly sandwich
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid layer-group >}} **Hierarchy**: Poly $\subseteq$
 PolyCheck/NPoly $\subseteq$ Expo
@@ -520,20 +455,12 @@ PolyCheck/NPoly problem is in Expo
     - Can solve by trying all possible solutions (exponential time)
 - {{< iconify fa6-solid question >}} **Open questions**: Are these proper
 subsets?
-    - Is Poly $\subset$ PolyCheck/NPoly? (The P versus NP question!)
+    - Is Poly $\subset$ PolyCheck/NPoly?
     - Is PolyCheck/NPoly $\subset$ Expo?
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**PolyCheck/NPoly sits between tractable and exponential**: we know Poly
-$\subset$ Expo, so at least one inclusion is proper. But which one(s)? This
-leads to the famous P versus NP question!
-
-:::
-
-## The sandwich relationship
+## Decision problem relationships
 
 ![](12-polycheck-and-npoly_12.png)
 
@@ -542,86 +469,7 @@ leads to the famous P versus NP question!
 - **Known**: Poly $\subseteq$ PolyCheck/NPoly $\subseteq$ Expo
 - **Known**: Poly $\subset$ Expo (proper subset)
 - **Unknown**: Are the individual inclusions proper?
-- **Belief**: Both are proper subsets, but unproven!
-
-:::
-
-## Proof: Poly $\subseteq$ PolyCheck/NPoly
-
-::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
-
-- {{< iconify fa6-solid arrow-right >}} **Using PolyCheck definition**:
-    - Given polytime solver $P$ for problem $F$
-    - Create verifier: Run $P(I)$, return `correct` if $S = P(I)$
-    - Ignores hint $H$, runs in polynomial time
-    - Therefore $F \in$ PolyCheck
-- {{< iconify fa6-solid arrow-right >}} **Using NPoly definition**:
-    - Given polytime solver $P$ for problem $F$
-    - Use $P$ as nondeterministic program (with no nondeterminism)
-    - Runs in polynomial time, so $F \in$ NPoly
-- {{< iconify fa6-solid lightbulb >}} **Insight**: Easy problems can be
-both solved and verified efficiently!
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**Poly problems are also in PolyCheck/NPoly**: if you can solve efficiently,
-you can certainly verify efficiently. Just solve and compare!
-
-:::
-
-## Proof: PolyCheck/NPoly $\subseteq$ Expo
-
-::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
-
-- {{< iconify fa6-solid arrow-right >}} **Using PolyCheck definition**:
-    - Given polytime verifier $V(I, S, H)$
-    - Create exponential-time solver: Try all relevant $S$ and $H$
-    - At most $K^{2p(n)}$ possibilities for alphabet size $K$, bound $p(n)$
-    - Total time: $O(q(n) \cdot K^{2p(n)}) = O(2^{cn})$ for some constant
-    - Therefore problem is in Expo
-- {{< iconify fa6-solid arrow-right >}} **Using NPoly definition**:
-    - Given nondeterministic polytime program $P$
-    - Simulate all threads deterministically in breadth-first order
-    - Binary tree has at most $2^{q(n)}$ leaves for time bound $q(n)$
-    - Total time: $O(q(n) \cdot 2^{q(n)}) = O(2^{cn})$
-    - Therefore problem is in Expo
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.75em;"}
-
-**Verification enables exponential-time solving**: by trying all possible
-solutions and hints exhaustively, we can solve any PolyCheck problem in
-exponential time. Similarly, simulating all nondeterministic threads takes
-exponential time!
-
-:::
-
-# Nondeterminism and efficiency
-
-::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
-
-- {{< iconify fa6-solid circle-check >}} **Recall from Chapter 8**:
-Nondeterminism doesn't change computability
-- {{< iconify fa6-solid question >}} **New question**: Does
-nondeterminism change efficiency?
-- {{< iconify fa6-solid rocket >}} **Practical parallelism**: Multicore
-CPUs provide constant speedup
-- {{< iconify fa6-solid microscope >}} **Theoretical question**: Does
-NPoly properly contain Poly?
-- {{< iconify fa6-solid lightbulb >}} **Widely believed**: Yes, but
-unproven! (P versus NP)
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
-
-**Nondeterminism and efficiency are different from computability**:
-nondeterminism doesn't alter what's computable, but it is widely believed to
-improve efficiency. Whether Poly $\subset$ NPoly is the famous P versus NP
-question!
+- **This diagram holds for decision problems only**
 
 :::
 
@@ -681,6 +529,6 @@ PolyCheck/NPoly?
 **Understanding verification unlocks complexity theory**: PolyCheck/NPoly
 captures problems where solutions are hard to find but easy to verify. This
 class sits between Poly and Expo, leading to the most famous open question
-in computer science!
+in computer science! We will explore more details soon! Stay tuned!
 
 :::
