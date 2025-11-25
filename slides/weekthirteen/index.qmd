@@ -40,29 +40,724 @@ of both correct and efficient real-world Python programs.
 
 :::
 
-## Key insights for proofgrammers
+# PolyCheck and NPoly are about verification!
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.875em;"}
+::: {.fragment .boxed-content style="font-size: 0.825em;"}
 
-- {{< iconify fa6-solid check-circle >}} **Poly and Expo**: fundamental
-complexity classes
-- {{< iconify fa6-solid check-circle >}} **Boundary matters**: small problem
-changes shift complexity
-- {{< iconify fa6-solid check-circle >}} **Tractability**: Poly captures
-efficiently solvable problems
-- {{< iconify fa6-solid check-circle >}} **Open questions**: many problems'
-complexity unknown
-- {{< iconify fa6-solid check-circle >}} **Proofgrammer skill**: recognize
-complexity boundaries
-- {{< iconify fa6-solid check-circle >}} **Foundation**: sets the stage for the
-"P versus NP" question!
+{{< iconify fa6-solid layer-group >}} **PolyCheck and NPoly** help with
+learning objectives **CS-204-1** and **CS-204-4**. We will define two
+complexity classes that capture problems whose solutions are **easy to
+verify** even if they're **hard to find**. This chapter reveals a surprising
+result: these two classes, defined in completely different ways, are
+identical! **As proofgrammers, let's explore verification and nondeterminism
+to understand what can be efficiently checked**. Let's dive in!
+
+:::
+
+## Review: Poly and Expo classes
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+
+- **Poly**: Problems solvable in polynomial time $O(n^k)$
+- **Expo**: Problems solvable in exponential time $O(2^{n^k})$
+- **Key relationship**: Poly $\subseteq$ Expo
+- **Tractability**: Poly problems are feasible, Expo problems often are not
+- **Examples**: Sorting in Poly, factoring in Expo (no known poly algorithm)
+- **Question**: What about problems that are hard to solve but easy to check?
 
 :::
 
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
-**Understanding Poly and Expo is essential**: these complexity classes help
-proofgrammers reason about computational feasibility and guide algorithm
-design. Later, we'll explore NP and the famous "P versus NP" question!
+**The Poly/Expo boundary separates tractable from intractable**: but some
+problems are easy to verify even when hard to solve. For instance, factoring
+a number is hard, but checking if a number is a factor is easy! **This
+observation leads us to PolyCheck**!
+
+:::
+
+# Verifiers check proposed solutions
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid check-circle >}} **Verifier**: Program that checks
+if a proposed solution is correct
+- {{< iconify fa6-solid inbox >}} **Three inputs**: Instance $I$, proposed
+solution $S$, hint $H$
+- {{< iconify fa6-solid output >}} **Two outputs**: `correct` or `unsure`
+(never `incorrect`!)
+- {{< iconify fa6-solid lightbulb >}} **Key idea**: Verification can be
+easier than solving
+- {{< iconify fa6-solid microscope >}} **Example**: Checking factors is
+easier than finding them
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Verifiers formalize the notion of "easy to check"**: given a proposed
+solution, can we quickly verify its correctness? The asymmetry between
+positive and negative instances is crucial and connects to nondeterminism!
+
+:::
+
+## Verifier for FACTOR problem
+
+```{pyodide}
+#| autorun: true
+#| max-lines: 12
+def verifyFactor(I, S, H):
+    """Verify a proposed solution to the FACTOR problem."""
+    if S == 'no':
+        return 'unsure'
+    M = int(I)
+    m = int(S)
+    if m >= 2 and m < M and M % m == 0:
+        return 'correct'
+    else:
+        return 'unsure'
+
+print(f"verifyFactor('1400', '200', '') = {verifyFactor('1400', '200', '')}")
+print(f"verifyFactor('1400', '500', '') = {verifyFactor('1400', '500', '')}")
+print(f"verifyFactor('20', '5', '') = {verifyFactor('20', '5', '')}")
+```
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **Easy to verify**: Check if $m$ divides $M$ in polynomial time
+- **Hard to find**: Finding factors requires searching many candidates
+- **Note**: Returns `unsure` for incorrect solutions, not `incorrect`
+
+:::
+
+## Why output `unsure` instead of `incorrect`?
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid circle-question >}} **Two reasons for failure**:
+    - Proposed solution $S$ is actually incorrect
+    - Hint $H$ was wrong (even if $S$ is correct)
+- {{< iconify fa6-solid ban >}} **Cannot distinguish**: No way to tell
+which case occurred
+- {{< iconify fa6-solid microscope >}} **Asymmetry**: Positive instances
+verifiable, negative instances never are
+- {{< iconify fa6-solid lightbulb >}} **Connection**: Similar to
+nondeterministic computation!
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**The `unsure` output reflects fundamental asymmetry**: verifiers can confirm
+correctness but cannot definitively reject. This asymmetry mirrors
+nondeterministic computation where positive solutions are found but negative
+instances only yield `no`!
+
+:::
+
+## Formal definition of a verifier
+
+![](12-polycheck-and-npoly_2.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- Verifier $V(I, S, H)$ receives instance, solution, and hint
+- Always halts, returning `correct` or `unsure`
+- Positive instances verifiable with some correct $S$ and $H$
+- Negative instances never verifiable, always return `unsure`
+
+:::
+
+## Diagrammatic view of verification
+
+![](12-polycheck-and-npoly_5.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **Top branches**: Positive instance with correct or incorrect solution
+- **Bottom branch**: Negative instance always returns `unsure`
+- **Asymmetry**: Only positive instances can return `correct`
+
+:::
+
+# Hints enable efficient verification
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Hint string $H$**: Additional
+information to help verification
+- {{< iconify fa6-solid map >}} **Example**: For TSPD, hint provides the
+Hamilton cycle
+- {{< iconify fa6-solid rocket >}} **Efficiency**: Without hint, checking
+all cycles takes exponential time
+- {{< iconify fa6-solid check-circle >}} **With hint**: Simply verify the
+given cycle in polynomial time
+- {{< iconify fa6-solid microscope >}} **Key insight**: Hints transform
+exponential searches into polynomial checks
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Hints are the secret to efficient verification**: they tell us where the
+needle is in the haystack, so we can quickly verify it's a needle without
+searching the entire haystack. This makes verification much easier than
+solving!
+
+:::
+
+## TSPD problem definition
+
+![](12-polycheck-and-npoly_3.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **Input**: Weighted graph $G$ and threshold $L$
+- **Solution**: `yes` if Hamilton cycle exists with length $\leq L$
+- **Example**: Graph `a,b,5 b,c,6 c,a,3` with $L=20$ has solution `yes`
+- **Challenge**: Finding Hamilton cycles is exponential-time
+
+:::
+
+## Verifier for TSPD with hint
+
+```{python}
+def verifyTspD(I, S, H):
+    """Verify a solution to TSPD using hint H."""
+    if S == 'no':
+        return 'unsure'
+    (graph_str, L_str) = I.split(';')
+    L = int(L_str)
+    cycle = H.split(',')
+    if is_hamilton_cycle(graph_str, cycle) and cycle_length(graph_str, cycle) <= L:
+        return 'correct'
+    else:
+        return 'unsure'
+```
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **Hint $H$**: Specifies the Hamilton cycle (e.g., `a,b,c`)
+- **Verification**: Check cycle visits all vertices and length $\leq L$
+- **Polynomial time**: Checking is fast, finding would be slow!
+
+:::
+
+# Polytime verifiers run in polynomial time
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid stopwatch >}} **Polytime verifier**: Runs in
+$O(n^k)$ time for instance length $n$
+- {{< iconify fa6-solid ruler >}} **Crucial detail**: Only $|I|$ matters,
+not $|S|$ or $|H|$
+- {{< iconify fa6-solid shield >}} **Protection needed**: Must reject
+excessively long $S$ and $H$
+- {{< iconify fa6-solid lightbulb >}} **Why?**: Without this check,
+processing long $S$ or $H$ could take exponential time
+- {{< iconify fa6-solid microscope >}} **Solution**: Reject if $|S| > |I|$
+or $|H| > |I|$
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Polytime verifiers must protect against long inputs**: if $S$ has length
+$2n$, just converting it to an integer takes $2n$ steps, violating polynomial
+time! Rejecting excessively long solutions and hints ensures truly polynomial
+running time!
+
+:::
+
+## Polytime verifier for FACTOR
+
+![](12-polycheck-and-npoly_7.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **Added check**: Reject if $|S| > |I|$ or $|H| > |I|$
+- **Guarantees polynomial time**: Bounded by $|I|$
+- **Same verification logic**: Otherwise identical to basic verifier
+
+:::
+
+## Formal definition of polytime verifier
+
+![](12-polycheck-and-npoly_6.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- Verifier $V(I, S, H)$ must halt in polynomial time as function of $|I|$
+- Lengths of $S$ and $H$ are irrelevant to running time bound
+- This definition enables the PolyCheck complexity class
+
+:::
+
+# PolyCheck: problems with efficient verification
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid layer-group >}} **PolyCheck**: Problems whose
+positive instances can be verified in polynomial time
+- {{< iconify fa6-solid check-circle >}} **Definition**: Problem $F \in$
+PolyCheck if there exists a polytime verifier for $F$
+- {{< iconify fa6-solid rocket >}} **Examples**: FACTOR, TSPD, PACKING,
+SUBSETSUM, PARTITION
+- {{< iconify fa6-solid microscope >}} **Key insight**: Verification easier
+than solving
+- {{< iconify fa6-solid lightbulb >}} **Practical meaning**: Solutions are
+hard to find but easy to check
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**PolyCheck captures "easy to verify"**: these are problems where checking a
+proposed solution is polynomial-time, even if finding the solution might be
+exponential-time. This is the class of problems where verification helps!
+
+:::
+
+## Formal definition of PolyCheck
+
+![](12-polycheck-and-npoly_8.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- Computational problem $F$ is in PolyCheck if polytime verifier exists
+- Verifier can use hint $H$ to make verification efficient
+- Examples include many classic hard problems
+- **Question**: How does this relate to nondeterminism?
+
+:::
+
+## Haystack analogy for PolyCheck
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid magnifying-glass >}} **Searching for needles**:
+Finding factors among vast possibilities
+- {{< iconify fa6-solid eye >}} **Recognizing needles**: Quickly verify if
+something is a needle
+- {{< iconify fa6-solid check-circle >}} **PolyCheck problems**: Can
+efficiently verify needles when found
+- {{< iconify fa6-solid explosion >}} **Exponential haystack**: May contain
+more possibilities than atoms in universe
+- {{< iconify fa6-solid lightbulb >}} **Key point**: Verification
+$\neq$ discovery
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Finding versus verifying are different tasks**: for a 10,000-digit number,
+there are vastly more nonfactors than atoms in the observable universe.
+PolyCheck means we can glance at a candidate and quickly determine if it's a
+factor, without searching the entire space!
+
+:::
+
+## PACKING problem definition
+
+![](12-polycheck-and-npoly_9.png)
+
+## Three related packing problems
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid box >}} **PACKING**: Load truck with weight
+between $L$ and $H$
+    - Input: Weights $w_1, w_2, \ldots$ and thresholds $L, H$
+    - Solution: Subset with total weight $W$ where $L \leq W \leq H$
+- {{< iconify fa6-solid equals >}} **SUBSETSUM**: Load truck with exact
+weight $H$
+    - Input: Weights and single threshold $H$ (no $L$)
+    - Solution: Subset with total weight exactly $H$
+- {{< iconify fa6-solid scale-balanced >}} **PARTITION**: Split packages
+into two equal weights
+    - Input: Just weights (no thresholds)
+    - Solution: Subset with exactly half the total weight
+
+:::
+
+::: {.fragment style="font-size: 0.8em;"}
+
+- **All three in PolyCheck**: Easy to verify by summing weights!
+
+:::
+
+## Verifying packing solutions
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid lightbulb >}} **Given**: Proposed subset of weights
+- {{< iconify fa6-solid calculator >}} **Verification**: Sum the weights
+in the subset
+- {{< iconify fa6-solid check-circle >}} **Check**: Does sum satisfy the
+constraints?
+    - PACKING: Is $L \leq \text{sum} \leq H$?
+    - SUBSETSUM: Is sum exactly $H$?
+    - PARTITION: Is sum exactly half the total?
+- {{< iconify fa6-solid stopwatch >}} **Time complexity**: $O(n)$ to sum
+$n$ weights
+- {{< iconify fa6-solid rocket >}} **Conclusion**: All three problems are
+in PolyCheck!
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Finding versus verifying packing solutions**: searching for a feasible
+packing might require checking exponentially many subsets. But once given a
+proposed packing, we simply add up the weights in polynomial time!
+
+:::
+
+# NPoly: nondeterministic polynomial time
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid code-branch >}} **NPoly**: Problems solvable by
+nondeterministic programs in polynomial time
+- {{< iconify fa6-solid clock >}} **Nondeterministic running time**: Time
+until last thread completes
+- {{< iconify fa6-solid rocket >}} **Parallel search**: Launch thread for
+each possible solution
+- {{< iconify fa6-solid lightbulb >}} **Key idea**: Check all candidates
+simultaneously
+- {{< iconify fa6-solid microscope >}} **Examples**: FACTOR, TSPD, PACKING
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**NPoly uses parallel computation**: imagine launching a separate thread for
+every possible solution and checking them all at once. If the longest thread
+runs in polynomial time, the problem is in NPoly!
+
+:::
+
+## Nondeterministic running time
+
+![](12-polycheck-and-npoly_10.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **Definition**: Maximum steps from root to any leaf in computation tree
+- **Parallel perspective**: All threads run simultaneously
+- **Polynomial bound**: All threads must finish in $O(n^k)$ time
+- **Key**: Count steps in longest thread, not total across all threads
+
+:::
+
+## FACTOR in NPoly
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid code-branch >}} **Nondeterministic approach**:
+Launch thread for each possible factor
+- {{< iconify fa6-solid calculator >}} **Number of threads**: $O(M) =
+O(10^n)$ for $n$-digit number
+- {{< iconify fa6-solid tree >}} **Binary tree**: Each thread launches at
+most two children
+- {{< iconify fa6-solid ruler >}} **Tree depth**: $O(\log M) = O(n)$
+levels deep
+- {{< iconify fa6-solid stopwatch >}} **Each thread**: Checks one factor
+in $O(n^2)$ time (division)
+- {{< iconify fa6-solid rocket >}} **Total nondeterministic time**: $O(n)
+\times O(n^2) = O(n^3)$
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Exponentially many threads, polynomial time**: although we launch $O(10^n)$
+threads, they're organized in a binary tree of depth $O(n)$. Each path from
+root to leaf takes polynomial time, so FACTOR is in NPoly!
+
+:::
+
+# The remarkable result: PolyCheck = NPoly
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
+
+- {{< iconify fa6-solid equals >}} **Main theorem**: PolyCheck and NPoly
+are identical
+- {{< iconify fa6-solid lightbulb >}} **Surprising**: Two completely
+different definitions!
+    - PolyCheck: Can verify solutions in polynomial time
+    - NPoly: Can solve with nondeterministic polynomial time
+- {{< iconify fa6-solid microscope >}} **Proof strategy**: Show mutual
+containment
+    - Part 1: PolyCheck $\subseteq$ NPoly
+    - Part 2: NPoly $\subseteq$ PolyCheck
+- {{< iconify fa6-solid rocket >}} **Implication**: Verification and
+nondeterminism are equivalent!
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Two paths to the same class**: whether we define problems by efficient
+verification or nondeterministic solving, we get the same complexity class.
+This deep connection reveals fundamental computational structure!
+
+:::
+
+## Proof: PolyCheck $\subseteq$ NPoly
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
+
+- {{< iconify fa6-solid arrow-right >}} **Given**: Polytime verifier
+$V(I, S, H)$ for problem $F$
+- {{< iconify fa6-solid target >}} **Goal**: Create nondeterministic
+polytime program $P(I)$
+- {{< iconify fa6-solid code-branch >}} **Construction**: Launch thread
+for each possible $S$ and $H$
+    - Every time $V$ reads a character from $S$ or $H$, launch threads for
+    all alphabet symbols
+    - Each thread tests one possible solution/hint combination
+- {{< iconify fa6-solid tree >}} **Tree structure**: Depth bounded by
+polynomial running time of $V$
+- {{< iconify fa6-solid check-circle >}} **Each thread**: Runs $V$ on one
+choice, finishes in polynomial time
+- {{< iconify fa6-solid rocket >}} **Result**: $P(I)$ solves $F$ in
+nondeterministic polynomial time
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.75em;"}
+
+**Converting verification to nondeterministic solving**: we systematically
+try all possible solutions and hints in parallel. Since the verifier runs in
+polynomial time, each thread finishes in polynomial time, so $F \in$ NPoly!
+
+:::
+
+## Proof: NPoly $\subseteq$ PolyCheck
+
+![](12-polycheck-and-npoly_11.png)
+
+## Understanding the NPoly to PolyCheck proof
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
+
+- {{< iconify fa6-solid arrow-right >}} **Given**: Nondeterministic
+polytime program $P(I)$
+- {{< iconify fa6-solid target >}} **Goal**: Create polytime verifier
+$V(I, S, H)$
+- {{< iconify fa6-solid map >}} **Key insight**: Use hint $H$ to specify
+which path to follow
+    - Hint is a label like `2.1.2` identifying a path in the computation
+    tree
+    - Components $c_0, c_1, c_2, \ldots$ indicate which thread to follow
+    at each level
+- {{< iconify fa6-solid code >}} **Construction**: $V$ simulates one path
+from $P$'s tree
+    - At each nondeterministic choice, follow the thread specified by hint
+    - Compute return value $R$ at chosen leaf
+- {{< iconify fa6-solid check-circle >}} **Verification**: Return
+`correct` if $S = R$, else `unsure`
+- {{< iconify fa6-solid stopwatch >}} **Running time**: Single path takes
+polynomial time
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.75em;"}
+
+**Hints encode paths through computation trees**: the hint tells us exactly
+which nondeterministic choices to make. By following this single path, we
+deterministically verify the solution in polynomial time!
+
+:::
+
+# PolyCheck and NPoly are identical!
+
+::: {.fragment .boxed-content style="font-size: 0.85em;"}
+
+{{< iconify fa6-solid equals >}} **Proven**: PolyCheck = NPoly, so we can
+call it **PolyCheck/NPoly**. This remarkable result shows that efficient
+verification and nondeterministic solving are equivalent perspectives on the
+same computational phenomenon. **As proofgrammers, we can use whichever
+definition is more convenient**!
+
+:::
+
+# The PolyCheck/NPoly sandwich
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
+
+- {{< iconify fa6-solid layer-group >}} **Hierarchy**: Poly $\subseteq$
+PolyCheck/NPoly $\subseteq$ Expo
+- {{< iconify fa6-solid arrow-right >}} **First inclusion**: Every Poly
+problem is in PolyCheck/NPoly
+    - Easy to verify by just solving and comparing!
+- {{< iconify fa6-solid arrow-right >}} **Second inclusion**: Every
+PolyCheck/NPoly problem is in Expo
+    - Can solve by trying all possible solutions (exponential time)
+- {{< iconify fa6-solid question >}} **Open questions**: Are these proper
+subsets?
+    - Is Poly $\subset$ PolyCheck/NPoly? (The P versus NP question!)
+    - Is PolyCheck/NPoly $\subset$ Expo?
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**PolyCheck/NPoly sits between tractable and exponential**: we know Poly
+$\subset$ Expo, so at least one inclusion is proper. But which one(s)? This
+leads to the famous P versus NP question!
+
+:::
+
+## The sandwich relationship
+
+![](12-polycheck-and-npoly_12.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **Known**: Poly $\subseteq$ PolyCheck/NPoly $\subseteq$ Expo
+- **Known**: Poly $\subset$ Expo (proper subset)
+- **Unknown**: Are the individual inclusions proper?
+- **Belief**: Both are proper subsets, but unproven!
+
+:::
+
+## Proof: Poly $\subseteq$ PolyCheck/NPoly
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
+
+- {{< iconify fa6-solid arrow-right >}} **Using PolyCheck definition**:
+    - Given polytime solver $P$ for problem $F$
+    - Create verifier: Run $P(I)$, return `correct` if $S = P(I)$
+    - Ignores hint $H$, runs in polynomial time
+    - Therefore $F \in$ PolyCheck
+- {{< iconify fa6-solid arrow-right >}} **Using NPoly definition**:
+    - Given polytime solver $P$ for problem $F$
+    - Use $P$ as nondeterministic program (with no nondeterminism)
+    - Runs in polynomial time, so $F \in$ NPoly
+- {{< iconify fa6-solid lightbulb >}} **Insight**: Easy problems can be
+both solved and verified efficiently!
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Poly problems are also in PolyCheck/NPoly**: if you can solve efficiently,
+you can certainly verify efficiently. Just solve and compare!
+
+:::
+
+## Proof: PolyCheck/NPoly $\subseteq$ Expo
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.75em;"}
+
+- {{< iconify fa6-solid arrow-right >}} **Using PolyCheck definition**:
+    - Given polytime verifier $V(I, S, H)$
+    - Create exponential-time solver: Try all relevant $S$ and $H$
+    - At most $K^{2p(n)}$ possibilities for alphabet size $K$, bound $p(n)$
+    - Total time: $O(q(n) \cdot K^{2p(n)}) = O(2^{cn})$ for some constant
+    - Therefore problem is in Expo
+- {{< iconify fa6-solid arrow-right >}} **Using NPoly definition**:
+    - Given nondeterministic polytime program $P$
+    - Simulate all threads deterministically in breadth-first order
+    - Binary tree has at most $2^{q(n)}$ leaves for time bound $q(n)$
+    - Total time: $O(q(n) \cdot 2^{q(n)}) = O(2^{cn})$
+    - Therefore problem is in Expo
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.75em;"}
+
+**Verification enables exponential-time solving**: by trying all possible
+solutions and hints exhaustively, we can solve any PolyCheck problem in
+exponential time. Similarly, simulating all nondeterministic threads takes
+exponential time!
+
+:::
+
+# Nondeterminism and efficiency
+
+::: {.incremental style="margin-top: -0.5em; font-size: 0.875em;"}
+
+- {{< iconify fa6-solid circle-check >}} **Recall from Chapter 8**:
+Nondeterminism doesn't change computability
+- {{< iconify fa6-solid question >}} **New question**: Does
+nondeterminism change efficiency?
+- {{< iconify fa6-solid rocket >}} **Practical parallelism**: Multicore
+CPUs provide constant speedup
+- {{< iconify fa6-solid microscope >}} **Theoretical question**: Does
+NPoly properly contain Poly?
+- {{< iconify fa6-solid lightbulb >}} **Widely believed**: Yes, but
+unproven! (P versus NP)
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Nondeterminism and efficiency are different from computability**:
+nondeterminism doesn't alter what's computable, but it is widely believed to
+improve efficiency. Whether Poly $\subset$ NPoly is the famous P versus NP
+question!
+
+:::
+
+## Key slogan about nondeterminism
+
+::: {.fragment .boxed-content style="font-size: 0.95em;"}
+
+{{< iconify fa6-solid quote-left >}} **Nondeterminism does not alter
+computability, but it is widely believed to improve computational efficiency.**
+{{< iconify fa6-solid quote-right >}}
+
+:::
+
+::: {.fragment style="margin-top: 0.5em; font-size: 0.875em;"}
+
+- **Computability**: Nondeterminism adds nothing (Chapter 8)
+- **Efficiency**: Nondeterminism likely adds exponential speedup
+- **Open problem**: Proving this rigorously is extremely difficult
+- **Importance**: Understanding this boundary drives complexity theory
+
+:::
+
+## Complexity class relationships
+
+![](12-polycheck-and-npoly_13.png)
+
+::: {.fragment style="font-size: 0.85em;"}
+
+- **P**: Decision problems in Poly
+- **NP**: Decision problems in NPoly (equivalent to PolyCheck)
+- **Exp**: Decision problems in Expo
+- **Relationships**: P $\subseteq$ NP $\subseteq$ Exp
+
+:::
+
+## Key insights for proofgrammers
+
+::: {.incremental style="margin-top: -0.25em; font-size: 0.85em;"}
+
+- {{< iconify fa6-solid check-circle >}} **Verifiers**: Formalize "easy
+to check" for solutions
+- {{< iconify fa6-solid check-circle >}} **PolyCheck**: Problems with
+polytime verification
+- {{< iconify fa6-solid check-circle >}} **NPoly**: Problems with
+nondeterministic polytime solutions
+- {{< iconify fa6-solid check-circle >}} **Equivalence**: PolyCheck =
+NPoly (proven!)
+- {{< iconify fa6-solid check-circle >}} **Sandwich**: Poly $\subseteq$
+PolyCheck/NPoly $\subseteq$ Expo
+- {{< iconify fa6-solid check-circle >}} **P versus NP**: Is Poly $\subset$
+PolyCheck/NPoly?
+
+:::
+
+::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+
+**Understanding verification unlocks complexity theory**: PolyCheck/NPoly
+captures problems where solutions are hard to find but easy to verify. This
+class sits between Poly and Expo, leading to the most famous open question
+in computer science!
 
 :::
