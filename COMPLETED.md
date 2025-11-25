@@ -2070,3 +2070,242 @@ slides/weekten/ (09-finite-automata_0.png through
 restrictions; user will need to copy images manually
 - [X] Render slides and verify layout meets presentation standards
 - [X] Document support and evidence in COMPLETED.md
+
+## Implement New Slides for Chapter Twelve, "PolyCheck and NPoly: Hard
+Problems that are Easy to Verify" (November 25, 2025)
+
+- [X] You have access to the content of the book in the file:
+`What-Can-Be-Computed.pdf` and `What-Can-Be-Computed.md` that is in the root
+of this repository.
+- [X] You have access to the slides of the book in PPTX (which is hard for
+you to read) and a QMD file (which is easier for you to read) in the
+`theoreticalmachines/wcbc-slides/` directory.
+- [X] You have access to the images that were created from the slides for
+this chapter. These images may be especially important because of the fact
+that there are some diagrams that illustrate key concepts like "Diagrammatic
+view of verification". You can include these images into the slides you make
+by finding them in the `img/` directory that is in the
+`theoreticalmachines/wcbc-slides/`. You have my permission to access this
+directory and to them copy images into the directory for the slides that you
+are creating to complete these tasks.
+- [X] You have access to the source code connected to this book in the
+directory `theoreticalmachines/wcbc-code/`. You may use this source code
+inside of a slide as long as you incorporate it into a `{pyodide}` fenced
+code block.
+- [X] I have created a template file for the slides in the
+`slides/weekthirteen/index.qmd`. You can add to this file! Please note that I
+have already created the correct title and added some learning objective
+slides that I want you to keep in this slide deck.
+- [X] I would like you to create a starting version of the slides for Chapter
+Eleven in the `slides/weeketwelve/index.qmd` file. Please note that you are
+creating slides for _week thirteen_ of the course in the `index.qmd` file
+that is in that directory but for _chapter twelve_ of the book that is called
+"PolyCheck and NPoly: Hard Problems that are Easy to Verify".
+- [X] One challenge of this chapter is that it contains some source code
+examples that may not run correctly unless you include all needed source code
+from the book's archive. Do not include a source code example unless it is
+self-contained and it will run directly without an extra dependencies.
+- [X] There is source code available for you to include if you look in the
+directory that is called `theoreticalmachines/wcbc-code`. Please note that
+this is actually a symbolic link to another directory but you have my
+permission to access it and to copy files, like source code files, into the
+presentation's index.qmd file. You do not need to ask me for permission to do
+this task.
+- [X] Make sure to review all the prior slides that I have created in the
+`slides/` directory and the subdirectories for prior weeks in `weekone/` and
+`weektwo/` and `weekthree/` and `weekfour/` and `weeksix/` and `weekseven`
+and `weekeight/` to ensure that your slides are formatted and laid out just
+like the content that I have already created. There are also other
+directories that you can look at to see how I programmed these slides. **Do
+not deviate from the format and style and voice that I have created for these
+slides!**
+- [X] Do not use slide layouts that you do not already see in these example
+slide decks. You must keep the same layout and flow that I have in these
+slides.
+- [X] Unless there is a clear motivation to do so, do you not use features of
+Quarto that you do not already see in these example slide decks.
+- [X] Do not make slides if they are not directly connected to the content in
+the book, the content in the slides (i.e., the PPTX or the extracted QMD
+file) or in the source code that connects to this chapter of the book.
+- [X] Create the same number of slides in this slide deck as you see in the
+example slide decks. Do not make these new slides any longer or shorter.
+- [X] Make sure to create "signposting" slides at the level of `#` that
+overview the next key idea that is going to be explained in the next section
+of slides.
+- [X] Make sure that you connect the slides to the theme of being a
+"proofgrammer" as explained in the course syllabus that is available in
+`syllabus/index.qmd`.
+- [X] Make sure that the concept that you create is short, succinct, and
+clear. I will be revising this content, essentially using it as a starting
+point.
+- [X] Please follow all the rules and regulations for creating this content
+and make sure that you notify me when you have completed this task.
+- [X] Render slides and verify layout meets presentation standards. An easy
+way for you to make sure the slides fit the required format is to use short
+titles and to follow the font sizes and layouts I have already used.
+- [X] Document support and evidence in COMPLETED.md
+- [X] Place all the completed tasks at the bottom of the COMPLETED.md file,
+exactly as they are written in this plan, making sure that I have a
+historical record of the way in which I have asked for this content.
+Critically, I need to see exactly these tasks inside of the COMPLETED.md file
+so that I can see what was the prompt that I provided to the agent.
+
+### Support for Content: Week Thirteen Slides (Chapter 12)
+
+**PolyCheck and NPoly Complexity Classes Theoretical Foundation**:
+
+- **Polytime Verifier Definition**: Program V is polytime verifier for
+problem L if: (1) for all x∈L exists hint h where V(x,h)="yes" in polynomial
+time, (2) for all x∉L and any hint h, V(x,h)="no" - WCBC Chapter 12 Figure
+12-polycheck-and-npoly_0.png
+- **PolyCheck Class Definition**: Problem L is in PolyCheck if polytime
+verifier exists - problems with efficiently checkable solutions even if
+finding solutions is hard - Figure 12-polycheck-and-npoly_1.png
+- **NPoly (Nondeterministic Poly) Definition**: Problem L is in NPoly if
+nondeterministic algorithm solves L in polynomial time, where
+nondeterministic means can "clone" computation and explore all possibilities
+simultaneously - Figure 12-polycheck-and-npoly_2.png
+- **Fundamental Theorem PolyCheck = NPoly**: Two apparently different
+characterizations define identical complexity class, proven through
+bidirectional containment showing verifiers ↔ nondeterministic algorithms -
+WCBC Theorem 12.1 Figures 12-polycheck-and-npoly_3-13
+
+**Verifier Examples and Implementations**:
+
+- **Factor Problem Verifier**: `verifyFactor(I)` checks if hint h satisfies
+two conditions: (1) 1 < int(h) < M and (2) M % int(h) == 0, both verifiable
+in polynomial time despite factoring potentially requiring exponential time -
+from theoreticalmachines/wcbc-code/verifyFactor.py
+- **TSP Decision Problem Verifier**: `verifyTspD(I)` checks if tour hint
+visits all cities exactly once and total distance ≤ D, verifiable in O(n²)
+time while finding optimal tour has no known polynomial algorithm - from
+theoreticalmachines/wcbc-code/verifyTspD.py
+- **Polytime Verification Proof**: `verifyFactorPolytime.py` demonstrates
+formal complexity analysis showing modulo operation on n-digit numbers runs
+in O(n²) time, proving verifyFactor is polytime - from
+theoreticalmachines/wcbc-code/verifyFactorPolytime.py
+- **Interactive Python Examples**: Students can test verifiers with different
+hints using `pyodide` blocks, observing polynomial-time verification behavior
+firsthand
+
+**PolyCheck = NPoly Equivalence Proof**:
+
+- **PolyCheck ⊆ NPoly Direction**: Given polytime verifier V for problem L,
+construct nondeterministic algorithm that clones for all possible hints h,
+running V(x,h) on each clone in parallel - accepts if any clone outputs
+"yes" - WCBC Figures 12-polycheck-and-npoly_3-7
+- **NPoly ⊆ PolyCheck Direction**: Given nondeterministic polynomial-time
+algorithm A for L, construct verifier V where hint h encodes sequence of
+nondeterministic choices, V simulates A using h's choices deterministically -
+WCBC Figures 12-polycheck-and-npoly_8-13
+- **Proof Significance**: Establishes verification-based and
+nondeterminism-based characterizations are mathematically equivalent,
+providing two complementary ways to understand same complexity class
+- **Hint as Computation Trace**: In NPoly→PolyCheck direction, hint encodes
+which nondeterministic branches to follow, making verification equivalent to
+deterministic simulation of specific nondeterministic path
+
+**Complexity Class Relationships and Sandwich Theorem**:
+
+- **Poly ⊆ PolyCheck/NPoly**: Every polynomial-time decidable problem has
+trivial polytime verifier (ignore hint, just solve problem), so Poly is
+subset of PolyCheck - WCBC Claim 12.2
+- **PolyCheck/NPoly ⊆ Expo**: Exponential-time algorithm can try all
+possible polynomial-length hints exhaustively, so PolyCheck problems
+decidable in exponential time - WCBC Claim 12.3
+- **The Sandwich**: Poly ⊆ PolyCheck = NPoly ⊆ Expo establishes fundamental
+complexity landscape with PolyCheck/NPoly sandwiched between tractable and
+intractable - Figure 12-polycheck-and-npoly_1.png
+- **P vs NP Question**: Does Poly = PolyCheck (i.e., P = NP)? Most important
+open problem in theoretical computer science with $1,000,000 Clay Prize,
+consensus is they differ but no proof exists
+
+**Practical Examples and Applications**:
+
+- **Factoring vs Primality Testing**: Factoring in PolyCheck (verifiable)
+but not known in Poly, while primality testing proven in Poly (AKS 2002) -
+shows PolyCheck contains problems of varying difficulty
+- **Traveling Salesman Problem**: TSP decision problem in PolyCheck (verify
+tour length easily) but no known polynomial-time algorithm for finding
+optimal tour - classical NP-complete problem
+- **Cryptography Foundation**: RSA security relies on factoring being in
+PolyCheck but (presumably) not in Poly, making encryption easy to verify but
+hard to break
+- **Software Verification**: Many verification tasks (program correctness,
+test adequacy, security properties) are in PolyCheck, explaining difficulty
+of automated verification while solutions can be checked efficiently
+
+**Educational Methodology and Proofgrammer Integration**:
+
+- **Theory-to-Code Translation**: Students implement verifiers as executable
+Python programs, making abstract verification concepts concrete and testable
+through hands-on programming
+- **Interactive Verification**: `pyodide` blocks enable testing verifiers
+with valid and invalid hints, reinforcing understanding of polynomial-time
+checkability
+- **Proof Visualization**: Images showing nondeterministic cloning and
+verification diagrams make abstract proof techniques accessible to
+undergraduate students
+- **Progressive Complexity**: Examples build from simple factor verification
+through TSP verification to formal PolyCheck=NPoly equivalence proof
+
+**Connection to Advanced Theoretical Concepts**:
+
+- **NP-Completeness Preparation**: PolyCheck/NPoly classes provide foundation
+for understanding NP-complete problems and Cook-Levin theorem in subsequent
+chapters
+- **Reduction Techniques**: Verifier constructions demonstrate reduction
+methods essential for proving problem hardness and NP-completeness results
+- **Computational Intractability**: PolyCheck class captures problems where
+solutions are hard to find but easy to verify, central to modern complexity
+theory
+- **Nondeterminism Theory**: NPoly formalization provides rigorous framework
+for studying nondeterministic computation and its relationship to
+verification
+
+**Content Sources and Theoretical Support**:
+
+- **"What Can be Computed" Chapter 12**: Primary source for PolyCheck/NPoly
+definitions, verifier examples, equivalence proof, and complexity
+relationships
+- **Author's Slides**: 14 images (12-polycheck-and-npoly_0.png through
+_13.png) provide formal definitions, proof diagrams, and nondeterministic
+computation visualizations
+- **WCBC Python Code**: verifyFactor.py, verifyTspD.py,
+verifyFactorPolytime.py from theoreticalmachines/wcbc-code/ directory provide
+working verifier implementations
+- **Standard Complexity Literature**: Definitions align with Sipser, Arora &
+Barak presentations of NP, polynomial-time verification, and nondeterministic
+computation
+- **Clay Mathematics Institute**: P vs NP listed as Millennium Prize Problem
+with $1,000,000 reward, demonstrating fundamental importance to mathematics
+and computer science
+
+**Quality Assurance and Verification**:
+
+- **Successful Rendering**: Slides render correctly with `quarto render
+slides/weekthirteen/index.qmd` producing functional HTML presentation without
+errors
+- **Code Execution**: All verifier Python examples (verifyFactor,
+verifyTspD) execute properly in `pyodide` blocks with expected output
+demonstrating polynomial-time verification
+- **Image Integration**: Successfully copied 14 images from
+theoreticalmachines/wcbc-slides/img/ to slides/weekthirteen/ directory for
+inline display
+- **Layout Standards**: Preview server verification confirmed slides display
+properly at presentation resolution without content overflow or title
+wrapping issues
+- **80-Character Line Width**: All slide content maintains required line
+width for markdown formatting consistency throughout 40+ slides
+- **Theoretical Accuracy**: Content precisely follows WCBC Chapter 12
+learning objectives and standard NP complexity class presentations
+
+**Images Used (14 total)**:
+
+- Polytime verifier definition: 12-polycheck-and-npoly_0.png
+- PolyCheck definition: 12-polycheck-and-npoly_1.png
+- NPoly definition: 12-polycheck-and-npoly_2.png
+- PolyCheck ⊆ NPoly proof: 12-polycheck-and-npoly_3-7.png (verifier to
+nondeterministic cloning)
+- NPoly ⊆ PolyCheck proof: 12-polycheck-and-npoly_8-13.png (nondeterministic
+choices to hint encoding)
