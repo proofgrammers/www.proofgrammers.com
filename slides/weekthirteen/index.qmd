@@ -175,7 +175,7 @@ found but negative instances only yield `no`!
 
 ::: {.fragment style="font-size: 0.85em;"}
 
-- **Top branches**: Positive instance with correct or incorrect solution
+- **Top branches**: Positive instance with a correct solution
 - **Bottom branch**: Negative instance always returns `unsure`
 - **Asymmetry**: Only positive instances can return `correct`
 
