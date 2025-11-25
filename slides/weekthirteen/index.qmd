@@ -485,7 +485,7 @@ computability, but it is widely believed to improve computational efficiency.**
 
 ::: {.fragment style="margin-top: 0.5em; font-size: 0.875em;"}
 
-- **Computability**: Nondeterminism adds nothing (Chapter 8)
+- **Computability**: Nondeterminism does not modify property
 - **Efficiency**: Nondeterminism likely adds exponential speedup
 - **Open problem**: Proving this rigorously is extremely difficult
 - **Importance**: Understanding this boundary drives complexity theory
@@ -519,7 +519,7 @@ polytime verification
 - {{< iconify fa6-solid check-circle >}} **NPoly**: Problems with
 nondeterministic polytime solutions
 - {{< iconify fa6-solid check-circle >}} **Equivalence**: PolyCheck =
-NPoly (proven!)
+NPoly (remember, this is proven!)
 - {{< iconify fa6-solid check-circle >}} **Sandwich**: Poly $\subseteq$
 PolyCheck/NPoly $\subseteq$ Expo
 - {{< iconify fa6-solid check-circle >}} **P versus NP**: Is Poly $\subset$
