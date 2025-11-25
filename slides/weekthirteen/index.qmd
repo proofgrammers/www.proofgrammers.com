@@ -489,6 +489,9 @@ computability, but it is widely believed to improve computational efficiency.**
 - **Efficiency**: Nondeterminism likely adds exponential speedup
 - **Open problem**: Proving this rigorously is extremely difficult
 - **Importance**: Understanding this boundary drives complexity theory
+- **Key beliefs that are as yet unproven**:
+    - P $\neq$ NP
+    - NP $\neq$ Exp
 
 :::
 
@@ -501,7 +504,7 @@ computability, but it is widely believed to improve computational efficiency.**
 - **P**: Decision problems in Poly
 - **NP**: Decision problems in NPoly (equivalent to PolyCheck)
 - **Exp**: Decision problems in Expo
-- **Relationships**: P $\subseteq$ NP $\subseteq$ Exp
+- **Relationships**: Can you identify key relationships in this figure?
 
 :::
 
