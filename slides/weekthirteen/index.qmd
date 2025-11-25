@@ -274,7 +274,7 @@ containing problems whose positive instances can be verified in polynomial time
 PolyCheck if there exists a polytime verifier for $F$
 - {{< iconify fa6-solid rocket >}} **Examples**: FACTOR, TSPD, PACKING,
 SUBSETSUM, PARTITION
-- {{< iconify fa6-solid microscope >}} **Key insight**: Many problems yield a
+- {{< iconify fa6-solid microscope >}} **Key insight**: Many problems have a
 verification easier than solving
 - {{< iconify fa6-solid lightbulb >}} **Practical meaning**: Solutions are hard
 to find but easy to check
@@ -488,7 +488,7 @@ computability, but it is widely believed to improve computational efficiency.**
 
 ::: {.fragment style="margin-top: 0.5em; font-size: 0.875em;"}
 
-- **Computability**: Nondeterminism does not modify property
+- **Computability**: Nondeterminism does not enhance computability
 - **Efficiency**: Nondeterminism likely adds exponential speedup
 - **Open problem**: Proving this rigorously is extremely difficult
 - **Importance**: Understanding this boundary drives complexity theory
