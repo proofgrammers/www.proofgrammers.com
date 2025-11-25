@@ -273,7 +273,7 @@ containing problems whose positive instances can be verified in polynomial time
 - {{< iconify fa6-solid check-circle >}} **Definition**: Problem $F \in$
 PolyCheck if there exists a polytime verifier for $F$
 - {{< iconify fa6-solid rocket >}} **Examples**: FACTOR, TSPD, PACKING,
-SUBSETSUM, PARTITION
+SUBSETSUM, and PARTITION
 - {{< iconify fa6-solid microscope >}} **Key insight**: Many problems have a
 verification easier than solving
 - {{< iconify fa6-solid lightbulb >}} **Practical meaning**: Solutions are hard
