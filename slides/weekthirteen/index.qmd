@@ -296,7 +296,8 @@ polytime verifier?
 ::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
 - {{< iconify fa6-solid layer-group >}} **PolyCheck**: Complexity class
-containing problems whose positive instances can be verified in polynomial time
+containing problems whose positive instances can be correctly verified in
+polynomial time
 - {{< iconify fa6-solid check-circle >}} **Definition**: Problem $F \in$
 PolyCheck if there exists a polytime verifier for $F$
 - {{< iconify fa6-solid rocket >}} **Examples**: FACTOR, TSPD, PACKING,
@@ -324,8 +325,8 @@ exponential-time. This is the class of problems where verification helps!
 
 - Computational problem $F$ is in PolyCheck if polytime verifier exists
 - Verifier can use hint $H$ to make verification efficient
-- Examples include many classic hard problems
-- **Question**: How does this relate to nondeterminism?
+- Examples include many "classic hard problems" like FACTOR and TSPD
+- **Question**: How does this relate to nondeterminism in prior classes?
 
 :::
 
@@ -337,7 +338,7 @@ guess the benefits?
 
 :::
 
-## Haystack analogy for PolyCheck
+## "Haystack analogy" for PolyCheck
 
 ::: {.incremental style="margin-top: -0.25em; font-size: 0.825em;"}
 
