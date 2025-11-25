@@ -56,7 +56,7 @@ checked**. Okay, let's dive in!
 
 ## Review: Poly and Expo classes
 
-::: {.incremental style="margin-top: -0.25em; font-size: 0.9em;"}
+::: {.incremental style="margin-top: -0.25em; font-size: 0.8em;"}
 
 - **Poly**: Problems solvable in polynomial time $O(n^k)$
 - **Expo**: Problems solvable in exponential time $O(2^{n^k})$
@@ -70,9 +70,9 @@ checked**. Okay, let's dive in!
 ::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
 
 **The Poly/Expo boundary separates tractable from intractable**: but some
-problems are easy to verify even when hard to solve. For instance, factoring
-a number is hard, but checking if a number is a factor is easy! **This
-observation leads us to PolyCheck**!
+problems are *easy to verify even when hard to solve*. For instance, factoring a
+number is hard, but checking if a number is a factor is easy! **This observation
+leads us to PolyCheck**! The word **Check** conncects to "verification"!
 
 :::
 
