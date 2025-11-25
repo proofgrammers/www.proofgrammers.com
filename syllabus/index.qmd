@@ -368,8 +368,11 @@ receive **twenty** assessments for this category of their work.
 - **Final Executable Examination**
     - **Examination Code**: C
     - **Date**: Monday, December 8, 2025
-    - **Time**: 9:00 AM -- 12:00 Noon
+    - **Time**: 7:00 PM -- 9:00 PM
     - **Location**: Alden 109
+    - **Details**:
+      - Executable examination
+      - In-person knowledge check
 
 ### Weekly Cadence
 
