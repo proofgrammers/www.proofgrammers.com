@@ -72,7 +72,7 @@ checked**. Okay, let's dive in!
 **The Poly/Expo boundary separates tractable from intractable**: but some
 problems are *easy to verify even when hard to solve*. For instance, factoring a
 number is hard, but checking if a number is a factor is easy! **This observation
-leads us to PolyCheck**! The word **Check** conncects to "verification"!
+leads us to PolyCheck**! The word **Check** connects to "verification"!
 
 :::
 
