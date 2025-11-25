@@ -219,24 +219,17 @@ Hamilton cycle of length $\leq L$ exists
 - {{< iconify fa6-solid question >}} **Question**: Does a Hamilton cycle of
 length $\leq 8$ exist?
 - {{< iconify fa6-solid circle-check >}} **Proposed solution $S$**: `"yes"`
-- {{< iconify fa6-solid lightbulb >}} **Hint $H$**: `"a,b,c"`, which is the actual
-Hamilton cycle, hooray!
+- {{< iconify fa6-solid lightbulb >}} **Hint $H$**: `"a,b,c"`, which is the
+actual Hamilton cycle, hooray!
 - {{< iconify fa6-solid link >}} **Hint helps**: TSPD only asks yes/no, but
 verifying requires the actual cycle
 - {{< iconify fa6-solid calculator >}} **Verification**: Check cycle visits all
 vertices once
-- {{< iconify fa6-solid ruler >}} **Check length**: $1 + 2 + 3 =
-6 \leq 8$
+- {{< iconify fa6-solid ruler >}} **Check length**: $1 + 2 + 3 = 6 \leq 8$
 - {{< iconify fa6-solid rocket >}} **Result**: `"correct"` in $O(n^2)$
 time!
-
-:::
-
-::: {.fragment .fade .boxed-content style="font-size: 0.75em;"}
-
-**Without the hint, we'd need exponential time**: there are $n!$ possible cycles
-to check! The hint `"a,b,c"` tells us exactly which cycle to verify, reducing
-an exponential search to a polynomial-time check. This is the power of hints!
+- **Without hint, need exponential time as there are $n!$ possible cycles to
+check**
 
 :::
 
