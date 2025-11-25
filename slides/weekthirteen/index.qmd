@@ -327,36 +327,36 @@ possibilities than atoms in universe
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.9em;"}
 
 **Finding versus verifying are different tasks**: for a 10,000-digit number,
 there are vastly more non-factors than atoms in the observable universe.
 PolyCheck means we can glance at a candidate and quickly determine if it's a
-factor, without searching the entire space! See the benefits?
+factor, without searching the entire space! See the benefits? Now, let's define
+the NPoly class!
 
 :::
 
 # NPoly: nondeterministic polynomial time
 
-::: {.incremental style="margin-top: -0.5em; font-size: 0.85em;"}
+::: {.incremental style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid code-branch >}} **NPoly**: Problems solvable by
-nondeterministic programs in polynomial time
-- {{< iconify fa6-solid clock >}} **Nondeterministic running time**: Time
-until last thread completes
-- {{< iconify fa6-solid rocket >}} **Parallel search**: Launch thread for
-each possible solution
+- {{< iconify fa6-solid code-branch >}} **NPoly**: Solved by nondeterministic
+programs in polynomial time
+- {{< iconify fa6-solid clock >}} **Nondeterministic running time**: Time until
+last thread completes
+- {{< iconify fa6-solid rocket >}} **Parallel search**: Launch thread for each
+possible solution
 - {{< iconify fa6-solid lightbulb >}} **Key idea**: Check all candidates
-simultaneously
-- {{< iconify fa6-solid microscope >}} **Examples**: FACTOR, TSPD, PACKING
+simultaneously in parallel
 
 :::
 
-::: {.fragment .fade .boxed-content style="font-size: 0.8em;"}
+::: {.fragment .fade .boxed-content style="font-size: 0.7em;"}
 
 **NPoly uses parallel computation**: imagine launching a separate thread for
-every possible solution and checking them all at once. If the longest thread
-runs in polynomial time, the problem is in NPoly!
+every possible solution and checking them all at once. Intuitively, if the
+longest thread runs in polynomial time, the problem is in NPoly!
 
 :::
 
