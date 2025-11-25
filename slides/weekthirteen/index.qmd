@@ -471,7 +471,7 @@ subsets?
 
 - **Known**: Poly $\subseteq$ PolyCheck/NPoly $\subseteq$ Expo
 - **Known**: Poly $\subset$ Expo (proper subset)
-- **Unknown**: Are the individual inclusions proper?
+- **Unknown**: Are all these individual inclusions proper?
 - **This diagram holds for decision problems only**
 
 :::
