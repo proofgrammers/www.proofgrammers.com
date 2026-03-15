@@ -155,3 +155,6 @@ internal
 
 ### Generated Files ###
 **/*.quarto_ipynb
+
+### Verification Images ###
+verification_screenshots
