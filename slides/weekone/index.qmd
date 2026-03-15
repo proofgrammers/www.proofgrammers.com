@@ -16,13 +16,15 @@ format:
     transition: slide
     highlight-style: github
     footer: "Proofgrammers"
+revealjs-plugins:
+  - appearance
 ---
 
 # Theory of computation
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"} 
 
-- {{< iconify fa6-solid lightbulb >}} **What is theory of computation?**
+- {{< iconify fa6-solid lightbulb .animate__pulse >}} **What is theory of computation?**
     - Understanding what can be computed
     - Analyzing computational complexity
     - Proving limits of computation
@@ -32,7 +34,7 @@ format:
 
 ::: {.fragment style="margin-top: -0.5em; font-size: 0.8em;"}
 
-- {{< iconify fa6-solid lightbulb >}} **Why is it important?**
+- {{< iconify fa6-solid lightbulb .animate__pulse >}} **Why is it important?**
     - Helps determine if problems are solvable
     - Reveals fundamental computational limits
     - Guides key algorithm design choices
@@ -52,7 +54,7 @@ format:
   - Automata and formal languages
   - Decidability and undecidability
   - Complexity classes and reductions
-- {{< iconify fa6-solid lightbulb >}} **Use programming to explore what can be computed!**
+- {{< iconify fa6-solid lightbulb .animate__bounce >}} [**Use programming to explore what can be computed!**]{.animate__bounce .animate__slow}
 
 :::
 
@@ -68,7 +70,7 @@ format:
 - Analyze algorithmic complexity experimentally
 - Create computational models of theoretical concepts
 - Verify theoretical results through programming
-- **Welcome to the proofgrammer team! How exciting!**
+- [**Welcome to the proofgrammer team! How exciting!**]{.animate__tada}
 
 :::
 
@@ -90,7 +92,7 @@ def count_lines(file_content: str) -> int:
 - **Function input**: various types of input strings possible
 - **Important question**: what makes this problem computable?
 - **Translate to uncomputable**: can you make this more difficult?
-- {{< iconify fa6-solid lightbulb >}} **Differences in tractable, intractable, and uncomputable?**
+- {{< iconify fa6-solid lightbulb .animate__flash >}} [**Differences in tractable, intractable, and uncomputable?**]{.animate__pulse}
 
 :::
 
@@ -219,7 +221,7 @@ print(f"Result: {result2}")
 
 :::
 
-# Don't assume it is possible to implement every Python program! Start to think like a proofgrammer!
+# [Don't assume it is possible to implement every Python program! Start to think like a proofgrammer!]{.animate__shakeX}
 
 ## Computational challenges
 
@@ -292,7 +294,7 @@ book](https://whatcanbecomputed.com/)'s code segments and slides
 - Uv for Python package and dependency management
 - Quarto for creating interactive documents with code
 
-::: {.fragment .fade .boxed-content style="margin-top: 0.25em; font-size: 0.9em;"}
+::: {.fragment .fade .boxed-content .animate__slideInUp style="margin-top: 0.25em; font-size: 0.9em;"}
 
 {{< iconify fa6-solid microscope >}} How do we *implement* theoretical concepts
 in code? How do we *verify* computational results? How do we *document* our
@@ -313,7 +315,7 @@ proofs effectively? How do we *apply* these insights to real-world problems?
 
 :::
 
-::: {.fragment .fade .boxed-content style="margin-top: -0.1em; font-size: 0.8em;"}
+::: {.fragment .fade .boxed-content .animate__slideInUp style="margin-top: -0.1em; font-size: 0.8em;"}
 
 {{< iconify fa6-solid lightbulb >}} Proofgrammers who use AI coding tools are
 responsible for ensuring correctness, theoretical accuracy, and ethical use. Do
@@ -405,7 +407,7 @@ collaboration!
 
 ## Checking your proofgrammer setup
 
-```bash
+```{bash}
 # Run these commands in your terminal window
 git --version                   # Check Git installation
 python --version                # Check Python (via UV)
@@ -421,7 +423,7 @@ uv --version                    # Check UV package manager
 - **Consult documentation** links when troubleshooting
 - **Schedule office hours** with the course instructor
 - **Visit office hours** with the student technical leaders
-- {{< iconify fa6-solid rocket >}} **Have these setup by the end of this week**!
+- {{< iconify fa6-solid rocket .animate__bounce >}} [**Have these setup by the end of this week**!]{.animate__bounce .animate__slow}
 
 :::
 
@@ -469,8 +471,8 @@ whether or not the code is a correct.
 - Contribute to collaborative presentation projects
 - Prepare for first proofgrammer charette session
 
-- {{< iconify fa6-solid rocket >}} **Get ready for an exciting journey into theoretical machines!**
-- {{< iconify fa6-solid lightbulb >}} **If you are having trouble, publicly ask for help on Discord!**
+- {{< iconify fa6-solid rocket .animate__pulse >}} [**Get ready for an exciting journey into theoretical machines!**]{.animate__pulse .animate__slow}
+- {{< iconify fa6-solid lightbulb .animate__flash >}} [**If you are having trouble, publicly ask for help on Discord!**]{.animate__pulse}
 
 :::
 

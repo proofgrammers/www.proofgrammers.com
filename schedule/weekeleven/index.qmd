@@ -1,0 +1,37 @@
+---
+title: "Grasping Computational Complexity"
+description: "Discovering how efficiency matters"
+date: 2025-11-03
+layout: full
+toc: true
+toc-expand: 3
+---
+
+## Activities
+
+- {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
+  - Chapter ten of [What Can be Computed? A Practical Guide to the
+  Theory of Computation](https://whatcanbecomputed.com/)
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - Retrospective presentation teams finalize GitHub pull request by 11:59 PM
+  - All presentation materials must be in final form
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - Instructor's presentation on this week's assigned topics
+  - Teams complete their final practice steps for retrospective presentations
+- {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+  - **Module Two Retrospective Presentations** (Half of the class)
+  - **Interim Executable Examination Two**
+  - In-person knowledge check assessment covering all material from the course
+- {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
+  - Instructor's presentation on this week's assigned topics
+  - **Module Two Retrospective Presentations** (Remaining half of the class)
+  - Charette session where students collaboratively ask and answer questions
+
+## Slides
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekeleven/"></iframe>
+```
+
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week
+Eleven: Computational Complexity](../../slides/weekeleven/)

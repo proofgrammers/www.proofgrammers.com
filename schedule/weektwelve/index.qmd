@@ -1,7 +1,7 @@
 ---
-title: "Exploring Nondeterminism"
-description: "Nondeterminism does not change computability"
-date: 2025-10-20
+title: "Comparing Poly and Expo Classes"
+description: "Exploring the boundaries of complexity"
+date: 2025-11-10
 layout: full
 toc: true
 toc-expand: 3
@@ -10,7 +10,7 @@ toc-expand: 3
 ## Activities
 
 - {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
-  - Chapter eight of [What Can be Computed? A Practical Guide to the
+  - Chapter eleven of [What Can be Computed? A Practical Guide to the
   Theory of Computation](https://whatcanbecomputed.com/)
 - {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
   - Presentation teams finalize GitHub pull request for presentation by 11:59 PM
@@ -20,7 +20,7 @@ toc-expand: 3
   - Instructor's presentation on this week's assigned topics
   - Teams complete their final practice steps for their proofgrammer presentations
 - {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
-  - **Module Two Proofgrammer Presentations and Evaluations**
+  - **Module Three Proofgrammer Presentations and Evaluations**
   - Teams and presentation topics assigned at the start of the week
   - Student teams present and evaluate each other's work
 - {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
@@ -30,8 +30,8 @@ toc-expand: 3
 ## Slides
 
 ```{=html}
-<iframe class="slide-deck" src="../../slides/weeknine/"></iframe>
+<iframe class="slide-deck" src="../../slides/weektwelve/"></iframe>
 ```
 
 {{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week
-Nine: Exploring Nondeterminism](../../slides/weeknine/)
+Twelve: Poly and Expo Classes](../../slides/weektwelve/)
