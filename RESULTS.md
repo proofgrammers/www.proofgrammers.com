@@ -705,3 +705,90 @@ The animation section was added at line 261, just before "Content Verification" 
 | Course goals | fadeInLeft | List items |
 
 All slides now have maximum one strategically placed animation!
+
+## Fixed Schedule File Indentation Issues
+
+**Problem Identified**: Multiple schedule files (weekten, weekeleven, weekthirteen) had incorrect indentation where the Monday list item was nested under Reading Assignment instead of being at the same level. This was caused by a blank line between Reading Assignment and Monday, which caused mdformat (or similar tools) to incorrectly indent subsequent items.
+
+**Root Cause**: The pattern was:
+```markdown
+- Reading Assignment:
+  - Chapter reference
+
+  - Monday:  <-- This was indented as a child of Reading Assignment
+```
+
+**Files Fixed**:
+1. **schedule/weekten/index.qmd** - Fixed Monday, Tuesday, Laboratory, Thursday indentation
+2. **schedule/weekeleven/index.qmd** - Fixed all day items to be at correct level
+3. **schedule/weekthirteen/index.qmd** - Fixed progressive indentation issue
+4. **schedule/weekfifteen/index.qmd** - Already fixed in previous session
+
+**What was wrong**: 
+- Monday was at line 16 with 2-space indent (treated as child of Reading Assignment)
+- This caused Tuesday, Laboratory, and Thursday to progressively indent further
+- Made the content appear broken or missing when rendered
+
+**Correction applied**:
+- Removed blank line between Reading Assignment chapter and Monday
+- Dedent Monday back to main level (line 15, no indentation)
+- All day items (Monday, Tuesday, Laboratory, Thursday) now at correct level
+- Only Laboratory sub-items remain indented (as children of Laboratory)
+
+**Verification**:
+- All 4 files now render successfully with `quarto render`
+- Monday appears at line 15 with no indentation in all files
+- Content structure matches other correct files (weekfive, weektwelve, weekfourteen)
+
+
+## Updated Schedule Files with Missing Content
+
+**Issue Identified**: Schedule files from weeknine onwards were missing references to proofgrammer presentations, retrospective presentations, and interim executable examinations as outlined in the syllabus.
+
+**Syllabus Requirements Found**:
+- **Module Two Presentations**: Week Seven, Week Eight, Week Nine
+- **Module Two Retrospective Presentations**: Week Eleven (Tuesday and Thursday)
+- **Module Three Presentations**: Week Twelve, Week Thirteen, Week Fourteen
+- **Interim Executable Examination Two**: Week Eleven
+
+**Files Updated**:
+
+1. **schedule/weeknine/index.qmd**
+   - Added Monday: Pull request finalization requirements
+   - Added Tuesday: Practice steps for presentations
+   - Updated Laboratory: Module Two Proofgrammer Presentations and Evaluations
+
+2. **schedule/weekten/index.qmd**
+   - Added Monday: Pull request finalization requirements
+   - Added Tuesday: Practice steps for presentations
+   - Updated Laboratory: Module Two Proofgrammer Presentations and Evaluations
+
+3. **schedule/weekeleven/index.qmd**
+   - Added Monday: Retrospective presentation pull request finalization
+   - Added Tuesday: Practice steps for retrospective presentations
+   - Updated Laboratory: Module Two Retrospective Presentations (Half of class) + Interim Executable Examination Two
+   - Updated Thursday: Module Two Retrospective Presentations (Remaining half)
+
+4. **schedule/weektwelve/index.qmd**
+   - Added Monday: Pull request finalization requirements
+   - Added Tuesday: Practice steps for presentations
+   - Updated Laboratory: Module Three Proofgrammer Presentations and Evaluations
+
+5. **schedule/weekthirteen/index.qmd**
+   - Added Monday: Pull request finalization requirements
+   - Added Tuesday: Practice steps for presentations
+   - Updated Laboratory: Module Three Proofgrammer Presentations and Evaluations
+
+6. **schedule/weekfourteen/index.qmd**
+   - Added Monday: Pull request finalization requirements
+   - Added Tuesday: Practice steps for presentations
+   - Updated Laboratory: Module Three Proofgrammer Presentations and Evaluations
+
+**All files now reference**:
+- Proofgrammer presentations with proper Monday/Tuesday/Laboratory structure
+- GitHub pull request requirements
+- Quarto and RevealJS requirements
+- Team presentation and evaluation process
+- Retrospective presentations in week eleven
+- Interim executable examination in week eleven
+

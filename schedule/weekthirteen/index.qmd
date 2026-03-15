@@ -9,31 +9,29 @@ toc-expand: 3
 
 ## Activities
 
-- {{< iconify fa6-solid lightbulb size=18px>}} **Reading Assignment**:
+- {{< iconify fa6-solid lightbulb size=18px >}} **Reading Assignment**:
   - Chapter twelve of [What Can be Computed? A Practical Guide to the
   Theory of Computation](https://whatcanbecomputed.com/)
-
-  - {{< iconify fa6-solid lightbulb size=18px>}} **Monday**:
-    - No new presentation slides due for this week
-    - {{< iconify fa6-solid people-line size=18px>}} **Tuesday**:
-      - Instructor's presentation on this week's assigned topics
-      - Charette session where students collaboratively ask and answer questions
-      - {{< iconify fa6-solid gears size=18px>}} **Tuesday Laboratory**:
-        - No new presentations during the laboratory session
-        - Complete these tasks during the laboratory session:
-        - Participate in an extra charette session
-        - Prepare for the standard charette session on Thursday
-        - Start working on the presentations for next week
-        - Read all content in the current chapter to grasp fully
-        - {{< iconify fa6-solid people-line size=18px>}} **Thursday**:
-          - Instructor's presentation on this week's assigned topics
-          - Charette session where students collaboratively ask and answer questions
+- {{< iconify fa6-solid lightbulb size=18px >}} **Monday**:
+  - Presentation teams finalize GitHub pull request for presentation by 11:59 PM
+  - All presentation slides must be built with Quarto and RevealJS
+  - All students in a presentation team must contribute to the pull request
+- {{< iconify fa6-solid people-line size=18px >}} **Tuesday**:
+  - Instructor's presentation on this week's assigned topics
+  - Teams complete their final practice steps for their proofgrammer presentations
+- {{< iconify fa6-solid gears size=18px >}} **Tuesday Laboratory**:
+  - **Module Three Proofgrammer Presentations and Evaluations**
+  - Teams and presentation topics assigned at the start of the week
+  - Student teams present and evaluate each other's work
+- {{< iconify fa6-solid people-line size=18px >}} **Thursday**:
+  - Instructor's presentation on this week's assigned topics
+  - Charette session where students collaboratively ask and answer questions
 
 ## Slides
 
-          ```{=html}
-          <iframe class="slide-deck" src="../../slides/weekthirteen/"></iframe>
-          ```
+```{=html}
+<iframe class="slide-deck" src="../../slides/weekthirteen/"></iframe>
+```
 
-          {{< iconify majesticons presentation-play size=18px>}} Full Screen: [Week
-            Thirteen: PolyCheck and NPoly](../../slides/weekthirteen/)
+{{< iconify majesticons presentation-play size=18px >}} Full Screen: [Week
+Thirteen: PolyCheck and NPoly](../../slides/weekthirteen/)
