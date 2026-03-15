@@ -462,8 +462,8 @@ These are the high-level rules about modifying the files in this repository:
   have a line width of 80 characters.
 - **Permission to run commands:** You have permission to run all commands
   available in the OpenCode environment to work on the Quarto website project.
-- **Incremental changes:** Make small, incremental changes. This makes it easier
-  to review your work and catch errors early.
+- **Incremental changes:** Make small, incremental changes. This makes it
+  easier to review your work and catch errors early.
 - **Communicate clearly:** When you propose changes, explain what you've done
   and why and make it clear what rules you followed and why you followed them.
 - **Correct tone:** This repository often contains examples of existing content
@@ -475,14 +475,18 @@ These are the high-level rules about modifying the files in this repository:
   that all the content is professional in nature and not overly casual.
 - **Support your work:** Once you are finished writing the content, you need to
   make sure that you provide evidence to support the sentences and/or bullet
-  points that you wrote. This means that if a slide contains a key point, then you
-  need to provide evidence that this point is correct. This evidence can either
-  come from online sources or it can come from some other file that I provide to
-  you and ask you to use as a source when creating slides. You can write the
-  support for your work to the subsection called `Support for Content` in the file
-  called `COMPLETED.md` that is in the root of this repository. If you are
-  creating new content for `slides/weekone/index.qmd` you can create a
+  points that you wrote. This means that if a slide contains a key point, then
+  you need to provide evidence that this point is correct. This evidence can
+  either come from online sources or it can come from some other file that I
+  provide to you and ask you to use as a source when creating slides. You can
+  write the support for your work to the subsection called `Support for Content`
+  in the file called `COMPLETED.md` that is in the root of this repository. If
+  you are creating new content for `slides/weekone/index.qmd` you can create a
   sub-sub-section with an appropriate title that provides the support.
+- **Use `showboat` to document completed tasks**: Run `uvx showboat --help` and
+  then create a `RESULTS.md` showboat document and use it to document the changes
+  that you made and the reasons that you think you are finished with a task and
+  with this overall project.
 
 As an agent working through `OpenCode`, you must also follow these behavior
 guidelines, especially when it comes to notifying the user about your work and
