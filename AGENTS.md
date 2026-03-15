@@ -327,8 +327,72 @@ file but you should follow them for whatever slide you are working on.
 
 1. **Use the `rodney` tool for checking the web page**
 
-Once you have started dev server, you can run `uvx rodney --help` to test the
-new page by looking at screenshots to confirm the menu is in the right place.
+   **IMPORTANT - NixOS Environment**: On NixOS, you must start Chrome with
+   remote debugging enabled before using `rodney`. The `uvx rodney start`
+   command will fail due to missing shared libraries.
+
+   **Step 1: Start Chrome with remote debugging** (in a separate terminal):
+
+   ```bash
+   chromium-browser --remote-debugging-port=9222
+   ```
+
+   **Step 2: Connect rodney to the running Chrome instance**:
+
+   ```bash
+   uvx rodney connect localhost:9222
+   ```
+
+   **Step 3: Navigate and verify pages**:
+
+   ```bash
+   # Open a page
+   uvx rodney open http://localhost:8080/schedule/weekten/
+
+   # Check page title
+   uvx rodney title
+
+   # Verify elements exist
+   uvx rodney exists "h1"
+   uvx rodney exists "h2"
+   uvx rodney exists "iframe"
+
+   # Count elements
+   uvx rodney count "h2"
+
+   # Get text content
+   uvx rodney text "h1"
+
+   # Take screenshot for visual verification
+   uvx rodney screenshot layout-verify.png
+   ```
+
+   **Step 4: Stop the browser session when done**:
+
+   ```bash
+   uvx rodney stop
+   ```
+
+   **Common rodney commands for verification**:
+
+   - `uvx rodney open <url>` - Navigate to URL
+   - `uvx rodney title` - Print page title
+   - `uvx rodney exists <selector>` - Check if element exists (returns true/false)
+   - `uvx rodney count <selector>` - Count matching elements
+   - `uvx rodney text <selector>` - Get text content of element
+   - `uvx rodney html [selector]` - Print HTML of page or element
+   - `uvx rodney screenshot [file]` - Take page screenshot
+   - `uvx rodney wait <selector>` - Wait for element to appear
+   - `uvx rodney waitload` - Wait for page load
+   - `uvx rodney js <expression>` - Evaluate JavaScript
+   - `uvx rodney stop` - Stop Chrome browser
+
+   Use rodney to verify that:
+
+   - Page titles render correctly
+   - Key HTML elements (h1, h2, iframe) are present
+   - Slide deck iframes load properly
+   - Content structure matches expectations
 
 1. **Shutdown servers**:
 
