@@ -258,6 +258,179 @@ print(not duplicates([1,2,3,4]))
 ![](06-universal-programs_5.png)
 ```
 
+## Adding Animations to Slides
+
+This project uses the **quarto-appearance** plugin with **Animate.css** to add
+subtle, tasteful animations to slides. Animations should enhance engagement
+without being distracting or overwhelming.
+
+### Animation Philosophy
+
+- **Subtle, not overwhelming**: Use gentle animations like pulse, fade, or slow
+  bounce rather than aggressive effects like wobble or shake
+- **Purposeful**: Each animation should serve a specific purpose (draw attention,
+  add emphasis, create delight)
+- **Professional but fun**: Maintain educational tone while adding engagement
+- **Strategic placement**: Target key messages, icons, and callouts—not every
+  element
+- **Speed control**: Use `.animate__slow` modifier to reduce animation speed
+  for gentler effects
+
+### Setup and Configuration
+
+Add the appearance plugin to your slide deck's YAML header:
+
+```yaml
+---
+title: "Your Slide Title"
+format:
+  live-revealjs:
+    theme: default
+    css: ../css/styles.css
+revealjs-plugins:
+  - appearance
+---
+```
+
+**Important**: Do NOT enable `autoappear: true` as this animates every list item
+and creates overwhelming, boring effects. Instead, manually add animations to
+specific elements.
+
+### Recommended Animations by Use Case
+
+| Use Case | Animation | Modifier | Purpose |
+|----------|-----------|----------|---------|
+| Key questions/concepts | `animate__pulse` | `.animate__slow` | Gentle attention |
+| Icons (lightbulbs, rockets) | `animate__pulse` or `animate__flash` | none | Draw attention |
+| Exciting announcements | `animate__bounce` | `.animate__slow` | Celebration |
+| Call-to-action messages | `animate__bounce` | `.animate__slow` | Urgency with fun |
+| Warning/important notes | `animate__shakeX` | none | Emphasize caution |
+| Boxed content/callouts | `animate__slideInUp` | None | Glides in from bottom smoothly |
+| Code blocks (special) | `animate__headShake` | none | Subtle emphasis |
+| Welcome messages | `animate__tada` | none | Celebration |
+
+### Animation Syntax Examples
+
+**On icons with text:**
+```markdown
+- {{< iconify fa6-solid lightbulb .animate__pulse >}} **Key question here**
+```
+
+**On important phrases:**
+```markdown
+- [**Use programming to explore what can be computed!**]{.animate__bounce .animate__slow}
+```
+
+**On boxed content (callouts):**
+```markdown
+::: {.fragment .fade .boxed-content .animate__slideInUp}
+{{< iconify fa6-solid lightbulb >}} Important message or question here
+:::
+```
+
+**Important**: Do NOT apply scale animations (like `animate__pulse` or `animate__bounce`) to boxed content containers. These animations change the element size and cause overflow beyond the box borders, making the frame invisible.
+
+**Good options for boxed content** (gliding entrance without overflow):
+- `animate__slideInUp` - Glides in from bottom smoothly (Recommended)
+- `animate__fadeInUp` - Fades in while sliding up
+- `animate__backInUp` - Slides in from back with slight bounce
+- `animate__fadeIn` - Simple fade in
+
+Example with slide animation:
+```markdown
+::: {.fragment .fade .boxed-content .animate__slideInUp}
+Content here
+:::
+```
+
+**Why these work**: These animations use translation (movement) rather than scaling, so they don't change the element's dimensions or cause overflow issues with fixed-size containers.
+
+**On code blocks:**
+```markdown
+::: {.animate__headShake}
+```{bash}
+# Your code here
+```
+:::
+```
+
+**Combining icon animation with text:**
+```markdown
+- {{< iconify fa6-solid rocket .animate__bounce >}} [**Call to action!**]{.animate__bounce .animate__slow}
+```
+
+### Important Rule: One Animation Per Slide
+
+To maintain visual clarity and prevent overwhelming the audience, **limit each slide to a maximum of one animated element**. This ensures:
+
+- **Focus**: The audience's attention is drawn to one key message
+- **Clarity**: No competing animations distracting from content
+- **Professionalism**: Clean, purposeful presentation style
+
+**Example of what NOT to do** (multiple animations on one slide):
+```markdown
+## Checking your proofgrammer setup
+
+::: {.animate__headShake}
+```{bash}
+# Code block with animation
+```
+:::
+
+- {{< iconify fa6-solid rocket .animate__bounce >}} [**Call to action**]{.animate__bounce}
+```
+
+**Correct approach** (choose ONE):
+```markdown
+## Checking your proofgrammer setup
+
+```{bash}
+# Code block without animation
+```
+
+- {{< iconify fa6-solid rocket .animate__bounce >}} [**Call to action**]{.animate__bounce}
+```
+
+### Animations to Avoid
+
+❌ **Do NOT use:**
+- `animate__wobble` - Too vigorous and distracting
+- Auto-appear on all list items - Creates overwhelming "bullet point spam"
+- Multiple simultaneous animations on the same slide
+- Fast, repetitive animations that loop continuously
+- Animations on every element (dilutes impact)
+
+### Testing Animations
+
+1. Render the slides:
+   ```bash
+   quarto render slides/weekone/index.qmd
+   ```
+
+2. Preview in browser to verify animations work:
+   ```bash
+   quarto preview slides/weekone/index.qmd --port 8081
+   ```
+
+3. Navigate through slides and observe:
+   - Animations trigger appropriately
+   - Speed feels comfortable (not too fast/slow)
+   - Effects are subtle and professional
+   - No overwhelming or annoying animations
+
+### Best Practice Examples from Week One
+
+**Good examples:**
+- Lightbulb icons on key questions with gentle pulse
+- Boxed question content with slow pulse (not wobble)
+- Welcome message with celebratory tada
+- Warning heading with shakeX
+- Code block with subtle headShake
+- Rocket icons with bounce on call-to-actions
+
+**Remember**: Less is more. 5-12 well-placed subtle animations are better than
+50 overwhelming ones.
+
 ## Content Verification
 
 Before completing any changes, verify that the site builds correctly and that
