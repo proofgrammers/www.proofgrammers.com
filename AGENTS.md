@@ -328,8 +328,8 @@ file but you should follow them for whatever slide you are working on.
 1. **Use the `rodney` tool for checking the web page**
 
    **IMPORTANT - NixOS Environment**: On NixOS, you must start Chrome with
-   remote debugging enabled before using `rodney`. The `uvx rodney start`
-   command will fail due to missing shared libraries.
+   remote debugging enabled before using `rodney`. Otherwise, the
+   `uvx rodney start` command will fail due to missing shared libraries.
 
    **Step 1: Start Chrome with remote debugging** (in a separate terminal):
 
