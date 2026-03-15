@@ -2854,3 +2854,110 @@ objectives and standard polyreduction theory presentations
 - SAT to 3-SAT clause splitting: 13-polyreductions_8-11.png
 - CircuitSAT to SAT encoding: 13-polyreductions_12-15.png
 - Additional reduction examples: 13-polyreductions_16-19.png
+
+
+### Week Sixteen In-Person Knowledge Check Questions (December 8, 2025)
+
+- [X] Reviewed all slide decks from weeks one through fifteen to understand 
+course content and teaching approach
+- [X] Designed four knowledge check questions assessing "big picture" 
+understanding of theory of computation
+- [X] Question 1: Computability - Understanding difference between 
+uncomputable and intractable problems
+- [X] Question 2: Turing Machines and Python - Explaining universal 
+computation through code example
+- [X] Question 3: Complexity Class Relationships - Mathematical notation 
+and class hierarchy
+- [X] Question 4: Nondeterminism and Computation - Distinguishing 
+computability from efficiency
+- [X] Added questions to slides/weeksixteen/index.qmd following existing 
+slide formatting guidelines
+- [X] Rendered slides successfully with `quarto render 
+slides/weeksixteen/index.qmd`
+- [X] Verified slides display correctly through preview server on port 8081
+- [X] All questions designed to be relatively easy, assessing core 
+understanding rather than obscure details
+- [X] Questions include at least one with mathematical notation (Question 
+3) and one with source code (Question 2)
+- [X] Each question fits completely on a single slide at 1920x1080 
+presentation resolution
+- [X] Documented support for content in COMPLETED.md
+
+**Rationale for Question Design**:
+
+- **Question 1 (Computability)**: Tests fundamental understanding of course 
+foundation - distinguishing problems that cannot be solved at all 
+(uncomputable) from problems that can be solved but take too long 
+(intractable). This directly addresses learning objective CS-204-1.
+
+- **Question 2 (Universal Computation)**: Uses actual Python code from 
+course materials to test understanding of how one program can execute 
+another, connecting to Turing's universal machine concept. This addresses 
+CS-204-2 and demonstrates proofgrammer integration of theory and code.
+
+- **Question 3 (Complexity Classes)**: Tests understanding of class 
+hierarchy with mathematical notation ($P \subseteq NP \subseteq Expo$), 
+addressing CS-204-4 and the famous P vs NP question. Assesses whether 
+students grasp the "big picture" of complexity theory.
+
+- **Question 4 (Nondeterminism)**: Tests crucial distinction between what 
+can be computed (computability) versus how efficiently it can be computed 
+(complexity). Addresses common misconception that nondeterminism increases 
+computational power rather than just efficiency.
+
+**Content Support References**:
+
+- **WCBC Chapters 1-14**: All questions draw from core concepts covered 
+throughout semester including computability theory, Turing machines, 
+complexity classes, and nondeterminism
+- **Course Learning Objectives**: Questions designed to specifically assess 
+CS-204-1 (tractable/intractable/uncomputable distinction), CS-204-2 
+(Turing machine abstraction), and CS-204-4 (complexity class 
+classification)
+- **Proofgrammer Theme**: Question 2 uses actual Python code 
+(`containsGAGA`) from week two slides that students studied, embodying 
+course philosophy of expressing theory as executable programs
+- **Slide Content from Weeks 1-15**: Questions synthesize key concepts from 
+introduction (week one), SISO programs (week two), nondeterminism (week 
+nine), and complexity theory (weeks eleven-fifteen)
+
+### Question 2 Revision: Real Python Code from Course (December 8, 2025)
+
+- [X] Replaced abstract `yesOnString` impossible program with actual course 
+code
+- [X] Selected `containsGAGA` function from `slides/weektwo/index.qmd` (lines 
+217-232)
+- [X] Code is 12 lines including function definition and test cases
+- [X] Students studied this code early in semester (week two)
+- [X] Question asks students to walk through code and explain input/output
+- [X] Verified slide renders correctly with code block fitting on single 
+slide
+- [X] Confirmed proper syntax highlighting and readability at 0.75em font 
+size
+
+**Rationale for `containsGAGA` Selection**:
+
+The `containsGAGA` function is the most fundamental example from the course:
+
+1. **Core SISO concept**: Demonstrates single-input, single-output (SISO) 
+program structure that is foundation of computational theory
+2. **Decision problem**: Returns "yes"/"no" answers, illustrating decision 
+problems central to computability theory
+3. **Pattern matching**: Shows basic string pattern recognition that 
+connects to formal languages and automata theory
+4. **Early course content**: Appeared in week two slides, giving students 
+entire semester to internalize this example
+5. **Testable understanding**: Two test cases allow students to demonstrate 
+they can trace execution and predict output
+6. **Practical proofgramming**: Real Python code students can run, not 
+abstract theoretical construct
+
+**Code Explanation Requirements**:
+
+Students must explain:
+- Function signature: `str -> str` mapping (input string to "yes"/"no")
+- Type of problem: Decision problem testing substring membership
+- Expected output: `test_input1` returns "yes" (contains "GAGA"), 
+`test_input2` returns "no" (no "GAGA" found)
+- Computational concept: Efficient O(n) pattern matching using Python's 
+built-in `in` operator
